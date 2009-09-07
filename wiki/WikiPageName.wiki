@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>line-height=150% != 1.5</title>
+<style type="text/css">
+*{padding:0; margin:0}
+h1,h2,h3{font-size:100%}
+h1{text-align:center;margin-bottom:10px;line-height:2}
+h3{margin-top:15px}
+body{font:14px/1.5  Tahoma, Geneva, sans-serif; color:#333; background:#ddd}
+#main{width:800px; padding:10px 20px; margin:0 auto; border:1px solid #666; background:#fff}
+</style>
+</head>
+
+<body>
+<div id="main">
+<h1>line-height=150%不等于line-height=1.5</h1>
+<h2>CSS line-height 属性</h2>
+<h3>定义</h3>
+<p><em>line-height</em> 属性设置行间的距离。</p>
+<p><em>注释：</em>不允许使用负值。</p>
+<p>继承性：Yes</p>
+<h3>说明</h3>
+<p>该属性会影响行框的布局。在应用到一个块级元素时，它定义了该元素中基线之间的最小距离而不是最大距离。</p>
+<p>line-height 与 font-size 的计算值之差（在 CSS   中成为&ldquo;行间距&rdquo;）分为两半，分别加到一个文本行内容的顶部和底部。可以包含这些内容的最小框就是行框。</p>
+<p>原始数字值指定了一个缩放因子，后代元素会继承这个缩放因子而不是计算值。</p>
+<h3>JavaScript 语法</h3>
+<p>CSS 属性也可通过一段 JavaScript 被动态地改变。</p>
+<p><em>脚本语法：</em></p>
+<pre>object.style.lineHeight=&quot;2&quot;</pre>
+<h3>例子</h3>
+<pre>p{   	line-height:1.4;  }  p{   	line-height:14pt;  }   p{   	line-height:140%;  }</pre>
+<h3>可能的值</h3>
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>normal</th>
+      <td>默认。设置合理的行间距。</td>
+    </tr>
+    <tr>
+      <th>number</th>
+      <td>设置数字，此数字会与当前的字体尺寸相乘来设置行间距。</td>
+    </tr>
+    <tr>
+      <th>length</th>
+      <td>设置固定的行间距。</td>
+    </tr>
+    <tr>
+      <th>%</th>
+      <td>基于当前字体尺寸的百分比行间距。</td>
+    </tr>
+  </tbody>
+</table>
+<div style="font: 12px Tahoma,sans-serif; width: 400px">
+  <hr />
+    <p style="line-height: 150%">line-height: 150% - The quick brown fox jumps over the lazy dog. The quick brown fox <span style="font-size: 52px">jumps over</span> the lazy dog. The quick brown <span style="font-size: 52px">fox jumps</span> over the lazy dog.</p>
+    <hr />
+    <p style="line-height: 1.5">line-height: 1.5 - The quick brown fox jumps over the lazy dog. The quick brown fox <span style="font-size: 52px">jumps over</span> the lazy dog. The quick brown <span style="font-size: 52px">fox jumps</span> over the lazy dog.</p>
+    <hr />
+</div>
+
+</div>
+</body>
+</html>
