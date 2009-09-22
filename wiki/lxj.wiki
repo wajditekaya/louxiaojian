@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<title>Loop Benchmarks</title>
 <style type="text/css">
     body{font-family:helvetica,arial,sans-serif;font-size:12px;}
     span{display:none;}
@@ -252,3 +257,5 @@ function test() {
 <script type="text/javascript">
     setTimeout(test, 500);
 </script>
+</body>
+</html>
