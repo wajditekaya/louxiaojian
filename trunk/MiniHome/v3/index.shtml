@@ -169,11 +169,11 @@
               <!--moveList2-->
               <div id="moveList2" class="List">
                 <ul class="tList">
-                 <li><a href="#">2012</a>
-                  <ul class="aFo">
+                 <li><a href="#" id="a_12">2012</a>
+                  <ul class="aFo" id="ul_12">
                      <li><span>评分：</span><em class="score">8.4分</em></li>
                      <li><span>类型：</span>冒险/动作</li>
-                     <li><span>地区：</span>美国</li>
+                     <li><span>地区：</span>美国1212</li>
                      <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
                    </ul>
                  </li>
@@ -300,48 +300,66 @@
               <!--moveList3-->
               <div id="moveList3" class="List">
                 <ul class="tList">
-                 <li><a href="#">坏中尉</a><a href="#">坏中尉</a><a href="#">坏中尉</a><a href="#">坏中尉</a>
-                  <ul class="aFo">
+                 <li><a href="#" id="a_895">坏中尉</a><a href="#" id="a_896">坏中尉</a><a href="#" id="a_897">坏中尉</a><a href="#"  id="a_898">坏中尉</a>
+                  <ul class="aFo" id="ul_895">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国11</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                  <ul class="aFo" id="ul_896">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国22</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                  <ul class="aFo" id="ul_897">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国33</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                  <ul class="aFo" id="ul_898">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国44</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                 <li><a href="#" id="a_900">败家仔</a>
+                  <ul class="aFo" id="ul_900">
                      <li><span>评分：</span><em class="score">8.4分</em></li>
                      <li><span>类型：</span>冒险/动作</li>
                      <li><span>地区：</span>美国</li>
                      <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
                    </ul>
                  </li>
-                 <li><a href="#">败家仔</a>
-                  <ul class="aFo">
+                 <li><a href="#" id="a_901">金甲部队</a>
+                  <ul class="aFo" id="ul_901">
                      <li><span>评分：</span><em class="score">8.4分</em></li>
                      <li><span>类型：</span>冒险/动作</li>
                      <li><span>地区：</span>美国</li>
                      <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
                    </ul>
                  </li>
-                 <li><a href="#">金甲部队</a>
-                  <ul class="aFo">
+                 <li><a href="#" id="a_903">黑日危机</a>
+                  <ul class="aFo" id="ul_903">
                      <li><span>评分：</span><em class="score">8.4分</em></li>
                      <li><span>类型：</span>冒险/动作</li>
                      <li><span>地区：</span>美国</li>
                      <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
                    </ul>
                  </li>
-                 <li><a href="#">黑日危机</a>
-                  <ul class="aFo">
+                 <li><a href="#" id="a_904">决战紫禁之巅</a>
+                  <ul class="aFo" id="ul_904">
                      <li><span>评分：</span><em class="score">8.4分</em></li>
                      <li><span>类型：</span>冒险/动作</li>
                      <li><span>地区：</span>美国</li>
                      <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
                    </ul>
                  </li>
-                 <li><a href="#">决战紫禁之巅</a>
-                  <ul class="aFo">
-                     <li><span>评分：</span><em class="score">8.4分</em></li>
-                     <li><span>类型：</span>冒险/动作</li>
-                     <li><span>地区：</span>美国</li>
-                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
-                   </ul>
-                 </li>
-                 <li><a href="#">美食从天而降</a>
-                  <ul class="aFo">
+                 <li><a href="#" id="a_905">美食从天而降</a>
+                  <ul class="aFo" id="ul_905">
                      <li><span>评分：</span><em class="score">8.4分</em></li>
                      <li><span>类型：</span>冒险/动作</li>
                      <li><span>地区：</span>美国</li>
@@ -350,48 +368,48 @@
                  </li>
                 </ul>
                 <ul class="tList">
-                 <li><a href="#">赌霸</a>
-                  <ul class="aFo">
+                 <li><a href="#" id="a_906">赌霸</a>
+                  <ul class="aFo" id="ul_906">
                      <li><span>评分：</span><em class="score">8.4分</em></li>
                      <li><span>类型：</span>冒险/动作</li>
                      <li><span>地区：</span>美国</li>
                      <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
                    </ul>
                  </li>
-                 <li><a href="#">暮色2：新月</a>
-                  <ul class="aFo">
+                 <li><a href="#" id="a_907">暮色2：新月</a>
+                  <ul class="aFo" id="ul_907">
                      <li><span>评分：</span><em class="score">8.4分</em></li>
                      <li><span>类型：</span>冒险/动作</li>
                      <li><span>地区：</span>美国</li>
                      <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
                    </ul>
                  </li>
-                 <li><a href="#">就是这样</a>
-                  <ul class="aFo">
+                 <li><a href="#" id="a_908">就是这样</a>
+                  <ul class="aFo" id="ul_908">
                      <li><span>评分：</span><em class="score">8.4分</em></li>
                      <li><span>类型：</span>冒险/动作</li>
                      <li><span>地区：</span>美国</li>
                      <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
                    </ul>
                  </li>
-                 <li><a href="#">最后的武士</a>
-                  <ul class="aFo">
+                 <li><a href="#" id="a_909">最后的武士</a>
+                  <ul class="aFo" id="ul_909">
                      <li><span>评分：</span><em class="score">8.4分</em></li>
                      <li><span>类型：</span>冒险/动作</li>
                      <li><span>地区：</span>美国</li>
                      <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
                    </ul>
                  </li>
-                 <li><a href="#">风声</a>
-                  <ul class="aFo">
+                 <li><a href="#" id="a_910">风声</a>
+                  <ul class="aFo" id="ul_910">
                      <li><span>评分：</span><em class="score">8.4分</em></li>
                      <li><span>类型：</span>冒险/动作</li>
                      <li><span>地区：</span>美国</li>
                      <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
                    </ul>
                  </li>
-                 <li><a href="#">就是这样</a>
-                  <ul class="aFo">
+                 <li><a href="#" id="a_911">就是这样</a>
+                  <ul class="aFo" id="ul_911">
                      <li><span>评分：</span><em class="score">8.4分</em></li>
                      <li><span>类型：</span>冒险/动作</li>
                      <li><span>地区：</span>美国</li>
