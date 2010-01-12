@@ -89,9 +89,9 @@ select{color:#999}
 .miniTop{overflow:hidden;height:27px;line-height:27px;color:#fff}
 	.miniTop .user{float:left}
 	.miniTop .oInfo{float:right}
-.search{overflow:hidden;zoom:1;padding:1px 0 4px 4px}
+.search{overflow:hidden;zoom:1;padding:1px 0 4px 0}
 	.search input{float:left}
-	.search .sText{width:104px;height:19px;padding:1px 0 0 2px;border:1px solid #7487a1;margin-right:6px;background:#fff}
+	.search .sText{width:108px;height:19px;padding:1px 0 0 2px;border:1px solid #7487a1;margin-right:6px;background:#fff}
 .mnArea{display:none;overflow:hidden;zoom:1}
 	.mnArea a{color:#666;text-decoration:none}
 	.mnArea a:hover{text-decoration:underline}
@@ -140,12 +140,13 @@ select{color:#999}
 	.aFo .ib{overflow:hidden;zoom:1;line-height:13px;vertical-align:top; display:none}
 	.aFo .ib a{float:left;border:0}
 	.aFo .ib .bf{margin-right:10px}
-.List .tList{ background:url(../img/dash.gif) top repeat-x;padding:6px 0 7px 0}
+.List .tList,.rank,.rank2 .liRank{background:url(../img/dash.gif) top repeat-x}
+.List .tList{padding:6px 0 7px 0}
 .liRank li{padding:0 0 0 17px;position:relative;zoom:1;line-height:24px}
-.rank{border-top:1px dashed #ccc;padding:4px 0 5px 0}
+.rank{padding:4px 0 5px 0}
 .rank .liRank{background-position:-87px -22px;*background-position:-87px -21px;}
 .rank h3{height:22px;line-height:22px;overflow:hidden;color:#000}
-.rank2 .liRank{border-top:1px dashed #ccc;padding:5px 0;}
+.rank2 .liRank{padding:5px 0;}
 	.l1{background-position:-87px -22px;*background-position:-87px -21px;}
 	.l2{background-position:-87px -46px;*background-position:-87px -45px;}
 	.l3{background-position:-87px -70px;*background-position:-87px -69px;}
