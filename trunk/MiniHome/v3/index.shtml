@@ -48,16 +48,16 @@
                  <li><a href="#">这里最多只能显示19个汉字</a></li>
                  <li><a href="#">房地产老板花18.8万买天价橙子</a></li>
                  <li><a href="#">川大招生新招偏才怪才可录取</a></li>
-                 <li><a href="#">男子书店盗书称为加强管理</a></li>
-                 <li><a href="#">肉店老板悬赏千元寻盗香肠者</a></li>
                 </ul>
                 <ul class="tList">
-                 <li><a href="#">武广高铁试运价公布最低490元</a></li>
-                 <li><a href="#">金荷娜任《Road NO.1》主演</a></li>
-                 <li><a href="#">《富贵门》收场 收视回升难掩</a></li>
-                 <li><a href="#">安贞焕娇妻整容遭曝光 人气太</a></li>
-                 <li><a href="#">小沈阳为《三枪》奔波 更新</a></li>
-                 <li><a href="#">周杰伦19日空降北京答谢</a></li>
+                 <li><a href="#">菲律宾绑架案人质全部获释人质全部获</a></li>
+                 <li><a href="#">这里最多只能显示19个汉字</a></li>
+                 <li><a href="#">房地产老板花18.8万买天价橙子</a></li>
+                 <li><a href="#">川大招生新招偏才怪才可录取</a></li>
+                </ul>
+                <ul class="tList">
+                 <li><a href="#">男子书店盗书称为加强管理</a></li>
+                 <li><a href="#">肉店老板悬赏千元寻盗香肠者</a></li>
                 </ul>
               </div>
               <!--/zxList-->
@@ -97,7 +97,7 @@
                  <li class="l2"><a href="#">暮色2：新月</a><span class="rr"><a href="#" class="ss" title="上升趋势">上升趋势</a>28952</span></li>
                  <li class="l3"><a href="#">就是这样</a><span class="rr"><a href="#" class="ss" title="上升趋势">上升趋势</a>28952</span></li>
                  <li class="l4"><a href="#">神秘代码</a><span class="rr"><a href="#" class="xj" title="下降趋势">下降趋势</a>28952</span></li>
-                 <li class="l5"><a href="#">风声</a><span class="rr"><a href="#" class="xj" title="下降趋势">下降趋势</a>28952</span></li>
+                 <li class="l5"><a href="#">风声</a><span class="rr"><a href="#" class="pw" title="平稳">平稳</a>28952</span></li>
                 </ol>
                 <ol class="liRank">
                  <li class="l6"><a href="#">暮色2：新月</a><span class="rr"><a href="#" class="xj" title="下降趋势">下降趋势</a>28952</span></li>
@@ -201,6 +201,8 @@
                      <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
                    </ul>
                  </li>
+                 </ul>
+                 <ul class="tList">
                  <li><a href="#">风声</a>
                   <ul class="aFo">
                      <li><span>评分：</span><em class="score">8.4分</em></li>
@@ -217,8 +219,6 @@
                      <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
                    </ul>
                  </li>
-                </ul>
-                <ul class="tList">
                  <li><a href="#">2012</a>
                   <ul class="aFo">
                      <li><span>评分：</span><em class="score">8.4分</em></li>
@@ -235,6 +235,8 @@
                      <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
                    </ul>
                  </li>
+                </ul>
+                <ul class="tList">
                  <li><a href="#">就是这样</a>
                   <ul class="aFo">
                      <li><span>评分：</span><em class="score">8.4分</em></li>
@@ -244,22 +246,6 @@
                    </ul>
                  </li>
                  <li><a href="#">神秘代码</a>
-                  <ul class="aFo">
-                     <li><span>评分：</span><em class="score">8.4分</em></li>
-                     <li><span>类型：</span>冒险/动作</li>
-                     <li><span>地区：</span>美国</li>
-                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
-                   </ul>
-                 </li>
-                 <li><a href="#">风声</a>
-                  <ul class="aFo">
-                     <li><span>评分：</span><em class="score">8.4分</em></li>
-                     <li><span>类型：</span>冒险/动作</li>
-                     <li><span>地区：</span>美国</li>
-                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
-                   </ul>
-                 </li>
-                 <li><a href="#">就是这样</a>
                   <ul class="aFo">
                      <li><span>评分：</span><em class="score">8.4分</em></li>
                      <li><span>类型：</span>冒险/动作</li>
@@ -350,22 +336,6 @@
                      <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
                    </ul>
                  </li>
-                 <li><a href="#" id="a_904">决战紫禁之巅</a>
-                  <ul class="aFo" id="ul_904">
-                     <li><span>评分：</span><em class="score">8.4分</em></li>
-                     <li><span>类型：</span>冒险/动作</li>
-                     <li><span>地区：</span>美国</li>
-                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
-                   </ul>
-                 </li>
-                 <li><a href="#" id="a_905">美食从天而降</a>
-                  <ul class="aFo" id="ul_905">
-                     <li><span>评分：</span><em class="score">8.4分</em></li>
-                     <li><span>类型：</span>冒险/动作</li>
-                     <li><span>地区：</span>美国</li>
-                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
-                   </ul>
-                 </li>
                 </ul>
                 <ul class="tList">
                  <li><a href="#" id="a_906">赌霸</a>
@@ -400,16 +370,18 @@
                      <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
                    </ul>
                  </li>
-                 <li><a href="#" id="a_910">风声</a>
-                  <ul class="aFo" id="ul_910">
+                </ul>
+                <ul class="tList">
+                 <li><a href="#" id="a_9061">赌霸</a>
+                  <ul class="aFo" id="ul_9061">
                      <li><span>评分：</span><em class="score">8.4分</em></li>
                      <li><span>类型：</span>冒险/动作</li>
                      <li><span>地区：</span>美国</li>
                      <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
                    </ul>
                  </li>
-                 <li><a href="#" id="a_911">就是这样</a>
-                  <ul class="aFo" id="ul_911">
+                 <li><a href="#" id="a_9071">暮色2：新月</a>
+                  <ul class="aFo" id="ul_9071">
                      <li><span>评分：</span><em class="score">8.4分</em></li>
                      <li><span>类型：</span>冒险/动作</li>
                      <li><span>地区：</span>美国</li>
