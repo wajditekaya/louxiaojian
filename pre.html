@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>pre标签的作用(请用非 ie 内核浏览器查看)</title>
+</head>
+
+<body>
+pre标签的作用(请用非 ie 内核浏览器查看)
+<script type="text/javascript" id='hh'>
+    KISSY().use("*", function(S) {
+        var Y = YAHOO.util, Dom = Y.Dom,
+            descList = Dom.getChildren(Dom.getElementsByClassName("desc-list", "ul", "slideFocus")[0]);
+
+        S.Slide("slideFocus", {
+            contentCls: "pic-list",
+            navCls: "thumbs-list",
+            activeTriggerCls: "current",
+            effect: "scrollx",
+            easing: YAHOO.util.Easing.easeOutStrong
+        })
+        .subscribe("beforeSwitch", function(index) {
+            S.each(descList, function(desc, i) {
+                desc.style.display = i === index ? "block" : "none";
+            });
+        });
+    });
+</script>
+<pre id="lxj"></pre>
+<style type="text/css">
+    #demo1 { position: relative; width: 750px; padding-top: 29px; }
+    #demo1 .ks-switchable-nav { position: absolute; left: 20px; margin-top: -29px; z-index: 99; }
+    #demo1 .ks-switchable-nav li {
+        float: left;
+        width: 130px;
+        height: 27px;
+        line-height: 21px;
+        text-align: center;
+        background: url(SwitchableWidgets/tabs-sprite.gif) no-repeat 0 6px;
+        margin-right: 3px;
+        padding-top: 8px;
+        cursor: pointer;
+    }
+    #demo1 .ks-switchable-nav li.active { background-position: 0 -40px; cursor: default; }
+    #demo1 .ks-switchable-content {
+        position: relative;
+        height: 120px;
+        padding: 20px;
+        border: 1px solid #AEC7E5;
+    }
+</style>
+<pre id="html"></pre>
+<script type="text/javascript">
+function cleanWhitespace(oEelement)
+{
+ for(var i=0;i<oEelement.childNodes.length;i++){
+  var node=oEelement.childNodes[i];
+  if(node.nodeType==3 && !/\S/.test(node.nodeValue)){node.parentNode.removeChild(node)}
+  }
+}
+cleanWhitespace(document.body)
+document.getElementById('lxj').innerHTML=document.getElementById('lxj').previousSibling.innerHTML;
+document.getElementById('html').innerHTML=document.getElementById('html').previousSibling.innerHTML;
+</script>
+</body>
+</html>
