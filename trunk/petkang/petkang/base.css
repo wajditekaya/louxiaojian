@@ -1,0 +1,17 @@
+/* CSS Document */
+
+*{ font-size:13px; font-family:"Î¢ÈíÑÅºÚ",Tahoma, "ºÚÌå"}
+a{color:#000196;}
+body {width:950px; margin:0px auto;}
+.h1 {
+	font-size: 16px;
+	font-weight: bold;
+}
+ul
+{
+list-style-image:none;
+list-style-position:outside;
+list-style-type:none;
+}
+li{padding:5px 0;}
+.none{display:none;}

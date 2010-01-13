@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>给帐户分配角色</title>
+<style>* { font-size:12px;}</style>
+</head>
+
+<body>
+<form action="m.php?act=user_role_do&amp;user_id=<?=$this->row['user_id']?>" method="post" name="user_role_do" id="user_role_do">
+  <table width="100%" border="1" cellspacing="0" cellpadding="2">
+
+  <tr class="trheader">
+    <td height="32" colspan="4">为帐户<strong><?=$this->row['user_name']?></strong>分配角色</td>
+    </tr>
+
+<?$i_c=count($this->all_role);for($i=0;$i<=$i_c;$i+=4){?>	
+  <tr>
+    <td height="32"><input name="role_id[]" type="checkbox"  value="<?=$this->all_role[$i]['role_id']?>"  id="role_id_<?=$this->all_role[$i]['role_id']?>" <?if(in_array($this->all_role[$i]['role_id'],$this->all_role_exist)){?>checked="checked"<?}?> /><label for="role_id_<?=$this->all_role[$i]['role_id']?>"><?=$this->all_role[$i]['role_name']?></label>&nbsp;</td>
+    <td><input name="role_id[]" type="checkbox" id="role_id_<?=$this->all_role[$i+1]['role_id']?>" value="<?=$this->all_role[$i+1]['role_id']?>" <?if(in_array($this->all_role[$i+1]['role_id'],$this->all_role_exist)){?>checked="checked"<?}?> /><label for="role_id_<?=$this->all_role[$i+1]['role_id']?>"><?=$this->all_role[$i+1]['role_name']?></label>&nbsp;</td>
+    <td><input name="role_id[]" type="checkbox" id="role_id_<?=$this->all_role[$i+2]['role_id']?>" value="<?=$this->all_role[$i+2]['role_id']?>" <?if(in_array($this->all_role[$i+2]['role_id'],$this->all_role_exist)){?>checked="checked"<?}?> /><label for="role_id_<?=$this->all_role[$i+2]['role_id']?>"><?=$this->all_role[$i+2]['role_name']?></label>&nbsp;</td>
+    <td><input name="role_id[]" type="checkbox" id="role_id_<?=$this->all_role[$i+3]['role_id']?>" value="<?=$this->all_role[$i+3]['role_id']?>" <?if(in_array($this->all_role[$i+3]['role_id'],$this->all_role_exist)){?>checked="checked"<?}?> /><label for="role_id_<?=$this->all_role[$i+3]['role_id']?>"><?=$this->all_role[$i+3]['role_name']?></label>&nbsp;</td>
+  </tr>
+<?}?>  
+  <tr>
+    <td height="32" colspan="4"><input type="submit" name="Submit" value="提交" />
+      <input type="button" name="Submit2" value="取消"  onclick="parent.lightBox1.closeFun();" /></td>
+  </tr>
+</table>
+</form>
+</body>
+</html>

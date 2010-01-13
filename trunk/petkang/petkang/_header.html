@@ -1,0 +1,23 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td height="60"><a href="petkang.php" style="font-size:30px;">PET/CT派康网</a></td>
+    <td align="right" valign="top"><?if($_COOKIE['user_name']){?>你好,<a href="petkang.php?act=user_info"><?=$_COOKIE['user_name']?></a> | <a href="my_user.php?act=logout" onclick="return confirm('确认退出?')">退出</a><?}else{?><a href="my_user.php?act=login">登陆</a> | <a href="my_user.php?act=regist">注册</a><?}?></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td width="120" height="32"><a href="petkang.php">派康网首页</a></td>
+    <td width="120" height="32"><a href="petkang.php?act=intro">PET/CT知识</a></td>
+    <td width="120"><a href="my_admin.php?act=jigou_list">PET/CT中心查询</a></td>
+    <td width="120"><a href="#">体检动态</a></td>
+    <td width="120"><a href="#">用户留言</a></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="2">  
+  <tr bgcolor="E9F1FE">
+    <td height="32" colspan="2">预约电话:400-123-123</td>
+    <td width="80" align="center"><a href="petkang.php?act=user_info">我的派康</a>&nbsp;</td>
+    <td width="80" align="center"><a href="#">积分奖励</a></td>
+  </tr>
+</table>

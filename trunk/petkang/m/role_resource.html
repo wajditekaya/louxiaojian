@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>给角色分配资源</title>
+<link rel="stylesheet" href="m/admin_common.css" />
+</head>
+
+<body>
+<!--warpper-->
+<div id="warpper">
+<!--container-->
+<div id="container">
+<!--areaone-->
+   	<div class="areaone">
+	  <div class="tip"><a href="m.php?act=role_index">角色管理</a> &gt;&gt; 当前帐户名称:<?=$this->row['role_name']?>/<?=$this->row['role_note']?>/创建于:<?=$this->row['role_time_show']?></div>
+
+      <div id="edit_pl"></div>
+		
+
+	<form action="m.php?act=role_resource_do&amp;role_id=<?=$_GET['role_id']?>" method="post" name="role_resource_do" id="role_resource_do">
+	  <div class="tip"><input name="" type="submit" value="分配资源" />
+	<br />
+<?=$this->t_navi_obj->show();?><br />
+<input name="" type="submit" value="分配资源" /></div></form>
+	</div>
+<!--//areaone -->
+</div>
+<!--//container -->
+</div>   
+<!--//warpper -->
+<script>
+//checkBOX和树桩结合,节点点击 IE/FF
+function checkTree()
+{
+
+	//递归选中下面的节点,只是从单个UL开始查找
+	this.checkChildCheckBox=function(note)
+	{
+		this.noteObj=note;
+		var obj=note.parentNode.childNodes;
+		for(i in obj)
+		{
+			if(this.isTypeOf(obj[i],"UL"))
+			{
+				this.getLi(obj[i]);
+			}
+		}
+		//向上也要点击
+		this.checkParentCheckBox(note);
+	}
+	//只是确认点击下面的
+	this.checkChildCheckBoxOnly=function(note)
+	{
+		this.noteObj=note;
+		var obj=note.parentNode.childNodes;
+		for(i in obj)
+		{
+			if(this.isTypeOf(obj[i],"UL"))
+			{
+				this.getLi(obj[i]);
+			}
+		}	
+	}
+
+	//读取某个UL之下的LI节点,然后再继续下级，打勾
+	this.getLi=function(note)
+	{
+		var obj=note.childNodes;
+		for(i in obj)
+		{
+			if(this.isTypeOf(obj[i],"LI"))
+			{
+				this.getCheckBox(obj[i]);
+			}
+		}
+		return 0;
+	}	
+
+	//读取某个LI之下的checkBox,只是读取第一个,然后和父节点一个打钩
+	this.getCheckBox=function(note,ck)
+	{
+		var obj=note.childNodes;
+		for(i in obj)
+		{
+			//打勾
+			if(this.isChekcBox(obj[i]))
+				obj[i].checked=this.noteObj.checked;
+			//继续递归下级节点
+			if(this.isTypeOf(obj[i],"UL"))
+			{
+				this.getLi(obj[i],ck);
+			}
+		}
+		return 0;
+	}	
+
+	//是否是某个类型：UL/LI
+	this.isTypeOf=function(obj,type)
+	{
+		try{
+			if(typeof(obj)=='object' && obj.tagName==type)
+				return true;
+			return false;
+		}catch(e){}
+	}	
+
+	//递归反选上面的节点
+	this.checkParentCheckBox=function(obj)
+	{
+		if(!this.sameparentcheck(obj))
+		{
+			try{
+				var parentNote=obj.parentNode.parentNode.parentNode.childNodes;
+				for(i in parentNote)
+				{
+					if(!this.isChekcBox(parentNote[i]))
+						continue;
+					parentNote[i].checked=obj.checked;			
+					this.checkParentCheckBox(parentNote[i]);
+					break;
+				}
+			}catch(e){}
+		}		
+	}	
+
+	//是否是checkbox
+	this.isChekcBox=function(obj)
+	{
+		try{
+			if(typeof(obj)=='object' && obj.tagName=='INPUT' &&  obj.type=='checkbox')
+				return true;
+			return false;
+		}catch(e){}
+	}	
+
+
+	//察看相同等级的checkbox是否被点击了,只要存在一个同等级的已经被点击了，就返回true
+	this.sameparentcheck=function(checkedObj)
+	{			
+		var currentUL=checkedObj.parentNode.parentNode.childNodes ;
+		try{	
+			for(i in currentUL)
+			{
+				if(typeof(currentUL[i])=='object')
+				{
+					var sameParentInput=currentUL[i].childNodes;
+					for(ci in sameParentInput)
+					{
+						if(this.isChekcBox(sameParentInput[ci]) && checkedObj.id!=sameParentInput[ci].id){
+							if(sameParentInput[ci].checked==true)
+								return true;
+						}
+					}
+				}
+			}
+			//没有一个被点击
+			return false;
+		}catch(e){}	
+	}	
+	
+}
+</script>
+
+</body>
+</html>

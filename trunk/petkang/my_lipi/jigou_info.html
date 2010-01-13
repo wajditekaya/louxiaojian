@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="ctl00_Head1"><meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link href="style/css/core.css" rel="stylesheet" type="text/css" />
+<link href="style/css/list.css" type="text/css" rel="stylesheet" />   
+<link href="style/css/hotels.css" rel="stylesheet" type="text/css" />    
+<link rel="stylesheet" type="text/css" href="style/rili/rili.css" /><script src="/style/rili/Basic.js"></script><script src="/style/rili/JCalendar.js"></script><script>window.onload = function(){	var j = new JCalendar();j.bind('post_date');}</script>   
+<script src="/m/input_ajax.js"></script>
+
+<title><?=$this->row['j_name']?> - 派康网 - 细介绍</title>
+</head>
+<body id="mainbody" >
+<div id="wrapper">
+<!--hd -->
+<?include "petkang/_header.shtml";?>
+<!--/hd -->
+
+<!--bd-->
+<div id="bd" class="base_t1">
+
+    <div id="base_main">
+       <!--base_mainIn-->
+       <div class="base_mainIn">
+         <div class="map">
+          您当前所处位置：<a   href="">派康网</a>&nbsp;&raquo;<a  href="petkang.php?act=jianli">积分奖励</a>&nbsp;&raquo;&nbsp;<?=$this->row['j_name']?>         
+          </div>
+
+
+
+                <div class="detail_title layoutfix">
+                    <strong id="ctl00_MainContentPlaceHolder_strongid" >
+         <?=$this->row['j_name']?>     </strong></div>
+                <!-- 主要内容开始咯 -->
+                <div class="detail_content">
+
+                    <ul class="detail_list layoutfix">
+                          <li id="ctl00_MainContentPlaceHolder_liSurroundings"><strong>积分：</strong><span id="ctl00_MainContentPlaceHolder_lbSurroundings" para="corner-right,Fri,Sat"><?=$this->row['j_jiage']?>分</span></li>
+						  <li id="ctl00_MainContentPlaceHolder_liZone"><strong>
+							    分类：</strong><?=$this->row['j_shenfen']?></li>
+<?if($this->user_info['user_jifen']>=$this->row['j_jiage']){?>								
+						  <li><span ><input type="button" value="兑换礼品"    class="base_btn06" onclick="window.location.href='my_lipi.php?act=duihuan&j_id=<?=$this->row['j_id']?>'"/>
+						  </span></li>
+<?}else{?>
+						  <li><span  style="color:#FF0000" >兑换该礼品您还需要<?=(int)$this->row['j_jiage']-$this->user_info['user_jifen']?>积分</span></li>
+<?}?>
+                  </ul>
+				
+                  <div class="detail_info">
+                    <ul class="hotel_grid02 layoutfix">
+                      <li class="hotel_unit detail_pic" id="hotelpicwrap">
+                        <div class="detail_pic_border">
+  <?$image_file="my_lipi_image/{$this->row['j_id']}.jpg";if(is_file($image_file)){?>	
+                          <div   class="detail_bigpic">
+                            <img id="main_image" title="<?=$this->row['j_name']?>" src="/style/img/pic_alpha.gif" style="height:150px;width:200px;border-width:0px;background:url(/<?=$image_file?>) no-repeat center;" />
+                          </div>	
+  <?}else{?>						
+                          <div id="ctl00_MainContentPlaceHolder_divimageBit1" class="detail_bigpic">
+                            <img id="main_image" title="<?=$this->row['j_name']?>" src="/style/img/pic_alpha.gif" style="height:150px;width:200px;border-width:0px;background:url(/style/img/150.jpg) no-repeat center;" />
+                          </div>
+  <?}?>									
+                          
+                        </div>
+                                  
+                      </li>
+                              <li class="hotel_unit">
+                                <span id="ctl00_MainContentPlaceHolder_lbDesc"><?=nl2br($this->row['j_content'])?></span>
+                      </li>
+                    </ul>
+                  </div>
+         </div></div>
+       <!--/base_mainIn-->  
+    </div>
+    
+    <div class="base_b">
+<?include "petkang/_left.html"?>    
+
+        </div>
+
+
+
+</div>
+<!--/bd-->
+
+  <!--ft-->
+    <?include "petkang/_footer.shtml";?>
+  <!--/ft-->
+
+</div>
+
+</body>
+</html>

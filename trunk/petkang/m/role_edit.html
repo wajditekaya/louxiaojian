@@ -1,0 +1,19 @@
+<form action="m.php?act=role_edit_do&role_id=<?=$_GET['role_id']?>" method="post" name="role_edit_do" id="role_edit_do">
+  <table width="100%" border="1" cellspacing="0" cellpadding="2">
+    <tr class="trheader">
+      <td height="32" colspan="2">编辑角色</td>
+    </tr>
+    <tr>
+      <td width="20%" height="32">名称</td>
+      <td><input name="role_name" type="text" id="role_name2" value="<?=$this->row['role_name']?>" size="60"></td>
+    </tr>
+    <tr>
+      <td height="32">备注</td>
+      <td><textarea name="role_note" cols="60" rows="8" id="role_note"><?=$this->row['role_note']?></textarea></td>
+    </tr>
+    <tr>
+      <td height="32">&nbsp;</td>
+      <td><input type="submit" name="Submit" value="编辑"> <input type="button" name="Submit2" value="取消"  onclick="if(confirm('确认取消编辑,不保存数据?')) idf('edit_pl').innerHTML='';"/></td>
+    </tr>
+  </table>
+</form>

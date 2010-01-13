@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>全国机构管理</title>
+<link rel="stylesheet" href="m/admin_common.css" />
+</head>
+
+<body>
+<!--warpper-->
+<div id="warpper">
+<!--container-->
+<div id="container">
+<!--areaone-->
+   	<div class="areaone">
+   	  <form action="/my_article.php?act=shenfen_add_do" method="post" enctype="multipart/form-data" name="shenfen_add_do" id="shenfen_add_do">
+   	    <table width="100%" border="1" cellspacing="0" cellpadding="2">
+        <tr class="trheader">
+          <td height="32" colspan="2">分类</td>
+        </tr>
+        <tr>
+          <td width="20%" height="32">分类</td>
+          <td><input name="name" type="text" id="name" size="60" maxlength="200" /></td>
+        </tr>
+        <tr>
+          <td height="32">&nbsp;</td>
+          <td><input type="submit" name="Submit" value="提交新数据" /></td>
+        </tr>
+      </table>
+   	  </form>
+<br />
+<table width="100%" border="1" cellspacing="0" cellpadding="2">
+  <tr class="trheader">
+    <td height="32" colspan="3">分类列表</td>
+    </tr>
+<?foreach($this->all_data as $v){?>	
+  <tr>
+    <td width="20%" height="32"><?=$v['name']?>&nbsp;</td>
+    <td><?=$v['pinyin']?>&nbsp;</td>
+    <td><a href="my_article.php?act=shenfen_delete_do&amp;name=<?=$v['name']?>" onclick="if(!confirm('确认删除掉省份'))return false;">删除</a></td>
+    </tr>
+<?}?>	
+</table>
+	  
+	</div>
+<!--//areaone -->
+</div>
+<!--//container -->
+</div>   
+<!--//warpper -->
+</body>
+</html>

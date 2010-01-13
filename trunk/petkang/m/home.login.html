@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>登陆后台</title>
+<script>if(top!=self)top.location=self.location</script>
+<meta name="Robots" content="none" />
+<link rel="stylesheet"  type="text/css" href="m/admin_common.css" />
+<style type="text/css">
+<!--
+.STYLE1 {color: #FFFFFF; margin-left:10px; }
+-->
+</style>
+</head>
+
+<body>
+
+<!--warpper-->
+<div id="warpper">
+
+<!--header-->
+<div id="header">
+ <!--headTop-->
+ <div class="headTop">
+ </div>
+ <!--end headTop-->  
+  
+  <!--menu-->
+  <div id="menu">                 
+<ul>
+<li><a  class="cur" href="javascript:void(0)"><span>后台首页</span></a></li>
+</ul>
+  </div>
+  <!--/menu-->
+ <div class="sunMenu">
+ </div>
+ 
+</div><!--header-->
+
+<!--container-->
+<div id="container">
+<!--areaone-->
+   <div class="areaone">
+   
+	<div class="map">管理菜单</div>
+	
+	<div class="mb8" >
+	  <form action="m.php?act=login_do" method="post" name="login_do" target="_top" id="login_do"  >
+	    <table width="100%" border="0" cellpadding="2" style="border:1px solid #4c4b4b" >
+        <tr bgcolor="#4c4b4b" style="margin:6px" >
+          <td width="20%" height="30">&nbsp;</td>
+          <td bgcolor="#4c4b4b">&nbsp;</td>
+          </tr>
+
+        <tr onclick="cb(this)" >
+          <td height="30" align="right">帐户</td>
+          <td>&nbsp;
+            <input name="user_name" type="text" id="user_name" value="<?=$_REQUEST['user_name']?$_REQUEST['user_name']:$_COOKIE['user_name']?>" size="50" maxlength="200" style="width:250px;" /></td>
+        </tr>
+        <tr onclick="cb(this)" >
+          <td height="30" align="right">密码</td>
+          <td>&nbsp;
+            <input name="user_pass" type="password" id="user_pass" size="50" maxlength="200"  style="width:250px;"/></td>
+          </tr>
+        
+        <tr onclick="cb(this)" >
+          <td height="30">&nbsp;</td>
+          <td><input type="submit" name="Submit" value="登陆系统" /></td>
+          </tr>
+
+        <tr>
+          <td height="30" colspan="2">&nbsp;</td>
+          </tr>
+      </table>
+	  </form>
+	</div>
+	
+</div>
+</div>
+</div>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function cb(divObj) 
+{
+  try
+  {
+if(divObj.clickMarkBGColor!=null)
+{
+divObj.style.backgroundColor=divObj.clickMarkBGColor;
+divObj.clickMarkBGColor=null;
+
+}else
+{
+divObj.clickMarkBGColor=divObj.style.backgroundColor;
+divObj.style.backgroundColor='rgb(212,229,251)';
+}
+  }catch(e){alert(e['message'])}
+}
+//-->
+</SCRIPT>
+
+<!--footer--> 
+<div class="con_bot"></div>
+<div id="footer">技术支持:邮件联系:xltxlm@qq.com/95141373[说明:7*16小时服务]</div>  
+<script type="text/javascript">function setCookie(sName, sValue, oExpires, sPath, sDomain, bSecure) {	try	{var sCookie = sName + "=" + encodeURIComponent(sValue);if (oExpires) sCookie += "; expires=" + oExpires.toGMTString();	if (sPath)	sCookie += "; path=" + sPath;if (sDomain)sCookie += "; domain=" + sDomain;	if (bSecure)sCookie += "; secure";	document.cookie = sCookie;}catch(e){}}
+function getCookie(check_name) {var a_all_cookies = document.cookie.split( ';' );	var a_temp_cookie = cookie_name = cookie_value = '';	var b_cookie_found = false; for ( i = 0; i < a_all_cookies.length; i++ ){a_temp_cookie = a_all_cookies[i].split( '=' );cookie_name = a_temp_cookie[0].replace(/^\s+|\s+$/g, '');if ( cookie_name == check_name ){b_cookie_found = true;	if ( a_temp_cookie.length > 1 )	cookie_value = unescape( a_temp_cookie[1].replace(/^\s+|\s+$/g, '') );return cookie_value;}a_temp_cookie = null;cookie_name = '';}if ( !b_cookie_found )return null;}</script><!--/footer-->
+
+</body>
+</html>

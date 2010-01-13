@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>编辑数据</title>
+  <script type="text/javascript" charset="utf-8" src="htmleditor/kindeditor.js"></script>
+  <script type="text/javascript">
+    KE.show({
+        id : 'content',
+        items : [
+        'source', 'preview', 'cut', 'copy', 'paste','undo', 'redo', 'fontname', 'fontsize', 'textcolor', 'bgcolor', 'bold', 'italic', 'underline', '-',
+        'removeformat', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+        'insertunorderedlist','image','link', 'unlink']
+    });
+  </script>
+</head>
+
+<body>
+<form action="/my_active.php?act=edit_do&id=<?=$_GET['id']?>" method="post" name="edit_do" id="edit_do">
+  <table width="100%" border="1" cellspacing="0" cellpadding="2">
+  <tr>
+    <td width="20%" height="32">标题</td>
+    <td><input name="name" type="text" id="name" value="<?=$this->row['name']?>" size="60" maxlength="200" /></td>
+  </tr>
+  <tr>
+    <td height="32">内容</td>
+    <td>
+      <textarea name="content" cols="80" rows="15" id="content"><?=$this->row['content']?>
+    </textarea>
+      </td>
+  </tr>
+  <tr>
+    <td height="32">&nbsp;</td>
+    <td><input type="submit" name="Submit" value="提交" /> <input type="button" name="Submit2" value="关闭窗口"   onclick="javascript:parent.lightBox1.closeFun()" /></td>
+  </tr>
+</table></form>
+</body>
+</html>

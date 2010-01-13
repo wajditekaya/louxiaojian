@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>预约管理</title>
+<link rel="stylesheet" href="m/admin_common.css" />
+</head>
+
+<body>
+
+<!-- 弹出层 -->
+<style type="text/css">#layDic{background:#000;opacity:0.5;-moz-opacity:0.5;filter:alpha(opacity=45);position:absolute;top:0;left:0;z-index:998; display:none}.pop{position:absolute;z-index:999;background:#fff;border:6px solid #4481d5;text-align:center;display:none;font-size:12px;  margin-top:20px;}.popTp{line-height:22px;height:22px;overflow:hidden;zoom:1;color:#333; margin-right:5px; }</style><script type="text/javascript">function lightBox(popId,width,height,url){	this.popOBj=document.getElementById(popId);	this.layDic=document.getElementById("layDic");this.width=width;this.height=height;this.url=url;}lightBox.prototype={ run:function(){	try{var ph=parent.document.documentElement.scrollTop;}catch(e){var ph=0;};window.open(this.url+'&t='+Math.random( ),'popTp_frame');document.getElementById('popTp_frame').height=this.height-30;this.layDic.style.width = Math.max(document.body.scrollWidth, document.body.clientWidth) + "px";this.layDic.style.height = Math.max(document.documentElement.scrollHeight, document.documentElement.clientHeight) + "px";this.popOBj.style.height=this.height+"px";this.popOBj.style.width=this.width+"px";this.popOBj.style.top=ph+document.documentElement.scrollTop+20+"px";this.popOBj.style.left=(document.documentElement.clientWidth-this.width)/2+"px";this.layDic.style.display="block";this.popOBj.style.display="block";},closeFun:function(){this.layDic.style.display="none";this.popOBj.style.display="none";}};var lightBox1;</script><div class="pop" id="popId" style="display:none" ><div class="popTp"><a href="javascript:lightBox1.closeFun()" style="float:right">关闭窗口</a></div><iframe name="popTp_frame" id="popTp_frame"  style="z-index:999" src="" frameborder="0" marginheight="0"  marginwidth="0" width="100%" ></iframe></div><div id="layDic" style="display:none"></div>
+<!-- //弹出层 -->
+
+<!--warpper-->
+<div id="warpper">
+<!--container-->
+<div id="container">
+<!--areaone-->
+   	<div class="areaone">
+   	  <table width="100%" border="1" cellspacing="0" cellpadding="2">
+        <tr class="trheader">
+          <td height="32" colspan="6">预约单子</td>
+        </tr>
+        <tr>
+          <td height="32"><div align="center"><strong>名称</strong></div></td>
+          <td><div align="center"><strong>详细</strong></div></td>
+          <td><div align="center"><strong>病史</strong></div></td>
+          <td><div align="center"><strong>来源</strong></div></td>
+          <td><div align="center"><strong>下单时间</strong></div></td>
+          <td><div align="center"><strong>状态</strong></div></td>
+        </tr>
+<?foreach($this->all_data as $v){?>		
+        <tr>
+          <td height="32"><?=$v['j_name']?>&nbsp;</td>
+          <td><strong>日期:</strong><?=$v['post_date']?><br />
+			 <strong>时间:</strong><?=$v['post_hour']?>点 <br />
+			 <strong>部位:</strong><?=$v['post_hour']?>点 <br />			 
+			 <strong>性别:</strong><?=$v['body_part']?><br />
+            <strong>姓名</strong>:<?=$v['user_realname']?>  <?if($v['user_name']){?><a href="javascript:void(0)"  onclick="lightBox1=new lightBox('popId',700,500,'my_user.php?act=user_add_jifen&id=<?=$v['id']?>&user_name=<?=$v['user_name']?>');lightBox1.run();" >为该帐户添加积分</a><?}?><br />
+            <strong>电话</strong>:<?=$v['user_tel']?></td>
+          <td><?=$v['user_binshi']?>&nbsp;</td>
+          <td>IP:<?=$v['ip']?><br />
+            地址:<?=$v['ip_local']?></td>
+          <td><?=$v['add_time']?>&nbsp;</td>
+          <td><strong <?if($v['stat']=='成功'){?>style="color:green"<?}if($v['stat']=='失败'){?>style="color:red"<?}?> ><?=$v['stat']?></strong> <a href="my_admin.php?act=jigou_yuding_ok&stat=成功&id=<?=$v['id']?>">设置成功</a> <a href="my_admin.php?act=jigou_yuding_ok&stat=失败&id=<?=$v['id']?>">设置失败</a></td>
+        </tr>
+<?}?>			
+        <tr>
+          <td height="32" colspan="6"><?$this->pageObj->show()?>&nbsp;</td>
+        </tr>
+      </table>
+</div>
+<!--//areaone -->
+</div>
+<!--//container -->
+</div>   
+<!--//warpper -->
+	
+</body>
+</html>

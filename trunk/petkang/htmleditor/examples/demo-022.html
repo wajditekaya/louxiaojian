@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=gb2312" />
+  <title>KindEditor</title>
+  <style type="text/css" rel="stylesheet">
+    form {
+    margin: 0;
+    }
+    .editor {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    }
+  </style>
+  <script type="text/javascript" charset="utf-8" src="./../kindeditor.js"></script>
+  <script type="text/javascript">
+    KE.show({
+        id : 'content2',
+        items : [
+        'undo', 'redo', 'fontname', 'fontsize', 'textcolor', 'bgcolor', 'bold', 'italic', 'underline',
+        'removeformat', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+        'insertunorderedlist','image']
+    });
+  </script>
+</head>
+<body>
+<FORM NAME="register" ACTION="http://127.0.0.1/d/server/test/a.php" METHOD="post">
+噩噩噩噩噩噩噩噩噩噩噩噩噩噩噩噩噩噩噩噩噩噩噩
+  <h3>简单模式</h3>
+  <div class="editor">
+    <textarea id="content2" name="content" style="width:500px;height:200px;visibility:hidden;"></textarea>
+  </div>
+<input type="text" value="xxxxxxxxxxxxxxxxxxx" name="ok">
+<INPUT TYPE="submit" VALUE="发　布"  STYLE="border: 1px solid #000000; padding-left: 4; padding-right: 4; padding-top: 1; padding-bottom: 1; background-color: #FFfFFF" NAME="button"> 
+<input value="追加数据"  onclick="$('editor_body_textarea').value+='xxxxxxxxxxxxxxxxx'" TYPE="button">
+
+</form>
+</body>
+</html>
