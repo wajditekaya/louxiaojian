@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="ctl00_Head1"><meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="description" content="派康网：中国PET/CT信息服务网，提供全国各地PET-CT中心信息、PET/CT详细介绍、PET/CT在线咨询、PET/CT检查免费预约" />
+<meta name="keywords" content="PET/CT, PET,CT,检查,预约" />
+<link href="style/css/core.css" rel="stylesheet" type="text/css" />
+<link href="style/css/news.css" type="text/css" rel="stylesheet" /> 
+<link href="style/css/list.css" type="text/css" rel="stylesheet" /> 
+<link rel="stylesheet" type="text/css" href="style/rili/rili.css" /><script src="/style/rili/Basic.js"></script><script src="/style/rili/JCalendar.js"></script><script>window.onload = function(){	var j = new JCalendar();j.bind('post_date');}</script>      
+<title>PET/CT动态 - 派康网,中国PET/CT信息服务网  派康网  PET/CT预约检查  PET/CT介绍   PET/CT在线咨询</title>
+<script src="/m/input_ajax.js"></script>  
+<style>
+.theForm{position:relative; z-index:100;}
+.div_word_hidden { display:none;}
+.div_word_show { position:absolute;width:250px;background-color:#fff;border: 1px solid #eef; top:26px;left:0;font-size:12px; line-height:1.8em; }
+.div_word_show div span{ float:right; color:#090; font-size:11px;}
+.div_word_show div a:link,.div_word_show div a:visited{text-decoration:none; color:#333; cursor:text;}
+.div_word_show div.div_word_selected,.div_word_show div.div_word_selected span,.div_word_show div.div_word_selected a:link,.div_word_show div.div_word_selected a:visited{ display:block;background:#06c; color:#fff; }
+</style>
+</head>
+<body id="mainbody">
+
+<div id="wrapper">
+<!--hd -->
+<?include "petkang/_header.shtml";?>
+<!--/hd -->
+
+<!--bd-->
+<div id="bd" class="base_t1">
+
+    <div id="base_main">
+       <!--base_mainIn-->
+       <div class="base_mainIn">
+         <div class="map">
+         您当前所处位置：<a href='index.php'>派康网</a>&nbsp;&raquo;&nbsp;<a href='petkang.php?act=active'>PET/CT动态</a>&nbsp;         </div>
+          <!--newsList-->
+          <div id="newsList">
+             <h2 class="h2p">PET/CT动态</h2>
+              <ul class="tList">
+<?foreach($this->all_data as $v){?>			  
+              <li><a target="_blank" href="my_active.php?act=info&id=<?=$v['id']?>"><?=$v['name']?></a></li>
+<?}?>			  
+             </ul>
+             <!--pageNav-->
+             <?$this->pageObj->show("petkang/page.petkang_news.html")?>
+             <!--/pageNav-->
+          </div>
+          <!--/newsList-->
+      </div>  
+       <!--/base_mainIn-->  
+    </div>
+    
+    <div class="base_b">
+ <?include "petkang/_left.html"?> 
+
+    <div class="base_154">
+	    <div class="base_154_top">
+	      <h3>最新动态</h3>
+	    </div>
+	    <div class="base_154_middle">
+		  <ul>
+		  <?foreach($this->all_hot as $v){?>
+		  	<li><a   href="my_active.php?act=info&id=<?=$v['id']?>"><?=$v['name']?></a></li>
+		<?}?>
+		  </ul>
+	    </div>
+    </div>	
+    
+
+        </div>
+
+
+
+</div>
+<!--/bd-->
+
+  <!--ft-->
+    <?include "petkang/_footer.shtml";?>
+  <!--/ft-->
+
+</div>
+
+</body>
+</html>

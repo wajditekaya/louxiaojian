@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>文章管理</title>
+<link rel="stylesheet" href="m/admin_common.css" />
+<script src="/m/input_ajax.js"></script>
+<style>
+.theForm{position:relative;}
+.div_word_hidden { display:none;}
+.div_word_show { position:absolute;width:250px;background-color:#fff;border: 1px solid #eef; top:26px;left:0;font-size:12px; line-height:1.8em; }
+.div_word_show div span{ float:right; color:#090; font-size:11px;}
+.div_word_show div a:link,.div_word_show div a:visited{text-decoration:none; color:#333; cursor:text;}
+.div_word_show div.div_word_selected,.div_word_show div.div_word_selected span,.div_word_show div.div_word_selected a:link,.div_word_show div.div_word_selected a:visited{ display:block;background:#06c; color:#fff; }
+</style>
+
+  <script type="text/javascript" charset="utf-8" src="htmleditor/kindeditor.js"></script>
+  <script type="text/javascript">
+    KE.show({
+        id : 'j_content',
+        items : [
+        'source', 'preview', 'cut', 'copy', 'paste','undo', 'redo', 'fontname', 'fontsize', 'textcolor', 'bgcolor', 'bold', 'italic', 'underline', '-',
+        'removeformat', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+        'insertunorderedlist','image','link', 'unlink']
+    });
+  </script>
+</head>
+
+<body>
+
+
+<!-- 弹出层 -->
+<style type="text/css">#layDic{background:#000;opacity:0.5;-moz-opacity:0.5;filter:alpha(opacity=45);position:absolute;top:0;left:0;z-index:998; display:none}.pop{position:absolute;z-index:999;background:#fff;border:6px solid #4481d5;text-align:center;display:none;font-size:12px;  margin-top:20px;}.popTp{line-height:22px;height:22px;overflow:hidden;zoom:1;color:#333; margin-right:5px; }</style><script type="text/javascript">function lightBox(popId,width,height,url){	this.popOBj=document.getElementById(popId);	this.layDic=document.getElementById("layDic");this.width=width;this.height=height;this.url=url;}lightBox.prototype={ run:function(){	window.open(this.url+'&t='+Math.random( ),'popTp_frame');document.getElementById('popTp_frame').height=this.height-30;this.layDic.style.width = Math.max(document.body.scrollWidth, document.body.clientWidth) + "px";this.layDic.style.height = Math.max(document.documentElement.scrollHeight, document.documentElement.clientHeight) + "px";this.popOBj.style.height=this.height+"px";this.popOBj.style.width=this.width+"px";this.popOBj.style.top="5px";this.popOBj.style.left=(document.documentElement.clientWidth-this.width)/2+"px";this.layDic.style.display="block";this.popOBj.style.display="block";},closeFun:function(){this.layDic.style.display="none";this.popOBj.style.display="none";}};var lightBox1;</script><div class="pop" id="popId" style="display:none" ><div class="popTp"><a href="javascript:lightBox1.closeFun()" class="fr">关闭窗口</a></div><iframe name="popTp_frame" id="popTp_frame"  style="z-index:999" src="" frameborder="0" marginheight="0"  marginwidth="0" width="100%" ></iframe></div><div id="layDic" style="display:none"></div>
+<!-- //弹出层 -->
+
+
+
+<!--warpper-->
+<div id="warpper">
+<!--container-->
+<div id="container">
+<!--areaone-->
+   	<div class="areaone">
+   	  <form action="/my_article.php?act=jigou_add_do" method="post" enctype="multipart/form-data" name="jigou_add_do" id="jigou_add_do"   >
+   	    <table width="100%" border="1" cellspacing="0" cellpadding="2">
+        <tr class="trheader">
+          <td height="32" colspan="2">添加文章</td>
+        </tr>
+        <tr>
+          <td width="20%" height="32">标题</td>
+          <td><input name="j_name" type="text" id="j_name" size="60" maxlength="200" /></td>
+        </tr>
+        <tr>
+          <td height="32">分类</td>
+          <td><div class="theForm"><input name="j_shenfen" type="text" id="j_shenfen" size="40" onKeyUp="checkKeyCode(event,this,'/my_article.php?act=shenfen_ajax')" onfocus="checkKeyCode_click(this,'/my_article.php?act=shenfen_ajax')"   onKeyDown="try{if(event.keyCode=='13'){closefun();} }catch(e){ };"  maxlength="200" /><div></div>
+          </div></td>
+        </tr>
+        
+        
+        <tr>
+          <td height="32">图片</td>
+          <td><input type="file" name="file" /></td>
+        </tr>
+        <tr>
+          <td height="32">详细介绍</td>
+          <td><textarea name="j_content" cols="80" rows="15" id="j_content"></textarea>	  
+		  </td>
+        </tr>
+        <tr>
+          <td height="32">&nbsp;</td>
+          <td><input type="submit" name="Submit" value="提交新数据"   /></td>
+        </tr>
+      </table>
+   	  </form>
+<br />
+
+<div id="edit_pl"></div>	<br />
+<form action="/my_article.php?act=jigou_search_do" method="post" name="jigou_search_do" id="jigou_search_do">
+  <table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr class="trheader">
+    <td height="32">搜索</td>
+  </tr>
+  <tr>
+    <td height="32">文章名称:
+      <input name="j_name" type="text" id="j_name" value="<?=$_POST['j_name']?>" size="30" />
+      <input type="submit" name="Submit2" value="提交" /></td>
+  </tr>
+</table></form>
+  
+<br />
+<table width="100%" border="1" cellspacing="0" cellpadding="2">
+  <tr class="trheader">
+    <td height="32">标题</td>
+    <td height="32">介绍</td>
+    <td height="32">分类</td>
+    <td height="32">&nbsp;</td>
+  </tr>
+<?foreach($this->jigou_data as $v){?>	
+  <tr>
+    <td width="20%" height="32"><?=$v['j_name']?>&nbsp;</td>
+    <td><?=($v['j_content'])?>&nbsp;</td>
+    <td><?=$v['j_shenfen']?>&nbsp;</td>
+    <td><a   href="javascript:void(0)" onclick="lightBox1=new lightBox('popId',800,600,'my_article.php?act=jigou_edit&j_id=<?=$v['j_id']?>');lightBox1.run();">编辑</a> <a href="my_article.php?act=jigou_delete_do&j_id=<?=$v['j_id']?>" onclick="if(!confirm('确认删除?不可撤消!')) return false;">删除</a> </td>
+  </tr>
+<?}?>  
+  <tr>
+    <td height="32" colspan="4"><?$this->pageObj->show()?>&nbsp;</td>
+    </tr>
+</table>
+	  
+	</div>
+<!--//areaone -->
+</div>
+<!--//container -->
+</div>   
+<!--//warpper -->
+</body>
+</html>

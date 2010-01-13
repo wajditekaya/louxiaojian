@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="description" content="派康网：中国PET/CT信息服务网，提供全国各地PET-CT中心信息、PET/CT详细介绍、PET/CT在线咨询、PET/CT检查免费预约" />
+<meta name="keywords" content="PET/CT, PET,CT,检查,预约" />
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link href="style/css/core.css" rel="stylesheet" type="text/css" />
+<link href="style/css/index.css" rel="stylesheet" type="text/css" />
+<link href="style/css/list.css" type="text/css" rel="stylesheet" />  
+<title>派康网 - 中国PET/CT信息服务网  派康网  PET/CT预约检查  PET/CT介绍   PET/CT在线咨询</title>
+<link rel="stylesheet" type="text/css" href="style/rili/rili.css" /><script src="/style/rili/Basic.js"></script><script src="style/rili/JCalendar.js"></script><script>window.onload = function(){	var j = new JCalendar();j.bind('post_date');}</script>
+<script src="/m/input_ajax.js"></script>
+<style>
+.theForm{position:relative; z-index:100;}
+.div_word_hidden { display:none;}
+.div_word_show { position:absolute;width:250px;background-color:#fff;border: 1px solid #eef; top:26px;left:0;font-size:12px; line-height:1.8em; }
+.div_word_show div span{ float:right; color:#090; font-size:11px;}
+.div_word_show div a:link,.div_word_show div a:visited{text-decoration:none; color:#333; cursor:text;}
+.div_word_show div.div_word_selected,.div_word_show div.div_word_selected span,.div_word_show div.div_word_selected a:link,.div_word_show div.div_word_selected a:visited{ display:block;background:#06c; color:#fff; }
+.STYLE1 {color: #FF0000}
+</style>
+<script>
+function tb(id)
+{
+	for(i=1;i<=20;i++)
+	{
+		try{
+		$('ul_'+i).className='ul_nocur';
+		$('ul2_'+i).className='none';}catch(e){}
+	}
+	$('ul_'+id).className='ul_cur';
+	$('ul2_'+id).className='';
+}
+</script>
+<script src="style/js/louTab-min.js" type="text/javascript"></script>
+</head>
+<body>
+<!--wrapper-->
+<div id="wrapper">
+  <!--hd -->
+  <?include "petkang/_header.shtml";?>
+  <!--/hd -->
+<!-- head end and body content begin -->
+<div id="bd">
+	<div class="column_left">
+		<span class="corner"></span>
+		<div class="column_lwrap">
+			<h2 class="column_lt">查询全国PET/CT中心</h2>
+			<div id="searchBox" class="searchbox">
+				<!--度假搜索开始-->
+
+				<div panel="searchBoxDiv" class="searchbox_content" >
+					<form action="/my_admin.php?act=jigou_search" method="post" name="jigou_search" id="jigou_search"  onsubmit="if(document.submit!=true) return false;">
+						<table border="0" width="100%" cellpadding="0" cellspacing="0" style="margin-top:10px;">
+							<tr>
+								<td>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td style="height:20px">名称</td>
+    <td  style="height:20px">医院级别</td>
+  </tr>
+  <tr>
+    <td style="height:20px"><input name="name"  type="text" size="16"   maxlength="200"/></td>
+    <td style="height:20px"><select name="j_jibie" id="j_jibie">
+      <option value="">所有级别</option>
+      <option value="三甲">三甲医院</option>
+      <option value="部队三甲">部队三甲</option>
+      <option value="民营医院">民营医院</option>
+    </select>
+    </td>
+  </tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td style="height:20px">价格区间</td>
+    </tr>
+  <tr>
+    <td style="height:20px"><input name="price1"  type="text" id="price1" size="16"   maxlength="200"/>
+      -
+      <input name="price2" type="text" id="price2" size="16"  /></td>
+    </tr>
+</table>
+
+								
+								地区/省份<br />
+							  <div class="theForm"><input name="wd" type="text" id="wd" size="30" maxlength="200" autocomplete="off"  onKeyUp="checkKeyCode(event,this,'/my_admin.php?act=shenfen_ajax')" onfocus="checkKeyCode_click(this,'/my_admin.php?act=shenfen_ajax')"    onKeyDown="try{if(event.keyCode=='13'){closefun();} }catch(e){ }" style="width:230px;"/><div style="display:inline;"></div></div></td>
+						    </tr>
+						</table>
+
+
+
+						<input type="submit" value="搜索" class="searchbox_btn searchbox_btn_pkg" title="搜索" / id=submit3 name=submit3 onclick="document.submit=true;document.jigou_search.submit();">
+					</form>
+				</div>
+			</div>
+<iframe src="/image_server.php?act=show_frame" id="frame" name="frame" width="278"  height="129" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" style="margin-bottom:4px"    ></iframe>
+
+<script>var stimer=null</script>
+<div class="travels">
+		<div   id=xdemo style="overflow:hidden; height:90px; margin-top:10px;" > 
+		<div   id=xdemo1> 
+<ul>
+<?foreach($this->all_data['医疗广告'] as $v){?>
+<li><?=$v['name']?></li>
+<?}?>
+</ul>
+</div>
+<div   id=xdemo2></div> 
+</div>
+<!--//demo -->
+</div>
+	  </div>
+
+<script>
+var speed=65
+xdemo2.innerHTML=xdemo1.innerHTML
+function Marquee2()
+{
+if(xdemo2.offsetTop-xdemo.scrollTop<=0)
+{
+xdemo.scrollTop-=xdemo1.offsetHeight;
+}
+else
+{
+xdemo.scrollTop++
+}
+}
+var MyMar2=setInterval(Marquee2,speed)
+xdemo.onmouseover=function()
+{
+clearInterval(MyMar2)
+}
+xdemo.onmouseout=function()
+{
+MyMar2=setInterval(Marquee2,speed)
+}
+</script>
+	  
+		<span class="corner"></span>
+	</div>
+	<!--中列开始-->
+	<div class="column_center">
+		<div class="block1">
+			<div id="flightsMain" class="flights_choice">
+                <ul class="flightsTab" id="flightsTab">
+<?foreach($this->city_list as $v){?>				
+                 <li><?=$v?></li>
+<?}?>				 
+<li lang="skip" class="other" ><a href="http://www.petkang.com/my_admin.php?act=jigou_map" class="more">其他</a></li>
+                </ul>
+
+<?$ii=0;foreach($this->city_list as $city){$ii++;?>
+                <!--flightRecommendPanel-->
+				<div class="flightRecommendPanel"  <?if($ii==1){?>style="display:block"<?}else{?>style="display:none"<?}?>>
+<?$i=0;foreach($this->all_data["省份机构"][$city] as $v){$i++; if($i==7) break;?>				
+                <dl>
+                <dt><a href="my_admin.php?act=jogou_info&amp;j_id=<?=$v['j_id']?>" title="<?=$v['j_name']?>"  target="_blank"><?=$v['j_name']?></a></dt>
+                  <dd class="price"  ><dfn>&yen;</dfn><?=$v['j_jiage']?>&nbsp;&nbsp;<a  href="my_admin.php?act=jigou_yuding&j_id=<?=$v['j_id']?>" style=" color:#FF0000">预约</a></dd>
+                </dl>				
+<?}?>				
+<div class="act"><a class="more2" href="my_admin.php?act=jigou_search&wd=<?=$city?>">更多</a></div>	
+				</div>
+                <!--flightRecommendPanel-->
+<?}?>
+											
+                
+			</div>
+		</div>
+ <script type="text/javascript">new tab("flightsTab","li","flightsMain","div").run();</script>
+		
+		<ul class="vh_content layoutfix">
+
+<li>
+	<h2 class="title"><a href="petkang.php?act=intro" class="more2">更多</a>PET/CT知识</h2>
+    <?foreach($this->all_data['医疗文章'] as $v){?>	
+	<div class="vh_list">
+		<a href="my_article.php?act=jigou_intro&j_id=<?=$v['j_id']?>"   title="<?=$v['j_name']?>"><?if($v['j_shenfen']){?><?}?><?=$v['j_name']?></a>
+	</div>
+<?}?>	
+
+</li>
+
+<li>
+	<h2 class="title"><a href="petkang.php?act=news" class="more2">更多</a>派康网新闻</h2>
+    <?foreach($this->all_data['派康新闻'] as $v){?>	
+	<div class="vh_list">
+		<a href="my_news.php?act=jigou_intro&j_id=<?=$v['j_id']?>"  title="<?=$v['j_name']?>"><?if($v['j_shenfen']){?><?}?><?=$v['j_name']?></a>
+	</div>
+<?}?>	
+</li>
+		</ul>
+	</div>
+	
+<script>var stimer=null</script>
+	<div class="column_right">
+	  <div class="package_choice">
+			<h2 class="title"><strong>PET/CT最新动态</strong></h2>
+			
+		<div   id=demo style="overflow:hidden; height:164px;" > 
+		<div   id=demo1> 
+		<ul onmousemove="clearInterval(stimer)" onmouseout="stimer=setInterval(qswhMarquee,100);">
+		<?foreach($this->all_data['动态'] as $v){?>
+			<li><a href="my_active.php?act=info&id=<?=$v['id']?>"><?=$v['name']?></a></li>
+		<?}?>
+		</ul>
+		</div>
+		  <div   id=demo2></div> 
+		</div>
+
+<script>
+var speed=65
+demo2.innerHTML=demo1.innerHTML
+function Marquee2()
+{
+if(demo2.offsetTop-demo.scrollTop<=0)
+{
+demo.scrollTop-=demo1.offsetHeight;
+}
+else
+{
+demo.scrollTop++
+}
+}
+var MyMar2=setInterval(Marquee2,speed)
+demo.onmouseover=function()
+{
+clearInterval(MyMar2)
+}
+demo.onmouseout=function()
+{
+MyMar2=setInterval(Marquee2,speed)
+}
+</script>
+  		
+</div>
+	  <div class="package_choice">
+<h2 class="title"><strong style="color:#FF0000">热门推荐中心</strong></h2>	
+		  <ul class="package_list">
+<?foreach($this->all_data['热门检测中心'] as $v){?>		  
+    <li><a href="my_admin.php?act=jogou_info&amp;j_id=<?=$v['j_id']?>" title="<?=$v['j_name']?>"  target="_blank"><?=$v['j_name']?></a></li>
+<?}?>	
+    </ul>
+
+	  </div>
+			
+	</div>	
+</div>
+
+  <div id="etcinfo">
+<p style="text-align:center;"><img src="/style/004.jpg" /></p>  
+    <p class="goodlink">
+          <strong>友情链接: </strong> <?foreach($this->all_data['友情链接'] as $v){?><a title="<?=$v['name']?>" target="_blank" href="<?=$v['url']?>"><?if(!$v['logo']){?><?=$v['name']?><?}else{?><img src="<?=$v['logo']?>" border="0"  alt="<?=$v['name']?>"/><?}?></a>&nbsp;&nbsp;&nbsp;<?}?>
+    </p>
+  </div>
+
+  <!--ft-->
+  <?include "petkang/_footer.shtml";?>
+  <!--/ft-->
+</div>
+<!--/wrapper-->
+</body>
+</html>

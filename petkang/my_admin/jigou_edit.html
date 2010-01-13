@@ -1,0 +1,66 @@
+<form action="/my_admin.php?act=jigou_edit_do&j_id=<?=$_GET['j_id']?>" method="post" enctype="multipart/form-data" name="jigou_edit_do" id="jigou_edit_do">
+   	    <table width="100%" border="1" cellspacing="0" cellpadding="2">
+        <tr class="trheader">
+          <td height="32" colspan="2">全国机构资料</td>
+        </tr>
+        <tr>
+          <td width="20%" height="32">机构名称</td>
+          <td><input name="j_name" type="text" id="j_name2" value="<?=$this->row['j_name']?>" size="60" maxlength="200" /></td>
+        </tr>
+        <tr>
+          <td height="32">所在省份</td>
+          <td><div class="theForm"><input name="j_shenfen" type="text" id="j_shenfen" size="40" value="<?=$this->row['j_shenfen']?>" onKeyUp="checkKeyCode(event,this,'/my_admin.php?act=shenfen_ajax')" onfocus="checkKeyCode_click(this,'/my_admin.php?act=shenfen_ajax')"   onKeyDown="try{if(event.keyCode=='13'){closefun();} }catch(e){ };"  maxlength="200" /><div></div>
+          </div></td>
+        </tr>
+        <tr>
+          <td height="32">检测价格</td>
+          <td><input name="j_jiage" type="text" id="j_jiage" value="<?=$this->row['j_jiage']?>" size="20" /></td>
+        </tr>
+        <tr>
+          <td height="32">医院级别</td>
+          <td>
+		  <label for="j_jibie_11">三甲:</label>
+            <input name="j_jibie" type="radio"  id="j_jibie_11" value="三甲" <?if($this->row['j_jibie']=='三甲'){?>checked="checked"<?}?> />
+            <label for="j_jibie_22">部队三甲:</label>
+            <input type="radio" name="j_jibie" value="部队三甲" id="j_jibie_22" <?if($this->row['j_jibie']=='部队三甲'){?>checked="checked"<?}?>  />
+			<label for="j_jibie_33">民营:</label>
+            <input type="radio" name="j_jibie" value="民营医院" id="j_jibie_33"  <?if($this->row['j_jibie']=='民营'){?>checked="checked"<?}?> />          </td>
+        </tr>
+        <tr>
+          <td height="32">推荐等级</td>
+          <td><input name="j_star"  type="text" id="j_star"  value="<?=$this->row['j_star']?>" size="4" />
+            (1-5颗星)&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="32">医院位置</td>
+          <td><input name="j_weizi" type="text" id="j_weizi" value="<?=$this->row['j_weizi']?>" size="30" maxlength="200" /></td>
+        </tr>
+        <tr>
+          <td height="32">首页显示位置(热门推荐中心)</td>
+          <td><input name="home_page" type="text" id="home_page" value="<?=$this->row['home_page']?>" size="5" maxlength="10" />
+            需要推荐这个中心的时候,设置一个数字(1-9),这个数据表示在首页显示的位置</td>
+        </tr>
+        <tr>
+          <td height="32">Google地图坐标</td>
+          <td><input name="google_map" type="text" id="google_map" value="<?=$this->row['google_map']?>" size="20" maxlength="200" />
+            输入地图的坐标点</td>
+        </tr>
+        <tr>
+          <td height="32">图片</td>
+          <td><input type="file" name="file" /></td>
+        </tr>
+        <tr>
+          <td height="32">医院介绍</td>
+          <td><textarea name="j_content" cols="60" rows="12" id="j_content"><?=$this->row['j_content']?></textarea></td>
+        </tr>
+        <tr>
+          <td height="32">专家介绍</td>
+          <td><textarea name="j_zhuanjia" cols="60" rows="12" id="j_zhuanjia"><?=$this->row['j_zhuanjia']?></textarea></td>
+        </tr>		
+        <tr>
+          <td height="32">&nbsp;</td>
+          <td><input type="submit" name="Submit" value="修改医院数据" /> 
+          <input type="button" name="Submit2" value="取消"  onclick="if(confirm('确认取消编辑,不保存数据?')) idf('edit_pl').innerHTML='';"/></td>
+        </tr>
+      </table>
+   	  </form>

@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>修改帐户密码</title>
+<link rel="stylesheet" type="text/css" href="petkang/base_iframe.css" />
+<link href="style/css/list.css" type="text/css" rel="stylesheet" />  
+<style type="text/css">
+<!--
+.STYLE1 {color: #FF0000}
+.STYLE3 {color: #FF0000; font-weight: bold; }
+-->
+</style>
+</head>
+
+<script>
+function $(id){ return document.getElementById(id);}
+function check_point()
+{
+	//确认旧密码
+	if(!$('old_pass').value)
+	{
+		alert("旧密码不能为空");
+		$('old_pass').focus();
+		return false;
+	}
+	//确认新密码
+	if(!$('new_pass').value || $('new_pass').value!=$('new_pass2').value)
+	{
+		alert("新密码必须填写,并且不能为空");
+		$('new_pass').focus();
+		return false;
+	}	
+	
+}
+</script>
+<body>
+<form action="/petkang.php?act=user_pass_do" method="post" name="user_pass_do" id="user_pass_do" onsubmit="return check_point()">
+  <table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td height="32" colspan="2" bgcolor="EBF5F9"><strong>修改密码</strong></td>
+  </tr>
+  <tr>
+    <td height="32" align="right">&nbsp;</td>
+    <td><span class="STYLE3">
+      <?=$this->error_message?>
+      &nbsp;</span></td>
+  </tr>
+  <tr>
+    <td height="32" align="right">旧密码</td>
+    <td><input name="old_pass" type="text" id="old_pass"  style="width:200px;" size="40" maxlength="200" />
+      <span class="STYLE1">*</span></td>
+  </tr>
+  <tr>
+    <td height="32" align="right">新密码</td>
+    <td><input name="new_pass" type="text" id="new_pass"  style="width:200px;" size="40" maxlength="200" />
+      <span class="STYLE1">*</span></td>
+  </tr>
+  <tr>
+    <td width="20%" height="32" align="right">确认新密码</td>
+    <td><input name="new_pass2" type="text" id="new_pass2"  style="width:200px;" size="40" maxlength="200" />
+      <span class="STYLE1">*</span></td>
+  </tr>
+  <tr>
+    <td height="32">&nbsp;</td>
+    <td><input type="submit" name="Submit" value="修改密码" class="base_btn06" /></td>
+  </tr>
+</table>
+</form>
+</body>
+</html>

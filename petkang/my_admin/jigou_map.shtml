@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="ctl00_Head1"><meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="description" content="派康网：中国PET/CT信息服务网，提供全国各地PET-CT中心信息、PET/CT详细介绍、PET/CT在线咨询、PET/CT检查免费预约" />
+<meta name="keywords" content="PET/CT, PET,CT,检查,预约" />
+<link href="style/css/core.css" rel="stylesheet" type="text/css" />
+<link href="style/css/list.css" type="text/css" rel="stylesheet" />         
+<link href="style/css/hotels.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="style/rili/rili.css" /><script src="/style/rili/Basic.js"></script><script src="style/rili/JCalendar.js"></script><script>window.onload = function(){	var j = new JCalendar();j.bind('post_date');}</script>
+<script src="m/input_ajax.js"></script>
+ <style>
+.theForm{position:relative; z-index:100;}
+.div_word_hidden { display:none;}
+.div_word_show { position:absolute;width:250px;background-color:#fff;border: 1px solid #eef; top:26px;left:0;font-size:12px; line-height:1.8em; }
+.div_word_show div span{ float:right; color:#090; font-size:11px;}
+.div_word_show div a:link,.div_word_show div a:visited{text-decoration:none; color:#333; cursor:text;}
+.div_word_show div.div_word_selected,.div_word_show div.div_word_selected span,.div_word_show div.div_word_selected a:link,.div_word_show div.div_word_selected a:visited{ display:block;background:#06c; color:#fff; }
+</style>
+<title>全国PET/CT地图 - 派康网,中国PET/CT信息服务网  派康网  PET/CT预约检查  PET/CT介绍   PET/CT在线咨询</title>
+</head>
+<body id="mainbody">
+<div id="wrapper">
+<!--hd -->
+<?include "petkang/_header.shtml";?>
+<!--/hd -->
+
+<!--bd-->
+<div id="bd" class="base_t1">
+    <div id="base_main">
+    
+<div class="base_b">
+    <!-- 标题 -->
+
+    <p class="hotel_headline"><img src="style/jclc.jpg" width="600" />&nbsp;</p>
+    <!-- 主要内容 -->
+    
+    <!-- 区域地图 -->
+    <div>
+        <ul class="searchresult_tab1" id="hotelView" cdm="blk_listtype">
+			<li   class="tagon" ><span><a href="my_admin.php?act=jigou_list">全国PET/CT中心地图</a></span></li>
+            <li><span><a href="my_admin.php?act=jigou_list">PET/CT中心列表</a></span></li>
+          </ul>
+
+        <ul class="searchresult_tab2" id="hotelSort" cdm="blk_sequencetype">
+        </ul>		  
+    </div>
+    <!-- 区域地图 -->
+
+<p style="height: auto; text-align: center;"><img height="371" border="0" width="381" alt="" usemap="#Map" src="/style/img/china_map.gif" /> <map id="Map" name="Map">
+<area alt="新疆" href="my_admin.php?act=jigou_search&wd=新疆" coords="69,89,99,100" shape="RECT" />
+<area alt="甘肃" href="my_admin.php?act=jigou_search&wd=甘肃" coords="152,114,174,127" shape="RECT" />
+<area alt="内蒙古" href="my_admin.php?act=jigou_search&wd=内蒙古" coords="207,111,241,120" shape="RECT" />
+<area alt="黑龙江" href="my_admin.php?act=jigou_search&wd=黑龙江" coords="326,50,358,61" shape="RECT" />
+<area alt="吉林" href="my_admin.php?act=jigou_search&wd=吉林" coords="328,78,351,92" shape="RECT" />
+<area alt="北京" href="my_admin.php?act=jigou_search&wd=北京" coords="269,101,298,114" shape="RECT" />
+<area alt="辽宁" href="my_admin.php?act=jigou_search&wd=辽宁" coords="308,98,334,109" shape="RECT" />
+<area alt="天津" href="my_admin.php?act=jigou_search&wd=天津" coords="304,116,325,128" shape="RECT" />
+<area alt="河北" href="my_admin.php?act=jigou_search&wd=河北" coords="265,121,290,132" shape="RECT" />
+<area alt="青海" href="my_admin.php?act=jigou_search&wd=青海" coords="125,141,155,155" shape="RECT" />
+<area alt="宁夏" href="my_admin.php?act=jigou_search&wd=宁夏" coords="195,134,218,150" shape="RECT" />
+<area alt="山西" href="my_admin.php?act=jigou_search&wd=山西" coords="236,135,264,149" shape="RECT" />
+<area alt="陕西" href="my_admin.php?act=jigou_search&wd=陕西" coords="213,161,236,174" shape="RECT" />
+<area alt="山东" href="my_admin.php?act=jigou_search&wd=山东" coords="280,139,306,154" shape="RECT" />
+<area alt="河南" href="my_admin.php?act=jigou_search&wd=河南" coords="250,163,273,174" shape="RECT" />
+<area alt="江苏" href="my_admin.php?act=jigou_search&wd=江苏" coords="290,161,314,173" shape="RECT" />
+<area alt="安徽" href="my_admin.php?act=jigou_search&wd=安徽" coords="276,182,300,192" shape="RECT" />
+<area alt="上海" href="my_admin.php?act=jigou_search&wd=上海" coords="316,178,341,193" shape="RECT" />
+
+<area alt="四川" href="my_admin.php?act=jigou_search&wd=四川" coords="164,184,186,197" shape="RECT" />
+<area alt="湖北" href="my_admin.php?act=jigou_search&wd=湖北" coords="241,185,264,198" shape="RECT" />
+<area alt="浙江" href="my_admin.php?act=jigou_search&wd=浙江" coords="304,202,329,216" shape="RECT" />
+<area alt="重庆" href="my_admin.php?act=jigou_search&wd=重庆" coords="200,196,223,211" shape="RECT" />
+<area alt="湖南" href="my_admin.php?act=jigou_search&wd=湖南" coords="230,213,255,227" shape="RECT" />
+<area alt="江西" href="my_admin.php?act=jigou_search&wd=江西" coords="268,207,294,220" shape="RECT" />
+<area alt="福建" href="my_admin.php?act=jigou_search&wd=福建" coords="287,226,311,241" shape="RECT" />
+<area alt="贵州" href="my_admin.php?act=jigou_search&wd=贵州" coords="198,224,221,237" shape="RECT" />
+<area alt="云南" href="my_admin.php?act=jigou_search&wd=云南" onClick="getpartner(124)" coords="157,241,181,254" shape="RECT" />
+<area alt="广西" href="my_admin.php?act=jigou_search&wd=广西" coords="210,243,239,258" shape="RECT" />
+<area alt="广东" href="my_admin.php?act=jigou_search&wd=广东" coords="250,242,276,257" shape="RECT" />
+<area alt="海南" href="my_admin.php?act=jigou_search&wd=海南" coords="198,284,226,297" shape="RECT" />
+<area alt="澳门" href="my_admin.php?act=jigou_search&wd=澳门" coords="248,261,273,277" shape="RECT" />
+<area alt="香港" href="my_admin.php?act=jigou_search&wd=香港" coords="284,257,309,268" shape="RECT" />
+</map></p>
+
+    <!-- 电子地图 -->
+    
+      <!-- 框框头结束 -->        
+      </div>
+
+    </div>
+    
+    <div class="base_b">
+    
+<?include "petkang/_left.html"?>
+       </div>
+
+
+</div>
+<!--/bd-->
+
+  <!--ft-->
+  <?include "petkang/_footer.shtml";?>
+  <!--/ft-->
+
+</div>
+
+</body>
+</html>

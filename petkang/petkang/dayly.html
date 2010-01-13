@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>机构日期安排</title>
+<link rel="stylesheet" type="text/css" href="petkang/base_iframe.css" />
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td height="32">设置已经预约时间</td>
+  </tr>
+  <tr>
+    <td height="32">&nbsp;日期:
+      <input name="textfield" type="text" value="<?=date('Y-m-d')?>" size="20" maxlength="200" /></td>
+  </tr>
+<?for($i=8;$i<18;$i++){?>  
+  <tr>
+    <td height="32"><input type="checkbox" name="checkbox" value="checkbox" />
+    时间段 <?=$i;?> -<?=$i+1;?>点&nbsp;</td>
+  </tr>
+<?}?>
+  <tr>
+    <td height="32"><input type="submit" name="Submit" value="提交" /></td>
+  </tr>
+</table>
+</body>
+</html>

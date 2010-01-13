@@ -1,0 +1,34 @@
+             <!-- 快速查询 -->
+<form action="/my_admin.php?act=jigou_search" method="post" name="jigou_search" id="jigou_search"  onsubmit="if(document.submit!=true) return false;">      
+      <div class="base_154">
+      <div class="base_154_top">
+          <h3>
+              中心快速查询</h3>
+      </div>
+      
+      <div class="base_154_middle" cdm="blk_quicksearch">
+          
+          <ul class="hotel_searchbox">
+              <li>*省份/地区&nbsp;
+                <div class="theForm"><input name="wd" type="text" id="wd" size="30" maxlength="200" autocomplete="off"  onKeyUp="checkKeyCode(event,this,'/my_admin.php?act=shenfen_ajax')" onfocus="checkKeyCode_click(this,'/my_admin.php?act=shenfen_ajax')"    onKeyDown="try{if(event.keyCode=='13'){closefun();} }catch(e){ }" style="width:230px;"  value="<?=$_REQUEST['wd']?>"/><div></div></div></li>
+
+            </ul> 
+          <p style="text-align: center; margin-top: 5px;">
+      
+              <input type="button" id="btnQuickSearch" value="查询" class="base_btn02" cdm="btn_submitsearch" onclick="document.submit=true;document.jigou_search.submit();"/></p>
+      </div>
+      <div class="base_154_bottom">
+      </div>
+      
+      </div>
+</form>
+
+
+    <div class="base_154">
+	    <div class="base_154_top">
+	      <h3>积分奖励</h3>
+	    </div>
+	    <div class="base_154_middle">会员通过派康网预约PET/CT进行体检完成后，可获取相应积分。积分可以兑换更多的礼品。
+<br />
+	    </div>
+    </div>

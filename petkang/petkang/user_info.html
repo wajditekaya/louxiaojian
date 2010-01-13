@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>我的派康</title>
+<link href="style/css/core.css" rel="stylesheet" type="text/css" />
+<link href="style/css/list.css" type="text/css" rel="stylesheet" />
+<script src="/m/input_ajax.js"></script>  
+<style>
+.theForm{position:relative; z-index:100;}
+.div_word_hidden { display:none;}
+.div_word_show { position:absolute;width:250px;background-color:#fff;border: 1px solid #eef; top:26px;left:0;font-size:12px; line-height:1.8em; }
+.div_word_show div span{ float:right; color:#090; font-size:11px;}
+.div_word_show div a:link,.div_word_show div a:visited{text-decoration:none; color:#333; cursor:text;}
+.div_word_show div.div_word_selected,.div_word_show div.div_word_selected span,.div_word_show div.div_word_selected a:link,.div_word_show div.div_word_selected a:visited{ display:block;background:#06c; color:#fff; }
+</style>
+</head>
+
+<body>
+
+<div id="wrapper">
+<!--hd -->
+<?include "petkang/_header.shtml";?>
+<!--/hd -->
+
+<!--bd-->
+<div id="bd" class="base_t1">
+<!--base_main -->
+    <div id="base_main">
+    
+<div class="base_b">
+    <!-- 标题 -->
+	
+
+<iframe src="/petkang.php?act=user_baseinfo" id="frame" name="frame" width="100%" height="200px" scrolling="no" frameborder="0" marginheight="0" marginwidth="0"  onload="this.height=frame.document.body.scrollHeight+50" ></iframe>
+
+
+</div>
+</div>
+<!--//base_main -->
+
+
+<div class="base_b">
+              <!-- 快速查询 -->
+
+<div class="base_154">
+	    <div class="base_154_top">
+	      <h3>管理中心</h3>
+	    </div>
+	    <div class="base_154_middle">
+<ul>
+  <li><a href="petkang.php?act=user_baseinfo" target="frame">基本资料</a>
+    <ul>
+    <ul>
+      <li><a href="petkang.php?act=user_pass"  target="frame">修改密码</a></li>
+    </ul>
+    <li><a href="petkang.php?act=user_jifen" target="frame">积分记录</a></li>
+    <li><a href="petkang.php?act=jianli" target="_top">积分奖励</a></li>
+  </ul>
+      </li>
+    </ul>	
+	    </div>
+    </div>
+				  
+<?include "petkang/_left.html"?>		  
+
+</div>
+
+
+	
+	
+	
+
+
+</div>
+<!--/bd-->
+
+  <!--ft-->
+  <?include "petkang/_footer.shtml";?>
+  <!--/ft-->
+
+</div>
+
+</body>
+</html>

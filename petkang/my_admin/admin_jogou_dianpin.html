@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>审核点评数据</title>
+<link rel="stylesheet" href="m/admin_common.css" />
+</head>
+
+<body>
+<!--warpper-->
+<div id="warpper">
+<!--container-->
+<div id="container">
+<!--areaone-->
+   	<div class="areaone">
+   	  <table width="100%" border="1" cellspacing="0" cellpadding="2">
+        <tr>
+          <td height="32" colspan="5"  class="trheader">机构点评数据</td>
+        </tr>
+        <tr>
+          <td height="32">帐户</td>
+          <td>机构</td>
+          <td>留言</td>
+          <td>时间</td>
+          <td>&nbsp;</td>
+        </tr>
+<?foreach($this->all_dianpin as $v){?>		
+        <tr>
+          <td height="32"><?=$v['user_name']?>&nbsp;</td>
+          <td><?=$v['j_name']?>&nbsp;</td>
+          <td><?=nl2br(htmlspecialchars($v['content']))?>&nbsp;</td>
+          <td><?=$v['add_time']?>&nbsp;</td>
+          <td><a href="my_admin.php?act=admin_jogou_dianpin_delete_do&amp;id=<?=$v['id']?>" onclick="return confirm('确认删除掉这个评论?')">删除</a></td>
+        </tr>
+<?}?>		
+        <tr>
+          <td height="32" colspan="5"><?$this->pageObj->show()?>&nbsp;</td>
+        </tr>
+      </table>
+	</div>
+<!--//areaone -->
+</div>
+<!--//container -->
+</div>   
+<!--//warpper -->
+	
+</body>
+</html>

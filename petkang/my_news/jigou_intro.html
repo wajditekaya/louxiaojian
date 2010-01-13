@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="ctl00_Head1"><meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="description" content="派康网：中国PET/CT信息服务网，提供全国各地PET-CT中心信息、PET/CT详细介绍、PET/CT在线咨询、PET/CT检查免费预约" />
+<meta name="keywords" content="PET/CT, PET,CT,检查,预约" />
+<link href="style/css/core.css" rel="stylesheet" type="text/css" />
+<link href="style/css/news.css" type="text/css" rel="stylesheet" /> 
+<link href="style/css/list.css" type="text/css" rel="stylesheet" />         
+<title><?=$this->row['j_name']?> - 派康网</title>
+<link rel="stylesheet" type="text/css" href="style/rili/rili.css" /><script src="style/rili/Basic.js"></script><script src="style/rili/JCalendar.js"></script><script>window.onload = function(){	var j = new JCalendar();j.bind('post_date');}</script>
+<script src="m/input_ajax.js"></script>        
+<title>PET/CT中心知识</title>
+<style>
+.theForm{position:relative; z-index:100;}
+.div_word_hidden { display:none;}
+.div_word_show { position:absolute;width:250px;background-color:#fff;border: 1px solid #eef; top:26px;left:0;font-size:12px; line-height:1.8em; }
+.div_word_show div span{ float:right; color:#090; font-size:11px;}
+.div_word_show div a:link,.div_word_show div a:visited{text-decoration:none; color:#333; cursor:text;}
+.div_word_show div.div_word_selected,.div_word_show div.div_word_selected span,.div_word_show div.div_word_selected a:link,.div_word_show div.div_word_selected a:visited{ display:block;background:#06c; color:#fff; }
+</style>
+</head>
+<body id="mainbody">
+
+<div id="wrapper">
+<!--hd -->
+<?include "petkang/_header.shtml";?>
+<!--/hd -->
+
+<!--bd-->
+<div id="bd" class="base_t1">
+
+    <div id="base_main">
+       <!--base_mainIn-->
+       <div class="base_mainIn">
+         <div class="map">
+         您当前所处位置：<a href='index.php'>派康网</a>&nbsp;&raquo;&nbsp;<a href='petkang.php?act=news'>派康网新闻</a> &nbsp;&raquo;&nbsp;   <em><?=$this->row['j_name']?></em>
+         </div>
+          <!--newShow-->
+          <div id="newShow">
+             <h1><?=$this->row['j_name']?></h1>
+             <!--newMain-->
+             <div class="newMain">
+            <p><?=($this->row['j_content'])?></p>
+			<p>点击数:<?=$this->row['click']+300?>次</p>
+             </div>
+              <!--/newMain-->
+          </div>
+          <!--/newShow-->
+          
+          
+        </div>  
+       <!--/base_mainIn-->  
+    </div>
+    
+    <div class="base_b">
+<?include "petkang/_left.html"?>
+        </div>
+
+
+
+</div>
+<!--/bd-->
+
+  <!--ft-->
+  <?include "petkang/_footer.shtml";?>
+  <!--/ft-->
+
+</div>
+
+</body>
+</html>

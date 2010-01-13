@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>积分历史记录</title>
+<link rel="stylesheet" href="m/admin_common.css" />
+</head>
+
+<body>
+
+<!--warpper-->
+<div id="warpper">
+<!--container-->
+<div id="container">
+<!--areaone-->
+   	<div class="areaone">
+   	  <table width="100%" border="1" cellspacing="0" cellpadding="2">
+        <tr class="trheader">
+          <td height="32" colspan="4">积分记录</td>
+        </tr>
+        <tr>
+          <td height="32">帐户</td>
+          <td>机构</td>
+          <td>积分</td>
+          <td>添加时间</td>
+        </tr>
+<?foreach($this->all_data as $v){?>		
+        <tr>
+          <td height="32"><?=$v['user_name']?>&nbsp;</td>
+          <td><?=$v['j_name']?>&nbsp;</td>
+          <td><?=$v['jifen']?>&nbsp;</td>
+          <td><?=$v['add_time']?>&nbsp;</td>
+        </tr>
+<?}?>		
+        <tr>
+          <td height="32" colspan="4"><?=$this->pageObj->show()?>&nbsp;</td>
+        </tr>
+      </table>
+	</div>
+<!--//areaone -->
+</div>
+<!--//container -->
+</div>   
+<!--//warpper -->
+	
+</body>
+</html>

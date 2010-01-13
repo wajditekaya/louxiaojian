@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="ctl00_Head1"><meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link href="style/css/core.css" rel="stylesheet" type="text/css" />
+<link href="style/css/news.css" type="text/css" rel="stylesheet" /> 
+<link href="style/css/list.css" type="text/css" rel="stylesheet" />         
+<title><?=$this->row['name']?> - 派康网</title>
+<link rel="stylesheet" type="text/css" href="style/rili/rili.css" /><script src="style/rili/Basic.js"></script><script src="style/rili/JCalendar.js"></script><script>window.onload = function(){	var j = new JCalendar();j.bind('post_date');}</script>
+<script src="m/input_ajax.js"></script>        
+<title>PET/CT中心知识</title>
+<style>
+.theForm{position:relative; z-index:100;}
+.div_word_hidden { display:none;}
+.div_word_show { position:absolute;width:250px;background-color:#fff;border: 1px solid #eef; top:26px;left:0;font-size:12px; line-height:1.8em; }
+.div_word_show div span{ float:right; color:#090; font-size:11px;}
+.div_word_show div a:link,.div_word_show div a:visited{text-decoration:none; color:#333; cursor:text;}
+.div_word_show div.div_word_selected,.div_word_show div.div_word_selected span,.div_word_show div.div_word_selected a:link,.div_word_show div.div_word_selected a:visited{ display:block;background:#06c; color:#fff; }
+</style>
+</head>
+<body id="mainbody">
+
+<div id="wrapper">
+<!--hd -->
+<?include "petkang/_header.shtml";?>
+<!--/hd -->
+
+<!--bd-->
+<div id="bd" class="base_t1">
+
+    <div id="base_main">
+       <!--base_mainIn-->
+       <div class="base_mainIn">
+         <div class="map">
+         您当前所处位置：<a href='index.php'>派康网</a>&nbsp;&raquo;&nbsp;<a href='petkang.php?act=active'>PET/CT动态</a> &nbsp;&raquo;&nbsp;   <em><?=$this->row['name']?></em>
+         </div>
+          <!--newShow-->
+          <div id="newShow">
+             <h1><?=$this->row['name']?></h1>
+             <!--newMain-->
+             <div class="newMain">
+            <p><?=($this->row['content'])?></p>
+			<p>点击数:<?=$this->row['click']+500?>次</p>
+             </div>
+              <!--/newMain-->
+          </div>
+          <!--/newShow-->
+          
+          
+        </div>  
+       <!--/base_mainIn-->  
+    </div>
+    
+    <div class="base_b">
+              <!-- 快速查询 -->
+<form action="/my_admin.php?act=jigou_search" method="post" name="jigou_search" id="jigou_search"  onsubmit="if(document.submit!=true) return false;">      
+      <div class="base_154">
+      <div class="base_154_top">
+          <h3>查询全国PET/CT中心</h3>
+      </div>
+      
+      <div class="base_154_middle" cdm="blk_quicksearch">
+          
+          <ul class="hotel_searchbox">
+              <li>*省份/地区&nbsp;
+                <div class="theForm"><input name="wd" type="text" id="wd" size="30" maxlength="200" autocomplete="off"  onKeyUp="checkKeyCode(event,this,'/my_admin.php?act=shenfen_ajax')" onfocus="checkKeyCode_click(this,'/my_admin.php?act=shenfen_ajax')"    onKeyDown="try{if(event.keyCode=='13'){closefun();} }catch(e){ }" style="width:230px;"  value="<?=$_REQUEST['wd']?>"/><div></div></div></li>
+      
+
+            </ul> 
+          <p style="text-align: center; margin-top: 5px;">
+      
+              <input type="button" id="btnQuickSearch" value="查询" class="base_btn02" cdm="btn_submitsearch" onclick="document.submit=true;document.jigou_search.submit();"/></p>
+      </div>
+      <div class="base_154_bottom">
+      </div>
+      
+      </div>
+</form>
+
+    <!--区域选择框-->
+    <ul id="jmpArea" style="display: none">
+        <li>
+            <div class="hotel_jmpinfo_type">
+                <a href="#;" style="text-align: left">不限位置</a></div>
+    
+        </li>
+        <li id="div_zone">
+            <div class="hotel_jmpinfo_type">
+                商业区</div>
+        </li>
+        <li id="div_location">
+            <div class="hotel_jmpinfo_type">
+                行政区</div>
+    
+        </li>
+    </ul>
+
+
+    <div class="base_154">
+	    <div class="base_154_top">
+	      <h3>积分奖励</h3>
+	    </div>
+	    <div class="base_154_middle">
+		    通过派康网预约PET/CT中心进行体检,可以获取积分来换取 更多的服务,如兑换实物礼品,私人医生服务,体检,住院...等
+<br />
+	    </div>
+    </div>
+    
+
+        </div>
+
+
+
+</div>
+<!--/bd-->
+
+  <!--ft-->
+  <?include "petkang/_footer.shtml";?>
+  <!--/ft-->
+
+</div>
+
+</body>
+</html>

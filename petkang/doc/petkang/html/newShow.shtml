@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="ctl00_Head1"><meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link href="../style/css/core.css" rel="stylesheet" type="text/css" />
+<link href="../style/css/news.css" type="text/css" rel="stylesheet" /> 
+<link href="../style/css/list.css" type="text/css" rel="stylesheet" />         
+<title>新闻详细页</title>
+</head>
+<body id="mainbody">
+
+<div id="wrapper">
+<!--hd -->
+<div id="hd">
+	<ul class="pagehead">
+		<li class="logo"><h1><a href="###" title="携程旅行网"><img src="http://pic.ctrip.com/common/logo.gif" alt="携程旅行网" width="156" height="50" /></a></h1></li>
+		<li>
+			<div class="submenu"><a href="member/login.asp" title="登录">登录</a><a href="member/signup.asp" title="注册">注册</a></div>
+		</li>
+	</ul>
+	<!-- navgations -->
+	<ul id="nav">
+		<li class="nav_current"><a href="" title="首页"><span>首页</span></a></li>
+		<li><a href="http://hotels.ctrip.com" title="酒店"><span>PET/CT中心</span></a></li>
+		<li><a href="http://flights.ctrip.com" title="国内机票"><span>PET/CT知识</span></a></li>
+	</ul>
+
+	<!-- toolkit -->
+
+	<ul id="toolkit">
+		<li class="guide_help"><span class='toolkit_tel'>&nbsp;</span>400-820-6666<span class='toolkit_mobile'>&nbsp;</span>
+		<li class="toolkit_links">
+			<a href="http://hotels.ctrip.com/domestic/listorders.aspx" title="订单管理"><span>&nbsp;</span>预约管理</a>
+				<a href="member/memberinfo.asp" title="个人信息"><span>&nbsp;</span>我的派康</a>
+				
+				<a href="service/mileages/encash_index.asp" title="积分奖励"><span>&nbsp;</span>积分奖励</a>
+				
+		</li>
+	</ul>
+</div>
+<!--/hd -->
+
+<!--bd-->
+<div id="bd" class="base_t1">
+
+    <div id="base_main">
+       <!--base_mainIn-->
+       <div class="base_mainIn">
+         <div class="map">
+          您当前所处位置：<a href='Destinations/ChinaNavigation.aspx'>中国</a>&nbsp;&raquo;&nbsp;<a href='china/hebei/region59/'>河北</a>&nbsp;&raquo;&nbsp;旅游最新动态&nbsp;&raquo;&nbsp;<em>河北雄县“宋辽边关古地道”向游人正式开放 </em>
+         </div>
+          <!--newShow-->
+          <div id="newShow">
+             <h1>河北雄县“宋辽边关古地道”向游人正式开放</h1>
+             <div class="time">2009年6月15日 13:28</div>
+             <!--newMain-->
+             <div class="newMain">
+             <p>经过一年多的修复，素有“地下长城”之称的千年军事奇观－位于河北保定市雄县的宋辽边关古地道，目前已正式向游人开放。</p>  
+    <p>据史料记载，宋辽边关古地道是宋朝名将杨六郎把守瓦桥关时修筑的地下军事防御工程，是宋辽争霸的历史见证。古地道经雄县，向东北延伸至廊坊的霸州、文安、永清等县（市），雄县是宋辽边关古地道的西起点和核心区，境内已发现数处古地道遗址，其中大台遗址保存较为完整。 </p>
+    <p>古地道结构复杂，藏兵洞、议事厅、迷魂洞等一应俱全，顶部距地面约4米，洞内高低宽窄不一，有放灯处、存物处和通气孔等，同时设有翻板、瞭敌洞等军事设施，具有重要的历史、文化和军事价值。  </p>
+    <p>1993年雄县对宋辽古地道遗址内近200米洞室进行了修复。自去年起，雄县对古地道进行了全面维修，目前已正式推出了古地道这一地下军事奇观。</p>
+             </div>
+              <!--/newMain-->
+          </div>
+          <!--/newShow-->
+          
+          <!--xgNews-->
+          <div id="xgNews" class="border_h2_1">
+            <h2 class="h2_1">相关新闻</h2>
+              <ul class="tList">
+              <li><span>2009-07-16</span><a target="_blank" href="china/hebei/region59/news,newsid,3565.html">邯郸赵王城遗址公园“十一”前免费开放</a></li>
+              <li><span>2009-07-02</span><a target="_blank" href="china/hebei/region59/news,newsid,3448.html">长城主题博物馆：山海关博物馆将免费开放</a></li>
+              <li><span>2009-06-18</span><a target="_blank" href="china/hebei/region59/news,newsid,3320.html">秦皇岛热点景区日接待人数将设限</a></li>
+              <li><span>2009-06-17</span><a target="_blank" href="china/hebei/region59/news,newsid,3310.html">“京津冀”旅游年票景区由77个增加到89个</a></li>
+              <li><span>2009-06-17</span><a target="_blank" href="china/hebei/region59/news,newsid,3305.html">京唐城际铁路暂定7个车站 北京至唐山仅38分</a> </li>
+              <li><span>2009-06-15</span><a target="_blank" href="china/hebei/region59/news,newsid,3289.html">秦皇岛市热点景区日接待人数将设限</a></li>
+              <li><span>2009-06-15</span><a target="_blank" href="china/hebei/region59/news,newsid,3288.html">河北雄县“宋辽边关古地道”向游人正式开放</a></li>
+              <li><span>2009-05-25</span><a target="_blank" href="china/hebei/region59/news,newsid,3164.html">7市区46个旅游景点凭“旅游互惠一卡通”打五折</a></li>
+             </ul>
+          </div>
+          <!--/xgNews-->
+          
+        </div>  
+       <!--/base_mainIn-->  
+    </div>
+    
+    <div class="base_b">
+        <a class="hotel_lowprice" href="http://pages.ctrip.com/commerce/promote/200811/hotel/djcn/index.htm" target="_blank">低价赔付承诺</a>
+      <!-- 快速查询 -->
+      
+      <div class="base_154">
+      <div class="base_154_top">
+          <h3>
+              酒店快速查询</h3>
+      </div>
+      
+      <div class="base_154_middle" cdm="blk_quicksearch">
+          
+          <ul class="hotel_searchbox">
+              <li>入住日期&nbsp;<input id="txtCheckIn" name="txtCheckIn" type="text" mod="calendar|notice"
+                  mod_calendar_focusnext="true" mod_calendar_rangestart="#" mod_calendar_rangeend=""
+                  mod_notice_tip="yyyy-mm-dd" cdm="txt_checkintime"/></li>
+      
+              <li>离店日期&nbsp;<input id="txtCheckOut" name="txtCheckOut" type="text" mod="calendar|notice"
+                  mod_calendar_focusnext="true" mod_calendar_rangestart="#" mod_calendar_rangeend=""
+                  mod_calendar_reference="txtCheckIn" mod_notice_tip="yyyy-mm-dd" cdm="txt_checkouttime"/></li>
+              <li>酒店名称&nbsp;<input id="txtHotelName" name="txtHotelName" mod="notice" mod_notice_tip="中文/拼音首字母"
+                  type="text" cdm="txt_hotelname"/></li>
+              <li>房价范围&nbsp;<input id="txtPriceLow" name="txtPriceLow" type="text" style="width: 65px;" cdm="txt_pricelow"/><span
+                  style="color: #666">&nbsp;至</span></li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="txtPriceHigh"
+                  name="txtPriceHigh" type="text" style="width: 65px;" cdm="txt_pricehigh"/></li>
+              <li>酒店位置&nbsp;<input id="txtHotelArea" name="txtHotelArea" type="text" cdm="txt_hoteladdress"/></li> 
+      
+                  
+                  
+          </ul> 
+          <p style="text-align: center; margin-top: 5px;">
+      
+              <input type="button" id="btnQuickSearch" value="查询" class="base_btn02" cdm="btn_submitsearch"/></p>
+      </div>
+      <div class="base_154_bottom">
+      </div>
+      
+      </div>
+
+
+    <!--区域选择框-->
+    <ul id="jmpArea" style="display: none">
+        <li>
+            <div class="hotel_jmpinfo_type">
+                <a href="#;" style="text-align: left">不限位置</a></div>
+    
+        </li>
+        <li id="div_zone">
+            <div class="hotel_jmpinfo_type">
+                商业区</div>
+        </li>
+        <li id="div_location">
+            <div class="hotel_jmpinfo_type">
+                行政区</div>
+    
+        </li>
+    </ul>
+
+    <!-- 缩小范围 -->
+    <div class="base_154">
+        <div class="base_154_top"><h3>缩小搜索范围</h3></div>
+        <div class="base_154_middle" cdm="blk_filter">
+            <dl class="public_filter" id="htl_filter"></dl>
+        </div>
+    
+    </div>
+
+
+
+    <div class="base_154">
+	    <div class="base_154_top"><h3>城市会展信息</h3></div>
+	    <div class="base_154_middle">
+		    2009-08-26至2009-08-28<br />中国国际影视节目展
+
+<a href="javascript:OpenCityInfo('1','2009-08-18','2009-08-19');" title="更多" class="base_sider_more">更多</a>
+
+	    </div>
+	    <div class="base_154_bottom"></div>
+    </div>
+    
+
+
+
+    <div class="base_154">
+        <div class="base_154_top"><h3>图标说明</h3></div>
+    
+        <ul class="base_154_middle">
+             
+            <li class="base_space_fix"><img class="hotel_stars01" src="http://pic.ctrip.com/common/pic_alpha.gif" alt="" style="vertical-align:-3px;margin:0 2px 0 0;" />酒店星级</li>
+            
+            <li class="base_space_fix"><img class="hotel_diamond01" src="http://pic.ctrip.com/common/pic_alpha.gif" alt="" style="margin:0 3px 0 0;" />携程用户评级<a href="javascript:OpenHelp('http://pages.ctrip.com/homepage/hotel/hotel200810271.htm#7');">[详细信息]</a></li>
+            <li class="base_space_fix layoutfix"><span style="width:16px;height:16px;background:url(http://pic.ctrip.com/common/bg_16x16.gif) no-repeat 0 -224px;float:left;"></span>通过携程预订该酒店，在入住时即可享受该酒店提供的额外优惠。</li>
+            <li class="base_space_fix layoutfix"><span style="width:19px;height:20px;background:url(http://pic.ctrip.com/hotels081118/pic_goldmedal.gif) no-repeat 0 3px;float:left;"></span>携程金牌推荐酒店</li>
+            <li class="base_space_fix layoutfix"><span style="width:19px;height:20px;background:url(http://pic.ctrip.com/hotels081118/pic_silvermedal.gif) no-repeat 0 3px;float:left;"></span>携程银牌推荐酒店</li>
+    
+            <li class="base_space_fix">会员价 ***，具体价格必须登录后才能显示。</li>
+            <li class="base_space_fix">如你在旅途中遇见的酒店尚未收录在携程的酒店列表中，请<a href="http://www.ctrip.com/supermarket/hotel/hotelrecommend.asp" target="_new">推荐酒店</a></li>
+            
+        </ul>
+    
+        <div class="base_154_bottom"></div>
+    </div>
+    
+        </div>
+
+
+
+</div>
+<!--/bd-->
+
+  <!--ft-->
+  <div id="ft">
+      <p style="color:#0055aa;"><a href="Member/SignUp.asp" title="免费注册">免费注册</a> | <a href="http://pages.ctrip.com/public/sitemap/sitemap.htm" title="网站导航">网站导航</a> | <a href="http://pages.ctrip.com/public/sitemap/cityHotel.htm" title="宾馆索引">宾馆索引</a> | <a href="http://pages.ctrip.com/public/serve%20guideline.htm" title="服务说明">服务说明</a> | <a href="http://pages.ctrip.com/public/ctripab/abctrip.htm" title="关于携程">关于携程</a> | <a title="度假资质" href="http://pages.ctrip.com/tour/ingroupline_pages.asp?folder=ingroup0904&file=0177">度假资质</a> | <a href="public/job/job.asp" title="诚聘英才">诚聘英才</a> | <a href="http://pages.ctrip.com/public/dlhz.htm" title="代理合作">代理合作</a> | <a href="http://pages.ctrip.com/public/ctripad/adyw.htm" title="广告业务">广告业务</a> | <a href="http://pages.ctrip.com/public/contact.htm" title="联系我们">联系我们</a></p>
+      <p><a href="http://pages.ctrip.com/public/copyright.htm">Copyright<dfn>&copy;</dfn></a> 1999-2009, <a href="http://pages.ctrip.com/public/ctripab/abctrip.htm">ctrip.com</a>. All rights reserved.</p>
+  </div>
+  <!--/ft-->
+
+</div>
+
+</body>
+</html>
