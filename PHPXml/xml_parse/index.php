@@ -9,31 +9,20 @@
 提示和注释
 提示：要创建 XML 解析器，请使用 xml_parser_create() 函数。
 <?php
-//无效的 xml 文件
+//无效 xml 文件
 $xmlfile = 'test.xml';
-
 $xmlparser = xml_parser_create();
 
 // 打开文件并读取数据
 $fp = fopen($xmlfile, 'r');
-while ($xmldata = fread($fp, 4096)) 
-  {
-  // parse the data chunk
-  if (!xml_parse($xmlparser,$xmldata,feof($fp))) 
-    {
-    die( print "ERROR: "
-    . xml_get_error_code($xmlparser)
-    . "<br />"
-    . "Line: "
-    . xml_get_current_line_number($xmlparser)
-    . "<br />"
-    . "Column: "
-    . xml_get_current_column_number($xmlparser)
-    . "<br />");
-    }
-  }
+$xmldata = fread($fp, 4096);
+
+xml_parse_into_struct($xmlparser,$xmldata,$values);
 
 xml_parser_free($xmlparser);
+echo "<pre>";
+print_r($values);
+echo "</pre>";
 ?>
 </body>
 </html>
