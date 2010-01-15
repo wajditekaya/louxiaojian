@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>SSI</title>
+</head>
+
+<body>
+<strong>SSI</strong><strong>有什么用？</strong><br />
+之所以要扯到ssi，是因爲 shtml--server-parsed HTML 的首字母缩略词。包含有嵌入式服务器方包含命令的 HTML 文本。在被传送给浏览器之前，服务器会对 SHTML 文档进行完全地读取、分析以及修改。shtml和asp 有一些相似，以shtml命名的文件里，使用了ssi的一些指令，就像asp中的指令，你可以在SHTML文件中写入SSI指令，当客户端访问这些shtml文件时，服务器端会把这些SHTML文件进行读取和解释，把SHTML文件中包含的SSI指令解释出来比如：你可以在SHTML文件中用SSI指令引用其他的html文件（#include ），服务器传送给客户端的文件，是已经解释的SHTML不会有SSI指令。它实现了HTML所没有的功能，就是可以实现了动态的SHTML，可以说是HTML的一种进化吧。像新浪的新闻系统就是这样的，新闻内容是固定的但它上面的广告和菜单等就是用#include引用进来的。<br />
+目前，主要有以下几种用用途：<br />
+显示服务器端环境变量&lt;#echo&gt; <br />
+将文本内容直接插入到文档中&lt;#include&gt; <br />
+显示WEB文档相关信息&lt;#flastmod #fsize&gt; (如文件制作日期/大小等) <br />
+直接执行服务器上的各种程序&lt;#exec&gt;(如CGI或其他可执行程序) <br />
+设置SSI信息显示格式&lt;#config&gt;(如文件制作日期/大小显示方式)<br />
+高级SSI&lt;XSSI&gt;可设置变量使用if条件语句。<br />
+<div><!--#echo var="DATE_LOCAL"--> </div>
+<div><!--#echo var="变量名称"--></div>
+
+<br /><!--#echo var="DOCUMENT_NAME"--> 本文档名称
+<br /><!--#echo var="DATE_LOCAL"--> 现在时间
+<br /><!--#echo var="REMOTE_ADDR"--> 你的IP地址
+#flastmod 和 #fsize 示范
+<br />作用：
+<br />#flastmod 文件最近更新日期
+<br />#fsize 文件的长度
+<br />语法：
+
+<br /><!--#flastmod file="文件名称"-->
+<br /><!--#fsize file="文件名称"-->
+
+<br /><!--#flastmod file="exp/footer.shtml"-->
+<br /><!--#fsize file="exp/header.shtml"-->
+
+<!--#set var="变量名"value="变量值"-->
+<br /><!--#set var="lxj" value="娄小剑"-->
+<!--#set var="ft" value="footer"-->
+
+<!--#echo var="lxj"-->
+
+<br/><!--#include virtual="${ft}.shtml"-->
+
+<br /><!--#echo var="REQUEST_METHOD" -->
+
+<br /><!--#echo var="QUERY_STRING" -->
+
+<br /><!--#echo var="QUERY_STRING" -->
+
+<br /><!--#echo var="HTTP_REFERER" -->
+<br /><!--#echo var="REMOTE_ADDR" -->
+
+
+
+
+
+<br/><!--#include virtual="${SERVER_NAME}.head.shtml"-->
+<br/><!--#include virtual="${SERVER_NAME}.foot.shtml"-->
+<br/><!--#echo var="SERVER_NAME" --> 
+<br/><!--#include virtual="${HTTP_HOST}.head.shtml"-->
+<br/><!--#include virtual="${HTTP_HOST}.foot.shtml"-->
+
+<br/><!--#echo var="HTTP_HOST" --> 
+</body>
+</html>
