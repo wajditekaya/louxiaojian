@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>CGI环境变量列表</title>
+</head>
+
+<body>
+<div id="clickeye_content">
+  <div id="fontsize">
+    <p>1. AUTH_TYPE </p>
+    <p>　　如果服务器支持基本的认证并且如果脚本被保护，此变量提供认证类型，此信息是特定于协议和服务器的。 </p>
+    <p>　　2. CONTENT_LENGTH </p>
+    <p>　　如果通过 POST 方法的请求中包括数据，此变量的值为此请求中合法数据的长度。 </p>
+    <p>　　3. CONTENT_TYPE </p>
+    <p>　　如果请求中包括数据，此变量指定数据类型的类别。 </p>
+    <p>　　4. DOCUMENT_ROOT </p>
+    <p>　　网络提供的文件服务所在的路径。 </p>
+    <p>　　5. GATEWAY_INTERFACE </p>
+    <p>　　被服务器支持的 CGI 接口的版本数，其格式为 CGI/版本号。 </p>
+    <p>　　6. HTTP_ACCEPT </p>
+    <p>　　提供由逗号分开的并被客户服务器可接受的 MIME 类型的列表。 </p>
+    <p>　　7. HTTP_ACCEPT_CHARSET </p>
+    <p>　　客户机能接受的语言代码设置。 </p>
+    <p>　　8. HTTP_ACCEPT_ENCODING </p>
+    <p>　　客户机能接受的编码形式。 </p>
+    <p>　　9. HTTP_ACCEPT_LANGUAGE </p>
+    <p>　　客户机能接受的语言类型。 </p>
+    <p>　　10. HTTP_COOKIE </p>
+    <p>　　客户机内的 COOKIE 内容。 </p>
+    <p>　　11. HTTP_FORM </p>
+    <p>　　使用者发出请求的电子邮件讯息。 </p>
+    <p>　　12. HTTP_REFERER </p>
+    <p>　　在读取 CGI 程式前，客户端所指的 URL。 </p>
+    <p>　　13. HTTP_USER_AGENT </p>
+    <p>　　提供包含了版本数或其他专有数据的客户浏览器信息。 </p>
+    <p>　　14. PATH_INFO </p>
+    <p>　　显示由客户提供并附在虚拟路径尾的任何附加的路径信息。它通常被用作脚本的参数。 </p>
+    <p>　　15. PATH_TRANSLATED </p>
+    <p>　　仅由部分服务器支持，此变量包含由虚拟路径到被执行脚本的转换(即虚拟路径到物理路径的映射)。例如，如果到你的</p>
+    <p>　　WEB 服务器根的绝对路径为 /apache/httpd/htdocs，一个具有</p>
+    <p>　　URL http://www.CGIer.net/cgi-bin/test.cgi 的脚本会将变量</p>
+    <p>　　PATH_TRANSLATED 设置为/apache/httpd/htdocs/cgi-bin/test.cgi。 </p>
+    <p>　　16. QUERY_STRING </p>
+    <p>　　显示由客户提供的附在URL尾并用一个问号与脚本名分开的任何附加信息。 </p>
+    <p>　　17. REMOTE_ADDR </p>
+    <p>　　提供发请求客户的 IP 地址。 </p>
+    <p>　　18. REMOTE_HOST </p>
+    <p>　　提供已分解的发请求客户的主机名。 </p>
+    <p>　　19. REMOTE_IDENT </p>
+    <p>　　如果服务器和客户支持 RFC931，此变量将包含由远程用户的计算机提供的识别信息。 </p>
+    <p>　　20. REMOTE_USER </p>
+    <p>　　如果AUTH_TYPE被设置，此变量将包含用户提供并由服务器确认的用户名。 </p>
+    <p>　　21. REQUEST_METHOD </p>
+    <p>　　提供脚本被调用的方法。对于使用 HTTP/1.0 协议的脚本，仅</p>
+    <p>　　GET 和 POST 有意义。 </p>
+    <p>　　22. SERVER_ADMIN </p>
+    <p>　　显示服务器网络管理员。 </p>
+    <p>　　23. SCRIPT_NAME </p>
+    <p>　　这是被调用脚本文件的名字，它对于自引用脚本很有用。 </p>
+    <p>　　24. SERVER_NAME </p>
+    <p>　　这是你的 WEB 服务器的主机名、别名或IP地址。 </p>
+    <p>　　25. SERVER_PORT </p>
+    <p>　　这是你的 WEB 服务器的端口号。 </p>
+    <p>　　26. SERVER_PORT_SECURE </p>
+    <p>　　接受Http请求的服务器安全、加密端口。 </p>
+    <p>　　27. SERVER_PROTOCOL </p>
+    <p>　　这是本请求所用协议的名字/版本。 </p>
+    <p>　　28. SERVER_S0FTWARE </p>
+    <p>　　这是运行脚本的 HTTP 服务器的名字/版本。</p>
+  </div>
+</div>
+<!-- 分页 -->
+<!-- 分页end -->
+</body>
+</html>
