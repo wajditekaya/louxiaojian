@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<script src="focusPic.js" type="text/javascript"></script>
+<title>焦点图片轮换</title>
+<style type="text/css">
+*{margin:0; padding:0}
+body{font-size:12px}
+img{border:0}
+#focusPic{width:315px;margin:0px auto 5px auto;overflow:hidden;border:1px solid #999999;background:url(small.gif) bottom repeat-x;}
+.focusIn{border-bottom:1px solid #999999;padding:2px;margin-bottom:8px}
+.focusIn img{width:309px;height:184px;vertical-align:top;margin-bottom:2px}
+.focusIn div{position:relative;zoom:1}
+.focusIn div p{width:307px;position:absolute;height:26px;line-height:26px;text-align:center;overflow:hidden;background:#000;opacity:0.7;-moz-opacity:0.7;filter:alpha(opacity=70);left:1px;bottom:2px;color:#fff}
+.focusIn div p a{color:#fff}
+.focusIn #nub1{display:block}
+#focusPic #focusPicNav{overflow:hidden;zoom:1;padding:0px 0px 6px 16px;position:relative}
+#focusPic #focusPicNav .qian,#focusPic #focusPicNav .hou{position:absolute;width:12px;height:14px;overflow:hidden;top:20px;}
+#focusPic #focusPicNav .qian img,#focusPic #focusPicNav .hou img{width:12px;height:14px;vertical-align:top;cursor:pointer}
+#focusPic #focusPicNav .qian{left:2px}
+#focusPic #focusPicNav .hou{right:0px;}
+#focusPic #focusPicNav #smallPic{width:285px;overflow:hidden}
+#focusPic #focusPicNav li{width:95px;cursor:pointer;float:left;}
+#focusPic #focusPicNav li img{width:88px;height:51px;border:2px solid #333333;vertical-align:top}
+#focusPic #focusPicNav .cur img{border:2px solid #96000e}
+</style>
+</head>
+
+<body>
+  <div id="focusPic">
+	   <div class="focusIn">
+			<div id="bigPic"></div>
+		</div>
+		<div id="focusPicNav">
+		   <div class="qian" id="qian"><img src="qian.gif" alt="" /></div>
+		   <div id="smallPic">
+			 <ul id="smallPicList"></ul>
+			</div>
+			<div class="hou" id="hou"><img src="hou.gif" alt="" /></div>
+		</div>
+  </div>
+  <script type="text/javascript">
+  var yu=new focusPic("bigPic","smallPicList","qian","hou","3","0","cur");
+  yu.picInfo[0]={pHref:"http://www.lxj.name",pSrc:"fousePic.gif",pText:"《最后的遗迹》PC版试玩下载放出000"};
+  yu.picInfo[1]={pHref:"http://www.lxj222.name",pSrc:"game.gif",pText:"《最后的遗迹》PC版试玩下载放出111"};
+  yu.picInfo[2]={pHref:"http://www.lxj3333.name",pSrc:"04.jpg",pText:"《最后的遗迹》PC版试玩下载放出222"};
+  yu.picInfo[3]={pHref:"http://www.lxj444.name",pSrc:"03.jpg",pText:"《最后的遗迹》PC版试玩下载放出333"};
+  yu.picInfo[4]={pHref:"http://www.lxj444.name",pSrc:"01.jpg",pText:"《最后的遗迹》PC版试玩下载放出4444"};
+  yu.picInfo[5]={pHref:"http://www.lxj444.name",pSrc:"02.jpg",pText:"《最后的遗迹》PC版试玩下载放出555"};
+  yu.pAction();
+  </script>
+</body>
+</html>
