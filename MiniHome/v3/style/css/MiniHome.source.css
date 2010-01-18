@@ -34,7 +34,7 @@ select{color:#999}
 .noText{display:block;height:0;width:0;line-height:0;overflow:hidden}
 /*textList*/
 .tList a{text-decoration:none}
-.tList li{line-height:20px;height:20px;position:relative;overflow:hidden;zoom:1;border:1px solid #fff;border-left:0}
+.tList li{line-height:22px;height:22px;position:relative;overflow:hidden}
 /*pic_left_text_right*/
 .pltr,.pltr .tr,.pltr .tl{overflow:hidden;zoom:1}
 .pltr .img,.pltr .tl{float:left;_margin-right:-3px;}
@@ -63,6 +63,7 @@ select{color:#999}
   .rowArea .main .mainIn{margin-right:155px}
   /*.rowArea .lBar{width:326px;float:left;margin-left:-100%}*/
   .rowArea .rBar{width:150px;float:left;margin-left:-150px}
+  .rowArea .rBar .pitch{margin-bottom:5px}
 .bf,.xz,.ss,.xj,.pw,.sBut,.rank .liRank,.rank2 .liRank li,.tList li,.iNav a,#shadow{background-image:url(../img/MiniHome2.png);background-repeat:no-repeat}
 .tList li{padding-left:8px;background-position:-96px 10px;*background-position:-96px 8px}
 #wrapper{border-top:1px solid #47617c}
@@ -95,7 +96,7 @@ select{color:#999}
 .mnArea{display:none;overflow:hidden;zoom:1}
 	.mnArea a{color:#666;text-decoration:none}
 	.mnArea a:hover{text-decoration:underline}
-	.mnArea .mnR{width:100%;float:left;height:318px; overflow:hidden}
+	.mnArea .mnR{width:100%;float:left;height:310px;overflow:hidden}
 	.mnArea .mnR a{color:#252525}
 	.mnArea .mnR .miniHead,.mnArea .mnR .rank,.mnArea .mnR .rank2,.mnArea .mnR .List{margin-left:168px}
 	.mnArea .mnL{width:145px;height:308px;float:left;margin-left:-100%;}
@@ -111,8 +112,8 @@ select{color:#999}
 	#shadow{width:70px;height:24px;line-height:24px;*line-height:25px;overflow:hidden;background-position:0 -25px;text-align:center;cursor:pointer; margin-right:5px;cursor:move;filter:alpha(opacity=90);z-index:9999}
 	#shadow a{text-decoration:none;color:#000;}
 .miniHead h3,.miniHead p{height:22px;line-height:22px;overflow:hidden}
-.headMove h4{height:23px;line-height:21px;overflow:hidden;font-weight:normal;}
-.headMove h4 a{display:block;border:1px solid #ececec;background:#f3f3f3;}
+.headMove h4{font-weight:normal;border:1px solid #ececec;}
+.headMove h4 a{display:block;background:#f3f3f3;height:21px;line-height:21px;overflow:hidden}
   .headMove{text-align:center;margin-bottom:5px}
   .headMove img{width:145px;height:131px;vertical-align:top}
 .headGame{text-align:center;margin-bottom:6px}
