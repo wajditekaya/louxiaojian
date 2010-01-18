@@ -5,14 +5,13 @@
 </head>
 
 <body>
-<div id="wrapper"><!-- style="width:596px;margin:0 auto;background:#dff8ff"-->
+<div id="wrapper">
 
  <!--miniHome-->
  <div id="miniHome">
  
    <div class="miniTop"><span class="user">你好，橘左近</span><span class="oInfo">2009年11月16日&nbsp;&nbsp;星期三/上海&nbsp;&nbsp;14C&nbsp;小雨</span></div>
    <img src="style/img/tips.gif" style="position:absolute;left:0px;top:5px;display:none;"id="tishi"/>
-   <div id="shadow" style="display:none" ></div>
    <!--rowArea-->
    <div class="rowArea">
     
@@ -44,16 +43,19 @@
               <!--zxList-->
               <div id="zxList" class="List">
                 <ul class="tList">
-                 <li><a href="#">菲律宾绑架案人质全部获释人质全部获</a></li>
+                 <li><a href="#">菲律宾绑架案人质全部获释人质全部获菲律宾绑架案人质全部获释人质全部获</a></li>
                  <li><a href="#">这里最多只能显示19个汉字</a></li>
                  <li><a href="#">房地产老板花18.8万买天价橙子</a></li>
                  <li><a href="#">川大招生新招偏才怪才可录取</a></li>
                 </ul>
                 <ul class="tList">
                  <li><a href="#">菲律宾绑架案人质全部获释人质全部获</a></li>
-                 <li><a href="#">这里最多只能显示19个汉字</a></li>
-                 <li><a href="#">房地产老板花18.8万买天价橙子</a></li>
-                 <li><a href="#">川大招生新招偏才怪才可录取</a></li>
+	             <li><a href="pps://hwjxehwqeb33viru2aqa.pps/100117-火箭主场不敌热浪-ssty.wmv?from=mini" >火箭主场不敌热浪</a><a href="pps://oumzclwqeb6s4kbd2aqa.pps/100117-黄河山东段封河长度突破250公里-bjws.wmv?from=mini" >黄封河长度突破250公里</a>
+                 </li>
+				 <li><a href="pps://ouu2wrwqeb33virp2aqa.pps/100117-天价复印8页文件花120元-ahws.wmv?from=mini" >天价复印8页120元</a><a href="pps://hwjxekgqea6nnuj32aqa.pps/100117-林文龙郭可盈爱女照片曝光-ssyl.wmv?from=mini" >郭可盈爱女照片曝光</a>					
+                 </li>
+				 <li><a href="pps://oumzcngqeb33viro2aqa.pps/100117-史上最矮警察身高1.53米-ahws.wmv?from=mini" >最矮警察身高1.53米</a><a href="pps://hwjxelwqea6nnujq2aqa.pps/100117-刘德华退出香港演艺人协会-ssyl.wmv?from=mini" >刘德华退出演艺人协会</a>					
+                 </li>
                 </ul>
                 <ul class="tList">
                  <li><a href="#">男子书店盗书称为加强管理</a></li>
@@ -71,7 +73,7 @@
                 <h4><a href="#">芮妮·齐薇格新片《我的唯一》</a></h4>
                </div>
                <!--/headMove-->
-
+               <div class="headGame"><a href="#" target="_blank"><img src="images/img3.jpg" alt="" /></a></div>
             </div>
 
            </div>
@@ -149,6 +151,7 @@
                 <h4><a href="#">国产谍战大片《风声》</a></h4>
                </div>
                <!--/headMove-->
+               <div class="headGame"><a href="#" target="_blank"><img src="images/img3.jpg" alt="" /></a></div>
             </div>
 
            </div>
@@ -266,6 +269,7 @@
                 <h4><a href="#">国产谍战大片《风声》</a></h4>
                </div>
                <!--/headMove-->
+               <div class="headGame"><a href="#" target="_blank"><img src="images/img3.jpg" alt="" /></a></div>
             </div>
 
            </div>
@@ -401,6 +405,7 @@
                 <h4><a href="#">国产谍战大片《风声》</a></h4>
                </div>
                <!--/headMove-->
+               <div class="headGame"><a href="#" target="_blank"><img src="images/img3.jpg" alt="" /></a></div>
             </div>
 
            </div>
@@ -408,7 +413,6 @@
 
            <!--game-->
            <div class="game">
-             <div class="headGame"><a href="#" target="_blank"><img src="images/img3.jpg" alt="" /></a></div>
              <ul class="gameList">
                <li><img src="images/img5.gif" alt="" /><a href="#">帝国重生</a></li>
                <li><img src="images/img6.gif" alt="" /><a href="#">射雕传</a></li>
@@ -439,6 +443,8 @@
  <!--/miniHome-->
 
 </div>
+<div id="shadow" style="display:none" ></div>
+<p style="padding-top:20px"><input type="button" value="编辑预览界面" onClick="document.getElementById('wrapper').style.cssText='width:592px;margin:0 auto'" /></p>
 <script type="text/javascript" src="style/js/mini.js"></script>
 <script type="text/javascript">
 //*******************定义区********************************//

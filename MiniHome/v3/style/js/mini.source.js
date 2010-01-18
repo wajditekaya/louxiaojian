@@ -370,7 +370,7 @@ function auto(){
 
 }  
 /*==ø…Õœ∂ØTabΩ· ¯==*/
-(function(){
+/*(function(){
 	  function getPosition(e){ 
 			var t=e.offsetTop; 
 			var l=e.offsetLeft; 
@@ -418,7 +418,7 @@ function auto(){
 	  };
 	  new hoverMenu("moveList2","a");
 	  new hoverMenu("moveList3","a");
-})();
+})();*/
 (function(){
  if(!$('s')){return false}
  var s=$('s');
