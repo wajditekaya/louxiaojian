@@ -1,0 +1,32 @@
+/*==for credits.shtml==*/
+.creArea{position:relative}
+  .creArea .creHD{height:27px;background:#d3edfa;padding-left:10px;overflow:hidden;margin-bottom:10px}
+  .creArea .creHD h2{font-size:14px;height:22px;line-height:22px;background:#fff url(../img/ico_20x20.gif) no-repeat;background-position:6px 4px;*background-position:6px 3px;float:left;padding:0 10px 0 27px;margin-top:5px}
+  .creArea .act{position:absolute;top:5px;right:10px}
+  .creArea .act .more{font-weight:bold}
+  .creArea .creIn{overflow:hidden;zoom:1;margin-right:-40px}
+  .creArea .creIn dl{width:162px;float:left;text-align:center;margin-right:14px;height:235px}
+  .creArea .creIn dl dt{margin-bottom:2px}
+  .creArea .creIn dl dt img{width:160px;height:168px;vertical-align:top;border:1px solid #cccccc}
+  .creArea .creIn dl dd{padding:5px 0 10px 0;background:#f4f4f4;line-height:16px;}
+  .creArea .creIn dl dd .cn{display:block;height:16px;overflow:hidden}
+  .creArea .creIn dl dd em{display:block;color:#f60;font-weight:bold;height:16px;overflow:hidden}
+  .creArea .creIn dl dd em a{color:#f60}
+/*==/for credits.shtml==*/
+/*==for creditsShow.shtml==*/
+#creditsShow{margin-bottom:10px}
+#creditsShow .tl{width:270px;border:1px solid #ccc;padding-bottom:8px}
+#creditsShow .tl .bImg img{width:270px;height:284px;vertical-align:top;margin-bottom:8px}
+#creditsShow .tl .sImg{overflow:hidden;zoom:1;margin-left:8px}
+#creditsShow .tl .sImg li{float:left;width:52px;margin-right:9px}
+#creditsShow .tl .sImg li img{width:52px;height:55px;vertical-align:top;border:1px solid #ccc;padding:1px}
+#creditsShow .tr{border:1px solid #ccc;padding:0 10px;margin-left:282px;_margin-left:279px; height:359px}
+#creditsShow .tr h3{font-size:14px;line-height:32px;height:32px;overflow:hidden}
+#dhfs{margin-bottom:10px}
+#dhfs .jf{color:#f60;font-weight:bold}
+#dhfs .peisong{border-bottom:1px solid #ddd;border-top:1px solid #ccc; margin-bottom:5px; line-height:24px}
+#dhfs .dhIn{padding:0 20px 8px 20px;line-height:24px;}
+#dhfs dl dd{line-height:22px;padding-left:20px;margin-bottom:8px}
+#dhfs dl dt{font-weight:bold}
+#dhfs #pushIn{margin-left:20px}
+/*==/for creditsShow.shtml==*/

@@ -1,0 +1,10 @@
+.tList{margin:0 5px 10px 5px;overflow:hidden;zoom:1}
+  .tList li{height:29px;line-height:29px;overflow:hidden;font-size:14px;border-top:1px dashed #ddd;margin-top:-1px;background:url(../img/point.gif) 8px 12px no-repeat;float:left; width:49.9%}
+  .tList li a{margin:0 20px;}
+  .tList li span{float:right;color:#666;margin-right:10px}
+#newsList .pageNav{padding-right:20px}
+#newShow{padding:15px 30px 10px 30px;background:#f4f9ff;border:1px solid #c8d8f2;margin-bottom:15px}
+  #newShow h1{font-size:16px;font-family:"Î¢ÈíÑÅºÚ";text-align:center;line-height:1.2em;padding-bottom:15px}
+  #newShow .time{text-align:center;border-top:1px solid #c8d8f2;padding-top:8px}
+  #newShow .newMain{padding-top:20px; font-size:14px}
+  #newShow .newMain p{margin-bottom:10px}
