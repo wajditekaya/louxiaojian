@@ -34,7 +34,7 @@ select{color:#999}
 .noText{display:block;height:0;width:0;line-height:0;overflow:hidden}
 /*textList*/
 .tList a{text-decoration:none}
-.tList li{line-height:20px;height:20px;position:relative;zoom:1;border:1px solid #fff;border-left:0}
+.tList li{line-height:20px;height:20px;position:relative;overflow:hidden;zoom:1;border:1px solid #fff;border-left:0}
 /*pic_left_text_right*/
 .pltr,.pltr .tr,.pltr .tl{overflow:hidden;zoom:1}
 .pltr .img,.pltr .tl{float:left;_margin-right:-3px;}
@@ -100,7 +100,7 @@ select{color:#999}
 	.mnArea .mnR .miniHead,.mnArea .mnR .rank,.mnArea .mnR .rank2,.mnArea .mnR .List{margin-left:168px}
 	.mnArea .mnL{width:145px;height:308px;float:left;margin-left:-100%;}
 
-#Information{position:relative;margin-top:23px;border:1px solid #7487a1;padding:7px 28px 0 7px;background:#fff;color:#666;zoom:1}
+#Information{position:relative;margin-top:23px;border:1px solid #7487a1;padding:7px 15px 0 7px;background:#fff;color:#666;zoom:1}
 
 .iNav{overflow:hidden;zoom:1;position:absolute;top:-24px;left:-1px}
     .iNav li{float:left}
@@ -108,17 +108,18 @@ select{color:#999}
 	.iNav .cur{background-position:0 -25px;color:#000;font-weight:bold;background-color:#f3f3f3}
 	.iNav a.mb{width:70px;height:24px;float:left;border:1px #FF0000 dashed;text-decoration:none;cursor:hand;background:none}
 	.iNav a.mb:hover{display:block; cursor:hand}
-	#shadow{width:70px;height:24px;line-height:24px;*line-height:25px;overflow:hidden;background-position:0 -25px;text-align:center;cursor:pointer; margin-right:5px;cursor:move;filter:alpha(opacity=90);}
+	#shadow{width:70px;height:24px;line-height:24px;*line-height:25px;overflow:hidden;background-position:0 -25px;text-align:center;cursor:pointer; margin-right:5px;cursor:move;filter:alpha(opacity=90);z-index:9999}
 	#shadow a{text-decoration:none;color:#000;}
 .miniHead h3,.miniHead p{height:22px;line-height:22px;overflow:hidden}
-.headMove h4{height:23px;line-height:21px;overflow:hidden;font-weight:normal;background:#f3f3f3;border:1px solid #ececec}
-  .headMove{text-align:center;margin-bottom:3px}
+.headMove h4{height:23px;line-height:21px;overflow:hidden;font-weight:normal;}
+.headMove h4 a{display:block;border:1px solid #ececec;background:#f3f3f3;}
+  .headMove{text-align:center;margin-bottom:5px}
   .headMove img{width:145px;height:131px;vertical-align:top}
-.game{width:145px;padding-bottom:4px; position:absolute;top:166px;left:7px}
+.headGame{text-align:center;margin-bottom:6px}
+.headGame img{width:145px;height:75px;vertical-align:top}
+.game{width:145px;padding-bottom:4px;position:absolute;top:247px;left:7px}
     .game a{color:#666;text-decoration:none}
     .game a:hover{text-decoration:underline}
-    .game .headGame{text-align:center;margin-bottom:6px}
-	.game .headGame img{width:145px;height:75px;vertical-align:top}
 	.game .gameList,.game .gameList li{overflow:hidden;zoom:1}
 	.game .gameList li{float:left;width:49.9%}
 	.game .gameList li img,.game .gameList li a{float:left}
@@ -142,7 +143,7 @@ select{color:#999}
 	.aFo .ib .bf{margin-right:10px}
 .List .tList,.rank,.rank2 .liRank{background:url(../img/dash.gif) top repeat-x}
 .List .tList{padding:6px 0 7px 0}
-.liRank li{padding:0 0 0 17px;position:relative;zoom:1;line-height:24px}
+.liRank li{padding:0 0 0 17px;position:relative;zoom:1;line-height:24px;height:24px;overflow:hidden}
 .rank{padding:4px 0 5px 0}
 .rank .liRank{background-position:-87px -22px;*background-position:-87px -21px;}
 .rank h3{height:22px;line-height:22px;overflow:hidden;color:#000}
