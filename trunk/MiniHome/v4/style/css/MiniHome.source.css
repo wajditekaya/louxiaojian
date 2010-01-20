@@ -152,8 +152,8 @@ select{color:#999}
 	.ysMenu li a:hover{text-decoration:underline}
 	#ysRank .rank{display:none}
 	#ysRank .rank dl{position:relative;zoom:1;background-image:url(../img/dash.gif);background-position:top;background-repeat:repeat-x}
-	#ysRank .rank dl dt{line-height:25px;overflow:hidden;padding:0 9px 0 27px}
-	#ysRank .rank dl dd{padding:0 9px}
+	#ysRank .rank dl dt{line-height:25px;overflow:hidden;padding:0 9px 0 27px;zoom:1}
+	#ysRank .rank dl dd{padding:0 9px;zoom:1}
 	#ysRank .rank dl dd .mInfo{display:none;padding-left:98px;position:relative;zoom:1}
 	#ysRank .rank dl dd .mInfo img{width:90px;height:60px;border:1px solid #858585;vertical-align:top;position:absolute; top:0; left:0}
 	#ysRank .rank dl dd .js{color:#003b5d;height:60px;line-height:20px;overflow:hidden}
