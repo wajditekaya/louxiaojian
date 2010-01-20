@@ -758,7 +758,11 @@
        <!--/mainIn-->
      </div>
      <div class="rBar">
-        <div class="search"><input type="text" value="电影/电视剧" class="sText" id="s" /><input type="button" value="搜索" class="sBut" /></div>
+        <div class="search">
+        <form id="topSearch" name="topSearch" method="get" target=_blank  action="http://so.pps.tv/search"   onkeypress="if(event.keyCode==13){this.submit();event.returnValue = false;return false;}">
+        <input type="text" value="电影/电视剧" class="sText" id="s" name="wd" /><input type="submit" value="搜索" class="sBut" />
+        </form>
+        </div>
         <div class="rAd"><a href="#" target="_blank"><img src="images/img1.jpg" alt="" /></a></div>
         <div class="xsTip"><a href="#" target="_blank">七大活动带你玩转明朝时代</a></div>
         <div class="rAd"><a href="#" target="_blank"><img src="images/img4.jpg" alt="" /></a></div>
