@@ -144,16 +144,16 @@ select{color:#999}
 	.sz span{margin-right:7px}
 	.sz .ss,.sz .xj,.sz .pw{margin:8px 5px 0 0;display:inline}
 #ysRank .rank dl dt,.ysMenu li{background-image:url(../img/rank.png);background-repeat:no-repeat}
-#ysRank{padding-bottom:4px}
+#ysRank{padding-bottom:4px;zoom:1}
     .ysMenu,.ysMenu ul{overflow:hidden;zoom:1}
     .ysMenu ul{height:21px;line-height:21px;margin-bottom:2px;margin-left:-10px}
 	.ysMenu li{float:left;padding:0 17px;cursor:pointer;background-position:0 -396px}
 	.ysMenu li a:hover,.ysMenu .cur a{color:#ff9600;font-weight:bold}
 	.ysMenu li a:hover{text-decoration:underline}
-	#ysRank .rank{display:none}
+	#ysRank .rank{display:none;zoom:1}
 	#ysRank .rank dl{position:relative;zoom:1;background-image:url(../img/dash.gif);background-position:top;background-repeat:repeat-x}
-	#ysRank .rank dl dt{line-height:25px;overflow:hidden;padding:0 9px 0 27px;zoom:1}
-	#ysRank .rank dl dd{padding:0 9px;zoom:1}
+	#ysRank .rank dl dt{line-height:25px;overflow:hidden;padding:0 9px 0 27px}
+	#ysRank .rank dl dd{padding:0 9px}
 	#ysRank .rank dl dd .mInfo{display:none;padding-left:98px;position:relative;zoom:1}
 	#ysRank .rank dl dd .mInfo img{width:90px;height:60px;border:1px solid #858585;vertical-align:top;position:absolute; top:0; left:0}
 	#ysRank .rank dl dd .js{color:#003b5d;height:60px;line-height:20px;overflow:hidden}
