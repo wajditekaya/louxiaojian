@@ -127,12 +127,8 @@
 				                     <div class="detail_info" id="tab_m_1">
 										<ul class="hotel_grid02 layoutfix">
 											<li class="hotel_unit detail_pic" id="hotelpicwrap">
-												<div class="detail_pic_border">
-												
-					
-								<img  title="刘医生" src="http://www.petkang.com/doctor_image/18.jpg">						
-					
-									</div>
+                                            
+												<div class="detail_pic_border" style="width:auto"><img  title="刘医生" src="http://www.petkang.com/doctor_image/18.jpg" ></div>
 												
 											</li>
 											<li class="hotel_unit">
