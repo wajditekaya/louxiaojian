@@ -216,4 +216,10 @@ font-family:"arial black";background:#E53D00;border-top:solid 1px #FFF;z-index:1
 	.jsInfo .jsTab li.cur a{text-decoration:none;}
 	.jsInfo .jsBd{ padding:10px 10px 0; font-size:14px; color:#000;}
 	.jsInfo .jsBd p{ padding-bottom:12px;}
-	
+/*==for doctorShow==*/
+.Doctorjl{ margin-bottom:10px}
+.Doctorjl li{position:relative;zoom:1;height:22px;line-height:22px;overflow:hidden}
+.Doctorjl span{position:absolute;top:0;right:0}
+#relatedDoctor li{text-align:center;vertical-align:top;}
+#relatedDoctor li span{display:block;height:18px;line-height:18px;overflow:hidden;margin-bottom:4px}
+#relatedDoctor li img{width:147px;height:128px;vertical-align:top}
