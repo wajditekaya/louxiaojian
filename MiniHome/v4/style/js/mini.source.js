@@ -340,6 +340,7 @@ function doit(v){
 if(typeof(IC)=="object" && typeof(IC.rpt) == "function") IC.rpt(v);  
 for(var i=0;i<m;i++){
        if(v==$('iNav').getElementsByTagName('a')[i].name){
+       		mini_tab_show(v);
 			window.setTimeout(function(){
 									if(PreviousDiv){PreviousDiv.style.display='none';}
 									$(content[v]).style.display='block';
@@ -412,7 +413,7 @@ function auto(){
 							 if(dself.parentNode.className.indexOf(className)==-1){dself.parentNode.className+=' '+className;}
 							 last.o=dself;
 							 last.cn=className;
-						},200);
+						},0);
 				   };
 				   dt[j].onmouseout=function(){clearTimeout(sTime)}
 				};

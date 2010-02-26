@@ -166,7 +166,7 @@ select{color:#999}
 	#ysRank .rank .selected dt{padding-left:49px;border-top:2px solid #fff;margin-bottom:5px;color:#003b5d;font-weight:bold;zoom:1}
 	#ysRank .rank .selected dt a{color:#003b5d}
 	#ysRank .rank .selected dd{padding-bottom:15px;zoom:1}
-	#ysRank .rank .selected .sz{position:absolute;top:71px}
+	#ysRank .rank .selected .sz{position:absolute;top:0}
 	#ysRank .r1,#ysRank .r3,#ysRank .r5,#ysRank .r7{background-color:#f5f5f5}
 	#ysRank .r1 dt{background-position:9px -195px}
 	#ysRank .r2 dt{background-position:9px -220px}
