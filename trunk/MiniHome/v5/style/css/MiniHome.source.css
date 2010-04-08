@@ -63,7 +63,7 @@ select{color:#999}
   .rowArea .main .mainIn{margin-right:155px}
   /*.rowArea .lBar{width:326px;float:left;margin-left:-100%}*/
   .rowArea .rBar{width:150px;float:left;margin-left:-150px}
-.bf,.xz,.ss,.xj,.pw,.sBut,.rank .liRank,.rank2 .liRank li,.tList li,.iNav a,#shadow,.vote .voteList li{background-image:url(../img/MiniHome2.png?20100301);background-repeat:no-repeat}
+.bf,.xz,.ss,.xj,.pw,.sBut,.rank .liRank,.rank2 .liRank li,.tList li,.iNav a,#shadow,.vote .voteList li,.headGameA li,.g_mnArea .textList li,.caozuo a{background-image:url(../img/MiniHome2.png?20100301);background-repeat:no-repeat}
 .tList li{padding-left:8px;background-position:-96px 10px;*background-position:-96px 8px}
 #wrapper{border-top:1px solid #47617c}
 #miniHome{padding:0 5px;text-align:left;background:url(../img/miniBj.jpg) top right no-repeat;border-top:1px solid #A0C2D9;position:relative;zoom:1}
@@ -189,3 +189,72 @@ select{color:#999}
 	#ysRank .sr7 dt{background-position:9px -147px}
 	#ysRank .sr8 dt{background-position:9px -172px}
 
+#gameRank{}
+    #gameRank .tit{ background-color:#E9E9E9}
+	#gameRank .tit dt{ background:#E9E9E9 url(../img/h3-a.png) no-repeat; height:24px; font-weight:bold; color:#fff; line-height:20px; padding-left:10px; font-size:14px;}
+    #gameRank .tit dd{ float:left; color:#000; height:20px; line-height:17px;}
+    #gameRank .tit dd.d1{ padding-left:3px;}
+    #gameRank .tit dd.d2{ padding-left:6px;}
+    #gameRank .tit dd.d3{ padding-left:38px;}
+	#gameRank .rank{display:none; background-color:#FFF; zoom:1;}
+	#gameRank .rank dl{position:relative;zoom:1; border-top:1px solid #E2E2E2}
+	#gameRank .rank dl dt{line-height:25px;overflow:hidden; padding:0 35px 0 28px;background-image:url(../img/rank2.png);background-repeat:no-repeat}
+	#gameRank .rank dl dt a{ color:#404040; text-decoration:none;}
+	#gameRank .rank dl dd{}
+	#gameRank .rank dl dd .mInfo{display:none;position:relative;zoom:1}
+	#gameRank .rank dl dd .mInfo img{width:128px;height:58px;border:1px solid #858585;vertical-align:top;}
+	#gameRank .rank dl .sj{position:absolute;top:2px;right:10px; width:25px; text-align:center; font-family:"ËÎÌו"}
+	#gameRank .rank .selected{}
+	#gameRank .rank .selected dd .mInfo{display:block;}
+	#gameRank .rank .selected dt{font-weight:bold;zoom:1;}
+	#gameRank .rank .selected dt a{color:#025E89; font-size:14px;}
+	#gameRank .rank .selected dd{padding-bottom:7px; padding-left:9px;zoom:1}
+	#gameRank .r1 dt{background-position:9px 0px}
+	#gameRank .r2 dt{background-position:9px -25px}
+	#gameRank .r3 dt{background-position:9px -50px}
+	#gameRank .r4 dt{background-position:9px -75px}
+	#gameRank .r5 dt{background-position:9px -100px}
+	#gameRank .r6 dt{background-position:9px -125px}
+	#gameRank .r7 dt{background-position:9px -150px}
+	#gameRank .r8 dt{background-position:9px -175px}
+
+/*game_v1*/
+#gameTab .headGameA{ border:1px solid #c9efff; background-color:#f6fcff; margin-bottom:3px;}
+#gameTab .headGameA ul{ zoom:1; overflow:hidden;  padding:4px;}
+#gameTab .headGameA li{ background-position:-97px -87px; padding-right:0px; margin-right:0;}
+#gameTab .headGameA li a{ color:#0066A6;}
+#gameTab .headGameB{ text-align:center;}
+#gameTab .headGameB img{ border:1px solid #ebebeb}
+
+/*game_v2*/
+.g_mnArea{display:none;background:#fff;height:310px; overflow:hidden;}
+	.gameNewsArea{ zoom:1; overflow:hidden;}
+	.g_mnArea .textList{ }
+	.g_mnArea .textList li{ line-height:22px;height:22px;position:relative;overflow:hidden;padding-left:8px;background-position:-96px 10px ;*background-position:-96px 8px}
+    .g_mnArea .textList li span{ float:right;}
+	.g_mnArea a{color:#666;text-decoration:none}
+	.g_mnArea a:hover{text-decoration:underline}
+	.g_mnArea .mnR{width:100%;float:left;height:160px;overflow:hidden}
+	.g_mnArea .mnR a{color:#252525}
+	.g_mnArea .mnR .miniHead,.g_mnArea .mnR .List{margin-left:148px;margin-right:8px;}
+	.g_mnArea .mnL{width:134px;height:160px;float:left;margin-left:-100%;}
+	.g_mnArea .headGameC,.g_mnArea .headGameD{ text-align:center; margin-bottom:6px;}
+    .g_mnArea .headGameC{ margin-top:3px;}
+    .g_mnArea .headGameC img,.g_mnArea .headGameD{ width:130px; height:66px; border:2px solid #E1E1E1;}
+	#gameList{}
+    .gameMenu,.gameMenu ul{overflow:hidden;zoom:1}
+    .gameMenu{ background:url(../img/gmBj.png) repeat-x; margin-bottom:12px; padding-top:5px;}
+    .gameMenu ul{height:21px;line-height:21px;margin-left:-2px;}
+	.gameMenu li{float:left;padding:0 8px;cursor:pointer; background:url(../img/rank.gif) no-repeat; background-position:0 -396px}
+	.gameMenu li a:hover,.gameMenu .cur a{color:#ff9600;font-weight:bold}
+	.gameMenu li a:hover{text-decoration:underline}
+    #gameList .gameDetail{ display:none;}
+    #gameList .gameDetail .img{ float:left; width:135px;}
+    #gameList .gameDetail .img img{ width:127px; height:87px; border:3px solid #E1E1E1}
+    #gameList .gameDetail .tr {color:#666666;line-height:18px;margin-left:143px;margin-right:0px;}
+    #gameList .gameDetail .tr dt { font-weight:bold; font-size:14px; color:#434343; }
+    #gameList .gameDetail .tr dt a { color:#434343; }
+    #gameList .gameDetail .tr .js { color:#999; height:36px; overflow:hidden; margin-bottom:4px; }
+    #gameList .gameDetail .tr .caozuo { overflow:hidden; zoom:1; }
+    #gameList .gameDetail .tr .caozuo a { float:left; width:62px; height:19px; line-height:19px; overflow:hidden; *line-height:20px;text-align:center; color:#fff; margin-right:4px; background-position:-37px -68px; }
+    #gameList .gameDetail .tr .caozuo .beginGame { background-position:-37px -49px; }

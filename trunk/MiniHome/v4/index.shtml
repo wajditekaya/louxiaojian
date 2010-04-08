@@ -25,9 +25,9 @@
            <div id="name" style="height:0;line-height:0;overflow:hidden;display:none"></div>
            <ul id="iNav" class="iNav">
             <a href="#" name="0">资讯</a>
-            <a href="#" name="1">排名</a>
-            <a href="#" name="2">更新</a>
-            <a href="#" name="3">短片</a>
+            <a href="#" name="1">影视</a>
+            <a href="#" name="2">排名</a>
+            <a href="#" name="3">更新</a>
            </ul>
            <!--zixun-->
            <div id="zixun" class="mnArea">
@@ -607,14 +607,14 @@
            </div>
            <!--/updateTab-->
            
-           <!--videoTab-->
-           <div id="videoTab" class="mnArea">
+           <!--yingshi-->
+           <div id="yingshi" class="mnArea">
            
             <div class="mnR">
             
               <!--miniHead-->
               <div class="miniHead">
-                <h3><a href="#" target="_blank">短片短片短片短片短片</a></h3>
+                <h3><a href="#" target="_blank">影视影视影视影视</a></h3>
                 <p>僵尸世界生存守则:活着!</p>
               </div>
               <!--/miniHead-->
@@ -741,7 +741,7 @@
             </div>
 
            </div>
-           <!--/videoTab-->
+           <!--/yingshi-->
 
            <!--game-->
            <div id="game" class="game">
@@ -755,6 +755,15 @@
              </ul>
            </div>
            <!--/game-->
+           <!--vote-->
+           <div id="vote" class="vote">
+             <ul class="voteList">
+               <li><a href="#">帝国重生帝国重生帝国重生帝国重生</a></li>
+               <li><a href="#">射雕传帝国重生帝国重生帝国重生帝国重生</a></li>
+               <li><a href="#">墨攻天下帝国重生帝国重生帝国重生帝国重生</a></li>
+             </ul>
+           </div>
+           <!--/vote-->
                
          </div>
          <!--/Information-->
@@ -788,13 +797,66 @@ wrapper.style.cssText='width:592px;margin:0 auto';
 <script type="text/javascript" src="style/js/mini.source.js"></script>
 <script type="text/javascript">
 //*******************定义区********************************//
-var content=['zixun','rankTab','updateTab','videoTab']/*选项卡内容ID数组*/
+function getCookie(name){
+	var search;
+	search = name + "="
+	offset = document.cookie.indexOf(search)
+	if (offset != -1) {
+		offset += search.length ;
+		end = document.cookie.indexOf(";", offset) ;
+		if (end == -1)
+		end = document.cookie.length;
+		return document.cookie.substring(offset, end);
+	}
+	else
+	return "";
+}
+function setCookie (name, value, expires) {
+	var Then = new Date();
+	Then.setTime(Then.getTime() + expires*1000 );
+	document.cookie = name + "=" + value + "; expires=" + Then.toGMTString()+"; path=/;"; 
+}
+function mini_tab_show(a)
+{
+	var cotst = [];
+	cotst[0] =["news"];
+	cotst[1] =["top"];
+	cotst[2] =["film"];
+	if(getCookie('mini_tab_show_'+a)!=1)
+	{
+		dl_click('mini_tab_show_'+cotst[a]);
+		setCookie('mini_tab_show_'+a,'1',3600)
+	}
+	
+}
+function dl_click(clt)
+{
+	try
+	{
+		var ref  ;
+		ref = escape(document.referrer) ;
+		if(ref=='')
+		{
+			ref='noref';
+		}
+		var r  ;
+		r = escape(location.href) ;
+		
+		var Then = new Date();
+		
+		var i2=new Image(1,1);
+		i2.src="http://stat.ppstream.com/onclick.php?clt="+clt+"&t="+Then.getTime()+"&ref="+ref+"&url="+r;
+
+		i2.onload=function() { return; }	
+    }catch(e){}
+}
+var content=['zixun','yingshi','rankTab','updateTab']/*选项卡内容ID数组*/
 //页面存储数组
 var cots = [];
 cots[0] =["资讯"];
-cots[1] =["排名"];
-cots[2] =["更新"];
-cots[3] =["短片"];
+cots[1] =["影视"];
+cots[2] =["排名"];
+cots[3] =["更新"];
 var m=cots.length;
 var stop = 0;/*轮播一次后停在第几个*/
 var noDrag=0;/*设置第几个Tab不能拖动*/
