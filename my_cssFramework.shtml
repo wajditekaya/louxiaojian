@@ -42,7 +42,7 @@ select{color:#999}
 .tList li{padding-left:15px;line-height:24px;height:24px;overflow:hidden;}
 /*lrBx*/
 .lrBx,.lrBx .tr{overflow:hidden;zoom:1}
-.lrBx .tl{float:left}
+.lrBx .tl{float:left;_margin-right:-3px}
 .lrBx .tl img{vertical-align:top}
 /*pic_up_text_down*/
 .pList{overflow:hidden;zoom:1}
