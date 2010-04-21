@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>expression模拟IE6下fixed定位</title>
+<style type="text/css">
+*{margin:0;padding:0}
+html{background:url(/100100759.png) fixed}/*去掉了这行，滚动的时候就用抖动*/
+body{font:14px/1.8 Tahoma, Geneva, sans-serif}
+
+#wrapper{width:800px;margin:0 auto;text-align:left;padding:0 20px}
+.IE6_fixed{
+	position:absolute;
+	top:expression(documentElement.scrollTop+documentElement.clientHeight-this.offsetHeight-5);
+	right:5px;
+	width:400px;
+	height:150px;
+	text-align:left;
+	overflow:hidden;
+	padding:4px 8px;
+	width:255px;
+	border:2px solid #3F7DBA;
+	background: #F5FAFE;
+	}
+.IE6_fixed p{font-size:12px; text-indent:20px}
+.IE6_fixed h2{color:#006699;font-size:12px;border-bottom:1px solid #C8DCEC; padding-bottom:5px}
+</style>
+</head>
+
+<body>
+
+<div id="wrapper">
+<h1>IE6下模拟fixed定位</h1>
+</div>
+
+<script type="text/javascript">
+for(var i=0;i<300;i++){document.getElementById('wrapper').appendChild(document.createElement('div')).innerHTML=i;}
+</script>
+
+<div class="IE6_fixed">
+ <h2>青海民众雪中悼念逝者 行人自发默哀</h2>
+ <p>核心提示：西宁地区各族、各界群众参加的悼念大会21日上午10时举行，上万群众为在玉树地震中遇难的同胞默哀三分钟。来自虎台中学的孩子们又一遍又一遍地唱起国歌，高喊着“青海加油！”“玉树加油！”“中国加油！”等口号。</p>
+</div>
+
+<div id="IE6fixed">IE6下模拟fixed定位</div>
+<script type="text/javascript">
+var H=300,o=document.getElementById('IE6fixed');
+o.fix=1;
+o.style.cssText="position:absolute;top:expression(this.fix?(document.documentElement.scrollTop+(this.javascript||"+H+")):0);right:5px;width:300px;background:#F5FAFE;height:100px;border:2px solid #3F7DBA;text-align:center;line-height:100px;color:#333";
+	
+try{document.execCommand("BackgroundImageCache",false,true)}catch(e){};
+</script>
+</body>
+</html>
