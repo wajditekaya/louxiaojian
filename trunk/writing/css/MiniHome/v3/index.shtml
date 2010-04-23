@@ -1,0 +1,464 @@
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link href="style/css/MiniHome.source.css" type="text/css" rel="stylesheet" />
+<title>迷你首页</title>
+</head>
+
+<body>
+<div id="wrapper">
+
+ <!--miniHome-->
+ <div id="miniHome">
+ 
+   <div class="miniTop"><span class="user">你好，橘左近</span><span class="oInfo">2009年11月16日&nbsp;&nbsp;星期三/上海&nbsp;&nbsp;14C&nbsp;小雨</span></div>
+   <img src="style/img/tips.gif" style="position:absolute;left:0px;top:5px;display:none;"id="tishi"/>
+   <!--rowArea-->
+   <div class="rowArea">
+    
+     <div class="main">
+       <!--mainIn-->
+       <div class="mainIn">
+         
+         <!--Information-->
+         <div id="Information">
+           <div id="name" style="height:0;line-height:0;overflow:hidden;display:none"></div>
+           <ul id="iNav" class="iNav">
+            <a href="#" name="0">资讯</a>
+            <a href="#" name="1">排名</a>
+            <a href="#" name="2">更新</a>
+            <a href="#" name="3">短片</a>
+           </ul>
+           <!--zixun-->
+           <div id="zixun" class="mnArea">
+           
+            <div class="mnR">
+            
+              <!--miniHead-->
+              <div class="miniHead">
+                <h3><a href="#" target="_blank">资讯</a></h3>
+                <p>僵尸世界生存守则:活着!</p>
+              </div>
+              <!--/miniHead-->
+              
+              <!--zxList-->
+              <div id="zxList" class="List">
+                <ul class="tList">
+                 <li><a href="#">菲律宾绑架案人质全部获释人质全部获菲律宾绑架案人质全部获释人质全部获</a></li>
+                 <li><a href="#">这里最多只能显示19个汉字</a></li>
+                 <li><a href="#">房地产老板花18.8万买天价橙子</a></li>
+                 <li><a href="#">川大招生新招偏才怪才可录取</a></li>
+                </ul>
+                <ul class="tList">
+                 <li><a href="#">菲律宾绑架案人质全部获释人质全部获</a></li>
+	             <li><a href="pps://hwjxehwqeb33viru2aqa.pps/100117-火箭主场不敌热浪-ssty.wmv?from=mini" >火箭主场不敌热浪</a><a href="pps://oumzclwqeb6s4kbd2aqa.pps/100117-黄河山东段封河长度突破250公里-bjws.wmv?from=mini" >黄封河长度突破250公里</a>
+                 </li>
+				 <li><a href="pps://ouu2wrwqeb33virp2aqa.pps/100117-天价复印8页文件花120元-ahws.wmv?from=mini" >天价复印8页120元</a><a href="pps://hwjxekgqea6nnuj32aqa.pps/100117-林文龙郭可盈爱女照片曝光-ssyl.wmv?from=mini" >郭可盈爱女照片曝光</a>					
+                 </li>
+				 <li><a href="pps://oumzcngqeb33viro2aqa.pps/100117-史上最矮警察身高1.53米-ahws.wmv?from=mini" >最矮警察身高1.53米</a><a href="pps://hwjxelwqea6nnujq2aqa.pps/100117-刘德华退出香港演艺人协会-ssyl.wmv?from=mini" >刘德华退出演艺人协会</a>					
+                 </li>
+                </ul>
+                <ul class="tList">
+                 <li><a href="#">男子书店盗书称为加强管理</a></li>
+                 <li><a href="#">肉店老板悬赏千元寻盗香肠者</a></li>
+                </ul>
+              </div>
+              <!--/zxList-->
+              
+            </div>
+           
+            <div class="mnL">
+               <!--headMove-->
+               <div class="headMove">
+                <a href="#" target="_blank"><img src="http://image1.webscache.com/baike/upload_img/2009-11/88027_73c86b5851f00710ff272213482a8565.jpg" alt="" /></a>
+                <h4><a href="#">芮妮·齐薇格新片《我的唯一》</a></h4>
+               </div>
+               <!--/headMove-->
+               <div class="headGame"><a href="#" target="_blank"><img src="images/img3.jpg" alt="" /></a></div>
+            </div>
+
+           </div>
+           <!--/zixun-->
+
+           <!--rankTab-->
+           <div id="rankTab" class="mnArea">
+           
+            <div class="mnR">
+            
+              <!--miniHead-->
+              <div class="miniHead">
+                <h3><a href="#" target="_blank">排名排名排名排名排名</a></h3>
+                <p>僵尸世界生存守则:活着!</p>
+              </div>
+              <!--/miniHead-->
+              
+              <!--playRank-->
+              <div id="playRank" class="rank2">
+               <!-- <h3>PPS热门播放</h3>-->
+                <ol class="liRank">
+                 <li class="l1"><a href="#">2012</a><span class="rr"><a href="#" class="ss" title="上升趋势">上升趋势</a>28952</span></li>
+                 <li class="l2"><a href="#">暮色2：新月</a><span class="rr"><a href="#" class="ss" title="上升趋势">上升趋势</a>28952</span></li>
+                 <li class="l3"><a href="#">就是这样</a><span class="rr"><a href="#" class="ss" title="上升趋势">上升趋势</a>28952</span></li>
+                 <li class="l4"><a href="#">神秘代码</a><span class="rr"><a href="#" class="xj" title="下降趋势">下降趋势</a>28952</span></li>
+                 <li class="l5"><a href="#">风声</a><span class="rr"><a href="#" class="pw" title="平稳">平稳</a>28952</span></li>
+                </ol>
+                <ol class="liRank">
+                 <li class="l6"><a href="#">暮色2：新月</a><span class="rr"><a href="#" class="xj" title="下降趋势">下降趋势</a>28952</span></li>
+                 <li class="l7"><a href="#">就是这样</a><span class="rr"><a href="#" class="ss" title="上升趋势">上升趋势</a>28952</span></li>
+                 <li class="l8"><a href="#">神秘代码</a><span class="rr"><a href="#" class="ss" title="上升趋势">上升趋势</a>28952</span></li>
+                 <li class="l9"><a href="#">风声</a><span class="rr"><a href="#" class="ss" title="上升趋势">上升趋势</a>28952</span></li>
+                 <li class="l10"><a href="#">神秘代码</a><span class="rr"><a href="#" class="ss" title="上升趋势">上升趋势</a>28952</span></li>
+                </ol>
+              </div>
+              <!--/playRank-->
+
+              <!--playRank-->
+              <div id="playRank" class="rank" style="display:none">
+               <!-- <h3>PPS热门播放</h3>-->
+                <ol class="liRank">
+                 <li><a href="#">2012</a><span class="rr"><a href="#" class="ss" title="上升趋势">上升趋势</a>28952</span></li>
+                 <li><a href="#">暮色2：新月</a><span class="rr"><a href="#" class="ss" title="上升趋势">上升趋势</a>28952</span></li>
+                 <li><a href="#">就是这样</a><span class="rr"><a href="#" class="ss" title="上升趋势">上升趋势</a>28952</span></li>
+                 <li><a href="#">神秘代码</a><span class="rr"><a href="#" class="xj" title="下降趋势">下降趋势</a>28952</span></li>
+                 <li><a href="#">风声</a><span class="rr"><a href="#" class="xj" title="下降趋势">下降趋势</a>28952</span></li>
+                 <li><a href="#">暮色2：新月</a><span class="rr"><a href="#" class="xj" title="下降趋势">下降趋势</a>28952</span></li>
+                 <li><a href="#">就是这样</a><span class="rr"><a href="#" class="ss" title="上升趋势">上升趋势</a>28952</span></li>
+                 <li><a href="#">神秘代码</a><span class="rr"><a href="#" class="ss" title="上升趋势">上升趋势</a>28952</span></li>
+                 <li><a href="#">风声</a><span class="rr"><a href="#" class="ss" title="上升趋势">上升趋势</a>28952</span></li>
+                 <li><a href="#">神秘代码</a><span class="rr"><a href="#" class="ss" title="上升趋势">上升趋势</a>28952</span></li>
+                </ol>
+              </div>
+              <!--/playRank-->
+              
+              <!--searchRank-->
+              <div id="searchRank" class="rank" style="display:none">
+                <h3>PPS热门搜索</h3>
+                <ol class="liRank">
+                 <li><a href="#">2012</a><span class="rr"><a href="#" class="xj" title="下降趋势">下降趋势</a>28952</span></li>
+                 <li><a href="#">暮色2：新月</a><span class="rr"><a href="#" class="xj" title="下降趋势">下降趋势</a>28952</span></li>
+                 <li><a href="#">就是这样</a><span class="rr"><a href="#" class="ss" title="上升趋势">上升趋势</a>28952</span></li>
+                 <li><a href="#">神秘代码</a><span class="rr"><a href="#" class="ss" title="上升趋势">上升趋势</a>28952</span></li>
+                 <li><a href="#">风声</a><span class="rr"><a href="#" class="ss" title="上升趋势">上升趋势</a>28952</span></li>
+                </ol>
+              </div>
+              <!--/searchRank-->
+              
+            </div>
+           
+            <div class="mnL">
+               <!--headMove-->
+               <div class="headMove">
+                <a href="#" target="_blank"><img src="images/img2.jpg" alt="" /></a>
+                <h4><a href="#">国产谍战大片《风声》</a></h4>
+               </div>
+               <!--/headMove-->
+               <div class="headGame"><a href="#" target="_blank"><img src="images/img3.jpg" alt="" /></a></div>
+            </div>
+
+           </div>
+           <!--/rankTab-->
+           
+           <!--updateTab-->
+           <div id="updateTab" class="mnArea">
+           
+            <div class="mnR">
+            
+              <!--miniHead-->
+              <div class="miniHead">
+                <h3><a href="#" target="_blank">更新更新更新更新更新</a></h3>
+                <p>僵尸世界生存守则:活着!</p>
+              </div>
+              <!--/miniHead-->
+              
+              <!--moveList2-->
+              <div id="moveList2" class="List">
+                <ul class="tList">
+                 <li><a href="#" id="a_12">2012</a>
+                  <ul class="aFo" id="ul_12">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国1212</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                 <li><a href="#">暮色2：新月</a>
+                  <ul class="aFo">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                 <li><a href="#">就是这样</a>
+                  <ul class="aFo">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                 <li><a href="#">神秘代码</a>
+                  <ul class="aFo">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                 </ul>
+                 <ul class="tList">
+                 <li><a href="#">风声</a>
+                  <ul class="aFo">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                 <li><a href="#">就是这样</a>
+                  <ul class="aFo">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                 <li><a href="#">2012</a>
+                  <ul class="aFo">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                 <li><a href="#">暮色2：新月</a>
+                  <ul class="aFo">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                </ul>
+                <ul class="tList">
+                 <li><a href="#">就是这样</a>
+                  <ul class="aFo">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                 <li><a href="#">神秘代码</a>
+                  <ul class="aFo">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                </ul>
+              </div>
+              <!--/moveList2-->
+              
+            </div>
+           
+            <div class="mnL">
+               <!--headMove-->
+               <div class="headMove">
+                <a href="#" target="_blank"><img src="http://image1.webscache.com/baike/upload_img/2009-10/87122_29e57b66e967481557405a5db7dada6c.jpg" alt="" /></a>
+                <h4><a href="#">国产谍战大片《风声》</a></h4>
+               </div>
+               <!--/headMove-->
+               <div class="headGame"><a href="#" target="_blank"><img src="images/img3.jpg" alt="" /></a></div>
+            </div>
+
+           </div>
+           <!--/updateTab-->
+           
+           <!--videoTab-->
+           <div id="videoTab" class="mnArea">
+           
+            <div class="mnR">
+            
+              <!--miniHead-->
+              <div class="miniHead">
+                <h3><a href="#" target="_blank">短片短片短片短片短片</a></h3>
+                <p>僵尸世界生存守则:活着!</p>
+              </div>
+              <!--/miniHead-->
+
+              <!--moveList3-->
+              <div id="moveList3" class="List">
+                <ul class="tList">
+                 <li><a href="#" id="a_895">坏中尉</a><a href="#" id="a_896">坏中尉</a><a href="#" id="a_897">坏中尉</a><a href="#"  id="a_898">坏中尉</a>
+                  <ul class="aFo" id="ul_895">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国11</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                  <ul class="aFo" id="ul_896">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国22</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                  <ul class="aFo" id="ul_897">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国33</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                  <ul class="aFo" id="ul_898">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国44</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                 <li><a href="#" id="a_900">败家仔</a>
+                  <ul class="aFo" id="ul_900">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                 <li><a href="#" id="a_901">金甲部队</a>
+                  <ul class="aFo" id="ul_901">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                 <li><a href="#" id="a_903">黑日危机</a>
+                  <ul class="aFo" id="ul_903">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                </ul>
+                <ul class="tList">
+                 <li><a href="#" id="a_906">赌霸</a>
+                  <ul class="aFo" id="ul_906">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                 <li><a href="#" id="a_907">暮色2：新月</a>
+                  <ul class="aFo" id="ul_907">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                 <li><a href="#" id="a_908">就是这样</a>
+                  <ul class="aFo" id="ul_908">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                 <li><a href="#" id="a_909">最后的武士</a>
+                  <ul class="aFo" id="ul_909">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                </ul>
+                <ul class="tList">
+                 <li><a href="#" id="a_9061">赌霸</a>
+                  <ul class="aFo" id="ul_9061">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                 <li><a href="#" id="a_9071">暮色2：新月</a>
+                  <ul class="aFo" id="ul_9071">
+                     <li><span>评分：</span><em class="score">8.4分</em></li>
+                     <li><span>类型：</span>冒险/动作</li>
+                     <li><span>地区：</span>美国</li>
+                     <li class="ib"><a href="#" class="bf" title="播放">播放</a><a href="#" class="xz" title="下载">下载</a></li>
+                   </ul>
+                 </li>
+                </ul>
+              </div>
+              <!--/moveList3-->
+              
+            </div>
+           
+            <div class="mnL">
+               <!--headMove-->
+               <div class="headMove">
+                <a href="#" target="_blank"><img src="http://image1.webscache.com/baike/upload_img/2009-11/88110_5153dc4c056129e3ed796633e616c84b.jpg" alt="" /></a>
+                <h4><a href="#">国产谍战大片《风声》</a></h4>
+               </div>
+               <!--/headMove-->
+               <div class="headGame"><a href="#" target="_blank"><img src="images/img3.jpg" alt="" /></a></div>
+            </div>
+
+           </div>
+           <!--/videoTab-->
+
+           <!--game-->
+           <div class="game">
+             <ul class="gameList">
+               <li><img src="images/img5.gif" alt="" /><a href="#">帝国重生</a></li>
+               <li><img src="images/img6.gif" alt="" /><a href="#">射雕传</a></li>
+               <li><img src="images/img7.gif" alt="" /><a href="#">墨攻天下</a></li>
+               <li><img src="images/img8.gif" alt="" /><a href="#">明朝天下</a></li>
+               <li><img src="images/img7.gif" alt="" /><a href="#">墨攻天下</a></li>
+               <li><img src="images/img8.gif" alt="" /><a href="#">明朝天下</a></li>
+             </ul>
+           </div>
+           <!--/game-->
+               
+         </div>
+         <!--/Information-->
+       </div>
+       <!--/mainIn-->
+     </div>
+     <div class="rBar">
+        <div class="search"><input type="text" value="电影/电视剧" class="sText" id="s" /><input type="button" value="搜索" class="sBut" /></div>
+        <div class="rAd pitch"><a href="#" target="_blank"><img src="images/img1.jpg" alt="" /></a></div>
+        <div class="rAd"><a href="#" target="_blank"><img src="images/img4.jpg" alt="" /></a></div>
+        <div class="xsTip"><a href="#" target="_blank">七大活动带你玩转明朝时代</a></div>
+     </div>
+     
+   </div>
+   <!--/rowArea-->
+   
+ </div>
+ <!--/miniHome-->
+
+</div>
+<div id="shadow" style="display:none" ></div>
+<p style="padding-top:20px"><input type="button" value="编辑预览界面" onClick="document.getElementById('wrapper').style.cssText='width:592px;margin:0 auto'" /></p>
+<script type="text/javascript" src="style/js/mini.js"></script>
+<script type="text/javascript">
+//*******************定义区********************************//
+var content=['zixun','rankTab','updateTab','videoTab']/*选项卡内容ID数组*/
+//页面存储数组
+var cots = [];
+cots[0] =["资讯"];
+cots[1] =["排名"];
+cots[2] =["更新"];
+cots[3] =["短片"];
+var m=cots.length;
+var stop = 0;/*轮播一次后停在第几个*/
+var noDrag=0;/*设置第几个Tab不能拖动*/
+ints();
+</script>
+</body>
+</html>
