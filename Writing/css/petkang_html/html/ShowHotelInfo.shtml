@@ -1,0 +1,473 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="ctl00_Head1"><meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link href="../style/css/core.css" rel="stylesheet" type="text/css" />
+<link href="../style/css/list.css" type="text/css" rel="stylesheet" />   
+<link href="../style/css/hotels.css" rel="stylesheet" type="text/css" />      
+<title>派康网_酒店详细介绍页</title>
+</head>
+<body id="mainbody">
+<div id="wrapper">
+<!--hd -->
+<div id="hd">
+	<ul class="pagehead">
+		<li class="logo"><h1><a href="###" title="携程旅行网"><img src="http://pic.ctrip.com/common/logo.gif" alt="携程旅行网" width="156" height="50" /></a></h1></li>
+		<li>
+			<div class="submenu"><a href="/member/login.asp" title="登录">登录</a><a href="/member/signup.asp" title="注册">注册</a></div>
+		</li>
+	</ul>
+	<!-- navgations -->
+	<ul id="nav">
+		<li class="nav_current"><a href="" title="首页"><span>首页</span></a></li>
+		<li><a href="http://hotels.ctrip.com" title="酒店"><span>PET/CT中心</span></a></li>
+		<li><a href="http://flights.ctrip.com" title="国内机票"><span>PET/CT知识</span></a></li>
+	</ul>
+
+	<!-- toolkit -->
+
+	<ul id="toolkit">
+		<li class="guide_help"><span class='toolkit_tel'>&nbsp;</span>400-820-6666<span class='toolkit_mobile'>&nbsp;</span>
+		<li class="toolkit_links">
+			<a href="http://hotels.ctrip.com/domestic/listorders.aspx" title="订单管理"><span>&nbsp;</span>预约管理</a>
+				<a href="/member/memberinfo.asp" title="个人信息"><span>&nbsp;</span>我的派康</a>
+				
+				<a href="/service/mileages/encash_index.asp" title="积分奖励"><span>&nbsp;</span>积分奖励</a>
+				
+		</li>
+	</ul>
+</div>
+<!--/hd -->
+
+<!--bd-->
+<div id="bd" class="base_t1">
+
+    <div id="base_main">
+       <!--base_mainIn-->
+       <div class="base_mainIn">
+         <div class="map">
+          您当前所处位置：<a id="ctl00_MainContentPlaceHolder_lnkHotelBook" href="http://pages.ctrip.com/public/sitemap/cityHotel.htm">酒店预订</a>&nbsp;&raquo;&nbsp;<a id="ctl00_MainContentPlaceHolder_lnkCityName" href="/hotel/beijing1/">北京酒店</a>&nbsp;&raquo;&nbsp;<a id="ctl00_MainContentPlaceHolder_lnkHotelName" href="/hotel/22813.html">北京京广中心酒店公寓</a>
+         </div>
+
+
+
+                <div class="detail_title layoutfix">
+                    <strong id="ctl00_MainContentPlaceHolder_strongid" class="hotel_goldmedal">
+                        北京京广中心酒店公寓
+                        </strong>
+                    <p class="detail_enname">
+                        <a class="detail_print" href="javascript:print()">打印</a>
+                        <a id="ctl00_MainContentPlaceHolder_lnkCollection" title="收藏北京京广中心酒店公寓" class="detail_collection" href="javascript:addFavHotel()">收藏酒店</a>
+                        Jingguang Center Apartment Hotel
+                    </p>
+                </div>
+                <!-- 主要内容开始咯 -->
+                <div class="detail_content">
+                    <ul class="hotel_grid02 layoutfix">
+                        <li id="ctl00_MainContentPlaceHolder_limap" class="hotel_unit first">
+                            <div class="detail_map" id="map" style="width: 236px; height: 208px;">
+                            </div>
+                        </li>
+                        <li class="hotel_unit">
+                            <dl class="detail_comment">
+                                <dt>点评指数</dt>
+                                <dd>
+                                    <p>
+                                        <strong><span id="ctl00_MainContentPlaceHolder_lblHotelRating">4.2</span></strong>
+                                        <img id="ctl00_MainContentPlaceHolder_imgShowValue" class="detail_comment_pic" src="http://pic.ctrip.com/hotels081118/pic_comment_pic.gif" style="border-width:0px;background-position:-9px 0px;" />
+                                    </p>
+                                    <p class="detail_num">
+                                        <span></span><a id="ctl00_MainContentPlaceHolder_lnkReview" title="北京京广中心酒店公寓点评" href="http://hotels.ctrip.com/HtlComment/22813.html" target="_blank">279人点评</a>
+                                    </p>
+                                    <p class="detail_talk">
+                                        <span></span><a id="ctl00_MainContentPlaceHolder_lnkCommand" title="我要点评北京京广中心酒店公寓" href="http://hotels.ctrip.com/HtlComment/ResourceComment.aspx?resource=22813">我要点评</a>
+                                    </p>
+                                </dd>
+                                <dd>
+                                    <p>
+                                        派康网推荐等级
+                                        <img id="ctl00_MainContentPlaceHolder_imgCustomerEval" class="hotel_halfdiamond05" src="../style/img/pic_alpha.gif" style="border-width:0px;" />
+                                    </p>
+                                </dd>
+                            </dl>
+                            
+                            <ul class="detail_list layoutfix">
+                                <li id="ctl00_MainContentPlaceHolder_liSurroundings"><strong>周围环境：</strong><span id="ctl00_MainContentPlaceHolder_lbSurroundings" para="corner-right,Fri,Sat">团结湖、日坛</span></li><li id="ctl00_MainContentPlaceHolder_liZone"><strong>
+                                        地区查询：</strong>
+                                        <a id="ctl00_MainContentPlaceHolder_lnkMapZone" href="/hotel/beijing1/zone135/" target="_blank">北京站、建国门、国贸地区</a>
+                                        <a id="ctl00_MainContentPlaceHolder_lnkMerchant" href="http://www.ctrip.com/Merchant/MerchantSearchList.asp?city=1&amp;hotelzone=135" target="_blank">周围打折商家查询</a>
+                                    </li>
+                                <li id="ctl00_MainContentPlaceHolder_liOpenTime"><strong>开业时间：</strong>
+                                    <span id="ctl00_MainContentPlaceHolder_lbOpenYear">1990年开业</span>&nbsp;&nbsp<span id="ctl00_MainContentPlaceHolder_lbFitmentYear">2006年装修</span></li>
+                                <li><strong>地址：</strong><a id="ctl00_MainContentPlaceHolder_lnkCity" href="/hotel/beijing1/" target="_blank">北京</a>&nbsp<a id="ctl00_MainContentPlaceHolder_lnkLocation" href="/hotel/beijing1/location94/" target="_blank">朝阳区</a>&nbsp<span id="ctl00_MainContentPlaceHolder_lbAddress">呼家楼</span>
+                                </li>
+                                <li id="conttohide"><strong class="detail_listmore">联系方式</strong></li>
+                                <li id="conttoshow" style="display: none;"><strong>电话：</strong><span id="ctl00_MainContentPlaceHolder_lbTelephone">010-65973388-1402</span><br />
+                                    <strong>传真：</strong><span id="ctl00_MainContentPlaceHolder_lbFax">010-65973333</span>
+                                </li>
+                                <li><strong>房间数量（间）：</strong><span id="ctl00_MainContentPlaceHolder_lbRoomQuantity">229</span></li></ul>
+                        </li>
+                    </ul>
+<script type="text/javascript">
+function change_tab(id)
+{
+	for(i=1;i<=4;i++)
+	{
+		try{
+			document.getElementById('tab_'+i).className='';		
+			document.getElementById('tab_m_'+i).style.display='none';
+		}catch(e){}	
+	}
+	document.getElementById('tab_'+id).className='cur';
+	document.getElementById('tab_m_'+id).style.display='block';		
+}
+</script>	
+                <!--jsInfo-->
+                <div class="jsInfo">
+                
+                    <div class="jsTab"  id="jsTab">
+                        <ul>
+                            <li class="cur" id="tab_1"><a href="javascript:void(0)" onclick="change_tab(1)">医院介绍</a></li>
+                            <li id="tab_2"><a href="javascript:void(0)"  onclick="change_tab(2)">更多图片</a></li>
+                            <li id="tab_3"><a href="#content"  >点评医院</a></li>							
+							
+                        </ul>
+                    </div>
+                    <!--jsBd-->
+					
+					
+                    <div class="jsBd" id="jsBd">
+
+                                     
+									 <!--detail_info-->
+				                     <div class="detail_info" id="tab_m_1">
+										<ul class="hotel_grid02 layoutfix">
+											<li class="hotel_unit detail_pic" id="hotelpicwrap">
+												<div class="detail_pic_border">
+					
+													<div id="ctl00_MainContentPlaceHolder_divimageBit1" class="detail_bigpic">
+														<img title="上海仁济医院PET-CT中心" src="/style/img/pic_alpha.gif" style="height:150px;width:200px;border-width:0px;background:url(/my_admin_image/35.jpg) no-repeat center;" />
+													</div>	
+													
+													
+												
+												</div>
+												
+											</li>
+											<li class="hotel_unit">
+												<span >【医院介绍】仁济医院建于1844年,迄今已有164年的历史,成为学科门类齐全，集医疗、教学、科研于一体的综合性三级甲等医院。<br />
+<br />
+【中心介绍】2003年7月伴随着上海第一台PET-CT,GE's Discovery LS PET/CT 装置在上海仁济医院顺利装机、投入试运行，上海仁济医院PET-CT中心宣告成立。PET-CT运行、操作、诊疗的质量保证与质量控制的规范和流程，并在随后的实际操作中不断改进、充实，目前已经形成了一个比较稳定、完善的PET-CT中心运行、诊疗和管理体系。<br />
+<br />
+【设备型号】GE Discovery LS PET/CT<br />
+<br />
+【中心专家】本中心现有从业人员15人，其中：医生6人，工程技术人员3人，护理人员4人，其他管理和医疗辅助人员2人；医技人员中，高级职称者3人，中级职称者3人。本中心聘请我国著名放射学专家、华山医院原院长陈星荣教授，上海医学放射学会秘书长、仁济医院放射科主任许建荣教授等为顾问、会诊专家定期或不定期地在本中心进行疑难病例讨论、会诊。<br />
+<br />
+【乘车路线】01、581、593、606、610、614、771、772、789、<br />
+814、980、989、大桥二线、隧道九线、轨道交通四号线、六号线均可到达。<br />
+<br />
+<br />
+</span>
+											</li>
+											<li><p>点击数:1381次</p></li>
+										</ul>
+									</div>
+					              <!--/detail_info-->
+
+
+<!--detail_info-->
+									 <!--detail_info-->
+				                     <div class="detail_info" id="tab_m_2" style="display:none">
+                                     
+                                     
+										<ul class="hotel_grid02 layoutfix">
+											<li class="hotel_unit detail_pic" id="hotelpicwrap">
+												<div class="detail_pic_border">
+					
+													<div id="ctl00_MainContentPlaceHolder_divimageBit1" class="detail_bigpic">
+														<img id="main_image" title="上海仁济医院PET-CT中心" src="http://www.petkang.com/style/img/pic_alpha.gif" style="height:150px;width:200px;border-width:0px;background:url(/my_admin_image/35.jpg) no-repeat center;" />
+													</div>	
+								
+</div>
+												
+											</li>
+<li>
+		<ul class="detail_smallpic layoutfix" style="margin-top:20px;">
+
+              <li id="image_li_0" class="on" ><img  src="../style/img/pic.jpg"  onmousemove="image_on('/my_admin_image/35.jpg','0')" /></li>
+              <li id="image_li_1" ><img  src="../style/img/pic.jpg"  onmousemove="image_on('/my_admin_image/11555bca2b2e4171ba03521211a66c1d.jpg','1')" />
+              </li>										
+              <li id="image_li_2" >
+                  <img  src="../style/img/pic.jpg" onmousemove="image_on('/my_admin_image/b8af90545cc097d79decf11f90eadd66.jpg','2')" />
+              </li>										
+              <li id="image_li_3" >
+                  <img  src="../style/img/pic.jpg" onmousemove="image_on('/my_admin_image/0b90dcb4188c7be62137e43f3dbe89f2.jpg','3')" />
+              </li>										
+              <li id="image_li_4" >
+                  <img  src="../style/img/pic.jpg" onmousemove="image_on('/my_admin_image/c705634dc062e4d85304d392b569f6e5.jpg','4')" />
+              </li>										
+              <li id="image_li_5" >
+                  <img  src="../style/img/pic.jpg" onmousemove="image_on('/my_admin_image/81ddf643f58a618ab72b40c0ce6ead2e.jpg','5')" />
+              </li>										
+              <li id="image_li_6" >
+                  <img  src="../style/img/pic.jpg" onmousemove="image_on('/my_admin_image/ccbecf7dfbe7588454cc7048eb765839.jpg','6')" />
+              </li>										
+              <li id="image_li_7" >
+                  <img  src="../style/img/pic.jpg" onmousemove="image_on('/my_admin_image/44ef64d212154b55d22e59f8b509a014.jpg','7')" />
+              </li>										
+              <li id="image_li_8" >
+                  <img  src="../style/img/pic.jpg" onmousemove="image_on('/my_admin_image/11a8017c5f8d1d0f49e25285683c1ad7.jpg','8')" />
+              </li>										
+              <li id="image_li_9" >
+                  <img  src="../style/img/pic.jpg" onmousemove="image_on('/my_admin_image/7a15d1724b6f58d6e65181dac77aa606.jpg','9')" />
+              </li>										
+              <li id="image_li_10" >
+                  <img  src="../style/img/pic.jpg" onmousemove="image_on('/my_admin_image/db10f7b7d8600816fc33ac66c1a399f0.jpg','10')" />
+              </li>										
+              <li id="image_li_11" >
+                  <img  src="../style/img/pic.jpg" onmousemove="image_on('/my_admin_image/0d3a949dae5c5c3f6738857cb9b85209.jpg','11')" />
+              </li>										
+              <li id="image_li_12" >
+                  <img  src="../style/img/pic.jpg" onmousemove="image_on('/my_admin_image/59c3be38724b2c361daa7d3e77bb88c5.jpg','12')" />
+              </li>										
+						
+					
+	</ul>	
+    
+    											
+</li>
+</ul>													
+</div>
+ <!--/detail_info-->
+ 								  
+					
+                    </div>
+                    <!--/jsBd-->
+
+                </div>
+                <!--/jsInfo-->
+        
+        
+
+ 
+ 
+                    <div id="ctl00_MainContentPlaceHolder_panelHotelPlaceInfo">
+	
+                        <table width="100%" cellspacing="0" cellpadding="0" border="0" class="base_datelist01">
+                            <tbody>
+                                <tr>
+                                    <th style="width:60px">
+                                        起始地点</th>
+                                    <th style="width:100px">
+                                        名称/位置</th>
+                                    <th style="width:80px">
+                                        距酒店公里数</th>
+                                    <th>
+                                        如何到达酒店</th>
+                                </tr>
+                                <span id="ctl00_MainContentPlaceHolder_lbHotelInfo"><tr><td>机场<td>北京首都国际机场</td><td>25 公里</td><td></td></tr><tr><td>火车站<td>北京火车站</td><td>7 公里</td><td></td></tr><tr><td>市中心<td>天安门广场</td><td>8 公里</td><td></td></tr><tr><td>&nbsp;</td><td>国际贸易中心</td><td>2 公里</td><td></td></tr></span></tbody></table>
+                    
+</div>
+                </div>
+                <div id="ctl00_MainContentPlaceHolder_divRoomPrice">
+                    <ul class="base_mainbox01">
+                        <li>
+                            <h3 class="base_miantitle" style="overflow: hidden;">
+                                <p style="float: right; font-size: 12px; font-weight: normal;" class="layoutfix">
+                                    入住日期
+                                    <input id="startdate_1" name="startdate_1" type="calendar" mod="calendar" mod_calendar_rangestart="#"
+                                         style="width: 100px;" mod_calendar_focusnext="true" />
+                                    离店日期
+                                    <input id="depdate_1" name="depdate_1" type="calendar" mod="calendar" mod_calendar_rangestart="#"
+                                        mod_calendar_reference="startdate_1" style="width: 100px;" />
+                                    <input id="rechoose" type="button" value="修改" class="base_btn02" />
+                                </p>
+                                房型与房价
+                                <a id="ctl00_MainContentPlaceHolder_lnkHotelRoomPic2" class="detail_link" href="/Domestic/ShowHotelRoomPic.aspx?hotel=22813&amp;StartDate=2009-8-18&amp;DepDate=2009-8-19" target="_blank">（查看所有房型图片&nbsp;&nbsp;&nbsp;）</a>
+                            </h3>
+                        </li>
+                        <li id="base_maincontent" class="base_maincontent">
+                            <div class="base_datelist01 detail_list01" id="divRoomList">
+                            </div>
+                            <div class="base_datelist01 detail_list01">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="base_mainbox01">
+                    <li>
+                        <h3 class="base_miantitle">
+                            其他信息</h3>
+                    </li>
+                    <li class="base_maincontent">
+                        <table cellpadding="0" cellspacing="0" width="100%" class="detail_extralist">
+                            <tr id="ctl00_MainContentPlaceHolder_trextracontent">
+	<th>
+                                    <dfn>附加选择</dfn></th>
+	<td>
+                                    <ul class="detail_extracontent">
+                                        <span id="ctl00_MainContentPlaceHolder_lbAddBadPrice"></span>
+                                        <span id="ctl00_MainContentPlaceHolder_lbAddBreakFast"><li>自助早餐价 <span class="base_price01">RMB 100</span></li></span>
+                                    </ul>
+                                </td>
+</tr>
+
+                            <tr><th><dfn>宾馆服务项目</dfn></th><td><ul class="detail_extracontent"><li>停车场</li><li>会议厅</li><li>商务中心</li></ul></td></tr><tr><th><dfn>宾馆餐饮设施</dfn></th><td><ul class="detail_extracontent"><li>中餐厅</li><li>西餐厅</li></ul></td></tr><tr><th><dfn>宾馆娱乐与健身设施</dfn></th><td><ul class="detail_extracontent"><li>健身室</li><li>桑拿浴室</li></ul></td></tr><tr><th><dfn>客房设施和服务</dfn></th><td><ul class="detail_extracontent"><li>国内长途电话</li><li>国际长途电话</li></ul></td></tr>
+                            <div id="ctl00_MainContentPlaceHolder_pnlCard">
+	
+                                <tr>
+                                    <th>
+                                        <dfn>可接受信用卡类型</dfn></th>
+                                    <td>
+                                        <ul class="detail_extracontent layoutfix">
+                                            <li id="ctl00_MainContentPlaceHolder_Master">
+                                                <img id="ctl00_MainContentPlaceHolder_imgMaster" title="境外发行信用卡 -- 万事达(Master)" src="http://pic.ctrip.com/hotels/logo_master01.gif" style="border-width:0px;" /></li>
+                                            <li id="ctl00_MainContentPlaceHolder_Visa">
+                                                <img id="ctl00_MainContentPlaceHolder_imgVisa" title="境外发行信用卡 -- 威士(VISA)" src="http://pic.ctrip.com/hotels/logo_visa01.gif" style="border-width:0px;" /></li>
+                                            <li id="ctl00_MainContentPlaceHolder_Amex">
+                                                <img id="ctl00_MainContentPlaceHolder_imgAmex" title="境外发行信用卡 -- 运通(AMEX)" src="http://pic.ctrip.com/hotels/logo_amex01.gif" style="border-width:0px;" /></li>
+                                            <li id="ctl00_MainContentPlaceHolder_DinersClub">
+                                                <img id="ctl00_MainContentPlaceHolder_imgDinersClub" title="境外发行信用卡 -- 大来(Diners Club)" src="http://pic.ctrip.com/hotels/logo_dinersClub01.gif" style="border-width:0px;" /></li>
+                                            <li id="ctl00_MainContentPlaceHolder_Jcb">
+                                                <img id="ctl00_MainContentPlaceHolder_imgJcb" title="境外发行信用卡 -- JCB" src="http://pic.ctrip.com/hotels/logo_jcb01.gif" style="border-width:0px;" /></li>
+                                            <li id="ctl00_MainContentPlaceHolder_UnionPay">
+                                                <img id="ctl00_MainContentPlaceHolder_imgUnionPay" title="国内发行银联卡" src="http://pic.ctrip.com/hotels/logo_unionPay01.gif" style="border-width:0px;" /></li>
+                                        </ul>
+                                          
+                                    </td>
+                                </tr>
+                            
+</div>
+                        </table>
+                    </li>
+                </ul>
+        
+        
+        
+        </div>  
+       <!--/base_mainIn-->  
+    </div>
+    
+    <div class="base_b">
+        <a class="hotel_lowprice" href="http://pages.ctrip.com/commerce/promote/200811/hotel/djcn/index.htm" target="_blank">低价赔付承诺</a>
+      <!-- 快速查询 -->
+      
+      <div class="base_154">
+      <div class="base_154_top">
+          <h3>
+              酒店快速查询</h3>
+      </div>
+      
+      <div class="base_154_middle" cdm="blk_quicksearch">
+          
+          <ul class="hotel_searchbox">
+              <li>入住日期&nbsp;<input id="txtCheckIn" name="txtCheckIn" type="text" mod="calendar|notice"
+                  mod_calendar_focusnext="true" mod_calendar_rangestart="#" mod_calendar_rangeend=""
+                  mod_notice_tip="yyyy-mm-dd" cdm="txt_checkintime"/></li>
+      
+              <li>离店日期&nbsp;<input id="txtCheckOut" name="txtCheckOut" type="text" mod="calendar|notice"
+                  mod_calendar_focusnext="true" mod_calendar_rangestart="#" mod_calendar_rangeend=""
+                  mod_calendar_reference="txtCheckIn" mod_notice_tip="yyyy-mm-dd" cdm="txt_checkouttime"/></li>
+              <li>酒店名称&nbsp;<input id="txtHotelName" name="txtHotelName" mod="notice" mod_notice_tip="中文/拼音首字母"
+                  type="text" cdm="txt_hotelname"/></li>
+              <li>房价范围&nbsp;<input id="txtPriceLow" name="txtPriceLow" type="text" style="width: 65px;" cdm="txt_pricelow"/><span
+                  style="color: #666">&nbsp;至</span></li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="txtPriceHigh"
+                  name="txtPriceHigh" type="text" style="width: 65px;" cdm="txt_pricehigh"/></li>
+              <li>酒店位置&nbsp;<input id="txtHotelArea" name="txtHotelArea" type="text" cdm="txt_hoteladdress"/></li> 
+      
+                  
+                  
+          </ul> 
+          <p style="text-align: center; margin-top: 5px;">
+      
+              <input type="button" id="btnQuickSearch" value="查询" class="base_btn02" cdm="btn_submitsearch"/></p>
+      </div>
+      <div class="base_154_bottom">
+      </div>
+      
+      </div>
+
+
+    <!--区域选择框-->
+    <ul id="jmpArea" style="display: none">
+        <li>
+            <div class="hotel_jmpinfo_type">
+                <a href="#;" style="text-align: left">不限位置</a></div>
+    
+        </li>
+        <li id="div_zone">
+            <div class="hotel_jmpinfo_type">
+                商业区</div>
+        </li>
+        <li id="div_location">
+            <div class="hotel_jmpinfo_type">
+                行政区</div>
+    
+        </li>
+    </ul>
+
+    <!-- 缩小范围 -->
+    <div class="base_154">
+        <div class="base_154_top"><h3>缩小搜索范围</h3></div>
+        <div class="base_154_middle" cdm="blk_filter">
+            <dl class="public_filter" id="htl_filter"></dl>
+        </div>
+    
+    </div>
+
+
+
+    <div class="base_154">
+	    <div class="base_154_top"><h3>城市会展信息</h3></div>
+	    <div class="base_154_middle">
+		    2009-08-26至2009-08-28<br />中国国际影视节目展
+
+<a href="javascript:OpenCityInfo('1','2009-08-18','2009-08-19');" title="更多" class="base_sider_more">更多</a>
+
+	    </div>
+	    <div class="base_154_bottom"></div>
+    </div>
+    
+
+
+
+    <div class="base_154">
+        <div class="base_154_top"><h3>图标说明</h3></div>
+    
+        <ul class="base_154_middle">
+             
+            <li class="base_space_fix"><img class="hotel_stars01" src="http://pic.ctrip.com/common/pic_alpha.gif" alt="" style="vertical-align:-3px;margin:0 2px 0 0;" />酒店星级</li>
+            
+            <li class="base_space_fix"><img class="hotel_diamond01" src="http://pic.ctrip.com/common/pic_alpha.gif" alt="" style="margin:0 3px 0 0;" />携程用户评级<a href="javascript:OpenHelp('http://pages.ctrip.com/homepage/hotel/hotel200810271.htm#7');">[详细信息]</a></li>
+            <li class="base_space_fix layoutfix"><span style="width:16px;height:16px;background:url(http://pic.ctrip.com/common/bg_16x16.gif) no-repeat 0 -224px;float:left;"></span>通过携程预订该酒店，在入住时即可享受该酒店提供的额外优惠。</li>
+            <li class="base_space_fix layoutfix"><span style="width:19px;height:20px;background:url(http://pic.ctrip.com/hotels081118/pic_goldmedal.gif) no-repeat 0 3px;float:left;"></span>携程金牌推荐酒店</li>
+            <li class="base_space_fix layoutfix"><span style="width:19px;height:20px;background:url(http://pic.ctrip.com/hotels081118/pic_silvermedal.gif) no-repeat 0 3px;float:left;"></span>携程银牌推荐酒店</li>
+    
+            <li class="base_space_fix">会员价 ***，具体价格必须登录后才能显示。</li>
+            <li class="base_space_fix">如你在旅途中遇见的酒店尚未收录在携程的酒店列表中，请<a href="http://www.ctrip.com/supermarket/hotel/hotelrecommend.asp" target="_new">推荐酒店</a></li>
+            
+        </ul>
+    
+        <div class="base_154_bottom"></div>
+    </div>
+    
+        </div>
+
+
+
+</div>
+<!--/bd-->
+
+  <!--ft-->
+  <div id="ft">
+      <p style="color:#0055aa;"><a href="/Member/SignUp.asp" title="免费注册">免费注册</a> | <a href="http://pages.ctrip.com/public/sitemap/sitemap.htm" title="网站导航">网站导航</a> | <a href="http://pages.ctrip.com/public/sitemap/cityHotel.htm" title="宾馆索引">宾馆索引</a> | <a href="http://pages.ctrip.com/public/serve%20guideline.htm" title="服务说明">服务说明</a> | <a href="http://pages.ctrip.com/public/ctripab/abctrip.htm" title="关于携程">关于携程</a> | <a title="度假资质" href="http://pages.ctrip.com/tour/ingroupline_pages.asp?folder=ingroup0904&file=0177">度假资质</a> | <a href="/public/job/job.asp" title="诚聘英才">诚聘英才</a> | <a href="http://pages.ctrip.com/public/dlhz.htm" title="代理合作">代理合作</a> | <a href="http://pages.ctrip.com/public/ctripad/adyw.htm" title="广告业务">广告业务</a> | <a href="http://pages.ctrip.com/public/contact.htm" title="联系我们">联系我们</a></p>
+      <p><a href="http://pages.ctrip.com/public/copyright.htm">Copyright<dfn>&copy;</dfn></a> 1999-2009, <a href="http://pages.ctrip.com/public/ctripab/abctrip.htm">ctrip.com</a>. All rights reserved.</p>
+  </div>
+  <!--/ft-->
+
+</div>
+
+</body>
+</html>

@@ -1,6 +1,0 @@
-<?php
-if($this->pages<2)return null;
-$HTTP_REFERER = explode('?', $_SERVER['REQUEST_URI']);
-$basename = basename($HTTP_REFERER[0]);
-?><div class="pagenavi fr"><span>共<em><?=$this->total?></em>条 ,分<em><?=$this->currentPage?>/<?=$this->pages?></em>页显示</span>&nbsp;<?
-if($this->currentPage && $this->currentPage>8){?><a class="next" href="<?=$basename?>?pageID=1&<?=$this->query_string?>" >第1页</a>&nbsp;<?}?><?if($this->currentPage && $this->currentPage!=1){?><a class="next" href="<?=$basename?>?pageID=<?=$this->currentPage-1?>&<?=$this->query_string?>" >&lt;&lt;上一页</a>&nbsp;<?}?><?for($i=$this->min;$i<=$this->max;$i++){?><a href="<?=$basename?>?pageID=<?=$i?>&<?=$this->query_string?>" <?if($i==$this->currentPage){?>style="font-weight:bold"<?}?>>第<?=$i?>页</a>&nbsp;<?}?><?if($this->currentPage!=$this->pages){?><a class="next" href="<?=$basename?>?pageID=<?=$this->currentPage+1?>&<?=$this->query_string?>">下一页&gt;&gt;</a>&nbsp;<?}?><?if(($this->pages-$this->currentPage)>6){?><a class="next" href="<?=$basename?>?pageID=<?=$this->pages?>&<?=$this->query_string?>">最后页</a><?}?>&nbsp;</div>
