@@ -18,7 +18,7 @@ input,select,textarea{font:normal normal 12px "Verdana";}
 input,textarea,select{*font-size:100%;}
 input,textarea{color:#666}
 select{color:#999}
-/* 字体属性 [定义规则，小写f加属性名称] */
+/* [定义规则，小写f加属性名称] */
 .fB{font-weight:bold;}
 .fI{font-style:italic;}
 /* 字体大小*/
