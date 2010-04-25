@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link href="http://louxiaojian.googlecode.com/svn/trunk/asset/app/notes/case.css" type="text/css" rel="stylesheet" media="all" />
+<title>淘宝生活助手下拉框</title>
+<style type="text/css">
+.nav-master-life,.nav-master-life .nav-master-life-a{background-image:url(bg-nav.png);background-repeat:no-repeat}
+.nav-master-life {display:block;height:36px;line-height:36px;padding-right: 4px; background-position:0 -230px; background-repeat:repeat-x}
+.nav-master-life strong{display:none;}
+.nav-master-life .nav-master-life-a{display:block;width:123px;height:100%;overflow:hidden;background-position:-1px -568px;position:relative;}
+
+
+.nav-life{width:118px;position:absolute;z-index:900;left:23px;top:29px;height:302px;overflow:hidden}
+.nav-sub-life {
+	width: 116px;
+	overflow: hidden;
+	background: #fff;
+	border: 1px solid #BCBCBC;
+	zoom: 1;
+	position:absolute;z-index:0;left:0;top:0;
+}
+.nav-sub-life li {
+	height: 30px;
+}
+.nav-sub-life li a {
+	display: block;
+	height: 100%;
+	color: #656565;
+	padding-left: 32px;
+	line-height: 30px;
+	background-image: url(ico-nav-life.png);
+	background-repeat: no-repeat;
+	text-decoration:none;
+}
+.nav-sub-life li a:hover {
+	background-color:#DAEFFE;
+	text-decoration:none;
+	color:#656565;
+}
+.nav-a-payment a{background-position: 0 -3px;}
+.nav-a-gathering a{background-position: 0 -52px;}
+.nav-a-guarantee a{background-position: 0 -102px;}
+.nav-a-charge a{background-position: 0 -151px;}
+.nav-a-commun a{background-position:0 -199px;}
+.nav-a-bill a{background-position:0 -247px;}
+.nav-a-cashgift a{background-position:0 -295px;}
+.nav-a-rent a{background-position:0 -345px;}
+.nav-a-aa a{background-position:0 -393px;}
+.nav-a-more a{background-position:0 -440px;}
+.nav-a-donation a{background-position:0 -488px;}
+body .fn-hide,body a.fn-hide {
+	display: none;
+}
+body .fn-hidden {
+	visibility: hidden;
+}
+</style>
+</head>
+
+<body>
+<div id="warpper">
+  <div id="content">
+  
+    <div class="nav-master-life"><a href="/life/payment/fill.htm" class="nav-master-life-a" id="J-nav-life" hidefocus="hidefocus" seed="nav17"><strong>生活助手</strong></a></div>                       
+    <div id="J-nav-lifeExtend" class="nav-life" >
+      <ul id="J-nav-sub-life" class="nav-sub-life" style="top:-302px">
+          <li class="nav-a-payment"><a href="https://lab.alipay.com/life/payment/index.htm?jumpID=alipay_top_aide_a01" seed="J-nav-sub-life0">我要付款</a></li>
+          <li class="nav-a-gathering"><a href="https://lab.alipay.com/life/gathering/create.htm?jumpID=alipay_top_aide_a02" seed="J-nav-sub-life1">我要收款</a></li>
+          <li class="nav-a-charge"><a href="https://lab.alipay.com/life/waterElectricityGas.htm?jumpID=alipay_top_aide_a03" seed="J-nav-sub-life2">水电煤</a></li>
+          <li class="nav-a-commun"><a href="https://lab.alipay.com/life/correspondence.htm?jumpID=alipay_top_aide_a04" seed="J-nav-sub-life3">通讯费</a></li>
+          <li class="nav-a-bill"><a href="https://lab.alipay.com/life/credit.htm?jumpID=alipay_top_aide_a05" seed="J-nav-sub-life4">信用卡还款</a></li>
+          <li class="nav-a-cashgift"><a href="https://lab.alipay.com/life/cashGift/index.htm?jumpID=alipay_top_aide_a06" seed="J-nav-sub-life5">送礼金</a></li>
+          <li class="nav-a-rent"><a href="https://lab.alipay.com/life/houseRent/index.htm?jumpID=alipay_top_aide_a07" seed="J-nav-sub-life6">交房租</a></li>
+          <li class="nav-a-aa"><a href="https://lab.alipay.com/life/aaCollect/fill.htm?jumpID=alipay_top_aide_a08" seed="J-nav-sub-life7">AA收款</a></li>
+          <li class="nav-a-donation"><a href="https://lab.alipay.com/life/donation.htm?jumpID=alipay_top_aide_a09" seed="J-nav-sub-life8">捐赠</a></li>
+          <li class="nav-a-more"><a href="https://lab.alipay.com/life/index.htm?jumpID=alipay_top_aide_a10" seed="J-nav-sub-life9">更多</a></li>
+      </ul>
+    </div>
+
+
+
+ </div>
+</div>
+<script type="text/javascript">
+ function navExtend(sid){
+	  this.sId=this.$(sid);//滚动的id
+	  this.par=this.sId.parentNode;
+	  this.eKey=1;//0为收缩状态，1为展开状态
+	  this.timeId=null;
+	  this.ssTimeId=null; //收缩时的setTimeout id
+	  var self=this;
+	  this.addEvent(this.$('J-nav-life'),'mouseover',function(){self.goto()})
+	  this.addEvent(this.$('J-nav-life'),'mouseout',function(){self.goto()})
+ }
+ navExtend.prototype={
+	  $:function(o){return typeof(o)=='string' ? document.getElementById(o) : o},
+	  Tween:function(t,b,c,d){return c*(t/=d)*t + b;},
+	  addEvent:function ( node, type, listener ) {
+			if(!(node = this.$(node))) return false;
+			if (node.addEventListener) {
+				node.addEventListener( type, listener, false );
+				return true;
+			} else if(node.attachEvent) {
+				node['e'+type+listener] = listener;
+				node[type+listener] = function(){node['e'+type+listener]( window.event );}
+				node.attachEvent( 'on'+type, node[type+listener] );
+				return true;
+			}
+			return false;
+	  },
+	  scollBack:function(){//滚动结束后返回函数
+		  
+	  },
+	  goto:function(){
+		  if(this.timeId) clearTimeout(this.timeId);
+		  var _self=this;
+		  if(this.par.style.display=='none' && this.eKey || !this.par.style.display && this.eKey){this.par.style.display='block'}
+		  this.eKey=!this.eKey;
+		  var b=parseInt(this.sId.style['top']) || 0,t=0,c=-302,d=20;
+		  //c={0:0,'-302':1}[b] ? -1*c : c;
+		  c=this.eKey ? c : -c;
+		  new function(){
+			  _self.sId.style['top'] = Math.ceil(_self.Tween(t,b,c,d)) + "px";
+			  if(t<d){ t++; _self.timeId=setTimeout(arguments.callee, 10);}
+			  else{
+				   if(_self.eKey){_self.par.style.display='none'}
+			  };
+		   };
+		  return this;
+	 }
+	 
+ }
+ new navExtend('J-nav-sub-life');
+</script>
+</body>
+</html>
