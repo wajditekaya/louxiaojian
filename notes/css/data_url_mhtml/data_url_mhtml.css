@@ -10,6 +10,6 @@ R0lGODlhAwAZAIAAAP////f39yH5BAAAAAAALAAAAAADABkAAAILhI+pa+EPo5xUngIAOw==
 */
 body{
    background:url(data:image/gif;base64,R0lGODlhAwAZAIAAAP////f39yH5BAAAAAAALAAAAAADABkAAAILhI+pa+EPo5xUngIAOw==);
-   *background:url(mhtml:http://louxiaojian.googlecode.com/svn/trunk/CSS/data_url_mhtml/data_url_mhtml.css!lxj.gif);/*这里要用绝对路径*/
+   *background:url(mhtml:http://louxiaojian.googlecode.com/svn/trunk/notes/css/data_url_mhtml/data_url_mhtml.css!lxj.gif);/*这里要用绝对路径*/
 }
 
