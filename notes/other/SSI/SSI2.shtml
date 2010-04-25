@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+</head>
+
+<body>
+可在SSI中使用的变量：   1．只有SSI中能使用的变量。2．标准CGI变量3．某些服务器支持的变量<br />
+<br />
+①下面是在标准SSI支持的变量：<br />
+<br />
+　   变量名称<br />
+作用<br />
+示例<br />
+<br />
+1<br />
+DOCUMENT_NAME<br />
+当前文档名<br />
+echo.html<br />
+<br />
+2<br />
+DOCUMENT_URL<br />
+<br />
+或DOCUMENT_URI<br />
+当前文档相对URL<br />
+/ssi/echo.html<br />
+<br />
+3<br />
+QUERY_STRING_UNESCAPED<br />
+或QUERY_STRING<br />
+所发送的查询字符串<br />
+sample<br />
+<br />
+4<br />
+DATE_LOCAL<br />
+服务器中当前日期<br />
+Sun,   23 May 1999 21:54:30<br />
+<br />
+5<br />
+DATE_GMT<br />
+以格林威冶时间设置的服务器时间<br />
+Sun, 23 May 1999   13:54:30<br />
+<br />
+6<br />
+LAST_MODIFIED<br />
+当前文档最后修改时间<br />
+23-May-1999   PST<br />
+<br />
+<br />
+<br />
+　<br />
+<br />
+②标准的CGI变量<br />
+WEB上关于CGI环境变量测试的示例：<br />
+<br />
+LINUX下Apache：<a href="http://www.ithack.net/cgi-bin/ssi.cgi?sample" target="_blank">http://www.ithack.net/cgi-bin/ssi.cgi?sample</a><br />
+Freebsd下Apache: <a href="http://www.ithack.net/cgi-bin/ssi.cgi?sample" target="_blank">http://www.ithack.net/cgi-bin/ssi.cgi?sample</a><br />
+<br />
+　   CGI环境变量名称<br />
+作用<br />
+示例<br />
+<br />
+1<br />
+AUTH_TYPE<br />
+用户所使用的身份验证类型<br />
+　 <br />
+2<br />
+CONTENT_LENGTH<br />
+服务器输出文本长度<br />
+0<br />
+<br />
+3<br />
+HTTP_ACCEPT<br />
+客户机可接受的MIME类型<br />
+application/vnd.ms-excel,   application/msword, */*<br />
+<br />
+4<br />
+HTTP_USER_AGENT<br />
+客户机浏览器配置状况<br />
+Mozilla/4.0   (compatible; MSIE 4.01; Windows 98)<br />
+<br />
+5<br />
+GATEWARY_INTERFACE<br />
+服务器所使用的   CGI 规范的修正版<br />
+CGI/1.1<br />
+<br />
+6<br />
+PATH_INFO<br />
+客户端给出附加路径信息<br />
+　 <br />
+7<br />
+PATH_TRANSLATED<br />
+PATH_INFO   的值，但带有扩展为某个目录规范的虚拟路径<br />
+/v/spool/webadm/html<br />
+<br />
+8<br />
+QUERY_STRING<br />
+在引用该脚本的   URL 中跟在问号 (?)   后面的信息<br />
+Sample<br />
+<br />
+9<br />
+REMOTE_ADDR<br />
+客户机IP地址<br />
+202.103.27.103<br />
+<br />
+10<br />
+REMOTE_HOST<br />
+客户机名称<br />
+　 <br />
+11<br />
+REQUEST_METHOD<br />
+HTTP请求方法<br />
+GET<br />
+<br />
+12<br />
+SCRIPT_NAME<br />
+当前脚本名称<br />
+/cgi-main/cgiwrap/ithack/info.cgi<br />
+<br />
+13<br />
+SERVER_NAME<br />
+服务器名称或IP地址<br />
+<a href="http://www.ithack.net" target="_blank">www.ithack.net</a><br />
+<br />
+14<br />
+SERVER_PORT<br />
+服务器接请求的TCP/IP端口<br />
+80<br />
+<br />
+15<br />
+SERVER_PROTOCOL<br />
+与请求有关的信息检索协议的名称与版本，通常为   HTTP/1.0<br />
+HTTP/1.1<br />
+<br />
+16<br />
+SERVER_SOFTWARE<br />
+响应请求的 Web   服务器软件的名称和版本<br />
+Apache/1.3.6 (Unix)<br />
+</body>
+</html>
