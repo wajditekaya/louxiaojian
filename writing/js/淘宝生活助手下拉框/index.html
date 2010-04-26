@@ -156,21 +156,23 @@ body .fn-hidden {
 		   };
 		  return this;
 	 },
+	 show:function(){
+	      if(this.eKey) this.goto();
+	 },
+	 hide:function(){
+	     var self=this;
+	     if(!this.eKey){
+		  this.ssTimeId=setTimeout(function(){self.goto.call(self)},200);
+		 }
+	 },
 	 init:function(){
 		 var self=this;
 		 this.H=this.getEle(this.sId).h; //下拉滚动块的高度
 		 this.par.style.height=this.H+'px';
-	     this.addEvent(this.cId,'mouseover',function(){if(self.eKey)self.goto()});
-	     this.addEvent(this.cId,'mouseout',function(){if(!self.eKey){self.ssTimeId=setTimeout(function(){self.goto.call(self)},200);}});
+	     this.addEvent(this.cId,'mouseover',function(){self.show.call(self)});
+	     this.addEvent(this.cId,'mouseout',function(){self.hide.call(self)});
 		 this.addEvent(this.sId,'mouseover',function(){if(self.ssTimeId) clearTimeout(self.ssTimeId);});
 		 this.addEvent(this.sId,'mouseout',function(){if(!self.eKey) self.goto()});
-		 
-		 var ch=this.sId.childNodes;
-		  for(var i=0,len=ch.length;i<len;i++){
-			 this.addEvent(ch[i],'mouseout',function(event){self.sPro(event);});
-		  }
-		  
-		
 	 }
 	 
  }
