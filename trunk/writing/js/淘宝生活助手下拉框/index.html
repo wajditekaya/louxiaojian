@@ -98,6 +98,14 @@ body .fn-hidden {
  navExtend.prototype={
 	  $:function(o){return typeof(o)=='string' ? document.getElementById(o) : o},
 	  Tween:function(t,b,c,d){return c*(t/=d)*t + b;},
+	  sPro:function(e) {
+		var e = window.event || e;
+		if(e.stopPropagation) {
+			e.stopPropagation();
+		} else {
+			e.cancelBubble = true;
+		}
+      },
 	  addEvent:function (node,type,listener) {
 			if(!(node = this.$(node))) return false;
 			if (node.addEventListener) {
@@ -153,9 +161,16 @@ body .fn-hidden {
 		 this.H=this.getEle(this.sId).h; //下拉滚动块的高度
 		 this.par.style.height=this.H+'px';
 	     this.addEvent(this.cId,'mouseover',function(){if(self.eKey)self.goto()});
-	     this.addEvent(this.cId,'mouseout',function(){if(!self.eKey){self.ssTimeId=setTimeout(function(){self.goto.call(self)},100);}});
+	     this.addEvent(this.cId,'mouseout',function(){if(!self.eKey){self.ssTimeId=setTimeout(function(){self.goto.call(self)},200);}});
 		 this.addEvent(this.sId,'mouseover',function(){if(self.ssTimeId) clearTimeout(self.ssTimeId);});
-		 this.addEvent(this.sId,'mouseout',function(){if(!self.eKey) self.goto();});
+		 this.addEvent(this.sId,'mouseout',function(){if(!self.eKey) self.goto()});
+		 
+		  var ch=this.sId.childNodes;
+		  for(var i=0,len=ch.length;i<len;i++){
+			 this.addEvent(ch[i],'mouseout',function(event){self.sPro(event);});
+		  }
+		  
+		
 	 }
 	 
  }
