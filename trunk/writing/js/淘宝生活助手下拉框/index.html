@@ -82,21 +82,23 @@ body .fn-hidden {
 
  </div>
 </div>
+
 <script type="text/javascript">
- function navExtend(sid){
-	  this.sId=this.$(sid);//滚动的id
+ function navExtend(sId,cId){
+	  if(!this.$(sId)) return false;
+	  if(!this.$(cId)) return false
+	  this.sId=this.$(sId);//下拉滚动的id
+	  this.cId=this.$(cId);//触发下拉滚动的id
 	  this.par=this.sId.parentNode;
 	  this.eKey=1;//0为收缩状态，1为展开状态
 	  this.timeId=null;
 	  this.ssTimeId=null; //收缩时的setTimeout id
-	  var self=this;
-	  this.addEvent(this.$('J-nav-life'),'mouseover',function(){self.goto()})
-	  this.addEvent(this.$('J-nav-life'),'mouseout',function(){self.goto()})
+	  this.init();
  }
  navExtend.prototype={
 	  $:function(o){return typeof(o)=='string' ? document.getElementById(o) : o},
 	  Tween:function(t,b,c,d){return c*(t/=d)*t + b;},
-	  addEvent:function ( node, type, listener ) {
+	  addEvent:function (node,type,listener) {
 			if(!(node = this.$(node))) return false;
 			if (node.addEventListener) {
 				node.addEventListener( type, listener, false );
@@ -112,14 +114,31 @@ body .fn-hidden {
 	  scollBack:function(){//滚动结束后返回函数
 		  
 	  },
+	  getEle:function(o){
+		  var obj=this.$(o),w=obj.offsetWidth,h=obj.offsetHeight;
+		  if(w==0){
+			  obj.style.position='absolute';
+			  obj.style.display='block';
+			  obj.style.visibility='hidden';
+			  w=obj.offsetWidth;
+			  h=obj.offsetHeight;
+			  obj.style.position='static';
+			  obj.style.display='none';
+			  obj.style.visibility='visible';
+		  }
+		  return {
+			  'w':w,
+			  'h':h
+		  }
+	  },
 	  goto:function(){
 		  if(this.timeId) clearTimeout(this.timeId);
 		  var _self=this;
 		  if(this.par.style.display=='none' && this.eKey || !this.par.style.display && this.eKey){this.par.style.display='block'}
 		  this.eKey=!this.eKey;
-		  var b=parseInt(this.sId.style['top']) || 0,t=0,c=-302,d=20;
-		  //c={0:0,'-302':1}[b] ? -1*c : c;
-		  c=this.eKey ? c : -c;
+		  var b=parseInt(this.sId.style['top']) || 0,t=0,c=this.H,d=20;
+		  if(b==0 || b==-this.H){c=this.eKey ? -c : c;};//在两端时，获取移动路程.
+		  if(b!=0 && b!=-this.H){c=this.eKey ? b : -b}; //在中间时，获取移动路程.
 		  new function(){
 			  _self.sId.style['top'] = Math.ceil(_self.Tween(t,b,c,d)) + "px";
 			  if(t<d){ t++; _self.timeId=setTimeout(arguments.callee, 10);}
@@ -128,10 +147,19 @@ body .fn-hidden {
 			  };
 		   };
 		  return this;
+	 },
+	 init:function(){
+		 var self=this;
+		 this.H=this.getEle(this.sId).h; //下拉滚动块的高度
+		 this.par.style.height=this.H+'px';
+	     this.addEvent(this.cId,'mouseover',function(){if(self.eKey)self.goto()});
+	     this.addEvent(this.cId,'mouseout',function(){if(!self.eKey){self.ssTimeId=setTimeout(function(){self.goto.call(self)},100);}});
+		 this.addEvent(this.sId,'mouseover',function(){if(self.ssTimeId) clearTimeout(self.ssTimeId);});
+		 this.addEvent(this.sId,'mouseout',function(){if(!self.eKey) self.goto();});
 	 }
 	 
  }
- new navExtend('J-nav-sub-life');
+ new navExtend('J-nav-sub-life','J-nav-life');
 </script>
 </body>
 </html>
