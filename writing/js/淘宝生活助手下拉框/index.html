@@ -165,7 +165,7 @@ body .fn-hidden {
 		 this.addEvent(this.sId,'mouseover',function(){if(self.ssTimeId) clearTimeout(self.ssTimeId);});
 		 this.addEvent(this.sId,'mouseout',function(){if(!self.eKey) self.goto()});
 		 
-		  var ch=this.sId.childNodes;
+		 var ch=this.sId.childNodes;
 		  for(var i=0,len=ch.length;i<len;i++){
 			 this.addEvent(ch[i],'mouseout',function(event){self.sPro(event);});
 		  }
