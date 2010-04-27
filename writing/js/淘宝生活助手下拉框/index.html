@@ -11,7 +11,7 @@
 .nav-master-life .nav-master-life-a{display:block;width:123px;height:100%;overflow:hidden;background-position:-1px -568px;position:relative;}
 
 
-.nav-life{width:118px;position:absolute;z-index:900;left:23px;top:29px;height:302px;overflow:hidden}
+.nav-life{width:118px;position:absolute;z-index:900;left:23px;top:29px;height:302px;overflow:hidden;}
 .nav-sub-life {
 	width: 116px;
 	overflow: hidden;
@@ -64,7 +64,7 @@ body .fn-hidden {
   
     <div class="nav-master-life"><a href="/life/payment/fill.htm" class="nav-master-life-a" id="J-nav-life" hidefocus="hidefocus" seed="nav17"><strong>生活助手</strong></a></div>                       
     <div id="J-nav-lifeExtend" class="nav-life" >
-      <ul id="J-nav-sub-life" class="nav-sub-life" style="top:-302px">
+      <ul id="J-nav-sub-life" class="nav-sub-life">
           <li class="nav-a-payment"><a href="https://lab.alipay.com/life/payment/index.htm?jumpID=alipay_top_aide_a01" seed="J-nav-sub-life0">我要付款</a></li>
           <li class="nav-a-gathering"><a href="https://lab.alipay.com/life/gathering/create.htm?jumpID=alipay_top_aide_a02" seed="J-nav-sub-life1">我要收款</a></li>
           <li class="nav-a-charge"><a href="https://lab.alipay.com/life/waterElectricityGas.htm?jumpID=alipay_top_aide_a03" seed="J-nav-sub-life2">水电煤</a></li>
@@ -90,9 +90,11 @@ body .fn-hidden {
 	  this.sId=this.$(sId);//下拉滚动的id
 	  this.cId=this.$(cId);//触发下拉滚动的id
 	  this.par=this.sId.parentNode;
-	  this.eKey=1;//0为收缩状态，1为展开状态
+	  this.eKey=0;//0为收缩状态，1为展开状态
+	  this.evt='mouseover';//触发菜单的方式
 	  this.timeId=null;
-	  this.ssTimeId=null; //收缩时的setTimeout id
+	  this.hideTime=null; //收缩时的setTimeout id
+	  this.showTime=null
 	  this.init();
  }
  navExtend.prototype={
@@ -106,7 +108,7 @@ body .fn-hidden {
 			e.cancelBubble = true;
 		}
       },
-	  addEvent:function (node,type,listener) {
+	  on:function (node,type,listener) {
 			if(!(node = this.$(node))) return false;
 			if (node.addEventListener) {
 				node.addEventListener( type, listener, false );
@@ -119,20 +121,53 @@ body .fn-hidden {
 			}
 			return false;
 	  },
+	  uncamelize:function(s, sep) {
+		  sep = sep || '-';
+		  return s.replace(/([a-z])([A-Z])/g, function (strMatch, p1, p2){
+			  return p1 + sep + p2.toLowerCase();
+		  });
+	  },
+	  camelize:function(s) {
+		  return s.replace(/-(\w)/g, function (strMatch, p1){
+			  return p1.toUpperCase();
+		  });
+	  },
+	  setStyle:function(element, styles) {
+		  if(!(element = this.$(element))) return false;
+		  for (property in styles) {
+			  if(!styles.hasOwnProperty(property)) continue;
+			  if(element.style.setProperty) {
+				  element.style.setProperty(
+				  this.uncamelize(property,'-'),styles[property],null);
+			  } else {
+				  element.style[this.camelize(property)] = styles[property];
+			  }
+		  }
+		  return true;
+	  },
+	  getStyle:function(element,property) {
+		  if(!(element =this.$(element)) || !property) return false;
+		  var value = element.style[this.camelize(property)];
+		  if (!value) {
+			  if (document.defaultView && document.defaultView.getComputedStyle) {
+				  var css = document.defaultView.getComputedStyle(element, null);
+				  value = css ? css.getPropertyValue(property) : null;
+			  } else if (element.currentStyle) {
+				  value = element.currentStyle[this.camelize(property)];
+			  }
+		  }
+		  return value == 'auto' ? '' : value;
+	  },
 	  scollBack:function(){//滚动结束后返回函数
 		  
 	  },
 	  getEle:function(o){
 		  var obj=this.$(o),w=obj.offsetWidth,h=obj.offsetHeight;
 		  if(w==0){
-			  obj.style.position='absolute';
-			  obj.style.display='block';
-			  obj.style.visibility='hidden';
+			  this.setStyle(obj,{'position':'absolute','display':'block','visibility':'hidden'})
 			  w=obj.offsetWidth;
 			  h=obj.offsetHeight;
-			  obj.style.position='static';
-			  obj.style.display='none';
-			  obj.style.visibility='visible';
+			  this.setStyle(obj,{'position':'static','display':'none','visibility':'visible'})
 		  }
 		  return {
 			  'w':w,
@@ -142,8 +177,7 @@ body .fn-hidden {
 	  goto:function(){
 		  if(this.timeId) clearTimeout(this.timeId);
 		  var _self=this;
-		  if(this.par.style.display=='none' && this.eKey || !this.par.style.display && this.eKey){this.par.style.display='block'}
-		  this.eKey=!this.eKey;
+		  if(this.getStyle(this.par,'display')=='none' && !this.eKey || !this.par.style.display && !this.eKey){this.setStyle(this.par,{'display':'block'});}
 		  var b=parseInt(this.sId.style['top']) || 0,t=0,c=this.H,d=20;
 		  if(b==0 || b==-this.H){c=this.eKey ? -c : c;};//在两端时，获取移动路程.
 		  if(b!=0 && b!=-this.H){c=this.eKey ? b : -b}; //在中间时，获取移动路程.
@@ -151,28 +185,38 @@ body .fn-hidden {
 			  _self.sId.style['top'] = Math.ceil(_self.Tween(t,b,c,d)) + "px";
 			  if(t<d){ t++; _self.timeId=setTimeout(arguments.callee, 10);}
 			  else{
-				   if(_self.eKey){_self.par.style.display='none'}
+				   if(!_self.eKey){_self.setStyle(_self.par,{'display':'none'});}
 			  };
 		   };
+		  this.eKey=!this.eKey;
 		  return this;
 	 },
 	 show:function(){
-	      if(this.eKey) this.goto();
+		  if(this.showTime) clearTimeout(this.showTime);
+		  if(this.hideTime) clearTimeout(this.hideTime);
+		  var self=this;
+	      if(!this.eKey)
+		  this.showTime=setTimeout(function(){self.goto()},35);
+		  return this;
 	 },
 	 hide:function(){
+		 if(this.showTime) clearTimeout(this.showTime);
+		 if(this.hideTime) clearTimeout(this.hideTime);
 	     var self=this;
-	     if(!this.eKey){
-		  this.ssTimeId=setTimeout(function(){self.goto.call(self)},200);
+	     if(this.eKey){
+		  this.hideTime=setTimeout(function(){self.goto()},100);
 		 }
+		 return this;
 	 },
 	 init:function(){
 		 var self=this;
 		 this.H=this.getEle(this.sId).h; //下拉滚动块的高度
 		 this.par.style.height=this.H+'px';
-	     this.addEvent(this.cId,'mouseover',function(){self.show.call(self)});
-	     this.addEvent(this.cId,'mouseout',function(){self.hide.call(self)});
-		 this.addEvent(this.sId,'mouseover',function(){if(self.ssTimeId) clearTimeout(self.ssTimeId);});
-		 this.addEvent(this.sId,'mouseout',function(){if(!self.eKey) self.goto()});
+		 this.sId.style['top']=-this.H+'px';
+	     this.on(this.cId,this.evt,function(){self.show()});
+	     this.on(this.cId,'mouseout',function(){self.hide()});
+		 this.on(this.sId,this.evt,function(){self.show()});
+		 this.on(this.sId,'mouseout',function(){self.hide()});
 	 }
 	 
  }
