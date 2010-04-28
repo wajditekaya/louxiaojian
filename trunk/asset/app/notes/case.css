@@ -7,7 +7,7 @@ body{font:14px/1.6  Tahoma, Geneva,"宋体", sans-serif;word-break:break-all;tex
 fieldset,img{border:0;} 
 table {border-collapse: collapse;border-spacing:0;} 
 ol,li,ul{list-style:none;} 
-address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal;}
 caption,th{text-align:left;} 
 h1,h2,h3,h4,h5,h6{font-size:100%;} 
 q:before,q:after{content:'';}
