@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>expression模拟IE6下fixed定位</title>
+<style type="text/css">
+*{margin:0;padding:0}
+html{background:url(about:blank) fixed}/*去掉了这行，滚动的时候就用抖动*/
+body{font:14px/1.8 Tahoma, Geneva, sans-serif}
+
+#wrapper{width:800px;margin:0 auto;text-align:left;padding:54px 20px 0 20px}
+.IE6_fixed{
+	position:absolute;
+	top:expression(documentElement.scrollTop+documentElement.clientHeight-this.offsetHeight-5);
+	right:5px;
+	width:400px;
+	height:150px;
+	text-align:left;
+	overflow:hidden;
+	padding:4px 8px;
+	width:255px;
+	border:2px solid #3F7DBA;
+	background: #F5FAFE;
+	}
+.IE6_fixed p{font-size:12px; text-indent:20px}
+.IE6_fixed h2{color:#006699;font-size:12px;border-bottom:1px solid #C8DCEC; padding-bottom:5px}
+
+</style>
+</head>
+
+<body>
+
+<div id="wrapper">
+<h1 id="IE6fixed">IE6下模拟fixed定位</h1>
+</div>
+
+<script type="text/javascript">
+for(var i=0;i<300;i++){document.getElementById('wrapper').appendChild(document.createElement('div')).innerHTML=i;}
+</script>
+
+<div id="o2" class="IE6_fixed">
+ <h2>青海民众雪中悼念逝者 行人自发默哀</h2>
+ <p>核心提示：西宁地区各族、各界群众参加的悼念大会21日上午10时举行，上万群众为在玉树地震中遇难的同胞默哀三分钟。来自虎台中学的孩子们又一遍又一遍地唱起国歌，高喊着“青海加油！”“玉树加油！”“中国加油！”等口号。</p>
+</div>
+
+
+<script type="text/javascript">
+var H=0,W=0,d=document,o=d.getElementById('IE6fixed'),o2=d.getElementById('o2'),o3=d.getElementById('o3'),IE6=window.ActiveXObject&&!window.XMLHttpResquest;
+o.style.cssText="position:absolute;top:expression(documentElement.scrollTop+"+H+");left:expression((documentElement.clientWidth+documentElement.scrollLeft-800)/2+"+W+");width:796px;background:#F5FAFE;height:50px;border:2px solid #3F7DBA;text-align:left;line-height:50px;color:#333;padding-left:8px";
+if(!IE6){
+o.style.top=d.documentElement.scrollTop+H+'px';
+o.style.left=(d.documentElement.clientWidth+d.documentElement.scrollLeft-800)/2+W+'px';
+o.style.position='fixed';
+}
+
+if(!IE6){
+o2.style.top=d.documentElement.scrollTop+d.documentElement.clientHeight-o2.offsetHeight-5+'px';
+o2.style.position='fixed';
+}
+
+try{d.execCommand("BackgroundImageCache",false,true)}catch(e){};
+</script>
+
+
+</body>
+</html>
