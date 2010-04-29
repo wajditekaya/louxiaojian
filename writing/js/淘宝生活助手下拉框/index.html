@@ -228,7 +228,7 @@ body .fn-hidden {
 		 this.sId.style[this.options.dis]=-this.H+'px';
 	     this.on(this.cId,this.options.evt,function(){self.show()});
 	     this.on(this.cId,'mouseout',function(){self.hide()});
-		 this.on(this.sId,this.options.evt,function(){self.show()});
+		 this.on(this.sId,this.options.evt,function(){self.clear(self.hideTime);});
 		 this.on(this.sId,'mouseout',function(){self.hide()});
 	 }
 	 
