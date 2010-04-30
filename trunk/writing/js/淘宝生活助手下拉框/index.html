@@ -84,7 +84,7 @@ body .fn-hidden {
 </div>
 
 <script type="text/javascript">
- function navExtend(s){
+ function NavExtend(s){
 	  this.SetOptions(s);
 	  if(!this.$(this.options.sId)) return false;
 	  if(!this.$(this.options.cId)) return false;
@@ -96,7 +96,7 @@ body .fn-hidden {
 	  this.showTime=null
 	  this.init();
  }
- navExtend.prototype={
+ NavExtend.prototype={
 	  $:function(o){return typeof(o)=='string' ? document.getElementById(o) : o},
 	  sPro:function(e) {
 		var e = window.event || e;
@@ -233,7 +233,7 @@ body .fn-hidden {
 	 }
 	 
  }
- new navExtend({sId:'J-nav-sub-life',cId:'J-nav-life'});
+ new NavExtend({sId:'J-nav-sub-life',cId:'J-nav-life'});
 </script>
 </body>
 </html>
