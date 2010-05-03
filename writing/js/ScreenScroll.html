@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="gbk" />
-<title>ScreenScroll</title>
+<title>随屏滚动</title>
 <style type="text/css">
 img{vertical-align:top}
 </style>
@@ -114,9 +114,9 @@ img{vertical-align:top}
 			},
 			roll:function(){
 					 var self=this,t=0,b=parseInt(self.id.style['top']) || 0;
-						 this.time=setInterval(function(){		
-							var c=self.sTop()+self.t-b;//滚动的路程是最终位置减去初始位置。
+						 this.time=setInterval(function(){	
 							if(parseInt(self.id.style['top'])==(self.sTop()+self.t)) return ;
+							var c=self.sTop()+self.t-b;//滚动的路程是最终位置减去初始位置。
 							self.id.style['top'] =Math.ceil(self.Tween(t,b,c,self.d)) + "px";
 							if(t<self.d){t++;}else{t=0};
 						 },10);
@@ -125,8 +125,8 @@ img{vertical-align:top}
 			roll2:function(){
 						 var self=this;
 						 this.time=setInterval(function(){
-							var c=self.sTop()+self.t;//滚动的目的地。
 							if(self.cTop==c){return};
+							var c=self.sTop()+self.t;//滚动的目的地。
 							self.cTop=self.cTop+Math.ceil((c-self.cTop)*0.08)
 							self.id.style['top'] =self.cTop+ "px";
 						 },10);
