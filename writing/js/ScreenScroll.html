@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gbk" />
+<title>ScreenScroll</title>
+<style type="text/css">
+img{vertical-align:top}
+</style>
+</head>
+
+<body>
+<div style="height:5000px" id="pp">
+</div>
+<div style="background:#f00;position:absolute;" id="lxj2"><img src="http://img4.cache.netease.com/photo/0001/2010-05-01/65JMP8E400AN0001.jpg" alt="" height="325" /></div>
+<div style="background:#f00; position:absolute;" id="lxj"><img src="http://img3.cache.netease.com/photo/0001/2010-05-02/65MALKC600AN0001.jpg" height="200" alt="" />
+</div>
+<div style="background:#f00; position:absolute;" id="hb"><img src="http://img3.cache.netease.com/photo/0001/2010-05-02/65MALKC600AN0001.jpg" height="200" alt="" />
+</div>
+
+<div style=" position:absolute;top:100px;" id="top"><img src="http://louxiaojian.googlecode.com/svn/trunk/asset/app/notes/img/top.gif" alt="" />
+</div>
+
+<div style=" position:absolute;top:100px;" id="top2"><img src="http://louxiaojian.googlecode.com/svn/trunk/asset/app/notes/img/top.gif" alt="" />
+</div>
+
+<div style="background:#f00; position:absolute;" id="lxj3"><img src="http://img3.cache.netease.com/photo/0001/2010-05-02/65MALKC600AN0001.jpg" height="200" alt="" />
+</div>
+
+<script>
+/*(function(){
+	screenScroll={
+		sTop:function(o){return Math.max(document.body.scrollTop || document.documentElement.scrollTop)},
+		Tween:function(t,b,c,d){return -c *(t/=d)*(t-2) + b;},
+		on:function( obj, type, fn ) {
+			if(obj.addEventListener) {
+				obj.addEventListener( type, fn, true );
+			} else if ( obj.attachEvent ) {
+				obj['e'+type+fn] = fn;
+				obj[type+fn] = function(){obj['e'+type+fn]( window.event );}
+				obj.attachEvent( 'on'+type, obj[type+fn] );
+			} else {
+				return false;
+			}
+		},
+		roll:function(){
+			     var self=this;
+				 if(this.time){clearInterval(this.time)}
+				 var b=parseInt(this.id.style['top']),c,t=0,f=this.sTop();
+				 document.getElementById('lxj2').appendChild(document.createElement('div')).innerHTML=f-this.last;
+					 c=f-this.last; //滚动的路程计算错误,导致整个程序一塌糊涂
+					 this.time=setInterval(function(){
+						self.id.style['top'] =Math.ceil(self.Tween(t,b,c,self.d)) + "px";
+						if(t<self.d){t++;}else{clearInterval(self.time)};
+						self.id.innerHTML='上一个scrollTop:'+self.last+'<br />scrollTop值：'+self.sTop()+'<br />滚动的路程:'+c+'&nbsp;&nbsp;&nbsp;&nbsp;'+'&nbsp;&nbsp;&nbsp;&nbsp;<br />'+self.id.style['top'];
+					 },10);
+					this.last=f;
+
+		},
+		init:function(s){
+			var self=this;
+			this.id=document.getElementById(s.id)
+			this.d=40;
+			this.last=this.sTop();
+			this.on(window,'scroll',function(){self.roll()})
+		}
+		
+	}
+    screenScroll.init({id:'lxj'});
+
+})()*/
+
+
+(function(){
+	function ScreenScroll(s){
+				var self=this;
+				this.id=document.getElementById(s.id);
+				this.t=s.top;
+				this.pos=s.pos;
+				this.posValue=s.posValue;
+				this.fixed=s.fix || 0;
+				this.n=s.n || 1;
+				this.d=60;
+				this.cTop=0;
+				this.t=this.t=='bottom' ? (document.documentElement.clientHeight-this.id.offsetHeight) : parseInt(this.t);
+				this.id.style.top=this.t+'px';
+				this.id.style.position='absolute';
+				this.id.style[this.pos.toLowerCase()]=parseInt(this.posValue)+'px';
+				this.fixed ? this.fix() : (this.n==1 ? this.roll2() : this.roll());
+		};
+		ScreenScroll.prototype={
+			sTop:function(o){return Math.max(document.body.scrollTop , document.documentElement.scrollTop)},
+			Tween:function(t,b,c,d){
+				  return c*((t=t/d-1)*t*t+ 1) + b;
+			 },
+			on:function( obj, type, fn ) {
+				if(obj.addEventListener) {
+					obj.addEventListener( type, fn, true );
+				} else if ( obj.attachEvent ) {
+					obj['e'+type+fn] = fn;
+					obj[type+fn] = function(){obj['e'+type+fn]( window.event );}
+					obj.attachEvent( 'on'+type, obj[type+fn] );
+				} else {
+					return false;
+				}
+			},
+			fix:function(){
+				if(document.all && ([/MSIE (\d)\.0/i.exec(navigator.userAgent)][0][1] == 6)){
+				  this.id.style.position='absolute';
+				  this.id.style.cssText+=";top:expression(documentElement.scrollTop+"+this.t+");"+this.pos+":+"+this.posValue+")";
+				  document.body.style.cssText+=';background:url(about:blank) fixed';
+				}else{
+				  this.id.style.position='fixed';
+				}
+			},
+			roll:function(){
+					 var self=this,t=0,b=parseInt(self.id.style['top']) || 0;
+						 this.time=setInterval(function(){		
+							var c=self.sTop()+self.t-b;//滚动的路程是最终位置减去初始位置。
+							if(parseInt(self.id.style['top'])==(self.sTop()+self.t)) return ;
+							self.id.style['top'] =Math.ceil(self.Tween(t,b,c,self.d)) + "px";
+							if(t<self.d){t++;}else{t=0};
+						 },10);
+	
+			},
+			roll2:function(){
+						 var self=this;
+						 this.time=setInterval(function(){
+							var c=self.sTop()+self.t;//滚动的目的地。
+							if(self.cTop==c){return};
+							self.cTop=self.cTop+Math.ceil((c-self.cTop)*0.08)
+							self.id.style['top'] =self.cTop+ "px";
+						 },10);
+						 //为什么self.cTop不采用parseInt(self.id.style['top'])呢？
+	
+			}
+			//参数说明：
+			/*===================================
+			{
+				id:'lxj', //随屏滚顶的id
+				top:"200px", //top的值
+				pos:'right', //是居左还是居右
+				posValue:"5px",居左或居右的数值
+				fix:0,//是否固定
+				n:1 //缓动的类型
+			}
+			===================================*/
+		
+	}
+    new ScreenScroll({id:'lxj',top:"bottom",pos:'right',posValue:"5px",fix:1});
+	new ScreenScroll({id:'hb',top:"bottom",pos:'left',posValue:"5px",fix:1});
+	new ScreenScroll({id:'lxj2',top:"10px",pos:'left',posValue:"5px",n:-1});
+	new ScreenScroll({id:'top',top:"100px",pos:'right',posValue:"5px",n:-1});
+	
+	new ScreenScroll({id:'top2',top:"100px",pos:'right',posValue:"405px",n:1});
+	
+	new ScreenScroll({id:'lxj3',top:"100px",pos:'right',posValue:"605px",n:1});
+})()
+</script>
+</body>
+</html>
