@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>filter_basicimage</title>
+<style type="text/css">
+input{border:none 0}
+h2{overflow:hidden;zoom:}
+.anti-clockwise,.clockwise{width:13px; height:16px; float:left; overflow:hidden;text-indent:-9999px;margin-right:15px;cursor:pointer}
+.anti-clockwise{background:url(anti-clockwise.png) no-repeat}
+.clockwise{background:url(clockwise.png) no-repeat}
+</style>
+</head>
+
+<body>
+<h1>css滤镜的应用：rotation</h1>
+<h2><input type="button" value="逆时针方向旋转" class="anti-clockwise" onclick="Rotation({id:'lxj',des:'-1'})" /><input type="button" class="clockwise" value="顺时针方向旋转" onclick="Rotation({id:'lxj',des:'1'})" /></h2>
+<img id="lxj" src="100.jpg" style="margin-bottom:20px" >
+<script type="text/javascript">
+(function(){
+	var n=0
+	function Rotation(s){
+	  if(s.des==1){n=(n>2) ? 0 : n+1;}
+	  if(s.des==-1){n=(n==0) ? 3 : n-1}
+	  document.getElementById(s.id).style.filter = 'progid:DXImageTransform.Microsoft.BasicImage(Rotation=' + n + ')';
+	}
+	window['Rotation']=Rotation;
+	//Rotation({
+	//		 id:'lxj',//要旋转图片的id
+	//		 des:'1'//1为顺时针，-1为逆时针
+	//		 })
+})()
+</script>
+</body>
+</html>
