@@ -72,7 +72,6 @@ img{vertical-align:top}
 
 (function(){
 	function ScreenScroll(s){
-				var self=this;
 				this.id=document.getElementById(s.id);
 				this.t=s.top;
 				this.pos=s.pos;
@@ -111,6 +110,7 @@ img{vertical-align:top}
 				}else{
 				  this.id.style.position='fixed';
 				}
+				return this;
 			},
 			roll:function(){
 					 var self=this,t=0,b=parseInt(self.id.style['top']) || 0;
@@ -120,8 +120,9 @@ img{vertical-align:top}
 							self.id.style['top'] =Math.ceil(self.Tween(t,b,c,self.d)) + "px";
 							if(t<self.d){t++;}else{t=0};
 						 },10);
-	
+					return this;
 			},
+			//roll2：初始值有个缓动过程。
 			roll2:function(){
 						 var self=this;
 						 this.time=setInterval(function(){
@@ -130,9 +131,19 @@ img{vertical-align:top}
 							self.cTop=self.cTop+Math.ceil((c-self.cTop)*0.08)
 							self.id.style['top'] =self.cTop+ "px";
 						 },10);
-						 //为什么self.cTop不采用parseInt(self.id.style['top'])呢？
-	
+					return this;
+			},
+			//roll3：初始值没有缓动过程。
+			roll3:function(){
+						 var self=this;
+						 this.time=setInterval(function(){
+							if(parseInt(self.id.style['top'])==c){return};
+							var c=self.sTop()+self.t;//滚动的目的地。
+							self.id.style['top']=parseInt(self.id.style['top'])+Math.ceil((c-parseInt(self.id.style['top']))*0.08)+'px'
+						 },10);
+					return this;
 			}
+			
 			//参数说明：
 			/*===================================
 			{
@@ -150,10 +161,8 @@ img{vertical-align:top}
 	new ScreenScroll({id:'hb',top:"bottom",pos:'left',posValue:"5px",fix:1});
 	new ScreenScroll({id:'lxj2',top:"10px",pos:'left',posValue:"5px",n:-1});
 	new ScreenScroll({id:'top',top:"100px",pos:'right',posValue:"5px",n:-1});
-	
-	new ScreenScroll({id:'top2',top:"100px",pos:'right',posValue:"405px",n:1});
-	
-	new ScreenScroll({id:'lxj3',top:"100px",pos:'right',posValue:"605px",n:1});
+	new ScreenScroll({id:'top2',top:"300px",pos:'right',posValue:"405px",n:1});
+	new ScreenScroll({id:'lxj3',top:"300px",pos:'right',posValue:"605px",n:1});
 })()
 </script>
 </body>
