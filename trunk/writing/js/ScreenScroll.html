@@ -117,8 +117,8 @@ img{vertical-align:top}
 							 this.time=setInterval(function(){	
 								if(parseInt(self.id.style['top'])==(self.sTop()+self.t)) return ;
 								var c=self.sTop()+self.t-b;//滚动的路程是最终位置减去初始位置。
-								self.id.style['top'] =Math.ceil(self.Tween(t,b,c,self.d)) + "px";
-								if(t<self.d){t++;}else{t=0};
+								self.id.style['top'] =Math.floor(self.Tween(t,b,c,self.d)) + "px";
+								if(t<self.d){t++;}else{t=0,b=parseInt(self.id.style['top'])};
 							 },10);
 						return this;
 				},
