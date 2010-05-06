@@ -162,7 +162,7 @@ fieldset{border:none;}
 		new function(){
 			scrollid.style['left'] = Math.ceil(Tween.Quad.easeIn(t,b,c,d)) + "px";
 			judgePageStyle();
-			if(t<d){ t++; timeid=setTimeout(arguments.callee, 10);}else{t=0}
+			if(t<d){t++; timeid=setTimeout(arguments.callee, 10);}else{t=0}
 		};
 		
 	 }
