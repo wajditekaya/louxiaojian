@@ -1,0 +1,283 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312"/>
+<title>和float方向相反的margin水平边距Bug</title>
+<style>
+/* CSS Document by lou xiaojian */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{padding:0;margin:0;} 
+body{font:12px/1.5 Tahoma,Verdana,"宋体";word-break:break-all;color:#333}
+fieldset,img{border:0;}
+ol,li,ul{list-style:none;} 
+address,caption,cite,code,dfn,em,strong,th,var{font-weight:normal;font-style:normal;} 
+q:before,q:after{content:'';} 
+
+h2{font-size:16px; margin-bottom:10px}
+a{color:#2b6bad;text-decoration:none;outline:none;}
+a:hover{color:#f60;text-decoration:underline;}
+/*pic_left_text_right*/
+.pltr,.pltr .tr,.lfBx,.lfBx .rbx{overflow:hidden;zoom:1}
+.pltr .img,.pltr .tl,.lfBx .lbx{float:left;_margin-right:-3px;}
+.pltr .img img,.pltr .tl img{vertical-align:top}
+
+
+.bx .hd{height:5px;line-height:5px;overflow:hidden}
+	.bx .bd{padding:10px 16px 1px 16px;zoom:1;}
+/*＝see_history module＝*/
+.mWatchList .pltr .img span,.mWatchList .pltr .tr dt,.mWatchList .pltr ul li{background-image:url(http://i.pps.tv/style_v4/img/icon2.png);background-repeat:no-repeat}
+#see_history{width:733px;position:relative;zoom:1; margin:0 auto}
+.mWatchList{overflow:hidden;zoom:1; margin-bottom:30px}
+.mWatchList .pltr{border-top:1px dashed #bbb;padding:3px 5px 3px 5px;background:none;cursor:default;zoom:1;margin-top:-1px}
+.mWatchList .pltr .img{width:85px;display:none}
+.mWatchList .pltr .img img{width:75px;height:100px;padding:2px;border:1px solid #bbb;display:none}
+.mWatchList .pltr .tr{position:relative;padding-left:90px}
+.mWatchList .pltr .tr dt{width:85px;font-weight:bold;padding-left:12px;background-position:0 -697px;*background-position:0 -699px;_background-position:0 -697px;zoom:1; position:absolute;left:0;top:0}
+.mWatchList .pltr .ysList{background:none;margin-left:3px;}
+.mWatchList .pltr ul{overflow:hidden;zoom:1;margin-left:20px;height:22px}
+.mWatchList .pltr ul li{width:122px;height:22px;overflow:hidden;margin-right:8px;float:left;padding-left:23px;background-position:0 -663px;*background-position:0 -662px;/*display:inline*/}
+.mWatchList .pltr .date{text-align:right;margin-top:-22px;color:#9b9f9e}
+.mWatchList .pltr .date em{display:none}
+.mWatchList .pltr .d1,.mWatchList .pltr .d2,.mWatchList .pltr .d3{color:#27a106}
+.mWatchList .cur{padding:8px 5px 8px 5px;background:#f8f7f7}
+.mWatchList .cur .img{display:block}
+.mWatchList .cur .img img{display:block}
+.mWatchList .cur .tr{padding-left:5px}
+.mWatchList .cur .tr dt{width:auto;display:block;background-position:0 -735px;*background-position:0 -737px;_background-position:0 -735px;padding-right:0;position:static}
+.mWatchList .cur .tr dd{display:block}
+.mWatchList .cur ul{height:auto}
+.mWatchList .cur ul li{width:160px}
+.mWatchList .cur .date{margin-top:0}
+.mWatchList .cur .date em{display:inline}
+.mWatchList .over{background:#f8f7f7}
+/*＝/see_history module＝*/
+
+
+
+</style>
+</head>
+
+<body id="bd_see_history">
+          
+          <!--see_history-->
+          <div id="see_history" class="bx pitch">
+           <h1>和float方向相反的margin水平边距Bug</h1>
+           <p>IE6下的双边距是发生在和float方向相同的margin水平边距</p>
+           例子一：
+           <ul style="overflow:hidden;zoom:1;background:#f00;line-height:24px">
+             <li style="float:left;margin-left:10px;background:#f60;padding:0 5px">1223</li>
+             <li style="float:left;margin-left:10px;background:#f60;padding:0 5px">213232</li>
+             <li style="float:left;margin-left:10px;background:#f60;padding:0 5px">213232</li>
+             <li style="float:left;margin-left:10px;background:#f60;padding:0 5px">213232</li>
+           </ul>
+           <br/>
+           例子二：
+           <div style="overflow:hidden;zoom:1;background:#f00;line-height:24px">
+             <div style="float:left;margin-left:10px;background:#f60;padding:0 5px">1223</div>
+           </div>
+           <div class="bd">
+
+		      <h2>Bug出现</h2>
+              代码：
+              <p>
+              .mWatchList .pltr ul li{width:122px;height:22px;overflow:hidden;<span style="color:#f00">margin-right:8px;float:left;</span>padding-left:23px;background-position:0 -663px;*background-position:0 -662px;background-color:#f00}</p>
+              <p>相同的结构，内容不同，但Bug出现了由里面的内容引起的，这就说明了代码的不严谨造成的布局不稳定</p>
+              <!--mWatchList-->
+              <div class="mWatchList">
+               
+               <div class="pltr">
+                 <div class="img"><a href="http://bk.pps.tv/ct202654583/"  target="_blank" ><img src="http://image1.webscache.com/baike/haibao/navi/2009-10/202654583-147-2009-10-23 11-32-58.jpg" alt="美人心计(dvd完整版)-39" /></a></div>
+                 <dl class="tr">
+                   <dt><a href="pps://ouu2wugqeb6s4kap2aqa.pps/美人心计dvd完整版-39.rmvb" title="美人心计(dvd完整版)-39">美人心计(dvd完整版)-39</a></dt>
+                   <dd class="ysList">
+<!--                     <ul>
+                       <li><a href="pps://ouu2wugqeb6s4kap2aqa.pps/美人心计dvd完整版-39.rmvb" title="美人心计(dvd完整版)-39">美人心计(dvd完整版)-39</a></li>
+                       <li><a href="pps://3jkyowoqea6nnujf2aqa.pps/美人心计dvd完整版-28.rmvb" title="美人心计(dvd完整版)-28">美人心计(dvd完整版)-28</a></li>
+                       <li><a href="pps://oeiyzxgqeb2hefon2aqa.pps/美人心计dvd完整版-17.rmvb" title="美人心计(dvd完整版)-17">美人心计(dvd完整版)-17</a></li>
+                       <li><a href="pps://ouu2wx6qeb6s4ka62aqa.pps/美人心计dvd完整版-09.rmvb" title="美人心计(dvd完整版)-09">美人心计(dvd完整版)-09</a></li>
+                       <li><a href="pps://oeiyzygqeb2hefow2aqa.pps/美人心计dvd完整版-02.rmvb" title="美人心计(dvd完整版)-02">美人心计(dvd完整版)-02</a></li>
+                       <li><a href="pps://ouu2wxgqeb2stk232aqa.pps/美人心计dvd完整版-01.rmvb" title="美人心计(dvd完整版)-01">美人心计(dvd完整版)-01</a></li>
+                     </ul>-->
+                     
+                  <ul>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                     </ul>
+                     
+                   </dd>
+                   <dd class="date d1" ><em>最近观看时间：</em>2010-04-28 19:26:39</dd>
+                 </dl>
+               </div>
+               
+               <div class="pltr">
+                 <div class="img"><a href="#"><img src="../images/ys.jpg" alt="" /></a></div>
+                 <dl class="tr">
+                   <dt><a href="#">珠光宝气</a></dt>
+                   <dd class="ysList">
+                     <ul>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                     </ul>
+                   </dd>
+                   <dd class="date" onClick="stopevent(event);"><em>最近观看时间：</em>2010-04-15 11:14:21</dd>
+                 </dl>
+               </div>
+
+              </div>
+             <!--mWatchList end-->
+
+	 
+
+
+		      <h2>Bug解决</h2>
+              代码：
+              <p>
+              .mWatchList .pltr ul li{width:122px;height:22px;overflow:hidden;<span style="color:#f00">margin-right:8px;float:left;display:inline ;</span>padding-left:23px;background-position:0 -663px;*background-position:0 -662px;background-color:#f00}</p>
+              <!--mWatchList-->
+              <div class="mWatchList">
+               
+               
+               <div class="pltr">
+                 <div class="img"><a href="http://bk.pps.tv/ct202654583/"  target="_blank" ><img src="http://image1.webscache.com/baike/haibao/navi/2009-10/202654583-147-2009-10-23 11-32-58.jpg" alt="美人心计(dvd完整版)-39" /></a></div>
+                 <dl class="tr">
+                   <dt><a href="pps://ouu2wugqeb6s4kap2aqa.pps/美人心计dvd完整版-39.rmvb" title="美人心计(dvd完整版)-39">美人心计(dvd完整版)-39</a></dt>
+                   <dd class="ysList">
+                     <ul>
+                       <li style="display:inline"><a href="pps://ouu2wugqeb6s4kap2aqa.pps/美人心计dvd完整版-39.rmvb" title="美人心计(dvd完整版)-39">美人心计(dvd完整版)-39</a></li>
+                       <li style="display:inline"><a href="pps://3jkyowoqea6nnujf2aqa.pps/美人心计dvd完整版-28.rmvb" title="美人心计(dvd完整版)-28">美人心计(dvd完整版)-28</a></li>
+                       <li style="display:inline"><a href="pps://oeiyzxgqeb2hefon2aqa.pps/美人心计dvd完整版-17.rmvb" title="美人心计(dvd完整版)-17">美人心计(dvd完整版)-17</a></li>
+                       <li style="display:inline"><a href="pps://ouu2wx6qeb6s4ka62aqa.pps/美人心计dvd完整版-09.rmvb" title="美人心计(dvd完整版)-09">美人心计(dvd完整版)-09</a></li>
+                       <li style="display:inline"><a href="pps://oeiyzygqeb2hefow2aqa.pps/美人心计dvd完整版-02.rmvb" title="美人心计(dvd完整版)-02">美人心计(dvd完整版)-02</a></li>
+                       <li style="display:inline"><a href="pps://ouu2wxgqeb2stk232aqa.pps/美人心计dvd完整版-01.rmvb" title="美人心计(dvd完整版)-01">美人心计(dvd完整版)-01</a></li>
+                     </ul>
+                   </dd>
+                   <dd class="date d1" ><em>最近观看时间：</em>2010-04-28 19:26:39</dd>
+                 </dl>
+               </div>
+               
+               <div class="pltr">
+                 <div class="img"><a href="#"><img src="../images/ys.jpg" alt="" /></a></div>
+                 <dl class="tr">
+                   <dt><a href="#">珠光宝气</a></dt>
+                   <dd class="ysList">
+                     <ul>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                       <li><a href="#">珠光宝气01</a></li>
+                     </ul>
+                   </dd>
+                   <dd class="date" onClick="stopevent(event);"><em>最近观看时间：</em>2010-04-15 11:14:21</dd>
+                 </dl>
+               </div>
+
+              </div>
+             <!--mWatchList end-->
+             
+
+           </div>
+         </div>
+         <!--/see_history-->
+<script>
+(function(){
+	function addEvent( node, type, listener ) {
+		if (node.addEventListener) {
+			node.addEventListener( type, listener, false );
+			return true;
+		} else if(node.attachEvent) {
+			node['e'+type+listener] = listener;
+			node[type+listener] = function(){node['e'+type+listener]( window.event );}
+			node.attachEvent( 'on'+type, node[type+listener] );
+			return true;
+		}
+		return false;
+	};
+	function stopevent(evt)
+	{
+		var e=(evt)?evt:window.event; if(window.event){e.cancelBubble=true;}else{e.stopPropagation();}
+	};
+	function pre(evt){
+		var evt=evt ? evt :window.event;
+		if (evt.preventDefault) {
+			evt.preventDefault();
+		}
+		else {
+			evt.returnValue = false;
+		}
+	};
+	function gCN(node, name, type) {
+		if (node.getElementsByClassName)
+			return node.getElementsByClassName(name);
+			else {
+			var r = [], re = new RegExp("(^|\\s)" + name + "(\\s|$)"), e = (node || document).getElementsByTagName(type || "*");
+			for ( var i = 0; i < e.length; i++ ) {
+				if( re.test(e[i].className) )
+					r.push(e[i]);
+			}
+			return r;
+		}
+	}	
+	var mwl=gCN(document,"mWatchList","div");
+	if(mwl.length==0){return false}
+	var oc='click',oo='mouseover',ot='mouseout';
+	function Expand(oB,frist){	
+	   if(oB!=frist){if(frist.className.indexOf('cur')!=-1){frist.className=(frist.className.replace(" cur",""));}frist=oB}
+	   oB.className=(oB.className.indexOf('cur')!=-1 ? oB.className.replace(" cur","") : oB.className+=" cur");
+       return frist;
+	}
+    for(var n=0;n<mwl.length;n++){
+        (function(){
+            var aPltr=gCN(mwl[n],"pltr","div");
+            if(aPltr.length==0){return false}
+			var frist=aPltr[0];
+			if(!document.getElementById('home')){
+			  if(frist.className.indexOf('cur')==-1){frist.className+=" cur";}
+			};
+            for(var i=0;i<aPltr.length;i++){
+              var alink=aPltr[i].getElementsByTagName("a");
+              for(var j=0;j<alink.length;j++){
+				  addEvent(alink[j],oc,function(event){stopevent(event)});
+				  alink[j].onmouseover=function(){window.status='完毕';return true}
+				  //addEvent(alink[j],oo,function(event){window.status='完毕';pre(event)});
+			  }
+			  addEvent(aPltr[i],oc,function(){frist=Expand(this,frist)})
+			  addEvent(aPltr[i],oo,function(){this.className+=" over"})
+			  addEvent(aPltr[i],ot,function(){this.className=this.className.replace(" over","")})
+            }
+      })();
+    }
+})()
+
+/*function MM_displayStatusMsg(msgStr) { //v1.0
+  status=msgStr;
+  document.MM_returnValue = true;
+}*/
+
+//var slice = Array.prototype.slice;
+//alert(slice.call({0: 'foo', length: 'bar'})[0]); // undefined?
+//alert(slice.call(NaN).length); //0 ?
+//alert(slice.call({0: 'foo', length: '100'})[0]); //f00 ?
+
+</script>
+
+</body>
+</html>
