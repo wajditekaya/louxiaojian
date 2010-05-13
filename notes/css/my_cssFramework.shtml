@@ -44,6 +44,7 @@ select{color:#999}
 .lrBx,.lrBx .rbx{overflow:hidden;zoom:1}
 .lrBx .lbx{float:left;_margin-right:-3px}
 .lrBx .lbx img{vertical-align:top}
+.lrBx .rbx{padding-left:5px}
 /*pic_up_text_down*/
 .pList{overflow:hidden;zoom:1}
 .pList li{float:left;text-align:center}
