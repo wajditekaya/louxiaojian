@@ -223,7 +223,7 @@ body .fn-hidden {
 	 },
 	 init:function(){
 		 var self=this;
-		 this.H=this.getEle(this.sId).h; //下拉滚动块的高度
+		 this.H= this.H ? this.H : this.getEle(this.sId).h; //下拉滚动块的高度
 		 this.par.style[{'top':'height','left':'width'}[this.options.dis]]=this.H+'px';
 		 this.sId.style[this.options.dis]=-this.H+'px';
 	     this.on(this.cId,this.options.evt,function(){self.show()});
