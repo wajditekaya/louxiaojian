@@ -61,9 +61,9 @@ function $(o){return document.getElementById(o)}
           </div>
           
 <script type="text/javascript">
-function dw(){
+function SliderLayer(){
 }
-dw.prototype={
+SliderLayer.prototype={
       $:function(o){return typeof(o)=='string' ? document.getElementById(o) : o},
 	  on:function (node,type,listener) {
 			if(!(node = this.$(node))) return false;
