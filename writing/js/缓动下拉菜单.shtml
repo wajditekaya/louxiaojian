@@ -61,6 +61,61 @@ function $(o){return document.getElementById(o)}
           </div>
           
 <script type="text/javascript">
+function dw(){
+}
+dw.prototype={
+      $:function(o){return typeof(o)=='string' ? document.getElementById(o) : o},
+	  on:function (node,type,listener) {
+			if(!(node = this.$(node))) return false;
+			if (node.addEventListener) {
+				node.addEventListener( type, listener, false );
+				return true;
+			} else if(node.attachEvent) {
+				node['e'+type+listener] = listener;
+				node[type+listener] = function(){node['e'+type+listener]( window.event );}
+				node.attachEvent( 'on'+type, node[type+listener] );
+				return true;
+			}
+			return false;
+	  },
+	  uncamelize:function(s, sep) {
+		  sep = sep || '-';
+		  return s.replace(/([a-z])([A-Z])/g, function (strMatch, p1, p2){
+			  return p1 + sep + p2.toLowerCase();
+		  });
+	  },
+	  camelize:function(s) {
+		  return s.replace(/-(\w)/g, function (strMatch, p1){
+			  return p1.toUpperCase();
+		  });
+	  },
+	  setStyle:function(element, styles) {
+		  if(!(element = this.$(element))) return false;
+		  for (property in styles) {
+			  if(!styles.hasOwnProperty(property)) continue;
+			  if(element.style.setProperty) {
+				  element.style.setProperty(
+				  this.uncamelize(property,'-'),styles[property],null);
+			  } else {
+				  element.style[this.camelize(property)] = styles[property];
+			  }
+		  }
+		  return true;
+	  },
+	  getEle:function(o){
+		  var obj=this.$(o),w=obj.offsetWidth,h=obj.offsetHeight;
+		  if(w==0){
+			  this.setStyle(obj,{'position':'absolute','display':'block','visibility':'hidden'})
+			  w=obj.offsetWidth;
+			  h=obj.offsetHeight;
+			  this.setStyle(obj,{'position':'static','display':'none','visibility':'visible'})
+		  }
+		  return {
+			  'w':w,
+			  'h':h
+		  }
+	  }
+};
 (function(){
   var last={};
   function dm(hand,obj){
