@@ -111,9 +111,9 @@ img{border:0}
               <script type="text/javascript">
 			   var lxj=new Rotation(
 					{
-						Ntag:function(){return document.getElementById('focusNav').getElementsByTagName('li')},
-						Mtag:function(){return document.getElementById('focusMain').getElementsByTagName('li')},
-						Text:function(){return document.getElementById('textDes').getElementsByTagName('li')},
+						nTag:function(){return document.getElementById('focusNav').getElementsByTagName('li')},
+						mTag:function(){return document.getElementById('focusMain').getElementsByTagName('li')},
+						text:function(){return document.getElementById('textDes').getElementsByTagName('li')},
 						index:0,
 						slider:{obj:document.getElementById('focusMain'),dis:230},
 						auto:["1","2000"],
@@ -151,8 +151,8 @@ img{border:0}
             <script type="text/javascript">
 			   var lxj_b_1=new Rotation(
 					{
-						Mtag:function(){return document.getElementById('focusMain_b_1').getElementsByTagName('li')},
-						Text:function(){return document.getElementById('textDes_b_1').getElementsByTagName('li')},
+						mTag:function(){return document.getElementById('focusMain_b_1').getElementsByTagName('li')},
+						text:function(){return document.getElementById('textDes_b_1').getElementsByTagName('li')},
 						index:0,
 						slider:{obj:document.getElementById('focusMain_b_1'),dis:230,
 								Tween:function(t,b,c,d,a,p){
@@ -195,8 +195,8 @@ img{border:0}
             <script type="text/javascript">
 			   var lxj_a=new Rotation(
 					{
-						Ntag:function(){return document.getElementById('focusNav_a').getElementsByTagName('li')},
-						Mtag:function(){return document.getElementById('focusMain_a').getElementsByTagName('li')},
+						nTag:function(){return document.getElementById('focusNav_a').getElementsByTagName('li')},
+						mTag:function(){return document.getElementById('focusMain_a').getElementsByTagName('li')},
 						index:0,
 						slider:{obj:document.getElementById('focusMain_a'),dis:230,
 								Tween:function(t,b,c,d,a,p){
@@ -232,7 +232,7 @@ img{border:0}
             <script type="text/javascript">
 			   var lxj1=new Rotation(
 					{
-						Mtag:function(){return document.getElementById('focusMain2').getElementsByTagName('li')},
+						mTag:function(){return document.getElementById('focusMain2').getElementsByTagName('li')},
 						index:0,
 						slider:{obj:document.getElementById('focusMain2'),dis:230},
 						auto:["1","2000"],
@@ -261,7 +261,7 @@ img{border:0}
             <script type="text/javascript">
 			   var lxj2=new Rotation(
 					{
-						Mtag:function(){return document.getElementById('focusMain3').getElementsByTagName('li')},
+						mTag:function(){return document.getElementById('focusMain3').getElementsByTagName('li')},
 						index:0,
 						slider:{obj:document.getElementById('focusMain3'),dis:230},
 						auto:["1","2000"],
@@ -307,9 +307,9 @@ img{border:0}
             <script type="text/javascript">
 			   var lxj3=new Rotation(
 					{
-						Ntag:function(){return document.getElementById('menu1').getElementsByTagName('li')},
-						Mtag:function(){return document.getElementById('contenter1').getElementsByTagName('li')},
-						Text:function(){return document.getElementById('textDes1').getElementsByTagName('li')},
+						nTag:function(){return document.getElementById('menu1').getElementsByTagName('li')},
+						mTag:function(){return document.getElementById('contenter1').getElementsByTagName('li')},
+						text:function(){return document.getElementById('textDes1').getElementsByTagName('li')},
 						index:0,
 						slider:{dir:'left',obj:document.getElementById('contenter1'),dis:350},
 						evt:1
@@ -345,8 +345,8 @@ img{border:0}
 		  <script type="text/javascript">
 			 var lxj5=new Rotation(
 				  {
-					  Ntag:function(){return document.getElementById('sNav').getElementsByTagName('li')},
-					  Mtag:function(){return document.getElementById('a_pic').getElementsByTagName('li')},
+					  nTag:function(){return document.getElementById('sNav').getElementsByTagName('li')},
+					  mTag:function(){return document.getElementById('a_pic').getElementsByTagName('li')},
 					  index:0,
 					  slider:{obj:document.getElementById('a_pic'),dis:270},
 					  auto:["1","1000"],
@@ -374,8 +374,8 @@ img{border:0}
         function $(o){return document.getElementById(o)}
         var wy163=new Rotation(
                         {
-                          Ntag:function(){return [$('u123'),$('u456'),$('u789')]},
-                          Mtag:function(){return [$('m123'),$('m456'),$('m789')]},
+                          nTag:function(){return [$('u123'),$('u456'),$('u789')]},
+                          mTag:function(){return [$('m123'),$('m456'),$('m789')]},
                           auto:[1,1000]
                         }
                 );
@@ -402,12 +402,12 @@ img{border:0}
         <script type="text/javascript">
         var lxja=new Rotation(
                   {
-                      Ntag:function(){
+                      nTag:function(){
                           var nav=document.getElementById('menu').getElementsByTagName('li'),aNav=[]
                           for(var j=0;j<nav.length;j++){if(!nav[j].getAttribute("lang")){aNav.push(nav[j]);}}
                           return aNav
                       },
-                      Mtag:function(){
+                      mTag:function(){
                            var div=document.getElementById('contenter').getElementsByTagName('div'),aDiv=[];
                            for(var i=0;i<div.length;i++){
                               if(div[i].parentNode==document.getElementById('contenter') && !div[i].getAttribute("lang")){aDiv.push(div[i]);}
