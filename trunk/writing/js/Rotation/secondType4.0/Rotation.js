@@ -4,9 +4,9 @@
 /*=========date:2010-05-14==========*/
 function Rotation(set){
 	   this.set(set);
-	   this.aNtag=this.s.Ntag();//返回数组
-	   this.aMtag=this.s.Mtag();//返回数组
-	   this.aText=this.s.Text();//返回数组
+	   this.aNtag=this.s.nTag();//返回数组
+	   this.aMtag=this.s.mTag();//返回数组
+	   this.aText=this.s.text();//返回数组
 	   this.dis=Math.abs(this.s.slider.dis);
 	   this.sbj=this.s.slider.obj;
 	   if(this.sbj) this.sbj.key=1;
@@ -54,9 +54,9 @@ Rotation.prototype={
 			  cur:"cur",
 			  intTabTime:50,
 			  interval:50,
-			  Ntag:function(){},
-			  Mtag:function(){},
-			  Text:function(){},//文字数组
+			  nTag:function(){},
+			  mTag:function(){},
+			  text:function(){},//文字数组
 			  slider:{obj:null,dis:0},
 			  dir:'top',
 			  Tween:function(t,b,c,d){return -c * ((t=t/d-1)*t*t*t - 1) + b},
@@ -93,9 +93,8 @@ Rotation.prototype={
 			 };
 		},
 		TabChange:function(n){
-			 if(this.lDiv&&this.lDiv!=this.aMtag[n]){this.lDiv.style.display="none";this.lDiv.key=0}
+			 if(this.lDiv&&this.lDiv!=this.aMtag[n]){this.lDiv.style.display="none"}
 			 this.aMtag[n].style.display="block";
-			 this.aMtag[n].key=1;
 			 this.lDiv=this.aMtag[n];
 		},
 		slider:function(n){
@@ -112,6 +111,7 @@ Rotation.prototype={
 		aNtagAct:function(o){
 			if(this.lLi==o){return false}
 			this.clearintTab();
+			this.clearAuto();
 			this.intTab=setTimeout(this.B(this,function(){
 			  this.de=o.cNub;
 			  this.action(o.cNub);
@@ -155,9 +155,9 @@ Rotation.prototype={
 			   if(this.s.auto[0]==1){
 				   this.autoFun()
 				   for(var m=0,men=this.aMtag.length;m<men;m++){
-					 var mg=this.sbj || this.aMtag[m];
-					 this.aE(mg,'mouseover',this.B(this,function(o){if(!o.key) return;this.clearAuto()},mg));
-					 this.aE(mg,"mouseout",this.B(this,function(o){if(!o.key) return;this.autoFun()},mg));
+					 var mg=this.aMtag[m];
+					 this.aE(mg,'mouseover',this.B(this,this.clearAuto));
+					 this.aE(mg,"mouseout",this.B(this,this.autoFun));
 				   }
 			  }
 			   /*==自动播放==*/ 
