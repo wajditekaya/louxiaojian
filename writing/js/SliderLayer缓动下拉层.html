@@ -23,8 +23,8 @@ function $(o){return document.getElementById(o)}
       <h1>缓动下拉菜单</h1>
       <!--article-bd-->
       <div class="article-bd">
-          <div id="on" style="cursor:pointer; padding-bottom:5px">收缩</div>
-          <div id="ceshi" style="margin:0 30px;background:#f9f9f9;border:1px solid #eee; overflow:hidden">             
+          <div id="on" style="cursor:pointer; padding-bottom:5px" class="SliderHandle">收缩</div>
+          <div id="ceshi" style="margin:0 30px;background:#f9f9f9;border:1px solid #eee; overflow:hidden" class="SliderBx">             
           <ul class="tList" style="padding:10px;">
           <li><a href="http://club.pps.tv/topic/24793/981593/1.html" target="_blank">北京天安门红色盛装亮相迎国庆</a></li>
           <li><a href="http://club.pps.tv/topic/24793/980705/1.html" target="_blank">送祝福—庆祝祖国母亲60周年</a></li>
@@ -45,8 +45,8 @@ function $(o){return document.getElementById(o)}
           </ul>
           </div>
           
-          <div id="on1" style="cursor:pointer; padding-bottom:5px">展开</div>
-          <div id="ceshi1" style="margin:0 30px;display:none;background:#f9f9f9;border:1px solid #eee; overflow:hidden"> 
+          <div id="on1" style="cursor:pointer; padding-bottom:5px" class="SliderHandle">展开</div>
+          <div id="ceshi1" style="margin:0 30px;display:none;background:#f9f9f9;border:1px solid #eee; overflow:hidden" class="SliderBx"> 
            <ul class="tList" style="padding:10px;">
               <li><a href="http://news.pps.tv/2009-09-18/31/15/313833.html" title="求解放、求发展、求和谐--"二七"纪念塔下的故事" target="_blank">求解放、求发展、求和谐--"二七"纪念塔下的故事</a></li>
               <li><a href="http://news.pps.tv/2009-09-18/31/15/313828.html" title="从分割到统筹：中国城乡关系在60年的改革中走向和谐" target="_blank">从分割到统筹：中国城乡关系在60年的改革中走向和谐</a></li>
@@ -61,7 +61,16 @@ function $(o){return document.getElementById(o)}
           </div>
           
 <script type="text/javascript">
-function SliderLayer(){
+function SliderLayer(s){
+	 this.SetOptions(s);
+	 this.handle=this.options.handle();
+	 this.handleBx=this.options.handleBx();
+	 this.interval=this.options.interval;
+	 this.Tween=this.options.Tween;
+	 this.evt=this.options.evt;
+	 this.hd_start=this.B(this,this.options.hd_start);
+	 this.hd_end=this.B(this,this.options.hd_end);
+	 this.run();
 }
 SliderLayer.prototype={
       $:function(o){return typeof(o)=='string' ? document.getElementById(o) : o},
@@ -77,6 +86,17 @@ SliderLayer.prototype={
 				return true;
 			}
 			return false;
+	  },
+	  B:function(object, fun) {
+		var args = Array.prototype.slice.call(arguments).slice(2);
+		return function() {
+			return fun.apply(object, args);
+		}
+	   },
+	  E:function(destination, source) {
+		for (var property in source) {
+		  destination[property] = source[property];
+		}
 	  },
 	  uncamelize:function(s, sep) {
 		  sep = sep || '-';
@@ -114,9 +134,63 @@ SliderLayer.prototype={
 			  'w':w,
 			  'h':h
 		  }
+	  },
+	 SetOptions:function(s){
+		this.options={
+			handle:function(){},
+			handleBx:function(){},
+			evt:'click',//触发菜单的方式
+			eKey:0,//0为收缩状态，1为展开状态
+			interval:30,//下拉缓动的时间
+			showDelay:10,//下拉延时时间
+			hideDelay:300,//收缩延时时间
+			dis:['height'],
+	        Tween:function(t,b,c,d){return c*(t/=d)*t + b;},
+			hd_start:function(){},
+			hd_end:function(){}
+		  };
+		  this.E(this.options,s||{})
+	  },
+	 slider:function(o){
+		var n=o.nub,b=0,c=this.getEle(this.handleBx[n]).h,d=this.interval,t=0,timer,mKey=1;
+		timer && clearTimeout(timer);
+		this.start=function(){
+		   this.setStyle(this.handleBx[n],{'height': (mKey ? (Math.ceil(this.Tween(t,b,c,d)) + "px") : (c-Math.ceil(this.Tween(t,b,c,d)) + "px"))})
+		   if(t<d){t++;timer=setTimeout(this.B(this,this.start), 10);}else{t=0;
+		   if(!mKey) this.setStyle(this.handleBx[n],{'display':'none'});
+		   }
+		};
+		this.start();
+		 
+	 },
+	 run:function(){
+		  if(this.handle.length!=this.handleBx.length) return false;
+		  for(var i=0,len=this.handle.length;i<len;i++){
+			  this.handle[i].nub=i;
+			  this.on(this.handle[i],this.evt,this.B(this,this.slider,this.handle[i]));
+		  }
+	 }
+	  
+};
+
+function getCN(node, name, type) {
+	  if (node.getElementsByClassName)
+		  return node.getElementsByClassName(name);
+		  else {
+		  var r = [], re = new RegExp("(^|\\s)" + name + "(\\s|$)"), e = (node || document).getElementsByTagName(type || "*");
+		  for ( var i = 0; i < e.length; i++ ) {
+			  if( re.test(e[i].className) )
+				  r.push(e[i]);
+		  }
+		  return r;
 	  }
 };
-(function(){
+new SliderLayer({
+				'handle':function(){return getCN(document,'SliderHandle','div')},
+				'handleBx':function(){return getCN(document,'SliderBx','div')}
+				})
+;
+/*(function(){
   var last={};
   function dm(hand,obj){
 		var Tween=function(t,b,c,d){
@@ -155,7 +229,7 @@ SliderLayer.prototype={
 	  dm("on","ceshi");
 	  dm("on1","ceshi1");
   }
-})()
+})()*/
 </script>
           
       </div>
