@@ -24,7 +24,7 @@ function $(o){return document.getElementById(o)}
       <!--article-bd-->
       <div class="article-bd">
           <div id="on" style="cursor:pointer; padding-bottom:5px" class="SliderHandle">收缩</div>
-          <div id="ceshi" style="margin:0 30px;background:#f9f9f9;border:1px solid #eee; overflow:hidden" class="SliderBx">             
+          <div id="ceshi" style="margin:0 30px;background:#f9f9f9;border:0px solid #eee; overflow:hidden" class="SliderBx">             
           <ul class="tList" style="padding:10px;">
           <li><a href="http://club.pps.tv/topic/24793/981593/1.html" target="_blank">北京天安门红色盛装亮相迎国庆</a></li>
           <li><a href="http://club.pps.tv/topic/24793/980705/1.html" target="_blank">送祝福—庆祝祖国母亲60周年</a></li>
@@ -46,7 +46,7 @@ function $(o){return document.getElementById(o)}
           </div>
           
           <div id="on1" style="cursor:pointer; padding-bottom:5px" class="SliderHandle">展开</div>
-          <div id="ceshi1" style="margin:0 30px;display:none;background:#f9f9f9;border:1px solid #eee; overflow:hidden" class="SliderBx"> 
+          <div id="ceshi1" style="margin:0 30px;background:#f9f9f9;border:1px solid #eee; overflow:hidden" class="SliderBx"> 
            <ul class="tList" style="padding:10px;">
               <li><a href="http://news.pps.tv/2009-09-18/31/15/313833.html" title="求解放、求发展、求和谐--"二七"纪念塔下的故事" target="_blank">求解放、求发展、求和谐--"二七"纪念塔下的故事</a></li>
               <li><a href="http://news.pps.tv/2009-09-18/31/15/313828.html" title="从分割到统筹：中国城乡关系在60年的改革中走向和谐" target="_blank">从分割到统筹：中国城乡关系在60年的改革中走向和谐</a></li>
@@ -124,7 +124,7 @@ SliderLayer.prototype={
 	  },
 	  getEle:function(o){
 		  var obj=this.$(o),w=obj.offsetWidth,h=obj.offsetHeight;
-		  if(w==0){
+		  if(w==0 || h==0){
 			  this.setStyle(obj,{'position':'absolute','display':'block','visibility':'hidden'})
 			  w=obj.offsetWidth;
 			  h=obj.offsetHeight;
@@ -141,7 +141,7 @@ SliderLayer.prototype={
 			handleBx:function(){},
 			evt:'click',//触发菜单的方式
 			eKey:0,//0为收缩状态，1为展开状态
-			interval:30,//下拉缓动的时间
+			interval:40,//下拉缓动的时间
 			showDelay:10,//下拉延时时间
 			hideDelay:300,//收缩延时时间
 			dis:['height'],
@@ -152,12 +152,17 @@ SliderLayer.prototype={
 		  this.E(this.options,s||{})
 	  },
 	 slider:function(o){
-		var n=o.nub,b=0,c=this.getEle(this.handleBx[n]).h,d=this.interval,t=0,timer,mKey=1;
+		var n=o.nub,b=0,c=this.getEle(this.handleBx[n]).h,d=this.interval,t=0,timer;
+		//if(!o.mKey){o.mKey=c==0 ? 1 : 0}
 		timer && clearTimeout(timer);
+		this.hd_end();
 		this.start=function(){
-		   this.setStyle(this.handleBx[n],{'height': (mKey ? (Math.ceil(this.Tween(t,b,c,d)) + "px") : (c-Math.ceil(this.Tween(t,b,c,d)) + "px"))})
+		   this.setStyle(this.handleBx[n],{'height': (o.mKey ? (Math.ceil(this.Tween(t,b,c,d)) + "px") : (c-Math.ceil(this.Tween(t,b,c,d)) + "px"))})
 		   if(t<d){t++;timer=setTimeout(this.B(this,this.start), 10);}else{t=0;
-		   if(!mKey) this.setStyle(this.handleBx[n],{'display':'none'});
+		   if(!o.mKey) this.setStyle(this.handleBx[n],{'display':'none'});
+		   this.setStyle(this.handleBx[n],{'height':'auto'});
+		   o.mKey=!o.mKey;
+		   this.hd_end();
 		   }
 		};
 		this.start();
@@ -187,7 +192,13 @@ function getCN(node, name, type) {
 };
 new SliderLayer({
 				'handle':function(){return getCN(document,'SliderHandle','div')},
-				'handleBx':function(){return getCN(document,'SliderBx','div')}
+				'handleBx':function(){return getCN(document,'SliderBx','div')},
+				'hd_end':function(){},
+				'hd_end':function(){},
+				'Tween':function(t,b,c,d){
+					if ((t/=d/2) < 1) return c/2*t*t + b;
+					return -c/2 * ((--t)*(t-2) - 1) + b;
+				      }
 				})
 ;
 /*(function(){
