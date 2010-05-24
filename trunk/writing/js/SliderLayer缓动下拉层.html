@@ -24,7 +24,7 @@ function $(o){return document.getElementById(o)}
       <!--article-bd-->
       <div class="article-bd">
           <div id="on" style="cursor:pointer; padding-bottom:5px" class="SliderHandle">收缩</div>
-          <div id="ceshi" style="margin:0 30px;background:#f9f9f9;border:0px solid #eee; overflow:hidden" class="SliderBx">             
+          <div id="ceshi" style="margin:0 30px;background:#ffffe0;border:0px solid #cbe087; overflow:hidden" class="SliderBx">             
           <ul class="tList" style="padding:10px;">
           <li><a href="http://club.pps.tv/topic/24793/981593/1.html" target="_blank">北京天安门红色盛装亮相迎国庆</a></li>
           <li><a href="http://club.pps.tv/topic/24793/980705/1.html" target="_blank">送祝福—庆祝祖国母亲60周年</a></li>
@@ -46,7 +46,7 @@ function $(o){return document.getElementById(o)}
           </div>
           
           <div id="on1" style="cursor:pointer; padding-bottom:5px" class="SliderHandle">展开</div>
-          <div id="ceshi1" style="margin:0 30px;background:#f9f9f9;border:1px solid #eee; overflow:hidden" class="SliderBx"> 
+          <div id="ceshi1" style="margin:0 30px;background:#ffffe0;border:1px solid #cbe087; overflow:hidden" class="SliderBx"> 
            <ul class="tList" style="padding:10px;">
               <li><a href="http://news.pps.tv/2009-09-18/31/15/313833.html" title="求解放、求发展、求和谐--"二七"纪念塔下的故事" target="_blank">求解放、求发展、求和谐--"二七"纪念塔下的故事</a></li>
               <li><a href="http://news.pps.tv/2009-09-18/31/15/313828.html" title="从分割到统筹：中国城乡关系在60年的改革中走向和谐" target="_blank">从分割到统筹：中国城乡关系在60年的改革中走向和谐</a></li>
@@ -152,20 +152,28 @@ SliderLayer.prototype={
 		  this.E(this.options,s||{})
 	  },
 	 slider:function(o){
-		var n=o.nub,b=0,c=this.getEle(this.handleBx[n]).h,d=this.interval,t=0,timer;
-		//if(!o.mKey){o.mKey=c==0 ? 1 : 0}
-		timer && clearTimeout(timer);
-		this.hd_end();
+        var n=o.nub,b=0,hb=this.handleBx[n],c=this.getEle(hb).h,d=this.interval,t=0,timer;
+		if(this.sTime) clearTimeout(this.sTime);
+		
+		this.sTime=setTimeout(this.B(this,function(){
+			  o.mKey=o.mKey==0 ? 1 : 0;
+			  if(hb.style.display && hb.style.display=='none'){hb.style.display='block'};
+			  timer && clearTimeout(timer);
+			  this.hd_start();									   
+			  this.start();									   
+		}),this.interval)
+		
 		this.start=function(){
-		   this.setStyle(this.handleBx[n],{'height': (o.mKey ? (Math.ceil(this.Tween(t,b,c,d)) + "px") : (c-Math.ceil(this.Tween(t,b,c,d)) + "px"))})
-		   if(t<d){t++;timer=setTimeout(this.B(this,this.start), 10);}else{t=0;
-		   if(!o.mKey) this.setStyle(this.handleBx[n],{'display':'none'});
-		   this.setStyle(this.handleBx[n],{'height':'auto'});
-		   o.mKey=!o.mKey;
-		   this.hd_end();
+		   this.setStyle(hb,{'height': (o.mKey ? (Math.ceil(this.Tween(t,b,c,d)) + "px") : (c-Math.ceil(this.Tween(t,b,c,d)) + "px"))})
+		   if(t<d){
+			   t++;timer=setTimeout(this.B(this,this.start), 10);
+		   }else{
+			 if(!o.mKey) this.setStyle(hb,{'display':'none'});
+			 this.setStyle(hb,{'height':'auto'});
+			 this.hd_end();
 		   }
 		};
-		this.start();
+		
 		 
 	 },
 	 run:function(){
@@ -173,6 +181,7 @@ SliderLayer.prototype={
 		  for(var i=0,len=this.handle.length;i<len;i++){
 			  this.handle[i].nub=i;
 			  this.on(this.handle[i],this.evt,this.B(this,this.slider,this.handle[i]));
+			  //this.on(this.handle[i],'mouseout',this.B(this,function(){if(this.sTime) clearTimeout(this.sTime);}));
 		  }
 	 }
 	  
@@ -195,52 +204,13 @@ new SliderLayer({
 				'handleBx':function(){return getCN(document,'SliderBx','div')},
 				'hd_end':function(){},
 				'hd_end':function(){},
+				'evt':'mouseover',
 				'Tween':function(t,b,c,d){
 					if ((t/=d/2) < 1) return c/2*t*t + b;
 					return -c/2 * ((--t)*(t-2) - 1) + b;
 				      }
 				})
-;
-/*(function(){
-  var last={};
-  function dm(hand,obj){
-		var Tween=function(t,b,c,d){
-					if ((t/=d/2) < 1) return c/2*t*t + b;
-					return -c/2 * ((--t)*(t-2) - 1) + b;
-				};
-		var o=$(obj);
-		var m=function(){return Math.max(o.scrollHeight,o.offsetHeight)}
-		var oheight=m();
-		  o.style.overflow="hidden"
-		  if(oheight==0){
-				  o.style.display="block";
-				  oheight=m();
-				  if(oheight!=0){o.style.height="0";}
-				  o.style.display="none";
-			}else{(o.style.height=oheight+"px");}
-		var b=0,c=oheight,d=30,t=0;
-		var mKey=0,timer;
-		function Run(){
-		   o.style.height =mKey ? (Math.ceil(Tween(t,b,c,d)) + "px") : (c-Math.ceil(Tween(t,b,c,d)) + "px");
-		   if(t<d){t++;timer=setTimeout(Run, 10);}else{t=0;
-			if(!mKey) o.style.display="none";
-		   }
-		};
-		function on(){
-			timer && clearTimeout(timer);
-			mKey=(o.style.height && o.style.height!=(oheight+"px")) ? 1 :0
-			o.style.display="block";
-			Run();
-			mKey ? (this.innerHTML="收缩") :(this.innerHTML="展开");
-		}
-		$(hand).onclick=on;
-			
-	  }
-  window.onload=function(){
-	  dm("on","ceshi");
-	  dm("on1","ceshi1");
-  }
-})()*/
+
 </script>
           
       </div>
