@@ -108,15 +108,21 @@ img{border:0}
                   </ul>
               </div>
               <div style="padding:8px 0 0 0" ><span id="left_op" style="display:inline-block; background:#f60;cursor:pointer;padding:0px 8px;color:#fff; margin-right:30px">Ïò×ó</span><span id="right_op" style="display:inline-block; background:#f60;cursor:pointer;padding:0px 8px;color:#fff">ÏòÓÒ</span></div>
+              <div id="ioioi"></div>
               <script type="text/javascript">
 			   var lxj=new Rotation(
 					{
 						nTag:function(){return document.getElementById('focusNav').getElementsByTagName('li')},
 						mTag:function(){return document.getElementById('focusMain').getElementsByTagName('li')},
 						text:function(){return document.getElementById('textDes').getElementsByTagName('li')},
-						index:0,
+						index:3,
 						slider:{obj:document.getElementById('focusMain'),dis:230},
 						auto:["1","2000"],
+						start:function(){
+							this.lxj='louxiaojian'
+							document.getElementById('ioioi').innerHTML=this.de
+						 },
+						callBack:function(){},
 						evt:0
 					}
 				  );
@@ -162,6 +168,7 @@ img{border:0}
 									  return (a*Math.pow(2,-10*t) * Math.sin( (t*d-s)*(2*Math.PI)/p ) + c + b);
 								 }
 					            },
+						start:function(){},
 						auto:["1","2000"],
 						evt:0
 					}
@@ -367,7 +374,7 @@ img{border:0}
           </ul>
         </div>
         <!--/menu-->
-        <div class="area" style="display:block" id="m123">11111</div>
+        <div class="area" id="m123">11111</div>
         <div class="area" id="m456">22222</div>
         <div class="area" id="m789">33333</div>
         <script type="text/javascript">
@@ -376,7 +383,8 @@ img{border:0}
                         {
                           nTag:function(){return [$('u123'),$('u456'),$('u789')]},
                           mTag:function(){return [$('m123'),$('m456'),$('m789')]},
-                          auto:[1,1000]
+                          auto:[1,1000],
+						  index:2
                         }
                 );
         </script>
@@ -394,7 +402,7 @@ img{border:0}
         <!--/menu-->
         <!--contenter-->
         <div id="contenter" class="contenter">
-            <div class="area"  style="display:block"><div>111111111111111</div></div>
+            <div class="area"><div>111111111111111</div></div>
             <div class="area"><div></div>222222222222222222</div>
             <div class="area">3333333333333333</div>
         </div>
