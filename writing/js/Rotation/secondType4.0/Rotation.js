@@ -1,7 +1,15 @@
 /*=======Author:louxiaojian=========*/
 /*===========Version:4.0===========*/
 /*===E-mail:louxiaojian@gmail.com===*/
-/*=========date:2010-05-14==========*/
+/*===================================
+
+date:
+2010-05-14
+2010-05-25  
+1.增加切换前后切换后的事件接口
+2.程序加载完就先执行一次this.action(this.de)，显示默认的所在的位置
+
+===================================*/
 function Rotation(set){
 	   this.set(set);
 	   this.aNtag=this.s.nTag();//返回数组
@@ -13,6 +21,8 @@ function Rotation(set){
 	   this.dir=this.s.slider.dir || this.s.dir;
 	   this.Tween=this.s.slider.Tween || this.s.Tween;
 	   this.de=this.s.index;
+	   this.start=this.B(this,this.s.start);
+	   this.callBack=this.B(this,this.s.callBack);
 	   this.eType=['click','mouseover'];
 	   this.run();
 }
@@ -60,15 +70,17 @@ Rotation.prototype={
 			  slider:{obj:null,dis:0},
 			  dir:'top',
 			  Tween:function(t,b,c,d){return -c * ((t=t/d-1)*t*t*t - 1) + b},
+			  start:function(){},
 			  callBack:function(){}
 			}
 			this.E(this.s,s||{})
 		},
 		action:function(n){
+			    this.start();
 				this.TabLi(n);
 				this.TabText(n);
                 this.dis ? this.slider(n) : this.TabChange(n);
-				this.s.callBack();
+				this.callBack();
 		},
 		autoplay:function(m){
 			  if(m){this.de = (this.de<this.aMtag.length-1) ? this.de+1 :0;}
@@ -78,16 +90,18 @@ Rotation.prototype={
 		autoFun:function(){this.clearAuto();this.intAuto=setInterval(this.B(this,this.autoplay,1),this.s.auto[1])},
 		clearAuto:function(){if(this.intAuto){clearInterval(this.intAuto)}},
 		TabLi:function(n){
-		   if(this.lLi&&this.aNtag[n]){
-			   this.lLi.className=this.lLi.className.replace(this.s.cur,"");
-			   this.lLi.key=0;
+		   if(this.aNtag){
+			   if(this.lLi){
+				 this.lLi.className=this.lLi.className.replace(this.s.cur,"");
+				 this.lLi.key=0;
+			   }
 			   if(this.aNtag[n].className.indexOf(this.s.cur)==-1){this.aNtag[n].className+=" "+this.s.cur;this.aNtag[n].key=1}
 			   this.lLi=this.aNtag[n];
 		   };
 		},
 		TabText:function(n){
 			if(this.aText){
-			   this.lText.style.display="none";
+			   this.lText && (this.lText.style.display="none");
 			   this.aText[n].style.display="block";
 			   this.lText=this.aText[n];
 			 };
@@ -120,16 +134,22 @@ Rotation.prototype={
 			return this;
 		},
 		run:function(){
-			  this.lDiv=this.aMtag[this.de];
-			  this.lDiv.key=1;
-			  if(this.aText){
+			
+/*			  this.lDiv=this.aMtag[this.de];
+			  this.lDiv.key=1;*/
+			  
+/*			  if(this.aText){
 				 this.lText=this.aText[this.de];
 				 this.lText.style.display="block";
-			  };
+			  };*/
+			  
 			  if(this.dis){this.sbj.style[this.dir]=-this.de*this.dis+"px";}
+			  
 			  if(this.aNtag){
-				  if(this.aNtag[this.de].className.indexOf(this.s.cur)==-1){this.aNtag[this.de].className+=" "+this.s.cur;this.aNtag[this.de].key=1}
-				  this.lLi=this.aNtag[this.de];
+				  
+/*				  if(this.aNtag[this.de].className.indexOf(this.s.cur)==-1){this.aNtag[this.de].className+=" "+this.s.cur;this.aNtag[this.de].key=1}
+				  this.lLi=this.aNtag[this.de];*/
+				  
 				  for(var n=0,len=this.aNtag.length;n<len;n++){
 						var tg=this.aNtag[n],aTag=tg.getElementsByTagName("a")[0] || tg.tagName.toLocaleLowerCase()=="a" && tg;
 						tg.cNub=n;
@@ -151,6 +171,7 @@ Rotation.prototype={
 					   
 					 }
 				}; 
+			   this.action(this.de);//默认显示第几个
 			   /*==自动播放==*/
 			   if(this.s.auto[0]==1){
 				   this.autoFun()
