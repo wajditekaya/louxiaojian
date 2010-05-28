@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Bug_FF下margin-top失效</title>
+<script>new Image().src='http://10.11.2.49/PPSProject/ClientPPS/tvguide/v5.0/tvguide/img/tvguideImg.png';</script>
+<style type="text/css">
+/*------- css reset ------- */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,th,var,optgroup{font-style:normal;font-weight:normal;}
+h1,h2,h3,h4,h5,h6{font-size:100%;/*font-weight:normal;*/}
+abbr,acronym{border:0;font-variant:normal;}
+input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}
+code,kbd,samp,tt{font-size:100%;}
+input,button,textarea,select{*font-size:100%;}
+body{line-height:1.5;}
+ol,ul{list-style:none;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{text-align:left;}
+sup,sub{font-size:100%;vertical-align:baseline;}
+:link,:visited ,ins{text-decoration:none;}
+blockquote,q{quotes:none;}
+blockquote: before,blockquote: after,q: before,q: after{content:'';content:none;}
+/*-------css reset end------- */
+body{font:12px/18px "微软雅黑",Tahoma,Verdana,"宋体",Helvetica,sans-serif;background:#111111;color:#989898}
+body,html{scrollbar-face-color:#393939;scrollbar-base-color:#111111;scrollbar-highlight-color:#111111;scrollbar-3d-light-color:#212121;scrollbar-shadow-color:#111111;scrollbar-dark-shadow-color:#212121;scrollbar-track-color:#212121;scrollbar-arrow-color:#c1c1c1;}
+a{color:#989898;text-decoration:none;outline:none}
+a:hover{color:#dddddd;text-decoration:none;}
+#tvguideMain{width:250px;margin:0px 4px;padding-top:4px;}
+.bx{background:#1e1e1e;margin-bottom:5px;}
+.hide{display:none}
+.fr{float:right}
+.fl{float:left}
+.tar{text-align:right;padding-right:2px}
+.score{color:#c80000;font-size:17px;font-family:Arial, Helvetica, sans-serif}
+h3{font-size:12px;color:#fff;margin:0px 6px}
+.wal{margin:0px 5px;padding:2px 1px 3px 0px;zoom:1;}
+/*lrBx*/
+.lrBx,.lrBx .rbx{overflow:hidden;zoom:1}
+.lrBx .lbx{float:left;_margin-right:-3px}
+.lrBx .lbx img{vertical-align:top}
+.lrBx .rbx{padding-left:5px}
+/*==clear==*/
+.clear{overflow:hidden;zoom:1}
+.clearfix:after {content:".";display:block;height:0;clear:both;visibility:hidden;}
+* html>body .clearfix {display: inline-block;width:100%;}
+* html .clearfix{/* Hides from IE-mac \*/height: 1%;/* End hide from IE-mac */}
+/* ie7 hack*/
+*+html .clearfix {min-height:1%;}
+
+
+.ps_a{margin:0px 6px;padding:6px 0}
+    .ps_a .lbx img{width:75px;height:100px}
+	.ps_a .rbx{line-height:16px;height:96px;overflow:hidden}
+	.ps_a .rbx h4{position:relative;zoom:1;padding-left:8px;color:#fff;font-size:12px;font-weight:normal;margin-bottom:2px}
+	.ps_a .rbx h4 a{color:#fff}
+	.ps_a .rbx h4 s{width:3px;height:5px;overflow:hidden;position:absolute;left:0;top:4px;background-position:-227px -36px;}
+    .ps_a li{height:20px;line-height:20px;overflow:hidden;}
+	.ps_a li em{color:#fff;}
+	.ps_a li a{margin-right:5px}
+	.ps_a .jj{height:auto}
+	.ps_a .tar{position:relative;height:22px;margin:-20px -6px 0 75px;background: #66C;clear:both}
+	.ps_a .tar .btn{margin-top:3px}
+    </style>
+</head>
+
+
+<body>
+<script type="text/javascript">
+new Image().src='http://upload.ppstream.com/baike/haibao//navi/2009-08/202651516-61-2009-08-13%2015-42-36.jpg';
+</script>
+<!--tvguideMain-->
+<div id="tvguideMain">
+    <style type="text/css">
+	#ysList{overflow:hidden;zoom:1}
+	#ysList .ps_a{border-top:1px dashed #3f3f3f;padding:13px 0px 12px 0;margin-top:-1px}
+	#ysList .plast{border:0px}
+	</style>
+	<!--ysList-->
+	<div id="ysList" class="bx">
+	  
+
+      <div class="lrBx ps_a">
+        <div class="lbx"><a href="#"><img src="http://upload.ppstream.com/baike/haibao//navi/2009-08/202651516-61-2009-08-13%2015-42-36.jpg" alt="" /></a></div>
+        <div class="rbx">
+         <h4><a href="#">康熙来了康熙来了康熙来了</a><s></s></h4>
+         <p class="js">《康熙来了》取自主持人蔡康永与小S徐熙娣名字的一个字而拼成。每晚收视率为1.2%-1.3%，每周吸引了超过500万观看人次，是台湾收视率最高有线电视台综艺节目。《康熙来了》给了主持人相当大的发挥空间，这也保证了他们“怪”的特色能够充分发挥。完全即兴的提问和无底线无禁忌的话题让现场总是惊喜爆笑的场面迭出。　　综艺谈话类节目,邀请台湾当红明星来到节目当中,通过期间访谈让你了解艺人不为人知的一面,多才多艺的小S,加上知识渊博的蔡康永,除了穿插期间不少的搞笑元素外,在知性与理性的对话中,你想了解的,你还不知道的幕后故事,一次性要你好看! 　　超龄顽童蔡康永、搞怪天后小S徐熙娣，联手搞笑百分百，让您心情份外轻</p>
+        </div>
+        <div class="tar">在FF下margin-top:-20px失效</div>
+      </div>
+	  
+      <div class="lrBx ps_a">
+        <div class="lbx"><a href="#"><img src="http://upload.ppstream.com/baike/haibao//navi/2009-08/202651516-61-2009-08-13%2015-42-36.jpg" alt="" /></a></div>
+        <div class="rbx">
+         <h4><a href="#">康熙来了康熙来了康熙来了</a><s></s></h4>
+         <p class="js">《康熙来了》取自主持人蔡康永与小S徐熙娣名字的一个字而拼成。每晚收视率为1.2%-1.3%，每周吸引了超过500万观看人次，是台湾收视率最高有线电视台综艺节目。《康熙来了》给了主持人相当大的发挥空间，这也保证了他们“怪”的特色能够充分发挥。完全即兴的提问和无底线无禁忌的话题让现场总是惊喜爆笑的场面迭出。　　综艺谈话类节目,邀请台湾当红明星来到节目当中,通过期间访谈让你了解艺人不为人知的一面,多才多艺的小S,加上知识渊博的蔡康永,除了穿插期间不少的搞笑元素外,在知性与理性的对话中,你想了解的,你还不知道的幕后故事,一次性要你好看! 　　超龄顽童蔡康永、搞怪天后小S徐熙娣，联手搞笑百分百，让您心情份外轻</p>
+        </div>
+        <div class="tar"><a href="#" class="btn">点击播放</a><a href="#" class="btn">参与评论</a></div>
+      </div>
+	  
+      <div class="lrBx ps_a">
+        <div class="lbx"><a href="#"><img src="http://upload.ppstream.com/baike/haibao//navi/2009-08/202651516-61-2009-08-13%2015-42-36.jpg" alt="" /></a></div>
+        <div class="rbx">
+         <h4><a href="#">康熙来了康熙来了康熙来了</a><s></s></h4>
+         <p class="js">《康熙来了》取自主持人蔡康永与小S徐熙娣名字的一个字而拼成。每晚收视率为1.2%-1.3%，每周吸引了超过500万观看人次，是台湾收视率最高有线电视台综艺节目。《康熙来了》给了主持人相当大的发挥空间，这也保证了他们“怪”的特色能够充分发挥。完全即兴的提问和无底线无禁忌的话题让现场总是惊喜爆笑的场面迭出。　　综艺谈话类节目,邀请台湾当红明星来到节目当中,通过期间访谈让你了解艺人不为人知的一面,多才多艺的小S,加上知识渊博的蔡康永,除了穿插期间不少的搞笑元素外,在知性与理性的对话中,你想了解的,你还不知道的幕后故事,一次性要你好看! 　　超龄顽童蔡康永、搞怪天后小S徐熙娣，联手搞笑百分百，让您心情份外轻</p>
+        </div>
+        <div class="tar"><a href="#" class="btn">点击播放</a><a href="#" class="btn">参与评论</a></div>
+      </div>
+
+	  
+	</div>
+	<!--end ysList-->
+
+
+</div>
+<!--end tvguideMain-->
+
+</body>
+</html>

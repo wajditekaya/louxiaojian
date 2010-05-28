@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gbk" />
+<title>层absolute后在IE6,7下不见了</title>
+<style>
+/*------- css reset ------- */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,th,var,optgroup{font-style:normal;font-weight:normal;}
+h1,h2,h3,h4,h5,h6{font-size:100%;/*font-weight:normal;*/}
+abbr,acronym{border:0;font-variant:normal;}
+input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}
+code,kbd,samp,tt{font-size:100%;}
+input,button,textarea,select{*font-size:100%;}
+body{line-height:1.5;}
+ol,ul{list-style:none;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{text-align:left;}
+sup,sub{font-size:100%;vertical-align:baseline;}
+:link,:visited ,ins{text-decoration:none;}
+blockquote,q{quotes:none;}
+blockquote: before,blockquote: after,q: before,q: after{content:'';content:none;}
+/*-------css reset end------- */
+body{font:12px/18px Tahoma,Verdana,"宋体",Helvetica,sans-serif;background:#111111;color:#989898}
+a{color:#989898;text-decoration:none;outline:none}
+a:hover{color:#dddddd;text-decoration:none;}
+.bx{background:#1e1e1e;margin-bottom:5px;}
+.hide{display:none}
+.fr{float:right}
+.fl{float:left}
+.tar{text-align:right;padding-right:2px}
+
+/*==clear==*/
+.clear{overflow:hidden;zoom:1}
+.clearfix:after {content:".";display:block;height:0;clear:both;visibility:hidden;}
+* html>body .clearfix {display: inline-block;width:100%;}
+* html .clearfix{/* Hides from IE-mac \*/height: 1%;/* End hide from IE-mac */}
+/* ie7 hack*/
+*+html .clearfix {min-height:1%;}
+
+
+#videoRelations{width:378px;height:371px;background:url(http://10.11.2.49/PPSProject/ClientPPS/tvguide/v5.0/tvguide/img/videoRelations.jpg) no-repeat;position:relative}
+#videoRelations h2{color:#fff;line-height:22px;padding-left:10px}
+#videoRelations .close{width:9px;height:8px;overflow:hidden;position:absolute;top:7px;right:15px;text-indent:-9999px}
+#videoRelations .bd{padding:10px}
+</style></head>
+
+<body>
+<!--width:378px;height:371px;-->
+<div id="videoRelations">
+  <h2 class="hd">影片关系</h2>
+  <div class="bd">
+x关闭按钮层absolute后在IE6,7下不见了
+  </div>
+  <div class="ft"><a href="#" class="close" title="关闭">关闭</a></div>
+</div>
+
+</body>
+</html>
