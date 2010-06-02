@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gbk" />
+<title>Bug_IE6下负边距撑不开</title>
+<style>
+/*===================================
+author:	lou xiao jian
+email:  jxsr_lxj@163.com
+====================================*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+body{font:12px/22px Tahoma,"宋体";word-break:break-all;text-align:center; padding-bottom:15px}
+fieldset,img{border:none 0;} 
+table {border-collapse:collapse;border-spacing:0;} 
+ol,li,ul{list-style:none;} 
+address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal;}
+caption,th{text-align:left;} 
+h1,h2,h3,h4,h5,h6{font-size:100%;} 
+q:before,q:after{content:'';}
+abbr,acronym{border:0;font-variant:normal;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+input,select,textarea{font:normal normal 12px "Verdana";outline:none}
+input,textarea,select{*font-size:100%;}
+input,textarea{color:#666}
+select{color:#999}
+
+/*============================================header===================================================*/
+a{color:#2b6bad;text-decoration:none;outline:none}
+a:hover{color:#fa8c00;text-decoration:underline}
+
+#content{width:960px;margin:0 auto;text-align:left}
+
+
+
+.p-cols{zoom:1}
+	.p-cols:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+	.p-cols .p-col1{width:100%;float:left}
+	.p-cols .p-col2{float:left}
+    .p-cols-m2-s .p-col1-1{margin-right:360px}
+	.p-cols-m2-s .p-col2{width:340px;margin-left:-340px}
+/*.bx{}*/
+.hd{height:28px;line-height:28px;overflow:hidden;border:1px solid #e7e7e7;background-color:#f6f6f6;background-repeat:repeat-x;padding-left:10px; font-size:14px}
+.bd{border:1px solid #e7e7e7;border-top:0;padding-left:10px;padding-right:10px}
+
+
+
+#actor{zoom:1; margin-bottom:30px}
+    #actor .bd{padding-top:10px;padding-bottom:5px;overflow:hidden}
+	#actor ul{overflow:hidden;zoom:1;margin-right:-150px;}
+	#actor .p-item{width:83px;float:left;margin-right:33px;display:inline}
+.p-item{text-align:center}
+    .p-item a:hover em{text-decoration:underline}
+	.p-item em{display:block;height:18px;overflow:hidden;line-height:18px;cursor:pointer}
+	.p-item .img2{width:75px;height:100px;vertical-align:top;border:1px solid #e3e3e3;padding:3px}
+	.p-item .score{font-size:12px}
+/*=================================for module-p-col2.html============================================*/
+</style>
+</head>
+
+<body id="transition">
+
+
+<!--content-->
+<div id="content">
+
+
+      
+  <!--p-cols-m2-s-->
+  <div class="p-cols p-cols-m2-s">
+    <div class="p-col1">
+      <div class="p-col1-1">
+      
+<h1>Bug_IE6下负边距撑不开</h1>
+<div style="line-height:3; font-size:16px; color:#f00">IE下的bug,90%以上都是由于layout引起的</div>
+<p>原因：在特定的结构布局中，父元素没有触发layout</p>
+
+
+      </div>
+    </div>
+    <div class="p-col2">
+
+      
+      <!--actor-->
+      <div id="actor" class="bx rela">
+        <div class="hd EsHandle"><h2>BUG出现</h2><b></b></div>
+        <div class="bd EsMain">
+          <ul>
+            <li class="p-item"><a href="#"><img src="http://upload.ppstream.com/baike/haibao//navi/2009-08/202651516-61-2009-08-13%2015-42-36.jpg" width="75" height="100" class="img2" alt="" /><em>史泰龙</em></a><div class="score">8.9分</div></li>
+            <li class="p-item"><a href="#"><img src="http://upload.ppstream.com/baike/haibao//navi/2009-08/202651516-61-2009-08-13%2015-42-36.jpg" width="75" height="100" class="img2" alt="" /><em>史泰龙史泰龙史泰龙</em></a><div class="score">8.9分</div></li>
+            <li class="p-item"><a href="#"><img src="http://upload.ppstream.com/baike/haibao//navi/2009-08/202651516-61-2009-08-13%2015-42-36.jpg" width="75" height="100" class="img2" alt="" /><em>史泰龙史泰龙史泰龙史泰龙史泰龙</em></a><div class="score">8.9分</div></li>
+          </ul>
+
+        </div>
+      </div>
+      <!--/actor-->
+      
+      <!--actor-->
+      <div id="actor" class="bx rela">
+        <div class="hd EsHandle"><h2>BUG解决</h2><b></b></div>
+        <div class="bd EsMain" style="zoom:1">
+          <ul>
+            <li class="p-item"><a href="#"><img src="http://upload.ppstream.com/baike/haibao//navi/2009-08/202651516-61-2009-08-13%2015-42-36.jpg" width="75" height="100" class="img2" alt="" /><em>史泰龙</em></a><div class="score">8.9分</div></li>
+            <li class="p-item"><a href="#"><img src="http://upload.ppstream.com/baike/haibao//navi/2009-08/202651516-61-2009-08-13%2015-42-36.jpg" width="75" height="100" class="img2" alt="" /><em>史泰龙史泰龙史泰龙</em></a><div class="score">8.9分</div></li>
+            <li class="p-item"><a href="#"><img src="http://upload.ppstream.com/baike/haibao//navi/2009-08/202651516-61-2009-08-13%2015-42-36.jpg" width="75" height="100" class="img2" alt="" /><em>史泰龙史泰龙史泰龙史泰龙史泰龙</em></a><div class="score">8.9分</div></li>
+          </ul>
+
+        </div>
+      </div>
+      <!--/actor-->
+      
+      
+     </div>
+  </div>
+  <!--/p-cols-m2-s-->
+  
+</div>
+<!--/content-->
+
+</body>
+</html>
