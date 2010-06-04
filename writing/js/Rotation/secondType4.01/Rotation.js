@@ -110,7 +110,11 @@ Rotation.prototype={
 			 this.lDiv=this.aMtag[n];
 		},
 		slider:function(n){
-			if(this.dis && !this.sliderInit){this.sbj.style[this.dir]=-this.de*this.dis+"px";this.sliderInit=true;}/*程序加载后这执行一次，以后都不执行*/
+			if(this.dis && !this.sliderInit){
+				this.sbj.style.position='absolute';
+				this.sbj.style[this.dir]=-this.de*this.dis+"px";
+				this.sliderInit=true;
+			}/*程序加载后这执行一次，以后都不执行*/
 			var t=0,b=parseInt(this.sbj.style[this.dir]),c=-n*this.dis-b;
 			this.Move=function(){
 				if(!c){return false}
