@@ -15,12 +15,13 @@ function Rotation(set){
 	   this.aText=this.s.text();//返回数组
 	   this.dis=Math.abs(this.s.slider.dis);
 	   this.sbj=this.s.slider.obj;
-	   if(this.sbj) this.sbj.key=1;
+	   //if(this.sbj) this.sbj.key=1;
 	   this.dir=this.s.slider.dir || this.s.dir;
 	   this.Tween=this.s.slider.Tween || this.s.Tween;
 	   this.de=this.s.index;
 	   this.start=this.B(this,this.s.start);
 	   this.callBack=this.B(this,this.s.callBack);
+	   this.key=true;//是否进行切换
 	   this.eType=['click','mouseover'];
 	   this.run();
 }
@@ -75,6 +76,7 @@ Rotation.prototype={
 		},
 		action:function(n){
 			    this.start();
+				if(!this.key) return false;
 				this.TabLi(n);
 				this.TabText(n);
                 this.dis ? this.slider(n) : this.TabChange(n);
@@ -89,12 +91,13 @@ Rotation.prototype={
 		clearAuto:function(){if(this.intAuto){clearInterval(this.intAuto)}},
 		TabLi:function(n){
 		   if(this.aNtag){
+			   var a=this.aNtag[n],c='className',s=this.s.cur;
 			   if(this.lLi){
-				 this.lLi.className=this.lLi.className.replace(this.s.cur,"");
+				 this.lLi[c]=this.lLi[c].replace(s,"");
 				 this.lLi.key=0;
 			   }
-			   if(this.aNtag[n].className.indexOf(this.s.cur)==-1){this.aNtag[n].className+=" "+this.s.cur;this.aNtag[n].key=1}
-			   this.lLi=this.aNtag[n];
+			   if(a[c].indexOf(s)==-1){a[c]+=" "+s;a.key=1}
+			   this.lLi=a;
 		   };
 		},
 		TabText:function(n){
@@ -105,9 +108,10 @@ Rotation.prototype={
 			 };
 		},
 		TabChange:function(n){
-			 if(this.lDiv&&this.lDiv!=this.aMtag[n]){this.lDiv.style.display="none"}
-			 this.aMtag[n].style.display="block";
-			 this.lDiv=this.aMtag[n];
+			 var m=this.aMtag[n];
+			 if(this.lDiv&&this.lDiv!=m){this.lDiv.style.display="none"}
+			 m.style.display="block";
+			 this.lDiv=m;
 		},
 		slider:function(n){
 			if(this.dis && !this.sliderInit){
@@ -115,12 +119,12 @@ Rotation.prototype={
 				this.sbj.style[this.dir]=-this.de*this.dis+"px";
 				this.sliderInit=true;
 			}/*程序加载后这执行一次，以后都不执行*/
-			var t=0,b=parseInt(this.sbj.style[this.dir]),c=-n*this.dis-b;
+			var t=0,b=parseInt(this.sbj.style[this.dir]),c=-n*this.dis-b,d=this.s.interval;
 			this.Move=function(){
 				if(!c){return false}
 				if(this.moveTime){clearTimeout(this.moveTime)}
-				this.sbj.style[this.dir]=Math.round(this.Tween(t,b,c,this.s.interval))+"px";
-				if(t<this.s.interval){t++;this.moveTime=setTimeout(this.B(this,this.Move),10)}
+				this.sbj.style[this.dir]=Math.round(this.Tween(t,b,c,d))+"px";
+				if(t<d){t++;this.moveTime=setTimeout(this.B(this,this.Move),10)}
 			};
 			this.Move();
 		},
