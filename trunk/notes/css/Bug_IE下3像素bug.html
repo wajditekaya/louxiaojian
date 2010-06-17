@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>3像素bug</title>
+<style type="text/css">
+*{margin:0; padding:0}
+body{font: 12px/1.5 Tahoma; padding:0 400px}
+
+</style>
+</head>
+
+<body>
+<div style="overflow:hidden;zoom:1; margin-bottom:30px">
+  <img src="http://image.ku6.com/image/201006/12/KU612223452pYYALZ.jpg" alt="" style="width:132px;float:left" />
+  <div style="background:#f00">北京时间6月13日（周日）凌晨2点30分，南非世界杯C组第一场比赛在勒腾斯堡皇家巴弗肯球场进行，交战双方是英格兰和美国，上半场比赛杰拉德开场4分钟就接到赫斯基助攻破门，而半场结束前格林低级失误送礼，邓普西远射为美国队扳成1-1平，最终双方各得一分。【</div>
+</div>
+
+<div style="overflow:hidden;zoom:1;margin-bottom:30px">
+  <span style="width:132px; float:left; height:18px; background:#f60">我有三像素bug</span>
+  <div style="background:#f00">北京时间6月13日（周日）凌晨2点30分，南非世界杯C组第一场比赛在勒腾斯堡皇家巴弗肯球场进行，交战双方是英格兰和美国，上半场比赛杰拉德开场4分钟就接到赫斯基助攻破门，而半场结束前格林低级失误送礼，邓普西远射为美国队扳成1-1平，最终双方各得一分。【</div>
+</div>
+
+
+<div style="overflow:hidden;zoom:1; margin-bottom:30px">
+  <div style="width:132px;float:left;height:18px;background:#f60">我有三像素bug</div>
+  <div style="background:#f00;">北京时间6月13日（周日）凌晨2点30分，南非世界杯C组第一场比赛在勒腾斯堡皇家巴弗肯球场进行，交战双方是英格兰和美国，上半场比赛杰拉德开场4分钟就接到赫斯基助攻破门，而半场结束前格林低级失误送礼，邓普西远射为美国队扳成1-1平，最终双方各得一分。【</div>
+</div>
+
+
+<div style="overflow:hidden;zoom:1;margin-bottom:30px">
+  <span style="width:132px;float:left;height:18px;background:#f60">我有三像素bug</span>
+  <a style="background:#f00">北京时间6月13日（周日）凌晨2点30分，南非世界杯C组第一场比赛在勒腾斯堡皇家巴弗肯球场进行，交战双方是英格兰和美国，上半场比赛杰拉德开场4分钟就接到赫斯基助攻破门，而半场结束前格林低级失误送礼，邓普西远射为美国队扳成1-1平，最终双方各得一分。【</a>
+</div>
+
+</body>
+</html>
