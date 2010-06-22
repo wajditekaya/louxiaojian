@@ -152,7 +152,7 @@ function getCN(node, name, type) {
 		  return node.getElementsByClassName(name);
 		  else {
 		  var r = [], re = new RegExp("(^|\\s)" + name + "(\\s|$)"), e = (node || document).getElementsByTagName(type || "*");
-		  for ( var i = 0; i < e.length; i++ ) {
+		  for ( var i = 0,len=e.length; i < len; i++ ) {
 			  if( re.test(e[i].className) )
 				  r.push(e[i]);
 		  }
