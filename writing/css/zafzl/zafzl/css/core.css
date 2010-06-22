@@ -61,8 +61,10 @@ select{color:#999}
 	.login_btn a,.login_btn input{float:left}
 .pitch{margin-bottom:8px}/*¼ä¾à*/
 
-a {color:#333;text-decoration:none; }
-a:hover {color:#ff4300; text-decoration:underline }
+a{color:#333;text-decoration:none}
+a:hover {color:#ff4300;text-decoration:underline}
+.a2 a{color:#F78431}
+.a2 a:hover{ color:#0c8e28;text-decoration:none}
 .but{height:20px;line-height:20px;display:inline-block;overflow:hidden;background-position:0 -52px;border:1px solid #ff6306;color:#fff;padding:0 8px 0 12px}
 .but:hover{color:#fff;text-decoration:none}
 
@@ -80,15 +82,32 @@ a:hover {color:#ff4300; text-decoration:underline }
   .p-cols .p-col2 .p-col2-1{margin-left:326px}
   .p-cols .p-col1{width:326px;float:left;margin-left:-100%}
   .p-cols .p-col3{width:326px;float:left;margin-left:-326px}
-#header,#content,#footer{width:950px;margin:0 auto;text-align:left; border:1px solid #e4e4e4; background:#fff}
-#header{border-bottom:0}
+#header,#content,#footer{width:950px;margin:0 auto;text-align:left;border:1px solid #e4e4e4;background:#fff;padding:0 5px}
+#header{border-bottom:0; padding-bottom:15px}
 #content{border-top:0}
 #content{margin-bottom:15px}
-
-#menu{line-height:39px; background:url(../img/nav_bg.gif) repeat-x;color:#fff}
+#menu,#menu b,#menu s,#menu li span,#menu li a,#menu li{ background-image:url(../img/zafzl.png); background-repeat:no-repeat}
+#header .head-a{overflow:hidden;zoom:1}
+    #logo{height:80px}
+	#header .head-a #logo{width:140px;float:left}
+	#header .head-a-r{width:810px;float:right}
+	#head-bar{color:#ddd;text-align:right}
+	#head-bar a{ margin:0 5px}
+#menu{line-height:33px;height:37px;color:#fff;background-position:0 -66px;background-repeat:repeat-x;position:relative;zoom:1; padding-left:15px}
+    #menu b,#menu s{width:2px;height:37px;overflow:hidden;position:absolute;top:0}
+	#menu b{background-position:0 -103px;left:0}
+	#menu s{background-position:-2px -103px;right:0}
 	#menu a{color:#fff}
-	#menu ul{overflow:hidden;zoom:1;}
-	#menu li{float:left}
-	#menu li span,#menu li a{display:block}
-	#menu li span{padding:0 10px}
-
+	#menu ul{overflow:hidden;zoom:1;padding-top:2px}
+	#menu li{float:left;display:inline;background-position:-90px -103px;margin:0 10px 0 -2px;padding-left:10px}
+	#menu li span,#menu li a{display:block; background-position:-200px 0}
+	#menu li a{padding-left:5px}
+	#menu li span{padding:0 12px 0 7px;cursor:pointer}
+	#menu li a:hover,#menu .select a{background-position:left 0;color:#116406;text-decoration:none}
+	#menu li a:hover span,#menu .select a span{background-position:right -33px}
+.bx,.bx-a{padding:3px;margin-bottom:8px}
+.bx{border:1px solid #dcdcdc;background:#eeeeee}
+.bx-a{border:1px solid #ffd99b;background:#fff3d5}
+.bx .hd,.bx-a .hd{padding:0 5px;line-height:22px;font-weight:bold}
+.bx .bd,.bx-a .bd{padding:5px}
+.bx .hd,.bx .bd,.bx-a .hd,.bx-a .bd{background:#fff}
