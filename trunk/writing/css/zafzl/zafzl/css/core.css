@@ -111,3 +111,23 @@ a:hover {color:#ff4300;text-decoration:underline}
 .bx .hd,.bx-a .hd{padding:0 5px;line-height:22px;font-weight:bold}
 .bx .bd,.bx-a .bd{padding:5px}
 .bx .hd,.bx .bd,.bx-a .hd,.bx-a .bd{background:#fff}
+
+.focus{overflow:hidden;zoom:1;position:relative;margin-bottom:20px}
+	.focus dl,.focus-tbj{position:absolute;bottom:10px;left:0;width:470px;height:80px;color:#fff}
+	.focus-tbj{background:#000;opacity:0.5;-moz-opacity:0.5;filter:alpha(opacity=50);z-index:10;}
+	.focus dl{display:none;z-index:99}
+	.focus dl dt,.focus dl dd{padding:0 15px 0 20px}
+	.focus dl dt{font-weight:bold; padding-top:5px}
+	.focus dl dd{height:44px; overflow:hidden}
+	.focus-m{height:300px;overflow:hidden;float:left;width:100%;position:relative;z-index:10}
+	.focus-m ul{margin-right:230px;position:absolute}
+	.focus-m li{height:300px}
+	.focus-m li img{width:470px;height:300px;vertical-align:top}
+	.focus-n{float:left;width:236px;margin-left:-236px;}
+	.focus-n ul{padding-top:1px;zoom:1}
+	.focus-n li{height:61px;cursor:pointer;background-color:#f3f3f3;color:#2b6bad;position:relative;z-index:20;background:url(../img/focus.png)  right -61px no-repeat;margin-top:-1px}
+	.focus-n li a{padding:5px 5px 0 88px;zoom:1;cursor:pointer;display:block}
+	.focus-n li a:hover{text-decoration:none;color:#2B6BAD}
+	.focus-n li img{position:absolute;top:5px;left:11px;width:67px;height:50px}
+	.focus-n .select{background-position:right 0;color:#000000;z-index:25}
+	.focus-n .select a,.focus-n .select a:hover{color:#000}
