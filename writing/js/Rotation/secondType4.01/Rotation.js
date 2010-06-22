@@ -6,13 +6,15 @@
 date:2010-05-25  
 1.增加切换前后切换后的事件接口
 2.程序加载完就先执行一次this.action(this.de)，显示默认的所在的位置
+3.增加当只有菜单时，程序也照样执行(如：例子10)2010-06-22
+4.切换对象参数由函数换成数组2010-06-22
 
 ===================================*/
 function Rotation(set){
 	   this.set(set);
-	   this.aNtag=this.s.nTag();//返回数组
-	   this.aMtag=this.s.mTag();//返回数组
-	   this.aText=this.s.text();//返回数组
+	   this.aNtag=this.s.nTag;//返回数组
+	   this.aMtag=this.s.mTag;//返回数组
+	   this.aText=this.s.text;//返回数组
 	   this.dis=Math.abs(this.s.slider.dis);
 	   this.sbj=this.s.slider.obj;
 	   //if(this.sbj) this.sbj.key=1;
@@ -63,9 +65,9 @@ Rotation.prototype={
 			  cur:"cur",
 			  intTabTime:50,
 			  interval:50,
-			  nTag:function(){},
-			  mTag:function(){},
-			  text:function(){},//文字数组
+			  nTag:[],
+			  mTag:[],
+			  text:[],//文字数组
 			  slider:{obj:null,dis:0},
 			  dir:'top',
 			  Tween:function(t,b,c,d){return -c * ((t=t/d-1)*t*t*t - 1) + b},
@@ -90,7 +92,7 @@ Rotation.prototype={
 		autoFun:function(){this.clearAuto();this.intAuto=setInterval(this.B(this,this.autoplay,1),this.s.auto[1])},
 		clearAuto:function(){if(this.intAuto){clearInterval(this.intAuto)}},
 		TabLi:function(n){
-		   if(this.aNtag){
+		   if(this.aNtag!=''){
 			   var a=this.aNtag[n],c='className',s=this.s.cur;
 			   if(this.lLi){
 				 this.lLi[c]=this.lLi[c].replace(s,"");
@@ -101,29 +103,34 @@ Rotation.prototype={
 		   };
 		},
 		TabText:function(n){
-			if(this.aText){
+			if(this.aText!=''){
 			   this.lText && (this.lText.style.display="none");
 			   this.aText[n].style.display="block";
 			   this.lText=this.aText[n];
 			 };
 		},
 		TabChange:function(n){
-			 var m=this.aMtag[n];
-			 if(this.lDiv&&this.lDiv!=m){this.lDiv.style.display="none"}
-			 m.style.display="block";
-			 this.lDiv=m;
+			 if(this.aMtag!=''){
+			   var m=this.aMtag[n];
+			   if(this.lDiv&&this.lDiv!=m){this.lDiv.style.display="none"}
+			   m.style.display="block";
+			   this.lDiv=m;
+			 }
 		},
 		slider:function(n){
-			if(this.dis && !this.sliderInit){
-				this.sbj.style.position='absolute';
-				this.sbj.style[this.dir]=-this.de*this.dis+"px";
+			var sb=this.sbj,
+			dr=this.dir,/*滑动方向*/
+			ds=this.dis;/*滑动距离*/
+			if(ds && !this.sliderInit){
+				sb.style.position='absolute';
+				sb.style[dr]=-this.de*this.dis+"px";
 				this.sliderInit=true;
 			}/*程序加载后这执行一次，以后都不执行*/
-			var t=0,b=parseInt(this.sbj.style[this.dir]),c=-n*this.dis-b,d=this.s.interval;
+			var t=0,b=parseInt(this.sbj.style[dr]),c=-n*ds-b,d=this.s.interval;
 			this.Move=function(){
 				if(!c){return false}
 				if(this.moveTime){clearTimeout(this.moveTime)}
-				this.sbj.style[this.dir]=Math.round(this.Tween(t,b,c,d))+"px";
+				sb.style[dr]=Math.round(this.Tween(t,b,c,d))+"px";
 				if(t<d){t++;this.moveTime=setTimeout(this.B(this,this.Move),10)}
 			};
 			this.Move();
@@ -140,7 +147,7 @@ Rotation.prototype={
 			return this;
 		},
 		run:function(){
-			  if(this.aNtag){		  
+			  if(this.aNtag!=''){		  
 				  for(var n=0,len=this.aNtag.length;n<len;n++){
 						var tg=this.aNtag[n],aTag=tg.getElementsByTagName("a")[0] || tg.tagName.toLocaleLowerCase()=="a" && tg;
 						tg.cNub=n;
@@ -166,11 +173,14 @@ Rotation.prototype={
 			   /*==自动播放==*/
 			   if(this.s.auto[0]==1){
 				   this.autoFun()
-				   for(var m=0,men=this.aMtag.length;m<men;m++){
-					 var mg=this.aMtag[m];
-					 this.aE(mg,'mouseover',this.B(this,this.clearAuto));
-					 this.aE(mg,"mouseout",this.B(this,this.autoFun));
+				   var mg=this.aMtag;
+				   if(mg!=''){
+					 for(var m=0,men=mg.length;m<men;m++){
+					   this.aE(mg[m],'mouseover',this.B(this,this.clearAuto));
+					   this.aE(mg[m],"mouseout",this.B(this,this.autoFun));
+					 }
 				   }
+				   
 			  }
 			   /*==自动播放==*/ 
 				

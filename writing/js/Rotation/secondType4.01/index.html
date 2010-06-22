@@ -110,24 +110,30 @@ img{border:0}
               <div style="padding:8px 0 0 0" ><span id="left_op" style="display:inline-block; background:#f60;cursor:pointer;padding:0px 8px;color:#fff; margin-right:30px">向左</span><span id="right_op" style="display:inline-block; background:#f60;cursor:pointer;padding:0px 8px;color:#fff">向右</span></div>
               <div id="ioioi"></div>
               <script type="text/javascript">
-			   var lxj=new Rotation(
-					{
-						nTag:function(){return document.getElementById('focusNav').getElementsByTagName('li')},
-						mTag:function(){return document.getElementById('focusMain').getElementsByTagName('li')},
-						text:function(){return document.getElementById('textDes').getElementsByTagName('li')},
-						index:3,
-						slider:{obj:document.getElementById('focusMain'),dis:230},
-						auto:["1","2000"],
-						start:function(){
-							this.lxj='louxiaojian'
-							document.getElementById('ioioi').innerHTML=this.de
-						 },
-						callBack:function(){},
-						evt:0
-					}
-				  );
+			   var lxj=function(){
+				    var nTag=document.getElementById('focusNav').getElementsByTagName('li'),
+					mTag=document.getElementById('focusMain').getElementsByTagName('li'),
+					text=document.getElementById('textDes').getElementsByTagName('li')
+					 new Rotation(
+						{
+							nTag:nTag,
+							mTag:mTag,
+							text:text,
+							index:3,
+							slider:{obj:document.getElementById('focusMain'),dis:230},
+							auto:["1","2000"],
+							start:function(){
+								this.lxj='louxiaojian'
+								document.getElementById('ioioi').innerHTML=this.de
+							 },
+							callBack:function(){},
+							evt:0
+						}
+					  );
 					 document.getElementById("left_op").onclick=function(){lxj.autoplay(0)}
 					 document.getElementById("right_op").onclick=function(){lxj.autoplay(1)}
+			   }();
+
               
               </script>
               <!--/focusPic-->
@@ -155,10 +161,13 @@ img{border:0}
                 <div class="textDesBj" style="bottom:5px"></div>
             </div>
             <script type="text/javascript">
-			   var lxj_b_1=new Rotation(
+			   var lxj_b_1=function(){
+				  var mTag=document.getElementById('focusMain_b_1').getElementsByTagName('li'),
+				  text=document.getElementById('textDes_b_1').getElementsByTagName('li');
+				  new Rotation(
 					{
-						mTag:function(){return document.getElementById('focusMain_b_1').getElementsByTagName('li')},
-						text:function(){return document.getElementById('textDes_b_1').getElementsByTagName('li')},
+						mTag:mTag,
+						text:text,
 						index:0,
 						slider:{obj:document.getElementById('focusMain_b_1'),dis:230,
 								Tween:function(t,b,c,d,a,p){
@@ -167,12 +176,13 @@ img{border:0}
 									  else var s = p/(2*Math.PI) * Math.asin (c/a);
 									  return (a*Math.pow(2,-10*t) * Math.sin( (t*d-s)*(2*Math.PI)/p ) + c + b);
 								 }
-					            },
+								},
 						start:function(){},
 						auto:["1","2000"],
 						evt:0
 					}
 				  );
+			   }();
             </script>
             <!--/focusPic-->
      </li>
@@ -200,10 +210,13 @@ img{border:0}
             </div>
             
             <script type="text/javascript">
-			   var lxj_a=new Rotation(
+			   var lxj_a=function(){
+                  var nTag=document.getElementById('focusNav_a').getElementsByTagName('li'),
+				       mTag=document.getElementById('focusMain_a').getElementsByTagName('li');
+			      new Rotation(
 					{
-						nTag:function(){return document.getElementById('focusNav_a').getElementsByTagName('li')},
-						mTag:function(){return document.getElementById('focusMain_a').getElementsByTagName('li')},
+						nTag:nTag,
+						mTag:mTag,
 						index:0,
 						slider:{obj:document.getElementById('focusMain_a'),dis:230,
 								Tween:function(t,b,c,d,a,p){
@@ -217,6 +230,9 @@ img{border:0}
 						evt:0
 					}
 				  );
+			   
+			   }();
+
             
             </script>
              <!--/focusPic-->
@@ -237,15 +253,20 @@ img{border:0}
                 
             </div>
             <script type="text/javascript">
-			   var lxj1=new Rotation(
+			   var lxj1=function(){
+				    var mTag=document.getElementById('focusMain2').getElementsByTagName('li');
+			     new Rotation(
 					{
-						mTag:function(){return document.getElementById('focusMain2').getElementsByTagName('li')},
+						mTag:mTag,
 						index:0,
 						slider:{obj:document.getElementById('focusMain2'),dis:230},
 						auto:["1","2000"],
 						evt:0
 					}
-				  );
+				  ); 
+				 
+			   }();
+
             </script>
             <!--/focusPic-->
      </li>
@@ -266,17 +287,22 @@ img{border:0}
             </div>
             
             <script type="text/javascript">
-			   var lxj2=new Rotation(
-					{
-						mTag:function(){return document.getElementById('focusMain3').getElementsByTagName('li')},
-						index:0,
-						slider:{obj:document.getElementById('focusMain3'),dis:230},
-						auto:["1","2000"],
-						evt:0
-					}
-				  );
-             document.getElementById("idsfd").onclick=function(){lxj2.autoplay(1)}
-             document.getElementById("sdfdfd").onclick=function(){lxj2.autoplay(0)}
+			   var lxj2=function(){
+				   var mTag=document.getElementById('focusMain3').getElementsByTagName('li');
+				   var lxj2=new Rotation(
+						{
+							mTag:mTag,
+							index:0,
+							slider:{obj:document.getElementById('focusMain3'),dis:230},
+							auto:["1","2000"],
+							evt:0
+						}
+					  );
+				 document.getElementById("idsfd").onclick=function(){lxj2.autoplay(1)}
+				 document.getElementById("sdfdfd").onclick=function(){lxj2.autoplay(0)}
+				   
+			   }();
+
             </script>
             <!--/focusPic-->
      </li>
@@ -312,16 +338,25 @@ img{border:0}
                 </ul>
             </div>
             <script type="text/javascript">
-			   var lxj3=new Rotation(
+			   var lxj3=function(){
+				   
+			        var nTag=document.getElementById('menu1').getElementsByTagName('li'),
+					mTag=document.getElementById('contenter1').getElementsByTagName('li'),
+					text=document.getElementById('textDes1').getElementsByTagName('li');
+				  new Rotation(
 					{
-						nTag:function(){return document.getElementById('menu1').getElementsByTagName('li')},
-						mTag:function(){return document.getElementById('contenter1').getElementsByTagName('li')},
-						text:function(){return document.getElementById('textDes1').getElementsByTagName('li')},
+						nTag:nTag,
+						mTag:mTag,
+						text:text,
 						index:0,
 						slider:{dir:'left',obj:document.getElementById('contenter1'),dis:350},
 						evt:1
 					}
 				  );
+			   
+				   
+			   }();
+
             </script>
             <!--/focusPic-->
      </li>
@@ -350,16 +385,21 @@ img{border:0}
           </div>
           <!--/pic-->
 		  <script type="text/javascript">
-			 var lxj5=new Rotation(
-				  {
-					  nTag:function(){return document.getElementById('sNav').getElementsByTagName('li')},
-					  mTag:function(){return document.getElementById('a_pic').getElementsByTagName('li')},
-					  index:0,
-					  slider:{obj:document.getElementById('a_pic'),dis:270},
-					  auto:["1","1000"],
-					  evt:1
-				  }
-				);
+		     var lxj5=function(){
+				  var nTag=document.getElementById('sNav').getElementsByTagName('li'),
+				  mTag=document.getElementById('a_pic').getElementsByTagName('li');
+				    new Rotation(
+						{
+							nTag:nTag,
+							mTag:mTag,
+							index:0,
+							slider:{obj:document.getElementById('a_pic'),dis:270},
+							auto:["1","1000"],
+							evt:1
+						}
+					  );
+			 }();
+
           </script>
           
      </li>
@@ -381,8 +421,8 @@ img{border:0}
         function $(o){return document.getElementById(o)}
         var wy163=new Rotation(
                         {
-                          nTag:function(){return [$('u123'),$('u456'),$('u789')]},
-                          mTag:function(){return [$('m123'),$('m456'),$('m789')]},
+                          nTag:[$('u123'),$('u456'),$('u789')],
+                          mTag:[$('m123'),$('m456'),$('m789')],
                           auto:[1,1000],
 						  index:2
                         }
@@ -408,24 +448,34 @@ img{border:0}
         </div>
         <!--/contenter-->
         <script type="text/javascript">
-        var lxja=new Rotation(
-                  {
-                      nTag:function(){
-                          var nav=document.getElementById('menu').getElementsByTagName('li'),aNav=[]
-                          for(var j=0;j<nav.length;j++){if(!nav[j].getAttribute("lang")){aNav.push(nav[j]);}}
-                          return aNav
-                      },
-                      mTag:function(){
-                           var div=document.getElementById('contenter').getElementsByTagName('div'),aDiv=[];
-                           for(var i=0;i<div.length;i++){
-                              if(div[i].parentNode==document.getElementById('contenter') && !div[i].getAttribute("lang")){aDiv.push(div[i]);}
-                           }
-                           return aDiv
-                          },
-                      index:0,
-                      evt:0
-                  }
-                );
+		var lxja=function(){
+				var nav=document.getElementById('menu').getElementsByTagName('li'),aNav=[],div=document.getElementById('contenter').getElementsByTagName('div'),aDiv=[]
+				 for(var j=0;j<nav.length;j++){if(!nav[j].getAttribute("lang")){aNav.push(nav[j]);}}
+				 for(var i=0;i<div.length;i++){
+					if(div[i].parentNode==document.getElementById('contenter') && !div[i].getAttribute("lang")){aDiv.push(div[i]);}
+				 }
+			   new Rotation({nTag:aNav,mTag:aDiv,index:0,evt:0});
+		}();
+
+        </script>
+     </li>
+     <li class="exp_item">
+        <!--menu-->
+        <div id="menu_hover" class="menu">
+          <ul>
+           <li url="http://www.dianying.com"><a href="#a111">例子10</a></li>
+           <li class="ui" url="http://www.tv.com"><a href="#a222">例子10</a></li>
+           <li url="http://www.tiyu.com"><a href="#a333">例子10</a></li>
+           <li url="http://www.donghuapian.com" lang="s" style="background:#fff">&nbsp;&nbsp;&nbsp;跳过&nbsp;&nbsp;&nbsp;</li>
+          </ul>
+        </div>
+        <!--/menu-->
+        <script type="text/javascript">
+		var lxjabb=function(){
+				var nav=document.getElementById('menu_hover').getElementsByTagName('li'),aNav=[]
+				for(var j=0;j<nav.length;j++){if(!nav[j].getAttribute("lang")){aNav.push(nav[j]);}}
+                new Rotation({nTag:aNav,index:0,intTabTime:0,evt:1,auto:[1,1000]});
+		}();
         </script>
      </li>
     </ul>
