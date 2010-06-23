@@ -17,6 +17,7 @@ function SliderLayer(s){
 	 this.handle=this.options.handle;
 	 this.handleBx=this.options.handleBx;
 	 this.interval=this.options.interval;
+	 this.delay=this.options.delay;
 	 this.Tween=this.options.Tween;
 	 this.evt=this.options.evt;
 	 this.start=this.B(this,this.options.start);
@@ -94,8 +95,7 @@ SliderLayer.prototype={
 			evt:'click',//触发菜单的方式
 			eKey:0,//0为收缩状态，1为展开状态
 			interval:40,//下拉缓动的时间
-			showDelay:10,//下拉延时时间
-			hideDelay:300,//收缩延时时间
+			delay:10,//下拉延时时间
 			dis:['height'],
 	        Tween:function(t,b,c,d){return c*(t/=d)*t + b;},
 			start:function(){},
@@ -134,7 +134,7 @@ SliderLayer.prototype={
 				  if(hb.style.display && hb.style.display=='none'){hb.style.display='block'};
 				  this.start();									   
 				  this.slider(o,hb);									   
-			}),this.interval) 
+			}),this.delay) 
 	 },
 	 
 	 run:function(){

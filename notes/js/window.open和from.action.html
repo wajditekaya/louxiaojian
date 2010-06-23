@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>window.open和from.action</title>
+</head>
+
+<body>
+<input type="button" value="window.open打开页面" onclick="window.open('http://www.163.com')" />
+<input type="button" value="dTree.wopen打开页面" onclick="dTree.wopen('http://www.yahoo.com')" />
+
+<script type="text/javascript">
+dTree={};
+dTree.wopen=function(url){
+	var from,d=document,g='getElementById',dTreeFrom=d[g]('dTreeFrom');
+	if(!dTreeFrom){
+	  from='<form id="dTreeFrom" name="dTreeFrom" method="post" action="'+url+'" target="_blank"><input name="dTreeFromInput" type="hidden" value="" /></form>',div=d.createElement('div')
+	  d.body.appendChild(div);
+	  div.innerHTML=from;
+	  dTreeFrom=d[g]('dTreeFrom');
+	}
+	dTreeFrom.action=url;
+	dTreeFrom.submit();
+}
+
+</script>
+</body>
+</html>

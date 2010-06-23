@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>js获取padding和margin值</title>
+<style type="text/css">
+*{margin:0; padding:0}
+#lxj{margin:0 200px; padding:30px 0 45px 0;background:#f00}
+</style>
+</head>
+
+<body>
+<div id="lxj">xzczxcxzcx</div>
+<script type="text/javascript">
+  var lxj=document.getElementById('lxj')
+  function cssValue(o,s){
+	  var r;
+	  function camelize(s) {
+		  return s.replace(/-(\w)/g, function (strMatch, p1){
+			  return p1.toUpperCase();
+		  });
+	  }
+	  if(!+'\v1'){
+		  if(s.indexOf('-')!=-1) s=camelize(s);
+	      r=o.currentStyle[s]
+	  }else{
+	      r=document.defaultView.getComputedStyle(o, null).getPropertyValue(s);
+	  }
+	  return r
+  }
+  alert(cssValue(lxj,'margin-left'))
+
+</script>
+</body>
+</html>
