@@ -171,6 +171,7 @@ SliderLayer.prototype={
 		  for(var i=0,len=this.handle.length;i<len;i++){
 			  this.handle[i].nub=i;
 			  this.on(this.handle[i],this.evt,this.B(this,this.act,this.handle[i]));
+			  if(this.evt=='mouseover') this.on(this.handle[i],'mouseout',this.B(this,function(){if(this.sTime) clearTimeout(this.sTime);}));
 		  }
 		  if(this.index>=0 && this.cl) {this.act(this.handle[this.index]);}
 	 }
