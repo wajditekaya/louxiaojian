@@ -36,6 +36,7 @@ function SliderLayer(s){
 	 this.Tween=this.options.Tween;
 	 this.evt=this.options.evt;
 	 this.cl=this.options.cl;
+	 this.cs=this.options.cs;
 	 this.index=this.options.index;
 	 this.start=this.B(this,this.options.start);
 	 this.end=this.B(this,this.options.end);
@@ -146,7 +147,7 @@ SliderLayer.prototype={
 		 
 	 },
 	 act:function(o){
-			if(this.cl && this.ln==o) return false;//要关闭上一个展开的情况下，再点击自己不收起或展开
+			if(!this.cs && this.ln==o) return false;//要关闭上一个展开的情况下，再点击自己不收起或展开
 			if(this.y!=this.interval) return false;//一个正在展开或收起时不展开另外一个.
 			var n=this.index=o.nub,hb=this.handleBx[n];
 			if(this.sTime) clearTimeout(this.sTime);
@@ -222,6 +223,7 @@ domReady(function(){
 							'cl':1,
 							'index':0,
 							'interval':40,
+							'cs':0,
 							'delay':50,
 							'Tween':function(t,b,c,d){
 								if ((t/=d/2) < 1) return c/2*t*t + b;
