@@ -150,7 +150,7 @@ Rotation.prototype={
 			  if(this.aNtag!=''){		  
 				  for(var n=0,len=this.aNtag.length;n<len;n++){
 						var tg=this.aNtag[n],aTag=tg.getElementsByTagName("a")[0] || tg.tagName.toLocaleLowerCase()=="a" && tg;
-						tg.cNub=n;
+						if(!tg.cNub) tg.cNub=n;
 						/*去除链接的虚线框和默认行为*/
 						if(aTag){
 							this.aE(aTag,"focus",this.B(this,function(p){p.blur()},aTag));

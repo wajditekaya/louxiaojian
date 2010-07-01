@@ -113,8 +113,8 @@ img{border:0}
 			   var lxj=function(){
 				    var nTag=document.getElementById('focusNav').getElementsByTagName('li'),
 					mTag=document.getElementById('focusMain').getElementsByTagName('li'),
-					text=document.getElementById('textDes').getElementsByTagName('li')
-					 new Rotation(
+					text=document.getElementById('textDes').getElementsByTagName('li'),
+					l=new Rotation(
 						{
 							nTag:nTag,
 							mTag:mTag,
@@ -130,8 +130,8 @@ img{border:0}
 							evt:0
 						}
 					  );
-					 document.getElementById("left_op").onclick=function(){lxj.autoplay(0)}
-					 document.getElementById("right_op").onclick=function(){lxj.autoplay(1)}
+					 document.getElementById("left_op").onclick=function(){l.autoplay(0)}
+					 document.getElementById("right_op").onclick=function(){l.autoplay(1)}
 			   }();
 
               
