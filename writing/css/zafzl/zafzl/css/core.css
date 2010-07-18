@@ -115,8 +115,14 @@ a:hover {color:#ff4300;text-decoration:underline}
 .bx .hd,.bx .bd,.bx-a .hd,.bx-a .bd{background:#fff}
 
 
-.p-list{overflow:hidden;zoom:1}
-.p-list li{float:left;margin-right:14px;display:inline}
-.p-list li img{vertical-align:top; border:1px solid #ccc; padding:2px}
+.p-list{overflow:hidden;zoom:1;line-height:18px;text-align:center}
+.p-list li{float:left;display:inline}
+.p-list li img{vertical-align:top;border:1px solid #ccc;padding:2px;margin-bottom:3px}
 .p-list li a:hover{background:#fff}
-.p-list li a:hover img{width:120px;height:160px;border:1px solid #53941a}
+.p-list li a:hover img{border:1px solid #53941a}
+.p-list .t{height:18px;overflow:hidden}
+.p-list-a li{width:126px;margin-right:15px}
+.p-list-a li img{width:120px;height:160px}
+
+.fp-bx .bd{zoom:1}
+.fp-bx .p-list{margin-right:-30px}
