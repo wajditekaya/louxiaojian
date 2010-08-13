@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Bug_IE6和IE7下marginTop值失效</title>
+<style type="text/css">
+*{margin:0; padding:0}
+body{line-height:24px; font-size:14px}
+.bx{background:#CF0; width:800px; margin:30px auto; position:relative; padding-top:24px}
+</style>
+</head>
+
+<body>
+<div class="bx">
+  <div style="width:800px;position:absolute;background:#363;top:0">我是绝对定位</div>
+  <div style="background:#f60;width:500px; margin-top:50px">我触发了layout，我的margin-top值失效了</div>
+</div>
+
+
+<div class="bx">
+  <div style="width:800px;position:absolute;background:#363;top:0">我是绝对定位</div>
+  <div style="background:#f60;margin-top:150px">我没有触发layout，我的margin-top值没有失效</div>
+</div>
+
+
+<div class="bx">
+  <div style="background:#363">我没有绝对定位</div>
+  <div style="background:#f60;margin-top:50px">我的margin-top值没有失效</div>
+</div>
+
+</body>
+</html>
