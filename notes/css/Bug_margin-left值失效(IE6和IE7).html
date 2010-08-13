@@ -5,15 +5,27 @@
 <title>margin-left值失效</title>
 <style type="text/css">
 *{margin:0; padding:0}
-body{font-size:12px; line-height:22px; }
-.cl-info{overflow:hidden;zoom:1}
-.cl-act{float:right;color:#909090;}
-.cl-act a{margin:0 4px;display:inline-block;position:relative;}
+body{font-size:12px; line-height:22px; padding:50px }
+h2{margin-top:100px; margin-bottom:10px}
+.cl-act{color:#909090; margin-bottom:30px}
+.cl-act a{margin:0 4px;display:inline-block;position:relative;}/*但把position:relative;去掉时，bug都不出现*/
 .cl-act .reply{padding-left:0}
 </style>
 </head>
 
 <body>
+<h2>Bug出现</h2>
+<span class="cl-act" style="zoom:1"><a href="#" class="dele">删除<b></b></a>|<a href="#" class="reply">回复</a></span>
+<span class="cl-act" style="float:left"><a href="#" class="dele">删除<b></b></a>|<a href="#" class="reply">回复</a></span>
+<br />
+<div class="cl-act" style="float:left"><a href="#" class="dele">删除<b></b></a>|<a href="#" class="reply">回复</a></div>
+
+
+<h2>Bug不出现</h2>
 <div class="cl-info"><span class="cl-act"><a href="#" class="dele">删除<b></b></a>|<a href="#" class="reply">回复</a></span></div>
+<div class="cl-act"><a href="#" class="dele">删除<b></b></a>|<a href="#" class="reply">回复</a></div>
+<div class="cl-act" style="zoom:1"><a href="#" class="dele">删除<b></b></a>|<a href="#" class="reply">回复</a></div>
+<span class="cl-act"><a href="#" class="dele">删除<b></b></a>|<a href="#" class="reply">回复</a></span>
+
 </body>
 </html>
