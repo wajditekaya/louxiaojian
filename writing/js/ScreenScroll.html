@@ -73,21 +73,29 @@ img{vertical-align:top}
 (function(){
 	function ScreenScroll(s){
 				this.id=document.getElementById(s.id);
-				this.t=s.top;
 				this.pos=s.pos;
-				this.posValue=s.posValue;
+				this.b=0;
 				this.fixed=s.fix || 0;
 				this.n=s.n || 1;
 				this.d=60;
 				this.cTop=0;
-				this.t=this.t=='bottom' ? (document.documentElement.clientHeight-this.id.offsetHeight) : parseInt(this.t);
-				this.id.style.top=this.t+'px';
+				for(var p in this.pos){
+					if(!this.pos.hasOwnProperty(p)) continue;
+					p=p.toLowerCase();
+					if(p=='bottom') {
+						this.b=parseInt(this.pos[p]);
+						this.t=document.documentElement.clientHeight-this.id.offsetHeight-this.b;
+						this.id.style['top']=this.t+'px';
+						continue;
+					}
+					if(p=='top') {this.t=parseInt(this.pos[p])}
+					this.id.style[p]=parseInt(this.pos[p])+'px';
+				}
 				this.id.style.position='absolute';
-				this.id.style[this.pos.toLowerCase()]=parseInt(this.posValue)+'px';
 				this.fixed ? this.fix() : (this.n==1 ? this.roll2() : this.roll());
 		};
 		ScreenScroll.prototype={
-				sTop:function(o){return Math.max(document.body.scrollTop , document.documentElement.scrollTop)},
+				sTop:function(){return Math.max(document.body.scrollTop , document.documentElement.scrollTop)},
 				Tween:function(t,b,c,d){
 					  return c*((t=t/d-1)*t*t+ 1) + b;
 				 },
@@ -105,7 +113,7 @@ img{vertical-align:top}
 				fix:function(){
 					if(document.all && ([/MSIE (\d)\.0/i.exec(navigator.userAgent)][0][1] == 6)){
 					  this.id.style.position='absolute';
-					  this.id.style.cssText+=";top:expression(documentElement.scrollTop+"+this.t+");"+this.pos+":+"+this.posValue+")";
+					  this.id.style.cssText+=";top:expression(documentElement.scrollTop+"+this.t-this.b+");"+this.pos+":+"+this.posValue+")";
 					  document.body.style.cssText+=';background:url(about:blank) fixed';
 					}else{
 					  this.id.style.position='fixed';
@@ -126,8 +134,8 @@ img{vertical-align:top}
 				roll2:function(){
 							 var self=this;
 							 this.time=setInterval(function(){
-								if(self.cTop==c){return};
 								var c=self.sTop()+self.t;//滚动的目的地。
+								if(self.cTop==c){return};
 								self.cTop=self.cTop+Math.ceil((c-self.cTop)*0.08)
 								self.id.style['top'] =self.cTop+ "px";
 							 },10);
@@ -137,8 +145,8 @@ img{vertical-align:top}
 				roll3:function(){
 							 var self=this;
 							 this.time=setInterval(function(){
-								if(parseInt(self.id.style['top'])==c){return};
 								var c=self.sTop()+self.t;//滚动的目的地。
+								if(parseInt(self.id.style['top'])==c){return};
 								self.id.style['top']=parseInt(self.id.style['top'])+Math.ceil((c-parseInt(self.id.style['top']))*0.08)+'px'
 							 },10);
 						return this;
@@ -157,12 +165,14 @@ img{vertical-align:top}
 				===================================*/
 		
 	}
-    new ScreenScroll({id:'lxj',top:"bottom",pos:'right',posValue:"5px",fix:1});
-	new ScreenScroll({id:'hb',top:"bottom",pos:'left',posValue:"5px",fix:1});
-	new ScreenScroll({id:'lxj2',top:"10px",pos:'left',posValue:"5px",n:-1});
-	new ScreenScroll({id:'top',top:"100px",pos:'right',posValue:"5px",n:-1});
-	new ScreenScroll({id:'top2',top:"300px",pos:'right',posValue:"405px",n:1});
-	new ScreenScroll({id:'lxj3',top:"300px",pos:'right',posValue:"605px",n:1});
+	new ScreenScroll({id:'lxj',pos:{left:'100px',bottom:'10px'},fix:0});
+	
+    //new ScreenScroll({id:'lxj',top:"bottom",pos:'right',posValue:"5px",fix:1});
+	//new ScreenScroll({id:'hb',top:"bottom",pos:'left',posValue:"5px",fix:1});
+	//new ScreenScroll({id:'lxj2',top:"10px",pos:'left',posValue:"5px",n:-1});
+	//new ScreenScroll({id:'top',top:"100px",pos:'right',posValue:"5px",n:-1});
+	//new ScreenScroll({id:'top2',top:"300px",pos:'right',posValue:"405px",n:1});
+	//new ScreenScroll({id:'lxj3',top:"300px",pos:'right',posValue:"605px",n:1});
 })()
 </script>
 </body>
