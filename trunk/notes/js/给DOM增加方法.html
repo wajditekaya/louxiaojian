@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>给DOM增加方法</title>
+<style type="text/css">
+.c1{background:#f00}
+.c2{background: #69C}
+.c3{background: #30C}
+.c4{background:  #9C3}
+div{font-size:14px;cursor:pointer; line-height:30px; margin:0 50px 10px 50px; padding-left:15px}
+</style>
+</head>
+
+<body>
+<div id="lxj">lxj</div>
+<div id="lxj2">lxj2</div>
+<div id="lxj3">lxj3</div>
+<div id="lxj4">lxj4</div>
+<script type="text/javascript">
+function $(o){ 
+  var S=document.getElementById(o);
+	  S.addEvent=function(type, listener ){
+		  var node=this;
+		  if (node.addEventListener) {
+			  node.addEventListener( type, listener, false );
+			  return this;
+		  } else if(node.attachEvent) {
+			  node['e'+type+listener] = listener;
+			  node[type+listener] = function(){node['e'+type+listener]( window.event );}
+			  node.attachEvent( 'on'+type, node[type+listener] );
+			  return this;
+		  }
+	  };
+	  S.addClass=function(c){
+		  if(this.className.indexOf(c)==-1){
+             this.className+=' '+c;
+		  }
+		  return this;
+	  };
+	  return S
+}
+$('lxj').addEvent('click',function(){alert(this.innerHTML)}).addClass('c1')
+$('lxj2').addEvent('click',function(){alert(this.innerHTML)}).addClass('c2')
+$('lxj3').addEvent('click',function(){alert(this.innerHTML)}).addClass('c3')
+$('lxj4').addEvent('click',function(){alert(this.innerHTML)}).addClass('c4')
+</script>
+</body>
+</html>
