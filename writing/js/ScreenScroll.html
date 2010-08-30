@@ -10,6 +10,7 @@ img{vertical-align:top}
 
 <body>
 <div style="height:5000px" id="pp">
+  <div style="height:50px; background:#f00"></div>
 </div>
 <div style="background:#f00;position:absolute;" id="lxj2"><img src="http://img4.cache.netease.com/photo/0001/2010-05-01/65JMP8E400AN0001.jpg" alt="" height="325" /></div>
 <div style="background:#f00; position:absolute;" id="lxj"><img src="http://img3.cache.netease.com/photo/0001/2010-05-02/65MALKC600AN0001.jpg" height="200" alt="" />
@@ -132,11 +133,12 @@ img{vertical-align:top}
 				},
 				//roll2：初始值有个缓动过程。
 				roll2:function(){
-							 var self=this;
+							 var self=this,cf=['ceil','floor'],k;
 							 this.time=setInterval(function(){
 								var c=self.sTop()+self.t;//滚动的目的地。
 								if(self.cTop==c){return};
-								self.cTop=self.cTop+Math.ceil((c-self.cTop)*0.08)
+								k=c>self.cTop ? 0 :1;
+								self.cTop=self.cTop+Math[cf[k]]((c-self.cTop)*0.08)
 								self.id.style['top'] =self.cTop+ "px";
 							 },10);
 						return this;
@@ -165,14 +167,14 @@ img{vertical-align:top}
 				===================================*/
 		
 	}
-	new ScreenScroll({id:'lxj',pos:{left:'100px',bottom:'10px'},fix:0});
+	new ScreenScroll({id:'lxj',pos:{right:'100px',bottom:'10px'},fix:0});
 	
-    //new ScreenScroll({id:'lxj',top:"bottom",pos:'right',posValue:"5px",fix:1});
-	//new ScreenScroll({id:'hb',top:"bottom",pos:'left',posValue:"5px",fix:1});
-	//new ScreenScroll({id:'lxj2',top:"10px",pos:'left',posValue:"5px",n:-1});
-	//new ScreenScroll({id:'top',top:"100px",pos:'right',posValue:"5px",n:-1});
-	//new ScreenScroll({id:'top2',top:"300px",pos:'right',posValue:"405px",n:1});
-	//new ScreenScroll({id:'lxj3',top:"300px",pos:'right',posValue:"605px",n:1});
+    new ScreenScroll({id:'lxj',pos:{right:'5px',bottom:'0'},fix:1});
+	new ScreenScroll({id:'hb',pos:{left:'5px',bottom:'0'},fix:1});
+	new ScreenScroll({id:'lxj2',pos:{left:'5px',top:'10px'},n:-1});
+	new ScreenScroll({id:'top',pos:{right:'5px',top:'100px'},n:-1});
+	new ScreenScroll({id:'top2',pos:{right:'405px',top:'300px'},n:1});
+	new ScreenScroll({id:'lxj3',pos:{right:'605px',top:'300px'},n:1});
 })()
 </script>
 </body>
