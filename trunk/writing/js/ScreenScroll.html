@@ -5,27 +5,20 @@
 <title>ËæÆÁ¹ö¶¯</title>
 <style type="text/css">
 img{vertical-align:top}
+.bx{width:200px; height:200px; background: #9C0; position:absolute}
+.bx2{width:19px; height:60px; background:#C96; position:absolute}
 </style>
 </head>
 
 <body>
-<div style="height:5000px" id="pp">
-  <div style="height:50px; background:#f00"></div>
-</div>
-<div style="background:#f00;position:absolute;" id="lxj2"><img src="http://img4.cache.netease.com/photo/0001/2010-05-01/65JMP8E400AN0001.jpg" alt="" height="325" /></div>
-<div style="background:#f00; position:absolute;" id="lxj"><img src="http://img3.cache.netease.com/photo/0001/2010-05-02/65MALKC600AN0001.jpg" height="200" alt="" />
-</div>
-<div style="background:#f00; position:absolute;" id="hb"><img src="http://img3.cache.netease.com/photo/0001/2010-05-02/65MALKC600AN0001.jpg" height="200" alt="" />
-</div>
+<div style="height:5000px" id="pp"></div>
 
-<div style=" position:absolute;top:100px;" id="top"><img src="http://louxiaojian.googlecode.com/svn/trunk/asset/app/notes/img/top.gif" alt="" />
-</div>
-
-<div style=" position:absolute;top:100px;" id="top2"><img src="http://louxiaojian.googlecode.com/svn/trunk/asset/app/notes/img/top.gif" alt="" />
-</div>
-
-<div style="background:#f00; position:absolute;" id="lxj3"><img src="http://img3.cache.netease.com/photo/0001/2010-05-02/65MALKC600AN0001.jpg" height="200" alt="" />
-</div>
+<div class="bx" id="lxj2"></div>
+<div class="bx" id="lxj"></div>
+<div class="bx" id="hb"></div>
+<div class="bx2" id="top"></div>
+<div class="bx2" id="top2"></div>
+<div class="bx" id="lxj3"></div>
 
 <script>
 /*(function(){
@@ -90,6 +83,7 @@ img{vertical-align:top}
 						continue;
 					}
 					if(p=='top') {this.t=parseInt(this.pos[p])}
+					if(p!='bottom' && p!='top') this.lr=p;
 					this.id.style[p]=parseInt(this.pos[p])+'px';
 				}
 				this.id.style.position='absolute';
@@ -113,8 +107,9 @@ img{vertical-align:top}
 				},
 				fix:function(){
 					if(document.all && ([/MSIE (\d)\.0/i.exec(navigator.userAgent)][0][1] == 6)){
+					  var expression=";top:expression(documentElement.scrollTop+"+this.t+"-"+this.b+");"+this.lr+":"+this.pos[this.lr]+")"
 					  this.id.style.position='absolute';
-					  this.id.style.cssText+=";top:expression(documentElement.scrollTop+"+this.t-this.b+");"+this.pos+":+"+this.posValue+")";
+					  this.id.style.cssText+=expression;
 					  document.body.style.cssText+=';background:url(about:blank) fixed';
 					}else{
 					  this.id.style.position='fixed';
@@ -167,12 +162,11 @@ img{vertical-align:top}
 				===================================*/
 		
 	}
-	new ScreenScroll({id:'lxj',pos:{right:'100px',bottom:'10px'},fix:0});
 	
-    new ScreenScroll({id:'lxj',pos:{right:'5px',bottom:'0'},fix:1});
-	new ScreenScroll({id:'hb',pos:{left:'5px',bottom:'0'},fix:1});
+	new ScreenScroll({id:'lxj',pos:{right:'100px',bottom:'10px'}});
+	new ScreenScroll({id:'hb',pos:{left:'5px',bottom:'10px'},fix:1});
 	new ScreenScroll({id:'lxj2',pos:{left:'5px',top:'10px'},n:-1});
-	new ScreenScroll({id:'top',pos:{right:'5px',top:'100px'},n:-1});
+	new ScreenScroll({id:'top',pos:{right:'5px',top:'100px'},fix:1});
 	new ScreenScroll({id:'top2',pos:{right:'405px',top:'300px'},n:1});
 	new ScreenScroll({id:'lxj3',pos:{right:'605px',top:'300px'},n:1});
 })()
