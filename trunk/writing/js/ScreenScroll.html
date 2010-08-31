@@ -67,6 +67,7 @@ img{vertical-align:top}
 (function(){
 	function ScreenScroll(s){
 				this.id=document.getElementById(s.id);
+				if(!this.id) return false
 				this.pos=s.pos;
 				this.b=0;
 				this.fixed=s.fix || 0;
