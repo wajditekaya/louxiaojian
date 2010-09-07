@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>前端notes</title>
+<style type="text/css">
+/*===================================
+author:	lou xiao jian
+email:  jxsr_lxj@163.com
+====================================*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+body{font:12px/22px Tahoma,"\5B8B\4F53",Geneva, sans-serif;word-break:break-all;text-align:center;}
+fieldset,img{border:none 0;} 
+table {border-collapse:collapse;border-spacing:0;} 
+ol,li,ul{list-style:none;} 
+address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal;}
+caption,th{text-align:left;} 
+h1,h2,h3,h4,h5,h6{font-size:100%;} 
+q:before,q:after{content:'';}
+abbr,acronym{border:0;font-variant:normal;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+input,select,textarea{font:normal normal 12px "Verdana";outline:none}
+input,textarea,select{*font-size:100%;}
+input,textarea{color:#666}
+select{color:#999}
+/* 字体属性 [定义规则，小写f加属性名称] */
+.fB{font-weight:bold;}
+.fI{font-style:italic;}
+/* 字体大小*/
+.fs12{font-size:12px;}
+.fs14{font-size:14px;}
+/* 浮动*/
+.fl{float:left;}
+.fr{float:right}
+/* 其它属性*/
+.hide{display:none}
+.submit{cursor:pointer;border:0}
+.noText{display:block;height:0;width:0;line-height:0;overflow:hidden}
+/*textList*/
+.tList a{text-decoration:none}
+.tList li{padding-left:15px;line-height:24px;height:24px;overflow:hidden;}
+/*lrBx*/
+.lrBx,.lrBx .rbx{overflow:hidden;zoom:1}
+.lrBx .lbx{float:left;_margin-right:-3px}
+.lrBx .lbx img{vertical-align:top}
+.lrBx .rbx{padding-left:5px}
+/*pic_up_text_down*/
+.pic-item{float:left;text-align:center}
+.pic-item img{vertical-align:top;margin-bottom:2px}
+.pic-item h4,.pic-item span,.pic-item em{display:block;overflow:hidden;font-size:12px;font-weight:normal;height:18px;line-height:18px;text-align:center}
+
+/*==clear==*/
+.clear{overflow:hidden;zoom:1}
+.clearfix:after {content:".";display:block;height:0;clear:both;visibility:hidden;}
+* html>body .clearfix {display: inline-block;width:100%;}
+* html .clearfix{/* Hides from IE-mac \*/height: 1%;/* End hide from IE-mac */}
+/* ie7 hack*/
+*+html .clearfix {min-height:1%;}
+.dlFrom{overflow:hidden;zoom:1;}
+	.dlFrom dt{float:left;}
+	.dlFrom dt{clear:left;text-align:right;_margin-right:-3px}
+	.dlFrom dd{overflow:hidden;zoom:1}
+	.dlFrom dd img,.dlFrom dd input,.dlFrom dd a,.dlFrom dd em{float:left;margin-right:5px}
+	.login_btn a,.login_btn input{float:left}
+.pitch{margin-bottom:8px}/*间距*/
+
+.but{height:20px;line-height:20px;display:inline-block;overflow:hidden;background-position:0 -52px;border:1px solid #ff6306;color:#fff;padding:0 8px 0 12px}
+.but:hover{color:#fff;text-decoration:none}
+
+.rela{position:relative;zoom:1}
+.rela .act{position:absolute;top:3px;right:8px}
+
+.rowBx{overflow:hidden;zoom:1}
+  .rowBx .main{width:100%;float:left}
+  .rowBx .main .mainIn{margin-left:326px}
+  .rowBx .lBar{width:326px;float:left;margin-left:-100%}
+  .rowBx .rBar{width:326px;float:left;margin-left:-326px}
+  
+.p-cols{overflow:hidden;zoom:1}
+  .p-cols .p-col2{width:100%;float:left}
+  .p-cols .p-col2 .p-col2-1{margin-left:326px}
+  .p-cols .p-col1{width:326px;float:left;margin-left:-100%}
+  .p-cols .p-col3{width:326px;float:left;margin-left:-326px}
+#content{text-align:left; margin:0 20px}
+.n-bx{margin-bottom:20px}
+.n-bx h2{font-size:14px}
+.n-bx ol li{list-style:decimal inside; padding-bottom:15px; font:14px/1.5 Tahoma, Geneva, sans-serif}
+</style>
+</head>
+
+<body>
+<div id="content">
+
+  <div class="n-bx">
+    <h2>20100906-20100910</h2>
+    <ol>
+       <li>【JS】Firefox3实现的原生getElementsByClassName方法返回的不是javascript数组（Array），而是html element collection，这个东西可以用标准的方式遍历，但是却与Array没有共同的prototype（这个指javascript里面的原型继承的prototype）。所以，很不幸，如果你用了Prototype库的那个返回Array的方法写程序，然后使用了Array增强方法里面的first()等方法或者Emmerable里面的each()等方法，那么程序一定会出错。此时你可以$A一下这个html element collection，但是这不是好方法。因为其实Prototype在1.6以后就不推荐使用getElementsByClassName方法了。</li>
+    </ol>
+  </div>
+  
+
+  <div class="n-bx">
+    <h2>20100823-20100827</h2>
+    <ol>
+       <li>【CSS】通常情况下给file input设置宽或是设置size都不能把浏览按钮的宽度增宽，其实只要设置font-size就可以达到给浏览按钮增加宽度。</li>
+       <li>【JS】把有图片的标签的HTML放在textarea标签内作为value，或者作为一段HTML的注释，这样可以使浏览器略过分析该HTML，图片也就不会加载</li>
+       <li>【延迟html渲染】
+Lazyload的一个作用就是延迟html渲染。
+原理是先保存元素里面的html，当判断元素在加载范围里面时，再加载里面的html。
+程序主要是做判断的部分，而如何保存和加载就看各位的想象力了。
+以下几种方法个人认为还不错的：
+<br />1，ajax法：保存地址，加载时利用ajax读取实际内容并插入到元素中；
+使用恰当的话能有效节省服务器资源，特别是要读数据库的地方，但响应速度受网络影响，而且不利seo，类似的还可以用iframe。
+<br />2，textarea法：把html保存到一个textarea中，加载时把value插入元素中；
+利用了textarea的特性，第二个实例就使用了这个方法，淘宝用的也是这个方式，使用简单，响应速度快。
+不过仅仅是html的话，貌似也没必要延迟，可以考虑关联一些dom操作之类的。
+<br />2，注释法：把html保存到一个注释中，加载时把内容插入元素中；
+跟textarea法类似，但效率应该更好，加载时找出nodeType为8的节点，再把nodeValue插入元素中；
+但在ie如果用innerHTML添加注释会被自动忽略掉，使用时注意。
+</li>
+    </ol>
+  </div>
+  
+
+  <div class="n-bx">
+    <h2>20100816-20100820</h2>
+    <ol>
+       <li>【CSS】IE下textarea文本区域默认是有滚动的，其他浏览器只有当内容输入过多的时候才出现滚动条。设置了overflow:hidden时，在所有浏览器中就算输入的内容再多滚动条都是被隐藏。设置overflow:auto时，在所有浏览器中都没滚动条，只有在内容输入过多时才出现滚动条，这很人性化(Opera除外)。</li>
+       <li>【CSS】a链接标签不错，设置了href属性时就表现出了a标签的独特之处，没有设置href属性时它就是一个没有手型没有链接的内联元素非常好用</li>
+    </ol>
+  </div>
+  
+
+
+
+  <div class="n-bx">
+    <h2>20100802-20100806</h2>
+    <ol>
+       <li>【性能优化】Web性能优化最佳实践中最重要的一条是减少HTTP请求，它也是YSlow中比重最大的一条规则。减少HTTP请求的方案主要有合并JavaScript和CSS文件、CSS Sprites、图像映射（Image Map）和使用Data URI来编码图片。CSS Sprites和图像映射现在已经随处可见了，但由于IE6和IE7不支持Data URI以及性能问题，这项技术尚未大量使用。目前大部分网页中的JavaScript和CSS文件数量和开发时一致，少量的网页会根据实际情况采取本地合并，这些合并中相当多的是有选择地手动完成，每次新的合并都需要重新在本地完成并上传到服务器，比较的随意和繁琐，同样文件的压缩也有类似的情况。而利用服务端的合并和压缩，我们就可以按照开发的逻辑尽可能让文件的颗粒度变小，利用网页中URL的规则来自动实现文件的合并和压缩，这会相当的灵活和高效。(<a href="http://dancewithnet.com/2010/06/08/minify-js-and-css-files-in-server/" target="_blank">随网之舞</a>)</li>
+
+    </ol>
+  </div>
+  
+
+  
+  <div class="n-bx">
+    <h2>20100726-20100730</h2>
+    <ol>
+       <li>【JS】有浮动没有清除的层在FF下用js获取到的offsetheight的值为0</li>
+
+    </ol>
+  </div>
+  
+
+  <div class="n-bx">
+    <h2>20100719-20100723</h2>
+    <ol>
+       <li>【CSS】用text-indent:-9999px隐藏input按钮的文字时，一定要给这按钮float或display:block样式，否则在IE6和IE7下会出现整行显示不了的问题。</li>
+       <li>【CSS】用line-height:9999px可以达到隐藏input按钮的文字的效果</li>
+
+    </ol>
+  </div>
+  
+  <div class="n-bx">
+    <h2>20100705-20100709</h2>
+    <ol>
+       <li>【CSS】在设置Frame时，有一属性是scrolling="yes/no/auto"，IE6的mozilla都支持，但很显然地，IE的开发人员在这个地方懒了一下，他们对auto的理解很不人性化。auto的意思是自动，就是要的时候有，不要的时候没有。但如果设成auto，则在网页过长需要出竖起滚动条时，IE会自动地把水平滚动条也显示出来，哪怕网页完全不超宽。而设成yes时，IE则会一直出竖直滚动条，而不随便出水平条，这差不多是对的。所以如果要用Frame的话，还是要把这个属性设成Yes，这完全是为迁就IE。 mozilla则在任何时候都是对的。(google) 
+      </li>
+      <li>【SVN】
+      更改SVN中已经提交的版本的注释，提示说“请管理员创建pre-revprop-change钩子”，解决方法为在hooks目录下创建pre-revprop-change.bat，里面的代码如下：pre-revprop-change.bat所示(google)
+      </li>
+    </ol>
+  </div>
+  
+  
+</div>
+</body>
+</html>
