@@ -39,8 +39,8 @@ function SliderLayer(s){
 	 this.cs=this.options.cs;
 	 this.index=this.options.index;
 	 this.key=true;//控制是否展开的开关
-	 this.start=this.B(this,this.options.start);
-	 this.end=this.B(this,this.options.end);
+	 this.start=this.options.start;
+	 this.end=this.options.end;
 	 this.run();
 }
 SliderLayer.prototype={
