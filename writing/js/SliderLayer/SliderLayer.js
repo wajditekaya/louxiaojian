@@ -38,6 +38,7 @@ function SliderLayer(s){
 	 this.cl=this.options.cl;
 	 this.cs=this.options.cs;
 	 this.index=this.options.index;
+	 this.key=true;//控制是否展开的开关
 	 this.start=this.B(this,this.options.start);
 	 this.end=this.B(this,this.options.end);
 	 this.run();
@@ -155,6 +156,7 @@ SliderLayer.prototype={
 				  o.mKey=(cssValue(hb,'display')=='none' ||  hb.offsetHeight==0 ) ? 1 : 0;
 				  if(cssValue(hb,'display')=='none' || cssValue(hb,'visibility')=='hidden'){hb.style.display='block';hb.style.visibility='visible'};
 				  this.start();	
+				  if(!this.key) return false;
 				  if(this.cl){
 					  if(!this.lm && !this.ln){
 						  this.lm=hb;this.ln=o
