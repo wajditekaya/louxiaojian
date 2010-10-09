@@ -34,8 +34,8 @@ select{color:#999}
 .submit{cursor:pointer;border:0}
 .noText{display:block;height:0;width:0;line-height:0;overflow:hidden}
 /*textList*/
-.tList a{text-decoration:none}
-.tList li{padding-left:15px;line-height:24px;height:24px;overflow:hidden;}
+.tlist a{text-decoration:none}
+.tlist li{line-height:22px;height:22px;overflow:hidden;}
 /*lrBx*/
 .lrBx,.lrBx .rbx{overflow:hidden;zoom:1}
 .lrBx .lbx{float:left;_margin-right:-3px}
@@ -71,12 +71,6 @@ a:hover {color:#ff4300;text-decoration:underline}
 .rela{position:relative;zoom:1}
 .rela .act{position:absolute;top:3px;right:8px}
 
-.rowBx{overflow:hidden;zoom:1}
-  .rowBx .main{width:100%;float:left}
-  .rowBx .main .mainIn{margin-left:326px}
-  .rowBx .lBar{width:326px;float:left;margin-left:-100%}
-  .rowBx .rBar{width:326px;float:left;margin-left:-326px}
-  
 .p-cols{overflow:hidden;zoom:1}
   .p-cols .p-col1{width:100%;float:left}
   .p-cols .p-col1 .p-col1-1{margin-right:240px}
@@ -86,7 +80,7 @@ a:hover {color:#ff4300;text-decoration:underline}
 #header{border-bottom:0; padding-bottom:15px}
 #content{border-top:0}
 #content{margin-bottom:15px}
-#menu,#menu b,#menu s,#menu li span,#menu li a,#menu li{ background-image:url(../img/zafzl.png);background-repeat:no-repeat}
+#menu,#menu b,#menu s,#menu li span,#menu li a,#menu li,.bx .hd,.bx-a .hd,.pagenav a,.pagenav span{background-image:url(../img/zafzl.png);background-repeat:no-repeat}
 #header .head-a{overflow:hidden;zoom:1;padding:5px 0 10px 0}
 	#header .head-a #logo{width:220px;float:left}
 	#header .head-a #logo a{display:block;height:55px;background:url(../img/logo.gif) no-repeat;text-indent:-9999px}
@@ -102,27 +96,38 @@ a:hover {color:#ff4300;text-decoration:underline}
 	#menu li{float:left;display:inline;background-position:-90px -103px;margin:0 10px 0 -2px;padding-left:10px}
 	#menu li span,#menu li a{display:block; background-position:-200px 0}
 	#menu li a{padding-left:5px}
-	#menu li span{padding:0 12px 0 7px;cursor:pointer}
+	#menu li span{padding:0 8px 0 3px;cursor:pointer}
 	#menu li a:hover,#menu .select a{background-position:left 0;color:#116406;text-decoration:none}
 	#menu li a:hover span,#menu .select a span{background-position:right -33px}
 	
 .bx,.bx-a{padding:3px;margin-bottom:10px}
-.bx{border:1px solid #dcdcdc;background:#eeeeee}
-.bx-a{border:1px solid #ffd99b;background:#fff3d5}
-.bx .hd,.bx-a .hd{padding:0 5px;line-height:22px}
-.bx h2.hd,.bx-a h2.hd{font:bold 14px/22px 'Microsoft YaHei';color:#ed701a}
-.bx .bd,.bx-a .bd{padding:5px}
-.bx .hd,.bx .bd,.bx-a .hd,.bx-a .bd{background:#fff}
+	.bx{border:1px solid #dcdcdc;background:#eeeeee}
+	.bx-a{border:1px solid #ffd99b;background:#fff3d5}
+	.bx .hd,.bx-a .hd{padding:0 5px;line-height:28px;background-position:0 -140px;background-repeat:repeat-x}
+	.bx h2.hd,.bx-a h2.hd{font:bold 14px/28px 'Microsoft YaHei';color:#ed701a}
+	.bx .bd,.bx-a .bd{padding:5px;background:#fff}
 
 
-.p-list{overflow:hidden;zoom:1;line-height:18px;text-align:center}
-.p-list li{float:left;display:inline}
-.p-list li img{vertical-align:top;border:1px solid #ccc;padding:2px;margin-bottom:3px}
-.p-list li a:hover{background:#fff}
-.p-list li a:hover img{border:1px solid #53941a}
-.p-list .t{height:18px;overflow:hidden}
-.p-list-a li{width:126px;margin-right:15px}
-.p-list-a li img{width:120px;height:160px}
+.p-list{overflow:hidden;zoom:1;line-height:18px;text-align:center;margin-bottom:-10px}
+	.p-list li{float:left;display:inline;padding-bottom:10px}
+	.p-list li img{vertical-align:top;border:1px solid #ccc;padding:2px;margin-bottom:3px}
+	.p-list li a:hover{background:#fff}
+	.p-list li a:hover img{border:1px solid #53941a}
+	.p-list .t{height:18px;overflow:hidden}
+	.p-list-a li{width:126px;margin-right:15px;}
+	.p-list-a li img{width:120px;height:160px}
+	.p-list-b li{width:126px;margin-right:15px}
+	.p-list-b li img{width:120px;height:90px}
+	
+.tlist-a li{padding-left:8px; background:url(../img/ico-2.gif) 0 10px no-repeat;margin-left:5px}
 
 .fp-bx .bd{zoom:1}
-.fp-bx .p-list{margin-right:-30px}
+	.fp-bx .p-list{margin-right:-30px}
+	
+.pagenav{font-size:0;line-height:0;overflow:hidden;font-family:"ËÎÌו";position:relative;text-align:center;padding:10px 0 5px 0}
+	.pagenav a,.pagenav span{line-height:21px;font-size:12px;display:inline-block;vertical-align:top}
+	.pagenav a{background-position:left -172px;margin:0 3px;padding-left:2px}
+	.pagenav a:hover{text-decoration:none;color:#ff4300}
+	.pagenav a span{padding:0 7px 0 5px; background-position:right -193px;cursor:pointer}
+	.pagenav .nb,.pagenav .nb span,.pagenav .cur,.pagenav .cur span{background:none}
+	.pagenav .cur span{cursor:text}

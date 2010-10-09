@@ -58,11 +58,11 @@ classExpand.prototype={
 domReady(function(){ 
 		var tag='getElementsByTagName',
 		focus_cat=function(){
+			       if(!$('focus')) return false
 					new Rotation(
 						  {
 							  nTag:function(){return $('focus-n')[tag]('li')},
 							  mTag:function(){return $('focus-ul')[tag]('li')},
-							  text:function(){return $('focus')[tag]('dl')},
 							  index:0,
 							  slider:{obj:$('focus-ul'),dis:300},
 							  auto:["1","5000"],
