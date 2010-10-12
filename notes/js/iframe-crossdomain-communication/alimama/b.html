@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<p><strong>页面域关系：</strong><br />
+  主页面a.html所属域A：<a href="http://www.taobao.com/">www.taobao.com</a><br />
+  被iframe的页面b.html所属域B：<a href="http://www.alimama.com/">www.alimama.com</a>,假设地址：<a href="http://www.alimama.com/b.html">http://www.alimama.com/b.html</a></p>
+<p><strong>实现效果：</strong><br />
+  A域名下的页面a.html中通过iframe嵌入B域名下的页面b.html,由于b.html的宽度和高度是不可预知而且会变化的,所以需要a.html中的iframe自适应大小.</p>
+<p><strong>问题本质:</strong><br />
+  js对跨域iframe访问问题,因为要控制a.html中iframe的高度和宽度就必须首先读取得到b.html的大小,A、B不属于同一个域,浏览器为了安全性考虑，使js跨域访问受限,读取不到b.html的高度和宽度.</p>
+<p><strong>解决方案:</strong><br />
+  引入代理代理页面c.html与a.html所属相同域A，c.html是A域下提供好的中间代理页面，假设c.html的地址：<a href="http://www.taobao.com/c.html">www.taobao.com/c.html</a>,它负责读取location.hash里面的width和height的值,然后设置与它同域下的a.html中的iframe的宽度和高度.</p>
+<iframe id="c_iframe"  height="0" width="0"  src="http://10.11.2.49/WebCode/googlecode/louxiaojian/notes/js/iframe-crossdomain-communication/alimama/c.html" style="display:none" ></iframe>
+<script type="text/javascript">
+var b_width = Math.max(document.body.scrollWidth,document.body.clientWidth);
+var b_height = Math.max(document.body.scrollHeight,document.body.clientHeight);
+var c_iframe = document.getElementById("c_iframe");
+c_iframe.src = c_iframe.src+"#"+b_width+"|"+b_height; //http://www.taobao.com/c.html#width|height”
+</script>
+<!--js读取b.html的宽和高,把读取到的宽和高设置到和a.html在同一个域的中间代理页面车c.html的src的hash里面-->
+</body>
+</html>
