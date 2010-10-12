@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>window.name测试</title>
+<style>
+	body{font: 14px/1.4 arial, sans-serif;padding:1em;}
+</style>
+
+</head><body>
+
+	<button class="bn-get-data">获取数据</button>
+
+	<div id="result"> 
+</div>
+
+	<p>
+		在ie 6/7, firfox 2.0.0.16, opera 9.5, safari 3.1.2测试通过。
+	</p>
+
+	<script type="text/javascript" src="http://cn.yui.yahooapis.com/2.5.2/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+	<script>
+	(function(){
+
+	/*
+			返回内容示例：
+			<html>
+			<body style="background:#800;">
+			<p id="content">
+			hi, <strong>kejun<\/strong>!
+			</p>
+			</body>
+			<script type="text\/javascript">
+			window.name = document.getElementById("content").innerHTML;
+			<\/script>
+			<\/html>
+	*/
+
+	var YD = YAHOO.util.Dom, YE = YAHOO.util.Event;
+
+	this.dataRequest = {
+		_doc: document,
+		cfg: {
+			proxyUrl: 'proxy.html'
+		}
+	};
+
+	this.dataRequest.send = function(sUrl, fnCallBack){
+		if(!sUrl || typeof sUrl !== 'string'){
+			return;
+		}
+
+		sUrl += (sUrl.indexOf('?') > 0 ? '&' : '?') + 'windowname=true';
+
+		var frame = this._doc.createElement('iframe'), state = 0, self = this;
+		this._doc.body.appendChild(frame);
+		frame.style.display = 'none';
+
+		var clear = function(){
+			try{
+				frame.contentWindow.document.write('');
+				frame.contentWindow.close();
+				self._doc.body.removeChild(frame);
+			}catch(e){}
+		};
+
+		var getData = function(){
+			try{
+				var da = frame.contentWindow.name;
+			}catch(e){}
+			clear();
+			if(fnCallBack && typeof fnCallBack === 'function'){
+				fnCallBack(da);
+			}
+		};
+
+		YE.on(frame, 'load', function(){
+			//alert(state);
+			if(state === 1){
+				getData();
+			} else if(state === 0){
+				state = 1;
+				
+				frame.contentWindow.location = self.cfg.proxyUrl;
+			}
+		});
+		//if(frame.contentWindow)
+		//frame.contentWindow.location=sUrl;
+		//else
+		frame.src = sUrl;
+		//alert(frame.src);
+
+	};
+
+
+
+	var testUrl1 = 'http://hikejun.com/tmp/da1.html';
+
+	YE.on(YD.getElementsByClassName('bn-get-data', 'button'), 
+	'click', 
+	function(e){
+		
+		dataRequest.send(testUrl1, function(result){
+			YD.get('result').innerHTML += result + '<br>';
+		});	
+	}
+	);
+	
+	
+	
+	})();
+	</script>
+
+</body></html>
