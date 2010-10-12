@@ -7,9 +7,14 @@
 
 <body>
 <div id="lxj">123</div>
+
 <iframe id="b_iframe" name="b_iframe" height="0" width="100%" src="http://louxiaojian.googlecode.com/svn/trunk/notes/js/iframe-crossdomain-communication/window_name/b.html" frameborder="no" border="0px" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes" ></iframe>
+
 <script type="text/javascript">
+window.onload=function(){
 document.getElementById('lxj').innerHTML=window.frames['b_iframe'].contentWindow.name;
+}
 </script>
+
 </body>
 </html>
