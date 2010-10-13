@@ -6,19 +6,48 @@
 </head>
 
 <body>
-<div id="lxj">123</div>
+<div id="lxj">正在获取数据</div>
 
-<iframe id="b_iframe" name="b_iframe" height="0" width="100%" src="http://louxiaojian.googlecode.com/svn/trunk/notes/js/iframe-crossdomain-communication/window_name/b.html" frameborder="no" border="0px" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes" ></iframe>
 
 <script type="text/javascript">
 
-		var frame = document.createElement('iframe');
-		document.body.appendChild(frame);
-		frame.style.display = 'none';
-        frame.src='http://louxiaojian.googlecode.com/svn/trunk/notes/js/iframe-crossdomain-communication/window_name/b.html';
-frame.onload=function(){
-    document.getElementById('lxj').innerHTML=frame.contentWindow.name;
-}
+
+var iframe = document.createElement("iframe");
+	iframe.style.display = "none";
+	document.body.appendChild(iframe);
+	(function () {
+	    var same_domain = false;
+	    // 当iframe加载完之后触发的函数
+	    function iframe_load() {
+	        if (same_domain) {
+	            // 取得从服务器返回的数据
+	            document.getElementById('lxj').innerHTML=iframe.contentWindow.name;
+	            // 关闭iframe的窗口
+	            iframe.contentWindow.close();
+	            // 移除iframe
+	            document.body.removeChild(iframe);
+	        } else {
+	            same_domain = true;
+	            // 不能用iframe.src = "empty.html"，在IE下有错误
+	            iframe.contentWindow.location = "proxyUrl.html";
+	        }
+	    }
+		
+		
+	    // 在IE下要用attachEvent来添加iframe的onload处理函数
+	    if (iframe.attachEvent) {
+	        iframe.attachEvent("onload", function () {
+	            iframe_load();
+	        });
+	    }
+	    else {
+	        iframe.onload = iframe_load;
+	    }
+		
+		
+	})();
+	iframe.src = "http://louxiaojian.googlecode.com/svn/trunk/notes/js/iframe-crossdomain-communication/window_name/b.html";
+
 </script>
 
 </body>

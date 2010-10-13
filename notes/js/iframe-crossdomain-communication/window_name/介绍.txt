@@ -1,0 +1,2 @@
+   1. window.name的值在同一浏览器窗口加载不同的页面后依然存在。（比如在同一浏览器窗口下，先访问页面a.html，将 window.name设定为”Hello World”，然后再访问b.html，window.name仍然是”Hello World”。）
+   2. window.name最多可以支持2MB的值。
