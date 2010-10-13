@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>跨域</title>
+<title>window.name 解决跨域</title>
 </head>
 
 <body>
@@ -28,7 +28,7 @@ var iframe = document.createElement("iframe");
 	            document.body.removeChild(iframe);
 	        } else {
 	            same_domain = true;
-	            // 不能用iframe.src = "empty.html"，在IE下有错误
+	            // 不能用iframe.src = "proxyUrl.html"，在IE下有错误
 	            iframe.contentWindow.location = "proxyUrl.html";
 	        }
 	    }
