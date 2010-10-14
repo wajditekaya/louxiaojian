@@ -1,6 +1,5 @@
-/*=======Author:louxiaojian=========*/
+/*=======Author:louxiaojian<E-mail:louxiaojian@gmail.com>=========*/
 /*===========Version:4.0===========*/
-/*===E-mail:louxiaojian@gmail.com===*/
 /*===================================
 
 date:2010-05-25  
@@ -85,8 +84,9 @@ Rotation.prototype={
 				this.callBack();
 		},
 		autoplay:function(m){
-			  if(m){this.de = (this.de<this.aMtag.length-1) ? this.de+1 :0;}
-			  else{this.de = (this.de!=0) ? this.de-1 :this.aMtag.length-1;}
+			  var n=this.aMtag.length || this.aNtag.length;
+			  if(m){this.de = (this.de<n-1) ? this.de+1 :0;}
+			  else{this.de = (this.de!=0) ? this.de-1 :n-1;}
 			  this.action(this.de);
 		},
 		autoFun:function(){this.clearAuto();this.intAuto=setInterval(this.B(this,this.autoplay,1),this.s.auto[1])},
