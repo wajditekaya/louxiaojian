@@ -15,13 +15,20 @@ body{font:14px/22px Tahoma, Geneva, sans-serif; text-align:center}
 <div style="margin:0 auto 10px auto; width:600px">
     <div style="padding:0 30px; background:#f00;">
     padding:0 30px; background:#f00
-     <div style="width:100%; background: #39C">width:100%; background:#f60</div>
+     <div style="width:100%; background: #39C" onclick="alert(this.offsetWidth)">width:100%; background:#f60</div>
     </div>
 </div>
-<div style="margin:0 auto; width:600px; background: #90F">
+<div style="margin:0 auto 10px auto; width:600px; background: #90F">
     <div style="margin:0 30px; background:#f00;">
-    margin:0 30px; background:#f00
-     <div style="width:100%; background:#39C">width:100%; background:#f60</div>
+     margin:0 30px; background:#f00
+     <div style="width:100%; background:#39C" onclick="alert(this.offsetWidth)">width:100%; background:#f60</div>
+    </div>
+</div>
+
+<div style="margin:0 auto 10px auto; width:600px">
+    <div style="padding:0 30px; background:#f00; overflow:hidden;zoom:1">
+     <div style="width:100%; background: #39C;float:left" onclick="alert(this.offsetWidth)">width:100%; background:#f60</div>
+     <div style="float:left; margin-left:-100%; width:100px; background:#60F" onclick="alert(this.style.marginLeft)">1234</div>
     </div>
 </div>
 图片过宽溢出
