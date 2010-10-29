@@ -34,7 +34,24 @@ function html(elem, html, loadScripts, callback){
             // Safari 下，typeof NodeList 也返回 function
             return toString.call(o) === '[object Function]';
         };
-		
+
+		// 将 LiveNodeList 等 array-like 集合转换为普通数组
+		function slice2Arr(arr) {
+			return Array.prototype.slice.call(arr);
+		}
+		// ie 不支持用 slice 转换 LiveNodeList, 降级到普通方法
+		try {
+			slice2Arr(docElem.childNodes);
+		}
+		catch(e) {
+			slice2Arr = function(arr) {
+				for (var ret = [], i = arr.length - 1; i >= 0; i--) {
+					ret[i] = arr[i];
+				}
+				return ret;
+			}
+		}
+
        function makeArray(o) {
             if (o === null || o === undefined) return [];
             if (isArray(o)) return o;
