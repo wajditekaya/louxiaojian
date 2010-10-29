@@ -1,11 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>setHTML</title>
-<script type="text/javascript">
+function html(elem, html, loadScripts, callback){
 // JavaScript Document
     var doc = document,docElem = doc.documentElement,
+	    toString = Object.prototype.toString,
         //DOM = S.DOM, UA = S.UA, ie = UA.ie,
 
         //nodeTypeIs = DOM._nodeTypeIs,
@@ -28,14 +24,29 @@
        function isString(o) {
             return toString.call(o) === '[object String]';
         };
-
+		
+       function isArray(o) {
+            return toString.call(o) === '[object Array]';
+       };
+	   
        function isFunction(o) {
             //return typeof o === 'function';
-            // Safari ä¸‹ï¼Œtypeof NodeList ä¹Ÿè¿”å› function
+            // Safari ÏÂ£¬typeof NodeList Ò²·µ»Ø function
             return toString.call(o) === '[object Function]';
         };
+		
+       function makeArray(o) {
+            if (o === null || o === undefined) return [];
+            if (isArray(o)) return o;
 
+            // The strings and functions also have 'length'
+            if (typeof o.length !== 'number' || isString(o) || isFunction(o)) {
+                return [o];
+            }
 
+            return slice2Arr(o);
+        };
+		
        function later(fn, when, periodic, o, data) {
             when = when || 0;
             o = o || { };
@@ -68,18 +79,6 @@
             };
         };
 
-     function makeArray(o) {
-            if (o === null || o === undefined) return [];
-            if (S.isArray(o)) return o;
-
-            // The strings and functions also have 'length'
-            if (typeof o.length !== 'number' || isString(o) || isFunction(o)) {
-                return [o];
-            }
-
-            return slice2Arr(o);
-        };
-
 	 var POLL_INTERVAL = 40,POLL_RETRYS = 500;
 
      function available(id, fn) {
@@ -110,6 +109,7 @@
 
                 // It works! All browsers support!
                 script.text = data;
+				
 
                 // Use insertBefore instead of appendChild to circumvent an IE6 bug.
                 // This arises when a base node is used.
@@ -119,6 +119,34 @@
         };
 
 
+    // Ö±½ÓÍ¨¹ı innerHTML ÉèÖÃ html
+    function setHTMLSimple(elem, html) {
+        html = (html + '').replace(RE_SCRIPT, ''); // ¹ıÂËµôËùÓĞ script
+        try {
+            //if(UA.ie) {
+            elem.innerHTML = html;
+            //} else {
+            // Ref:
+            //  - http://blog.stevenlevithan.com/archives/faster-than-innerhtml
+            //  - http://fins.javaeye.com/blog/183373
+            //var tEl = elem.cloneNode(false);
+            //tEl.innerHTML = html;
+            //elem.parentNode.replaceChild(elem, tEl);
+            // ×¢£ºÉÏÃæµÄ·½Ê½»á¶ªÊ§µô elem ÉÏ×¢²áµÄÊÂ¼ş£¬·ÅÀà¿âÀï²»Í×µ±
+            //}
+        }
+            // table.innerHTML = html will throw error in ie.
+        catch(ex) {
+            // remove any remaining nodes
+            while (elem.firstChild) {
+                elem.removeChild(elem.firstChild);
+            }
+            // html == '' Ê±£¬ÎŞĞèÔÙ appendChild
+            if (html) elem.appendChild(DOM.create(html));
+        }
+    }
+	// Ö±½ÓÍ¨¹ı innerHTML ÉèÖÃ html
+
     function setHTML(elem, html, loadScripts, callback) {
         if (!loadScripts) {
             setHTMLSimple(elem, html);
@@ -127,11 +155,11 @@
         }
 
         var id = guid('ks-tmp-'),
-            re_script = new RegExp(RE_SCRIPT); // é˜²æ­¢
+            re_script = new RegExp(RE_SCRIPT); // ·ÀÖ¹
 
         html += '<span id="' + id + '"></span>';
 
-        // ç¡®ä¿è„šæœ¬æ‰§è¡Œæ—¶ï¼Œç›¸å…³è”çš„ DOM å…ƒç´ å·²ç»å‡†å¤‡å¥½
+        // È·±£½Å±¾Ö´ĞĞÊ±£¬Ïà¹ØÁªµÄ DOM ÔªËØÒÑ¾­×¼±¸ºÃ
         available(id, function() {
             var hd=doc.getElementsByTagName('head')[0],
                 match, attrs, srcMatch, charsetMatch,
@@ -158,58 +186,17 @@
                 }
             }
 
-            // åˆ é™¤æ¢æµ‹èŠ‚ç‚¹
+            // É¾³ıÌ½²â½Úµã
             (t = doc.getElementById(id)) && t.parentNode.removeChild(t);
 
-            // å›è°ƒ
-            //S.isFunction(callback) && callback();
+            // »Øµ÷
+            isFunction(callback) && callback();
         });
 
         setHTMLSimple(elem, html);
     }
 
-    // ç›´æ¥é€šè¿‡ innerHTML è®¾ç½® html
-    function setHTMLSimple(elem, html) {
-        html = (html + '').replace(RE_SCRIPT, ''); // è¿‡æ»¤æ‰æ‰€æœ‰ script
-        try {
-            //if(UA.ie) {
-            elem.innerHTML = html;
-            //} else {
-            // Ref:
-            //  - http://blog.stevenlevithan.com/archives/faster-than-innerhtml
-            //  - http://fins.javaeye.com/blog/183373
-            //var tEl = elem.cloneNode(false);
-            //tEl.innerHTML = html;
-            //elem.parentNode.replaceChild(elem, tEl);
-            // æ³¨ï¼šä¸Šé¢çš„æ–¹å¼ä¼šä¸¢å¤±æ‰ elem ä¸Šæ³¨å†Œçš„äº‹ä»¶ï¼Œæ”¾ç±»åº“é‡Œä¸å¦¥å½“
-            //}
-        }
-            // table.innerHTML = html will throw error in ie.
-        catch(ex) {
-            // remove any remaining nodes
-            while (elem.firstChild) {
-                elem.removeChild(elem.firstChild);
-            }
-            // html == '' æ—¶ï¼Œæ— éœ€å† appendChild
-            if (html) elem.appendChild(DOM.create(html));
-        }
-    }
-</script>
-</head>
-
-<body>
-<div id="lxj"></div>
-<textarea id="iii" style="display:none">
-é˜¿æœåˆ°å°†é˜¿æœåˆ°å°†å°±æ’’æ—¦
-<script type="text/javascript">
-alert('æˆåŠŸäº†')
-</script>
-</textarea>
-<script type="text/javascript">
-setHTML(document.getElementById('lxj'),document.getElementById('iii').value,true)
-</script>
-<script type="text/javascript">
-//alert(document.getElementsByTagName('script')[0].text)
-</script>
-</body>
-</html>
+	
+	setHTML(elem, html, loadScripts, callback);
+	
+}
