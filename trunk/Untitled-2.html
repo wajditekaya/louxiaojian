@@ -1,0 +1,442 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gbk" />
+<link href="http://y.pps.tv/t/core/css/t.css" type="text/css" rel="stylesheet" />
+<link href="http://y.pps.tv/t/sk02/css/sk02.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript">
+var PPS_CONFIG = {
+	CURRENT_USER_ID		: "4271564",
+	CURRENT_NICK_NAME	: "饭前喝汤",
+	SKIN			: "sk02",
+	DOMAIN			: "http://y.pps.tv/abcd",
+	ISINDEX			: 1
+};
+(function() {
+	var url_list = [];
+	url_list.push('http://y.pps.tv/t/core/img/t.png');
+	url_list.push('http://y.pps.tv/t/core/img/t2.png');
+	url_list.push('http://y.pps.tv/t/'+PPS_CONFIG.SKIN+'/img/'+PPS_CONFIG.SKIN+'.png');
+	url_list.push('http://y.pps.tv/t/core/img/plaint_mark2.png');
+	url_list.push('http://y.pps.tv/t/core/img/question_mark.png');
+	url_list.push('http://y.pps.tv/t/core/img/okay_mark.png');
+	for(var i=0, len=url_list.length; i<len; i++ ) {
+		(new Image()).src = url_list[i];
+	}
+})();
+</script>
+<script src="http://y.pps.tv/js/t.js" type="text/javascript"></script>
+<script src="p_blog.js" type="text/javascript"></script>
+<title>我的首页-PPS娱乐圈</title>
+</head>
+
+<body id="index">
+
+<!--header-->
+<div id="header">
+ <div class="headTp-bj"></div>
+ <div class="headTp">
+     <ul id="square-bar" class="tp-bar">
+      <li class="bar-item"><a href="/square_index.php">广场</a></li>
+      <li class="bar-item"><a href="/top.php">人气热榜</a></li>
+      <li class="bar-item"><a href="/top_forward.php">热门转发</a></li>
+      <li class="bar-item"><a href="/top_comment.php" >热门评论</a></li>
+    </ul>
+    <ul id="user-bar" class="tp-bar">
+	  <li class="bar-item user-item"><a href="/4271564/profile">饭前喝汤</a></li>
+      <li class="bar-item"><a href="/abcd">首页</a></li>
+      <li class="bar-item"><a href="/4271564/profile">微博</a></li>
+	  <li class="bar-item"><a href="/setting_user.php">设置</a></li>
+      <li class="bar-item"><a href="/logout.php" >退出</a></li>
+    </ul>
+   <form id="_ts_search" name="ts_search" method="get" action="/search_key.php">
+    <div id="topSaerch">
+     <span class="input"><input type="text" id="tsText" autocomplete="off" name="filter_search" value="搜索微博、找人" def="搜索微博、找人"/></span>
+     <input class="sBtn" type="submit" value="搜索" />
+    </div>
+    </form>
+
+ </div>
+ <h1 id="logo"><a href="/abcd" title="PPS">PPS</a></h1>
+ <div id="search-suggest" class="search-suggest">
+   <p>请输入搜索范围</p>
+   <ul>
+     <li class="d"><a href="javascript:void(0);" act="blog">含<em></em>的微博</a></li>
+     <li><a href="javascript:void(0);" act="user">名<em></em>的人</a></li>
+
+	 <li><a href="javascript:void(0);" act="tag">含<em></em>的标签</a></li>
+   </ul>
+ </div>
+  <div class="tip-b" id="_blog_msgbox" style="display:none">
+ </div>
+</div>
+<!--/header-->
+
+<!--content-->
+<div id="content">
+
+  <!--p-cols-m-3s-->
+  <div class="p-cols p-cols-m-3s">
+    <div class="p-col1">
+      <div class="p-col1-1">
+
+          		  <div id="publish-form" class="publish-form pitch">
+            <div class="hd"><h2>我来说两句</h2><div class="zs-tip" id="text_length">还可以输入<span>140</span>字</div></div>
+
+            <div class="form-item textarea-ys"><textarea name="new_entry" id="new_entry" class="textarea"></textarea></div>
+            <div class="fb-act form-item"><span class="bq" onClick="App.showFaces(this,'new_entry',20,27);">表情<b></b></span><span class="sp" onClick="App.showVideo(this,'new_entry',20,27);">视频<b></b></span><span class="tp" onClick="App.showPic(this,'new_entry',20,27);">图片<b></b></span>
+			  <input type="hidden" name="upload_url" id="upload_url" value="" autocomplete="off"/>
+              <input type="button" class="fb-but2" value="发布" id="submit_btn" onMouseOver="this.className='fb-but2-h'" onMouseOut="this.className='fb-but2'" onClick="Entry.post()"/></div>
+            </div>		  		  <div id="feedback-banner">
+           <p>PPS娱乐圈正在内测，目前只有<a target="_blank" href="http://i.pps.tv/memberPrivileges.html#czjh">在线等级</a>达到180级以上的用户才能参与使用。<br/>内测版本会存在一些问题，欢迎你通过发送“<a href="/search_video.php?filter_search=PPS%D3%E9%C0%D6%C8%A6%D2%E2%BC%FB%B7%B4%C0%A1" target="_blank">#PPS娱乐圈意见反馈#</a>+内容”提交宝贵建议。感谢你对PPS产品的支持。</p>
+
+           <a title="意见反馈" class="feedback-banner-but" href="javascript:void(0)" onClick="Entry.insertTag('#PPS娱乐圈意见反馈#');">意见反馈</a>
+           <a onClick="App.closeDialog('feedback-banner',1);" title="关闭" class="close" href="javascript:void(0)">关闭</a>
+          </div>
+		            <div id="index-talk" class="bx">
+              <h2 class="hd">我的首页</h2>
+              <div class="bd">
+                <div class="nr-selection"><em>全部</em>|<a href="/abcd?filter_ori=1">原创</a>|<a href="/abcd?filter_pic=1">图片</a>|<a href="/abcd?filter_video=1">视频</a></div>
+				<div class="psearch-form">
+					<form method="get" action="/abcd" id="filter_key_form">
+                   <input type="text" value="搜索关注人说的话..." def="搜索关注人说的话..." class="c-input" id="_filter_search" name="filter_search"/> 
+                   <a class="but" href="javascript:;"><input type="button" value="搜索" id="filter_key_button"/></a>
+                   <a class="gj" onClick="App.searchOpen();" href="javascript:void(0)">高级搜索</a>
+				   </form>
+                </div>
+				<div class="advanced-ptions" id="advanced-ptions" style="display: none;">
+				<form method="get" action="/abcd" id="_filter_adv_form">
+
+					<input type="hidden" value="1" name="filter_adv_search">
+                  <div class="ap-hd clear"><span class="fl">高级搜索：</span><a onClick="App.searchClose();" class="fr" href="javascript:void(0);">关闭高级搜索</a></div>
+                  <ul>
+                   <li class="form-item lrBx">
+                     <span class="lbx">类　型：</span>
+                     <div class="rbx">
+						 <label for="_filter_ori"><input type="checkbox" class="rck" id="_filter_ori" value="1" name="filter_ori" checked/>原创</label>
+
+						 <label for="_filter_ret"><input type="checkbox" class="rck" id="_filter_ret" value="1" name="filter_ret" checked/>转发</label>
+						 <br>
+						 <label for="_filter_text"><input type="checkbox" class="rck" id="_filter_text" value="1" name="filter_text" checked/>纯文字</label>
+						 <label for="_filter_pic"><input type="checkbox" class="rck" id="_filter_pic" value="1" name="filter_pic" checked/>含图片</label>
+						 <label for="_filter_video"><input type="checkbox" class="rck" id="_filter_video" value="1" name="filter_video" checked/>含视频</label>
+					 </div>
+                   </li>
+
+                   <li class="form-item lrBx">
+                     <span class="lbx">关键字：</span>
+                     <div class="rbx"><input type="text" class="e-input" value="" name="filter_search" id="_filter_adv_input"/></div>
+                   </li>
+                  </ul>
+                  <div class="form-act"><a class="but" href="javascript:;"><input type="submit" value="搜索" id="_filter_adv_btn"/></a></div>
+				  </form>
+                 </div>
+
+				 
+								                 <a class="tip-a" id="_blog_newbox" href="/abcd" style="display:none"><span>有新动态，</span>点击查看</a>
+                  <ul class="tk-list">
+                                            <li class="tk-item lrBx" id="entry_49148">
+                            <div class="lbx"><a href="/65167477" title="PPS综合频道"><img src="http://s1.ppsimg.com/t_images/t/f/c9/9a/65167477/50/cb782c08345cbcb07f910181b8b4b637.jpg" alt="PPS综合频道" class="avatar"></a></div>
+                            <div class="tk-r rbx">
+                             <p class="publish"><a href="/65167477" class="user-name"><em>PPS综合频道</em><span class="cert" title="PPS认证">PPS认证</span></a>：更新了<span class="update-nub">4</span>个视频:<a href="http://ppsurl.com/107HXW" target="_blank" url_key="107HXW" class="video" >宇宙第03季-09<b></b></a> <a href="http://ppsurl.com/107HXY" target="_blank" url_key="107HXY" class="video" >宇宙第03季-10<b></b></a> <a href="http://ppsurl.com/107HY0" target="_blank" url_key="107HY0" class="video" >宇宙第03季-11<b></b></a> <a href="http://ppsurl.com/107HY2" target="_blank" url_key="107HY2" class="video" >宇宙第03季-12<b></b></a> </p>
+
+
+					           <ul class="p-list p-list-a" style="display:none"></ul>                             
+
+                            <div style="zoom:1" id="_cmt_list_49148">
+                                  <div class="shrink-act comment">
+                                      <div class="new-comment-form2 comment-form">
+                                          <div class="lrBx">
+                                          <span onClick="App.showFaces(this,'_comment_content_49148',20,20);" class="c-face lbx">表情</span>
+                                          <div class="rbx textarea-ys"><textarea id="_comment_content_49148" class="textarea2" name="textfield2" style="height: 20px; overflow: hidden;"></textarea></div>
+                                          <input type="button" value="提交" id="_comment_button_49148" name="button" class="pl-but"/>
+                                          </div>
+                                          <div class="form-item tw"><label for="_rck_label_checkbox_49148"><input type="checkbox" id="_rck_label_checkbox_49148" class="rck">同时发一条微博</label></div>
+                                      </div>
+                                  <span class="jt"></span>
+                                  </div>
+                            </div>
+
+
+                             <!--shrink-act-->
+                             <div class="shrink-act comment">
+
+                               <form name="form2" method="post" action="">
+                                <div class="new-comment-form2 comment-form">
+                                  <div class="lrBx">
+                                      <span class="c-face lbx">表情</span>
+                                      <div class="rbx textarea-ys"><textarea name="textfield2" class="textarea2" id="textfield2"></textarea></div>
+                                      <input class="pl-but" type="button" name="button" id="button" value="提交">
+                                  </div>
+                                  <div class="form-item tw"><label><input type="checkbox" value="" name="" class="rck" />同时发一条微博</label></div>
+                                </div>
+                               </form>
+
+                               <ul class="comment-list">
+                                  <li class="cl-item lrBx">
+                                      <div class="lbx"><a href="t.php?t=index" title="趴在墙上等红杏"><img src="../images/t1.jpg" alt="趴在墙上等红杏" class="avatar"></a></div>
+                                      <div class="cl-r rbx">
+                                          <p class="cl-nr"><a href="#" class="user-name">@小浪观剧团<span class="cert" title="PPS认证">PPS认证</span></a>：短裙、网袜、钢管舞，妩媚、妖娆得一塌糊涂。北京的超迷肯定都记得去年底在京城年底在京城<img src="../t/core/img/face/face_twisted.gif" alt="" /><img src="../t/core/img/face/face_sweat.gif" alt="" />年底在京城年底在京城上演的爆笑喜剧《翠花》里，当红小生邓超的出色表演。<span class="cl-time">(1分钟前)</span></p>
+                                          <div class="cl-info"><a href="#">删除<b></b></a>|<a href="#" class="fr">回复<b></b></a></div>
+                                      </div>
+                                  </li>
+                                  <li class="cl-item lrBx">
+                                      <div class="lbx"><a href="t.php?t=index" title="趴在墙上等红杏"><img src="../images/t2.jpg" alt="趴在墙上等红杏" class="avatar"></a></div>
+                                      <div class="cl-r rbx">
+                                          <p class="cl-nr"><a href="#" class="user-name">@小浪观剧团</a>：短裙、网袜、钢管舞，妩媚、妖娆得一塌糊涂。北京的超迷肯定都记得去年底在京城年底在京城年底在京城年<img src="../t/core/img/face/face_twisted.gif" alt="" /><img src="../t/core/img/face/face_sweat.gif" alt="" />底在京城上演的爆笑喜剧《翠花》里，当红小生邓超的出色表演。<span class="cl-time">(3分钟前)</span></p>
+                                          <div class="cl-info"><a href="#">删除<b></b></a>|<a href="#" class="fr">回复<b></b></a></div>
+                                      </div>
+                                  </li>
+                                  <li class="cl-item lrBx">
+                                      <div class="lbx"><a href="t.php?t=index" title="趴在墙上等红杏"><img src="../images/t1.jpg" alt="趴在墙上等红杏" class="avatar"></a></div>
+                                      <div class="cl-r rbx">
+                                          <p class="cl-nr"><a href="#" class="user-name">@小浪观剧团<span class="cert" title="PPS认证">PPS认证</span></a>：短裙、网袜、钢管舞，妩媚、妖娆得一塌糊涂。北京的超迷肯定都记得去年底在京城年底在京城年底在京城年底在京城上演的爆笑喜剧《翠花》里，当红小生邓超的出色表演。<span class="cl-time">(50分钟前)</span></p>
+                                          <div class="cl-info"><a href="#">删除<b></b></a>|<a href="#" class="fr">回复<b></b></a></div>
+                                      </div>
+                                  </li>
+                               </ul>
+                               <div class="all-cl">还有88条评论，<a href="#">点击查看&gt;&gt;</a></div>
+                               <span class="jt"></span>
+                             </div>
+                             <!--/shrink-act-->
+                             
+                    <div class="tk-info"><span class="tk-time"><a href="/show.php?entry_id=49148">1分钟前</a>&nbsp;&nbsp;来自PPS微博</span><div class="tk-info-r"><a class="tk-zf" href="javascript:;" entry_id="49148" source_id="" source_content="%E6%9B%B4%E6%96%B0%E4%BA%86%3Cspan%20class%3D%22update-nub%22%3E4%3C%2Fspan%3E%E4%B8%AA%E8%A7%86%E9%A2%91%3A%3Ca%20href%3D%22http%3A%2F%2Fppsurl.com%2F107HXW%22%20target%3D%22_blank%22%20url_key%3D%22107HXW%22%20%20%3E%E5%AE%87%E5%AE%99%E7%AC%AC03%E5%AD%A3-09%3Cb%3E%3C%2Fb%3E%3C%2Fa%3E%20%3Ca%20href%3D%22http%3A%2F%2Fppsurl.com%2F107HXY%22%20target%3D%22_blank%22%20url_key%3D%22107HXY%22%20%20%3E%E5%AE%87%E5%AE%99%E7%AC%AC03%E5%AD%A3-10%3Cb%3E%3C%2Fb%3E%3C%2Fa%3E%20%3Ca%20href%3D%22http%3A%2F%2Fppsurl.com%2F107HY0%22%20target%3D%22_blank%22%20url_key%3D%22107HY0%22%20%20%3E%E5%AE%87%E5%AE%99%E7%AC%AC03%E5%AD%A3-11%3Cb%3E%3C%2Fb%3E%3C%2Fa%3E%20%3Ca%20href%3D%22http%3A%2F%2Fppsurl.com%2F107HY2%22%20target%3D%22_blank%22%20url_key%3D%22107HY2%22%20%20%3E%E5%AE%87%E5%AE%99%E7%AC%AC03%E5%AD%A3-12%3Cb%3E%3C%2Fb%3E%3C%2Fa%3E%20" entry_content="" bloger="65167477" bloger_name="PPS综合频道" source_bloger="" source_bloger_name="">转发</a>|<a class="tk-plun" href="javascript:void(0);" onClick="Comment.getlist(49148,$('#_cmt_list_49148'));">评论</a></span></div></div>
+							 <div id="_cmt_list_49148" style="display:none"></div>
+                           </div>
+                        </li>
+
+
+                 </ul>
+
+
+
+              </div>
+          </div>
+
+
+      </div>
+    </div>
+    <div class="p-col2">
+
+             	  <div id="user-info" class="pitch">
+          <div class="lrBx">
+              <div class="lbx"><a href="/setting_myface.php" title="饭前喝汤"><img src="http://s1.ppsimg.com/t_images/t/f/6b/bb/4271564/50/e4cdbeab1603b5a539d3299d837d2574.jpg" alt="饭前喝汤" class="avatar"></a>			  
+			  </div>
+              <div class="rbx">
+
+                <div class="u-tt rz-icon-tt"><a href="/4271564/profile" class="user"><strong>饭前喝汤</strong></a>
+				
+					
+										<a href="http://pay.pps.tv" target="_blank" class="gold" title="黄金会员">黄金会员</a>
+					
+				
+				</div>
+                <!--<div class="u-tt"><a href="#" class="user"><strong>芬达泡泡芬达泡泡芬达泡泡</strong></a><a href="#" class="silver">白银会员</a></div>-->
+                <div class="grade"><span class="ty"><a href="http://i.pps.tv/memberPrivileges.html#czjh" target="_blank" title="在线等级：335">(0)</a><b></b></span><span class="yl"><a href="http://i.pps.tv/memberPrivileges.html#czjh" target="_blank" title="在线等级：335">(11)</a><b></b></span><span class="xx"><a href="http://i.pps.tv/memberPrivileges.html#czjh" target="_blank" title="在线等级：335">(6)</a><b></b></span></div>
+             </div>
+
+          </div>
+		            <ul class="user-t-info">
+            <li><a href="/fall.php"><em id="_attentions">71</em>关注</a></li>
+            <li><a href="/fans.php"><em id="_myfans">33</em>粉丝</a></li>
+            <li><a href="/4271564/profile"><em id="_myblogs">61</em>微博</a></li>
+          </ul>
+
+      </div>
+	  
+	   
+     
+   
+  
+                <!--
+        <ul id="related-news" class="pitch">
+          <li><a href="#">玩具总动员III炫酷上线炫酷上线炫酷上线炫酷上线。</a></li>
+          <li><a href="#">弹弹堂2.3新版火热开启。</a></li>
+          <li><a href="#">新版看看即将登场，敬请期待。</a></li>
+        </ul>
+        -->
+              <ul id="nav" class="pitch">
+        <li class="select"><a href="/abcd">我的首页</a></li>
+        <li > <a href="/comments.php">我的评论</a></li>
+        <li > <a href="/at.php">@提到我的</a></li>
+
+      </ul>
+      
+               <div id="interested" class="p-style bx">
+        <h2 class="hd">可能感兴趣的</h2>
+        <div class="bd">
+         <ul class="p-list p-list-b">         
+	           
+           <li class="p-item">
+            <a href="/7031325" title="悠悠阳"><img src="http://s1.ppsimg.com/t_images/default/image/50/bobo.jpg" width="50" height="50" alt="悠悠阳"></a>
+            <div class="t"><a href="/7031325" title="悠悠阳">悠悠阳</a></div>
+
+			
+	     
+			<div class="gz" id="add_gz_7031325"><a href="javascript:void(0);" onClick="Entry.followadd(7031325);" title="加关注">关注</a></div>
+			<div class="ygz" id="ygz_but_7031325" style='display:none'>已关注</div>
+	       
+	
+           </li>           
+	           
+           <li class="p-item">
+            <a href="/37848334" title="谁说不在意"><img src="http://s1.ppsimg.com/t_images/default/image/50/bobo.jpg" width="50" height="50" alt="谁说不在意"></a>
+            <div class="t"><a href="/37848334" title="谁说不在意">谁说不在意</a></div>
+			
+	     
+			<div class="gz" id="add_gz_37848334"><a href="javascript:void(0);" onClick="Entry.followadd(37848334);" title="加关注">关注</a></div>
+
+			<div class="ygz" id="ygz_but_37848334" style='display:none'>已关注</div>
+	       
+	
+           </li>           
+	           
+           <li class="p-item">
+            <a href="/14706204" title="五金小老板"><img src="http://s1.ppsimg.com/t_images/default/image/50/bobo.jpg" width="50" height="50" alt="五金小老板"></a>
+            <div class="t"><a href="/14706204" title="五金小老板">五金小老板</a></div>
+			
+	     
+			<div class="gz" id="add_gz_14706204"><a href="javascript:void(0);" onClick="Entry.followadd(14706204);" title="加关注">关注</a></div>
+			<div class="ygz" id="ygz_but_14706204" style='display:none'>已关注</div>
+
+	       
+	
+           </li>           
+	           
+           <li class="p-item">
+            <a href="/33217564" title="马晓涛"><img src="http://s1.ppsimg.com/t_images/default/image/50/bobo.jpg" width="50" height="50" alt="马晓涛"></a>
+            <div class="t"><a href="/33217564" title="马晓涛">马晓涛</a></div>
+			
+	     
+			<div class="gz" id="add_gz_33217564"><a href="javascript:void(0);" onClick="Entry.followadd(33217564);" title="加关注">关注</a></div>
+			<div class="ygz" id="ygz_but_33217564" style='display:none'>已关注</div>
+	       
+	
+           </li>           
+	           
+           <li class="p-item">
+
+            <a href="/28809388" title="会怎样"><img src="http://s1.ppsimg.com/t_images/default/image/50/bobo.jpg" width="50" height="50" alt="会怎样"></a>
+            <div class="t"><a href="/28809388" title="会怎样">会怎样</a></div>
+			
+	     
+			<div class="gz" id="add_gz_28809388"><a href="javascript:void(0);" onClick="Entry.followadd(28809388);" title="加关注">关注</a></div>
+			<div class="ygz" id="ygz_but_28809388" style='display:none'>已关注</div>
+	       
+	
+           </li>           
+	           
+           <li class="p-item">
+            <a href="/5911864" title="幸福的老鼠"><img src="http://s1.ppsimg.com/t_images/default/image/50/bobo.jpg" width="50" height="50" alt="幸福的老鼠"></a>
+            <div class="t"><a href="/5911864" title="幸福的老鼠">幸福的老鼠</a></div>
+
+			
+	     
+			<div class="gz" id="add_gz_5911864"><a href="javascript:void(0);" onClick="Entry.followadd(5911864);" title="加关注">关注</a></div>
+			<div class="ygz" id="ygz_but_5911864" style='display:none'>已关注</div>
+	       
+	
+           </li>           
+	           
+           <li class="p-item">
+            <a href="/6787752" title="Carol912"><img src="http://upload.ppstream.com/UploadFile/thumb/2010-6/2010061304280367877523078.jpg" width="50" height="50" alt="Carol912"></a>
+            <div class="t"><a href="/6787752" title="Carol912">Carol912</a></div>
+			
+	     
+			<div class="gz" id="add_gz_6787752"><a href="javascript:void(0);" onClick="Entry.followadd(6787752);" title="加关注">关注</a></div>
+
+			<div class="ygz" id="ygz_but_6787752" style='display:none'>已关注</div>
+	       
+	
+           </li>           
+	           
+           <li class="p-item">
+            <a href="/35124230" title="扯乱了画面"><img src="http://s1.ppsimg.com/t_images/t/f/69/12/35124230/50/08b753e3b399a553fd7beca9f4196479.jpg" width="50" height="50" alt="扯乱了画面"></a>
+            <div class="t"><a href="/35124230" title="扯乱了画面">扯乱了画面</a></div>
+			
+	     
+			<div class="gz" id="add_gz_35124230"><a href="javascript:void(0);" onClick="Entry.followadd(35124230);" title="加关注">关注</a></div>
+			<div class="ygz" id="ygz_but_35124230" style='display:none'>已关注</div>
+
+	       
+	
+           </li>           
+	           
+           <li class="p-item">
+            <a href="/2348480" title="天上的一颗星"><img src="http://upload.ppstream.com/UploadFile/thumb/2010-4/2010041305585223484804508.jpg" width="50" height="50" alt="天上的一颗星"></a>
+            <div class="t"><a href="/2348480" title="天上的一颗星">天上的一颗星</a></div>
+			
+	     
+			<div class="gz" id="add_gz_2348480"><a href="javascript:void(0);" onClick="Entry.followadd(2348480);" title="加关注">关注</a></div>
+			<div class="ygz" id="ygz_but_2348480" style='display:none'>已关注</div>
+	       
+	
+           </li>           
+	           
+           <li class="p-item">
+
+            <a href="/6294600" title="焦子安大头"><img src="http://s1.ppsimg.com/t_images/default/image/50/bobo.jpg" width="50" height="50" alt="焦子安大头"></a>
+            <div class="t"><a href="/6294600" title="焦子安大头">焦子安大头</a></div>
+			
+	     
+			<div class="gz" id="add_gz_6294600"><a href="javascript:void(0);" onClick="Entry.followadd(6294600);" title="加关注">关注</a></div>
+			<div class="ygz" id="ygz_but_6294600" style='display:none'>已关注</div>
+	       
+	
+           </li>           
+	           
+           <li class="p-item">
+            <a href="/6599808" title="第一感觉"><img src="http://s1.ppsimg.com/t_images/default/image/50/bobo.jpg" width="50" height="50" alt="第一感觉"></a>
+            <div class="t"><a href="/6599808" title="第一感觉">第一感觉</a></div>
+
+			
+	     
+			<div class="gz" id="add_gz_6599808"><a href="javascript:void(0);" onClick="Entry.followadd(6599808);" title="加关注">关注</a></div>
+			<div class="ygz" id="ygz_but_6599808" style='display:none'>已关注</div>
+	       
+	
+           </li>           
+	           
+           <li class="p-item">
+            <a href="/12338687" title="过电流"><img src="http://s1.ppsimg.com/t_images/default/image/50/bobo.jpg" width="50" height="50" alt="过电流"></a>
+            <div class="t"><a href="/12338687" title="过电流">过电流</a></div>
+			
+	     
+			<div class="gz" id="add_gz_12338687"><a href="javascript:void(0);" onClick="Entry.followadd(12338687);" title="加关注">关注</a></div>
+
+			<div class="ygz" id="ygz_but_12338687" style='display:none'>已关注</div>
+	       
+	
+           </li>           
+	           
+         </ul>
+       </div>
+     </div>
+
+
+
+    </div>
+  </div>
+
+  <!--/p-cols-m-3s-->
+</div>
+<!--/content-->
+
+<!--footer-->
+<div id="footer">
+    <div class="ft-txt">
+      <p class="ft-list">Copyright  &copy; 2010 <a href="http://www.pps.tv/" target="_blank">PPStream, Inc.</a> <a href="http://www.pps.tv/about" target="_blank">版权所有</a> <a href="http://www.miibeian.gov.cn/" target="_blank" >沪B-20060072</a></p>
+
+   </div>
+</div>
+<!--/footer-->
+<script src="http://y.pps.tv/js/fileuploader.js" type="text/javascript"></script>
+<script type="text/javascript">
+jQuery(function($){
+	Entry.getMessageBox();
+});
+if(document.all){document.execCommand("BackgroundImageCache", false, true);}
+</script>
+<script src="http://stat.ppstream.com/click_y.php"  type="text/javascript"></script>
+</body>
+</html>
