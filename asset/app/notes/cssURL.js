@@ -1,1 +1,0 @@
-document.writeln("<link rel=\"stylesheet\" rev=\"stylesheet\" href=\"http:\/\/www.lxj.com\/front-end-development\/webStandards\/case_style\/case.css\" type=\"text\/css\" media=\"all\" \/>");
