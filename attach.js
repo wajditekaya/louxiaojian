@@ -1,4 +1,32 @@
 // JavaScript Document
+    // 将 LiveNodeList 等 array-like 集合转换为普通数组
+    function slice2Arr(arr) {
+        return AP.slice.call(arr);
+    }
+    // ie 不支持用 slice 转换 LiveNodeList, 降级到普通方法
+    try {
+        slice2Arr(docElem.childNodes);
+    }
+    catch(e) {
+        slice2Arr = function(arr) {
+            for (var ret = [], i = arr.length - 1; i >= 0; i--) {
+                ret[i] = arr[i];
+            }
+            return ret;
+        }
+    }
+
+        makeArray: function(o) {
+            if (o === null || o === undefined) return [];
+            if (S.isArray(o)) return o;
+
+            // The strings and functions also have 'length'
+            if (typeof o.length !== 'number' || S.isString(o) || S.isFunction(o)) {
+                return [o];
+            }
+
+            return slice2Arr(o);
+        },
 each: function(object, fn, context) {
             var key, val, i = 0, length = object.length,
                 isObj = length === undefined || S.isFunction(object);
