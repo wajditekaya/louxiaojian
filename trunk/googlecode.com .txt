@@ -3,7 +3,7 @@ QD8XP7pE9gp4
 googlecode.com password: QD8XP7pE9gp4
 
 
-http://kissyteam.github.com/kissy/src/switchable/demo.html
+http://kissyteam.github.com/kissy/src/switchable/demo.html 
 
 phoenix
 
