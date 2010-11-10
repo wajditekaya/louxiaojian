@@ -12,3 +12,10 @@ http://www.cnblogs.com/winter-cn/archive/2008/06/26/1213151.html(内存泄露)
 
 
 http://bbs.fkvod.com/forum-viewthread-tid-90943-extra-page%3D1%26filter%3Dtypeid%26typeid%3D59.html
+
+
+
+https://louxiaojian.googlecode.com/svn用这地址允许提交更新
+
+
+http://louxiaojian.googlecode.com/svn这地址只允许更新文件，没用权限提交更改的文件
