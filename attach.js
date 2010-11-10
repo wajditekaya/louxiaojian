@@ -1,4 +1,146 @@
 // JavaScript Document
+
+KISSY.add('node', function(S) {
+
+    var DOM = S.DOM;
+
+    /**
+     * The Node class provides a wrapper for manipulating DOM Node.
+     */
+    function Node(html, props, ownerDocument) {
+        var self = this, domNode;
+
+        // factory or constructor
+        if (!(self instanceof Node)) {
+            return new Node(html, props, ownerDocument);
+        }
+
+        // handle Node(''), Node(null), or Node(undefined)
+        if (!html) {
+            self.length = 0;
+            return;
+        }
+
+        // create from html
+        if (S.isString(html)) {
+            domNode = DOM.create(html, props, ownerDocument);
+            // 将 S.Node('<p>1</p><p>2</p>') 转换为 NodeList
+            if(domNode.nodeType === 11) { // fragment
+                return new S.NodeList(domNode.childNodes);
+            }
+        }
+        // handle Node
+        else if(html instanceof Node) {
+            return html;
+        }
+        // node, document, window 等等，由使用者保证正确性
+        else {
+            domNode = html;
+        }
+
+        self[0] = domNode;
+    }
+
+    Node.TYPE = '-ks-Node';
+
+    S.augment(Node, {
+
+        /**
+         * 长度为 1
+         */
+        length: 1,
+
+        /**
+         * Retrieves the DOMNode.
+         */
+        getDOMNode: function() {
+            return this[0];
+        },
+
+        nodeType: Node.TYPE
+    });
+
+    // query api
+    S.one = function(selector, context) {
+        var elem = S.get(selector, context);
+        return elem ? new Node(elem) : null;
+    };
+
+    S.Node = Node;
+});
+/**
+ * @module  nodelist
+ * @author  lifesinger@gmail.com
+ */
+KISSY.add('nodelist', function(S) {
+
+    var DOM = S.DOM,
+        AP = Array.prototype;
+
+    /**
+     * The NodeList class provides a wrapper for manipulating DOM NodeList.
+     */
+    function NodeList(domNodes) {
+        // factory or constructor
+        if (!(this instanceof NodeList)) {
+            return new NodeList(domNodes);
+        }
+
+        // push nodes
+        AP.push.apply(this, S.makeArray(domNodes) || []);
+    }
+
+    S.mix(NodeList.prototype, {
+
+        /**
+         * 默认长度为 0
+         */
+        length: 0,
+
+        /**
+         * Retrieves the Node instance at the given index
+         */
+        item: function(index) {
+            var ret = null;
+            if(DOM._isElementNode(this[index])) {
+                ret = new S.Node(this[index]);
+            }
+            return ret;
+        },
+
+        /**
+         * Retrieves the DOMNodes.
+         */
+        getDOMNodes: function() {
+            return AP.slice.call(this);
+        },
+
+        /**
+         * Applies the given function to each Node in the NodeList.
+         * @param fn The function to apply. It receives 3 arguments: the current node instance, the node's index, and the NodeList instance
+         * @param context An optional context to apply the function with Default context is the current Node instance
+         */
+        each: function(fn, context) {
+            var len = this.length, i = 0, node;
+
+            for (node = new S.Node(this[0]);
+                 i < len && fn.call(context || node, node, i, this) !== false; node = new S.Node(this[++i])) {
+            }
+
+            return this;
+        }
+    });
+
+    // query api
+    S.all = function(selector, context) {
+        return new NodeList(S.query(selector, context, true));
+    };
+
+    S.NodeList = NodeList;
+});
+
+
+
     // 将 LiveNodeList 等 array-like 集合转换为普通数组
     function slice2Arr(arr) {
         return AP.slice.call(arr);
@@ -26,7 +168,7 @@
             }
 
             return slice2Arr(o);
-        },
+        }
 each: function(object, fn, context) {
             var key, val, i = 0, length = object.length,
                 isObj = length === undefined || S.isFunction(object);
