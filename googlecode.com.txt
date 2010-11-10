@@ -15,7 +15,7 @@ http://bbs.fkvod.com/forum-viewthread-tid-90943-extra-page%3D1%26filter%3Dtypeid
 
 
 
-https://louxiaojian.googlecode.com/svn用这地址允许提交更新
+https://louxiaojian.googlecode.com/svn这地址允许更新和提交更改文件的权限
 
 
 http://louxiaojian.googlecode.com/svn这地址只允许更新文件，没用权限提交更改的文件
