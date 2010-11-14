@@ -1,6 +1,79 @@
 // JavaScript Document
+create: function(html, props, ownerDoc) {
+	if (nodeTypeIs(html, 1) || nodeTypeIs(html, 3)) return cloneNode(html);
+	if (isKSNode(html)) return cloneNode(html[0]);
+	if (!(html = S.trim(html))) return null;
 
+	var ret = null, creators = DOM._creators,
+		m, tag = DIV, k, nodes;
 
+	// 简单 tag, 比如 DOM.create('<p>')
+	if ((m = RE_SIMPLE_TAG.exec(html))) {
+		ret = (ownerDoc || doc).createElement(m[1]);
+	}
+	// 复杂情况，比如 DOM.create('<img src="sprite.png" />')
+	else {
+		if ((m = RE_TAG.exec(html)) && (k = m[1]) && S.isFunction(creators[(k = k.toLowerCase())])) {
+			tag = k;
+		}
+
+		nodes = creators[tag](html, ownerDoc).childNodes;
+
+		if (nodes.length === 1) {
+			// return single node, breaking parentNode ref from "fragment"
+			ret = nodes[0][PARENT_NODE].removeChild(nodes[0]);
+		}
+		else {
+			// return multiple nodes as a fragment
+			ret = nl2frag(nodes, ownerDoc || doc);
+		}
+	}
+
+	return attachProps(ret, props);
+};
+
+add: function(name, fn, config) {
+	var self = this, mods = self.Env.mods, mod, o;
+
+	// S.add(name, config) => S.add( { name: config } )
+	if (S.isString(name) && !config && S.isPlainObject(fn)) {
+		o = { };
+		o[name] = fn;
+		name = o;
+	}
+
+	// S.add( { name: config } )
+	if (S.isPlainObject(name)) {
+		S.each(name, function(v, k) {
+			v.name = k;
+			if(mods[k]) mix(v, mods[k], false); // 保留之前添加的配置
+		});
+		mix(mods, name);
+	}
+	// S.add(name[, fn[, config]])
+	else {
+		config = config || { };
+
+		mod = mods[name] || { };
+		name = config.host || mod.host || name;
+		mod = mods[name] || { };
+
+		// 注意：通过 S.add(name[, fn[, config]]) 注册的代码，无论是页面中的代码，还
+		//      是 js 文件里的代码，add 执行时，都意味着该模块已经 LOADED
+		mix(mod, { name: name, status: LOADED });
+		if(!mod.fns) mod.fns = [];
+		fn && mod.fns.push(fn);
+		mix((mods[name] = mod), config);
+
+		// 对于 requires 都已 attached 的模块，比如 core 中的模块，直接 attach
+		if ((mod['attach'] !== false) && self.__isAttached(mod.requires)) {
+			self.__attachMod(mod);
+		}
+	}
+
+	return self;
+};
+		
 augment: function(/*r, s1, s2, ..., ov, wl*/) {
 	var args = arguments, len = args.length - 2,
 		r = args[0], ov = args[len], wl = args[len + 1],
