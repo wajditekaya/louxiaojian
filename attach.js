@@ -1,5 +1,29 @@
 // JavaScript Document
 
+
+augment: function(/*r, s1, s2, ..., ov, wl*/) {
+	var args = arguments, len = args.length - 2,
+		r = args[0], ov = args[len], wl = args[len + 1],
+		i = 1;
+
+	if (!S.isArray(wl)) {
+		ov = wl;
+		wl = undefined;
+		len++;
+	}
+
+	if (!S.isBoolean(ov)) {
+		ov = undefined;
+		len++;
+	}
+
+	for (; i < len; i++) {
+		mix(r.prototype, args[i].prototype || args[i], ov, wl);
+	}
+
+	return r;
+}
+
 KISSY.add('node', function(S) {
 
     var DOM = S.DOM;
@@ -141,34 +165,35 @@ KISSY.add('nodelist', function(S) {
 
 
 
-    // 将 LiveNodeList 等 array-like 集合转换为普通数组
-    function slice2Arr(arr) {
-        return AP.slice.call(arr);
-    }
-    // ie 不支持用 slice 转换 LiveNodeList, 降级到普通方法
-    try {
-        slice2Arr(docElem.childNodes);
-    }
-    catch(e) {
-        slice2Arr = function(arr) {
-            for (var ret = [], i = arr.length - 1; i >= 0; i--) {
-                ret[i] = arr[i];
-            }
-            return ret;
-        }
-    }
+// 将 LiveNodeList 等 array-like 集合转换为普通数组
+function slice2Arr(arr) {
+	return AP.slice.call(arr);
+}
+// ie 不支持用 slice 转换 LiveNodeList, 降级到普通方法
+try {
+	slice2Arr(docElem.childNodes);
+}
+catch(e) {
+	slice2Arr = function(arr) {
+		for (var ret = [], i = arr.length - 1; i >= 0; i--) {
+			ret[i] = arr[i];
+		}
+		return ret;
+	}
+}
 
-        makeArray: function(o) {
-            if (o === null || o === undefined) return [];
-            if (S.isArray(o)) return o;
+	makeArray: function(o) {
+		if (o === null || o === undefined) return [];
+		if (S.isArray(o)) return o;
 
-            // The strings and functions also have 'length'
-            if (typeof o.length !== 'number' || S.isString(o) || S.isFunction(o)) {
-                return [o];
-            }
+		// The strings and functions also have 'length'
+		if (typeof o.length !== 'number' || S.isString(o) || S.isFunction(o)) {
+			return [o];
+		}
 
-            return slice2Arr(o);
-        }
+		return slice2Arr(o);
+	}
+		
 each: function(object, fn, context) {
             var key, val, i = 0, length = object.length,
                 isObj = length === undefined || S.isFunction(object);
