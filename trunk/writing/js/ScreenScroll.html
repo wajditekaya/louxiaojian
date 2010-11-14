@@ -66,6 +66,11 @@ img{vertical-align:top}
 
 (function(){
 	function ScreenScroll(s){
+		        // factory or constructor
+				var self=this;
+				if (!(self instanceof ScreenScroll)) {
+					return new ScreenScroll(s);
+				}
 				this.id=document.getElementById(s.id);
 				if(!this.id) return false
 				this.pos=s.pos;
@@ -164,12 +169,12 @@ img{vertical-align:top}
 		
 	}
 	
-	new ScreenScroll({id:'lxj',pos:{right:'100px',bottom:'10px'}});
-	new ScreenScroll({id:'hb',pos:{left:'5px',bottom:'10px'},fix:1});
-	new ScreenScroll({id:'lxj2',pos:{left:'5px',top:'10px'},n:-1});
-	new ScreenScroll({id:'top',pos:{right:'5px',top:'100px'},fix:1});
-	new ScreenScroll({id:'top2',pos:{right:'405px',top:'300px'},n:1});
-	new ScreenScroll({id:'lxj3',pos:{right:'605px',top:'300px'},n:1});
+	 ScreenScroll({id:'lxj',pos:{right:'100px',bottom:'10px'}});
+	 ScreenScroll({id:'hb',pos:{left:'5px',bottom:'10px'},fix:1});
+	 ScreenScroll({id:'lxj2',pos:{left:'5px',top:'10px'},n:-1});
+	 ScreenScroll({id:'top',pos:{right:'5px',top:'100px'},fix:1});
+	 ScreenScroll({id:'top2',pos:{right:'405px',top:'300px'},n:1});
+	 ScreenScroll({id:'lxj3',pos:{right:'605px',top:'300px'},n:1});
 })()
 </script>
 </body>
