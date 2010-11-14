@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>QIE</title>
+</head>
+
+<body>
+<script type="text/javascript">
+(function(S){
+   if (window[S] === undefined) window[S] = {};
+	S = window[S];
+	S={
+			 setCookie:function(name,value,days){
+				if (days) {
+				  var date = new Date();
+				  date.setTime(date.getTime()+(days*24*60*60*1000));
+				  var expires = "; expires="+date.toGMTString();
+				}
+				else expires = "";
+				document.cookie = name+"="+value+expires+"; path=/";
+			 },
+			getCookie:function(name) {
+			  var nameEQ = name + "=";
+			  var ca = document.cookie.split(';');
+			  for(var i=0;i < ca.length;i++) {
+				var c = ca[i];
+				while (c.charAt(0)==' ') c = c.substring(1,c.length);
+				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+			  }
+			  return null;
+			},
+			t:function(){
+				alert('lxj')
+			}
+		 };
+	window[S]=S
+})('lxj');
+
+(function(s){
+	 window[s]={
+			 setCookie:function(name,value,days){
+				if (days) {
+				  var date = new Date();
+				  date.setTime(date.getTime()+(days*24*60*60*1000));
+				  var expires = "; expires="+date.toGMTString();
+				}
+				else expires = "";
+				document.cookie = name+"="+value+expires+"; path=/";
+			 },
+			getCookie:function(name) {
+			  var nameEQ = name + "=";
+			  var ca = document.cookie.split(';');
+			  for(var i=0;i < ca.length;i++) {
+				var c = ca[i];
+				while (c.charAt(0)==' ') c = c.substring(1,c.length);
+				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+			  }
+			  return null;
+			},
+			t:function(){
+				alert('hubei')
+			}
+		 };
+	
+})('hubei');
+
+
+(function(S){
+   if (window[S] === undefined) window[S] = {};
+	S = window[S];
+	// Copies all the properties of s to r
+	mix = function(r, s, ov, wl) {
+		if (!s || !r) return r;
+		if (ov === undefined) ov = true;
+		var i, p, l;
+
+		if (wl && (l = wl.length)) {
+			for (i = 0; i < l; i++) {
+				p = wl[i];
+				if (p in s) {
+					if (ov || !(p in r)) {
+						r[p] = s[p];
+					}
+				}
+			}
+		} else {
+			for (p in s) {
+				if (ov || !(p in r)) {
+					r[p] = s[p];
+				}
+			}
+		}
+		return r;
+	}
+	mix(S,{
+			 setCookie:function(name,value,days){
+				if (days) {
+				  var date = new Date();
+				  date.setTime(date.getTime()+(days*24*60*60*1000));
+				  var expires = "; expires="+date.toGMTString();
+				}
+				else expires = "";
+				document.cookie = name+"="+value+expires+"; path=/";
+			 },
+			getCookie:function(name) {
+			  var nameEQ = name + "=";
+			  var ca = document.cookie.split(';');
+			  for(var i=0;i < ca.length;i++) {
+				var c = ca[i];
+				while (c.charAt(0)==' ') c = c.substring(1,c.length);
+				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+			  }
+			  return null;
+			},
+			t:function(){
+				alert('QIE')
+			}
+		
+	})
+	
+})('QIE');
+
+
+hubei.t();
+QIE.t();
+lxj.t();
+</script>
+</body>
+</html>
