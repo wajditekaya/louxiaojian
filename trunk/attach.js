@@ -1,4 +1,11 @@
 // JavaScript Document
+/*
+mix ( r, s, ov, wl )：将 s 对象的成员复制到 对象上。（ov:是否用s中的成员覆盖r中的同名成员。wl:只复制wl中指定的s中的成员到r） 
+merge ( arguments：object)：将多个对象的成员合并到一个新对象上。参数中，后面的对象成员会覆盖前面的。 
+augment ( r, s, ov, wl )：将 s.prototype 的成员复制到 r.prototype 上。 
+extend ( r, s, px, sx )：让函数对象 r 继承函数对象 s.（和Ext.extend几乎一样） 
+*/
+
 create: function(html, props, ownerDoc) {
 	if (nodeTypeIs(html, 1) || nodeTypeIs(html, 3)) return cloneNode(html);
 	if (isKSNode(html)) return cloneNode(html[0]);
@@ -73,7 +80,8 @@ add: function(name, fn, config) {
 
 	return self;
 };
-		
+
+/*augment ( r, s, ov, wl )：将 s.prototype 的成员复制到 r.prototype 上。*/
 augment: function(/*r, s1, s2, ..., ov, wl*/) {
 	var args = arguments, len = args.length - 2,
 		r = args[0], ov = args[len], wl = args[len + 1],
