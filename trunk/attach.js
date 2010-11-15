@@ -6,7 +6,107 @@ augment ( r, s, ov, wl )：将 s.prototype 的成员复制到 r.prototype 上。
 extend ( r, s, px, sx )：让函数对象 r 继承函数对象 s.（和Ext.extend几乎一样） 
 */
 
-create: function(html, props, ownerDoc) {
+
+// 添加成员到元素中
+function attachProps(elem, props) {
+	if (isElementNode(elem) && S.isPlainObject(props)) {
+		DOM.attr(elem, props, true);
+	}
+	return elem;
+}
+
+function attr(selector, name, val, pass) {
+	// suports hash
+	if (S.isPlainObject(name)) {
+		pass = val; // 塌缩参数
+		for (var k in name) {
+			DOM.attr(selector, k, name[k], pass);
+		}
+		return;
+	}
+
+	if (!(name = S.trim(name))) return;
+	name = name.toLowerCase();
+
+	// attr functions
+	if (pass && attrFn[name]) {
+		return DOM[name](selector, val);
+	}
+
+	// custom attrs
+	name = CUSTOM_ATTRS[name] || name;
+
+	// getter
+	if (val === undefined) {
+		// supports css selector/Node/NodeList
+		var el = S.get(selector);
+
+		// only get attributes on element nodes
+		if (!isElementNode(el)) {
+			return undefined;
+		}
+
+		var ret;
+
+		// 优先用 el[name] 获取 mapping 属性值：
+		//  - 可以正确获取 readonly, checked, selected 等特殊 mapping 属性值
+		//  - 可以获取用 getAttribute 不一定能获取到的值，比如 tabindex 默认值
+		//  - href, src 直接获取的是 normalized 后的值，排除掉
+		//  - style 需要用 getAttribute 来获取字符串值，也排除掉
+		if (!RE_SPECIAL_ATTRS.test(name)) {
+			ret = el[name];
+		}
+
+		// 用 getAttribute 获取非 mapping 属性和 href/src/style 的值：
+		if (ret === undefined) {
+			ret = el.getAttribute(name);
+		}
+
+		// fix ie bugs
+		if (oldIE) {
+			// 不光是 href, src, 还有 rowspan 等非 mapping 属性，也需要用第 2 个参数来获取原始值
+			if (RE_NORMALIZED_ATTRS.test(name)) {
+				ret = el.getAttribute(name, 2);
+			}
+			// 在标准浏览器下，用 getAttribute 获取 style 值
+			// IE7- 下，需要用 cssText 来获取
+			else if (name === STYLE) {
+				ret = el[STYLE].cssText;
+			}
+		}
+
+		// 对于不存在的属性，统一返回 undefined
+		return ret === null ? undefined : ret;
+	}
+
+	// setter
+	S.each(S.query(selector), function(el) {
+		// only set attributes on element nodes
+		if (!isElementNode(el)) {
+			return;
+		}
+
+		// 不需要加 oldIE 判断，否则 IE8 的 IE7 兼容模式有问题
+		if (name === STYLE) {
+			el[STYLE].cssText = val;
+		}
+		else {
+			// checked 属性值，需要通过直接设置才能生效
+			if(name === CHECKED) {
+				el[name] = !!val;
+			}
+			// convert the value to a string (all browsers do this but IE)
+			el.setAttribute(name, EMPTY + val);
+		}
+	});
+};
+
+function isPlainObject(o) {
+	// Make sure that DOM nodes and window objects don't pass through.
+	return o && toString.call(o) === '[object Object]' && !o['nodeType'] && !o['setInterval'];
+};
+
+function create(html, props, ownerDoc) {
 	if (nodeTypeIs(html, 1) || nodeTypeIs(html, 3)) return cloneNode(html);
 	if (isKSNode(html)) return cloneNode(html[0]);
 	if (!(html = S.trim(html))) return null;
@@ -39,7 +139,7 @@ create: function(html, props, ownerDoc) {
 	return attachProps(ret, props);
 };
 
-add: function(name, fn, config) {
+function add(name, fn, config) {
 	var self = this, mods = self.Env.mods, mod, o;
 
 	// S.add(name, config) => S.add( { name: config } )
@@ -82,7 +182,7 @@ add: function(name, fn, config) {
 };
 
 /*augment ( r, s, ov, wl )：将 s.prototype 的成员复制到 r.prototype 上。*/
-augment: function(/*r, s1, s2, ..., ov, wl*/) {
+function augment(/*r, s1, s2, ..., ov, wl*/) {
 	var args = arguments, len = args.length - 2,
 		r = args[0], ov = args[len], wl = args[len + 1],
 		i = 1;
@@ -103,7 +203,7 @@ augment: function(/*r, s1, s2, ..., ov, wl*/) {
 	}
 
 	return r;
-}
+};
 
 KISSY.add('node', function(S) {
 
@@ -263,19 +363,19 @@ catch(e) {
 	}
 }
 
-	makeArray: function(o) {
-		if (o === null || o === undefined) return [];
-		if (S.isArray(o)) return o;
+function makeArray(o) {
+	if (o === null || o === undefined) return [];
+	if (S.isArray(o)) return o;
 
-		// The strings and functions also have 'length'
-		if (typeof o.length !== 'number' || S.isString(o) || S.isFunction(o)) {
-			return [o];
-		}
-
-		return slice2Arr(o);
+	// The strings and functions also have 'length'
+	if (typeof o.length !== 'number' || S.isString(o) || S.isFunction(o)) {
+		return [o];
 	}
+
+	return slice2Arr(o);
+}
 		
-each: function(object, fn, context) {
+function each(object, fn, context) {
             var key, val, i = 0, length = object.length,
                 isObj = length === undefined || S.isFunction(object);
             context = context || win;
