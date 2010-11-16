@@ -55,7 +55,7 @@ input,textarea,select{*font-size:100%;}
 .pitch{margin-bottom:15px}/*间距*/
 
 
-.icon{display:block; overflow:hidden;text-indent:-9999px;}
+.icon{display:block;overflow:hidden;text-indent:-9999px}
 .cert,.cert2,.cert3,.cert4{width:11px;height:10px;}
 .c1,.c2{width:10px;height:11px}
 .s1,.s2{width:10px;height:10px}
@@ -168,6 +168,13 @@ for(var i=0,len=icon.length;i<len;i++){
 		alert('宽：'+this.offsetWidth+'；'+'宽：'+this.offsetHeight+'；标签为：'+this.tagName.toLocaleLowerCase());return false
 	}
 }
+
+if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPad/i))) {
+	   if (document.cookie.indexOf("iphone_redirect=false") == -1) {
+	      alert("你使用的是iPad")
+	   }
+}
+
 </script>
 </body>
 </html>
