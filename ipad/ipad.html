@@ -55,9 +55,11 @@ input,textarea,select{*font-size:100%;}
 .pitch{margin-bottom:15px}/*间距*/
 
 
-.cert,.cert2,.cert3,.cert4{width:11px;height:10px;display:block; overflow:hidden;text-indent:-9999px;margin:5px auto 15px auto}
-.c1,.c2{width:10px;height:11px;display:block; overflow:hidden;text-indent:-9999px;margin:5px auto 15px auto}
-.s1,.s2{width:10px;height:10px;display:block; overflow:hidden;text-indent:-9999px;margin:5px auto 15px auto}
+.cert,.cert2,.cert3,.cert4{width:11px;height:10px;display:block; overflow:hidden;text-indent:-9999px;margin:5px 0 15px 0}
+.c1,.c2{width:10px;height:11px;display:block; overflow:hidden;text-indent:-9999px;margin:5px 0 15px 0}
+.s1,.s2{width:10px;height:10px;display:block; overflow:hidden;text-indent:-9999px;margin:5px 0 15px 0}
+
+.g1,.g2,.g3,.g4{width:11px;height:11px;display:block;overflow:hidden;text-indent:-9999px;margin:5px 0 15px 0}
 
 .cert{height:10px;background:url(v_s.png) 0 -1px no-repeat}
 
@@ -74,25 +76,47 @@ input,textarea,select{*font-size:100%;}
 .s1{width:10px;background:url(s1.png) -1px 0 no-repeat}
 
 .s2{width:10px;background:url(s2.png) -2px 0 no-repeat}
+
+.g1{width:11px;height:11px;background:url(g1.png) -1px 0 no-repeat}
+
+.g2{width:11px;height:11px;background:url(g2.png) -2px 0 no-repeat}
+
+.g3{height:11px;width:11px;background:url(g3.png) 0 -1px no-repeat}
+
+.g4{height:11px;width:11px;background:url(g4.png) 0 -2px no-repeat}
 </style>
 </head>
 
 <body>
-.cert{height:10px;background:url(v_s.png) 0 -1px no-repeat}
+<div style="width:600px; margin:0 auto; text-align:left">
+【宽和高为奇偶数时】.cert{width:11px;height:10px;background:url(v_s.png) 0 -1px no-repeat}
 <span title="PPS认证" class="cert" onclick="alert(this.offsetWidth+'==='+this.offsetHeight);return false">PPS认证</span>
-.cert2{height:10px;background:url(v_s2.png) 0 -2px no-repeat}
+【宽和高为奇偶数时】.cert2{width:11px;height:10px;background:url(v_s2.png) 0 -2px no-repeat}
 <div title="PPS认证" class="cert2" onclick="alert(this.offsetWidth+'==='+this.offsetHeight);return false">PPS认证</div> 
-.cert3{width:11px;background:url(v.png) -2px 0 no-repeat}
+【宽和高为奇偶数时】.cert3{width:11px;height:10px;background:url(v.png) -2px 0 no-repeat}
 <span title="PPS认证" class="cert3" onclick="alert(this.offsetWidth+'==='+this.offsetHeight);return false">PPS认证</span>
-.cert4{width:11px;background:url(v_j.png) -1px 0 no-repeat}
+【宽和高为奇偶数时】.cert4{width:11px;height:10px;background:url(v_j.png) -1px 0 no-repeat}
 <span title="PPS认证" class="cert4" onclick="alert(this.offsetWidth+'==='+this.offsetHeight);return false">PPS认证</span>
-.c1{height:11px; background:url(c1.png) 0 -2px no-repeat}
+【宽和高为奇偶数时】.c1{height:11px;width:10px;background:url(c1.png) 0 -2px no-repeat}
 <span title="PPS认证" class="c1" onclick="alert(this.offsetWidth+'==='+this.offsetHeight);return false">PPS认证</span>
-.c2{height:11px; background:url(c2.png) 0 -1px no-repeat}
+【宽和高为奇偶数时】.c2{height:11px;width:10px;background:url(c2.png) 0 -1px no-repeat}
 <span title="PPS认证" class="c2" onclick="alert(this.offsetWidth+'==='+this.offsetHeight);return false">PPS认证</span>
-.s1{width:10px;background:url(s1.png) -1px 0 no-repeat}
+【宽和高为偶数时】.s1{width:10px;height:10px;background:url(s1.png) -1px 0 no-repeat}
 <span title="PPS认证" class="s1" onclick="alert(this.offsetWidth+'==='+this.offsetHeight);return false">PPS认证</span>
-.s2{width:10px;background:url(s2.png) -2px 0 no-repeat}
+【宽和高为偶数时】.s2{width:10px;height:10px;background:url(s2.png) -2px 0 no-repeat}
 <span title="PPS认证" class="s2" onclick="alert(this.offsetWidth+'==='+this.offsetHeight);return false">PPS认证</span>
+
+【宽和高为奇数时】.g1{width:11px;height:11px;background:url(g1.png) -1px 0 no-repeat}
+<span title="PPS认证" class="g1" onclick="alert(this.offsetWidth+'==='+this.offsetHeight);return false">PPS认证</span>
+
+【宽和高为奇数时】.g2{width:11px;height:11px;background:url(g2.png) -2px 0 no-repeat}
+<span title="PPS认证" class="g2" onclick="alert(this.offsetWidth+'==='+this.offsetHeight);return false">PPS认证</span>
+
+【宽和高为奇数时】.g3{height:11px;width:11px;background:url(g3.png) 0 -1px no-repeat}
+<span title="PPS认证" class="g3" onclick="alert(this.offsetWidth+'==='+this.offsetHeight);return false">PPS认证</span>
+
+【宽和高为奇数时】.g4{height:11px;width:11px;background:url(g4.png) 0 -2px no-repeat}
+<span title="PPS认证" class="g4" onclick="alert(this.offsetWidth+'==='+this.offsetHeight);return false">PPS认证</span>
+</div>
 </body>
 </html>
