@@ -54,6 +54,17 @@ input,textarea,select{*font-size:100%;}
 .table .head{font-weight:bold;}
 .pitch{margin-bottom:15px}/*间距*/
 
+.nr-title,.nr-title2{font-size:14px;line-height:40px;font-weight:normal; background-color:#EBEBEB;border-bottom:1px solid #DBDBDB;}
+	.nr-title{padding-left:20px;margin-bottom:10px;position:relative;zoom:1}
+	.nr-title:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+	.nr-title .tag_url{font-weight:normal;font-size:12px;margin-left:5px}
+	.nr-title .nr-item{float:left;padding:0 10px;margin-right:5px}
+	.nr-title .select{height:41px;position:relative;margin-top:-1px;bottom:-1px; background-color:#FFFFFF;border-left:1px solid #DBDBDB;
+border-right:1px solid #DBDBDB;}
+	.nr-title .select:hover{text-decoration:none}
+	.nr-title2{padding-left:10px}
+    .nr-title3{font-size:12px;background:#eff0ef;line-height:31px;padding-left:10px; font-weight:normal; margin-bottom:10px}
+	
 .exp1 li{padding-bottom:10px}
 .lxj{width:50px; height:50px;-webkit-perspective:url(v_s.png);-webkit-perspective-origin:left top}
 .icon{display:block;overflow:hidden;text-indent:-9999px;background-origin:content}
@@ -95,6 +106,8 @@ input,textarea,select{*font-size:100%;}
 </head>
 
 <body>
+<div class="nr-title" onclick="alert(this.offsetHeight)"><a class="select nr-item" onclick="alert(this.offsetHeight)">全部关注(88)</a><a href="#" class="nr-item">关注的人(88)</a><a href="#" class="nr-item">关注的标签(88)</a></div>
+
 <div class="exp1" style="width:600px; margin:0 auto; text-align:left">
 <ul>
 <li>【宽和高为奇偶数时】.cert{width:11px;height:10px;background:url(v_s.png) 0 -1px no-repeat}<span title="PPS认证" class="icon cert">PPS认证</span></li>
