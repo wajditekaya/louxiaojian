@@ -4,6 +4,7 @@
 <meta charset="gbk" />
 <link href="../t/core/css/t.source.css" type="text/css" rel="stylesheet" />
 <link href="../t/core/css/square.source.css" type="text/css" rel="stylesheet" />
+<link href="../t/core/css/setting.source.css" type="text/css" rel="stylesheet" />
 <link href="../t/sk02/css/sk02.source.css" type="text/css" rel="stylesheet" />
 <title>广场首页</title>
 </head>
@@ -19,17 +20,27 @@
 <div class="nr-title" onClick="alert(this.offsetHeight)" style="margin-bottom:30px"><a class="select nr-item" onClick="alert(this.offsetHeight)">全部关注(88)</a><a href="#" class="nr-item">关注的人(88)</a><a href="#" class="nr-item">关注的标签(88)</a></div>
 
     
-  <div id="square-nav">
+  <div id="square-nav" style="margin-bottom:30px">
     <ul id="square-nav-list" class="square-nav-list">
-      <li class="s-nav-item select" onclick="alert(this.offsetHeight)"><a href="t.php?t=square_index&debug=1" onClick="return false">广场首页</a></li>
-      <li class="s-nav-item " onclick="alert(this.offsetHeight)"><a href="t.php?t=weiboing&debug=1" onClick="return false">随便看看</a></li>
+      <li class="s-nav-item select" onClick="alert(this.offsetHeight)"><a href="t.php?t=square_index&debug=1" onClick="return false">广场首页</a></li>
+      <li class="s-nav-item " onClick="alert(this.offsetHeight)"><a href="t.php?t=weiboing&debug=1" onClick="return false">随便看看</a></li>
       <li class="s-nav-item "><a href="t.php?t=top&debug=1" onClick="return false">人气热榜</a></li>
       <li class="s-nav-item"><a href="t.php?t=hot_tags&debug=1" onClick="return false">热门标签</a></li>
       <li class="s-nav-item "><a href="t.php?t=top_forward&time=today&debug=1" onClick="return false">热门转发</a></li>
       <li class="s-nav-item "><a href="t.php?t=top_comment&time=today&debug=1" onClick="return false">热门评论</a></li>
     </ul>
   </div>
-  
+ 
+<div class="s-tab">
+               <ul>
+                 <li class="select"><a href="/setting_user.php"><span>个人资料</span></a></li>
+                 <li><a href="/setting_myface.php"><span>修改头像</span></a></li>
+                 <li><a href="/setting_password.php"><span>修改密码</span></a></li>
+                 <li><a href="/setting_domain.php"><span>个性化域名</span></a></li>
+                 <li><a href="/setting_personal.php"><span>个性化设置</span></a></li>
+                 <li><a href="/setting_blacklist.php"><span>黑名单</span></a></li>
+               </ul>
+             </div>
 
 </div>
 <!--/content-->

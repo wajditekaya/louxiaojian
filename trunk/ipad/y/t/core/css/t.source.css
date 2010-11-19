@@ -73,7 +73,7 @@ input,textarea,select{*font-size:100%;}
 	#topSaerch .input .input-focus{color:#383838}
 	#topSaerch .sBtn,#topSaerch .sBtn-h{width:62px;height:24px;text-indent:-9999px;border:0;cursor:pointer;margin:3px 3px 0 0}
 
-#content{margin-bottom:15px}
+#content{margin-bottom:15px; padding-bottom:30px}
 /*==p-cols==*/
 .p-cols{zoom:1}
 	.p-cols:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
