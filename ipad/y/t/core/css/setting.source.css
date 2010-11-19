@@ -24,7 +24,7 @@ email:  jxsr_lxj@163.com
 	.invite_select s{background-position:-32px -98px;}
 
 .s-tab{padding-left:20px;border-bottom:1px solid #cccccc}
-	.s-tab ul{zoom:1;position:relative;bottom:-1px}
+	.s-tab ul{zoom:1;position:relative;bottom:-1px; height:30px}
 	.s-tab ul:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
 	.s-tab li{float:left;height:30px; overflow:hidden;line-height:30px;margin-right:5px;display:inline}
 	.s-tab li a,.s-tab li a span{display:block;float:left}
