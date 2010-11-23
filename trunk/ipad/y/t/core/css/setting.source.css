@@ -2,7 +2,7 @@
 author:	lou xiao jian
 email:  jxsr_lxj@163.com
 ====================================*/
-.s-tab li a,.s-tab li a span,.s-bx .s-tp,.s-bx .s-ft,.s-bx .s-tp b,.s-bx .s-tp s,.s-bx .s-ft b,.s-bx .s-ft s,.e-bx .e-tp,.e-bx .e-ft,.e-bx .e-tp b,.e-bx .e-tp s,.e-bx .e-ft b,.e-bx .e-ft s,.e-bx .jt,.sel-but .b b,.sel-but .l,.sel-but .r,.favorites b,.invite b,.invite s,.password-qd .qd-bfb,.but3,.slider-but{background-image:url(../img/setting.png);background-repeat:no-repeat;-webkit-background-origin:content}
+.s-tab li a,.s-tab li a span,.s-bx .s-tp,.s-bx .s-ft,.s-bx .s-tp b,.s-bx .s-tp s,.s-bx .s-ft b,.s-bx .s-ft s,.e-bx .e-tp,.e-bx .e-ft,.e-bx .e-tp b,.e-bx .e-tp s,.e-bx .e-ft b,.e-bx .e-ft s,.e-bx .jt,.sel-but .b b,.sel-but .l,.sel-but .r,.favorites b,.invite b,.invite s,.password-qd .qd-bfb,.but3,.slider-but{background-image:url(../img/setting.png);background-repeat:no-repeat}
 
 .form-item .but,.form-item label,.form-item select,.form-item .e-input,.form-item span{float:left}
 .form-item .correct,.form-item .wrong{margin-left:5px}
@@ -28,8 +28,8 @@ email:  jxsr_lxj@163.com
 	.s-tab ul:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
 	.s-tab li{float:left;height:30px; overflow:hidden;line-height:30px;margin-right:5px;display:inline}
 	.s-tab li a,.s-tab li a span{display:block;float:left}
-	.s-tab li a{padding-left:2px;-webkit-background-size:100% 30px;background-position:left top}
-	.s-tab li a span{zoom:1;padding:0 11px 0 9px;-webkit-background-size:100% 30px;background-position:right top;cursor:pointer}
+	.s-tab li a{padding-left:2px;background-position:left top}
+	.s-tab li a span{zoom:1;padding:0 11px 0 9px;background-position:right top;cursor:pointer}
 	.s-tab .select a{background-position:left -30px}
 	.s-tab .select a span{background-position:right -30px}
 
