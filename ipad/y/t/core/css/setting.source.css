@@ -28,8 +28,8 @@ email:  jxsr_lxj@163.com
 	.s-tab ul:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
 	.s-tab li{float:left;height:30px; overflow:hidden;line-height:30px;margin-right:5px;display:inline}
 	.s-tab li a,.s-tab li a span{display:block;float:left}
-	.s-tab li a{padding-left:2px;background-position:left top}
-	.s-tab li a span{zoom:1;padding:0 11px 0 9px;background-position:right top;cursor:pointer}
+	.s-tab li a{padding-left:2px;-webkit-background-size:100% 30px;background-position:left top}
+	.s-tab li a span{zoom:1;padding:0 11px 0 9px;-webkit-background-size:100% 30px;background-position:right top;cursor:pointer}
 	.s-tab .select a{background-position:left -30px}
 	.s-tab .select a span{background-position:right -30px}
 
