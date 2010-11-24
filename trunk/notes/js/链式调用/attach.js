@@ -101,6 +101,7 @@ function attr(selector, name, val, pass) {
 	});
 };
 
+//作用: 检测一个Object是否由{}或new Object()创建
 function isPlainObject(o) {
 	// Make sure that DOM nodes and window objects don't pass through.
 	return o && toString.call(o) === '[object Object]' && !o['nodeType'] && !o['setInterval'];
