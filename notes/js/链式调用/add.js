@@ -70,4 +70,6 @@
                 timeout: 10   // getScript 的默认 timeout 时间
             };
         }
+	 }
+	 
    )
