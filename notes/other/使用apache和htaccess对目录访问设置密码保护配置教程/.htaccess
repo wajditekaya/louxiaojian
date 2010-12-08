@@ -1,0 +1,35 @@
+
+AuthType Basic
+AuthName "SeanLou：请输入用户名和密码"
+AuthUserFile D:/ProgramFiles/apache/bin/user
+Require user seanlou
+
+Options +Indexes
+
+ErrorDocument 401 http://www.pps.tv 
+ErrorDocument 404 http://www.pps.tv
+
+DefaultIcon http://www.apache.org/icons/unknown.gif
+AddIcon http://www.apache.org/icons/back.gif ..
+AddIcon http://www.apache.org/icons/binary.gif .bin .exe
+AddIcon http://www.apache.org/icons/binhex.gif .hqx
+AddIcon http://www.apache.org/icons/tar.gif .tar
+AddIcon http://www.apache.org/icons/world2.gif .wrl .wrl.gz .vrml .vrm .iv
+AddIcon http://www.apache.org/icons/compressed.gif .Z .z .tgz .gz .zip
+AddIcon http://www.apache.org/icons/a.gif .ps .ai .eps
+AddIcon http://10.11.2.49/ApacheInclude/icons/css.png .css
+AddIcon http://10.11.2.49/ApacheInclude/icons/php.png .php
+AddIcon http://10.11.2.49/ApacheInclude/icons/layout.png .html .shtml .htm .pdf
+AddIcon http://www.apache.org/icons/text.gif .txt
+AddIcon http://www.apache.org/icons/c.gif .c
+AddIcon http://www.apache.org/icons/p.gif .pl .py
+AddIcon http://www.apache.org/icons/f.gif .for
+AddIcon http://www.apache.org/icons/dvi.gif .dvi
+AddIcon http://www.apache.org/icons/uuencoded.gif .uu
+AddIcon http://www.apache.org/icons/script.gif .conf .sh .shar .csh .ksh .tcl
+AddIcon http://www.apache.org/icons/tex.gif .tex
+AddIcon http://www.apache.org/icons/bomb.gif core
+AddIcon http://www.apache.org/icons/back.gif ..
+AddIcon http://www.apache.org/icons/hand.right.gif README
+AddIcon http://10.11.2.49/ApacheInclude/icons/folder.png ^^DIRECTORY^^
+AddIcon http://www.apache.org/icons/blank.gif ^^BLANKICON^^
