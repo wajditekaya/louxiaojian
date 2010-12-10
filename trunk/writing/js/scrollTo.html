@@ -64,8 +64,18 @@ input{visibility:visible}
     <input type="button" value="body.scrollTop" id="lxj" onclick="alert(document.documentElement.scrollTop || document.body.scrollTop)" />
 </div>
 <script type="text/javascript">
+/*===============¶¯»­===============*/
+var animate=function(t,b,c,d){
+     Tween=function(t,b,c,d){
+		if ((t/=d/2) < 1) return c/2*t*t + b;
+		return -c/2 * ((--t)*(t-2) - 1) + b;
+	 };
+	(function(){
+	   dd.scrollTop =Math.ceil(Tween(t,b,c,d))
+	   if(t<d){t++;setTimeout(arguments.callee,10)}
+	})();
+};
 
-		
 function scrollTo(be,to,time){
 	var b=be,c=to-be,d=30,t=time || 0,dd,
 	 webkit=/applewebkit/.test(window.navigator.userAgent.toLowerCase()),//webkitÄÚºËä¯ÀÀÆ÷
@@ -77,7 +87,7 @@ function scrollTo(be,to,time){
 	dd=document.compatMode=="CSS1Compat" && !webkit ? document.documentElement : document.body;
 	(function(){
 	   dd.scrollTop =Math.ceil(Tween(t,b,c,d))
-	   if(t<d){t++;setTimeout(arguments.callee, 10)}
+	   if(t<d){t++;setTimeout(arguments.callee,10)}
 	})();
 }
 
