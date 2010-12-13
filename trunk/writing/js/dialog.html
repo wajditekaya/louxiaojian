@@ -55,6 +55,7 @@ input,textarea,select{*font-size:100%;}
 
 <body>
 <div class="exp" onclick="new dialog({id:'lxj',width:350})">new dialog({id:'lxj',width:350})</div>
+<div class="exp" onclick="new dialog({id:'lxj',width:350,opacity:0.1})">new dialog({id:'lxj',width:350,opacity:0.1})</div>
 <div class="exp" onclick="new dialog({id:'lxj',width:350,Layer:0})">new dialog({id:'lxj',width:350,Layer:0})</div>
 <div class="exp" onclick="new dialog({id:'lxj',width:350,fix:1})">new dialog({id:'lxj',width:350,fix:1})</div>
 <div class="exp" onclick="new dialog({id:'lxj2',width:350,Layer:0,left:this.offsetLeft,top:this.offsetTop+30})">new dialog({id:'lxj',width:350,Layer:0,left:this.offsetLeft,top:this.offsetTop+30})当left的值为0时还有待完善</div>
@@ -73,6 +74,7 @@ function dialog(set){
 	  this.left=parseInt(this.boxSet.left);
 	  this.Layer=this.boxSet.Layer
 	  this.fix=this.boxSet.fix;
+	  this.opacity=this.boxSet.opacity || 0.5;
 	  this.dialogInit();
 	  this.open();
 	  window.onresize=this.B(this,this.setPosition);
@@ -126,7 +128,7 @@ dialog.prototype={
 		      if(!this.$('layDic')){
 				  this.layDic=document.createElement("div");
 				  this.layDic.setAttribute('id','layDic');
-				  this.layDic.style.cssText="opacity:0.5;-moz-opacity:0.5;filter:alpha(opacity=50);background:#000;position:absolute;top:0;left:0;z-index:9998;display:none";
+				  this.layDic.style.cssText="opacity:"+this.opacity+";-moz-opacity:"+this.opacity+";filter:alpha(opacity="+this.opacity*100+");background:#000;position:absolute;top:0;left:0;z-index:9998;display:none";
 				  document.body.appendChild(this.layDic);
 			  }else{
 				  this.layDic=this.$('layDic');
