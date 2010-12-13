@@ -80,7 +80,7 @@ function dialog(set){
 	  window.onresize=this.B(this,this.setPosition);
 };
 dialog.close=function(){
-	        var layDic=this.$('layDic'),dialog=this.$('dialog');
+	        var layDic=document.getElementById('layDic'),dialog=document.getElementById('dialog');
 			if(layDic){layDic.style.display="none";layDic.parentNode.removeChild(layDic)}
 			dialog.style.display="none";
 			if(document.all && ([/MSIE (\d)\.0/i.exec(navigator.userAgent)][0][1] == 6)){
