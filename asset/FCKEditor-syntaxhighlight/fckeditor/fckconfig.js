@@ -127,6 +127,13 @@ FCKConfig.ToolbarSets["Default"] = [
 FCKConfig.ToolbarSets["Basic"] = [
 	['Bold','Italic','-','OrderedList','UnorderedList','-','Link','Unlink','-','About']
 ] ;
+FCKConfig.ToolbarSets["SyntaxDemo"] = [
+	['Source', '-', 'Cut', 'Copy', 'PasteText', 'SelectAll', 'SyntaxHighLight', 'About']
+];
+
+FCKConfig.ToolbarSets["Syntax2Demo"] = [
+	['Source', '-', 'Cut', 'Copy', 'PasteText', 'SelectAll', 'SyntaxHighLight2', 'About']
+];
 
 FCKConfig.EnterMode = 'p' ;			// p | div | br
 FCKConfig.ShiftEnterMode = 'br' ;	// p | div | br
