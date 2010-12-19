@@ -132,7 +132,7 @@ FCKConfig.ToolbarSets["SyntaxDemo"] = [
 ];
 
 FCKConfig.ToolbarSets["Syntax2Demo"] = [
-	['Source', '-', 'Cut', 'Copy', 'PasteText', 'SelectAll', 'SyntaxHighLight2', 'About']
+	['Source', '-', 'Cut', 'Copy', 'PasteText','Image','Flash','Link','Unlink','Anchor','SelectAll','SyntaxHighLight2', 'About']
 ];
 
 FCKConfig.EnterMode = 'p' ;			// p | div | br
