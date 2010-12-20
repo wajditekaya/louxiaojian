@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <!--SyntaxHighlighter-->
+     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
+     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
+     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+     <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
+     <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+     <script type="text/javascript">
+        SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
+        SyntaxHighlighter.all();
+     </script>
+
+<title>js 将16进制颜色转换成rgb</title>
+</head>
+
+<body>
+<pre title="code" class="brush: jscript;">
+function hex2rgb(a) //将16进制颜色转换成rgb
+{
+	a=a.substring(1);
+	a=a.toLowerCase();
+	b=new Array();
+	for(x=0;x&lt;3;x++){
+  		b[0]=a.substr(x*2,2);
+  		b[3]=&quot;0123456789abcdef&quot;;
+  		b[1]=b[0].substr(0,1);
+   		b[2]=b[0].substr(1,1);
+		b[20+x]=b[3].indexOf(b[1])*16+b[3].indexOf(b[2]);
+	}
+	return &quot;rgb(&quot; +b[20]+&quot;,&quot;+b[21]+&quot;,&quot;+b[22]+ &quot;)&quot;;
+}</pre>
+<script type="text/javascript">
+function hex2rgb(a) //将16进制颜色转换成rgb
+{   
+    var b,c;
+	a=a.substring(1);
+	a=a.toLowerCase();
+	b=new Array();
+	for(x=0;x<3;x++){
+  		b[0]=a.substr(x*2,2);
+  		b[3]="0123456789abcdef";
+  		b[1]=b[0].substr(0,1);
+   		b[2]=b[0].substr(1,1);
+		b[20+x]=b[3].indexOf(b[1])*16+b[3].indexOf(b[2]);
+	}
+	return "rgb(" +b[20]+","+b[21]+","+b[22]+ ")";
+}
+</script>
+<input type="button" value="#ff6600" onclick="alert(hex2rgb('#ff6600'))" /><input type="button" value="ff6600" onclick="alert(hex2rgb('ff6600'))" /><input type="button" value="#f00" onclick="alert(hex2rgb('#f00'))" /><input type="button" value="f00" onclick="alert(hex2rgb('f00'))" />
+</body>
+</html>
