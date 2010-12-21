@@ -1,0 +1,295 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
+<title>js文字闪烁和颜色渐变</title>
+ <!--SyntaxHighlighter-->
+     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
+     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
+     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+     <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
+     <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+     <script type="text/javascript">
+        SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
+        SyntaxHighlighter.all();
+     </script>
+
+<style>
+*{margin:0;padding:0}
+body{background:#fff; color:#fff; font:14px/1.5 Tahoma, Geneva, sans-serif}
+#lxj{color:#c7e2ff; background:#020a15}
+div{border-bottom:1px solid #282F38;line-height:30px;padding-left:8px}
+</style>
+</head>
+
+<body>
+<pre class="brush: jscript;" title="code">
+function cssValue(o,s){
+	var r;
+	function camelize(s) {
+		return s.replace(/-(\w)/g, function (strMatch, p1){
+			return p1.toUpperCase();
+		});
+	}
+	if(!+'\v1'){
+		if(s.indexOf('-')!=-1) s=camelize(s);
+		r=o.currentStyle[s]
+	}else{
+		r=document.defaultView.getComputedStyle(o, null).getPropertyValue(s);
+	}
+	return r
+};
+
+function torgb(a) //将16进制颜色转换成rgb
+{   
+    var b=[],c;
+	if(a.substr(0,1)===&quot;#&quot;){
+	   a=a.substring(1);
+	}
+	a=a.toLowerCase();
+	c=new String(a).split('');
+	if(c.length&lt;3 || c.length&gt;6) return false;
+	if(c.length===3){
+	   a=c[0]+c[0]+c[1]+c[1]+c[2]+c[2];
+	}
+	for(x=0;x&lt;3;x++){
+  		b[0]=a.substr(x*2,2);
+  		b[3]=&quot;0123456789abcdef&quot;;
+  		b[1]=b[0].substr(0,1);
+   		b[2]=b[0].substr(1,1);
+		b[20+x]=b[3].indexOf(b[1])*16+b[3].indexOf(b[2]);
+	}
+	return {r:b[20],g:b[21],b:b[22]}
+}
+
+function ColorTrans(s){
+/*	 s={
+		 o:'',
+		 be:'',//起始颜色
+		 to:'',//目标颜色
+		 css:'',//改变的样式
+		 time:'',//时间
+		 callback:function(){}
+	 }*/
+	 var d=s.time || 30,t=0,
+     Tween= s.Tween || function(t,b,c,d){
+		if ((t/=d/2) &lt; 1) return c/2*t*t + b;
+		return -c/2 * ((--t)*(t-2) - 1) + b;
+	 },bc=torgb(s.be),tc=torgb(s.to),
+	 rb=bc.r,
+	 rc=tc.r-bc.r,
+	 
+	 gb=bc.g,
+	 gc=tc.g-bc.g,
+	 
+	 bb=bc.b,
+	 bc=tc.b-bc.b;
+	(function(){
+	   r = Math.ceil(Tween(t,rb,rc,d));
+	   g = Math.ceil(Tween(t,gb,gc,d));
+	   b = Math.ceil(Tween(t,bb,bc,d));
+	   s.o.style[s.css]='rgb('+r+','+g+','+b+')'
+	   if(t&lt;d){t++;setTimeout(arguments.callee,10)}
+	   (t===(d-1)) &amp;&amp; s.callback();
+	})();
+}
+
+
+function jitter(v){
+/*	  s={ 
+		  o:'',//抖动的对象
+		  css:'left',//什么抖动
+		  d:30, //抖动的时间
+		  s:200 //抖动的幅度
+	  }*/
+	  var b=0,c=0,d=v.d || 30,t=0,s=v.s || 200,z=0;
+	  function easeOut(t,b,c,d,a,p){
+		  if (t==0) return b;  if ((t/=d)==1) return b+c;if (!p) p=d*.3;
+		  if (!a || a &lt; Math.abs(c)) { a=c; var s=p/4; }
+		  else var s = p/(2*Math.PI) * Math.asin (c/a);
+		  return (a*Math.pow(2,-10*t) * Math.sin( (t*d-s)*(2*Math.PI)/p ) + c + b);
+	  }
+	  (function(){
+		 v.o.style[v.css || left] = Math.ceil(easeOut(t,b,c,d,s,z)) + &quot;px&quot;;
+		 if(t&lt;d){t++;setTimeout(arguments.callee,10)}
+	  })();
+	
+}
+	  
+	  
+
+function gif(s){
+/*	  s={ 
+		  o:'',//抖动的对象
+		  color:['#c7e2ff','#282f38'],//要变化的颜色数组
+		  css:'background',//什么抖动
+		  m:2,//闪两个循环
+		  callback:function(){} //抖动的幅度
+	  }*/
+	var i=0,time,c=0,m=s.m
+	time=setInterval(function(){
+			   s.o.style[s.css]=s.color[i]
+			   i++;
+			   c++;
+			   if(c/(s.color.length+1)===m) {clearInterval(time),s.callback()}
+			   if(i&gt;=s.color.length) i=0;
+	},100)
+}
+
+var tv=function(o){
+	  var test=document.getElementById(o)
+	  gif({o:test,color:['#c7e2ff','#f00'],css:'color',m:2})
+	  gif(
+		  {o:test,
+		   color:['#c7e2ff','#282f38'],
+		   css:'background',
+		   m:2,//闪两个循环
+		   callback:function(){
+				   ColorTrans({o:test,be:'#ff0000',to:'#c7e2ff',time:40,css:'color'})
+				   ColorTrans({o:test,be:'#282f38',to:'#020a15',time:40,css:'background',callback:function(){alert('渐变完成')}})							  
+		  }
+	 })
+
+}</pre>
+
+<div style="background:#020a15; padding-bottom:200px">
+    <div id="lxj">渐变渐变渐变渐变<span id="l"></span></div>
+    <div id="hubei1" style="position:relative">抖动抖动抖动抖动抖动</div>
+    <input type="button" value="抖动" onclick="jitter({o:document.getElementById('hubei1'),css:'top',d:40,s:50,z:100})"/>
+    <input type="button" value="渐变" onclick="tv('lxj')"/>
+
+</div>
+<script type="text/javascript">
+function cssValue(o,s){
+	var r;
+	function camelize(s) {
+		return s.replace(/-(\w)/g, function (strMatch, p1){
+			return p1.toUpperCase();
+		});
+	}
+	if(!+'\v1'){
+		if(s.indexOf('-')!=-1) s=camelize(s);
+		r=o.currentStyle[s]
+	}else{
+		r=document.defaultView.getComputedStyle(o, null).getPropertyValue(s);
+	}
+	return r
+};
+
+function torgb(a) //将16进制颜色转换成rgb
+{   
+    var b=[],c;
+	if(a.substr(0,1)==="#"){
+	   a=a.substring(1);
+	}
+	a=a.toLowerCase();
+	c=new String(a).split('');
+	if(c.length<3 || c.length>6) return false;
+	if(c.length===3){
+	   a=c[0]+c[0]+c[1]+c[1]+c[2]+c[2];
+	}
+	for(x=0;x<3;x++){
+  		b[0]=a.substr(x*2,2);
+  		b[3]="0123456789abcdef";
+  		b[1]=b[0].substr(0,1);
+   		b[2]=b[0].substr(1,1);
+		b[20+x]=b[3].indexOf(b[1])*16+b[3].indexOf(b[2]);
+	}
+	return {r:b[20],g:b[21],b:b[22]}
+}
+
+function ColorTrans(s){
+/*	 s={
+		 o:'',
+		 be:'',//起始颜色
+		 to:'',//目标颜色
+		 css:'',//改变的样式
+		 time:'',//时间
+		 callback:function(){}
+	 }*/
+	 var d=s.time || 30,t=0,
+     Tween= s.Tween || function(t,b,c,d){
+		if ((t/=d/2) < 1) return c/2*t*t + b;
+		return -c/2 * ((--t)*(t-2) - 1) + b;
+	 },bc=torgb(s.be),tc=torgb(s.to),
+	 rb=bc.r,
+	 rc=tc.r-bc.r,
+	 
+	 gb=bc.g,
+	 gc=tc.g-bc.g,
+	 
+	 bb=bc.b,
+	 bc=tc.b-bc.b;
+	(function(){
+	   r = Math.ceil(Tween(t,rb,rc,d));
+	   g = Math.ceil(Tween(t,gb,gc,d));
+	   b = Math.ceil(Tween(t,bb,bc,d));
+	   s.o.style[s.css]='rgb('+r+','+g+','+b+')'
+	   if(t<d){t++;setTimeout(arguments.callee,10)}
+	   (t===(d-1)) && s.callback();
+	})();
+}
+
+
+function jitter(v){
+/*	  s={ 
+		  o:'',//抖动的对象
+		  css:'left',//什么抖动
+		  d:30, //抖动的时间
+		  s:200 //抖动的幅度
+	  }*/
+	  var b=0,c=0,d=v.d || 30,t=0,s=v.s || 200,z=s.z || 0;
+	  function easeOut(t,b,c,d,a,p){
+		  if (t==0) return b;  if ((t/=d)==1) return b+c;if (!p) p=d*.3;
+		  if (!a || a < Math.abs(c)) { a=c; var s=p/4; }
+		  else var s = p/(2*Math.PI) * Math.asin (c/a);
+		  return (a*Math.pow(2,-10*t) * Math.sin( (t*d-s)*(2*Math.PI)/p ) + c + b);
+	  }
+	  (function(){
+		 v.o.style[v.css || left] = Math.ceil(easeOut(t,b,c,d,s,z)) + "px";
+		 if(t<d){t++;setTimeout(arguments.callee,10)}
+	  })();
+	
+}
+	  
+	  
+
+function gif(s){
+/*	  s={ 
+		  o:'',//抖动的对象
+		  color:['#c7e2ff','#282f38'],//要变化的颜色数组
+		  css:'background',//什么抖动
+		  m:2,//闪两个循环
+		  callback:function(){} //抖动的幅度
+	  }*/
+	var i=0,time,c=0,m=s.m
+	time=setInterval(function(){
+			   s.o.style[s.css]=s.color[i]
+			   i++;
+			   c++;
+			   if(c/(s.color.length+1)===m) {clearInterval(time),s.callback()}
+			   if(i>=s.color.length) i=0;
+	},100)
+}
+
+var tv=function(o){
+	  var test=document.getElementById(o)
+	  gif({o:test,color:['#c7e2ff','#f00'],css:'color',m:2})
+	  gif(
+		  {o:test,
+		   color:['#c7e2ff','#282f38'],
+		   css:'background',
+		   m:2,//闪两个循环
+		   callback:function(){
+				   ColorTrans({o:test,be:'#ff0000',to:'#c7e2ff',time:40,css:'color'})
+				   ColorTrans({o:test,be:'#282f38',to:'#020a15',time:40,css:'background',callback:function(){alert('渐变完成')}})							  
+		  }
+	 })
+
+}
+</script>
+</body>
+</html>
