@@ -20,12 +20,20 @@
 </head>
 
 <body>
-<pre title="code" class="brush: jscript;">
-function hex2rgb(a) //将16进制颜色转换成rgb
-{
-	a=a.substring(1);
+<pre class="brush: jscript;" title="code">
+function torgb(a) //将16进制颜色转换成rgb
+{   
+    var b,c;
+	if(a.substr(0,1)===&quot;#&quot;){
+	   a=a.substring(1);
+	}
 	a=a.toLowerCase();
-	b=new Array();
+	c=new String(a).split('');
+	if(c.length&lt;3 || c.length&gt;6) return false;
+	if(c.length===3){
+	   a=c[0]+c[0]+c[1]+c[1]+c[2]+c[2];
+	}
+	b=[];
 	for(x=0;x&lt;3;x++){
   		b[0]=a.substr(x*2,2);
   		b[3]=&quot;0123456789abcdef&quot;;
@@ -33,15 +41,22 @@ function hex2rgb(a) //将16进制颜色转换成rgb
    		b[2]=b[0].substr(1,1);
 		b[20+x]=b[3].indexOf(b[1])*16+b[3].indexOf(b[2]);
 	}
-	return &quot;rgb(&quot; +b[20]+&quot;,&quot;+b[21]+&quot;,&quot;+b[22]+ &quot;)&quot;;
+	return {r:b[20],g:b[21],b:b[22]}
 }</pre>
 <script type="text/javascript">
-function hex2rgb(a) //将16进制颜色转换成rgb
+function torgb(a) //将16进制颜色转换成rgb
 {   
     var b,c;
-	a=a.substring(1);
+	if(a.substr(0,1)==="#"){
+	   a=a.substring(1);
+	}
 	a=a.toLowerCase();
-	b=new Array();
+	c=new String(a).split('');
+	if(c.length<3 || c.length>6) return false;
+	if(c.length===3){
+	   a=c[0]+c[0]+c[1]+c[1]+c[2]+c[2];
+	}
+	b=[];
 	for(x=0;x<3;x++){
   		b[0]=a.substr(x*2,2);
   		b[3]="0123456789abcdef";
@@ -49,9 +64,13 @@ function hex2rgb(a) //将16进制颜色转换成rgb
    		b[2]=b[0].substr(1,1);
 		b[20+x]=b[3].indexOf(b[1])*16+b[3].indexOf(b[2]);
 	}
-	return "rgb(" +b[20]+","+b[21]+","+b[22]+ ")";
+	return {r:b[20],g:b[21],b:b[22]}
 }
 </script>
-<input type="button" value="#ff6600" onclick="alert(hex2rgb('#ff6600'))" /><input type="button" value="ff6600" onclick="alert(hex2rgb('ff6600'))" /><input type="button" value="#f00" onclick="alert(hex2rgb('#f00'))" /><input type="button" value="f00" onclick="alert(hex2rgb('f00'))" />
+<input type="button" value="#ff6600" onclick="alert('rgb(' +torgb('#ff6600').r+','+torgb('#ff6600').g+','+torgb('#ff6600').b+ ')')" />
+<input type="button" value="ff6600" onclick="alert('rgb(' +torgb('ff6600').r+','+torgb('ff6600').g+','+torgb('ff6600').b+ ')')" />
+<input type="button" value="#f00" onclick="alert('rgb(' +torgb('#f00').r+','+torgb('#f00').g+','+torgb('#f00').b+ ')')" />
+<input type="button" value="f00" onclick="alert('rgb(' +torgb('f00').r+','+torgb('f00').g+','+torgb('f00').b+ ')')" />
+<input type="button" value="ff0000" onclick="alert('rgb(' +torgb('ff0000').r+','+torgb('ff0000').g+','+torgb('ff0000').b+ ')')" />
 </body>
 </html>
