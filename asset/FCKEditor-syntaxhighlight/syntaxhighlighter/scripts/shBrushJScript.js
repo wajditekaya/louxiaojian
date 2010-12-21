@@ -33,7 +33,8 @@ SyntaxHighlighter.brushes.JScript = function()
 					'default delete do else false  ' +
 					'for function if in instanceof ' +
 					'new null return super switch ' +
-					'this throw true try typeof var while with'
+					'this throw true try typeof var while with'+
+					'substr substring toLowerCase String split length indexOf setInterval'
 					;
 
 	this.regexList = [
