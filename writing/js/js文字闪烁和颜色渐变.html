@@ -4,18 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
 <title>js文字闪烁和颜色渐变</title>
- <!--SyntaxHighlighter-->
-     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
-     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
-     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
-     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushPhp.js"></script>
-     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
-     <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
-     <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
-     <script type="text/javascript">
-        SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
-        SyntaxHighlighter.all();
-     </script>
+<!--SyntaxHighlighter-->
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript">
+SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
+SyntaxHighlighter.all();
+</script>
 
 <style>
 *{margin:0;padding:0}
@@ -26,23 +26,14 @@ div{border-bottom:1px solid #282F38;line-height:30px;padding-left:8px}
 </head>
 
 <body>
-<pre class="brush: jscript;" title="code">
-function cssValue(o,s){
-	var r;
-	function camelize(s) {
-		return s.replace(/-(\w)/g, function (strMatch, p1){
-			return p1.toUpperCase();
-		});
-	}
-	if(!+'\v1'){
-		if(s.indexOf('-')!=-1) s=camelize(s);
-		r=o.currentStyle[s]
-	}else{
-		r=document.defaultView.getComputedStyle(o, null).getPropertyValue(s);
-	}
-	return r
-};
+<div style="background:#020a15; margin:20px 200px">
+    <div id="lxj">渐变渐变渐变渐变<span id="l"></span></div>
+    <div id="hubei1" style="position:relative">抖动抖动抖动抖动抖动</div>
+    <input type="button" value="抖动" onclick="jitter({o:document.getElementById('hubei1'),css:'top',d:40,s:50,z:100})"/>
+    <input type="button" value="渐变" onclick="tv('lxj')"/>
 
+</div>
+<pre class="brush: jscript;" title="code">
 function torgb(a) //将16进制颜色转换成rgb
 {   
     var b=[],c;
@@ -155,30 +146,7 @@ var tv=function(o){
 
 }</pre>
 
-<div style="background:#020a15; padding-bottom:200px">
-    <div id="lxj">渐变渐变渐变渐变<span id="l"></span></div>
-    <div id="hubei1" style="position:relative">抖动抖动抖动抖动抖动</div>
-    <input type="button" value="抖动" onclick="jitter({o:document.getElementById('hubei1'),css:'top',d:40,s:50,z:100})"/>
-    <input type="button" value="渐变" onclick="tv('lxj')"/>
-
-</div>
 <script type="text/javascript">
-function cssValue(o,s){
-	var r;
-	function camelize(s) {
-		return s.replace(/-(\w)/g, function (strMatch, p1){
-			return p1.toUpperCase();
-		});
-	}
-	if(!+'\v1'){
-		if(s.indexOf('-')!=-1) s=camelize(s);
-		r=o.currentStyle[s]
-	}else{
-		r=document.defaultView.getComputedStyle(o, null).getPropertyValue(s);
-	}
-	return r
-};
-
 function torgb(a) //将16进制颜色转换成rgb
 {   
     var b=[],c;
