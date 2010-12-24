@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style type="text/css">
+/*======================================
+author:	lou xiao jian<jxsr_lxj@163.com>
+======================================*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;-webkit-text-size-adjust:none}
+body{font:12px/22px Tahoma,"\5B8B\4F53";word-break:break-all;text-align:left;color:#383838}
+#page{padding-bottom:15px}
+fieldset,img{border:none 0;} 
+table {border-collapse:collapse;border-spacing:0;} 
+ol,li,ul{list-style:none;} 
+address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal;}
+caption,th{text-align:left;} 
+h1,h2,h3,h4,h5,h6{font-size:100%;} 
+q:before,q:after{content:'';}
+abbr,acronym{border:0;font-variant:normal;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+input,select,textarea{font:normal normal 12px "Verdana";outline:none;/*去除Opera浏览器这些标签的默认样式*/}
+textarea,input[type|="text"],input[type|="password"]{-webkit-appearance:none/*去除webkit浏览器这些标签的默认样式*/}
+input,textarea,select{*font-size:100%;}
+/*==clear==*/
+.clear{overflow:hidden;zoom:1}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+* html>body .clearfix {display: inline-block;width:100%;}
+* html .clearfix{/* Hides from IE-mac \*/height: 1%;/* End hide from IE-mac */}
+/* ie7 hack*/
+*+html .clearfix {min-height:1%;}
+a{color:#2e6fb3;text-decoration:none;outline:none}
+a:hover{color:#fa8c00;text-decoration:underline}
+/*============================================header===================================================*/
+
+.tp-bar:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+	.tp-bar{width:800px;margin:0 auto 100px auto;text-align:left;height:29px;line-height:29px;padding-left:8px; background:#d2ecf5}
+	.tp-bar .bar-item{float:left;padding:0 6px 0 7px;margin-left:-1px}
+	.tp-bar .y-drop-trigger{padding-right:16px}
+	.tp-bar .y-drop-trigger b{top:14px;*top:12px;_top:14px;top:12px\0;right:5px}
+	.tp-bar .y-drop-select{padding:0;line-height:27px;border:1px solid #d0dbe6;border-bottom:0}
+	.tp-bar .y-drop-select .trigger-w{float:left;height:27px;background:#fff;z-index:999;position:relative;padding:0 15px 1px 6px;/*border:1px solid #d0dbe6;border-bottom:0*/}
+	.tp-bar .y-drop-select .trigger-w2{display:block;background:#fff;z-index:999;position:relative;padding:0 15px 1px 6px;/*border:1px solid #d0dbe6;border-bottom:0*/}
+	.tp-bar .y-drop-select b{top:13px;*top:11px;_top:13px;top:11px\0;right:4px}
+
+.y-drop-trigger{position:relative}
+    .y-drop-trigger b{position:absolute;border-bottom:3px dashed transparent;border-left:3px dashed transparent;border-right:3px dashed transparent;width:0;height:0;overflow:hidden;border-top:3px solid #2e6fb3}
+    .y-drop-panel{width:80px;overflow:hidden;position:absolute;/*top:28px;*/top:27px;left:0;z-index:900;visibility:hidden;padding-top:3px;line-height:22px!important;background:#fff;border:1px solid #d0dbe6}
+	.y-drop-panel li{padding:0 2px;text-align:left;margin-bottom:3px}
+	.y-drop-panel li a{display:block;padding-left:8px;zoom:1;background:#fff}
+	.y-drop-panel li a:hover{text-decoration:none!important;background:#dff8fc;color:#2e6fb3}
+	
+</style>
+</head>
+
+<body>
+<!--tp-bar-->
+<ul id="square-bar" class="tp-bar">
+  <li class="bar-item y-drop-trigger" id="y-square-drop">
+     <a href="t.php?t=square_index&debug=1" class="trigger-w">广场<b></b></a>
+     <ul id="y-square-drop-nav" class="y-drop-panel">
+        <li><a href="t.php?t=top&debug=1">人气热榜</a></li> 
+        <li><a href="t.php?t=top_list&debug=1">明星人气榜</a></li>  
+     </ul>
+  </li>
+  <li class="bar-item"><a href="t.php?t=top&debug=1">退出</a></li>
+</ul>
+<!--/tp-bar-->
+
+<!--tp-bar-->
+<ul id="square-bar" class="tp-bar">
+  <li class="bar-item y-drop-trigger" id="y-square-drop2">
+     <a href="t.php?t=square_index&debug=1" class="trigger-w2">广场<b></b></a>
+     <ul id="y-square-drop-nav2" class="y-drop-panel">
+        <li><a href="t.php?t=top&debug=1">人气热榜</a></li> 
+        <li><a href="t.php?t=top_list&debug=1">明星人气榜</a></li> 
+     </ul>
+  </li>
+  <li class="bar-item"><a href="t.php?t=top&debug=1">退出</a></li>
+</ul>
+<!--/tp-bar-->
+
+<!--tp-bar-->
+<ul id="square-bar" class="tp-bar">
+  <li class="bar-item y-drop-trigger y-drop-select">
+     <a href="t.php?t=square_index&debug=1" class="trigger-w">广场<b></b></a>
+     <ul class="y-drop-panel" style="visibility:visible">
+        <li><a href="t.php?t=top&debug=1">人气热榜</a></li> 
+        <li><a href="t.php?t=top_list&debug=1">明星人气榜</a></li> 
+     </ul>
+  </li>
+  <li class="bar-item"><a href="t.php?t=top&debug=1">退出</a></li>
+</ul>
+<!--/tp-bar-->
+
+<!--tp-bar-->
+<ul id="square-bar" class="tp-bar">
+  <li class="bar-item y-drop-trigger y-drop-select">
+     <a href="t.php?t=square_index&debug=1" class="trigger-w2">广场<b></b></a>
+     <ul class="y-drop-panel" style="visibility:visible">
+        <li><a href="t.php?t=top&debug=1">人气热榜</a></li> 
+        <li><a href="t.php?t=top_list&debug=1">明星人气榜</a></li> 
+     </ul>
+  </li>
+  <li class="bar-item"><a href="t.php?t=top&debug=1">退出</a></li>
+</ul>
+<!--/tp-bar-->
+
+<script type="text/javascript">
+(function(S){
+	 if (window[S] === undefined) window[S] = {};
+		  S = window[S];
+		  S.$=function(id) {return "string" == typeof id ? document.getElementById(id) : id;};
+		  S.domReady = !+'\v1' ? function(fn){(function(){
+				  try{
+					  document.documentElement.doScroll('left');
+				  } catch (error){
+					  setTimeout(arguments.callee, 0);
+					  return;
+				  };
+				  fn();
+			  })();
+			  } : function(fn){
+			  document.addEventListener('DOMContentLoaded', fn, false);
+		  };
+		  S.Bind=function(object, fun) {
+			  var args = Array.prototype.slice.call(arguments).slice(2);
+			  return function() {
+				  return fun.apply(object, args);
+			  }
+		   };
+		  S.getECN=function(node, name, type) {
+				  var r = [], re = new RegExp("(^|\\s)" + name + "(\\s|$)"), e = (node || document).getElementsByTagName(type || "*");
+				  for ( var i = 0,len=e.length; i < len; i++ ) {
+					  if(re.test(e[i].className) )
+						  r.push(e[i]);
+				  }
+				  return r;
+		  };
+		  S.cssValue=function(o,s){
+			  var r;
+			  function camelize(s) {
+				  return s.replace(/-(\w)/g, function (strMatch, p1){
+					  return p1.toUpperCase();
+				  });
+			  }
+			  if(!+'\v1'){
+				  if(s.indexOf('-')!=-1) s=camelize(s);
+				  r=o.currentStyle[s]
+			  }else{
+				  r=document.defaultView.getComputedStyle(o, null).getPropertyValue(s);
+			  }
+			  return r
+		  };
+		  S.cleanWhitespace=function(oEelement)
+			  {
+			   for(var i=0;i<oEelement.childNodes.length;i++){
+				var node=oEelement.childNodes[i];
+				if(node.nodeType==3 && !/\S/.test(node.nodeValue)){node.parentNode.removeChild(node)}
+				}
+		  };
+		  S.nextSibling=function(oEelement){
+			  S.cleanWhitespace(oEelement.parentNode);
+			  return oEelement.nextSibling
+			  
+		  };
+		  S.stopPropagation=function(evt){
+			  var evt = evt || window.event;
+			  if (evt.stopPropagation) {
+				  evt.stopPropagation();
+			  }
+			  else {
+				  evt.cancelBubble = true;
+			  }
+		  };
+		  S.preventDefault=function(evt){
+			  var evt = evt || window.event;
+			  if (evt.preventDefault) {
+				  evt.preventDefault();
+			  }
+			  else {
+				  evt.returnValue = false;
+			  }
+		  };
+		  S.getObjPos=function(obj)    
+		  {    
+			  var x = y = 0;    
+			  if (obj.getBoundingClientRect)    
+			  {    
+				  var box = obj.getBoundingClientRect();
+				  if(box.left == 0 && box.top == 0)
+				  {
+					  return;
+				  }
+				  var D = document.documentElement;    
+				  x = box.left + Math.max(D.scrollLeft, document.body.scrollLeft) - D.clientLeft;    
+				  y = box.top + Math.max(D.scrollTop, document.body.scrollTop) - D.clientTop;         
+			  }    
+			  else   
+			  {    
+				  for(; obj != document.body; x += obj.offsetLeft, y += obj.offsetTop, obj = obj.offsetParent );    
+			  }    
+			  return {'x':x, 'y':y};    
+		  };
+		  S.addEvent=function( node, type, listener ) {
+			  if(!(node = this.$(node))) return false;
+			  if (node.addEventListener) {
+				  node.addEventListener( type, listener, false );
+				  return true;
+			  } else if(node.attachEvent) {
+				  node['e'+type+listener] = listener;
+				  node[type+listener] = function(){node['e'+type+listener]( window.event );}
+				  node.attachEvent( 'on'+type, node[type+listener] );
+				  return true;
+			  }
+			  return false;
+		  };
+		  S.removeEvent=function(node, type, listener ) {
+			  if(!(node = this.$(node))) return false;
+			  if (node.removeEventListener) {
+				  node.removeEventListener( type, listener, false );
+				  return true;
+			  } else if (node.detachEvent) {
+				  // MSIE method
+				  node.detachEvent( 'on'+type, node[type+listener] );
+				  node[type+listener] = null;
+				  return true;
+			  }
+			  // Didn't have either so return false
+			  return false;
+		  };
+		 // --- 设置cookie
+		 S.setCookie=function(name,value,days){
+			if (days) {
+			  var date = new Date();
+			  date.setTime(date.getTime()+(days*24*60*60*1000));
+			  var expires = "; expires="+date.toGMTString();
+			}
+			else expires = "";
+			document.cookie = name+"="+value+expires+"; path=/";
+		 };
+		//--- 获取cookie
+		S.getCookie=function(name) {
+		  var nameEQ = name + "=";
+		  var ca = document.cookie.split(';');
+		  for(var i=0;i < ca.length;i++) {
+			var c = ca[i];
+			while (c.charAt(0)==' ') c = c.substring(1,c.length);
+			if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+		  }
+		  return null;
+		}
+		S.removeClass=function(elem,c){
+			if(!elem || !elem.className) return false;
+			if(elem.className.indexOf(c)!=-1) {elem.className=elem.className.replace(c,'');}
+		}
+		S.addClass=function(elem,c){
+			if(!elem) return false;
+			var elemClass = elem.className;
+			if (!elemClass) {
+				elem.className = value;
+			}else{
+			  if(elem.className.indexOf(c)==-1) elem.className+=' '+c;
+			}
+		}
+})('PPS');
+function Dropsub(s){
+		this.h=s.handle;
+		this.m=s.submore;
+		this.sn=s.className || '';
+		this.hTime=s.hTime || 200;
+		this.oTime=s.oTime || 200;
+		this.hoverBack=s.hoverBack || function(){};
+		this.outBack=s.outBack || function(){};
+		this.curObiect=null;
+		if(!this.h || !this.m || this.h.length==0 || this.m.length==0 || this.h.length!=this.m.length){return false}
+		var c='className';
+		this.hover=function(o){
+			 if(o.ht){clearTimeout(o.ht)}
+			 o.ht=setTimeout(
+				PPS.Bind(this,function(){
+				this.curObiect=o;
+				if(o[c].indexOf(this.sn)==-1){o[c]+=' '+this.sn;}
+				this.m[o.n].style.visibility='visible';
+				this.hoverBack();
+				}),this.hTime)
+		};
+		this.out=function(o,t){
+			 if(o.ht){clearTimeout(o.ht)}
+			 if(o.ot){clearTimeout(o.ot)}
+			 o.ot=setTimeout(
+				PPS.Bind(this,function(){
+				if(o[c].indexOf(this.sn)!=-1){o[c]=o[c].replace(' '+this.sn,"")}						
+				this.m[o.n].style.visibility='hidden';
+				this.outBack();
+			  }),this.oTime)
+		}
+		for(var i=0,len=this.h.length;i<len;i++){
+			   var h=this.h[i],m=this.m[i];
+			   h.n=i;
+			   PPS.addEvent(h,'mouseover',PPS.Bind(this,this.hover,h))
+			   PPS.addEvent(h,'mouseout',PPS.Bind(this,this.out,h))
+			   PPS.addEvent(m,'mouseover',PPS.Bind(this,function(o){if(o.ot){clearTimeout(o.ot)}},h))
+			   PPS.addEvent(m,'mouseout',PPS.Bind(this,this.out,h))
+		}
+
+};
+
+PPS.domReady(function(){
+	var y_square_drop=function(){
+	   if(!PPS.$('y-square-drop')) return false
+	   new Dropsub({'handle':[PPS.$('y-square-drop'),PPS.$('y-square-drop2')],'submore':[PPS.$('y-square-drop-nav'),PPS.$('y-square-drop-nav2')],className:'y-drop-select'});
+	}()
+})
+</script>
+</body>
+</html>
