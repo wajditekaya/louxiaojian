@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="gb2312" />
-<title>首页test</title>
+<title>Bug_IE6和IE7下html残影bug</title>
 </head>
 <script type="text/javascript">
 function killErrors(_message,_url,_line) {
@@ -607,189 +607,47 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input
 <div id="tvguideMain" style="width:238px; margin:0 auto">
 <!-- **************** 播放历史 2010-09-15 keke **************** -->
     <style>
-	#playHistory .progress,#playHistory .del-more .del,#playHistory .end,.playHistory_float,.playHistory_float .hd .act a,#playHistory .pDel a{background-image:url(http://image1.webscache.com/vodguide/style/img/tvguideImg7.png?v=20100915);background-repeat:no-repeat}
-	#playHistory{background:#020a15;color:#c7e2ff;}
-	#playHistory .tabMenu .cur{background:#020a15}
-	#playHistory .ph-area{zoom:1}
-	#playHistory .phList{height:100px;overflow:hidden;position:relative;zoom:1}
-	#playHistory .phList li{padding:2px;height:15px;line-height:15px;border-bottom:1px solid #282f38;overflow:hidden;vertical-align:bottom;position:relative;}
-	#playHistory .phList li a{cursor:pointer; display:block; position:relative; height:15px; overflow:hidden;}
-	#playHistory .icon{ height:0; width:0; display:block; position:absolute; left:0; overflow:hidden;border-bottom:4px dashed transparent;border-left:4px solid #C7E2FF;border-top:4px dashed transparent; margin:4px 0 0 5px; z-index:3; }
-	#playHistory .phName{ color:#c7e2ff; position:absolute; padding-left:15px; padding-right:50px; height:15px;  overflow:hidden; word-wrap:break-word;word-break:break-all; z-index:2; }
-	#playHistory .progress{ text-indent:-999em; position:absolute; left:0; background-repeat:repeat-x; background-position:0 -180px; border-bottom:1px solid #1c3962; border-top:1px solid #132c4f; line-height:13px; height:13px;z-index:1; }
-	#playHistory .hover .icon{ border-left:4px solid #ffffff;}
-	#playHistory .hover .progress{ background-position:0 -167px;}
-	#playHistory .hover .phName{ color:#FFF;}
-	#playHistory .pDel{ position:absolute; width:12px; overflow:hidden; right:-9999px; top:7px; z-index:4;}
-	#playHistory .pDel a{ background-position:0px -282px; height:12px; display:block; text-indent:-999em;}
-	#playHistory .pDel a:hover{ background-position:-12px -282px;}
-	#playHistory .hover .pDel{ right:7px; top:4px;}
-	#playHistory .hover .time{ display:none;}
-	#playHistory .time{ position:absolute; right:5px; top:2px; color:#486691; font-size:10px; z-index:3;}
-	#playHistory .end{ background-position:-205px -22px; width:13px; height:10px; overflow:hidden; display:block; text-indent:-999em; top:5px;}
-	#playHistory .del-more{zoom:1;overflow:hidden;padding:2px 0;background-color:#0c1828;}
-	#playHistory .del-more .del{ margin-left:5px;text-indent:-999em; width:42px; height:17px; overflow:hidden; background-repeat:repeat-x; background-position:-24px -282px; display:block; text-indent:-999em;}
-	#playHistory .del-more .del:hover{background-position:-66px -282px;}
-	#playHistory .del-more .more{float:right;margin-right:4px;color:#8dbdff; }
-	#playHistory .del-more .more-disabled{color:#666666;cursor:text}
+	.pitch{margin-bottom:10px}
+	.playHistory{background:#020a15;color:#c7e2ff;}
+	.playHistory .tabMenu .cur{background:#020a15}
+	.playHistory .ph-area{zoom:1}
+	.playHistory .phList{height:100px;overflow:hidden}
+	.playHistory .phList li{padding:2px;height:15px;line-height:15px;border-bottom:1px solid #282f38;overflow:hidden;vertical-align:bottom}
+
+	.playHistory .phList2{height:100px;overflow:hidden;position:relative}
+	.playHistory .phList2 li{padding:2px;height:15px;line-height:15px;border-bottom:1px solid #282f38;overflow:hidden;vertical-align:bottom}
+	
+	.playHistory .phList3{height:100px;overflow:hidden}
+	.playHistory .phList3 li{padding:2px;height:15px;line-height:15px;border-bottom:1px solid #282f38;overflow:hidden;vertical-align:bottom;position:relative;}
 	</style>
 	<!--playHistory-->
-	<div id="playHistory" class="bx posr">
-      <div class="title_c SliderHandle" id="playHistoryHeader">
-        <ul id="playHistoryMenu" class="new-tabMenu tabMenu">
+	<div class="playHistory bx posr pitch">
+      <div class="title_c SliderHandle" id="playHistoryHeader0">
+        <ul id="playHistoryMenu0" class="new-tabMenu tabMenu">
             <li class="cur">播放历史</li>
             <li>我的收藏</li>
         </ul>
         <span class="contraction">-</span>
       </div>
-      <div id="playHistoryMain" class="SliderBx">
+      <div id="playHistoryMain0" class="SliderBx">
           <!--ph-area-->
           <div class="ph-area">
             <ul class="phList">
-                <!--播放完成-->
-                <li id="test">
-                    <a href="#">
-                        <span class="icon"></span>
-                        <span class="phName">天涯织女-01</span>
-                        <span class="progress" style=" display:none;">播放完成</span>
-                    </a>
-                    <span class="pDel" title="删除"><a href="#d">删除</a></span>
-                    <span class="time end">完成</span>
-                </li>
-                <!--/播放完成-->
-  
-                <!--未播完-->
-                <li>
-                
-                    <a href="#">
-                        <span class="icon"></span>
-                        <span class="phName">钟无艳钟无艳钟无艳aaaaa</span>
-                        <span class="progress" style="width:99%;">已播放99%</span>
-                    </a>
-                    <span class="pDel" title="删除"><a href="#d">删除</a></span>
-                    <span class="time">22:55</span>
-                </li>
-                <!--/未播完-->
- 
-                <!--未播完-->
-                <li>
-                
-                    <a href="#">
-                        <span class="icon"></span>
-                        <span class="phName">钟无艳钟无艳钟无艳aaaaa</span>
-                        <span class="progress" style="width:100%;">已播放100%</span>
-                    </a>
-                    <span class="pDel" title="删除"><a href="#d">删除</a></span>
-                    <span class="time">22:55</span>
-                </li>
-                <!--/未播完-->
-                
-                <!--未播完-->
-                <li>
-                
-                    <a href="#">
-                        <span class="icon"></span>
-                        <span class="phName">钟无艳钟无艳钟无艳钟无艳钟无艳钟无艳钟无艳钟无艳钟无艳aaaaa</span>
-                        <span class="progress" style="width:70%;">已播放70%</span>
-                    </a>
-                    <span class="pDel" title="删除"><a href="#d">删除</a></span>
-                    <span class="time">22:55</span>
-                </li>
-                <!--/未播完-->
-                
-                <!--未播完-->
-                <li>
-                    <a href="#">
-                        <span class="icon"></span>
-                        <span class="phName">钟无艳-18</span>
-                        <span class="progress" style="width:75%;">已播放75%</span>
-                    </a>
-                    <span class="pDel" title="删除"><a href="#d">删除</a></span>
-                    <span class="time">82:55</span>
-                </li>
-                <!--/未播完-->
-                
-                <!--未播完-->
-                <li>
-                
-                    <a href="#">
-                        <span class="icon"></span>
-                        <span class="phName">movie movie movie movie movie movie movie</span>
-                        <span class="progress" style="width:20%;">已播放20%</span>
-                    </a>
-                    <span class="pDel" title="删除"><a href="#d">删除</a></span>
-                    <span class="time">2:20</span>
-                </li>
-                <!--/未播完-->
-                
-                <!--未播完-->
-                <li>
-                
-                    <a href="#">
-                        <span class="icon"></span>
-                        <span class="phName">天师钟馗欧阳震华版-01</span>
-                        <span class="progress" style="width:85%;">已播放85%</span>
-                    </a>
-                    <span class="pDel" title="删除"><a href="#d">删除</a></span>
-                    <span class="time">52:12</span>
-                </li>
-                <!--/未播完-->
-      
-                <!--未播完-->
-                <li>
-                    <a href="#">
-                        <span class="icon"></span>
-                        <span class="phName">钟无艳-18</span>
-                        <span class="progress" style="width:75%;">已播放75%</span>
-                    </a>
-                    <span class="pDel" title="删除"><a href="#d">删除</a></span>
-                    <span class="time">82:55</span>
-                </li>
-                <!--/未播完-->
+                <li><a href="#">天涯织女-01</a></li>
+                <li><a href="#">钟无艳钟无艳钟无艳aaaaa</a></li>
+                <li><a href="#">钟无艳钟无艳钟无艳aaaaa</a></li>
+                <li><a href="#">钟无艳钟无艳钟无艳钟无艳钟无艳钟无艳钟无艳钟无艳钟无艳aaaaa</a></li>
+                <li><a href="#">钟无艳-18</a></li>
             </ul>
-            <div class="del-more">
-                <a href="#" class="more" onClick="return false">+ 展开更多</a>
-                <!--<a href="#" class="more more-disabled" onclick="return false">+ 展开更多</a>--><!--链接颜色为灰色的样式-->
-                <a href="#" class="del" onClick="new dialog({id:'playHistory_float',width:178,top:getObjPos($('playHistory')).y});return false" title="清空播放记录">删除</a>
-            </div>
           </div>
           <!--ph-area-->
           
           <!--ph-area-->
           <div class="ph-area" style="display:none">
-            <ul class="phList" >
-                
-                <!--播放完成-->
-                <li>
-                
-                    <a href="#">
-                        <span class="icon"></span>
-                        <span class="phName">天涯织女-02</span>
-                    </a>
-                    <span class="pDel" title="删除"><a href="#d">删除</a></span>
-                    <span class="time">1:30:10</span>
-                </li>
-                <!--/播放完成-->
-  
-                <!--未播完-->
-                <li>
-                
-                    <a href="#">
-                        <span class="icon"></span>
-                        <span class="phName">钟无艳钟无艳钟无艳2222</span>
-                    </a>
-                    <span class="pDel" title="删除"><a href="#d">删除</a></span>
-                    <span class="time">22:55</span>
-                </li>
-                <!--/未播完-->
-
-    
+            <ul class="phList">
+                <li><a href="#">天涯织女-01</a></li>
+                <li><a href="#">钟无艳钟无艳钟无艳2222</a></li>
             </ul>
-            <div class="del-more">
-                <a href="#" class="more" onClick="return false">+ 展开更多</a>
-                <!--<a href="#" class="more more-disabled" onclick="return false">+ 展开更多</a>--><!--链接颜色为灰色的样式-->
-                <a href="#" class="del" onClick="new dialog({id:'playHistory_float',width:178,top:getObjPos($('playHistory')).y});return false" title="清空播放记录">删除</a>
-            </div>
          </div>
          <!--/phList-->
       </div>
@@ -798,44 +656,122 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input
 	</div>
 	<!--end playHistory-->
 
+	<!--playHistory-->
+	<div class="playHistory bx posr pitch">
+      <div class="title_c SliderHandle" id="playHistoryHeader1">
+        <ul id="playHistoryMenu1" class="new-tabMenu tabMenu">
+            <li class="cur">播放历史</li>
+            <li>我的收藏</li>
+        </ul>
+        <span class="contraction">-</span>
+      </div>
+      <div id="playHistoryMain1" class="SliderBx">
+          <!--ph-area-->
+          <div class="ph-area">
+            <ul class="phList2">
+                <li><a href="#">天涯织女-01</a></li>
+                <li><a href="#">钟无艳钟无艳钟无艳aaaaa</a></li>
+                <li><a href="#">钟无艳钟无艳钟无艳aaaaa</a></li>
+                <li><a href="#">钟无艳钟无艳钟无艳钟无艳钟无艳钟无艳钟无艳钟无艳钟无艳aaaaa</a></li>
+                <li><a href="#">钟无艳-18</a></li>
+            </ul>
+          </div>
+          <!--ph-area-->
+          
+          <!--ph-area-->
+          <div class="ph-area" style="display:none">
+            <ul class="phList2">
+                <li><a href="#">天涯织女-01</a></li>
+                <li><a href="#">钟无艳钟无艳钟无艳2222</a></li>
+            </ul>
+         </div>
+         <!--/phList-->
+      </div>
+      <!--/SliderBx-->
+	  
+	</div>
+	<!--end playHistory-->
+    
+	<!--playHistory-->
+	<div class="playHistory bx posr pitch">
+      <div class="title_c SliderHandle" id="playHistoryHeader2">
+        <ul id="playHistoryMenu2" class="new-tabMenu tabMenu">
+            <li class="cur">播放历史</li>
+            <li>我的收藏</li>
+        </ul>
+        <span class="contraction">-</span>
+      </div>
+      <div id="playHistoryMain2" class="SliderBx">
+          <!--ph-area-->
+          <div class="ph-area">
+            <ul class="phList3">
+                <li><a href="#">天涯织女-01</a></li>
+                <li><a href="#">钟无艳钟无艳钟无艳aaaaa</a></li>
+                <li><a href="#">钟无艳钟无艳钟无艳aaaaa</a></li>
+                <li><a href="#">钟无艳钟无艳钟无艳钟无艳钟无艳钟无艳钟无艳钟无艳钟无艳aaaaa</a></li>
+                <li><a href="#">钟无艳-18</a></li>
+            </ul>
+          </div>
+          <!--ph-area-->
+          
+          <!--ph-area-->
+          <div class="ph-area" style="display:none">
+            <ul class="phList3">
+                <li><a href="#">天涯织女-01</a></li>
+                <li><a href="#">钟无艳钟无艳钟无艳2222</a></li>
+            </ul>
+         </div>
+         <!--/phList-->
+      </div>
+      <!--/SliderBx-->
+	  
+	</div>
+	<!--end playHistory-->
+    
 	<script>
 		 ;(function(){
-			var li=$('playHistoryMenu').getElementsByTagName('li');
-			var playHistoryRotation = new Rotation({
-				nTag: function(){
-					return li;
-				},
-				mTag: function(){
-					var div = $('playHistoryMain').getElementsByTagName('div'), aDiv = [];
-					for (var i = 0; i < div.length; i++) { 
-						if (div[i].parentNode == $('playHistoryMain') && !div[i].getAttribute("lang")) {
-							aDiv.push(div[i]);
+			var playHistoryMenu=['playHistoryMenu0','playHistoryMenu1','playHistoryMenu2'],
+			     playHistoryMain=['playHistoryMain0','playHistoryMain1','playHistoryMain2'],
+			     playHistoryHeader=['playHistoryHeader0','playHistoryHeader1','playHistoryHeader2'];
+			for(var n=0,nen=playHistoryMenu.length;n<nen;n++){
+				(function(){
+					var pm=$(playHistoryMain[n]),pn=$(playHistoryMenu[n]),ph=$(playHistoryHeader[n]),li=pn.getElementsByTagName('li'),
+					    playHistoryRotation = new Rotation({
+						nTag: function(){
+							return li;
+						},
+						mTag: function(){
+							var div = pm.getElementsByTagName('div'), aDiv = [];
+							for (var i = 0; i < div.length; i++) { 
+								if (div[i].parentNode == pm && !div[i].getAttribute("lang")) {
+									aDiv.push(div[i]);
+								}
+							}
+							return aDiv
+						},
+						evt:1,
+						start: function(){
+							if(pm.style.display == 'none'){
+								pm.style.display = 'block';
+								ph.getElementsByTagName('span')[0].innerHTML = '-';
+							}
+							
 						}
-					}
-					return aDiv
-				},
-				evt:1,
-				start: function(){
-					if($('playHistoryMain').style.display == 'none'){
-						$('playHistoryMain').style.display = 'block';
-						$('playHistoryHeader').getElementsByTagName('span')[0].innerHTML = '-';
-					}
-					
-				}
-			});
-/*			for(var i=0,len=li.length;i<len;i++){
-			 li[i].onclick=function(){ 
-			      if($('playHistoryMain').style.display == 'none'){
-					  playHistoryRotation.key = true;
-					  playHistoryRotation.aNtagAct(this)
-				}
-			  }
-			 li[i].onmouseover=function(){ 
-			      if($('playHistoryMain').style.display == 'none'){playHistoryRotation.key = false}
-			  }
-			}*/
-			
-		 })()
+					});
+		/*			for(var i=0,len=li.length;i<len;i++){
+					 li[i].onclick=function(){ 
+						  if($('playHistoryMain').style.display == 'none'){
+							  playHistoryRotation.key = true;
+							  playHistoryRotation.aNtagAct(this)
+						}
+					  }
+					 li[i].onmouseover=function(){ 
+						  if($('playHistoryMain').style.display == 'none'){playHistoryRotation.key = false}
+					  }
+					}*/
+				})()
+			}
+		 })();
 			
 </script>
 
