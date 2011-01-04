@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>json</title>
+</head>
+
+<body>
+<script>
+function lxj(date){
+	var DocumentFragment=document.createDocumentFragment();
+	for(var i=0,len=date.file_list.length;i<len;i++){
+		var div=document.createElement('div'),img=document.createElement('img'),span=document.createElement('span'),span2=document.createElement('span');
+		DocumentFragment.appendChild(div)
+		div.appendChild(img)
+		div.appendChild(span)
+		div.appendChild(span2)
+		img.setAttribute('src','attached/'+date.file_list[i].filename);
+		img.setAttribute('width','100');
+		img.setAttribute('height','100');
+		span.style.marginRight='50px';
+		span.innerHTML='图像大小:'+date.file_list[i].filesize
+		span2.innerHTML='图像添加时间:'+date.file_list[i].datetime
+	}
+	document.body.appendChild(DocumentFragment);
+}
+</script>
+<script src="php/file_manager_json2.php?callback=lxj" type="text/javascript"></script>
+</body>
+</html>
