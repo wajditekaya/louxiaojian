@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>形参</title>
+</head>
+
+<body>
+<script type="text/javascript">
+var lxj={};
+lxj.nub='我是lxj对象，有nub值';
+alert(lxj.nub)
+
+window['we']={};
+we.nub='我是we对象，有nub值';
+alert(we.nub);
+
+(function(S){
+	window[S] = {}
+	S.k='1234'
+})('lxj');
+
+(function(S){
+   if (window[S] === undefined) window[S] = {};
+	S = window[S];
+	S.k='1234'  
+})('hubei');
+
+if(!lxj.k){alert('我竟然没有值');}
+
+alert(hubei.k);
+</script>
+</body>
+</html>
