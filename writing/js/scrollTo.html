@@ -77,7 +77,7 @@ var animate=function(t,b,c,d){
 };
 
 function scrollTo(be,to,time){
-	var b=be,c=to-be,d=30,t=time || 0,dd,
+	var b=be,c=to-be,d=time || 30,t=0,dd,
 	 webkit=/applewebkit/.test(window.navigator.userAgent.toLowerCase()),//webkitÄÚºËä¯ÀÀÆ÷
      Tween=function(t,b,c,d){
 		if ((t/=d/2) < 1) return c/2*t*t + b;
