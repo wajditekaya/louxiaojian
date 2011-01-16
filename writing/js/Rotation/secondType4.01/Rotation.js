@@ -20,8 +20,8 @@ function Rotation(set){
 	   this.dir=this.s.slider.dir || this.s.dir;
 	   this.Tween=this.s.slider.Tween || this.s.Tween;
 	   this.de=this.s.index;
-	   this.start=this.B(this,this.s.start);
-	   this.callBack=this.B(this,this.s.callBack);
+	   this.start=this.s.start;
+	   this.callBack=this.s.callBack;
 	   this.key=true;//ÊÇ·ñ½øÐÐÇÐ»»
 	   this.eType=['click','mouseover'];
 	   this.run();
