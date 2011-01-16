@@ -7,7 +7,7 @@
 *{margin:0; padding:0}
 body{line-height:22px;font-size:14px; }
 #wrapper{width:800px;margin:0 auto;border:1px solid #E3E197;background-color: #FFFFDD; padding:10px}
-#getInfo{width:520px;position:absolute; top:20px; right:0;border:1px solid #F8B3D0;background-color:#FFF5FA;padding:10px}
+#getInfo{width:520px;border:1px solid #F8B3D0;background-color:#FFF5FA;padding:10px;right:0; display:none}
 </style>
 </head>
 
@@ -57,42 +57,6 @@ body{line-height:22px;font-size:14px; }
   <p>(需要提一下：CSS中的margin属性，与clientWidth、offsetWidth、clientHeight、offsetHeight均无关)</p>
   <p>&nbsp;  </p>
   <p>&nbsp;</p>
-  <p>
-    <script type="text/javascript">
-	function $(obj){return document.getElementById(obj)}
-	function getInfo()
-	   {
-		var s = "";
-		s += "document.body.clientWidth\r\n\n网页可见区域宽："+ document.body.clientWidth;
-		s += "<br/>document.body.clientHeight\r\n\n网页可见区域高："+ document.body.clientHeight;
-		s += "<br/>document.documentElement.clientHeight\r\n\n浏览器的工作区域高："+ document.documentElement.clientHeight;
-		s += "<br/>document.documentElement.clientWidth\r\n\n浏览器的工作区域宽："+ document.documentElement.clientWidth;
-		s += "<br/>document.body.offsetWidth\r\n\n网页可见区域宽："+ document.body.offsetWidth + " (包括边线和滚动条的宽)";
-		s += "<br/>document.body.offsetHeight\r\n\n网页可见区域高："+ document.body.offsetHeight + " (包括边线的宽)";
-		s += "<br/>document.body.scrollWidth\r\n\n网页正文全文宽："+ document.body.scrollWidth;
-		s += "<br/>document.body.scrollHeight\r\n\n网页正文全文高："+ document.body.scrollHeight;
-		s += "<br/>document.body.scrollTop\r\n\n网页被卷去的高："+ document.body.scrollTop;
-		s += "<br/>document.documentElement.scrollTop\r\n\n网页被卷去的高(w3c标准下)："+ document.documentElement.scrollTop;
-		s += "<br/>document.body.scrollLeft\r\n\n网页被卷去的左："+ document.body.scrollLeft;
-		s += "<br/>window.screenTop\r\n\n网页正文部分上："+ window.screenTop;
-		s += "<br/>window.screenLeft\r\n\n网页正文部分左："+ window.screenLeft;
-		s += "<br/>window.screen.height\r\n\n屏幕分辨率的高："+ window.screen.height;
-		s += "<br/>window.screen.width\r\n\n屏幕分辨率的宽："+ window.screen.width;
-		s += "<br/>window.screen.availHeight\r\n\n屏幕可用工作区高度："+ window.screen.availHeight;
-		s += "<br/>window.screen.availWidth\r\n\n屏幕可用工作区宽度："+ window.screen.availWidth;
-		s += "<br/>window.screen.colorDepth\r\n\n你的屏幕设置是 "+ window.screen.colorDepth +" 位彩色";
-		s += "<br/>window.screen.deviceXDP\r\n\n你的屏幕设置 "+ window.screen.deviceXDPI +" 像素/英寸";
-		var oGetInfo=$("getInfo");
-		oGetInfo.innerHTML=s;
-		var allscrollTop;
-		if(document.documentElement.scrollTop){allscrollTop=document.documentElement.scrollTop}else{allscrollTop=document.body.scrollTop}
-		oGetInfo.style.top=document.documentElement.clientHeight+allscrollTop-oGetInfo.offsetHeight+"px";
-		//alert (s);
-		setTimeout(getInfo,1);
-	 }
-    setTimeout(getInfo,10);
-    </script>
-      </p>
   <p>在我本地测试当中：<br />
   在IE、FireFox、Opera下都可以使用<br />
   document.body.clientWidth<br />
@@ -134,5 +98,52 @@ body{line-height:22px;font-size:14px; }
   document.documentElement.clientWidth   ==&gt; 页面对象宽度（即BODY对象宽度加上Margin宽）document.documentElement.clientHeight ==&gt;   页面对象高度（即BODY对象高度加上Margin高）<br />
 </p>
 </div>
+
+    <script type="text/javascript">
+	var isIE6=document.all && ([/MSIE (\d)\.0/i.exec(navigator.userAgent)][0][1] == 6);
+	function $(obj){return document.getElementById(obj)}
+	function getInfo()
+	   {
+		var s = "";
+		s += "document.body.clientWidth\r\n\n网页可见区域宽："+ document.body.clientWidth;
+		s += "<br/>document.body.clientHeight\r\n\n网页可见区域高："+ document.body.clientHeight;
+		s += "<br/>document.documentElement.clientHeight\r\n\n浏览器的工作区域高："+ document.documentElement.clientHeight;
+		s += "<br/>document.documentElement.clientWidth\r\n\n浏览器的工作区域宽："+ document.documentElement.clientWidth;
+		s += "<br/>document.body.offsetWidth\r\n\n网页可见区域宽："+ document.body.offsetWidth + " (包括边线和滚动条的宽)";
+		s += "<br/>document.body.offsetHeight\r\n\n网页可见区域高："+ document.body.offsetHeight + " (包括边线的宽)";
+		s += "<br/>document.body.scrollWidth\r\n\n网页正文全文宽："+ document.body.scrollWidth;
+		s += "<br/>document.body.scrollHeight\r\n\n网页正文全文高："+ document.body.scrollHeight;
+		s += "<br/>document.body.scrollTop\r\n\n网页被卷去的高：<span id='scrollTop'></span>";
+		s += "<br/>document.documentElement.scrollTop\r\n\n网页被卷去的高(w3c标准下)：<span id='scrollTop2'></span>";
+		s += "<br/>document.body.scrollLeft\r\n\n网页被卷去的左："+ document.body.scrollLeft;
+		s += "<br/>window.screenTop\r\n\n网页正文部分上："+ window.screenTop;
+		s += "<br/>window.screenLeft\r\n\n网页正文部分左："+ window.screenLeft;
+		s += "<br/>window.screen.height\r\n\n屏幕分辨率的高："+ window.screen.height;
+		s += "<br/>window.screen.width\r\n\n屏幕分辨率的宽："+ window.screen.width;
+		s += "<br/>window.screen.availHeight\r\n\n屏幕可用工作区高度："+ window.screen.availHeight;
+		s += "<br/>window.screen.availWidth\r\n\n屏幕可用工作区宽度："+ window.screen.availWidth;
+		s += "<br/>window.screen.colorDepth\r\n\n你的屏幕设置是 "+ window.screen.colorDepth +" 位彩色";
+		s += "<br/>window.screen.deviceXDP\r\n\n你的屏幕设置 "+ window.screen.deviceXDPI +" 像素/英寸";
+		var oGetInfo=$("getInfo");
+		oGetInfo.innerHTML=s;
+		oGetInfo.style.display="block";
+		if(isIE6){
+		  var allscrollTop;
+		  if(document.documentElement.scrollTop){allscrollTop=document.documentElement.scrollTop}else{allscrollTop=document.body.scrollTop};
+		  oGetInfo.style.position="absolute";
+		  oGetInfo.style.top=document.documentElement.clientHeight+allscrollTop-oGetInfo.offsetHeight+"px";
+		  setTimeout(getInfo,10);
+		 }else{
+            oGetInfo.style.position="fixed";
+			oGetInfo.style.top=document.documentElement.clientHeight-oGetInfo.offsetHeight-5+'px';
+		}
+	 }
+    getInfo();
+	setInterval(function(){
+			 document.getElementById('scrollTop').innerHTML=document.body.scrollTop;
+			 document.getElementById('scrollTop2').innerHTML=document.documentElement.scrollTop;
+	},1)
+    </script>
+    
 </body>
 </html>
