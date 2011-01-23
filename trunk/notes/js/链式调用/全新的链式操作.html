@@ -1,0 +1,502 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>全新的链式操作</title>
+<base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.config.strings = {
+			expandSource : '展开代码',
+			viewSource : '查看代码',
+			copyToClipboard : '复制代码',
+			copyToClipboardConfirmation : '代码复制成功',
+			print : '打印',
+			help : '?',
+			alert: '语法高亮\n\n',
+			noBrush : '不能找到刷子: ',
+			brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
+			// this is populated by the build script
+			aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Geneva,Arial,Helvetica,sans-serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.1.364(October 15 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
+		}
+	SyntaxHighlighter.all();
+</script>
+</head>
+
+<body>
+	<div class="post">
+		<h2>
+			<a id="ctl03_TitleUrl" href="http://www.cnblogs.com/rubylouvre/archive/2010/10/17/1853089.html">全新的链式操作</a>
+		</h2>
+		<p>这是每一个框架都遇到的问题，是使用原型扩展实现链式调用，还是把方法都绑定都一个对象中。如果使用原型扩展就意味着与其他所有走这条路的框架为敌，在这条路上有两个令人望而生畏的对手——Prototype与mootools。如果把方法都绑定都一个对象中（我通常称之为命名空间对象），方法调用起来就不那么优雅，即使是jQuery，也只能让实现节点的链式操作。但一个框架所能达到的高度，是由它的基础设施决定。jQuery在它所涉及的方面算是做得尽善尽美了，但有没有想到，mootools实现与此相同的功能，所需的代码少多了。这是因为jQuery就一个jQuery对象在干活，而mootools那边却都是武装到牙齿的Array,String,Number,Class,Event,Element等一大堆对象。原型扩展的好处显然易见，我们直接就可以在字面量上实现链式操作。如果是第二种，想实现链式操作，就需要在一个自定义对象进行原型扩展，但这也意呋着链式操作只能在实例的方法中进行，需要new一下。John Resigs想歪脑，搞了个无new实例化，减轻这种调用的痛苦（可能对其他语言的人来说，一大堆分开的方法调用不算什么，但在JS界，已经大规模使用链式操作，而你写JS时还是一个个方法地调用，明显是不合潮流，会“被落后”！）</p>
+<pre class="brush:javascript;toolbar:false;">
+// jQuery
+$.trim(" abc ");
+
+// Google Closure Library
+goog.string.trim(" abc ");
+
+// Dojo Toolkit
+dojo.string.trim(" abc ");
+</pre>
+<p>像jquery这样分层结构不明显的库，会把这些工具方法都依附到命名空间对象上，但如果库的规模很大，像Google Closure那样就不行，会很乱很乱，调用方法时内部有一个方法寻找的过程，这里会出现性能耗消。由于直接是返回没有什么扩展的原生对象，第二次调用就可能“链”不起来了。</p>
+
+<pre class="brush:javascript;toolbar:false;">
+//假设我已为jQuery添加了capitalize方法
+$.capitalize($.trim(" abc "));
+</pre>
+<p>是不是很丑鄙呢?!但现在我想通了，我的框架现在还很弱小，绝对不能与Prototype、mootools为敌，要不就会被它们扼杀于襁褓之中。我想了好久，把原生对象的（原型）方法划分为三个层次。第一种是所有浏览器都支持的，第二种是IE6不支持，但已列入ECMA草案的，如javascript1.6的迭代器，它们不使用新的语言特征就能模拟出来的，第三种是自定义方法，话需如此，有些方法，许多主流框架都实现了的，如string的capitalize、camelize、substitute，array的unique、flatten，object的each或forEach。第一种我们不用管，第二种只是个兼容的问题，实现方法大同小异，反正效果出来是一样就行了。第三种如果也加入到原型中，很容易与其他类库造成命名冲突，因为它们有时仅仅是名字一样，要达到的目的完全是两码事。嗯，又是时候隆重推介我全新的链式操作。</p>
+<center><img src="http://images.cnblogs.com/cnblogs_com/rubylouvre/250668/o_chain.png" /></center>
+<p>我们知道，query之所以能链式调用，它的方法每次都返回拥有所有方法的对象。这种对象，我们称之为实例，因为它可以廉价地调用其原型链上的方法。我们反过来想，原型链其实也是一个个对象。我们可以独立地实现这些对象，我称之为<strong>扩展方法集合体</strong>，如stringExt、numberExt、arrayExt。剩下的是“实例”问题，“实例”能拥有所有方法，包括原生的以及自定义的。很明显，让一个对象干四种原生对象的活是不现实的，我相应地搞了四种对象。这些对象，我称之为<strong>代理对象</strong>，都是方法集体合，但这些方法与扩展方法集合体的截然不同，它们都是代理方法，里面的逻辑一模一样，不同的是函数体上附了一个方法名，如“toArray”、"camelize"啦。最开始的时候，我们把这个操作对象放进一个入口函数（chain）。这其实是一个适配器，但为了简单起见，我暂时略去这些逻辑，在里面直接调用<strong>链式函数</strong>（adjustProxy）就算。此函数会根据操作对象的类型，选择不同的<strong>代理对象</strong>，或者干脆不做，直接返回。最着就等这个代理对象的某个方法被调用了，我说过它只是代理方法，唯一不同的是方法名与所在对象。被调用时，它会先从自己身上得到方法名与从内部的this那里得到操作对象target与其类型。就算这类型其实也可以通过计算得到，但既然上次已计算过，就不谓重复而已。有了方法名，我们就判定操作对象是否天生支持此方法，没有则从相应<strong>扩展方法集合体</strong>寻找相应同名方法。然后是调用方法，把得到的结果再放进<strong>链式函数</strong>(adjustProxy)中……这样就实现链式操作了。</p>
+
+<pre class="brush:javascript;toolbar:false;">
+//by 司徒正美 http://www.cnblogs.com/rubylouvre/ 2010.10.17
+var lang = {};
+// get from qwap
+function getType(obj){
+    var type = typeof obj;
+    if(type === 'object'){
+        if(obj===null) return 'null';
+        else if(obj.window==obj) return 'window'; //window
+        else if(obj.nodeName) return (obj.nodeName+'').replace('#',''); //document/element
+        else if(!obj.constructor) return 'unknown';
+        //to_s 为Object.prototype.toString
+        else return to_s.call(obj).slice(8,-1).toLowerCase();
+    }
+    return type;
+}
+function oneObject(array,val){
+     var result = {},value = val !== void 0 ? val :1;
+     for(var i=0,n=array.length;i < n;i++)
+        result[array[i]] = value;
+     return result;
+}
+function makeProxy(type,method){
+    var object = lang[type+"Proxy"] = {};
+    method.forEach(function(name){
+        object[name] = function(){
+            var name = arguments.callee.name,
+            obj = this.target,
+            method = obj[name] ? obj[name] : lang[this.type+"Ext"][name];
+            return adjustProxy(method.apply(obj,arguments));
+        }
+        object[name].name = name;
+    })
+}
+
+var adjustOne = oneObject(["string","array","number","object"]);
+
+function adjustProxy(obj){
+    var type = getType(obj);
+    if(adjustOne[type]){
+        var proxy = lang[type+"Proxy"];
+        proxy.target = obj;
+        proxy.type = type;
+        proxy.toString = function(){
+            return this.target+"";
+        }
+        proxy.valueOf = function(){
+            return this.target;
+        }
+        return proxy;
+    }else{
+        return obj
+    }
+}
+function chain(obj){
+    return adjustProxy(obj)
+}
+</pre>
+<ul>
+<li>lang，这是内部的私有对象，负责存放四种类型的扩展方法集合体与相应的代理对象。</li>
+<li>getType，辅助函数，功能同is。</li>
+<li>oneObject，我框架中一个重要辅助函数，目的是生成用于if分支的哈希对象。</li>
+<li>makeProxy，创建一个代理对象。它里面的方法都有一个name，用于反射。这些代理方法会返回另一个代理对象，并把真正的返回值附于其上。</li>
+<li>adjustProxy，调整代理对象。这方法会在代理方法中调用，其valueOf与toString用于打破链式操作，返回我们想要的结果。</li>
+</ul>
+<pre class="brush:javascript;toolbar:false;">
+
+// lang的全貌
+lang = {
+    stringProxy:{/*……*/},
+    stringExt:{/*……*/},
+    numberProxy:{/*……*/},
+    numberExt:{/*……*/},
+    arrayProxy:{/*……*/},
+    arrayExt:{/*……*/},
+    objectProxy:{/*……*/},
+    objectExt:{/*……*/}
+}
+</pre>
+<p>接着我们就定义这些扩展方法集合体吧，里面的函数就像定义原型函数那样就行了。</p>
+<p>String的扩展：</p>
+<pre class="brush:javascript;toolbar:true;collapse:true;">
+//by 司徒正美 http://www.cnblogs.com/rubylouvre/ 2010.10.17
+var stringExt = lang.stringExt = {
+    //判断一个字符串是否包含另一个字符
+    contains: function(string, separator){
+        return (separator) ? (separator + this + separator).indexOf(separator + string + separator) &gt; -1 : this.indexOf(string) &gt; -1;
+    },
+    startsWith: function (pattern) {
+        return this.indexOf(pattern) === 0;
+    },
+
+    endsWith: function (pattern) {
+        var d = this.length - pattern.length;
+        return d &gt;= 0 && this.lastIndexOf(pattern) === d;
+    },
+    toArray:function(crash){
+        return !!crash ? this.split('') : this.split(/\s+/g);
+    },
+    //得到字节长度
+    byteLen:function(){
+        return this.replace(/[^\x00-\xff]/g,"--").length;
+    },
+    empty: function () {
+        return this.valueOf() === '';
+    },
+
+    blank: function () {
+        return /^\s*$/.test(this);
+    },
+    //length，新字符串长度，truncation，新字符串的结尾的字段
+    //返回新字符串
+    truncate :function(length, truncation) {
+        length = length || 30;
+        truncation = truncation === void(0) ? '...' : truncation;
+        return this.length &gt; length ?
+        this.slice(0, length - truncation.length) + truncation :String(this);
+    },
+
+    camelize:function(){
+        return this.replace(/-([a-z])/g, function($1,$2){
+            return $2.toUpperCase();
+        });
+    },
+
+    capitalize: function(){
+        return this.replace(/\b[a-z]/g, function(s){
+            return s.toUpperCase();
+        });
+    },
+    
+    underscore: function() {
+        return this.replace(/([a-z0-9])([A-Z]+)/g, function(match, first, second) {
+            return first+"_"+(second.length &gt; 1 ? second : second.toLowerCase());
+        }).replace(/\-/g, '_');
+    },
+
+    toInt: function(radix) {
+        return parseInt(this, radix || 10);
+    },
+
+    toFloat: function() {
+        return parseFloat(this);
+    },
+    escapeRegExp: function(){
+        return this.replace(/([-.*+?^${}()|[\]\/\\])/g, '\\$1');
+    },
+    //http://www.cnblogs.com/rubylouvre/archive/2010/02/09/1666165.html
+    padLeft: function(digits, radix, filling){
+        var num = this.toString(radix || 10);
+        filling = filling || "0";
+        while(num.length &lt; digits){
+            num= filling + num;
+        }
+        return num;
+    },
+    padRight: function(digits, radix, filling){
+        var num = this.toString(radix || 10);
+        filling = filling || "0";
+        while(num.length &lt; digits){
+            num +=  filling;
+        }
+        return num;
+    },
+    // http://www.cnblogs.com/rubylouvre/archive/2009/11/08/1598383.html
+    times :function(n){
+        var str = this,res = "";
+        while (n &gt; 0) {
+            if (n & 1)
+                res += str;
+            str += str;
+            n &gt;&gt;= 1;
+        }
+        return res;
+    },
+    //要替换的内容要用#{}包围起来
+    substitute : function(object, regexp){
+        return this.replace(regexp || (/\\?\#{([^{}]+)\}/g), function(match, name){
+            if (match.charAt(0) == '\\') return match.slice(1);
+            return (object[name] != undefined) ? object[name] : '';
+        });
+        }
+    }
+
+</pre>
+<p>Array的扩展：</p>
+<pre class="brush:javascript;toolbar:true;collapse:true;">
+    var arrayExt = lang.arrayExt  = {
+        //深拷贝当前数组
+        clone: function(){
+            var i = this.length, result = [];
+            while (i--) result[i] = cloneOf(this[i]);
+            return result;
+        },
+        //判断数组是否包含此元素
+        contains: function (el) {
+            return this.indexOf(el) !== -1;
+        },
+        without:function(){//去掉与传入参数相同的元素
+            var args = A_slice.call(arguments);
+            return this.filter(function (el) {
+                return args.indexOf(el) !== -1;
+            });
+        },
+        //http://msdn.microsoft.com/zh-cn/library/bb383786.aspx
+        //移除 Array 对象中某个元素的第一个匹配项。
+        remove: function (item) {
+            var index = this.indexOf(item);
+            if (index !== -1) return arrayExt.removeAt.call(this,index);
+            return null;
+        },
+        //移除 Array 对象中指定位置的元素。
+        removeAt: function (index) {
+            return this.splice(index, 1);
+        },
+        //对数组进行洗牌,但不影响原对象
+        // Jonas Raoni Soares Silva http://jsfromhell.com/array/shuffle [v1.0]
+        shuffle: function () {
+            var shuff = this.concat(), j, x, i = shuff.length;
+            for (; i &gt; 0; j = Math.random(i-1), x = shuff[--i], shuff[i] = shuff[j], shuff[j] = x) {};
+            return shuff;
+        },
+        min: function() {
+            //比Math.min.apply({}, this) 高效
+            return Math.min.apply(Math, this);
+        },
+        max: function() {
+            return Math.max.apply(Math, this);
+        },
+        //从数组中随机抽选一个元素出来
+        random: function () {
+            return arrayExt.shuffle.call(this)[0];
+        },
+        ensure: function() { //只有原数组不存在才添加它
+            var args = A_slice.call(arguments);
+            args.forEach(function(el){
+                if (this.indexOf(el) &lt; 0) this.push(el);
+            },this);
+            return this;
+        },
+        //取得对象数组的每个元素的特定属性
+        pluck:function(name){
+            var result = [],prop;
+            this.forEach(function(el){
+                prop = el[name];
+                if(prop != null)
+                    result.push(prop);
+            });
+            return result;
+        },
+        sortBy: function(fn, scope) {
+            var array =  this.map(function(el, index) {
+                return {
+                    el: el,
+                    re: fn.call(scope, el, index)
+                };
+            }).sort(function(left, right) {
+                var a = left.re, b = right.re;
+                return a &lt; b ? -1 : a &gt; b ? 1 : 0;
+            });
+            return arrayExt.pluck.call(array,'el');
+        },
+        compact: function () {//以数组形式返回原数组中不为null与undefined的元素
+            return this.filter(function (el) {
+                return el != null;
+            });
+        },
+        unique: function () { //返回没有重复值的新数组
+            var result = [];
+            for(var i=0,l=this.length; i &lt; l; i++) {
+                if(result.indexOf(this[i]) &lt; 0){
+                    result.push(this[i]);
+                }
+            }
+            return result;
+        },
+        flatten: function() {
+            var result = [];
+            this.forEach(function(value) {
+                if (is(value,"Array")) {
+                    result = result.concat(arrayExt.flatten.call(value));
+                } else {
+                    result.push(value);
+                }
+            });
+            return result;
+        },
+        //var a = [0,1,2,9];
+        //var a_ = [0,5,2];
+        //puts(a.diff(a_)) //--&gt; 1,9
+        diff : function(array) {
+            var result = [],l = this.length,l2 = array.length,diff = true;
+            for(var i=0; i&lt;l; i++) {
+                for(var j=0; j&lt;l2; j++) {
+                    if (this[i] === array[j]) {
+                        diff = false;
+                        break;
+                    }
+                }
+                diff ? result.push(this[i]) : diff = true;
+            }
+            return result.unique();
+        }
+    };
+
+</pre>
+<p>Number的扩展：</p>
+<pre class="brush:javascript;toolbar:true;collapse:true;">
+    var numberExt = lang.numberExt ={
+        times: function(fn, bind) {
+            for (var i=0; i &lt; this; i++)
+                fn.call(bind, i);
+            return this;
+        },
+        padLeft:function(digits, radix, filling){
+            return stringExt.padLeft.apply(this,[digits, radix, filling]);
+        },
+        padRight:function(digits, radix, filling){
+            return stringExt.padRight.apply(this,[digits, radix, filling]);
+        },
+        upto: function(number, fn, scope) {
+            for (var i=this+0; i <= number; i++)
+                fn.call(scope, i);
+            return this;
+        },
+        downto: function(number, fn, scope) {
+            for (var i=this+0; i >= number; i--)
+                fn.call(scope, i);
+            return this;
+        },
+        round: function(base) {
+            if (base) {
+                base = Math.pow(10, base);
+                return Math.round(this * base) / base;
+            } else {
+                return Math.round(this);
+            }
+        }
+    }
+    var mathFns = ["abs", "acos", "asin", "atan", "atan2", "ceil",
+    "cos", "exp", "floor", "log", "pow","sin", "sqrt", "tan"];
+    mathFns.forEach(function(name){
+        numberExt[name] = function(){
+            return Math[name](this);
+        }
+    });
+</pre>
+<p>Object的扩展：</p>
+<pre class="brush:javascript;toolbar:true;collapse:true;">
+    function isPureObject(obj){
+        return !!(obj && is(obj,"Object") && obj[CTOR] === Object && obj[CTOR][PROTO].hasOwnProperty("isPrototypeOf"));
+    }
+    // get from mootools
+    function cloneOf(item){
+        if(is(item,"Array")){
+            return arrayExt.clone.call(item);
+        }else if(isPureObject(item)){
+            return objectExt.clone.call(item);
+        }else{
+            return item;
+        }
+    }
+    // get from mootools
+    function mergeOne(source, key, value){
+        if(is(value,"Array")){
+            source[key] = arrayExt.clone.call(value);
+        }else if(isPureObject(value)){
+            if(is(source,"Object")){
+                objectExt.merge.call(source[key], value);
+            }else{
+                source[key] = objectExt.clone.call(value);
+            }
+        }else{
+            source[key] = value;
+        }
+        return source;
+    };
+
+    var objectExt = lang.objectExt = {
+        //取其子集组成一个新对象，keys为一个字符串数组
+        subset: function(keys){
+            var results = {};
+            for (var i = 0, l = keys.length; i < l; i++){
+                var k = keys[i];
+                results[k] = this[k];
+            }
+            return results;
+        },
+        forEach: function(fn,scope){
+            var names = Object.keys(this),n = names.length,name
+            while(n){
+                name = names[--n];
+                fn.call(scope,this[name],name,this);
+            }
+        },
+        clone: function(){
+            var clone = {};
+            for (var key in this) clone[key] = cloneOf(this[key]);
+            return clone;
+        },
+        merge: function(k, v){
+            var target = this,obj,key
+            //为目标对象添加一个键值对
+            if (typeOf(k) == 'string') return mergeOne(target, k, v);
+            //合并多个对象
+            for (var i = 0, l = arguments.length; i < l; i++){
+                obj = arguments[i];
+                for ( key in obj) mergeOne(target, key, obj[key]);
+            }
+            return target;
+        }
+    }
+
+</pre>
+<p>最后是定义四个代理对象了。</p>
+<pre class="brush:javascript;toolbar:false;">
+    var stringFns = [
+    "charAt", "charCodeAt", "concat", "indexOf",
+    "lastIndexOf", "localeCompare", "match", "quote","replace",
+    "search", "slice", "split", "substring", "toLowerCase",
+    "toLocaleLowerCase", "toUpperCase", "toLocaleUpperCase",
+    "trim", "toJSON"]
+    makeProxy("string",stringFns.concat(Object.keys(stringExt)));
+
+    var arrayFns = [ "toLocaleString","concat", "join", "pop", "push", "shift",
+    "slice", "sort",  "reverse","splice", "unshift", "indexOf", "lastIndexOf",
+    "every", "some", "forEach", "map","filter", "reduce", "reduceRight"]
+    makeProxy("array",arrayFns.concat(Object.keys(arrayExt)));
+
+    var numberFns = ["toLocaleString", "toFixed", "toExponential", "toPrecision", "toJSON"]
+    makeProxy("number",numberFns.concat(Object.keys(numberExt)));
+
+    var objectFns = [ "toLocaleString", "hasOwnProperty", "isPrototypeOf", "propertyIsEnumerable" ];
+    makeProxy("object",objectFns.concat(Object.keys(objectExt)));
+</pre>
+<p>使用如下：</p>
+<pre class="brush:javascript;toolbar:false;">
+ alert(chain("eee").capitalize().toArray(true)) //E,e,e
+</pre>
+
+</div>
+
+
+</body>
+</html>

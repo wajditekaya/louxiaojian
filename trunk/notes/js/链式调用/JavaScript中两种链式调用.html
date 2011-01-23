@@ -3,6 +3,30 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>JavaScript中两种链式调用</title>
+<base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.config.strings = {
+			expandSource : '展开代码',
+			viewSource : '查看代码',
+			copyToClipboard : '复制代码',
+			copyToClipboardConfirmation : '代码复制成功',
+			print : '打印',
+			help : '?',
+			alert: '语法高亮\n\n',
+			noBrush : '不能找到刷子: ',
+			brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
+			// this is populated by the build script
+			aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Geneva,Arial,Helvetica,sans-serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.1.364(October 15 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
+		}
+	SyntaxHighlighter.all();
+</script>
 <script type="text/javascript">
 /*一、方法体内返回对象实例自身(this)*/
 function ClassA(){   
@@ -71,5 +95,73 @@ chain(obj)('method1',4)('method2',5)('method3',6); // obj -> prop1=4,prop2=5,pro
 </head>
 
 <body>
+<div class="post">
+<h1>JavaScript中两种链式调用</h1>
+<pre title="code" class="brush: jscript;">
+/*一、方法体内返回对象实例自身(this)*/
+function ClassA(){   
+    this.prop1 = null;   
+    this.prop2 = null;   
+    this.prop3 = null;   
+}   
+ClassA.prototype = {   
+    method1 : function(p1){   
+        this.prop1 = p1;   
+        return this;   
+    },   
+    method2 : function(p2){   
+        this.prop2 = p2;   
+        return this;   
+    },   
+    method3 : function(p3){   
+        this.prop3 = p3;   
+        return this;   
+    }   
+}  
+
+/*可以看到对obj进行了连续三次操作，只要愿意ClassA的N多方法都这样定义，调用链会一直延续。*/
+var obj = new ClassA();   
+obj.method1(1).method2(2).method(3); // obj -&gt; prop1=1,prop2=2,prop3=3  
+
+//该方式缺点是链方法唯一地绑定于一种对象类型(ClaaaA)，按这种方式实现链式操作，每定义一个类，其方法体中都要返回this。第二种方式可以解决这个问题。</pre>
+
+<pre title="code" class="brush: jscript;">
+/*二、对象传入后每次调用返回函数自身*/
+/**  
+ * chain 精简版  
+ * @param {Object} obj  
+ */  
+function chain(obj){   
+    return function(){   
+        var Self = arguments.callee; Self.obj = obj;   
+        if(arguments.length==0){   
+            return Self.obj;   
+        }    
+        Self.obj[arguments[0]].apply(Self.obj,[].slice.call(arguments,1));   
+        return Self;
+    }   
+}   
+  
+//定义的function/类ClassB   
+function ClassB(){
+    this.prop1 = null;   
+    this.prop2 = null;   
+    this.prop3 = null;   
+}   
+ClassB.prototype = {   
+    method1 : function(p1){
+        this.prop1 = p1;   
+    },   
+    method2 : function(p2){
+        this.prop2 = p2;   
+    },   
+    method3 : function(p3){
+        this.prop3 = p3;   
+    }   
+}  
+//注意ClassB的method1,method2,method3中不再返回this了
+var obj = new ClassB();   
+chain(obj)('method1',4)('method2',5)('method3',6); // obj -&gt; prop1=4,prop2=5,prop3=6  </pre>
+</div>
 </body>
 </html>
