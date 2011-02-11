@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sw cid="北京市" n="8" c="北京" src="fla/resource.swf" bg="bg_beijing" icon="icon_beijing">
+	<l lid="地铁1号线" lb="1号线" slb="1" n="23" loop="false" lbx="-428.9" lby="139.1" lbr="0.0" lc="0xCC0000">
+		<p sid="苹果园" lb="苹果园" x="-681.3" y="138.3" rx="-48.6" ry="-8.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁1号线" int="5" />
+		<p sid="古城路" lb="古城路" x="-661.7" y="170.6" rx="-18.8" ry="6.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁1号线" int="3" />
+		<p sid="八角游乐园" lb="八角游乐园" x="-608.2" y="170.6" rx="-30.1" ry="6.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁1号线" int="3" />
+		<p sid="八宝山" lb="八宝山" x="-549.2" y="170.6" rx="-18.9" ry="6.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁1号线" int="3" />
+		<p sid="玉泉路" lb="玉泉路" x="-501.8" y="170.6" rx="-17.5" ry="6.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁1号线" int="3" />
+		<p sid="五棵松" lb="五棵松" x="-453.8" y="170.6" rx="-18.7" ry="6.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁1号线" int="3" />
+		<p sid="万寿路" lb="万寿路" x="-409.2" y="170.6" rx="-18.4" ry="6.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁1号线" int="3" />
+		<p sid="公主坟" lb="公主坟" x="-366.0" y="170.6" rx="-18.3" ry="6.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁1号线" int="2" />
+		<p sid="军事博物馆" lb="军事博物馆" x="-311.0" y="170.6" rx="-28.9" ry="6.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁1号线" int="2" />
+		<p sid="木樨地" lb="木樨地" x="-253.8" y="170.6" rx="-19.2" ry="6.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁1号线" int="3" />		
+		<p sid="南礼士路" lb="南礼士路" x="-205.4" y="170.6" rx="-23.4" ry="6.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁1号线" int="2" />		
+		<p sid="复兴门" lb="复兴门" x="-170.3" y="170.6" rx="6.4" ry="6.8" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁1号线,北京市|地铁2号线" int="3" />		
+		<p sid="西单" lb="西单" x="-105.3" y="170.6" rx="6.1" ry="-18" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁1号线,北京市|地铁4号线" int="2" />
+		<p sid="天安门西" lb="天安门西" x="-61.5" y="170.6" rx="-23.7" ry="6.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁1号线" int="2"/>
+		<p sid="天安门东" lb="天安门东" x="-8.3" y="170.6" rx="-23.8" ry="6.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁1号线" int="2" />
+		<p sid="王府井" lb="王府井" x="38.5" y="170.6" rx="-18.6" ry="6.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁1号线" int="2" />
+		<p sid="东单" lb="东单" x="72.0" y="170.6" rx="6.7" ry="6.8" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁1号线,北京市|地铁5号线" int="4" />
+		<p sid="建国门" lb="建国门" x="131.0" y="170.6" rx="6.7" ry="6.8" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁1号线,北京市|地铁2号线" int="2" />
+		<p sid="永安里" lb="永安里" x="195.7" y="170.6" rx="-18.5" ry="6.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁1号线" int="2" />
+		<p sid="国贸" lb="国贸" x="225.1" y="170.6" rx="6.3" ry="6.8" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁1号线,北京市|地铁10号线" int="3" />
+		<p sid="大望路" lb="大望路" x="279.7" y="170.6" rx="-17.3" ry="6.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁1号线" int="3" />
+		<p sid="四惠" lb="四惠" x="313.2" y="170.6" dy="3" rx="-12.9" ry="14.7" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁1号线,北京市|八通线" int="3" />
+		<p sid="四惠东" lb="四惠东" x="346.8" y="170.6" dy="3" rx="-17.2" ry="14.7" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁1号线,北京市|八通线" />
+	</l>
+	<l lid="地铁2号线" lb="2号线" slb="2" n="18" loop="true" lbx="-47.8" lby="22.7" lbr="0.0" lc="0x0066CC">
+		<p sid="西直门" lb="西直门" x="-170.3" y="43.5" rx="-48.5" ry="4.9" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁2号线,北京市|地铁4号线,北京市|地铁13号线" int="2" />
+		<p sid="" lb="" x="-156.9" y="22.0" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="积水潭" lb="积水潭" x="-126.1" y="16.1" rx="-19.3" ry="-23.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁2号线" int="3" />
+		<p sid="鼓楼大街" lb="鼓楼大街" x="-62.4" y="16.1" rx="-25.8" ry="-23.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁2号线" int="2" />
+		<p sid="安定门" lb="安定门" x="-12.1" y="16.1" rx="-19.3" ry="-23.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁2号线" int="2" />
+		<p sid="雍和宫" lb="雍和宫" x="72.0" y="16.1" rx="6.7" ry="-21.9" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁2号线,北京市|地铁5号线" int="4" />
+		<p sid="" lb="" x="117.3" y="22.0" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="东直门" lb="东直门" x="131.0" y="45.1" rx="6.7" ry="6.9" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁2号线,北京市|地铁13号线,北京市|机场专线" int="3" />
+		<p sid="东四十条" lb="东四十条" x="131.0" y="85.3" rx="6.7" ry="-7.3" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁2号线" int="2" />
+		<p sid="朝阳门" lb="朝阳门" x="131.0" y="122.2" rx="6.7" ry="-7.2" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁2号线" int="3" />
+		<p sid="建国门" lb="建国门" x="131.0" y="170.6" rx="6.7" ry="6.8" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁1号线,北京市|地铁2号线" int="3" />
+		<p sid="" lb="" x="128.5" y="190.7" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="北京站" lb="北京站" x="118.6" y="203.5" rx="3.2" ry="-0.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁2号线" int="4" />
+		<p sid="" lb="" x="102.1" y="210.0" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="崇文门" lb="崇文门" x="72.0" y="210.4" rx="6.7" ry="4.9" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁2号线,北京市|地铁5号线" int="3" />
+		<p sid="前门" lb="前门" x="18.1" y="210.4" rx="-13.0" ry="5.0" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁2号线" int="2" />
+		<p sid="和平门" lb="和平门" x="-42.4" y="210.4" rx="-17.5" ry="5.0" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁2号线" int="2" />
+		<p sid="宣武门" lb="宣武门" x="-105.3" y="210.4" rx="-41" ry="5.0" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁2号线,北京市|地铁4号线" int="2" />
+		<p sid="" lb="" x="-143.3" y="210.4" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="长椿街" lb="长椿街" x="-159.9" y="201.6" rx="-41.8" ry="1.3" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁2号线" int="3" />
+		<p sid="" lb="" x="-168.3" y="188.2" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="复兴门" lb="复兴门" x="-170.3" y="170.6" rx="6.4" ry="6.8" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁1号线,北京市|地铁2号线" int="3" />
+		<p sid="阜成门" lb="阜成门" x="-170.3" y="121.4" rx="-49.3" ry="-8.6" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁2号线" int="2" />
+		<p sid="车公庄" lb="车公庄" x="-170.3" y="82.3" rx="-49.3" ry="-9.2" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁2号线" int="3" />
+	</l>
+	<l lid="地铁4号线" lb="4号线" slb="4" n="22" loop="false" lbx="-395.1" lby="-224.0" lbr="0.0" lc="0x00CCCC">
+		<p sid="安河桥北" lb="安河桥北" x="-459.3" y="-193.5" rx="-24.6" ry="6.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁4号线" int="1" />
+		<p sid="北宫门" lb="北宫门" x="-403.4" y="-193.5" rx="-18.2" ry="6.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁4号线" int="2"/>
+		<p sid="西苑" lb="西苑" x="-354.2" y="-193.5" rx="-12.7" ry="6.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁4号线" int="3"/>
+		<p sid="" lb="" x="-301.9" y="-193.5" rx="" ry="" st="false" ex="" iu="" rc="false" slb="" ln="" />
+		<p sid="" lb="" x="-288.3" y="-191.2" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="圆明园" lb="圆明园" x="-279.6" y="-183.0" rx="-49.8" ry="-4.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁4号线" int="2"/>
+		<p sid="北京大学东门" lb="北京大学东门" x="-279.6" y="-154.4" rx="-81.8" ry="-8.7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁4号线" int="2"/>
+		<p sid="中关村" lb="中关村" x="-279.6" y="-127.1" rx="-49.3" ry="-8.6" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁4号线" int="1"/>
+		<p sid="海淀黄庄" lb="海淀黄庄" x="-279.6" y="-84.0" rx="-57" ry="-20.9" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁4号线,北京市|地铁10号线" int="3" />
+		<p sid="人民大学" lb="人民大学" x="-279.6" y="-34.0" rx="-60" ry="-9.0" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁4号线" int="2"/>
+		<p sid="魏公村" lb="魏公村" x="-279.6" y="-0.2" rx="-49.3" ry="-9.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁4号线" int="3"/>
+		<p sid="" lb="" x="-278.5" y="29" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="国家图书馆" lb="国家图书馆" x="-271" y="39" rx="-71.9" ry="-3" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁4号线" int="2"/>
+		<p sid="" lb="" x="-255" y="43.5" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="动物园" lb="动物园" x="-223.4" y="43.5" rx="-17.4" ry="-21.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁4号线" int="2"/>
+		<p sid="西直门" lb="西直门" x="-170.3" y="43.5" rx="-48.5" ry="4.9" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁2号线,北京市|地铁4号线,北京市|地铁13号线" int="3"/>
+		<p sid="" lb="" x="-127" y="43.5" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="新街口" lb="新街口" x="-110" y="50" rx="8.3" ry="-8.3" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁4号线" int="2"/>
+		<p sid="" lb="" x="-105.3" y="61.0" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="平安里" lb="平安里" x="-105.3" y="80.8" rx="6.1" ry="-8.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁4号线" int="2"/>
+		<p sid="西四" lb="西四" x="-105.3" y="109.1" rx="6.1" ry="-8.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁4号线" int="2"/>
+		<p sid="灵境胡同" lb="灵境胡同" x="-105.3" y="138.7" rx="6.1" ry="-8.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁4号线" int="1" />
+		<p sid="西单" lb="西单" x="-105.3" y="170.6" rx="6.1" ry="-18" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁1号线,北京市|地铁4号线" int="2"/>
+		<p sid="宣武门" lb="宣武门" x="-105.3" y="210.4" rx="-41" ry="5" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁2号线,北京市|地铁4号线" int="3"/>
+		<p sid="菜市口" lb="菜市口" x="-105.3" y="253" rx="6.1" ry="-7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁4号线" int="2"/>
+		<p sid="陶然亭" lb="陶然亭" x="-105.3" y="288" rx="6.1" ry="-7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁4号线" int="3"/>
+		<p sid="北京南站" lb="北京南站" x="-105.3" y="323" rx="6.1" ry="-7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁4号线" int="2"/>
+		<p sid="马家堡" lb="马家堡" x="-105.3" y="358" rx="6.1" ry="-7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁4号线" int="2"/>
+		<p sid="角门西" lb="角门西" x="-105.3" y="393" rx="6.1" ry="-7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁4号线" int="1"/>
+		<p sid="公益西桥" lb="公益西桥" x="-105.3" y="428" rx="6.1" ry="-7" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁4号线,北京市|大兴线"/>
+	</l>
+	<l lid="地铁5号线" lb="5号线" slb="5" n="23" loop="false" lbx="18.0" lby="77.0" lbr="0.0" lc="0x990066">
+		<p sid="天通苑北" lb="天通苑北" x="72.0" y="-323.9" rx="6.7" ry="-7.7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁5号线" int="2" />
+		<p sid="天通苑" lb="天通苑" x="72.0" y="-295.3" rx="6.7" ry="-7.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁5号线" int="2" />
+		<p sid="天通苑南" lb="天通苑南" x="72.0" y="-266.5" rx="6.7" ry="-7.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁5号线" int="2" />
+		<p sid="立水桥" lb="立水桥" x="72.0" y="-223.6" rx="6.7" ry="-23.5" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁5号线,北京市|地铁13号线" int="3" />
+		<p sid="立水桥南" lb="立水桥南" x="72.0" y="-194.1" rx="6.7" ry="-7.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁5号线" int="2" />
+		<p sid="北苑路北" lb="北苑路北" x="72.0" y="-166.8" rx="6.7" ry="-7.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁5号线" int="3" />
+		<p sid="大屯路东" lb="大屯路东" x="72.0" y="-139.7" rx="6.7" ry="-7.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁5号线" int="3" />
+		<p sid="惠新西街北口" lb="惠新西街北口" x="72.0" y="-112.5" rx="6.7" ry="-8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁5号线" int="2" />
+		<p sid="惠新西街南口" lb="惠新西街南口" x="72.0" y="-84.0" rx="6.7" ry="9.1" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁5号线,北京市|地铁10号线" int="2" />
+		<p sid="和平西桥" lb="和平西桥" x="72.0" y="-47.0" rx="6.7" ry="-7.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁5号线" int="2" />
+		<p sid="和平里北街" lb="和平里北街" x="72.0" y="-20.6" rx="6.7" ry="-9.2" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁5号线" int="3" />
+		<p sid="雍和宫" lb="雍和宫" x="72.0" y="16.1" rx="6.7" ry="-21.9" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁2号线,北京市|地铁5号线" int="2" />
+		<p sid="北新桥" lb="北新桥" x="72.0" y="44.4" rx="6.7" ry="-7.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁5号线" int="2" />
+		<p sid="张自忠路" lb="张自忠路" x="72.0" y="73.1" rx="6.7" ry="-7.3" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁5号线" int="2" />
+		<p sid="东四" lb="东四" x="72.0" y="102.2" rx="6.7" ry="-7.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁5号线" int="2" />
+		<p sid="灯市口" lb="灯市口" x="72.0" y="133.8" rx="6.7" ry="-7.2" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁5号线" int="2" />
+		<p sid="东单" lb="东单" x="72.0" y="170.6" rx="6.7" ry="6.8" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁1号线,北京市|地铁5号线" int="2" />
+		<p sid="崇文门" lb="崇文门" x="72.0" y="210.4" rx="6.7" ry="4.9" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁2号线,北京市|地铁5号线" int="2" />
+		<p sid="磁器口" lb="磁器口" x="72.0" y="245.6" rx="6.7" ry="-6.6" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁5号线" int="2" />
+		<p sid="天坛东门" lb="天坛东门" x="72.0" y="275.4" rx="6.7" ry="-7.3" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁5号线" int="3" />
+		<p sid="蒲黄榆" lb="蒲黄榆" x="72.0" y="306.1" rx="6.7" ry="-6.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁5号线" int="2" />
+		<p sid="刘家窑" lb="刘家窑" x="72.0" y="335.3" rx="6.7" ry="-8.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁5号线" int="2" />
+		<p sid="宋家庄" lb="宋家庄" x="72.0" y="372.4" rx="6.7" ry="-8.5" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁5号线,北京市|亦庄线" />
+	</l>
+	<l lid="地铁8号线" lb="8号线" slb="8" n="4" loop="false" lbx="-71.5" lby="-166.1" lbr="0.0" lc="0x006633">
+		<p sid="森林公园南门" lb="森林公园南门" x="-18.6" y="-185.3" rx="5.9" ry="-7.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁8号线" int="2" />
+		<p sid="奥林匹克公园" lb="奥林匹克公园" x="-18.6" y="-151.9" rx="5.9" ry="-7.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁8号线" int="2" />
+		<p sid="奥体中心" lb="奥体中心" x="-18.6" y="-117.6" rx="5.9" ry="-7.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁8号线" int="2" />
+		<p sid="北土城" lb="北土城" x="-18.6" y="-84.0" rx="-20.6" ry="9.1" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁8号线,北京市|地铁10号线" />
+	</l>
+	<l lid="地铁10号线" lb="10号线" slb="10" n="22" loop="false" lbx="-150.5" lby="-115.5" lbr="0.0" lc="0x0099FF">
+		<p sid="巴沟" lb="巴沟" x="-370.9" y="-84.0" rx="-15.2" ry="9.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁10号线" int="1" />
+		<p sid="苏州街" lb="苏州街" x="-328.8" y="-84.0" rx="-20.6" ry="9.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁10号线" int="2"/>
+		<p sid="海淀黄庄" lb="海淀黄庄" x="-279.6" y="-84.0" rx="-57" ry="-20.9" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁4号线,北京市|地铁10号线" int="2"/>
+		<p sid="知春里" lb="知春里" x="-229.8" y="-84.0" rx="-20.6" ry="9.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁10号线" int="3" />
+		<p sid="知春路" lb="知春路" x="-183.7" y="-84.0" rx="-47.8" ry="-22.2" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁10号线,北京市|地铁13号线" int="3" />
+		<p sid="西土城" lb="西土城" x="-150.7" y="-84.0" rx="-20.6" ry="9.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁10号线" int="2" />
+		<p sid="牡丹园" lb="牡丹园" x="-105.3" y="-84.0" rx="-20.6" ry="9.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁10号线" int="2" />
+		<p sid="健德门" lb="健德门" x="-61.4" y="-84.0" rx="-20.6" ry="9.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁10号线" int="2" />
+		<p sid="北土城" lb="北土城" x="-18.6" y="-84.0" rx="-20.6" ry="9.1" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁8号线,北京市|地铁10号线" int="2" />
+		<p sid="安贞门" lb="安贞门" x="35.3" y="-84.0" rx="-20.6" ry="9.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁10号线" int="2" />
+		<p sid="惠新西街南口" lb="惠新西街南口" x="72.0" y="-84.0" rx="6.7" ry="9.1" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁5号线,北京市|地铁10号线" int="3" />
+		<p sid="芍药居" lb="芍药居" x="152.2" y="-84.0" rx="4.8" ry="9.1" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁10号线,北京市|地铁13号线" int="2" />
+		<p sid="太阳宫" lb="太阳宫" x="209.6" y="-84.0" rx="3.9" ry="-18.6" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁10号线" int="3" />
+		<p sid="" lb="" x="221.7" y="-79.9" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="" lb="" x="225.1" y="-69.0" rx="" ry="" st="false" ex="" iu="" rc="false" slb="" ln="" />
+		<p sid="三元桥" lb="三元桥" x="225.1" y="-40.5" rx="12.2" ry="-2.3" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁10号线,北京市|机场专线" int="3" />
+		<p sid="亮马桥" lb="亮马桥" x="225.1" y="-3.5" rx="11.2" ry="-8.7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁10号线" int="2" />
+		<p sid="农业展览馆" lb="农业展览馆" x="225.1" y="30.9" rx="11.2" ry="-9" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁10号线" int="2" />
+		<p sid="团结湖" lb="团结湖" x="225.1" y="65.3" rx="11.2" ry="-8.2" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁10号线" int="2" />
+		<p sid="呼家楼" lb="呼家楼" x="225.1" y="99.6" rx="11.2" ry="-7.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁10号线" int="2" />
+		<p sid="金台夕照" lb="金台夕照" x="225.1" y="133.8" rx="11.2" ry="-8.2" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁10号线" int="2" />
+		<p sid="国贸" lb="国贸" x="225.1" y="170.6" rx="6.3" ry="6.8" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁1号线,北京市|地铁10号线" int="3" />
+		<p sid="双井" lb="双井" x="225.1" y="211.8" rx="11.2" ry="-9" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁10号线" int="1" />
+		<p sid="劲松" lb="劲松" x="225.1" y="244.3" rx="11.2" ry="-9.2" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁10号线" />
+	</l>
+	<l lid="昌平线" lb="昌平线" slb="昌平" n="7" loop="false" lbx="-210.0" lby="-410.0" lbr="0.0" lc="0xC40082">
+		<p sid="西二旗" lb="西二旗" x="-183.7" y="-194.0" rx="-48.2" ry="-8.4" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁13号线,北京市|昌平线" int="5" />
+		<p sid="生命科学园" lb="生命科学园" x="-183.7" y="-238.2" rx="-72.2" ry="-8.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|昌平线" int="4" />
+		<p sid="朱辛庄" lb="朱辛庄" x="-183.7" y="-264.1" rx="-48.2" ry="-8.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|昌平线" int="4" />
+		<p sid="巩华城" lb="巩华城" x="-183.7" y="-292.0" rx="-48.2" ry="-8.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|昌平线" int="3" />
+		<p sid="沙河" lb="沙河" x="-183.7" y="-320.6" rx="-35.5" ry="-8.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|昌平线" int="3" />
+		<p sid="沙河高教园" lb="沙河高教园" x="-183.7" y="-347.8" rx="-72.2" ry="-8.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|昌平线" int="5" />
+		<p sid="南邵" lb="南邵" x="-183.7" y="-377.1" rx="-35.5" ry="-8.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|昌平线" />
+	</l>
+	<l lid="地铁13号线" lb="13号线" slb="13" n="16" loop="false" lbx="-104.5" lby="-218.4" lbr="0.0" lc="0xFFCC33">
+		<p sid="西直门" lb="西直门" x="-170.3" y="43.5" rx="-48.5" ry="4.9" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁2号线,北京市|地铁4号线,北京市|地铁13号线" int="3" />
+		<p sid="" lb="" x="-182.3" y="32.0" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="大钟寺" lb="大钟寺" x="-183.7" y="-13.6" rx="-48.2" ry="-8.3" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁13号线" int="2" />
+		<p sid="知春路" lb="知春路" x="-183.7" y="-84.0" rx="-47.8" ry="-22.2" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁10号线,北京市|地铁13号线" int="3" />
+		<p sid="五道口" lb="五道口" x="-183.7" y="-122.3" rx="-48.2" ry="-8.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁13号线" int="6" />
+		<p sid="上地" lb="上地" x="-183.7" y="-167.4" rx="-37.5" ry="-9.3" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁13号线" int="4" />
+		<p sid="西二旗" lb="西二旗" x="-183.7" y="-194.0" rx="-48.2" ry="-8.4" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁13号线,北京市|昌平线" int="5" />
+		<p sid="" lb="" x="-177.1" y="-217.6" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="龙泽" lb="龙泽" x="-146.9" y="-223.6" rx="-13.8" ry="-23" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁13号线" int="3" />
+		<p sid="回龙观" lb="回龙观" x="-101.3" y="-223.6" rx="-18.9" ry="-23" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁13号线" int="4" />
+		<p sid="霍营" lb="霍营" x="-29.8" y="-223.6" rx="-13.6" ry="-23" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁13号线" int="6" />
+		<p sid="立水桥" lb="立水桥" x="72.0" y="-223.6" rx="6.7" ry="-23.5" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁5号线,北京市|地铁13号线" int="3" />
+		<p sid="" lb="" x="113.2" y="-223.6" rx="" ry="" st="false" ex="" iu="" rc="false" slb="" ln="" />
+		<p sid="" lb="" x="144.8" y="-216.6" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="北苑" lb="北苑" x="152.2" y="-186.6" rx="4.8" ry="-8.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁13号线" int="8" />
+		<p sid="望京西" lb="望京西" x="152.2" y="-148.3" rx="4.8" ry="3.8" st="true" ex="true" iu="true" rc="false" slb="true" ln="北京市|地铁13号线,北京市|地铁15号线" int="3" />
+		<p sid="芍药居" lb="芍药居" x="152.2" y="-84.0" rx="4.8" ry="9.1" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁10号线,北京市|地铁13号线" int="2" />
+		<p sid="光熙门" lb="光熙门" x="152.2" y="-33.0" rx="4.8" ry="-8.7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁13号线" int="2" />
+		<p sid="柳芳" lb="柳芳" x="152.2" y="5.8" rx="4.8" ry="-8.6" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁13号线" int="2" />
+		<p sid="" lb="" x="149.1" y="35.6" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="东直门" lb="东直门" x="131.0" y="45.1" rx="6.7" ry="6.9" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁2号线,北京市|地铁13号线,北京市|机场专线" />
+	</l>
+	<l lid="地铁15号线" lb="15号线" slb="15" n="8" loop="false" lbx="260.5" lby="-376.4" lbr="0.0" lc="0xFF3801">
+		<p sid="望京西" lb="望京西" x="152.2" y="-148.3" rx="4.8" ry="3.8" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁13号线,北京市|地铁15号线" int="2" />
+		<p sid="望京" lb="望京" x="217.2" y="-148.3" rx="4.8" ry="3.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁15号线" int="5" />
+		<p sid="" lb="" x="262.7" y="-148.3" rx="" ry="" st="fasle" ex="" iu="" rc="false" slb="" ln="" int="2" />
+		<p sid="" lb="" x="279.7" y="-156.9" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" int="2" />
+		<p sid="崔各庄" lb="崔各庄" x="286.8" y="-178.3" rx="4.8" ry="3.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁15号线" int="3" />
+		<p sid="马泉营" lb="马泉营" x="286.8" y="-210.6" rx="-45.8" ry="-8.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁15号线" int="4" />
+		<p sid="孙河" lb="孙河" x="286.8" y="-242.9" rx="-33.8" ry="-8.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁15号线" int="4" />
+		<p sid="国展" lb="国展" x="286.8" y="-274.6" rx="-33.8" ry="-8.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁15号线" int="2" />
+		<p sid="花梨坎" lb="花梨坎" x="286.8" y="-306.4" rx="-45.8" ry="-8.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁15号线" int="3" />
+		<p sid="后沙峪" lb="后沙峪" x="286.8" y="-338.7" rx="-45.8" ry="-8.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|地铁15号线" />
+	</l>
+	<l lid="八通线" lb="八通线" slb="八通" n="13" loop="false" lbx="435.1" lby="150.8" lbr="0.0" lc="0xCC0000">
+		<p sid="四惠" lb="四惠" x="313.2" y="176.6" dy="-3" rx="-12.9" ry="8.7" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁1号线,北京市|八通线" int="3" />
+		<p sid="四惠东" lb="四惠东" x="346.8" y="176.6" dy="-3" rx="-17.2" ry="8.7" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁1号线,北京市|八通线" int="2" />
+		<p sid="高碑店" lb="高碑店" x="397.9" y="176.6"  rx="-18.3" ry="8.7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|八通线" int="3" />
+		<p sid="传媒大学" lb="传媒大学" x="451.6" y="176.6"  rx="-23.5" ry="8.7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|八通线" int="3" />
+		<p sid="双桥" lb="双桥" x="493.8" y="176.6"  rx="-10.9" ry="8.7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|八通线" int="3" />
+		<p sid="管庄" lb="管庄" x="529.0" y="176.6"  rx="-12.8" ry="8.7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|八通线" int="3" />
+		<p sid="八里桥" lb="八里桥" x="580.0" y="176.6"  rx="-37.5" ry="8.7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|八通线" int="3" />
+		<p sid="通州北苑" lb="通州北苑" x="610.0" y="227.6" rx="-56.2" ry="-5.3" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|八通线" int="3" />
+		<p sid="果园" lb="果园" x="627.1" y="256.1" rx="-38.2" ry="-8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|八通线" int="2" />
+		<p sid="九棵树" lb="九棵树" x="643.5" y="284.2" rx="-47.8" ry="-8.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|八通线" int="3" />
+		<p sid="梨园" lb="梨园" x="661.5" y="314.1" rx="-37.2" ry="-8.3" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|八通线" int="2" />
+		<p sid="临河里" lb="临河里" x="679.7" y="345.3" rx="-45.8" ry="-8.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|八通线" int="2" />
+		<p sid="土桥" lb="土桥" x="699.0" y="377.3" rx="-36.6" ry="-8.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|八通线" />
+	</l>
+	<l lid="机场专线" lb="机场专线" slb="机场" n="4" loop="false" lbx="289.3" lby="-66.0" lbr="-25.0" lc="0xB699BD">
+		<p sid="东直门" lb="东直门" x="131.0" y="45.1" rx="6.7" ry="6.9" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁2号线,北京市|地铁13号线,北京市|机场专线" int="10" />
+		<p sid="" lb="" x="160.7" y="45.1" rx="" ry="" st="false" ex="" iu="" rc="false" slb="" ln="" />
+		<p sid="" lb="" x="174.3" y="40.4" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="" lb="" x="185.3" y="27.9" rx="" ry="" st="false" ex="" iu="" rc="false" slb="" ln="" />
+		<p sid="三元桥" lb="三元桥" x="225.1" y="-40.5" rx="12.2" ry="-2.3" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁10号线,北京市|机场专线" int="15" />
+		<p sid="" lb="" x="368.5" y="-112.2" rx="" ry="" st="false" ex="" iu="" rc="false" slb="" ln="" />
+		<p sid="" lb="" x="377.0" y="-121.2" rx="" ry="" st="false" ex="" iu="" rc="false" slb="" ln="" />
+		<p sid="" lb="" x="389.4" y="-145.2" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="t3航站楼" lb="T3航站楼" x="392.5" y="-168.5" rx="17.6" ry="-26.3" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|机场专线" bold="true" icon="icon_beijing_ap3,-13.2,-31" int="4" />
+		<p sid="" lb="" x="389.4" y="-145.2" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="" lb="" x="377.0" y="-121.2" rx="" ry="" st="false" ex="" iu="" rc="false" slb="" ln="" />
+		<p sid="" lb="" x="353.3" y="-124.3" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="" lb="" x="340.4" y="-142.6" rx="" ry="" st="false" ex="" iu="" rc="false" slb="" ln="" />
+		<p sid="t2航站楼" lb="T2航站楼" x="346.2" y="-171.3" rx="-12.1" ry="-52" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|机场专线" bold="true" icon="icon_beijing_ap2,-13.3,-30.9" />
+		<p sid="" lb="" x="340.4" y="-142.6" rx="" ry="" st="false" ex="" iu="" rc="false" slb="" ln="" />
+		<p sid="" lb="" x="330.0" y="-94.0" rx="" ry="" st="false" ex="" iu="" rc="false" slb="" ln="" />
+		<p sid="三元桥" lb="三元桥" x="225.1" y="-40.5" rx="12.2" ry="-2.3" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁10号线,北京市|机场专线" int="15" />
+		<p sid="" lb="" x="185.3" y="27.9" rx="" ry="" st="false" ex="" iu="" rc="false" slb="" ln="" />
+		<p sid="" lb="" x="174.3" y="40.4" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="" lb="" x="160.7" y="45.1" rx="" ry="" st="false" ex="" iu="" rc="false" slb="" ln="" />
+	</l>
+	<l lid="大兴线" lb="大兴线" slb="大兴" n="12" loop="false" lbx="-175.0" lby="582.0" lbr="0.0" lc="0x00CCCD">
+		<p sid="公益西桥" lb="公益西桥" x="-105.3" y="428" rx="6.1" ry="-7" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁4号线,北京市|大兴线" int="4" />
+		<p sid="新宫" lb="新宫" x="-105.3" y="463" rx="6.1" ry="-7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|大兴线" int="6" />
+		<p sid="西红门" lb="西红门" x="-105.3" y="493" rx="6.1" ry="-7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|大兴线" int="3" />
+		<p sid="高米店北" lb="高米店北" x="-105.3" y="530" rx="6.1" ry="-7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|大兴线" int="2" />
+		<p sid="高米店南" lb="高米店南" x="-105.3" y="560" rx="6.1" ry="-7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|大兴线" int="2" />
+		<p sid="枣园" lb="枣园" x="-105.3" y="590" rx="6.1" ry="-7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|大兴线" int="2" />
+		<p sid="清源路" lb="清源路" x="-105.3" y="620" rx="6.1" ry="-7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|大兴线" int="2" />
+		<p sid="黄村西大街" lb="黄村西大街" x="-105.3" y="650" rx="6.1" ry="-7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|大兴线" int="2" />
+		<p sid="黄村火车站" lb="黄村火车站" x="-105.3" y="680" rx="6.1" ry="-7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|大兴线" int="3" />
+		<p sid="义和庄" lb="义和庄" x="-105.3" y="706" rx="6.1" ry="-7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|大兴线" int="3" />
+		<p sid="生物医药基地" lb="生物医药基地" x="-105.3" y="732" rx="6.1" ry="-7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|大兴线" int="2" />
+		<p sid="天宫院" lb="天宫院" x="-105.3" y="777" rx="6.1" ry="-7" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|大兴线"  />
+	</l>
+	<l lid="亦庄线" lb="亦庄线" slb="亦庄" n="14" loop="false" lbx="295.0" lby="567.0" lbr="0.0" lc="0xFF3703">
+		<p sid="宋家庄" lb="宋家庄" x="72.0" y="372.4" rx="6.7" ry="-8.5" st="true" ex="true" iu="true" rc="false" slb="false" ln="北京市|地铁5号线,北京市|亦庄线" int="3" />
+		<p sid="肖村" lb="肖村" x="72.0" y="405.4" rx="6.7" ry="-8.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|亦庄线" int="2" />
+		<p sid="小红门" lb="小红门" x="91.0" y="433.5" rx="8.7" ry="-9.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|亦庄线" int="4" />
+		<p sid="旧宫" lb="旧宫" x="106.0" y="455.7" rx="8.7" ry="-9.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|亦庄线" int="2" />
+		<p sid="亦庄桥" lb="亦庄桥" x="121.0" y="477.9" rx="8.7" ry="-9.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|亦庄线" int="2" />
+		<p sid="亦庄文化园" lb="亦庄文化园" x="137.0" y="501.6" rx="8.7" ry="-9.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|亦庄线" int="3" />
+		<p sid="万源街" lb="万源街" x="153.0" y="525.3" rx="8.7" ry="-9.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|亦庄线" int="2" />
+		<p sid="荣京东街" lb="荣京东街" x="169.0" y="549.0" rx="8.7" ry="-9.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|亦庄线" int="2" />
+		<p sid="荣昌东街" lb="荣昌东街" x="184.0" y="571.2" rx="-63.7" ry="-6.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|亦庄线" int="4" />
+		<p sid="" lb="" x="199.7" y="588.7" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="同济南路" lb="同济南路" x="219.5" y="596.6" rx="-24.7" ry="7.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|亦庄线" int="3" />
+		<p sid="经海路" lb="经海路" x="269.5" y="596.6" rx="-20.7" ry="7.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|亦庄线" int="2" />
+		<p sid="次渠南" lb="次渠南" x="319.5" y="596.6" rx="-20.7" ry="7.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|亦庄线" int="2" />
+		<p sid="次渠" lb="次渠" x="369.5" y="596.6" rx="-16.7" ry="7.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|亦庄线"  />
+	</l>
+	<l lid="房山线" lb="房山线" slb="房山" n="11" loop="false" lbx="-705.0" lby="553.0" lbr="0.0" lc="0xD5353F">
+		<p sid="大葆台" lb="大葆台" x="-429.3" y="425" rx="-48.2" ry="-8.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|房山线" int="6" />
+		<p sid="稻田" lb="稻田" x="-445.9" y="451.6" rx="-35.5" ry="-8.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|房山线" int="5" />
+		<p sid="长阳" lb="长阳" x="-462.5" y="478.2" rx="-35.5" ry="-8.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|房山线" int="3" />
+		<p sid="篱笆房" lb="篱笆房" x="-479.1" y="504.8" rx="-48.2" ry="-8.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|房山线" int="3" />
+		<p sid="广阳城" lb="广阳城" x="-495.7" y="531.4" rx="-48.2" ry="-8.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|房山线" int="3" />
+		<p sid="良乡大学城北" lb="良乡大学城北" x="-512.3" y="558.0" rx="-85.2" ry="-8.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|房山线" int="2" />
+		<p sid="" lb="" x="-529.0" y="576.9" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="良乡大学城" lb="良乡大学城" x="-555.5" y="582.5" rx="-7" ry="7.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|房山线" int="3" />
+		<p sid="良乡大学城西" lb="良乡大学城西" x="-606.4" y="582.5" rx="-37" ry="7.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|房山线" int="2" />
+		<p sid="良乡南关" lb="良乡南关" x="-680.3" y="582.5" rx="-26" ry="7.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|房山线" int="2" />
+		<p sid="苏庄" lb="苏庄" x="-730.5" y="582.5" rx="-16" ry="7.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="北京市|房山线"  />
+	</l>
+</sw>

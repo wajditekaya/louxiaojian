@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="description" content="提供地铁线路图浏览，乘车方案查询，以及准确的票价和时间信息。">
+<title>地铁线路图</title>
+<script type="text/javascript" src="sbw.js?v=20110121"></script>
+<script type="text/javascript" src="data/wayname.js?v=20110105"></script>
+<link rel="stylesheet" type="text/css" href="http://map.baidu.com/subways/sbw.css?v=20110105" />
+</head>
+<body onunload="SBWUnload()" onresize="adjustPage()">
+<div id="sbw_top" unselectable="on">
+<ul id="city_tab">
+<li class="sel"><a id="btn_sel_bj" href="javascript:void(0)" onclick="return switchCity(0)">北京</a></li>
+<li><a id="btn_sel_shh" href="javascript:void(0)" onclick="return switchCity(1)">上海</a></li>
+<li><a id="btn_sel_gzh" href="javascript:void(0)" onclick="return switchCity(2)">广州</a></li>
+</ul>
+<div id="print" title="打印地图">打印</div>
+</div>
+
+
+<div id="sbw_main">
+<div id="sbw_map">
+<script type="text/javascript">CreateFlash("swfSubway", "fla/subway.swf?v=20091231", "100%", "100%", "")</script>
+</div>
+
+
+<div id="sbw_panel">
+<div id="sel_sta">
+<form onsubmit="return q()">
+<table>
+<tr>
+<td class="title" style="width:54px">起点站</td>
+<td><input id="start_sta" type="text" maxlength="20" autocomplete="off" /></td>
+</tr>
+<tr>
+<td class="title">终点站</td><td>
+<input id="end_sta" type="text" maxlength="20" autocomplete="off" />
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td style="height:36px"><input id="trans_sub" type="submit" value="" onclick="return q()"></td>
+</tr>
+</table>
+</form>
+</div>
+<div id="result_container"></div></div></div><div id="print_src"></div><img id="statImg" style="display:none" src="images/transparent.gif" /><script type="text/javascript">initPage()</script></body></html>

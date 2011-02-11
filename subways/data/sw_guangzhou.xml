@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sw cid="广州市" n="5" c="广州" src="fla/resource.swf" bg="bg_guangzhou" icon="icon_guangzhou">
+	<l lid="地铁1号线" lb="1号线" slb="1" n="16" loop="false" lbx="-112.5" lby="-71.6" lbr="0.0" lc="0xF9E103">
+		<p sid="西朗" lb="西朗" x="-328.6" y="167.8" rx="12" ry="-7.9" st="true" ex="true" iu="true" rc="false" slb="false" ln="广州市|地铁1号线,广州市|广佛线" int="2" />
+		<p sid="坑口" lb="坑口" x="-328.6" y="112.4" rx="-36.8" ry="-10" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁1号线" int="2" />
+		<p sid="花地湾" lb="花地湾" x="-328.6" y="57.1" rx="-47.6" ry="-9.6" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁1号线" int="3" />
+		<p sid="芳村" lb="芳村" x="-328.6" y="1.8" rx="-36.8" ry="-7.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁1号线" int="3" />
+		<p sid="黄沙" lb="黄沙" x="-328.6" y="-32.1" rx="-36.8" ry="-9.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁1号线" int="2" />
+		<p sid="长寿路" lb="长寿路" x="-328.6" y="-74.5" rx="-47.6" ry="-7.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁1号线" int="3" />
+		<p sid="" lb="" x="-322" y="-98.5" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="陈家祠" lb="陈家祠" x="-299.0" y="-103.5" rx="-18.1" ry="-25.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁1号线" int="2"/>
+		<p sid="西门口" lb="西门口" x="-247.2" y="-103.5" rx="-19.2" ry="-25.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁1号线" int="4"/>
+		<p sid="公园前" lb="公园前" x="-196.2" y="-103.5" rx="7" ry="-25.1" st="true" ex="true" iu="true" rc="false" slb="true" ln="广州市|地铁1号线,广州市|地铁2号线" int="2" />
+		<p sid="农讲所" lb="农讲所" x="-130.7" y="-103.5" rx="-18.1" ry="-25.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁1号线" int="2" />
+		<p sid="烈士陵园" lb="烈士陵园" x="-82.1" y="-103.5" rx="-23.5" ry="-25.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁1号线" int="2" />
+		<p sid="东山口" lb="东山口" x="-31.9" y="-103.5" rx="-18.1" ry="-25.1" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁1号线" int="2" />
+		<p sid="杨箕" lb="杨箕" x="4.4" y="-103.5" rx="5" ry="-25.1" st="true" ex="true" iu="true" rc="false" slb="false" ln="广州市|地铁1号线,广州市|地铁5号线" int="2" />
+		<p sid="体育西路" lb="体育西路" x="67.4" y="-103.5" rx="-56.9" ry="5.1" st="true" ex="true" iu="true" rc="false" slb="true" ln="广州市|地铁1号线,广州市|地铁3号线,广州市|地铁3号线北延段" int="2" />
+		<p sid="" lb="" x="152.4" y="-160.5" rx="" ry="" st="false" ex="" iu="" rc="false" slb="" ln="" />
+		<p sid="" lb="" x="164.2" y="-177.2" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="体育中心" lb="体育中心" x="167.1" y="-206.0" rx="8.5" ry="-7.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁1号线" int="2" />
+		<p sid="" lb="" x="167" y="-217.3" rx="" ry="" st="false" ex="" iu="" rc="false" slb="" ln="" />
+		<p sid="" lb="" x="161.4" y="-234.8" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="" lb="" x="150.5" y="-241.3" rx="" ry="" st="false" ex="" iu="" rc="false" slb="" ln="" />
+		<p sid="广州东站" lb="广州东站" x="67.4" y="-241.3" rx="-62" ry="-6.9" st="true" ex="true" iu="true" rc="false" slb="true" ln="广州市|地铁1号线,广州市|地铁3号线北延段" />
+	</l>
+	<l lid="地铁2号线" lb="2号线" slb="2" n="24" loop="false" lbx="-180" lby="180" lbr="0.0" lc="0x0066CC">
+		<p sid="嘉禾望岗" lb="嘉禾望岗" x="-70" y="-386" rx="-60" ry="-10" st="true" ex="true" iu="true" rc="false" slb="false" ln="广州市|地铁2号线,广州市|地铁3号线北延段" int="2" />
+		<p sid="黄边" lb="黄边" x="-95" y="-361" rx="-35" ry="-10" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" int="2" />
+		<p sid="江夏" lb="江夏" x="-115" y="-341" rx="-35" ry="-10" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" int="2" />
+		<p sid="萧岗" lb="萧岗" x="-135" y="-321" rx="-35" ry="-10" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" int="2" />
+		<p sid="白云文化广场" lb="白云文化广场" x="-155" y="-301" rx="-85" ry="-10" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" int="2" />
+		<p sid="白云公园" lb="白云公园" x="-175" y="-281" rx="-60" ry="-10" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" int="2" />
+		<p sid="飞翔公园" lb="飞翔公园" x="-196.2" y="-261" rx="-60" ry="-7.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" int="3" />
+		<p sid="三元里" lb="三元里" x="-196.2" y="-234.5" rx="-50.1" ry="-7.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" int="1" />
+		<p sid="广州火车站" lb="广州火车站" x="-196.2" y="-207.8" rx="-71.6" ry="2.1" st="true" ex="true" iu="true" rc="false" slb="false" ln="广州市|地铁2号线,广州市|地铁5号线" int="2" />
+		<p sid="越秀公园" lb="越秀公园" x="-196.2" y="-178.8" rx="-60.8" ry="-7.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" int="2" />
+		<p sid="纪念堂" lb="纪念堂" x="-196.2" y="-148.2" rx="-50.1" ry="-7.7" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" int="1" />
+		<p sid="公园前" lb="公园前" x="-196.2" y="-103.5" rx="7" ry="-25.1" st="true" ex="true" iu="true" rc="false" slb="false" ln="广州市|地铁1号线,广州市|地铁2号线" int="3" />
+		<p sid="海珠广场" lb="海珠广场" x="-196.2" y="-65.9" rx="-60.8" ry="-7.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" int="2" />
+		<p sid="市二宫" lb="市二宫" x="-196.2" y="-36.1" rx="-50.1" ry="-7.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" int="2" />
+		<p sid="江南西" lb="江南西" x="-196.2" y="11.4" rx="-50.1" ry="-7.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" int="2" />
+		<p sid="昌岗" lb="昌岗" x="-196.2" y="61.5" rx="4" ry="10.2" st="true" ex="true" iu="true" rc="false" slb="false" ln="广州市|地铁2号线,广州市|地铁8号线" int="2" />
+		<p sid="江泰路" lb="江泰路" x="-196.2" y="110" rx="-50.1" ry="-7.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" int="2" />
+		<p sid="东晓南" lb="东晓南" x="-196.2" y="160" rx="-50.1" ry="-7.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" int="2" />
+		<p sid="南洲" lb="南洲" x="-196.2" y="210" rx="-40" ry="-7.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" int="2" />
+		<p sid="洛溪" lb="洛溪" x="-196.2" y="260" rx="-40" ry="-7.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" int="2" />
+		<p sid="南浦" lb="南浦" x="-196.2" y="310" rx="-40" ry="-7.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" int="3" />
+		<p sid="会江" lb="会江" x="-196.2" y="360" rx="-40" ry="-7.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" int="3" />
+		<p sid="石壁" lb="石壁" x="-196.2" y="410" rx="-40" ry="-7.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" int="2" />
+		<p sid="广州南站" lb="广州南站" x="-196.2" y="470" rx="-60" ry="-7.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁2号线" />
+	</l>
+	<l lid="地铁3号线" lb="3号线" slb="3" n="16" loop="false" lbx="74.7" lby="122.7" lbr="0.0" lc="0xEA6632">
+		<p sid="天河客运站" lb="天河客运站" x="299.4" y="-231.5" rx="8" ry="-5.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁3号线" int="3" />
+		<p sid="五山" lb="五山" x="266.6" y="-198.7" rx="10.8" ry="-2.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁3号线" int="3" />
+		<p sid="华师" lb="华师" x="234.1" y="-166.2" rx="8.7" ry="-2" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁3号线" int="2" />
+		<p sid="岗顶" lb="岗顶" x="201.4" y="-133.6" rx="10.4" ry="-2" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁3号线" int="2" />
+		<p sid="石牌桥" lb="石牌桥" x="172.4" y="-103.5" rx="9" ry="-3" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁3号线" int="3" />
+		<p sid="体育西路" lb="体育西路" x="67.4" y="-103.5" rx="6.9" ry="5.1" st="true" ex="true" iu="true" rc="false" slb="false" ln="广州市|地铁1号线,广州市|地铁3号线,广州市|地铁3号线北延段" int="2" />
+		<p sid="珠江新城" lb="珠江新城" x="67.4" y="-38.9" rx="-59.3" ry="3.3" st="true" ex="true" iu="true" rc="flse" slb="false" ln="广州市|地铁3号线,广州市|地铁5号线" int="2" />
+		<p sid="赤岗塔" lb="赤岗塔" x="67.4" y="12.6" rx="-48.5" ry="-7.9" st="true" ex="true" iu="true" rc="flse" slb="true" ln="广州市|地铁3号线" int="2" />
+		<p sid="客村" lb="客村" x="67.4" y="61.5" rx="-37.8" ry="10.2" st="true" ex="true" iu="true" rc="false" slb="false" ln="广州市|地铁3号线,广州市|地铁8号线" int="3" />
+		<p sid="大塘" lb="大塘" x="67.4" y="121.8" rx="-37.8" ry="-7.9" st="true" ex="false" iu="true" rc="flse" slb="true" ln="广州市|地铁3号线" int="4"/>
+		<p sid="沥滘" lb="沥滘" x="67.4" y="170.5" rx="-37.8" ry="-7.8" st="true" ex="false" iu="true" rc="flse" slb="true" ln="广州市|地铁3号线" int="2"/>
+		<p sid="厦滘" lb="厦滘" x="67.4" y="210.2" rx="-37.8" ry="-7.9" st="true" ex="false" iu="true" rc="flse" slb="true" ln="广州市|地铁3号线" int="2" />
+		<p sid="大石" lb="大石" x="67.4" y="251.7" rx="-37.8" ry="-7.9" st="true" ex="false" iu="true" rc="flse" slb="true" ln="广州市|地铁3号线" int="3" />
+		<p sid="汉溪长隆" lb="汉溪长隆" x="67.4" y="291.9" rx="-59.3" ry="-7.8" st="true" ex="false" iu="true" rc="flse" slb="true" ln="广州市|地铁3号线" int="6" />
+		<p sid="" lb="" x="77.9" y="310.4" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="市桥" lb="市桥" x="105.5" y="314.6" rx="-14" ry="12.1" st="true" ex="false" iu="true" rc="flse" slb="true" ln="广州市|地铁3号线" int="3" />
+		<p sid="番禺广场" lb="番禺广场" x="160.4" y="314.6" rx="-23.4" ry="12.1" st="true" ex="false" iu="true" rc="flse" slb="true" bold="true" ln="广州市|地铁3号线" />
+	</l>
+	<l lid="地铁3号线北延段" lb="3号线br北延段" slb="3号线北延段" n="13" loop="false" lbx="80.7" lby="-237" lbr="0.0" lc="0xEA6632">
+		<p sid="体育西路" lb="体育西路" x="67.4" y="-103.5" rx="6.9" ry="5.1" st="true" ex="true" iu="true" rc="false" slb="false" ln="广州市|地铁1号线,广州市|地铁3号线,广州市|地铁3号线北延段" int="1" />
+		<p sid="林和西" lb="林和西" x="67.4" y="-193.4" rx="-51.3" ry="-7.7" st="true" ex="true" iu="true" rc="false" slb="true" ln="广州市|地铁3号线北延段" int="2" />
+		<p sid="广州东站" lb="广州东站" x="67.4" y="-241.3" rx="-62" ry="-6.9" st="true" ex="true" iu="true" rc="false" slb="false" ln="广州市|地铁1号线,广州市|地铁3号线北延段" int="2" />
+		<p sid="燕塘" lb="燕塘" x="67.4" y="-276" rx="10" ry="-8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁3号线北延段" int="3" />
+		<p sid="梅花园" lb="梅花园" x="47" y="-294" rx="12" ry="-10" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁3号线北延段" int="2" />
+		<p sid="京溪南方医院" lb="京溪南方医院" x="24" y="-312" rx="12" ry="-10" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁3号线北延段" int="2" />
+		<p sid="同和" lb="同和" x="1" y="-330" rx="12" ry="-10" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁3号线北延段" int="3" />
+		<p sid="永泰" lb="永泰" x="-22" y="-348" rx="12" ry="-10" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁3号线北延段" int="2" />
+		<p sid="白云大道北" lb="白云大道北" x="-45" y="-366" rx="12" ry="-10" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁3号线北延段" int="3" />
+		<p sid="嘉禾望岗" lb="嘉禾望岗" x="-70" y="-386" rx="-60" ry="-10" st="true" ex="true" iu="true" rc="false" slb="true" ln="广州市|地铁2号线,广州市|地铁3号线北延段" int="4" />
+		<p sid="龙归" lb="龙归" x="-70" y="-426" rx="10" ry="-8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁3号线北延段" int="3" />
+		<p sid="人和" lb="人和" x="-70" y="-461" rx="10" ry="-8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁3号线北延段" int="3" />
+		<p sid="机场南" lb="机场南" x="-70" y="-520" rx="10" ry="-8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁3号线北延段" />
+	</l>
+	<l lid="地铁4号线" lb="4号线" slb="4" n="16" loop="false" lbx="227.5" lby="261.4" lbr="0.0" lc="0x009900">
+		<p sid="黄村" lb="黄村" x="345" y="-100" rx="10" ry="-8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁4号线" int="3"/>
+		<p sid="车陂" lb="车陂" x="315" y="-70" rx="10" ry="-8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁4号线" int="3"/>
+		<p sid="车陂南" lb="车陂南" x="284.2" y="-39" rx="10" ry="-8" st="true" ex="true" iu="true" rc="false" slb="false" ln="广州市|地铁4号线,广州市|地铁5号线" int="2"/>
+		<p sid="万胜围" lb="万胜围" x="284.2" y="61.5" rx="8.6" ry="-9" st="true" ex="true" iu="true" rc="false" slb="false" ln="广州市|地铁4号线,广州市|地铁8号线" int="3" />
+		<p sid="官洲" lb="官洲" x="284.2" y="108" rx="8.6" ry="-7.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁4号线" int="2" />
+		<p sid="大学城北" lb="大学城北" x="284.2" y="153.6" rx="8.6" ry="-7.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁4号线" int="3" />
+		<p sid="大学城南" lb="大学城南" x="284.2" y="199.2" rx="8.6" ry="-7.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁4号线" int="3" />
+		<p sid="新造" lb="新造" x="284.2" y="244.8" rx="8.6" ry="-7.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁4号线" int="8" />
+		<p sid="石碁" lb="石碁" x="284.2" y="290.4" rx="8.6" ry="-7.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁4号线" int="3" />
+		<p sid="海傍" lb="海傍" x="284.2" y="335.9" rx="8.6" ry="-7.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁4号线" int="3" />
+		<p sid="低涌" lb="低涌" x="284.2" y="381.6" rx="8.6" ry="-7.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁4号线" int="4" />
+		<p sid="东涌" lb="东涌" x="284.2" y="427.2" rx="8.6" ry="-7.8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁4号线" int="5" />
+		<p sid="" lb="" x="290.5" y="460" rx="" ry="" st="false" ex="" iu="" rc="true" slb="" ln="" />
+		<p sid="" lb="" x="325.1" y="469.3" rx="" ry="" st="false" ex="" iu="" rc="false" slb="" ln="" />
+		<p sid="黄阁汽车城" lb="黄阁汽车城" x="354.3" y="469.3" rx="-28.2" ry="-24.3" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁4号线" int="2" />
+		<p sid="黄阁" lb="黄阁" x="418.1" y="469.3" rx="-13.1" ry="-24.3" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁4号线" int="3" />
+		<p sid="蕉门" lb="蕉门" x="470.6" y="469.3" rx="-13.3" ry="-24.3" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁4号线" int="2" />
+		<p sid="金洲" lb="金洲" x="524.4" y="469.3" rx="-12.9" ry="-24.3" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁4号线" />
+	</l>
+	<l lid="地铁5号线" lb="5号线" slb="5" n="24" loop="false" lbx="-111.1" lby="-176.0" lbr="0.0" lc="0xFF0000">
+		<p sid="滘口" lb="滘口" x="-441.3" y="-102.8" rx="-33.1" ry="-8.7" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" int="2"/>
+		<p sid="坦尾" lb="坦尾" x="-395.6" y="-148.6" rx="-38.1" ry="-8.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" int="2"/>
+		<p sid="中山八" lb="中山八" x="-329" y="-148.6" rx="-39.7" ry="-19.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" int="2"/>
+		<p sid="西场" lb="西场" x="-299.3" y="-178.3" rx="-34.3" ry="-8.2" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" int="2"/>
+		<p sid="西村" lb="西村" x="-269.8" y="-207.8" rx="-36.8" ry="-8.3" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" int="3"/>
+		<p sid="广州火车站" lb="广州火车站" x="-196.2" y="-207.8" rx="-70.6" ry="-18.1" st="true" ex="true" iu="true" rc="false" slb="true" ln="广州市|地铁2号线,广州市|地铁5号线" int="3"/>
+		<p sid="小北" lb="小北" x="-130.0" y="-207.8" rx="-12.4" ry="-22.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" int="2"/>
+		<p sid="淘金" lb="淘金" x="-65.3" y="-207.8" rx="-12.9" ry="-22.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" int="2"/>
+		<p sid="区庄" lb="区庄" x="4.4" y="-207.8" rx="-13" ry="-22.5" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" int="2"/>
+		<p sid="动物园" lb="动物园" x="4.4" y="-166.9" rx="6" ry="-7.3" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" int="2"/>
+		<p sid="杨箕" lb="杨箕" x="4.4" y="-103.5" rx="5" ry="-25.1" st="true" ex="true" iu="true" rc="false" slb="true" ln="广州市|地铁1号线,广州市|地铁5号线" int="2"/>
+		<p sid="五羊邨" lb="五羊邨" x="4.4" y="-38.9" rx="-43.5" ry="-7.6" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" int="2"/>
+		<p sid="珠江新城" lb="珠江新城" x="67.4" y="-38.9" rx="-54.3" ry="3.3" st="true" ex="true" iu="true" rc="flse" slb="true" ln="广州市|地铁3号线,广州市|地铁5号线" int="2"/>
+		<p sid="猎德" lb="猎德" x="111" y="-39" rx="-13" ry="-20.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" int="2"/>
+		<p sid="潭村" lb="潭村" x="154.3" y="-39" rx="-13.3" ry="-20.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" int="3"/>
+		<p sid="员村" lb="员村" x="197.6" y="-39" rx="-13.3" ry="-20.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" int="2"/>
+		<p sid="科韵路" lb="科韵路" x="240.9" y="-39" rx="-18" ry="-20.9" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" int="3"/>
+		<p sid="车陂南" lb="车陂南" x="284.2" y="-39" rx="10" ry="-8" st="true" ex="true" iu="true" rc="false" slb="true" ln="广州市|地铁4号线,广州市|地铁5号线" int="2"/>
+		<p sid="东圃" lb="东圃" x="309.5" y="-13.7" rx="9.9" ry="-10" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" int="3"/>
+		<p sid="三溪" lb="三溪" x="336.6" y="13.4" rx="10.3" ry="-8.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" int="2"/>
+		<p sid="鱼珠" lb="鱼珠" x="367.8" y="43.9" rx="3" ry="-21.6" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" int="3"/>
+		<p sid="大沙地" lb="大沙地" x="429.7" y="43.9" rx="-18.3" ry="-21.6" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" int="2"/>
+		<p sid="大沙东" lb="大沙东" x="488.4" y="43.9" rx="-18.3" ry="-21.6" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" int="1"/>
+		<p sid="文冲" lb="文冲" x="550.1" y="43.9" rx="-12.6" ry="-21.6" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁5号线" />
+	</l>	
+	<l lid="地铁8号线" lb="8号线" slb="8" n="13" loop="false" lbx="-85" lby="29.5" lbr="0.0" lc="0x00A1CC">
+		<p sid="凤凰新村" lb="凤凰新村" x="-310" y="10" rx="-8" ry="-20.4" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁8号线" int="1" />
+		<p sid="沙园" lb="沙园" x="-270" y="61.5" rx="-14" ry="10.2" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁8号线" int="2" />
+		<p sid="宝岗大道" lb="宝岗大道" x="-230" y="61.5" rx="-28" ry="10.2" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁8号线" int="2" />
+		<p sid="昌岗" lb="昌岗" x="-196.2" y="61.5" rx="4" ry="10.2" st="true" ex="true" iu="true" rc="false" slb="true" ln="广州市|地铁2号线,广州市|地铁8号线" int="2" />
+		<p sid="晓港" lb="晓港" x="-148.3" y="61.5" rx="-11.7" ry="10.2" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁8号线" int="2" />
+		<p sid="中大" lb="中大" x="-87.6" y="61.5" rx="-12.8" ry="10.2" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁8号线" int="3" />
+		<p sid="鹭江" lb="鹭江" x="-27.5" y="61.5" rx="-12.8" ry="10.2" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁8号线" int="3" />
+		<p sid="客村" lb="客村" x="67.4" y="61.5" rx="-37.8" ry="10.2" st="true" ex="true" iu="true" rc="false" slb="true" ln="广州市|地铁3号线,广州市|地铁8号线" int="2" />
+		<p sid="赤岗" lb="赤岗" x="137" y="61.5" rx="-12.6" ry="10.2" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁8号线" int="2" />
+		<p sid="磨碟沙" lb="磨碟沙" x="175.3" y="61.5" rx="-18" ry="10.2" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁8号线" int="2" />
+		<p sid="新港东" lb="新港东" x="213.5" y="61.5" rx="-17.6" ry="10.2" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁8号线" int="2" />
+		<p sid="琶洲" lb="琶洲" x="251.8" y="61.5" rx="-13.4" ry="10.2" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|地铁8号线" int="2" />
+		<p sid="万胜围" lb="万胜围" x="284.2" y="61.5" rx="8.6" ry="-9" st="true" ex="true" iu="true" rc="false" slb="true" ln="广州市|地铁4号线,广州市|地铁8号线" />
+	</l>	
+	<l lid="广佛线" lb="广佛线" slb="广佛" n="14" loop="false" lbx="-480" lby="225" lbr="0.0" lc="0xC9E887">
+		<p sid="西朗" lb="西朗" x="-328.6" y="167.8" rx="12" ry="-7.9" st="true" ex="true" iu="true" rc="false" slb="true" ln="广州市|地铁1号线,广州市|广佛线" int="2" />
+		<p sid="菊树" lb="菊树" x="-358.6" y="167.8" rx="-12.5" ry="-24" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|广佛线" int="3" />
+		<p sid="龙溪" lb="龙溪" x="-388.6" y="167.8" rx="-12.5" ry="-24" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|广佛线" int="5" />
+		<p sid="金融高新区" lb="金融高新区" x="-418.6" y="167.8" rx="-75" ry="-8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|广佛线" int="2" />
+		<p sid="千灯湖" lb="千灯湖" x="-418.6" y="220" rx="12" ry="-8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|广佛线" int="3" />
+		<p sid="礌岗" lb="礌岗" x="-418.6" y="270" rx="12" ry="-8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|广佛线" int="2" />
+		<p sid="南桂路" lb="南桂路" x="-418.6" y="320" rx="12" ry="-8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|广佛线" int="2" />
+		<p sid="桂城" lb="桂城" x="-448.6" y="320" rx="-12.5" ry="-24" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|广佛线" int="2" />
+		<p sid="朝安" lb="朝安" x="-478.6" y="320" rx="-12.5" ry="-24" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|广佛线" int="2" />
+		<p sid="普君北路" lb="普君北路" x="-518.6" y="320" rx="-28" ry="-24" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|广佛线" int="2" />
+		<p sid="祖庙" lb="祖庙" x="-558.6" y="320" rx="-37" ry="-8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|广佛线" int="2" />
+		<p sid="同济路" lb="同济路" x="-558.6" y="370" rx="12" ry="-8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|广佛线" int="2" />
+		<p sid="季华园" lb="季华园" x="-558.6" y="410" rx="12" ry="-8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|广佛线" int="2" />
+		<p sid="魁奇路" lb="魁奇路" x="-558.6" y="460" rx="12" ry="-8" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|广佛线"  />
+	</l>
+	<l lid="apm线" lb="APM线" slb="APM" n="8" loop="false" lbx="96" lby="1.6" lbr="0.0" lc="0x00A1CB">
+		<p sid="林和西" lb="林和西" x="85.4" y="-193.4" rx="-51.3" ry="-7.7" st="true" ex="true" iu="true" rc="false" slb="false" ln="广州市|apm线" int="1" />
+		<p sid="体育中心南" lb="体育中心南" x="85.4" y="-173.6" rx="5.3" ry="-7.7" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|apm线" int="1" />
+		<p sid="天河南" lb="天河南" x="85.4" y="-151.3" rx="5.3" ry="-7.7" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|apm线" int="1" />
+		<p sid="黄埔大道" lb="黄埔大道" x="85.4" y="-130.5" rx="5.3" ry="-7.7" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|apm线" int="1" />
+		<p sid="妇儿中心" lb="妇儿中心" x="85.4" y="-112.3" rx="5.3" ry="-7.7" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|apm线" int="1" />
+		<p sid="花城大道" lb="花城大道" x="85.4" y="-87.1" rx="5.3" ry="-7.7" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|apm线" int="1" />
+		<p sid="歌剧院" lb="歌剧院" x="85.4" y="-66.2" rx="5.3" ry="-7.7" st="true" ex="false" iu="true" rc="false" slb="true" ln="广州市|apm线" int="2" />
+		<p sid="赤岗塔" lb="赤岗塔" x="85.4" y="12.6" rx="-48.5" ry="-7.9" st="true" ex="true" iu="true" rc="flse" slb="false" ln="广州市|apm线"  />
+	</l>
+</sw>
