@@ -1,0 +1,389 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>问卷调查</title>
+<style type="text/css">
+/*===================================
+author:	lou xiao jian
+email:  jxsr_lxj@163.com
+====================================*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+body{font:12px/22px "微软雅黑",Verdana;word-break:break-all;text-align:center; color:#474d50; background:#191919}
+fieldset,img{border:0;} 
+table {border-collapse:collapse;border-spacing:0;} 
+ol,li,ul{list-style:none;} 
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+caption,th{text-align:left;} 
+h1,h2,h3,h4,h5,h6{font-size:100%;} 
+q:before,q:after{content:'';}
+abbr,acronym{border:0;font-variant:normal;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+input,select,textarea{font:normal normal 12px "Verdana";}
+input,textarea,select{*font-size:100%;}
+input,textarea{color:#666}
+select{color:#999}
+/* 字体属性 [定义规则，小写f加属性名称] */
+.fB{font-weight:bold;}
+.fI{font-style:italic;}
+/* 字体大小*/
+.fs12{font-size:12px;}
+.fs14{font-size:14px;}
+/* 浮动*/
+.fl{float:left;}
+.fr{float:right}
+/* 其它属性*/
+.hide{display:none}
+.submit{cursor:pointer;border:0}
+.noText{display:block;height:0;width:0;line-height:0;overflow:hidden}
+/*textList*/
+.tList a{text-decoration:none}
+.tList li{padding-left:15px;line-height:24px;height:24px;overflow:hidden;}
+/*pic_left_text_right*/
+.pltr,.pltr .tr,.pltr .tl{overflow:hidden;zoom:1}
+.pltr .img,.pltr .tl{float:left;_margin-right:-3px;}
+.pltr .img img,.pltr .tl img{vertical-align:top}
+/*pic_up_text_down*/
+.pList{overflow:hidden;zoom:1}
+.pList li{float:left;text-align:center}
+.pList li img{vertical-align:top;margin-bottom:2px}
+.pList li h4,.pList li span,.pList li em{display:block;overflow:hidden;font-size:12px;font-weight:normal;height:18px;line-height:18px;text-align:center}
+/*==clear==*/
+.clear{clear:both;font-size:0px;width:0px;height:0;visibility:hidden;line-height:0}
+.clearfix:after {content: "";display:block;height:0;clear:both;visibility:hidden;}
+* html>body .clearfix {display: inline-block;width:100%;}
+* html .clearfix{/* Hides from IE-mac \*/height: 1%;/* End hide from IE-mac */}
+/* ie7 hack*/
+*+html .clearfix {min-height:1%;}
+.dlFrom{overflow:hidden;zoom:1;}
+	.dlFrom dt{float:left;}
+	.dlFrom dt{clear:left;text-align:right;_margin-right:-3px}
+	.dlFrom dd{overflow:hidden;zoom:1}
+	.dlFrom dd img,.dlFrom dd input,.dlFrom dd a,.dlFrom dd em{float:left;margin-right:5px}
+	.login_btn a,.login_btn input{float:left}
+	
+.table ul{overflow:hidden;zoom:1;font-family:Tahoma,Geneva,sans-serif;font-size:12px;border-bottom:1px dashed #ccccca}
+	.table ul li{float:left;padding:3px 0;text-align:center}
+	.table ul li input{width:13px; height:13px; margin-top:4px; vertical-align:top}
+
+.pitch{margin-bottom:8px}/*间距*/
+#wrapper{width:800px;margin:0 auto;text-align:left;background:#fff url(s_img_s1/bobo.jpg) right bottom no-repeat;padding-bottom:105px}
+#header{height:150px; background:url(s_img_s1/header.jpg) no-repeat; margin-bottom:20px}
+#container{padding:0 60px; font-size:14px;}
+
+.new-table .t1{width:200px;text-align:left}
+	.new-table .t2{width:94px}
+	.new-table .t3{width:70px}
+	.new-table .t4{width:80px}
+	.new-table .t5{width:76px}
+	.new-table .t6{width:104px}
+	
+.new-table2 .t1{width:240px;text-align:left}
+	.new-table2 .t2{width:150px}
+	.new-table2 .t3{width:150px}
+
+.new-table3 .t1{width:100px;text-align:left}
+	.new-table3 .t2{width:530px;text-align:left}
+	.new-table3 label{margin-right:15px; white-space:nowrap;display:inline-block;cursor:pointer}
+	.new-table3 label input{vertical-align:middle!important;margin:4px 3px 5px 0}
+
+.new-table4 .t1{width:200px;text-align:left}
+	.new-table4 .t2{width:430px;text-align:left}
+	.new-table4 label{margin-right:15px; white-space:nowrap;display:inline-block;cursor:pointer}
+	.new-table4 label input{vertical-align:middle!important;margin:4px 3px 5px 0}
+
+h1{text-indent:-9999px}
+.ql{overflow:hidden;zoom:1}
+	.ql li{float:left;padding-right:30px}
+	.ql li input{width:13px;height:13px; vertical-align:middle; margin:4px 3px 5px 0}
+	.ql li label{white-space:nowrap;display:inline-block}
+.qinai{border-bottom:1px solid #8e9293;padding-bottom:20px;margin-bottom:20px}
+.qinai p{text-indent:30px}
+.quesList dt{font-weight:bold;margin-bottom:5px}
+	.quesList dt em{margin-left:20px}
+	.quesList dd{padding-left:43px;padding-bottom:20px;overflow:hidden;zoom:1}
+	.quesList dd .input{}
+.select,.select2{margin-right:10px; vertical-align:top}
+.select{width:192px}
+.select2{width:96px}
+.input{width:340px;height:18px;border:1px solid #acafaf;display:block;font-size:12px;padding:4px 0 0 3px}
+
+.but,.but span{background-image:url(s_img_s1/s2.png);background-repeat:no-repeat;}
+.but,.but span{line-height:23px;display:inline-block;font-size:12px;color:#383838;text-decoration:none}
+.but:hover{color:#383838;text-decoration:none}
+.but{background-position:-97px -23px;}
+.but span{margin-left:3px;padding:0 8px 0 5px;background-position:right 0}
+
+.page{padding-left:42px}
+.page .but{margin-right:10px; position:relative; top:-22px; margin-bottom:-22px}
+.btnAct{overflow:hidden;zoom:1;padding-left:240px}
+.btnAct input{float:left;background-image:url(s_img_s1/btn.gif);background-repeat:no-repeat;border:0;cursor:pointer;text-indent:-9999px}
+.btnAct .tijiao{width:73px;height:24px;margin-right:15px}
+.btnAct .chongzhi{width:76px;height:22px;background-position:0 -25px;margin-top:1px}
+</style>
+</head>
+
+<body>
+<!--wrapper-->
+<div id="wrapper">
+  <!--header-->
+  <div id="header">
+
+  <h1>PPS高清电影调查问卷</h1>
+  </div>
+  <!--/header-->  
+
+  <!--container-->
+  <div id="container">
+  
+   <!--qinai-->
+   <div class="qinai">
+   亲爱的用户：
+  <p> 感谢您利用宝贵的时间填写PPS调查问卷！</p>
+
+   </div>
+   <!--/qinai-->
+   <form id="form1" name="form1" action="./index.php?c=vote&m=submit_vote" method="post" >
+      <!--quesList-->
+     <dl class="quesList">
+   		<dt>1.<em>请问提到视频网站或者视频软件/工具，你会想到的哪些品牌呢？
+</em></dt><dd><label style="float:left;margin-right:5px">第一品牌:</label><input class="input" name="vote_6_text1" value="" type="text" /></dd>
+			  <dd><label style="float:left;margin-right:5px">第二品牌:</label><input class="input" name="vote_6_text2" value="" type="text" /></dd>
+
+			  <dd><label style="float:left;margin-right:5px">第三品牌:</label><input class="input" name="vote_6_text3" value="" type="text" /></dd><dd>
+          <ul class="ql"><li><label ><input type="radio" name="vote_6" value="27"  >我一个都想不起来
+</label></li></ul>                                          
+        </dd><dt>2.<em>请问以下视频网站/软件中，您听说过哪些？
+</em></dt><dd>
+          <ul class="ql"><li><label ><input type="checkbox" name="vote_7" value="33"  >PPS网络电视（pps.tv）
+</label></li><li><label ><input type="checkbox" name="vote_7" value="29"  >土豆网（tudou.com）
+</label></li><li><label ><input type="checkbox" name="vote_7" value="32"  >六间房（6.cn）
+</label></li><li><label ><input type="checkbox" name="vote_7" value="36"  >风行（funshion.com）
+</label></li><li><label ><input type="checkbox" name="vote_7" value="34"  >天线网络电视（openv.com）
+</label></li><li><label ><input type="checkbox" name="vote_7" value="30"  >56网（56.com）
+</label></li><li><label ><input type="checkbox" name="vote_7" value="37"  >皮皮网（pipi.cn）
+
+</label></li><li><label ><input type="checkbox" name="vote_7" value="35"  >PPLive（pplive.com）
+</label></li><li><label ><input type="checkbox" name="vote_7" value="41"  >都没有听说过
+</label></li><li><label ><input type="checkbox" name="vote_7" value="28"  >优酷（youku.com）
+</label></li><li><label ><input type="checkbox" name="vote_7" value="40"  >网络电视台CNTV（cntv.cn）
+</label></li><li><label ><input type="checkbox" name="vote_7" value="31"  >酷6网（ku6.com）
+</label></li><li><label ><input type="checkbox" name="vote_7" value="38"  >新浪视频（video.sina.com.cn）
+</label></li><li><label ><input type="checkbox" name="vote_7" value="39"  >搜狐视频（tv.sohu.com）
+</label></li></ul>                                          
+        </dd><dt>3.<em>请问， 您是否喜欢以下视频网站？</em></dt><dd>
+          <div class="new-table4 table"><ul><li  class="t1">优酷（youku.com）
+</li> <li class="t2"><label ><input type="radio" name="vote_9" value="42"  >非常喜欢</label><label ><input type="radio" name="vote_9" value="55"  >喜欢</label><label ><input type="radio" name="vote_9" value="68"  >一般</label><label ><input type="radio" name="vote_9" value="81"  >不喜欢</label><label ><input type="radio" name="vote_9" value="94"  >非常不喜欢</label></li></ul><ul><li  class="t1">土豆网（tudou.com）
+
+</li> <li class="t2"><label ><input type="radio" name="vote_10" value="43"  >非常喜欢</label><label ><input type="radio" name="vote_10" value="56"  >喜欢</label><label ><input type="radio" name="vote_10" value="69"  >一般</label><label ><input type="radio" name="vote_10" value="82"  >不喜欢</label><label ><input type="radio" name="vote_10" value="95"  >非常不喜欢</label></li></ul><ul><li  class="t1">56网（56.com）
+</li> <li class="t2"><label ><input type="radio" name="vote_11" value="44"  >非常喜欢</label><label ><input type="radio" name="vote_11" value="57"  >喜欢</label><label ><input type="radio" name="vote_11" value="70"  >一般</label><label ><input type="radio" name="vote_11" value="83"  >不喜欢</label><label ><input type="radio" name="vote_11" value="96"  >非常不喜欢</label></li></ul><ul><li  class="t1">酷6网（ku6.com）
+</li> <li class="t2"><label ><input type="radio" name="vote_12" value="45"  >非常喜欢</label><label ><input type="radio" name="vote_12" value="58"  >喜欢</label><label ><input type="radio" name="vote_12" value="71"  >一般</label><label ><input type="radio" name="vote_12" value="84"  >不喜欢</label><label ><input type="radio" name="vote_12" value="97"  >非常不喜欢</label></li></ul><ul><li  class="t1">六间房（6.cn）
+
+</li> <li class="t2"><label ><input type="radio" name="vote_13" value="46"  >非常喜欢</label><label ><input type="radio" name="vote_13" value="59"  >喜欢</label><label ><input type="radio" name="vote_13" value="72"  >一般</label><label ><input type="radio" name="vote_13" value="85"  >不喜欢</label><label ><input type="radio" name="vote_13" value="98"  >非常不喜欢</label></li></ul><ul><li  class="t1">PPS网络电视（pps.tv）
+</li> <li class="t2"><label ><input type="radio" name="vote_14" value="47"  >非常喜欢</label><label ><input type="radio" name="vote_14" value="60"  >喜欢</label><label ><input type="radio" name="vote_14" value="73"  >一般</label><label ><input type="radio" name="vote_14" value="86"  >不喜欢</label><label ><input type="radio" name="vote_14" value="99"  >非常不喜欢</label></li></ul><ul><li  class="t1">天线网络电视（openv.com）
+</li> <li class="t2"><label ><input type="radio" name="vote_15" value="48"  >非常喜欢</label><label ><input type="radio" name="vote_15" value="61"  >喜欢</label><label ><input type="radio" name="vote_15" value="74"  >一般</label><label ><input type="radio" name="vote_15" value="87"  >不喜欢</label><label ><input type="radio" name="vote_15" value="100"  >非常不喜欢</label></li></ul><ul><li  class="t1">PPLive（pplive.com）
+
+</li> <li class="t2"><label ><input type="radio" name="vote_16" value="49"  >非常喜欢</label><label ><input type="radio" name="vote_16" value="62"  >喜欢</label><label ><input type="radio" name="vote_16" value="75"  >一般</label><label ><input type="radio" name="vote_16" value="88"  >不喜欢</label><label ><input type="radio" name="vote_16" value="101"  >非常不喜欢</label></li></ul><ul><li  class="t1">风行（funshion.com）
+</li> <li class="t2"><label ><input type="radio" name="vote_17" value="50"  >非常喜欢</label><label ><input type="radio" name="vote_17" value="63"  >喜欢</label><label ><input type="radio" name="vote_17" value="76"  >一般</label><label ><input type="radio" name="vote_17" value="89"  >不喜欢</label><label ><input type="radio" name="vote_17" value="102"  >非常不喜欢</label></li></ul><ul><li  class="t1">皮皮网（pipi.cn）
+</li> <li class="t2"><label ><input type="radio" name="vote_18" value="51"  >非常喜欢</label><label ><input type="radio" name="vote_18" value="64"  >喜欢</label><label ><input type="radio" name="vote_18" value="77"  >一般</label><label ><input type="radio" name="vote_18" value="90"  >不喜欢</label><label ><input type="radio" name="vote_18" value="103"  >非常不喜欢</label></li></ul><ul><li  class="t1">新浪视频（video.sina.com.cn）
+
+</li> <li class="t2"><label ><input type="radio" name="vote_19" value="52"  >非常喜欢</label><label ><input type="radio" name="vote_19" value="65"  >喜欢</label><label ><input type="radio" name="vote_19" value="78"  >一般</label><label ><input type="radio" name="vote_19" value="91"  >不喜欢</label><label ><input type="radio" name="vote_19" value="104"  >非常不喜欢</label></li></ul><ul><li  class="t1">搜狐视频（tv.sohu.com）
+</li> <li class="t2"><label ><input type="radio" name="vote_20" value="53"  >非常喜欢</label><label ><input type="radio" name="vote_20" value="66"  >喜欢</label><label ><input type="radio" name="vote_20" value="79"  >一般</label><label ><input type="radio" name="vote_20" value="92"  >不喜欢</label><label ><input type="radio" name="vote_20" value="105"  >非常不喜欢</label></li></ul><ul><li  class="t1">网络电视台CNTV（cntv.cn）
+</li> <li class="t2"><label ><input type="radio" name="vote_21" value="54"  >非常喜欢</label><label ><input type="radio" name="vote_21" value="67"  >喜欢</label><label ><input type="radio" name="vote_21" value="80"  >一般</label><label ><input type="radio" name="vote_21" value="93"  >不喜欢</label><label ><input type="radio" name="vote_21" value="106"  >非常不喜欢</label></li></ul></div>                                                   
+        </dd><dt>4.<em>您认为以下哪个视频网站最符合所描述的各种印象？</em></dt><dd>
+
+          <div class="new-table3 table"><ul><li  class="t1">内容丰富的
+</li> <li class="t2"><label ><input type="radio" name="vote_23" value="200"  >优酷（youku.com）</label><label ><input type="radio" name="vote_23" value="217"  >土豆网（tudou.com）</label><label ><input type="radio" name="vote_23" value="234"  >56网（56.com） </label><label ><input type="radio" name="vote_23" value="251"  >酷6网（ku6.com）</label><label ><input type="radio" name="vote_23" value="268"  >六间房（6.cn）</label><label ><input type="radio" name="vote_23" value="285"  >PPS网络电视（pps.tv）</label><label ><input type="radio" name="vote_23" value="302"  >天线网络电视（openv.com）</label><label ><input type="radio" name="vote_23" value="319"  >PPLive（pplive.com）</label><label ><input type="radio" name="vote_23" value="336"  >风行（funshion.com） </label><label ><input type="radio" name="vote_23" value="353"  >皮皮网（pipi.cn）</label><label ><input type="radio" name="vote_23" value="369"  >新浪视频（video.sina.com.cn）</label><label ><input type="radio" name="vote_23" value="386"  >搜狐视频（tv.sohu.com）</label><label ><input type="radio" name="vote_23" value="403"  >网络电视台CNTV（cntv.cn）</label></li></ul><ul><li  class="t1">浏览速度快的
+
+</li> <li class="t2"><label ><input type="radio" name="vote_24" value="201"  >优酷（youku.com）</label><label ><input type="radio" name="vote_24" value="218"  >土豆网（tudou.com）</label><label ><input type="radio" name="vote_24" value="235"  >56网（56.com） </label><label ><input type="radio" name="vote_24" value="252"  >酷6网（ku6.com）</label><label ><input type="radio" name="vote_24" value="269"  >六间房（6.cn）</label><label ><input type="radio" name="vote_24" value="286"  >PPS网络电视（pps.tv）</label><label ><input type="radio" name="vote_24" value="303"  >天线网络电视（openv.com）</label><label ><input type="radio" name="vote_24" value="320"  >PPLive（pplive.com）</label><label ><input type="radio" name="vote_24" value="337"  >风行（funshion.com） </label><label ><input type="radio" name="vote_24" value="354"  >皮皮网（pipi.cn）</label><label ><input type="radio" name="vote_24" value="370"  >新浪视频（video.sina.com.cn）</label><label ><input type="radio" name="vote_24" value="387"  >搜狐视频（tv.sohu.com）</label><label ><input type="radio" name="vote_24" value="404"  >网络电视台CNTV（cntv.cn）</label></li></ul><ul><li  class="t1">更新速度快的
+</li> <li class="t2"><label ><input type="radio" name="vote_25" value="202"  >优酷（youku.com）</label><label ><input type="radio" name="vote_25" value="219"  >土豆网（tudou.com）</label><label ><input type="radio" name="vote_25" value="236"  >56网（56.com） </label><label ><input type="radio" name="vote_25" value="253"  >酷6网（ku6.com）</label><label ><input type="radio" name="vote_25" value="270"  >六间房（6.cn）</label><label ><input type="radio" name="vote_25" value="287"  >PPS网络电视（pps.tv）</label><label ><input type="radio" name="vote_25" value="304"  >天线网络电视（openv.com）</label><label ><input type="radio" name="vote_25" value="321"  >PPLive（pplive.com）</label><label ><input type="radio" name="vote_25" value="338"  >风行（funshion.com） </label><label ><input type="radio" name="vote_25" value="355"  >皮皮网（pipi.cn）</label><label ><input type="radio" name="vote_25" value="371"  >新浪视频（video.sina.com.cn）</label><label ><input type="radio" name="vote_25" value="388"  >搜狐视频（tv.sohu.com）</label><label ><input type="radio" name="vote_25" value="405"  >网络电视台CNTV（cntv.cn）</label></li></ul><ul><li  class="t1">视听效果好的
+
+</li> <li class="t2"><label ><input type="radio" name="vote_26" value="203"  >优酷（youku.com）</label><label ><input type="radio" name="vote_26" value="220"  >土豆网（tudou.com）</label><label ><input type="radio" name="vote_26" value="237"  >56网（56.com） </label><label ><input type="radio" name="vote_26" value="254"  >酷6网（ku6.com）</label><label ><input type="radio" name="vote_26" value="271"  >六间房（6.cn）</label><label ><input type="radio" name="vote_26" value="288"  >PPS网络电视（pps.tv）</label><label ><input type="radio" name="vote_26" value="305"  >天线网络电视（openv.com）</label><label ><input type="radio" name="vote_26" value="322"  >PPLive（pplive.com）</label><label ><input type="radio" name="vote_26" value="339"  >风行（funshion.com） </label><label ><input type="radio" name="vote_26" value="372"  >新浪视频（video.sina.com.cn）</label><label ><input type="radio" name="vote_26" value="389"  >搜狐视频（tv.sohu.com）</label><label ><input type="radio" name="vote_26" value="406"  >网络电视台CNTV（cntv.cn）</label><label ><input type="radio" name="vote_26" value="431"  >皮皮网（pipi.cn）</label></li></ul><ul><li  class="t1">网站/软件界面友好的
+</li> <li class="t2"><label ><input type="radio" name="vote_27" value="204"  >优酷（youku.com）</label><label ><input type="radio" name="vote_27" value="221"  >土豆网（tudou.com）</label><label ><input type="radio" name="vote_27" value="238"  >56网（56.com） </label><label ><input type="radio" name="vote_27" value="255"  >酷6网（ku6.com）</label><label ><input type="radio" name="vote_27" value="272"  >六间房（6.cn）</label><label ><input type="radio" name="vote_27" value="289"  >PPS网络电视（pps.tv）</label><label ><input type="radio" name="vote_27" value="306"  >天线网络电视（openv.com）</label><label ><input type="radio" name="vote_27" value="323"  >PPLive（pplive.com）</label><label ><input type="radio" name="vote_27" value="340"  >风行（funshion.com） </label><label ><input type="radio" name="vote_27" value="356"  >皮皮网（pipi.cn）</label><label ><input type="radio" name="vote_27" value="373"  >新浪视频（video.sina.com.cn）</label><label ><input type="radio" name="vote_27" value="390"  >搜狐视频（tv.sohu.com）</label><label ><input type="radio" name="vote_27" value="407"  >网络电视台CNTV（cntv.cn）</label></li></ul><ul><li  class="t1">站内搜索功能强的
+
+</li> <li class="t2"><label ><input type="radio" name="vote_28" value="205"  >优酷（youku.com）</label><label ><input type="radio" name="vote_28" value="222"  >土豆网（tudou.com）</label><label ><input type="radio" name="vote_28" value="239"  >56网（56.com） </label><label ><input type="radio" name="vote_28" value="256"  >酷6网（ku6.com）</label><label ><input type="radio" name="vote_28" value="273"  >六间房（6.cn）</label><label ><input type="radio" name="vote_28" value="290"  >PPS网络电视（pps.tv）</label><label ><input type="radio" name="vote_28" value="307"  >天线网络电视（openv.com）</label><label ><input type="radio" name="vote_28" value="324"  >PPLive（pplive.com）</label><label ><input type="radio" name="vote_28" value="341"  >风行（funshion.com） </label><label ><input type="radio" name="vote_28" value="357"  >皮皮网（pipi.cn）</label><label ><input type="radio" name="vote_28" value="374"  >新浪视频（video.sina.com.cn）</label><label ><input type="radio" name="vote_28" value="391"  >搜狐视频（tv.sohu.com）</label><label ><input type="radio" name="vote_28" value="408"  >网络电视台CNTV（cntv.cn）</label></li></ul><ul><li  class="t1">清晰度高的
+</li> <li class="t2"><label ><input type="radio" name="vote_29" value="206"  >优酷（youku.com）</label><label ><input type="radio" name="vote_29" value="223"  >土豆网（tudou.com）</label><label ><input type="radio" name="vote_29" value="240"  >56网（56.com） </label><label ><input type="radio" name="vote_29" value="257"  >酷6网（ku6.com）</label><label ><input type="radio" name="vote_29" value="274"  >六间房（6.cn）</label><label ><input type="radio" name="vote_29" value="291"  >PPS网络电视（pps.tv）</label><label ><input type="radio" name="vote_29" value="308"  >天线网络电视（openv.com）</label><label ><input type="radio" name="vote_29" value="325"  >PPLive（pplive.com）</label><label ><input type="radio" name="vote_29" value="342"  >风行（funshion.com） </label><label ><input type="radio" name="vote_29" value="358"  >皮皮网（pipi.cn）</label><label ><input type="radio" name="vote_29" value="375"  >新浪视频（video.sina.com.cn）</label><label ><input type="radio" name="vote_29" value="392"  >搜狐视频（tv.sohu.com）</label><label ><input type="radio" name="vote_29" value="409"  >网络电视台CNTV（cntv.cn）</label></li></ul><ul><li  class="t1">知名度高的
+
+</li> <li class="t2"><label ><input type="radio" name="vote_30" value="207"  >优酷（youku.com）</label><label ><input type="radio" name="vote_30" value="224"  >土豆网（tudou.com）</label><label ><input type="radio" name="vote_30" value="241"  >56网（56.com） </label><label ><input type="radio" name="vote_30" value="258"  >酷6网（ku6.com）</label><label ><input type="radio" name="vote_30" value="275"  >六间房（6.cn）</label><label ><input type="radio" name="vote_30" value="292"  >PPS网络电视（pps.tv）</label><label ><input type="radio" name="vote_30" value="309"  >天线网络电视（openv.com）</label><label ><input type="radio" name="vote_30" value="326"  >PPLive（pplive.com）</label><label ><input type="radio" name="vote_30" value="343"  >风行（funshion.com） </label><label ><input type="radio" name="vote_30" value="359"  >皮皮网（pipi.cn）</label><label ><input type="radio" name="vote_30" value="376"  >新浪视频（video.sina.com.cn）</label><label ><input type="radio" name="vote_30" value="393"  >搜狐视频（tv.sohu.com）</label><label ><input type="radio" name="vote_30" value="410"  >网络电视台CNTV（cntv.cn）</label></li></ul><ul><li  class="t1">广告少的
+</li> <li class="t2"><label ><input type="radio" name="vote_31" value="208"  >优酷（youku.com）</label><label ><input type="radio" name="vote_31" value="225"  >土豆网（tudou.com）</label><label ><input type="radio" name="vote_31" value="242"  >56网（56.com） </label><label ><input type="radio" name="vote_31" value="259"  >酷6网（ku6.com）</label><label ><input type="radio" name="vote_31" value="276"  >六间房（6.cn）</label><label ><input type="radio" name="vote_31" value="293"  >PPS网络电视（pps.tv）</label><label ><input type="radio" name="vote_31" value="310"  >天线网络电视（openv.com）</label><label ><input type="radio" name="vote_31" value="327"  >PPLive（pplive.com）</label><label ><input type="radio" name="vote_31" value="344"  >风行（funshion.com） </label><label ><input type="radio" name="vote_31" value="360"  >皮皮网（pipi.cn）</label><label ><input type="radio" name="vote_31" value="377"  >新浪视频（video.sina.com.cn）</label><label ><input type="radio" name="vote_31" value="394"  >搜狐视频（tv.sohu.com）</label><label ><input type="radio" name="vote_31" value="411"  >网络电视台CNTV（cntv.cn）</label></li></ul><ul><li  class="t1">高品质的
+
+</li> <li class="t2"><label ><input type="radio" name="vote_32" value="209"  >优酷（youku.com）</label><label ><input type="radio" name="vote_32" value="226"  >土豆网（tudou.com）</label><label ><input type="radio" name="vote_32" value="243"  >56网（56.com） </label><label ><input type="radio" name="vote_32" value="260"  >酷6网（ku6.com）</label><label ><input type="radio" name="vote_32" value="277"  >六间房（6.cn）</label><label ><input type="radio" name="vote_32" value="294"  >PPS网络电视（pps.tv）</label><label ><input type="radio" name="vote_32" value="311"  >天线网络电视（openv.com）</label><label ><input type="radio" name="vote_32" value="328"  >PPLive（pplive.com）</label><label ><input type="radio" name="vote_32" value="345"  >风行（funshion.com） </label><label ><input type="radio" name="vote_32" value="361"  >皮皮网（pipi.cn）</label><label ><input type="radio" name="vote_32" value="378"  >新浪视频（video.sina.com.cn）</label><label ><input type="radio" name="vote_32" value="395"  >搜狐视频（tv.sohu.com）</label><label ><input type="radio" name="vote_32" value="412"  >网络电视台CNTV（cntv.cn）</label></li></ul><ul><li  class="t1">年轻的
+</li> <li class="t2"><label ><input type="radio" name="vote_33" value="210"  >优酷（youku.com）</label><label ><input type="radio" name="vote_33" value="227"  >土豆网（tudou.com）</label><label ><input type="radio" name="vote_33" value="244"  >56网（56.com） </label><label ><input type="radio" name="vote_33" value="261"  >酷6网（ku6.com）</label><label ><input type="radio" name="vote_33" value="278"  >六间房（6.cn）</label><label ><input type="radio" name="vote_33" value="295"  >PPS网络电视（pps.tv）</label><label ><input type="radio" name="vote_33" value="312"  >天线网络电视（openv.com）</label><label ><input type="radio" name="vote_33" value="329"  >PPLive（pplive.com）</label><label ><input type="radio" name="vote_33" value="346"  >风行（funshion.com） </label><label ><input type="radio" name="vote_33" value="362"  >皮皮网（pipi.cn）</label><label ><input type="radio" name="vote_33" value="379"  >新浪视频（video.sina.com.cn）</label><label ><input type="radio" name="vote_33" value="396"  >搜狐视频（tv.sohu.com）</label><label ><input type="radio" name="vote_33" value="413"  >网络电视台CNTV（cntv.cn）</label></li></ul><ul><li  class="t1">有活力的
+
+</li> <li class="t2"><label ><input type="radio" name="vote_34" value="211"  >优酷（youku.com）</label><label ><input type="radio" name="vote_34" value="228"  >土豆网（tudou.com）</label><label ><input type="radio" name="vote_34" value="245"  >56网（56.com） </label><label ><input type="radio" name="vote_34" value="262"  >酷6网（ku6.com）</label><label ><input type="radio" name="vote_34" value="279"  >六间房（6.cn）</label><label ><input type="radio" name="vote_34" value="296"  >PPS网络电视（pps.tv）</label><label ><input type="radio" name="vote_34" value="313"  >天线网络电视（openv.com）</label><label ><input type="radio" name="vote_34" value="330"  >PPLive（pplive.com）</label><label ><input type="radio" name="vote_34" value="347"  >风行（funshion.com） </label><label ><input type="radio" name="vote_34" value="363"  >皮皮网（pipi.cn）</label><label ><input type="radio" name="vote_34" value="380"  >新浪视频（video.sina.com.cn）</label><label ><input type="radio" name="vote_34" value="397"  >搜狐视频（tv.sohu.com）</label><label ><input type="radio" name="vote_34" value="414"  >网络电视台CNTV（cntv.cn）</label></li></ul><ul><li  class="t1">让人快乐的
+</li> <li class="t2"><label ><input type="radio" name="vote_35" value="212"  >优酷（youku.com）</label><label ><input type="radio" name="vote_35" value="229"  >土豆网（tudou.com）</label><label ><input type="radio" name="vote_35" value="246"  >56网（56.com） </label><label ><input type="radio" name="vote_35" value="263"  >酷6网（ku6.com）</label><label ><input type="radio" name="vote_35" value="280"  >六间房（6.cn）</label><label ><input type="radio" name="vote_35" value="297"  >PPS网络电视（pps.tv）</label><label ><input type="radio" name="vote_35" value="314"  >天线网络电视（openv.com）</label><label ><input type="radio" name="vote_35" value="331"  >PPLive（pplive.com）</label><label ><input type="radio" name="vote_35" value="348"  >风行（funshion.com） </label><label ><input type="radio" name="vote_35" value="364"  >皮皮网（pipi.cn）</label><label ><input type="radio" name="vote_35" value="381"  >新浪视频（video.sina.com.cn）</label><label ><input type="radio" name="vote_35" value="398"  >搜狐视频（tv.sohu.com）</label><label ><input type="radio" name="vote_35" value="415"  >网络电视台CNTV（cntv.cn）</label></li></ul><ul><li  class="t1">有吸引力的
+
+</li> <li class="t2"><label ><input type="radio" name="vote_36" value="213"  >优酷（youku.com）</label><label ><input type="radio" name="vote_36" value="230"  >土豆网（tudou.com）</label><label ><input type="radio" name="vote_36" value="247"  >56网（56.com） </label><label ><input type="radio" name="vote_36" value="264"  >酷6网（ku6.com）</label><label ><input type="radio" name="vote_36" value="281"  >六间房（6.cn）</label><label ><input type="radio" name="vote_36" value="298"  >PPS网络电视（pps.tv）</label><label ><input type="radio" name="vote_36" value="315"  >天线网络电视（openv.com）</label><label ><input type="radio" name="vote_36" value="332"  >PPLive（pplive.com）</label><label ><input type="radio" name="vote_36" value="349"  >风行（funshion.com） </label><label ><input type="radio" name="vote_36" value="365"  >皮皮网（pipi.cn）</label><label ><input type="radio" name="vote_36" value="382"  >新浪视频（video.sina.com.cn）</label><label ><input type="radio" name="vote_36" value="399"  >搜狐视频（tv.sohu.com）</label><label ><input type="radio" name="vote_36" value="416"  >网络电视台CNTV（cntv.cn）</label></li></ul><ul><li  class="t1">现代的，时髦的
+</li> <li class="t2"><label ><input type="radio" name="vote_37" value="214"  >优酷（youku.com）</label><label ><input type="radio" name="vote_37" value="231"  >土豆网（tudou.com）</label><label ><input type="radio" name="vote_37" value="248"  >56网（56.com） </label><label ><input type="radio" name="vote_37" value="265"  >酷6网（ku6.com）</label><label ><input type="radio" name="vote_37" value="282"  >六间房（6.cn）</label><label ><input type="radio" name="vote_37" value="299"  >PPS网络电视（pps.tv）</label><label ><input type="radio" name="vote_37" value="316"  >天线网络电视（openv.com）</label><label ><input type="radio" name="vote_37" value="333"  >PPLive（pplive.com）</label><label ><input type="radio" name="vote_37" value="350"  >风行（funshion.com） </label><label ><input type="radio" name="vote_37" value="366"  >皮皮网（pipi.cn）</label><label ><input type="radio" name="vote_37" value="383"  >新浪视频（video.sina.com.cn）</label><label ><input type="radio" name="vote_37" value="400"  >搜狐视频（tv.sohu.com）</label><label ><input type="radio" name="vote_37" value="417"  >网络电视台CNTV（cntv.cn）</label></li></ul><ul><li  class="t1">专业的
+
+</li> <li class="t2"><label ><input type="radio" name="vote_38" value="215"  >优酷（youku.com）</label><label ><input type="radio" name="vote_38" value="232"  >土豆网（tudou.com）</label><label ><input type="radio" name="vote_38" value="249"  >56网（56.com） </label><label ><input type="radio" name="vote_38" value="266"  >酷6网（ku6.com）</label><label ><input type="radio" name="vote_38" value="283"  >六间房（6.cn）</label><label ><input type="radio" name="vote_38" value="300"  >PPS网络电视（pps.tv）</label><label ><input type="radio" name="vote_38" value="317"  >天线网络电视（openv.com）</label><label ><input type="radio" name="vote_38" value="334"  >PPLive（pplive.com）</label><label ><input type="radio" name="vote_38" value="351"  >风行（funshion.com） </label><label ><input type="radio" name="vote_38" value="367"  >皮皮网（pipi.cn）</label><label ><input type="radio" name="vote_38" value="384"  >新浪视频（video.sina.com.cn）</label><label ><input type="radio" name="vote_38" value="401"  >搜狐视频（tv.sohu.com）</label><label ><input type="radio" name="vote_38" value="418"  >网络电视台CNTV（cntv.cn）</label></li></ul><ul><li  class="t1">大家所喜欢的
+</li> <li class="t2"><label ><input type="radio" name="vote_39" value="216"  >优酷（youku.com）</label><label ><input type="radio" name="vote_39" value="233"  >土豆网（tudou.com）</label><label ><input type="radio" name="vote_39" value="250"  >56网（56.com） </label><label ><input type="radio" name="vote_39" value="267"  >酷6网（ku6.com）</label><label ><input type="radio" name="vote_39" value="284"  >六间房（6.cn）</label><label ><input type="radio" name="vote_39" value="301"  >PPS网络电视（pps.tv）</label><label ><input type="radio" name="vote_39" value="318"  >天线网络电视（openv.com）</label><label ><input type="radio" name="vote_39" value="335"  >PPLive（pplive.com）</label><label ><input type="radio" name="vote_39" value="352"  >风行（funshion.com） </label><label ><input type="radio" name="vote_39" value="368"  >皮皮网（pipi.cn）</label><label ><input type="radio" name="vote_39" value="385"  >新浪视频（video.sina.com.cn）</label><label ><input type="radio" name="vote_39" value="402"  >搜狐视频（tv.sohu.com）</label><label ><input type="radio" name="vote_39" value="419"  >网络电视台CNTV（cntv.cn）</label></li></ul></div>                                                   
+        </dd><dt>5.<em>您最近一年内都上过以下哪些视频网站？您最常使用的视频网站是哪个？</em></dt><dd>
+
+          <div class="new-table3 table"><ul><li  class="t1">上过的</li> <li class="t2"><label ><input type="checkbox" name="vote_41" value="427"  >天线网络电视（openv.com）</label><label ><input type="checkbox" name="vote_41" value="423"  >酷6网（ku6.com）</label><label ><input type="checkbox" name="vote_41" value="428"  >PPLive（pplive.com）</label><label ><input type="checkbox" name="vote_41" value="420"  >优酷（youku.com）</label><label ><input type="checkbox" name="vote_41" value="426"  >直播吧（zhibo8.com）</label><label ><input type="checkbox" name="vote_41" value="430"  >皮皮网（pipi.cn）</label><label ><input type="checkbox" name="vote_41" value="424"  >六间房（6.cn）</label><label ><input type="checkbox" name="vote_41" value="433"  >搜狐视频（tv.sohu.com）</label><label ><input type="checkbox" name="vote_41" value="434"  >都没上过</label><label ><input type="checkbox" name="vote_41" value="429"  >风行（funshion.com）</label><label ><input type="checkbox" name="vote_41" value="432"  >新浪视频（video.sina.com.cn）</label><label ><input type="checkbox" name="vote_41" value="422"  >56网（56.com）</label><label ><input type="checkbox" name="vote_41" value="421"  >土豆网（tudou.com）</label><label ><input type="checkbox" name="vote_41" value="425"  >PPS网络电视（pps.tv）</label></li></ul><ul><li  class="t1">最经常上的</li> <li class="t2"><label ><input type="radio" name="vote_42" value="441"  >直播吧（zhibo8.com）</label><label ><input type="radio" name="vote_42" value="442"  >天线网络电视（openv.com）</label><label ><input type="radio" name="vote_42" value="436"  >土豆网（tudou.com）</label><label ><input type="radio" name="vote_42" value="446"  >新浪视频（video.sina.com.cn）</label><label ><input type="radio" name="vote_42" value="437"  >56网（56.com）</label><label ><input type="radio" name="vote_42" value="444"  >风行（funshion.com）</label><label ><input type="radio" name="vote_42" value="448"  >都没上过</label><label ><input type="radio" name="vote_42" value="443"  >PPLive（pplive.com）</label><label ><input type="radio" name="vote_42" value="435"  >优酷（youku.com）</label><label ><input type="radio" name="vote_42" value="447"  >搜狐视频（tv.sohu.com）</label><label ><input type="radio" name="vote_42" value="445"  >皮皮网（pipi.cn）</label><label ><input type="radio" name="vote_42" value="440"  >PPS网络电视（pps.tv）</label><label ><input type="radio" name="vote_42" value="439"  >六间房（6.cn）</label><label ><input type="radio" name="vote_42" value="438"  >酷6网（ku6.com）</label></li></ul></div>                                                   
+        </dd><dt>6.<em>请问您经常在网络视频上收看的内容有哪些
+
+</em></dt><dd>
+          <ul class="ql"><li><label ><input type="checkbox" name="vote_43" value="450"  >电视剧</label></li><li><label ><input type="checkbox" name="vote_43" value="454"  >动漫</label></li><li><label ><input type="checkbox" name="vote_43" value="462"  >视频网站的自制剧</label></li><li><label ><input type="checkbox" name="vote_43" value="461"  >生活资讯</label></li><li><label ><input type="checkbox" name="vote_43" value="460"  >科学教育节目</label></li><li><label ><input type="checkbox" name="vote_43" value="459"  >财经节目</label></li><li><label ><input type="checkbox" name="vote_43" value="455"  >游戏</label></li><li><label ><input type="checkbox" name="vote_43" value="449"  >电影</label></li><li><label ><input type="checkbox" name="vote_43" value="457"  >直播节目</label></li><li><label ><input type="checkbox" name="vote_43" value="463"  >汽车</label></li><li><label ><input type="checkbox" name="vote_43" value="458"  >体育节目</label></li><li><label ><input type="checkbox" name="vote_43" value="453"  >娱乐综艺节目/戏曲相声小品 </label></li><li><label ><input type="checkbox" name="vote_43" value="464"  >旅游</label></li><li><label ><input type="checkbox" name="vote_43" value="456"  >原创/自拍/DV秀 </label></li><li><label ><input type="checkbox" name="vote_43" value="465"  >其他</label></li><li><label ><input type="checkbox" name="vote_43" value="452"  >新闻/热点</label></li><li><label ><input type="checkbox" name="vote_43" value="451"  >音乐</label></li></ul>                                          
+        </dd><dt>7.<em>您为什么会选择通过在线视频看这类节目？
+
+</em></dt><dd>
+          <ul class="ql"><li><label ><input type="checkbox" name="vote_44" value="474"  >电视节目吸引我的不多</label></li><li><label ><input type="checkbox" name="vote_44" value="472"  >网络直播的内容很吸引我</label></li><li><label ><input type="checkbox" name="vote_44" value="466"  >电视台广告太多，体验不好</label></li><li><label ><input type="checkbox" name="vote_44" value="471"  >家里没有电视机（或没有收视条件）</label></li><li><label ><input type="checkbox" name="vote_44" value="467"  >错过了电视台播放的档期</label></li><li><label ><input type="checkbox" name="vote_44" value="475"  >其他</label></li><li><label ><input type="checkbox" name="vote_44" value="473"  >网络点播功能很吸引我</label></li><li><label ><input type="checkbox" name="vote_44" value="468"  >只有视频网站有我想看的内容</label></li><li><label ><input type="checkbox" name="vote_44" value="469"  >在网上看时间好掌握，随意性大</label></li><li><label ><input type="checkbox" name="vote_44" value="470"  >在网上看能与其他用户互动</label></li></ul>                                          
+        </dd><dt>8.<em>您在收看视频内容时通常优先考虑哪类网站或运营商？
+</em></dt><dd>
+          <div class="new-table3 table"><ul><li  class="t1">经常使用</li> <li class="t2"><label ><input type="checkbox" name="vote_46" value="476"  >垂直视频媒体（优酷、土豆等）</label><label ><input type="checkbox" name="vote_46" value="478"  >视频软件客户端（PPS,PPTV等）</label><label ><input type="checkbox" name="vote_46" value="480"  >综合门户（新浪、搜狐等）</label><label ><input type="checkbox" name="vote_46" value="482"  >网络电视台（CNTV等）</label><label ><input type="checkbox" name="vote_46" value="484"  >其他网站</label><label ><input type="checkbox" name="vote_46" value="486"  >使用搜索引擎，搜到哪个用哪个</label><label ><input type="checkbox" name="vote_46" value="488"  >根据不同的内容，选择不同的网站</label><label ><input type="checkbox" name="vote_46" value="490"  >其他</label></li></ul><ul><li  class="t1">最常使用</li> <li class="t2"><label ><input type="radio" name="vote_47" value="477"  >垂直视频媒体（优酷、土豆等）</label><label ><input type="radio" name="vote_47" value="479"  >视频软件客户端（PPS,PPTV等）</label><label ><input type="radio" name="vote_47" value="481"  >综合门户（新浪、搜狐等）</label><label ><input type="radio" name="vote_47" value="483"  >网络电视台（CNTV等）</label><label ><input type="radio" name="vote_47" value="485"  >其他网站</label><label ><input type="radio" name="vote_47" value="487"  >使用搜索引擎，搜到哪个用哪个</label><label ><input type="radio" name="vote_47" value="489"  >根据不同的内容，选择不同的网站</label><label ><input type="radio" name="vote_47" value="491"  >其他</label></li></ul></div>                                                   
+        </dd><dt>9.<em>您是否使用视频软件客户端？
+
+</em></dt><dd>
+          <ul class="ql"><li><label ><input type="radio" name="vote_48" value="492"  >我一直使用视频软件客户端</label></li><li><label ><input type="radio" name="vote_48" value="494"  >我不使用视频软件客户端</label></li><li><label ><input type="radio" name="vote_48" value="493"  >我偶尔使用视频软件客户端</label></li></ul>                                          
+        </dd><dt>10.<em>对于视频软件客户端，以下哪些描述符合您的看法？
+</em></dt><dd>
+          <ul class="ql"><li><label ><input type="checkbox" name="vote_49" value="496"  >使用不方便，安装麻烦</label></li><li><label ><input type="checkbox" name="vote_49" value="499"  >清晰度更高</label></li><li><label ><input type="checkbox" name="vote_49" value="497"  >是选择视频的屏障</label></li><li><label ><input type="checkbox" name="vote_49" value="495"  >使用方便，消耗资源少</label></li><li><label ><input type="checkbox" name="vote_49" value="498"  >播放更流畅</label></li></ul>                                          
+        </dd><dt>11.<em>对于视频中内嵌的广告，你通常的做法是？
+
+</em></dt><dd>
+          <ul class="ql"><li><label ><input type="radio" name="vote_50" value="501"  >一般只在前几秒钟关注</label></li><li><label ><input type="radio" name="vote_50" value="503"  >如果是感兴趣的产品的广告，则全部看完</label></li><li><label ><input type="radio" name="vote_50" value="502"  >完全不看，直接跳过</label></li><li><label ><input type="radio" name="vote_50" value="504"  >如果是很有创意的广告，则全部看完</label></li><li><label ><input type="radio" name="vote_50" value="500"  >全部看完广告</label></li><li><label ><input type="radio" name="vote_50" value="505"  >不好说，不确定</label></li></ul>                                          
+        </dd><dt>12.<em>请问您是否点击过网络视频广告？
+</em></dt><dd>
+          <ul class="ql"><li><label ><input type="radio" name="vote_51" value="506"  >点击</label></li><li><label ><input type="radio" name="vote_51" value="507"  >不点击</label></li></ul>                                          
+        </dd><dt>13.<em>请问什么原因会促使您点击网上的广告？
+
+</em></dt><dd>
+          <ul class="ql"><li><label ><input type="checkbox" name="vote_52" value="513"  >我觉得它很烦人就点它，让它消失</label></li><li><label ><input type="checkbox" name="vote_52" value="509"  >我在这个网站看到这个广告的多种形式</label></li><li><label ><input type="checkbox" name="vote_52" value="510"  >我在其他网站（如门户等）看到过这个广告</label></li><li><label ><input type="checkbox" name="vote_52" value="512"  >身边的朋友告诉过我这个产品不错</label></li><li><label ><input type="checkbox" name="vote_52" value="508"  >我在这个网站多次看到这个广告</label></li><li><label ><input type="checkbox" name="vote_52" value="511"  >我在其他媒体上看到或听到过这个广告，想了解更多</label></li><li><label ><input type="checkbox" name="vote_52" value="514"  >这个广告很好玩</label></li></ul>                                          
+        </dd><dt>14.<em>对于视频内嵌广告，您最能接受的出现位置？
+</em></dt><dd>
+          <ul class="ql"><li><label ><input type="checkbox" name="vote_53" value="518"  >角标（屏幕的角落里）</label></li><li><label ><input type="checkbox" name="vote_53" value="515"  >片头</label></li><li><label ><input type="checkbox" name="vote_53" value="520"  >缓冲或暂停时 </label></li><li><label ><input type="checkbox" name="vote_53" value="523"  >不接受任何形式的广告</label></li><li><label ><input type="checkbox" name="vote_53" value="519"  >字幕滚动</label></li><li><label ><input type="checkbox" name="vote_53" value="521"  >
+
+视频角落不影响观看的地方</label></li><li><label ><input type="checkbox" name="vote_53" value="517"  >片尾</label></li><li><label ><input type="checkbox" name="vote_53" value="522"  >其他</label></li><li><label ><input type="checkbox" name="vote_53" value="516"  >片中</label></li></ul>                                          
+        </dd><dt>15.<em>请问，您更喜欢观看或点击什么内容的视频广告？
+</em></dt><dd>
+          <ul class="ql"><li><label ><input type="checkbox" name="vote_54" value="535"  >酒类</label></li><li><label ><input type="checkbox" name="vote_54" value="526"  >IT类产品或服务</label></li><li><label ><input type="checkbox" name="vote_54" value="534"  >服饰及个人用品</label></li><li><label ><input type="checkbox" name="vote_54" value="536"  >运动用品</label></li><li><label ><input type="checkbox" name="vote_54" value="532"  >金融保险服务</label></li><li><label ><input type="checkbox" name="vote_54" value="533"  >旅行旅游</label></li><li><label ><input type="checkbox" name="vote_54" value="527"  >家电产品</label></li><li><label ><input type="checkbox" name="vote_54" value="524"  >汽车类产品</label></li><li><label ><input type="checkbox" name="vote_54" value="529"  >手机及通讯类产品或服务</label></li><li><label ><input type="checkbox" name="vote_54" value="528"  >数码产品</label></li><li><label ><input type="checkbox" name="vote_54" value="525"  >房地产和装修类产品</label></li><li><label ><input type="checkbox" name="vote_54" value="531"  >化妆、浴室用品</label></li><li><label ><input type="checkbox" name="vote_54" value="537"  >网络游戏</label></li><li><label ><input type="checkbox" name="vote_54" value="538"  >其他</label></li><li><label ><input type="checkbox" name="vote_54" value="530"  >食品饮料</label></li></ul>                                          
+        </dd>
+
+   	 </dl>
+      <!--/quesList-->	
+      <input type="hidden" name="form_id" value="2"/>
+      <input type="hidden" name="vote_ids" value="6,1|7,15|9,1|10,1|11,1|12,1|13,1|14,1|15,1|16,1|17,1|18,1|19,1|20,1|21,1|23,1|24,1|25,1|26,1|27,1|28,1|29,1|30,1|31,1|32,1|33,1|34,1|35,1|36,1|37,1|38,1|39,1|41,10|42,1|43,10|44,15|46,15|47,1|48,1|49,10|50,1|51,1|52,15|53,3|54,3|"/>
+      <input type="hidden" name="vote_names" value="请问提到视频网站或者视频软件/工具，你会想到的哪些品牌呢？
+|请问以下视频网站/软件中，您听说过哪些？
+|优酷（youku.com）
+|土豆网（tudou.com）
+|56网（56.com）
+|酷6网（ku6.com）
+|六间房（6.cn）
+|PPS网络电视（pps.tv）
+|天线网络电视（openv.com）
+|PPLive（pplive.com）
+|风行（funshion.com）
+|皮皮网（pipi.cn）
+|新浪视频（video.sina.com.cn）
+|搜狐视频（tv.sohu.com）
+|网络电视台CNTV（cntv.cn）
+|内容丰富的
+|浏览速度快的
+|更新速度快的
+|视听效果好的
+|网站/软件界面友好的
+|站内搜索功能强的
+|清晰度高的
+|知名度高的
+|广告少的
+|高品质的
+|年轻的
+|有活力的
+|让人快乐的
+|有吸引力的
+|现代的，时髦的
+|专业的
+|大家所喜欢的
+|上过的|最经常上的|请问您经常在网络视频上收看的内容有哪些
+|您为什么会选择通过在线视频看这类节目？
+|经常使用|最常使用|您是否使用视频软件客户端？
+|对于视频软件客户端，以下哪些描述符合您的看法？
+|对于视频中内嵌的广告，你通常的做法是？
+|请问您是否点击过网络视频广告？
+|请问什么原因会促使您点击网上的广告？
+|对于视频内嵌广告，您最能接受的出现位置？
+|请问，您更喜欢观看或点击什么内容的视频广告？
+|"/>
+      <div class="btnAct"><input type="submit" value="提交" class="tijiao"  /><input type="reset" value="重置"  class="chongzhi" /></div>
+   </form>
+    
+  </div>
+  <!--/container-->
+
+  
+</div>
+<!--/wrapper-->
+<script type="text/JavaScript">
+
+
+	function checkForm(){
+		var form1=document.form1;
+		
+		var vote_ids=form1.vote_ids.value;
+		
+		var vote_names=form1.vote_names.value;
+		
+		var vote_id_array=vote_ids.split('|');
+		
+		var vote_names_array=vote_names.split('|');
+
+        var check_value=true;
+       
+		for(var i=0;i<vote_id_array.length-1;i++){
+			var check=vote_id_array[i].split(',');
+			
+			check_value=checkInput(check[0],check[1]);
+			
+			
+			if(check_value==false){
+				alert("问题:\""+vote_names_array[i]+"\"未选!");
+				
+				return check_value;
+			}
+		}
+		return check_value;
+		
+	}
+	
+	function checkInput(id,flag){
+		var name='vote_'+id;
+		
+		var obj = document.getElementsByName(name);
+		if(flag=='1'){
+			 for(i = 0; i < obj.length; i++){  
+				if(obj[i].checked){
+					return true;
+				}
+			 }
+		}else{
+			for(i = 0; i < obj.length; i++){  
+				if(obj[i].checked){
+					return true;
+				}
+			 }
+		}
+		return false;
+	}
+
+  function show_option(){
+	  var obj0=document.getElementsByName('vote_2');
+	  var obj1=document.getElementById('option_23');
+	  var obj2=document.getElementById('option_24');
+	  var obj3=document.getElementById('option_25');
+	  var obj4=document.getElementById('option_26');
+	  
+	  obj1.style.display='';
+	  obj2.style.display='';
+	  obj3.style.display='';
+	  obj4.style.display='';
+	  obj0[1].checked=false;
+	
+
+  }
+</script>
+
+</body>
+</html>
