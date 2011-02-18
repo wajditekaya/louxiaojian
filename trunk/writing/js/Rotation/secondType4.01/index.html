@@ -454,12 +454,12 @@ img{border:0}
         <!--/contenter-->
         <script type="text/javascript">
 		var lxja=function(){
-				var nav=document.getElementById('menu').getElementsByTagName('li'),aNav=[],div=document.getElementById('contenter').getElementsByTagName('div'),aDiv=[]
-				 for(var j=0;j<nav.length;j++){if(!nav[j].getAttribute("lang")){aNav.push(nav[j]);}}
+				var nav=document.getElementById('menu').getElementsByTagName('li'),triggers=[],div=document.getElementById('contenter').getElementsByTagName('div'),panels=[]
+				 for(var j=0;j<nav.length;j++){if(!nav[j].getAttribute("lang")){triggers.push(nav[j]);}}
 				 for(var i=0;i<div.length;i++){
-					if(div[i].parentNode==document.getElementById('contenter') && !div[i].getAttribute("lang")){aDiv.push(div[i]);}
+					if(div[i].parentNode==document.getElementById('contenter') && !div[i].getAttribute("lang")){panels.push(div[i]);}
 				 }
-			   new Rotation({nTag:aNav,mTag:aDiv,index:0,evt:0});
+			   new Rotation({nTag:triggers,mTag:panels,index:0,evt:0});
 		}();
 
         </script>
@@ -478,9 +478,9 @@ img{border:0}
         <!--/menu-->
         <script type="text/javascript">
 		var lxjabb=function(){
-				var nav=document.getElementById('menu_hover').getElementsByTagName('li'),aNav=[]
-				for(var j=0;j<nav.length;j++){if(!nav[j].getAttribute("lang")){aNav.push(nav[j]);}}
-                new Rotation({nTag:aNav,index:0,intTabTime:0,evt:1,auto:[1,1000]});
+				var nav=document.getElementById('menu_hover').getElementsByTagName('li'),triggers=[]
+				for(var j=0;j<nav.length;j++){if(!nav[j].getAttribute("lang")){triggers.push(nav[j]);}}
+                new Rotation({nTag:triggers,index:0,intTabTime:0,evt:1,auto:[1,1000]});
 		}();
         </script>
      </li>
@@ -499,9 +499,9 @@ img{border:0}
         <!--/menu-->
         <script type="text/javascript">
 		var lxjabb=function(){
-				var nav=document.getElementById('menu_hover2').getElementsByTagName('li'),aNav=[]
-				for(var j=0;j<nav.length;j++){if(!nav[j].getAttribute("lang")){aNav.push(nav[j]);}}
-                new Rotation({nTag:aNav,index:0,intTabTime:0,evt:1});
+				var nav=document.getElementById('menu_hover2').getElementsByTagName('li'),triggers=[]
+				for(var j=0;j<nav.length;j++){if(!nav[j].getAttribute("lang")){triggers.push(nav[j]);}}
+                new Rotation({nTag:triggers,index:0,intTabTime:0,evt:1});
 		}();
         </script>
      </li>
