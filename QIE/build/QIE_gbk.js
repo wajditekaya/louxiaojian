@@ -92,7 +92,7 @@
 					  S.each(mod.fns, function(fn) {
 						  fn && fn(self);
 					  });
-					  mod.fns = undef; // ä¿è¯ attach è¿‡çš„æ–¹æ³•åªæ‰§è¡Œä¸€æ¬¡
+					  mod.fns = undef; // ±£Ö¤ attach ¹ıµÄ·½·¨Ö»Ö´ĞĞÒ»´Î
 					  //S.log(mod.name + '.status = attached');
 				  }
 	  
@@ -124,7 +124,7 @@
 				  if (S.isPlainObject(name)) {
 					  S.each(name, function(v, k) {
 						  v.name = k;
-						  if (mods[k]) mix(v, mods[k], false); // ä¿ç•™ä¹‹å‰æ·»åŠ çš„é…ç½®
+						  if (mods[k]) mix(v, mods[k], false); // ±£ÁôÖ®Ç°Ìí¼ÓµÄÅäÖÃ
 					  });
 					  S.mix(mods, name);
 				  }
@@ -136,8 +136,8 @@
 					  name = config.host || mod.host || name;
 					  mod = mods[name] || {};
 	  
-					  // æ³¨æ„ï¼šé€šè¿‡ S.add(name[, fn[, config]]) æ³¨å†Œçš„ä»£ç ï¼Œæ— è®ºæ˜¯é¡µé¢ä¸­çš„ä»£ç ï¼Œè¿˜
-					  //      æ˜¯ js æ–‡ä»¶é‡Œçš„ä»£ç ï¼Œadd æ‰§è¡Œæ—¶ï¼Œéƒ½æ„å‘³ç€è¯¥æ¨¡å—å·²ç» LOADED
+					  // ×¢Òâ£ºÍ¨¹ı S.add(name[, fn[, config]]) ×¢²áµÄ´úÂë£¬ÎŞÂÛÊÇÒ³ÃæÖĞµÄ´úÂë£¬»¹
+					  //      ÊÇ js ÎÄ¼şÀïµÄ´úÂë£¬add Ö´ĞĞÊ±£¬¶¼ÒâÎ¶×Å¸ÃÄ£¿éÒÑ¾­ LOADED
 					  S.mix(mod, { name: name, status: LOADED });
 	  
 					  if (!mod.fns) mod.fns = [];
@@ -145,7 +145,7 @@
 	  
 					  S.mix((mods[name] = mod), config);
 	  
-					  // å¯¹äº requires éƒ½å·² attached çš„æ¨¡å—ï¼Œæ¯”å¦‚ core ä¸­çš„æ¨¡å—ï¼Œç›´æ¥ attach
+					  // ¶ÔÓÚ requires ¶¼ÒÑ attached µÄÄ£¿é£¬±ÈÈç core ÖĞµÄÄ£¿é£¬Ö±½Ó attach
 					  if ((mod['attach'] !== false) && self.__isAttached(mod.requires)) {
 						  self.__attachMod(mod);
 					  }

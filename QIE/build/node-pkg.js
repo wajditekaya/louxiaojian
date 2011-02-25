@@ -7,42 +7,10 @@ build time: ${build.time}
  * @module  node
  * @author  lifesinger@gmail.com
  */
-var win = S.__HOST,
-	doc = win['document'],
-	docElem = doc.documentElement,
-	
-makeArray=function(o) {
-	if (o === null || o === undef) return [];
-	if (S.isArray(o)) return o;
 
-	// The strings and functions also have 'length'
-	if (typeof o.length !== 'number' || S.isString(o) || S.isFunction(o)) {
-		return [o];
-	}
-
-	return slice2Arr(o);
-};
-// Converts array-like collection such as LiveNodeList to normal array.
-function slice2Arr(arr) {
-	return Array.prototype.slice.call(arr);
-}
-// IE will throw error.
-try {
-	slice2Arr(docElem.childNodes);
-}
-catch(e) {
-	slice2Arr = function(arr) {
-		for (var ret = [], i = arr.length - 1; i >= 0; i--) {
-			ret[i] = arr[i];
-		}
-		return ret;
-	}
-};
-
-KISSY.add('node', function(S) {
+QIE.add('node', function(S) {
 
     var DOM = S.DOM;
-
     /**
      * The Node class provides a wrapper for manipulating DOM Node.
      */
@@ -69,11 +37,16 @@ KISSY.add('node', function(S) {
 	Node.prototype.nodeType=Node.TYPE;
 	
     // query api
-    S.one = function(selector, context) {
+/*    S.one = function(selector, context) {
         var elem = S.get(selector, context);
         return elem ? new Node(elem) : null;
-    };
+    };*/
 
+	S.$=function(id) {
+		var elem="string" == typeof id ? document.getElementById(id) : id;
+		return elem ? new Node(elem) : null;
+	};
+	
     S.Node = Node;
 });
 
@@ -93,11 +66,12 @@ KISSY.add('node', function(S) {
  * @module  node-attach
  * @author  lifesinger@gmail.com
  */
-KISSY.add('node-attach', function(S, undefined) {
-
+QIE.add('node-attach', function(S, undefined) {
+								
     var DOM = S.DOM,
         Node = S.Node,
         NLP = NodeList.prototype,
+		NP = Node.prototype,
         GET_DOM_NODE = 'getDOMNode',
         GET_DOM_NODES = GET_DOM_NODE + 's';
 
@@ -142,6 +116,6 @@ KISSY.add('node-attach', function(S, undefined) {
     });
 
     // dom-class
-    attach(['hasClass', 'addClass', 'removeClass', 'replaceClass', 'toggleClass']);
+    attach(['hasClass', 'addClass', 'removeClass', 'replaceClass', 'toggleClass','cssValue','on','getObjPos']);
 
 });
