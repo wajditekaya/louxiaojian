@@ -60,17 +60,28 @@ input,textarea,select{*font-size:100%;}
 <div id="content">
 <div id="test" >test</div>
 <div id="test-inner"></div>
+<div id="lxj" style="cursor:pointer">qwewq</div>
 </div>
 
-<script src="QIE.js" type="text/javascript"></script>
+<script src="build/QIE.js" type="text/javascript"></script>
+<script src="build/node-pkg.js" type="text/javascript"></script>
 <script type="text/javascript">
-
 QIE.domReady(function(S){
-	var i=0;
-	S.on('test','click',function(){
-		  this.className.indexOf('b')==-1 ? S.addClass(this,'b') :S.removeClass(this,'b');
-		  S.$('test-inner').innerHTML='内容是：'+this.innerHTML+';X坐标是：'+S.getObjPos(this).x+';Y坐标是：'+S.getObjPos(this).y+';====='+i++;
-	})				  
+	var i=0,DOM=S.DOM,
+	     lxj=S.$('lxj'),
+		  test=S.$('test');
+		  DOM.on(test[0],'click',function(){
+				this.className.indexOf('b')==-1 ? DOM.addClass(this,'b') :DOM.removeClass(this,'b');
+				S.$('test-inner')[0].innerHTML='内容是：'+this.innerHTML+';X坐标是：'+DOM.getObjPos(this).x+';Y坐标是：'+DOM.getObjPos(this).y+';====='+i++;
+		  })	;
+		  
+		  lxj.addClass('b');
+		  lxj.on('click',function(){
+			  alert(this.id)
+			  S.$(this).removeClass('b');						   
+		  })
+		  alert(test.cssValue('padding-left'))
+		  alert(test.getObjPos().x)
 });
 </script>
 </body>
