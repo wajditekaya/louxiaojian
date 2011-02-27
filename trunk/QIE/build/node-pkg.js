@@ -44,7 +44,7 @@ QIE.add('node', function(S) {
 
 	S.$=function(id) {
 		var elem="string" == typeof id ? document.getElementById(id) : id;
-		return elem ? new Node(elem) : null;
+		return elem ? new Node(elem) : null;/*返回Node对象而不是原生 的DOM ;*/
 	};
 	
     S.Node = Node;
