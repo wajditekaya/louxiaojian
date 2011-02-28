@@ -1,0 +1,725 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>个税计算器</title>
+<!--http://app.lrxfc.com/apps/rate/rate.html?v=1.00&canvas_pos=search&keyword=%B8%F6%C8%CB%CB%F9%B5%C3%CB%B0%BC%C6%CB%E3%C6%F7-->
+<style type="text/css">
+<!--
+* {margin:0px;padding:0px;font-family:"microsoft yahei",Helvetica,sans-serif;font-size:12px;color:#333;z-index:0;}
+a:link {text-decoration: none;}
+a:visited {text-decoration: none;}
+a:hover {text-decoration: none;}
+a:active {text-decoration: none;}
+#rate {width:540px;height:auto;margin:0 auto;padding-top:8px;background:#dba869 url(http://app.lrxfc.com/apps/rate/images/bgs.gif) repeat-y 0 0;}
+#rate_container {clear:both;width:529px;height:294px;margin-left:8px;background:url(http://app.lrxfc.com/apps/rate/images/container.gif) no-repeat 0 0;}
+#rate_footer {clear:both;width:540px;height:26px;background:url(http://app.lrxfc.com/apps/rate/images/foot2.gif) no-repeat 1px 0px;}
+#container_title {width:100%;height:50px;}
+#container_title img {margin-top:20px;margin-left:20px;}
+#container_main {margin-top:10px;height:auto;}
+/*#container_main div {clear:both;}*/
+#selOptions {position:absolute;left:0px;top:0px;width:260px;height:200px;border:1px solid #d3d3d3;background-color:#f3f3f5;overflow:auto;display:none;z-index:3;}
+#selOptions div {height:25px;width:98%;*width:91%;line-height:200%;padding-left:5px;cursor:pointer;}
+#pop {position:absolute;left:0px;top:0px;width:204px;height:75px;background:url(http://app.lrxfc.com/apps/rate/images/pop2.gif) no-repeat 0 0;z-index:2;display:none;}
+#pop div {width:90%;height:95%;margin-top:10px;margin-left:15px;}
+.itemCss {width:100%;height:35px;margin-top:3px;_margin-top:0px;}
+.itemCss div {float:left;height:35px;}
+.itemCss span {margin-left:5px;}
+.titleCss {float:left;width:120px;text-align:right;padding-right:10px;line-height:200%;}
+.selCss {float:left;width:156px;height:26px;line-height:200%;}
+.selCss a {display:block;width:260px;height:26px;background:url(http://app.lrxfc.com/apps/rate/images/sel2.gif) no-repeat 0 0;}
+.inputCss {float:left;}
+.inputCss input {width:125px;height:21px;border:1px solid #B0A28B;margin-left:2px;padding-left:2px;*line-height:170%;line-height:150%\0;font-family:Arial, Helvetica, sans-serif !important;}
+.inputCss2 {border:0px !important;border-bottom:1px solid #ccc !important;background:none;*line-height:160% !important;}
+.inputCss3 {font-size:16px;color:green;font-weight:bold;height:35px;*line-height:100% !important;}
+.buttonCss {float:left;}
+.buttonCss div {float:left;}
+.buttonCss a {display:block;width:74px;height:25px;background:url(http://app.lrxfc.com/apps/rate/images/btn2.png) no-repeat 0 0;margin-right:10px;}
+.buttonCss a:hover {background:url(http://app.lrxfc.com/apps/rate/images/btn2.png) no-repeat 0px -25px;}
+#resetLink a:hover {background:url(http://app.lrxfc.com/apps/rate/images/btn3.png) no-repeat 0px -26px !important;}
+.linkCss2 {background:url(http://app.lrxfc.com/apps/rate/images/btn3.png) no-repeat 0 0 !important;}
+.errCss {color:#C00;display:none;}
+-->
+</style>
+<script type="text/javascript" src="js/tangram.js"></script>
+<script type="text/javascript">
+	//* background *//
+	try{
+		var linkArgs = location.search;
+		var styleObj = baidu.page.createStyleSheet();
+		if(linkArgs.indexOf("canvas_pos=search") == -1){
+			styleObj.addRule("#rate","width:800px !important;background:#dba869 url(http://app.lrxfc.com/apps/rate/images/bg2.gif) repeat-y 0 0 !important;margin:0px auto;",0);
+			styleObj.addRule("#rate_container","margin:0 auto !important;",1);
+			styleObj.addRule("#rate_footer","width:800px !important;background:url(http://app.lrxfc.com/apps/rate/images/foot2.gif) no-repeat right bottom !important;",2);
+		}else{
+			styleObj.removeRule(0);
+			styleObj.removeRule(1);
+			styleObj.removeRule(2);
+		}
+	}catch(e){}
+</script>
+<script Language="JavaScript">
+      <!--
+function position(parentObj){
+		var parentTop = parentObj.offsetTop;
+		var parentLeft = parentObj.offsetLeft;
+		while(parentObj = parentObj.offsetParent){
+			parentTop += parentObj.offsetTop;
+			parentLeft += parentObj.offsetLeft;
+		}
+		return {
+			top : parentTop,
+			left : parentLeft
+		}
+	}
+function warnInvalid (theField, s)
+	{	//alert(s);
+	
+		theField.style.border = "1px solid #c00";
+		document.getElementById(theField.id + "_err").style.display = "block";
+		
+	    theField.focus();
+		theField.select();
+		return false;
+	}
+
+function isNumber(s)   //字符串是否由数字构成
+	{
+		var digits = "0123456789";
+		var i = 0;
+		var sLength = s.length;
+
+		while ((i < sLength))
+		{ 
+			var c = s.charAt(i);
+			if (digits.indexOf(c) == -1) return 
+
+false; 
+			i++;
+		}
+		
+		return true;
+	}
+
+function CheckNumeric(theField,s)  //整数或小数
+	{
+		var ret = true;
+		var i;
+		var str=theField.value;
+		var Temp = new Number(str);
+		
+		if (str.length == 0)
+		{
+  		    return warnInvalid (theField, s);
+  		    ret=false;
+		}else{
+			theField.style.border = "1px solid #B0A28B";
+			document.getElementById(theField.name + "_err").style.display = "none";
+		}
+		
+		if (ret)
+		{
+			if (Temp.valueOf() != Temp.valueOf())
+			{
+  				return warnInvalid (theField, s);
+			}else{
+				theField.style.border = "1px solid #B0A28B";
+				document.getElementById(theField.name + "_err").style.display = "none";
+			}
+		}
+		
+		return ret;
+	}
+function validateFormInfo(form)
+	{
+		var str
+		var SumTo
+  		var srSum
+  		var qzSum,InsuSum,TSum,yzSum,fySum
+  		
+  		s=document.form1.select.selectedIndex+1;
+  		srSum=document.form1.textfield.value;
+  		if (s.length<1)
+ 		{
+ 		  s=1;
+ 		}
+ 		qzSum=document.form1.textfield3.value;
+ 		InsuSum=document.form1.textfield2.value;
+ 		yzSum=document.form1.textfield22.value;
+ 		fySum=document.form1.textfield32.value;
+ 		TSum=srSum-qzSum-InsuSum;
+		
+		
+ 		/*alert
+
+("sr="+srSum+"qz="+qzSum+"INsu="+InsuSum+"yz="+yzSum+"fy="+
+
+fySum);*/
+		if (form == null) return true; 
+
+		str = "请正确输入收入金额！";
+ 		if (!CheckNumeric(form.elements
+
+["textfield"],str)) return false;  //收入金额
+ 		
+ 		if (document.getElementById("select").selectedIndex==0)
+		{
+		  str = "请正确输入社会保险费！";
+		  if  (!CheckNumeric(form.elements
+
+["textfield2"],str)) return false; //各项社会保险费
+						
+   	          str = "请正确输入起征额！";
+		  if  (!CheckNumeric(form.elements
+
+["textfield3"],str)) return false; //起征额
+
+//			if(Number(document.getElementById("textfield2").value) > Number(document.getElementById("textfield").value)){
+//				if(!confirm("确定保险费多于收入金额吗？")){
+//					str = "保险费不能大于收入金额！";
+//					return false;
+//				}
+//			}
+		}
+		
+		if (document.getElementById("select").selectedIndex==8)
+		{
+		  str = "请正确输入财产原值！";
+		  if  (!CheckNumeric(form.elements
+
+["textfield22"],str)) return false; //各项社会保险费
+				
+   		  str = "请正确输入合理交易费用！";
+		  if  (!CheckNumeric(form.elements
+
+["textfield32"],str)) return false; //起征额
+		}
+		var ret = 0;
+		switch (s) 
+  		{ 
+		
+    		case 1: 
+           		
+
+ret=Rate1(TSum);
+           		break;           		    
+
+       		
+    		case 2:
+    			
+
+ret=Rate2(srSum);
+    			break;
+    			
+    		case 3:
+    			
+
+ret=Rate2(srSum);
+    			break;
+    		
+    		case 4:
+    			
+
+ret=Rate3(srSum);
+    			break;
+    		
+    		case 5:
+    			
+
+ret=R4568(srSum)*70/100;
+    			break;
+    			
+    		case 6:
+    			
+
+ret=R4568(srSum);
+    			break;
+    			
+    		case 7:
+    			
+
+ret=srSum*20/100;
+    			break;
+    			
+    		case 8:
+    			
+
+ret=R4568(srSum);
+    			break;
+    			
+    		case 9:
+    			if (srSum-yzSum-fySum<0)
+    			{
+    			  alert("都亏了！不用交税了！");
+    			  
+
+ret=0;
+    			}
+    			if (srSum-yzSum-fySum>0)
+    			{
+    			ret=(srSum-yzSum-fySum)*20/100;
+    			}
+    			break;
+    			
+    		case 10:
+    			
+
+ret=(srSum >= 10000) ? (srSum*20/100) : 0;
+    			break;
+    		
+    		case 11:
+    			
+
+ret=srSum*20/100;
+    			break;
+    		
+		}
+		document.form1.textfield4.value = parseFloat(ret).toFixed(2);
+						
+	}
+//--------------------------------以下是算法--------------
+
+//---------------------------------------
+function Rate1(XSum)//工资薪金
+	{
+	var Rate;
+	var Balan;
+	var TSum;
+	if (XSum<=500) 
+	  {Rate=5;
+	  Balan=0;
+	  }
+	if ((500<XSum) && (XSum<=2000)) 
+	  {Rate=10;
+	  Balan=25;
+	  }
+	if ((2000<XSum) && (XSum<=5000))
+	  {Rate=15;
+	  Balan=125;
+	  }
+	if ((5000<XSum) && (XSum<=20000))
+	  {Rate=20;
+	  Balan=375;
+	  }
+	if ((20000<XSum) && (XSum<=40000))
+	  {Rate=25;
+	  Balan=1375;
+	  }
+	if ((40000<XSum) && (XSum<=60000))
+	  {Rate=30;
+	  Balan=3375;
+	  }
+	if ((60000<XSum) && (XSum<=80000))
+	  {Rate=35;
+	  Balan=6375;
+	  }
+	if ((80000<XSum) && (XSum<=100000))
+	  {Rate=40;
+	  Balan=10375;
+	  }
+	if (XSum>100000) 
+	  {Rate=45;
+	  Balan=15375;
+	  }
+	  TSum=(XSum*Rate)/100-Balan
+	 if (TSum<0) 
+	 {
+	   TSum=0
+	 }
+	  return TSum
+	}
+	
+function Rate2(XSum)
+	{
+	var Rate;
+	var Balan;
+	var TSum;
+	if (XSum<=5000) 
+	  {Rate=5;
+	  Balan=0;
+	  }
+	if ((5000<XSum) && (XSum<=10000)) 
+	  {Rate=10;
+	  Balan=250;
+	  }
+	if ((10000<XSum) && (XSum<=30000))
+	  {Rate=20;
+	  Balan=1250;
+	  }
+	if ((30000<XSum) && (XSum<=50000))
+	  {Rate=30;
+	  Balan=4250;
+	  }
+	if (50000<XSum)
+	  {Rate=35;
+	  Balan=6750;
+	  }
+	 TSum=(XSum*Rate)/100-Balan;
+	 if (TSum<0)
+	 {
+	   TSum=0
+	 }
+	 return TSum
+	}
+	
+function R4568(XSum)
+  {
+  var TSum
+    if (XSum<=4000)
+    {
+    TSum=(XSum-2000)*20/100;
+    }
+    if (XSum>4000)
+    {
+    TSum=(XSum-(XSum*20/100))*20/100
+    }
+    if (TSum<0)
+    {
+       TSum=0
+    }
+    return TSum
+  }
+  function gong()
+  {
+  var qznum
+  var ff
+  qznum=document.form1.textfield3.value;
+  ff=document.getElementById("checkbox").checked;
+  if (ff)
+  {
+  document.form1.textfield3.value=4000;
+  }
+  if (!ff)
+  {
+  document.form1.textfield3.value=2000;
+  }
+  }
+
+function Rate3(XSum)/*劳务报酬*/
+{
+  var TSum
+  var Rate
+  var Balan
+  if (XSum<=20000)
+  {
+    Rate=20;
+    Balan=0;
+  }
+  if ((XSum>20000) && (XSum<=50000))
+  {
+    Rate=30;
+    Balan=2000;
+  }
+  if (XSum>50000)
+  {
+    Rate=40;
+    Balan=7000;
+  }
+  if (XSum<=4000)
+  {
+   XSum=XSum-800;
+  }
+  if (XSum>4000)
+  {
+   XSum=XSum-(XSum*20/100);
+  }
+   
+  TSum=XSum*Rate/100-Balan;
+  
+  if (TSum<0)
+  {
+   TSum=0
+  }
+  return TSum
+}
+ 
+  
+function CHan()
+{
+  if (document.form1.select.selectedIndex==0)
+  {
+   document.getElementById("gongzi1").style.display="block";
+   document.getElementById("gongzi2").style.display="block";
+   document.getElementById("fei1").style.display="block";
+   document.getElementById("fei2").style.display="block";
+   //document.all.sararyPan.style.display = "block";
+   
+   document.getElementById("btnRowPanel").style.marginTop = "0px";
+   posPop(document.getElementById("textfield3"));
+  }
+  if (document.form1.select.selectedIndex!=0)
+  {
+   document.getElementById("gongzi1").style.display="none";
+   document.getElementById("gongzi2").style.display="none";
+   document.getElementById("fei1").style.display="none";
+   document.getElementById("fei2").style.display="none";
+   //document.all.sararyPan.style.display = "none";
+ 	document.getElementById("btnRowPanel").style.marginTop = "8px";
+  }
+  if(document.form1.select.selectedIndex!=4 && document.form1.select.selectedIndex!=0){
+	  document.getElementById("pop").style.display = "none";
+  }
+  if (document.form1.select.selectedIndex+1!=9)
+  {
+   document.getElementById("fei1").style.display="none";
+   document.getElementById("fei2").style.display="none";
+  }
+  if (document.form1.select.selectedIndex+1==9)
+  {
+   document.getElementById("fei1").style.display="block";
+    document.getElementById("fei2").style.display="block";
+  }
+  if (document.form1.select.selectedIndex==4)
+  {
+	//var p = document.getElementById("pop");
+	var r = document.getElementById("textfield");
+	//var pos = position(r);
+	//p.style.left = pos.left + 170 + "px";
+	//p.style.top = pos.top + 20 + "px";
+	//p.style.display = "block";
+   //posPop();
+		posPop(document.getElementById("textfield4"),2);
+  
+  }
+  var txt = document.form1.getElementsByTagName("INPUT");
+  for(var i=0;i<5;i++){
+	  try{
+	  	document.getElementById(txt[i].name + "_err").style.display = "none";
+	  	txt[i].style.border = "1px solid #ccc";
+	  }catch(e){}
+  }
+}
+
+var posSel = function(){
+	var selector = document.getElementById("selector");
+	var selOptions = document.getElementById("selOptions");
+	var pos = position(selector);
+	selOptions.style.left = pos.left + 1 + "px";
+	selOptions.style.top = pos.top + 25 + "px";
+	selOptions.style.display = "block";
+}
+var posPop = function(obj,index){
+	var p = document.getElementById("pop");
+	var r = document.getElementById("textfield3");
+	var pos = null;
+	if(index != 2){
+		pos = position(r);
+		p.style.left = pos.left + 170 + "px";
+		p.style.top = pos.top - 50 + "px";
+	}else{
+		pos = position(obj);
+		p.style.left = pos.left + 170 + "px";
+		p.style.top = pos.top - 80 + "px";
+	}
+	//p.style.left = "0px";
+	//p.style.top = "0px";
+	
+
+	p.style.display = "block";
+/*	if(obj){
+		obj.onmouseout = function(){
+			if(document.getElementById("pop").style.display == "block"){
+				document.getElementById("pop").style.display = "none";
+			}
+		}
+	}*/
+	
+}
+var showOptions = function(){
+	var selOptions = document.getElementById("selOptions");
+	if(selOptions.style.display){
+		if(selOptions.style.display == "none"){
+			posSel();
+		}
+	}else{
+		posSel();
+	}
+	re();
+	//selOptions.style.display = ((selOptions.style.display == "none" || selOptions.style.display == "") ? (function(){posSel();})() : "none");
+}
+window.onload = function(){
+	var txt = document.form1.getElementsByTagName("INPUT");
+	for(var i=0;i<5;i++){
+		//if(txt[i].className.toLowerCase() == "txtcss"){
+			txt[i].onkeyup = function(e){
+			   this.value = this.value.replace(/[^\d.]/g,"");  //清除“数字”和“.”以外的字符 
+			   this.value = this.value.replace(/^\./g,"");  //验证第一个字符是数字而不是. 
+			   this.value = this.value.replace(/\.{2,}/g,"."); //只保留第一个. 清除多余的. 
+			   this.value = this.value.replace(".","$#$").replace(/\./g,"").replace("$#$","."); 
+			}
+			txt[i].onblur = function(){
+				if(this.value == ""){
+					document.getElementById(this.name + "_err").style.display = "block";
+					this.style.border = "1px solid red";
+				}else{
+					document.getElementById(this.name + "_err").style.display = "none";
+					this.style.border = "1px solid #ccc";
+				}
+			}
+		//}
+	}	
+	
+	var selector = document.getElementById("selector");
+	var selOptions = document.getElementById("selOptions");
+	var p = document.getElementById("pop");
+	
+	var opts = selOptions.getElementsByTagName("DIV");
+	var count = 11;
+	for(var i=0;i<count;i++){
+		opts[i].onmouseover = function(){
+			this.style.backgroundColor = "#3A629A";
+			this.style.color = "#FFF";
+			this.onmouseout = function(){
+				this.style.backgroundColor = "#f3f3f5";
+				this.style.color = "#333";
+			}
+			this.onclick = function(){
+				var selText = document.getElementById("selText");
+				selText.innerHTML = this.innerHTML;
+				var selIndex = Number(this.id.replace(/option/,""));
+				var sel = document.getElementById("select");
+				sel.options[selIndex].selected = "selected";
+				CHan();
+			}
+		}
+	}
+	
+	window.onresize = function(){
+		if(selOptions.style.display == "block"){
+			posSel();
+		}
+		if(document.getElementById("pop").style.display == "block"){
+			if(document.getElementById("textfield3").style.display != "block"){
+				var p1 = document.getElementById("pop");
+				var r = document.getElementById("textfield");
+				var pos = position(r);
+				p1.style.left = pos.left + 170 + "px";
+				p1.style.top = pos.top + 20 + "px";
+				p1.style.display = "block";
+			}else{
+				posPop();
+			}
+		}
+	}
+	
+	document.onclick = function(evt){
+		var evnt = window.event || evt;
+		var target = evnt.srcElement || evnt.target;
+		if(target.tagName.toLowerCase() != "a" && target.tagName.toLowerCase() != "span"){
+			selOptions.style.display = "none";
+		}
+	}
+	//posPop();
+	posPop(document.getElementById("textfield3"));
+}
+var re = function(){
+	document.getElementById("textfield").value = "";
+	document.getElementById("textfield4").value = "";
+	document.getElementById("textfield2").value = "";
+	document.getElementById("textfield22").value = "";
+	document.getElementById("textfield33").value = "";
+	  var txt = document.form1.getElementsByTagName("INPUT");
+	  for(var i=0;i<5;i++){
+		  try{
+			document.getElementById(txt[i].name + "_err").style.display = "none";
+			txt[i].style.border = "1px solid #ccc";
+		  }catch(e){}
+	  }
+}
+  
+//-->
+      </SCRIPT>
+</head>
+
+<body>
+
+<div id="rate">
+	<div id="rate_container">
+<FORM name=form1 id="form1">
+    	<div id="container_title"><img src="http://app.lrxfc.com/apps/rate/images/title.gif" /></div>
+        <div id="container_main">
+        	<div class="itemCss">
+            	<div class="titleCss">收入类型：</div>
+                <div class="selCss" id="selector"><a href="javascript:void(0);" onclick="showOptions();"><span id="selText" onclick="showOptions();">工资、薪金所得</span></a>
+                        <SELECT id=select onchange=CHan() name=select style="display:none;">
+
+                          <OPTION value=1 selected>工资、薪金所得</OPTION>
+                          <OPTION value=2>个体工商户生产、经营所得</OPTION>
+                          <OPTION value=3>对企事业单位的承包经营、承租经营所得</OPTION>
+                          <OPTION value=4>劳务报酬所得</OPTION>
+                          <OPTION value=5>稿酬所得</OPTION>
+                          <OPTION value=6>特许权使用所得</OPTION>
+
+                          <OPTION value=7>利息、股息、红利所得</OPTION>
+                          <OPTION value=8>财产租赁所得</OPTION>
+                          <OPTION value=9>财产转让所得</OPTION>
+                          <OPTION value=10>偶然所得（如：中奖、中彩）</OPTION>
+                          <OPTION value=11>被确定征税的其他部分</OPTION>
+                      </SELECT>
+
+                </div>
+            </div>
+            <div class="itemCss">
+            	<div class="titleCss">收入金额：</div>
+                <div class="inputCss"><input type="text" id=textfield name=textfield maxlength="9" size="9" /><span>元</span><span id="textfield_err" class="errCss">不能为空</span></div>
+            </div>
+            <div class="itemCss" id=gongzi1 style="margin-top:8px;_margin-top:0px;">
+
+            	<div class="titleCss">各项社会保险：</div>
+                <div class="inputCss"><input type="text" id=textfield2 name=textfield2 maxlength="9" size="9" /><span>元</span><span id="textfield2_err" class="errCss">不能为空</span></div>
+            </div>
+            <div class="itemCss" id=gongzi2>
+            	<div class="titleCss">个税起征额：</div>
+                <div class="inputCss"><input type="text" class="inputCss2" id=textfield3 name=textfield3 value=2000 maxlength="9" size="9" /><span>元</span><span id="textfield3_err" class="errCss">不能为空</span></div>
+
+            </div>
+            <div class="itemCss" style="display:none;" id=fei1>
+            	<div class="titleCss">财产原值：</div>
+                <div class="inputCss"><input type="text" id=textfield22 name=textfield22 maxlength="9" size="9" /><span>元</span><span id="textfield22_err" class="errCss">不能为空</span></div>
+            </div>
+            <div class="itemCss" style="display:none;" id=fei2>
+            	<div class="titleCss">合理交易费用：</div>
+
+                <div class="inputCss"><input type="text" id=textfield33 name=textfield32 maxlength="9" size="9" /><span>元</span><span id="textfield32_err" class="errCss">不能为空</span></div>
+            </div>
+            <div class="itemCss" id="btnRowPanel" style="margin-top:0px;">
+            	<div class="titleCss"></div>
+                <div class="buttonCss">
+                	<div><a href="javascript:void(0);" class="linkCss1" onclick="validateFormInfo(document.getElementById('form1'),1)" name="button"></a></div>
+                    <div id="resetLink"><a href="javascript:void(0);" class="linkCss2" name="button" onclick="re();"></a></div>
+                </div>
+
+            </div>
+            <div class="itemCss" style="margin-top:0px;">
+            	<div class="titleCss">计算结果：</div>
+                <div class="inputCss"><input type="text" class="inputCss2 inputCss3" value="" id=textfield4 name=textfield4 readonly="readonly" /><span>元</span></div>
+            </div>   
+        </div>
+</FORM>
+    </div>
+    <div id="rate_footer">
+
+    </div>
+</div>
+<div id="selOptions">
+	<div id="option0">工资、薪金所得</div>
+    <div id="option1">个体工商户生产、经营所得</div>
+    <div id="option2">对企事业单位的承包经营、承租经营所得</div>
+    <div id="option3">劳务报酬所得</div>
+
+    <div id="option4">稿酬所得</div>
+    <div id="option5">特许权使用所得</div>
+    <div id="option6">利息、股息、红利所得</div>
+    <div id="option7">财产租赁所得</div>
+    <div id="option8">财产转让所得</div>
+    <div id="option9">偶然所得（如：中奖、中彩）</div>
+
+    <div id="option10">被确定征税的其他部分</div>
+</div>
+<div id="pop">
+	<div>注：根据税收规定，个人所得税起征点自2008年3月1日起由1600元提高到2000元。</div>
+</div>
+
+</body>
+
+</html>
