@@ -11,33 +11,33 @@ a:link {text-decoration: none;}
 a:visited {text-decoration: none;}
 a:hover {text-decoration: none;}
 a:active {text-decoration: none;}
-#rate {width:540px;height:auto;margin:0 auto;padding-top:8px;background:#dba869 url(http://app.lrxfc.com/apps/rate/images/bgs.gif) repeat-y 0 0;}
-#rate_container {clear:both;width:529px;height:294px;margin-left:8px;background:url(http://app.lrxfc.com/apps/rate/images/container.gif) no-repeat 0 0;}
-#rate_footer {clear:both;width:540px;height:26px;background:url(http://app.lrxfc.com/apps/rate/images/foot2.gif) no-repeat 1px 0px;}
+#rate {width:540px;height:auto;margin:0 auto;padding-top:8px;background:#dba869 url(img/bgs.gif) repeat-y 0 0;}
+#rate_container {clear:both;width:529px;height:350px;margin-left:8px;background:url(img/container.gif) no-repeat 0 0;}
+#rate_footer {clear:both;width:540px;height:26px;background:url(img/foot2.gif) no-repeat 1px 0px;}
 #container_title {width:100%;height:50px;}
 #container_title img {margin-top:20px;margin-left:20px;}
 #container_main {margin-top:10px;height:auto;}
 /*#container_main div {clear:both;}*/
 #selOptions {position:absolute;left:0px;top:0px;width:260px;height:200px;border:1px solid #d3d3d3;background-color:#f3f3f5;overflow:auto;display:none;z-index:3;}
 #selOptions div {height:25px;width:98%;*width:91%;line-height:200%;padding-left:5px;cursor:pointer;}
-#pop {position:absolute;left:0px;top:0px;width:204px;height:75px;background:url(http://app.lrxfc.com/apps/rate/images/pop2.gif) no-repeat 0 0;z-index:2;display:none;}
+#pop {position:absolute;left:0px;top:0px;width:204px;height:75px;background:url(img/pop2.gif) no-repeat 0 0;z-index:2;display:none;}
 #pop div {width:90%;height:95%;margin-top:10px;margin-left:15px;}
 .itemCss {width:100%;height:35px;margin-top:3px;_margin-top:0px;}
 .itemCss div {float:left;height:35px;}
 .itemCss span {margin-left:5px;}
 .titleCss {float:left;width:120px;text-align:right;padding-right:10px;line-height:200%;}
 .selCss {float:left;width:156px;height:26px;line-height:200%;}
-.selCss a {display:block;width:260px;height:26px;background:url(http://app.lrxfc.com/apps/rate/images/sel2.gif) no-repeat 0 0;}
+.selCss a {display:block;width:260px;height:26px;background:url(img/sel2.gif) no-repeat 0 0;}
 .inputCss {float:left;}
 .inputCss input {width:125px;height:21px;border:1px solid #B0A28B;margin-left:2px;padding-left:2px;*line-height:170%;line-height:150%\0;font-family:Arial, Helvetica, sans-serif !important;}
 .inputCss2 {border:0px !important;border-bottom:1px solid #ccc !important;background:none;*line-height:160% !important;}
 .inputCss3 {font-size:16px;color:green;font-weight:bold;height:35px;*line-height:100% !important;}
 .buttonCss {float:left;}
 .buttonCss div {float:left;}
-.buttonCss a {display:block;width:74px;height:25px;background:url(http://app.lrxfc.com/apps/rate/images/btn2.png) no-repeat 0 0;margin-right:10px;}
-.buttonCss a:hover {background:url(http://app.lrxfc.com/apps/rate/images/btn2.png) no-repeat 0px -25px;}
-#resetLink a:hover {background:url(http://app.lrxfc.com/apps/rate/images/btn3.png) no-repeat 0px -26px !important;}
-.linkCss2 {background:url(http://app.lrxfc.com/apps/rate/images/btn3.png) no-repeat 0 0 !important;}
+.buttonCss a {display:block;width:74px;height:25px;background:url(img/btn2.png) no-repeat 0 0;margin-right:10px;}
+.buttonCss a:hover {background:url(img/btn2.png) no-repeat 0px -25px;}
+#resetLink a:hover {background:url(img/btn3.png) no-repeat 0px -26px !important;}
+.linkCss2 {background:url(img/btn3.png) no-repeat 0 0 !important;}
 .errCss {color:#C00;display:none;}
 -->
 </style>
@@ -48,9 +48,9 @@ a:active {text-decoration: none;}
 		var linkArgs = location.search;
 		var styleObj = baidu.page.createStyleSheet();
 		if(linkArgs.indexOf("canvas_pos=search") == -1){
-			styleObj.addRule("#rate","width:800px !important;background:#dba869 url(http://app.lrxfc.com/apps/rate/images/bg2.gif) repeat-y 0 0 !important;margin:0px auto;",0);
+			styleObj.addRule("#rate","width:800px !important;background:#dba869 url(img/bg2.gif) repeat-y 0 0 !important;margin:0px auto;",0);
 			styleObj.addRule("#rate_container","margin:0 auto !important;",1);
-			styleObj.addRule("#rate_footer","width:800px !important;background:url(http://app.lrxfc.com/apps/rate/images/foot2.gif) no-repeat right bottom !important;",2);
+			styleObj.addRule("#rate_footer","width:800px !important;background:url(img/foot2.gif) no-repeat right bottom !important;",2);
 		}else{
 			styleObj.removeRule(0);
 			styleObj.removeRule(1);
@@ -148,7 +148,6 @@ function validateFormInfo(form)
  		yzSum=document.form1.textfield22.value;
  		fySum=document.form1.textfield32.value;
  		TSum=srSum-qzSum-InsuSum;
-		
 		
  		/*alert
 
@@ -274,7 +273,9 @@ ret=srSum*20/100;
     			break;
     		
 		}
-		document.form1.textfield4.value = parseFloat(ret).toFixed(2);
+		var gsSum=parseFloat(ret).toFixed(2);
+		document.form1.textfield4.value = gsSum;
+		document.form1.textfield5.value=srSum-InsuSum-gsSum;
 						
 	}
 //--------------------------------以下是算法--------------
@@ -615,6 +616,7 @@ window.onload = function(){
 var re = function(){
 	document.getElementById("textfield").value = "";
 	document.getElementById("textfield4").value = "";
+	document.getElementById("textfield5").value = "";
 	document.getElementById("textfield2").value = "";
 	document.getElementById("textfield22").value = "";
 	document.getElementById("textfield33").value = "";
@@ -636,7 +638,7 @@ var re = function(){
 <div id="rate">
 	<div id="rate_container">
 <FORM name=form1 id="form1">
-    	<div id="container_title"><img src="http://app.lrxfc.com/apps/rate/images/title.gif" /></div>
+    	<div id="container_title"><img src="img/title.gif" /></div>
         <div id="container_main">
         	<div class="itemCss">
             	<div class="titleCss">收入类型：</div>
@@ -693,7 +695,11 @@ var re = function(){
             <div class="itemCss" style="margin-top:0px;">
             	<div class="titleCss">计算结果：</div>
                 <div class="inputCss"><input type="text" class="inputCss2 inputCss3" value="" id=textfield4 name=textfield4 readonly="readonly" /><span>元</span></div>
-            </div>   
+            </div> 
+            <div class="itemCss" style="margin-top:0px;">
+            	<div class="titleCss">实发薪资：</div>
+                <div class="inputCss"><input type="text" class="inputCss2 inputCss3" value="" id=textfield5 name=textfield5 readonly="readonly" /><span>元</span></div>
+            </div>  
         </div>
 </FORM>
     </div>
