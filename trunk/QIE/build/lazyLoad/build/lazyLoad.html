@@ -6,6 +6,7 @@
 </head>
 
 <body style="padding-top:50px">
+<div style="font-size:14px;font-weight:bold">获取document.documentElement.clientHeight的时间为<span id="time" style="font-size:16px;color:#f00;margin:0 10px;font-weight:bold"></span>毫秒</div>
 <noscript><div style="text-align:center; font-size:14px; font-weight:bold; color:#f00">你未开启脚本应用</div></noscript>
 <p>核心提示：继股份制银行全面取消首套房贷优惠利率。最近两天，四大行终于有所动作，银行个贷部门人士表示，如客户接受基准利率则马上放款；如只能接受下浮利率则要排队，何时能放款谁也说不准。消息称四大银行将从2月1日开始执行二套房贷首付提高至60%的</p>
 <p><a href="#"><img src="blank.png" alt="" width="160" height="240" lazy_src="http://farm5.static.flickr.com/4054/4486930930_68c6592449_m.jpg" /></a></p>
@@ -85,7 +86,7 @@
 ;(function(S){
 	var d=new Date().getTime()
 	var clientHeight=document.documentElement.clientHeight;
-	alert(new Date().getTime()-d)
+	document.getElementById('time').innerHTML=new Date().getTime()-d;
 })('QIE');
 
 (function(S){
