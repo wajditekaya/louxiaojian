@@ -23,3 +23,8 @@ http://louxiaojian.googlecode.com/svnÕâµØÖ·Ö»ÔÊĞí¸üĞÂÎÄ¼ş£¬Ã»ÓÃÈ¨ÏŞÌá½»¸ü¸ÄµÄÎÄ¼
 /public/aj_get_skinlist.php
 
 http://tbexample.googlecode.com/svn
+
+
+http://lifesinger.org/lab/
+
+http://lifesinger.org/share/
