@@ -8,6 +8,7 @@
 <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
 <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
 <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
 <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
 <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
 <script type="text/javascript">
@@ -30,74 +31,81 @@
 </head>
 
 <body>
-<pre title="code" class="brush: jscript;">
-function JObj(){
-	this.author = "xling";
-	this.aa = function(pParm){
-	   alert(pParm);
-    }
-    var bb = function(pParm){
-       alert(pParm);
-    }
-}
-
-JObj.name='lou';
-JObj.cc = function(pParm){
-       alert(pParm);
-}
-
-JObj.prototype.dd = function(pParm){
-      alert(pParm);
-}
-
-document.write("<br />===========以下是Class中的，即所谓的静态，不能由实例调用，只能用类名调用================<br />");
-
-for(var o in JObj){
-document.write(o," = ",eval("JObj." + o),"<br />");
-}
-JObj.cc("123")
-document.write("<br />===========以下是实例中的，只能用实例来调用================<br />");
-
-var obj = new JObj();
-for(var o in obj){
-	document.write(o," = ",eval("obj." + o),"<br />");
-}
-obj.cc("123")
-</pre>
-<script language="javascript" type="text/javascript">
-function JObj(){
-	this.author = "xling";
-	this.aa = function(pParm){
-	   alert(pParm);
-    }
-    var bb = function(pParm){
-       alert(pParm);
-    }
-}
-
-JObj.name='lou';
-JObj.cc = function(pParm){
-       alert(pParm);
-}
-
-JObj.prototype.dd = function(pParm){
-      alert(pParm);
-}
-
-document.write("<br />===========以下是Class中的，即所谓的静态，不能由实例调用，只能用类名调用================<br />");
-
-for(var o in JObj){
-document.write(o," = ",eval("JObj." + o),"<br />");
-}
-JObj.cc("123")
-document.write("<br />===========以下是实例中的，只能用实例来调用================<br />");
-
-var obj = new JObj();
-for(var o in obj){
-	document.write(o," = ",eval("obj." + o),"<br />");
-}
-obj.cc("123")
-</script>
+<div id="page">
+    <h1>JavaScript静态方法和动态方法</h1>
+    <div id="content">
+    
+          <pre title="code" class="brush: jscript;">
+          function JObj(){
+              this.author = "xling";
+              this.aa = function(pParm){
+                 alert(pParm);
+              }
+              var bb = function(pParm){
+                 alert(pParm);
+              }
+          }
+          
+          JObj.name='lou';
+          JObj.cc = function(pParm){
+                 alert(pParm);
+          }
+          
+          JObj.prototype.dd = function(pParm){
+                alert(pParm);
+          }
+          
+          document.write("<br />===========以下是Class中的，即所谓的静态，不能由实例调用，只能用类名调用================<br />");
+          
+          for(var o in JObj){
+          document.write(o," = ",eval("JObj." + o),"<br />");
+          }
+          JObj.cc("123")
+          document.write("<br />===========以下是实例中的，只能用实例来调用================<br />");
+          
+          var obj = new JObj();
+          for(var o in obj){
+              document.write(o," = ",eval("obj." + o),"<br />");
+          }
+          obj.cc("123")
+          </pre>
+          <script language="javascript" type="text/javascript">
+          function JObj(){
+              this.author = "xling";
+              this.aa = function(pParm){
+                 alert(pParm);
+              }
+              var bb = function(pParm){
+                 alert(pParm);
+              }
+          }
+          
+          JObj.name='lou';
+          JObj.cc = function(pParm){
+                 alert(pParm);
+          }
+          
+          JObj.prototype.dd = function(pParm){
+                alert(pParm);
+          }
+          
+          document.write("<br />===========以下是Class中的，即所谓的静态，不能由实例调用，只能用类名调用================<br />");
+          
+          for(var o in JObj){
+          document.write(o," = ",eval("JObj." + o),"<br />");
+          }
+          JObj.cc("123")
+          document.write("<br />===========以下是实例中的，只能用实例来调用================<br />");
+          
+          var obj = new JObj();
+          for(var o in obj){
+              document.write(o," = ",eval("obj." + o),"<br />");
+          }
+          obj.cc("123")
+          </script>
+          
+          </div>
+</div>
 </body>
 </html>
 
