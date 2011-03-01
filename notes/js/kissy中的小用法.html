@@ -39,8 +39,39 @@
 <script type="text/javascript">
   var s='backgroundColor';
   var t=s.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(); // backgroundColor => background-color
-  alert(t)
-  alert('borderBottomWidth'.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase())
+  document.write('backgroundColor——>'+t+'<br />');
+  document.write('borderBottomWidth——>'+'borderBottomWidth'.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase());
+</script>
+<p style="height:100px"></p>
+<pre title="code" class="brush: jscript;">
+  function stylename(name){
+	  var RE_DASH = /-([a-z])/ig;
+	  var CAMELCASE_FN = function(all, letter) {
+		  return letter.toUpperCase();
+	  };
+	  if (name.indexOf('-') > 0) {
+		  // webkit 认识 camel-case, 其它内核只认识 cameCase
+		  name = name.replace(RE_DASH, CAMELCASE_FN);
+	  }
+	  return name;
+  }
+  document.write('background-color——>'+stylename('background-color')+'<br />');
+  document.write('border-bottom-width——>'+stylename('border-bottom-width'))
+</pre>
+<script>
+  function stylename(name){
+	  var RE_DASH = /-([a-z])/ig;
+	  var CAMELCASE_FN = function(all, letter) {
+		  return letter.toUpperCase();
+	  };
+	  if (name.indexOf('-') > 0) {
+		  // webkit 认识 camel-case, 其它内核只认识 cameCase
+		  name = name.replace(RE_DASH, CAMELCASE_FN);
+	  }
+	  return name;
+  }
+  document.write('background-color——>'+stylename('background-color')+'<br />');
+  document.write('border-bottom-width——>'+stylename('border-bottom-width'))
 </script>
 </body>
 </html>
