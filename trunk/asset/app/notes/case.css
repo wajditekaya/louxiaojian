@@ -3,7 +3,7 @@ author:	lou xiao jian
 email:  jxsr_lxj@163.com
 ====================================*/
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
-body{font:14px/1.6  Tahoma, Geneva,"宋体", sans-serif;word-break:break-all;text-align:center}
+body{font:14px/1.5  Tahoma, Geneva,"宋体", sans-serif;word-break:break-all;text-align:center}
 fieldset,img{border:0;} 
 table {border-collapse: collapse;border-spacing:0;} 
 ol,li,ul{list-style:none;} 
@@ -62,8 +62,10 @@ select{color:#999}
 h1{font:bold 24px/2 "微软雅黑";text-align:left;margin-bottom:20px;padding-left:20px;background:#808080;color:#fff; border-bottom:24px #efefef solid}
 .article{text-align:left;width:810px; margin:0 auto 0 150px}
 /*.article{text-align:left;width:810px;margin-left:150px}*//*给body定义text-align:center后，在IE浏览器下，这样定义CSS，层article竟然还会水平居中，一定得再定义个margin-right:auto才能使层居左*/
-code{display:block;margin-bottom:15px; border:1px solid #DEDEB8; background:#FDFFF2; padding:5px 10px;color:#007700}
+code{display:block;margin-bottom:15px; border:1px solid #DEDEB8;background:#FDFFF2;padding:5px 10px;color:#007700}
 code .note{color:#999}
+.syntaxhighlighter code{display:inline;margin:0;padding:0;border:0;background:none;color:#000000}
+
 .article p{margin-bottom:20px}
 /*---UBB框--*/ 
 .UBBPanel {
