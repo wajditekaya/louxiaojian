@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>[].slice.call(arguments, 0)</title>
+</head>
+
+<body>
+<script>
+function lxj(){
+	var mods = [].slice.call(arguments, 0); //将函数的形参储存为数组
+	return mods;
+}
+document.write(lxj(1,2)+'<br/>');//输出结果为:[1,2]
+document.write(lxj(1,2,3)+'<br/>');//输出结果为:[1,2,3]
+document.write(lxj('a','b')+'<br/>');//输出结果为:['a','b']
+document.write(lxj('a','b','h','j')+'<br/>');//输出结果为:['a','b','h','j']
+document.write(lxj('a','b','y')+'<br/>');//输出结果为:['a','b','y']
+</script>
+</body>
+</html>
