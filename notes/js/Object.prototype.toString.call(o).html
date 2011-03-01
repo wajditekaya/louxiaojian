@@ -8,6 +8,7 @@
 <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
 <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
 <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
 <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
 <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
 <script type="text/javascript">
@@ -30,29 +31,36 @@
 </head>
 
 <body>
-<pre title="code" class="brush: jscript;">
-   function optc(o){
-	   return Object.prototype.toString.call(o)
-   }
-   document.write(optc([1,2,3])+'<br />');//输出[object Array]
-   document.write(optc(function(){})+'<br />');//输出[object Function]
-   document.write(optc({})+'<br />');//输出[object Object]
-   document.write(optc(1)+'<br />');//输出[object Number]
-   document.write(optc('asdf')+'<br />');//输出[object String]
-   document.write(optc(new Date())+'<br />');//输出[object Date]
-   document.write(optc(1==1)+'<br />');//输出[object Boolean]
-</pre>
-<script type="text/javascript">
-   function optc(o){
-	   return Object.prototype.toString.call(o)
-   }
-   document.write(optc([1,2,3])+'<br />');//输出[object Array]
-   document.write(optc(function(){})+'<br />');//输出[object Function]
-   document.write(optc({})+'<br />');//输出[object Object]
-   document.write(optc(1)+'<br />');//输出[object Number]
-   document.write(optc('asdf')+'<br />');//输出[object String]
-   document.write(optc(new Date())+'<br />');//输出[object Date]
-   document.write(optc(1==1)+'<br />');//输出[object Boolean]
-</script>
+<div id="page">
+    <h1>Object.prototype.toString.call(o)</h1>
+    <div id="content">
+    
+        <pre title="code" class="brush: jscript;">
+           function optc(o){
+               return Object.prototype.toString.call(o)
+           }
+           document.write(optc([1,2,3])+'<br />');//输出[object Array]
+           document.write(optc(function(){})+'<br />');//输出[object Function]
+           document.write(optc({})+'<br />');//输出[object Object]
+           document.write(optc(1)+'<br />');//输出[object Number]
+           document.write(optc('asdf')+'<br />');//输出[object String]
+           document.write(optc(new Date())+'<br />');//输出[object Date]
+           document.write(optc(1==1)+'<br />');//输出[object Boolean]
+        </pre>
+        <script type="text/javascript">
+           function optc(o){
+               return Object.prototype.toString.call(o)
+           }
+           document.write(optc([1,2,3])+'<br />');//输出[object Array]
+           document.write(optc(function(){})+'<br />');//输出[object Function]
+           document.write(optc({})+'<br />');//输出[object Object]
+           document.write(optc(1)+'<br />');//输出[object Number]
+           document.write(optc('asdf')+'<br />');//输出[object String]
+           document.write(optc(new Date())+'<br />');//输出[object Date]
+           document.write(optc(1==1)+'<br />');//输出[object Boolean]
+        </script>
+        
+     </div>
+</div>
 </body>
 </html>

@@ -8,6 +8,7 @@
 <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
 <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
 <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
 <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
 <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
 <script type="text/javascript">
@@ -30,128 +31,134 @@
 </head>
 
 <body>
-<h1><a rel="permalink" href="http://www.infoq.com/cn/articles/sandboxOnB;jsessionid=1C01966EFA805A841473BD46ECC07ED5">漫谈B端的沙箱技术</a></h1>
-<p><a href="http://www.infoq.com/cn/articles/sandboxOnB">http://www.infoq.com/cn/articles/sandboxOnB</a></p>
-<p>&nbsp;</p>
-<p>从语言学的角度上来说，允许代码无节制地使用全局变量，是最错误的选择之一。而更可怕的，就是一个变量&quot;可能&quot;成为全局的（在未知的时间与地点）。但是这两项，却伴随JavaScript这门语言成功地走到了现在。</p>
-<p>也许是限于浏览器应用的规模，所以这一切还迟迟没有酿成灾难。在此之前，出现了两种解决方案。一种是ECMA在新的规范（Edition 5）中对此做出了限制，其中最重要的一条便是eval()的使用变得不再随意和无度。而另一种方案，则是相对没有那么官僚与学术的，尽管也拥有一个同样学术的名字：沙箱。</p>
-<p>沙箱（Sandbox）并不是一个新东西，即使对于JavaScript来说，也已经存在了相当长的时间。在SpiderMonkey JS的源代码中，就明确地将一个闭包描述为一个沙箱。这包含着许多潜在的信息：它有一个初始环境，可以被重置，可以被复制，以及最重要的，在它内部的所有操作，不会影响到外部</p>
-<p>当然事实上远非如此。JavaScript里的闭包只是一个&quot;貌似沙箱&quot;的东西--仍然是出于JavaScript早期的语言规范的问题，闭包不得不允许那些&quot;合法泄漏&quot;给外部的东西。而对于这一切无法忍受的前端工程师们，开始寻求另外的解决之道，这其中相对较早的尝试，是基于IFRAME的实践。例如dean.edwards在2006年提出过的方案（注1）：</p>
-<pre title="code" class="brush: jscript;">
-a_frames.document.write(
-  &quot;&lt;script&gt;&quot;+
-  &quot;var MSIE/*@cc_on =1@*/;&quot;+ // sniff
-  &quot;parent.sandbox=MSIE?this:{eval:function(s){return eval(s)}}&quot;+
-  &quot;&lt;\/script&gt;&quot;
-);
-</pre>
-<p>显然，由于在不同的IFRAME中运行着各自的JavaScript引擎实例，所以上述的方案也意味着沙箱是&quot;引擎&quot;这个级别的：在任何一个沙箱中的崩溃，将导致该引擎以及对应IFRAME崩溃。但--理论上说--不会影响整个浏览器。</p>
-<p>问题是，这并不那么理想。往往的，引擎会导致整个浏览器锁在那里，例如用alert()弹出一个对话框而又因为某种意外失去了焦点。又或者单个的IFRAME会导致全局的CPU被耗光，例如一个死循环。于是更加复杂的方案--在JavaScritp中包含一个完整的执行器--出现了。最有名的则是Narrative JavaScript，它内建了一个执行器，用于逐行地解释执行JavaScript代码，这使得它可以控制所有的代码执行序列，或者随时重置整个执行引擎--如同一个沙箱所要做的那样。</p>
-<p>这一切或者太过依赖于环境，又或者太过复杂，但都不乏追随者。例如jsFiddle这个项目（注2）在&quot;嵌入或装载&quot;这样的路子上就已经有了不俗的成绩。但是，YUI在新版本中却给出了它自己的选择：以更加明确的编程约定，来实现应用级别的沙箱。这包括一个非常简单的、新的YUI语法：</p>
-<pre title="code" class="brush: jscript;">
-YUI().use('dom-base', function(Y) {
-  // Y是一个新的沙箱
-});
-</pre>
-<p>在'dom-base'位置上，可以是1到N个字符串，表明一个需要在沙箱中装载的模块列表。这可以是沙箱的初始列表，或者后续的callback函数(亦即是用户代码)所需依赖的模块列表。在这种实现方案中，YUI为每个沙箱维护各自的装载模块列表和上下文环境中的变量、成员。但是出于JavaScript语言自己的局限，这个沙箱依然是相当脆弱的。例如下一示例中沙箱内的代码就会污染到全局：</p>
-<pre title="code" class="brush: jscript;">
-YUI().use('', function(Y) {
-  abc = 1234;  //&lt;--这里可能导致一个全局变量'abc'被隐式地声明
-});
-</pre>
-<p>同样，在上述的沙箱里也可以使用类似window、document等全局变量、修改它们的成员或无限制地调用方法（例如使用setTimeout()来创建时钟）。所以YUI的沙箱事实上是靠&quot;规约&quot;来约束的，而不是真正意义上的沙箱。当然，这也意味着，如果用户能按照规约来处理沙箱内的代码，那么也就能自由地享用它带来的便利：安全、移植和有效的隔离副作用。</p>
-<p>而我们再穷究其根底，YUI沙箱的实质不过是一行:</p>
-<pre title="code" class="brush: jscript;">
-
-// code from yui.js
-//  - mod.fn(this, name)
-mod.entryFunc(sandbox, modName);
-</pre>
-<p>其实际含义是：</p>
-<ul>
-    <li>mod ：沙箱当前装载的模块；</li>
-    <li>entryFunc : 上述模块的入口函数；</li>
-    <li>sandbox ：当前的沙箱的实例，即YUI()返回值；</li>
-    <li>modName：模块名</li>
-</ul>
-<p>除了依赖关系（以及可能需要的异步加载）之外，YUI沙箱环境仅是用下面的代码来简单地调用callback函数：</p>
-<pre title="code" class="brush: jscript;">
-callback(Y, response);
-</pre>
-<p>然而这些需求的实现并不那么复杂。首先，我们设定数据结构mod为一个对象：</p>
-<pre title="code" class="brush: jscript;">
-{ name:modName, fn: entryFunc, req: [], use: [] }</pre>
-<p>则一个环境对象env，将包括多个mod(将它们处理成对象而非数组，主要是便于使用名字来索引模块)和以及对它们进行管理操作的方法：</p>
-<pre title="code" class="brush: jscript;">
-
-{ mods:{}, used:{}, add:..., use:...}
-</pre>
-<p>最后，所谓一个沙箱sandbox，就是上述环境对象的一个实例，并在初始时sandbox.mods与sandbox.used为空。由此简单的实现为：</p>
-<pre title="code" class="brush: jscript;">
-/**
- * tiny sandbox framework
- * mirror from YUI3 by aimingoo.
-**/
-function Sandbox() {
-  if (!(this instanceof arguments.callee)) return new arguments.callee();
-  this.mods = this.mods || {};
-  this.used = {};
-}
-
-Sandbox.prototype = {
-  add: function(modName, entryFunc, reqArr, useArr) {
-    this.mods[modName] = { fn: entryFunc, req: reqArr, use: useArr }
-  },
-
-  use: function() { 
-    var mods = [].slice.call(arguments, 0); 	// 0..length-2 is modNames
-    var callback = mods.pop();  	// length-1 is callback
-    var recursive_load = function(name, mod) {
-      if (!this.used[name] &amp;&amp; (mod=this.mods[name])) {
-        mod.req.forEach(recursive_load, this);
-        mod.fn(this, name);
-        mod.use.forEach(recursive_load, this);
-        this.used[name] = true;
-      }
-    }
-    mods.forEach(recursive_load, this);
-    callback(this);
-  }
-}
-</pre>
-<p>现在我们来尝试一个与YUI类似的语法风格：</p>
-<pre title="code" class="brush: jscript;">
-Sandbox().use('', function(){
-   alert('user code.');
-});
-</pre>
-<p>或者，先向整个Sandbox环境注册一些模块（在真实的框架实现中，这一步可能是通过框架的装载器来初始化）：</p>
-<pre title="code" class="brush: jscript;">
-
-// for test, entry of mods
-f1 = function() { alert('f1') };
-f2 = function() { alert('f2') };
-f3 = function() { alert('f3') };
-
-// mods for global/common env.
-Sandbox.prototype.mods = {
-  'core': { fn: f1, req: [], use: [] },
-  'oo':   { fn: f2, req: ['core'], use: ['xml'] },
-  'xml':  { fn: f3, req: [], use: [] }
-}
-</pre>
-<p>然后再尝试在一个沙箱实例中运行代码：</p>
-<pre title="code" class="brush: jscript;">
-// f1 -&gt; f2 -&gt; f3 -&gt; user code
-Sandbox().use('oo', function(){
-   alert('user code.');
-});
-</pre>
-<p>其实即便是上述代码中用于处理模块依赖的逻辑，也并不是什么&quot;神奇的&quot;代码或者技巧。除开这些，这样的沙箱隔离泄露的能力还抵不过一个嵌入式DSL语言。而后者所应用的技巧很简单，看不出什么花招（注3)：</p>
-<pre title="code" class="brush: jscript;">
-with (YUI()) this.eval(&quot;... mod_context ... &quot;);
-</pre>
-<p>这样一来，在mod_context里的代码就只会在YUI()的一个实例中造成污染了。当然，仍然是源于JavaScript的限制，我们还是无法避免一个变量泄露到全局--除非，我们回到js in js这个项目（注4），真的在环境中重新初始化一个js引擎。</p>
-<p>从这一意义上来说，引擎级别的沙箱与操作系统的进程一样，带来的是终级的解决方案，所以Chrome、IE等等主流浏览器纷纷有了&quot;独立进程&quot;模式。而在这样的背景之下，试图用&quot;框架内置沙箱&quot;来改善ECMAScript ed3中一些设计疏失的种种努力，不过是一张张空头的支票罢了。</p>
+<div id="page">
+    <h1><a rel="permalink" href="http://www.infoq.com/cn/articles/sandboxOnB;jsessionid=1C01966EFA805A841473BD46ECC07ED5">漫谈B端的沙箱技术</a></h1>
+    <div id="content">
+            
+        
+        <p><a href="http://www.infoq.com/cn/articles/sandboxOnB">http://www.infoq.com/cn/articles/sandboxOnB</a></p>
+        <p>&nbsp;</p>
+        <p>从语言学的角度上来说，允许代码无节制地使用全局变量，是最错误的选择之一。而更可怕的，就是一个变量&quot;可能&quot;成为全局的（在未知的时间与地点）。但是这两项，却伴随JavaScript这门语言成功地走到了现在。</p>
+        <p>也许是限于浏览器应用的规模，所以这一切还迟迟没有酿成灾难。在此之前，出现了两种解决方案。一种是ECMA在新的规范（Edition 5）中对此做出了限制，其中最重要的一条便是eval()的使用变得不再随意和无度。而另一种方案，则是相对没有那么官僚与学术的，尽管也拥有一个同样学术的名字：沙箱。</p>
+        <p>沙箱（Sandbox）并不是一个新东西，即使对于JavaScript来说，也已经存在了相当长的时间。在SpiderMonkey JS的源代码中，就明确地将一个闭包描述为一个沙箱。这包含着许多潜在的信息：它有一个初始环境，可以被重置，可以被复制，以及最重要的，在它内部的所有操作，不会影响到外部</p>
+        <p>当然事实上远非如此。JavaScript里的闭包只是一个&quot;貌似沙箱&quot;的东西--仍然是出于JavaScript早期的语言规范的问题，闭包不得不允许那些&quot;合法泄漏&quot;给外部的东西。而对于这一切无法忍受的前端工程师们，开始寻求另外的解决之道，这其中相对较早的尝试，是基于IFRAME的实践。例如dean.edwards在2006年提出过的方案（注1）：</p>
+        <pre title="code" class="brush: jscript;">
+        a_frames.document.write(
+          &quot;&lt;script&gt;&quot;+
+          &quot;var MSIE/*@cc_on =1@*/;&quot;+ // sniff
+          &quot;parent.sandbox=MSIE?this:{eval:function(s){return eval(s)}}&quot;+
+          &quot;&lt;\/script&gt;&quot;
+        );
+        </pre>
+        <p>显然，由于在不同的IFRAME中运行着各自的JavaScript引擎实例，所以上述的方案也意味着沙箱是&quot;引擎&quot;这个级别的：在任何一个沙箱中的崩溃，将导致该引擎以及对应IFRAME崩溃。但--理论上说--不会影响整个浏览器。</p>
+        <p>问题是，这并不那么理想。往往的，引擎会导致整个浏览器锁在那里，例如用alert()弹出一个对话框而又因为某种意外失去了焦点。又或者单个的IFRAME会导致全局的CPU被耗光，例如一个死循环。于是更加复杂的方案--在JavaScritp中包含一个完整的执行器--出现了。最有名的则是Narrative JavaScript，它内建了一个执行器，用于逐行地解释执行JavaScript代码，这使得它可以控制所有的代码执行序列，或者随时重置整个执行引擎--如同一个沙箱所要做的那样。</p>
+        <p>这一切或者太过依赖于环境，又或者太过复杂，但都不乏追随者。例如jsFiddle这个项目（注2）在&quot;嵌入或装载&quot;这样的路子上就已经有了不俗的成绩。但是，YUI在新版本中却给出了它自己的选择：以更加明确的编程约定，来实现应用级别的沙箱。这包括一个非常简单的、新的YUI语法：</p>
+        <pre title="code" class="brush: jscript;">
+        YUI().use('dom-base', function(Y) {
+          // Y是一个新的沙箱
+        });
+        </pre>
+        <p>在'dom-base'位置上，可以是1到N个字符串，表明一个需要在沙箱中装载的模块列表。这可以是沙箱的初始列表，或者后续的callback函数(亦即是用户代码)所需依赖的模块列表。在这种实现方案中，YUI为每个沙箱维护各自的装载模块列表和上下文环境中的变量、成员。但是出于JavaScript语言自己的局限，这个沙箱依然是相当脆弱的。例如下一示例中沙箱内的代码就会污染到全局：</p>
+        <pre title="code" class="brush: jscript;">
+        YUI().use('', function(Y) {
+          abc = 1234;  //&lt;--这里可能导致一个全局变量'abc'被隐式地声明
+        });
+        </pre>
+        <p>同样，在上述的沙箱里也可以使用类似window、document等全局变量、修改它们的成员或无限制地调用方法（例如使用setTimeout()来创建时钟）。所以YUI的沙箱事实上是靠&quot;规约&quot;来约束的，而不是真正意义上的沙箱。当然，这也意味着，如果用户能按照规约来处理沙箱内的代码，那么也就能自由地享用它带来的便利：安全、移植和有效的隔离副作用。</p>
+        <p>而我们再穷究其根底，YUI沙箱的实质不过是一行:</p>
+        <pre title="code" class="brush: jscript;">
+        
+        // code from yui.js
+        //  - mod.fn(this, name)
+        mod.entryFunc(sandbox, modName);
+        </pre>
+        <p>其实际含义是：</p>
+        <ul>
+            <li>mod ：沙箱当前装载的模块；</li>
+            <li>entryFunc : 上述模块的入口函数；</li>
+            <li>sandbox ：当前的沙箱的实例，即YUI()返回值；</li>
+            <li>modName：模块名</li>
+        </ul>
+        <p>除了依赖关系（以及可能需要的异步加载）之外，YUI沙箱环境仅是用下面的代码来简单地调用callback函数：</p>
+        <pre title="code" class="brush: jscript;">
+        callback(Y, response);
+        </pre>
+        <p>然而这些需求的实现并不那么复杂。首先，我们设定数据结构mod为一个对象：</p>
+        <pre title="code" class="brush: jscript;">
+        { name:modName, fn: entryFunc, req: [], use: [] }</pre>
+        <p>则一个环境对象env，将包括多个mod(将它们处理成对象而非数组，主要是便于使用名字来索引模块)和以及对它们进行管理操作的方法：</p>
+        <pre title="code" class="brush: jscript;">
+        
+        { mods:{}, used:{}, add:..., use:...}
+        </pre>
+        <p>最后，所谓一个沙箱sandbox，就是上述环境对象的一个实例，并在初始时sandbox.mods与sandbox.used为空。由此简单的实现为：</p>
+        <pre title="code" class="brush: jscript;">
+        /**
+         * tiny sandbox framework
+         * mirror from YUI3 by aimingoo.
+        **/
+        function Sandbox() {
+          if (!(this instanceof arguments.callee)) return new arguments.callee();
+          this.mods = this.mods || {};
+          this.used = {};
+        }
+        
+        Sandbox.prototype = {
+          add: function(modName, entryFunc, reqArr, useArr) {
+            this.mods[modName] = { fn: entryFunc, req: reqArr, use: useArr }
+          },
+        
+          use: function() { 
+            var mods = [].slice.call(arguments, 0); 	// 0..length-2 is modNames
+            var callback = mods.pop();  	// length-1 is callback
+            var recursive_load = function(name, mod) {
+              if (!this.used[name] &amp;&amp; (mod=this.mods[name])) {
+                mod.req.forEach(recursive_load, this);
+                mod.fn(this, name);
+                mod.use.forEach(recursive_load, this);
+                this.used[name] = true;
+              }
+            }
+            mods.forEach(recursive_load, this);
+            callback(this);
+          }
+        }
+        </pre>
+        <p>现在我们来尝试一个与YUI类似的语法风格：</p>
+        <pre title="code" class="brush: jscript;">
+        Sandbox().use('', function(){
+           alert('user code.');
+        });
+        </pre>
+        <p>或者，先向整个Sandbox环境注册一些模块（在真实的框架实现中，这一步可能是通过框架的装载器来初始化）：</p>
+        <pre title="code" class="brush: jscript;">
+        
+        // for test, entry of mods
+        f1 = function() { alert('f1') };
+        f2 = function() { alert('f2') };
+        f3 = function() { alert('f3') };
+        
+        // mods for global/common env.
+        Sandbox.prototype.mods = {
+          'core': { fn: f1, req: [], use: [] },
+          'oo':   { fn: f2, req: ['core'], use: ['xml'] },
+          'xml':  { fn: f3, req: [], use: [] }
+        }
+        </pre>
+        <p>然后再尝试在一个沙箱实例中运行代码：</p>
+        <pre title="code" class="brush: jscript;">
+        // f1 -&gt; f2 -&gt; f3 -&gt; user code
+        Sandbox().use('oo', function(){
+           alert('user code.');
+        });
+        </pre>
+        <p>其实即便是上述代码中用于处理模块依赖的逻辑，也并不是什么&quot;神奇的&quot;代码或者技巧。除开这些，这样的沙箱隔离泄露的能力还抵不过一个嵌入式DSL语言。而后者所应用的技巧很简单，看不出什么花招（注3)：</p>
+        <pre title="code" class="brush: jscript;">
+        with (YUI()) this.eval(&quot;... mod_context ... &quot;);
+        </pre>
+        <p>这样一来，在mod_context里的代码就只会在YUI()的一个实例中造成污染了。当然，仍然是源于JavaScript的限制，我们还是无法避免一个变量泄露到全局--除非，我们回到js in js这个项目（注4），真的在环境中重新初始化一个js引擎。</p>
+        <p>从这一意义上来说，引擎级别的沙箱与操作系统的进程一样，带来的是终级的解决方案，所以Chrome、IE等等主流浏览器纷纷有了&quot;独立进程&quot;模式。而在这样的背景之下，试图用&quot;框架内置沙箱&quot;来改善ECMAScript ed3中一些设计疏失的种种努力，不过是一张张空头的支票罢了。</p>
+    </div>
+</div>
 </body>
 </html>

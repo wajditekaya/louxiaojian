@@ -8,6 +8,7 @@
 <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
 <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
 <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
 <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
 <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
 <script type="text/javascript">
@@ -30,48 +31,53 @@
 </head>
 
 <body>
-<pre title="code" class="brush: jscript;">
-  var s='backgroundColor';
-  var t=s.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(); // backgroundColor => background-color
-  alert(t)
-  alert('borderBottomWidth'.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase())
-</pre>
-<script type="text/javascript">
-  var s='backgroundColor';
-  var t=s.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(); // backgroundColor => background-color
-  document.write('backgroundColor——>'+t+'<br />');
-  document.write('borderBottomWidth——>'+'borderBottomWidth'.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase());
-</script>
-<p style="height:100px"></p>
-<pre title="code" class="brush: jscript;">
-  function stylename(name){
-	  var RE_DASH = /-([a-z])/ig;
-	  var CAMELCASE_FN = function(all, letter) {
-		  return letter.toUpperCase();
-	  };
-	  if (name.indexOf('-') > 0) {
-		  // webkit 认识 camel-case, 其它内核只认识 cameCase
-		  name = name.replace(RE_DASH, CAMELCASE_FN);
-	  }
-	  return name;
-  }
-  document.write('background-color——>'+stylename('background-color')+'<br />');
-  document.write('border-bottom-width——>'+stylename('border-bottom-width'))
-</pre>
-<script>
-  function stylename(name){
-	  var RE_DASH = /-([a-z])/ig;
-	  var CAMELCASE_FN = function(all, letter) {
-		  return letter.toUpperCase();
-	  };
-	  if (name.indexOf('-') > 0) {
-		  // webkit 认识 camel-case, 其它内核只认识 cameCase
-		  name = name.replace(RE_DASH, CAMELCASE_FN);
-	  }
-	  return name;
-  }
-  document.write('background-color——>'+stylename('background-color')+'<br />');
-  document.write('border-bottom-width——>'+stylename('border-bottom-width'))
-</script>
+<div id="page">
+    <h1>kissy中的小用法</h1>
+    <div id="content">
+        <pre title="code" class="brush: jscript;">
+          var s='backgroundColor';
+          var t=s.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(); // backgroundColor => background-color
+          alert(t)
+          alert('borderBottomWidth'.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase())
+        </pre>
+        <script type="text/javascript">
+          var s='backgroundColor';
+          var t=s.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(); // backgroundColor => background-color
+          document.write('backgroundColor——>'+t+'<br />');
+          document.write('borderBottomWidth——>'+'borderBottomWidth'.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase());
+        </script>
+        <p style="height:100px"></p>
+        <pre title="code" class="brush: jscript;">
+          function stylename(name){
+              var RE_DASH = /-([a-z])/ig;
+              var CAMELCASE_FN = function(all, letter) {
+                  return letter.toUpperCase();
+              };
+              if (name.indexOf('-') > 0) {
+                  // webkit 认识 camel-case, 其它内核只认识 cameCase
+                  name = name.replace(RE_DASH, CAMELCASE_FN);
+              }
+              return name;
+          }
+          document.write('background-color——>'+stylename('background-color')+'<br />');
+          document.write('border-bottom-width——>'+stylename('border-bottom-width'))
+        </pre>
+        <script>
+          function stylename(name){
+              var RE_DASH = /-([a-z])/ig;
+              var CAMELCASE_FN = function(all, letter) {
+                  return letter.toUpperCase();
+              };
+              if (name.indexOf('-') > 0) {
+                  // webkit 认识 camel-case, 其它内核只认识 cameCase
+                  name = name.replace(RE_DASH, CAMELCASE_FN);
+              }
+              return name;
+          }
+          document.write('background-color——>'+stylename('background-color')+'<br />');
+          document.write('border-bottom-width——>'+stylename('border-bottom-width'))
+        </script>
+     </div>
+</div>
 </body>
 </html>

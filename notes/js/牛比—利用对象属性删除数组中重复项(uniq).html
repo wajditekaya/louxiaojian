@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>牛比—利用对象属性删除数组中重复项(uniq)</title>
+<base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.config.strings = {
+			expandSource : '展开代码',
+			viewSource : '查看代码',
+			copyToClipboard : '复制代码',
+			copyToClipboardConfirmation : '代码复制成功',
+			print : '打印',
+			help : '?',
+			alert: '语法高亮\n\n',
+			noBrush : '不能找到刷子: ',
+			brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
+			// this is populated by the build script
+			aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Geneva,Arial,Helvetica,sans-serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.1.364(October 15 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
+		}
+	SyntaxHighlighter.all();
+</script>
+</head>
+
+<body>
+<div id="page">
+    <h1>牛比—利用对象属性删除数组中重复项(uniq)</h1>
+    <div id="content">
+    
+      from <a href="http://www.planabc.net/2009/12/26/array_uniq" target="_blank">http://www.planabc.net/2009/12/26/array_uniq</a>
+      <br />
+      请用对象属性 来删除 数组中重复项
+      <script type="text/javascript">
+      var uniq = function (arr){    
+          var a = [],
+          o = {},
+          i,
+          v,
+          len = arr.length;
+          if (len < 2) {return arr;}
+          for (i = 0; i < len; i++)
+              {
+                  v = arr[i];
+                  if (o[v] !== 1) /*如果对象中不存在此属性时，此把此元素添加到新数组中去*/
+                  {
+                    a.push(v);  
+                    o[v] = 1; 
+                  } 
+          }
+          return a;
+      }
+      </script>
+      <pre title="code" class="brush: jscript;">
+      var uniq = function (arr){    
+          var a = [],
+          o = {},
+          i,
+          v,
+          len = arr.length;
+          if (len < 2) {return arr;}
+          for (i = 0; i < len; i++)
+              {
+                  v = arr[i];
+                  if (o[v] !== 1) /*如果对象中不存在此属性时，此把此元素添加到新数组中去*/
+                  {
+                    a.push(v);  
+                    o[v] = 1; 
+                  } 
+          }
+          return a;
+      }
+      </pre>
+      以上函数方法暂时都不能处理复杂的含有混合类型的数组（感谢 小猫 提出的疑问），如：[0,"0",1,"1",0]、["null",null]。
+      <script type="text/javascript">
+        (function(){
+          var date=new Date();
+          for(var i=0;i<10000;i++){
+			  var lxj=[1,2,3,4,5,1]
+			  var j=uniq(lxj);
+          }
+		  var a=new Date()-date;
+		  document.write('<br />所用时间:'+a);
+		  var lxj2=[0,"0",1,"1",0]
+		  var j2=uniq(lxj2);
+		  document.write('<br/><br/>[1,2,3,4,5,1]运行后得到==='+'['+j+']');
+		  document.write('<br/><br/>[0,"0",1,"1",0]运行后得到==='+'['+j2+']'+'这里就不正确了');
+        })()
+      </script>
+       <p>改进后的方法</p>
+      <script type="text/javascript">
+        var uniq2 = function (arr) {
+            var a = [],
+                o = {},
+                i,
+                v,
+                cv, // corrected value
+                len = arr.length;
+        
+            if (len < 2) {
+                return arr;
+            }
+        
+            for (i = 0; i < len; i++) {
+                v = arr[i];
+        
+                /* closurecache 提供的函数中使用的是  cv = v + 0;，
+                 * 这样就无法辨别类似[1, 10, "1", "10"]的数组，
+                 * 因为运算后 => 1, 10, 10, 100，很明显，出现了重复的标示符。
+                 * 加前面就难道没问题吗？
+                 * 有的：数组中不能出现类似01 、001，以 0 开头的数字，
+                 * 但适用性比原先更广。
+                 */
+                cv = 0 + v;
+        
+                if (!o[cv]) {
+                    a.push(v);
+                    o[cv] = true;
+                }
+            }
+        
+            return a;
+        }
+      </script>
+      <pre title="code" class="brush: jscript;">
+        var uniq2 = function (arr) {
+            var a = [],
+                o = {},
+                i,
+                v,
+                cv, // corrected value
+                len = arr.length;
+        
+            if (len < 2) {
+                return arr;
+            }
+        
+            for (i = 0; i < len; i++) {
+                v = arr[i];
+        
+                /* closurecache 提供的函数中使用的是  cv = v + 0;，
+                 * 这样就无法辨别类似[1, 10, "1", "10"]的数组，
+                 * 因为运算后 => 1, 10, 10, 100，很明显，出现了重复的标示符。
+                 * 加前面就难道没问题吗？
+                 * 有的：数组中不能出现类似01 、001，以 0 开头的数字，
+                 * 但适用性比原先更广。
+                 */
+                cv = 0 + v;
+        
+                if (!o[cv]) {
+                    a.push(v);
+                    o[cv] = true;
+                }
+            }
+        
+            return a;
+        }
+      </pre>
+      <p>例子</p>
+      <script type="text/javascript">
+      (function(){
+        var lxj=[1,2,3,4,5,1]
+        var j=uniq2(lxj);
+        
+        var lxj2=[0,"0",1,"1",0]
+        var j2=uniq2(lxj2);
+        document.write('<br/><br/>[1,2,3,4,5,1]运行后得到==='+'['+j+']');
+        document.write('<br/><br/>[0,"0",1,"1",0]运行后得到==='+'['+j2+']'+'这里就不正确了');
+      })()
+      </script>
+      </div>
+</div>
+</body>
+</html>

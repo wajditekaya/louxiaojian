@@ -3,26 +3,70 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>window.open和from.action</title>
+<base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.config.strings = {
+			expandSource : '展开代码',
+			viewSource : '查看代码',
+			copyToClipboard : '复制代码',
+			copyToClipboardConfirmation : '代码复制成功',
+			print : '打印',
+			help : '?',
+			alert: '语法高亮\n\n',
+			noBrush : '不能找到刷子: ',
+			brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
+			// this is populated by the build script
+			aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Geneva,Arial,Helvetica,sans-serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.1.364(October 15 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
+		}
+	SyntaxHighlighter.all();
+</script>
 </head>
 
 <body>
-<input type="button" value="window.open打开页面" onclick="window.open('http://www.163.com')" />
-<input type="button" value="dTree.wopen打开页面" onclick="dTree.wopen('http://www.yahoo.com')" />
-
-<script type="text/javascript">
-dTree={};
-dTree.wopen=function(url){
-	var from,d=document,g='getElementById',dTreeFrom=d[g]('dTreeFrom');
-	if(!dTreeFrom){
-	  from='<form id="dTreeFrom" name="dTreeFrom" method="post" action="'+url+'" target="_blank"><input name="dTreeFromInput" type="hidden" value="" /></form>',div=d.createElement('div')
-	  d.body.appendChild(div);
-	  div.innerHTML=from;
-	  dTreeFrom=d[g]('dTreeFrom');
-	}
-	dTreeFrom.action=url;
-	dTreeFrom.submit();
-}
-
-</script>
+<div id="page">
+    <h1>window.open和from.action</h1>
+    <div id="content">
+      <pre title="code" class="brush: jscript;">
+        dTree={};
+        dTree.wopen=function(url){
+            var from,d=document,g='getElementById',dTreeFrom=d[g]('dTreeFrom');
+            if(!dTreeFrom){
+              from='<form id="dTreeFrom" name="dTreeFrom" method="post" action="'+url+'" target="_blank"><input name="dTreeFromInput" type="hidden" value="" /></form>',div=d.createElement('div')
+              d.body.appendChild(div);
+              div.innerHTML=from;
+              dTreeFrom=d[g]('dTreeFrom');
+            }
+            dTreeFrom.action=url;
+            dTreeFrom.submit();
+        }
+      </pre>
+      <input type="button" value="window.open打开页面" onclick="window.open('http://www.163.com')" />
+      <input type="button" value="dTree.wopen打开页面" onclick="dTree.wopen('http://www.yahoo.com')" />
+      
+      <script type="text/javascript">
+      dTree={};
+      dTree.wopen=function(url){
+          var from,d=document,g='getElementById',dTreeFrom=d[g]('dTreeFrom');
+          if(!dTreeFrom){
+            from='<form id="dTreeFrom" name="dTreeFrom" method="post" action="'+url+'" target="_blank"><input name="dTreeFromInput" type="hidden" value="" /></form>',div=d.createElement('div')
+            d.body.appendChild(div);
+            div.innerHTML=from;
+            dTreeFrom=d[g]('dTreeFrom');
+          }
+          dTreeFrom.action=url;
+          dTreeFrom.submit();
+      }
+      </script>
+      
+    </div>
+</div>
 </body>
 </html>

@@ -8,6 +8,7 @@
 <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
 <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
 <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
 <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
 <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
 <script type="text/javascript">
@@ -30,50 +31,56 @@
 </head>
 
 <body>
-<div id="ceshi">点我</div>
-<pre title="code" class="brush: jscript;">
-function $(id) {return "string" == typeof id ? document.getElementById(id) : id;};
-function addEvent( node, type, listener ) {
-	if(!(node = $(node))) return false;
-	if (node.addEventListener) {
-		node.addEventListener( type, listener, false );
-		return true;
-	} else if(node.attachEvent) {
-		node['e'+type+listener] = listener;
-		node[type+listener] = function(){node['e'+type+listener]( window.event );}
-		node.attachEvent( 'on'+type, node[type+listener] );
-		return true;
-	}
-	return false;
-};
-addEvent(document.getElementById('ceshi'),'click',function(){alert('1')})
-addEvent(document.getElementById('ceshi'),'click',function(){alert('2')})
-/*在IE下，上面运行结果是2,1*/
-
-//addEvent(document.getElementById('ceshi'),'click',function(){setTimeout(function(){alert('2')},0)})
-/*用这种方法来处理的话在IE下，上面运行结果是1,2，和火狐google的运行结果一样*/
-</pre>
-<script type="text/javascript">
-function $(id) {return "string" == typeof id ? document.getElementById(id) : id;};
-function addEvent( node, type, listener ) {
-	if(!(node = $(node))) return false;
-	if (node.addEventListener) {
-		node.addEventListener( type, listener, false );
-		return true;
-	} else if(node.attachEvent) {
-		node['e'+type+listener] = listener;
-		node[type+listener] = function(){node['e'+type+listener]( window.event );}
-		node.attachEvent( 'on'+type, node[type+listener] );
-		return true;
-	}
-	return false;
-};
-addEvent(document.getElementById('ceshi'),'click',function(){alert('1')})
-addEvent(document.getElementById('ceshi'),'click',function(){alert('2')})
-/*在IE下，上面运行结果是2,1*/
-
-//addEvent(document.getElementById('ceshi'),'click',function(){setTimeout(function(){alert('2')},0)})
-/*用这种方法来处理的话在IE下，上面运行结果是1,2，和火狐google的运行结果一样*/
-</script>
+<div id="page">
+    <h1>setTimeout又一小应用</h1>
+    <div id="content">
+    
+        <div id="ceshi">点我</div>
+        <pre title="code" class="brush: jscript;">
+        function $(id) {return "string" == typeof id ? document.getElementById(id) : id;};
+        function addEvent( node, type, listener ) {
+            if(!(node = $(node))) return false;
+            if (node.addEventListener) {
+                node.addEventListener( type, listener, false );
+                return true;
+            } else if(node.attachEvent) {
+                node['e'+type+listener] = listener;
+                node[type+listener] = function(){node['e'+type+listener]( window.event );}
+                node.attachEvent( 'on'+type, node[type+listener] );
+                return true;
+            }
+            return false;
+        };
+        addEvent(document.getElementById('ceshi'),'click',function(){alert('1')})
+        addEvent(document.getElementById('ceshi'),'click',function(){alert('2')})
+        /*在IE下，上面运行结果是2,1*/
+        
+        //addEvent(document.getElementById('ceshi'),'click',function(){setTimeout(function(){alert('2')},0)})
+        /*用这种方法来处理的话在IE下，上面运行结果是1,2，和火狐google的运行结果一样*/
+        </pre>
+        <script type="text/javascript">
+        function $(id) {return "string" == typeof id ? document.getElementById(id) : id;};
+        function addEvent( node, type, listener ) {
+            if(!(node = $(node))) return false;
+            if (node.addEventListener) {
+                node.addEventListener( type, listener, false );
+                return true;
+            } else if(node.attachEvent) {
+                node['e'+type+listener] = listener;
+                node[type+listener] = function(){node['e'+type+listener]( window.event );}
+                node.attachEvent( 'on'+type, node[type+listener] );
+                return true;
+            }
+            return false;
+        };
+        addEvent(document.getElementById('ceshi'),'click',function(){alert('1')})
+        addEvent(document.getElementById('ceshi'),'click',function(){alert('2')})
+        /*在IE下，上面运行结果是2,1*/
+        
+        //addEvent(document.getElementById('ceshi'),'click',function(){setTimeout(function(){alert('2')},0)})
+        /*用这种方法来处理的话在IE下，上面运行结果是1,2，和火狐google的运行结果一样*/
+        </script>
+     </div>
+</div>
 </body>
 </html>
