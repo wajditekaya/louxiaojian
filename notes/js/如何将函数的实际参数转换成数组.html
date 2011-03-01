@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>如何将函数的实际参数转换成数组</title>
+<base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.config.strings = {
+			expandSource : '展开代码',
+			viewSource : '查看代码',
+			copyToClipboard : '复制代码',
+			copyToClipboardConfirmation : '代码复制成功',
+			print : '打印',
+			help : '?',
+			alert: '语法高亮\n\n',
+			noBrush : '不能找到刷子: ',
+			brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
+			// this is populated by the build script
+			aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Geneva,Arial,Helvetica,sans-serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.1.364(October 15 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
+		}
+	SyntaxHighlighter.all();
+</script>
+</head>
+
+<body>
+<div id="page">
+    <h1>如何将函数的实际参数转换成数组</h1>
+    <div id="content">
+             <a href="http://www.planabc.net/2010/01/06/arguments_to_array/" target="_blank">http://www.planabc.net/2010/01/06/arguments_to_array/</a>
+             <p>实际参数在函数中我们可以使用 <code>arguments</code> 对象获得 （注：形参可通过 <code>arguments.callee</code> 获得），虽然 <code>arguments</code> 对象与数组形似，但仍不是真正意义上的数组。</p> 
+              <p>值得庆幸的是，我们可以通过数组的 <code>slice</code> 方法将 <code>arguments</code> 对象转换成真正的数组：</p> 
+              <pre title="code" class="brush: jscript;">var args = Array.prototype.slice.call(arguments, 0);</pre> 
+              <p>对于<code>slice</code> 方法，<a href="http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-262.pdf" title="ECMAScript" target="_blank">ECMAScript 262</a> 中 15.4.4.10 Array.prototype.slice (start, end) 章节有备注：</p> 
+              <blockquote><p>The slice function is intentionally generic; it does not require that its this value be an Array object. Therefore it can be transferred to other kinds of objects for use as a method. Whether the slice function can be applied successfully to a host object is implementation-dependent.</p></blockquote> 
+              <p><a href="http://jsdesignpatterns.com/" target="_blank" title="Pro JavaScript Design Patterns">《Pro JavaScript Design Patterns》</a>（《JavaScript 设计模式》）的作者 <a href="http://www.dustindiaz.com/" title="Dustin Diaz: ./with Imagination" target="_blank">Dustin Diaz</a> 曾指出：</p> 
+              <blockquote><p> 
+              instead of…<br /> 
+              var args = Array.prototype.slice.call(arguments, 0); // 怿飞注：下称方法一<br /> 
+              do this…<br /> 
+              var args = [].slice.call(arguments, 0); // 怿飞注：下称方法二</p></blockquote> 
+              <p>但二者的性能差异真的存在吗？经过个人简单测试发现：</p> 
+              <p><del datetime="2010-01-30T07:44:07+00:00">在 <code>arguments.length</code> 较小的时候，方法二性能上稍有一点点优势，而在<code>arguments.length</code> 较大的时候，方法一却又稍有优势。</del></p> 
+              <p>2010年1月30日更新（<a href="http://www.planabc.net/demo/toarray/arguments.html" target="_blank">测试地址</a>）：几经验证，性能差异不大，反而第一张方法性能稍优势一点，或许由于第二种方法创建新数组产生开销。</p> 
+              <p>最后附上方法三，最老土的方式：</p> 
+              <pre title="code" class="brush: jscript;">
+              var args = [];
+              for (var i = 1; i < arguments.length; i++) {
+                  args.push(arguments[i]);
+              }
+              </pre> 
+              <p>不过对于平常来说，个人建议使用第一种方法，但任何解决方案，没有最好的，只有最合适：</p> 
+              <pre><code>var args = Array.prototype.slice.call(arguments, 0); </code></pre> 
+              <p>------------------------------------------------------------------</p> 
+              <p><strong>如何将 <a href="http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/core.html#ID-536297177" target="_blank" title="NodeList">NodeList</a> （比如：document.getElementsByTagName('div')）转换成数组呢？</strong></p> 
+              <p>解决方案简单如下：</p> 
+              <pre title="code" class="brush: jscript;">
+              function nodeListToArray(nodes){
+                  var arr, length;
+                  try {
+                      // works in every browser except IE
+                      arr = [].slice.call(nodes);
+                      return arr;
+                  } catch(err){
+                      // slower, but works in IE
+                      arr = [];
+                      length = nodes.length;
+               
+                      for(var i = 0; i < length; i++){
+                           arr.push(nodes[i]);
+                       }  
+               
+                      return arr;
+                  }
+              } 
+              </pre> 
+              <p>为什么 IE 中 NodeList 不可以使用 [].slice.call(nodes) 方法转换呢？</p> 
+              <blockquote><p>In Internet Explorer it throws an error that it can't run Array.prototype.slice.call(nodes) because a DOM NodeList is not a JavaScript object.</p></blockquote> 
+
+    </div>
+</div>
+</body>
+</html>

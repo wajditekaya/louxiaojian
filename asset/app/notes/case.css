@@ -58,7 +58,7 @@ select{color:#999}
 	.login_btn a,.login_btn input{float:left}
 .imp{color:#f00}
 #warpper,#wrapper,#page{text-align:left}
-#content{padding:0 20px}
+#content{padding:0 20px 30px}
 h1{font:bold 24px/2 "微软雅黑";text-align:left;margin-bottom:20px;padding-left:20px;background:#808080;color:#fff; border-bottom:24px #efefef solid}
 h1 a{color:#fff;text-decoration:none}
 h1 a:hover{text-decoration:underline; color:#fff}
