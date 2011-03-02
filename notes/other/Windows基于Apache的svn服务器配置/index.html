@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>windows安装基于Apache的SVN服务器(包括SSL配置)</title>
-<base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
+<base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" target="_blank" />
 <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
 <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
 <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
@@ -35,9 +35,9 @@
     <h1>windows安装基于Apache的SVN服务器(包括SSL配置)</h1>
     <div id="content">
           <ol>
-            <li><a href="#step1">1. 引言</a></li>
-            <li><a href="#step2">2. 环境</a></li>
-            <li><a href="#step3">3. 安装过程
+            <li><a href="#step1" target="_self">1. 引言</a></li>
+            <li><a href="#step2" target="_self">2. 环境</a></li>
+            <li><a href="#step3">3. 安装过程</a>
               <ol style="margin-left:50px">
                 <li><a href="#step31">3.1. 安装Apache</a></li>
                 <li><a href="#step32">3.2. 安装Subversion</a></li>
@@ -60,11 +60,11 @@
        </p>
        <h2 id="step2">3. 安装过程</h2>
        <h3>3.1. 安装Apache</h3>
-       <p>从<a href="http://httpd.apache.org/download.cgi" target="_blank">http://httpd.apache.org/download.cgi</a>最新版本的Apache Web服务器。确保你下载的版本大于2.0.54。2.0.54版本的Apache将不能与Subversion 1.3.xx配合工作。而且，小于2.0.54的Apache也因为在windows上的编译存在一个bug而导致不能与subversion1.2配合使用。
+       <p>从<a href="http://httpd.apache.org/download.cgi">http://httpd.apache.org/download.cgi</a>最新版本的Apache Web服务器。确保你下载的版本大于2.0.54。2.0.54版本的Apache将不能与Subversion 1.3.xx配合工作。而且，小于2.0.54的Apache也因为在windows上的编译存在一个bug而导致不能与subversion1.2配合使用。
 
 一旦你已经有了Apache2的安装程序，你可以双击它，它将引导你完成整个安装过程。请确保你输入正确的服务器URL（如果你的服务器没有DNS名称，你可以直接输入IP地址）。我建议你将Apache安装成 for all Users,on Port 80,as a service。注意：如果你已经有一个IIS或者其它的程序使用80端口，安装可能会失败。如果是这样，你可以到程序目录下的Apache Group\Apache2\conf目录中找到文件httpd.conf，将其中的Listen 80改成一个不用的端口，比如Listen 81。然后重新运行这个安装程序，这次应该不会再有问题了。
 
-现在你可以在你的浏览器中键入<a href="http://localhost" target="_blank">http://localhost</a>，如果呈现了一个已经配置好的网站，那么你的Apache就安装成功了。
+现在你可以在你的浏览器中键入<a href="http://localhost">http://localhost</a>，如果呈现了一个已经配置好的网站，那么你的Apache就安装成功了。
 </p>
 
 创建passwd文件，你打开命令行(DOS窗口)，将当前目录切换到apache2目录（通常为c:\Program Files\Apache Group\Apache2），然后打入以下命令以创建文件：
@@ -74,6 +74,13 @@
 <br />输入密码
 <br />确认密码并生成文件
 </p>
+或
+ <pre  title="code" class="brush: xml;">
+  htpasswd -c passwd zhangchao # apache 创建用户文件命令;第一次生成该文件使用
+  htpasswd passwd zhangchao1 # 第二次添加用户 命令
+  htpasswd –help # 使用该命令 查询 修改密码，删除用户等命令参数
+</pre>
+
  <pre  title="code" class="brush: xml;">
   bin\htpasswd -c passwd 
   比如： bin\htpasswd -c c:\svn\passwd admin
