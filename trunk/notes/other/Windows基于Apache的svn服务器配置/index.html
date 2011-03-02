@@ -74,13 +74,8 @@
 <br />输入密码
 <br />确认密码并生成文件
 </p>
-或
- <pre  title="code" class="brush: xml;">
-  htpasswd -c passwd zhangchao # apache 创建用户文件命令;第一次生成该文件使用
-  htpasswd passwd zhangchao1 # 第二次添加用户 命令
-  htpasswd –help # 使用该命令 查询 修改密码，删除用户等命令参数
-</pre>
-
+<p style="height:50px"></p>
+<strong>创建新用户</strong>
  <pre  title="code" class="brush: xml;">
   bin\htpasswd -c passwd 
   比如： bin\htpasswd -c c:\svn\passwd admin
@@ -89,7 +84,16 @@
   admin 表示用户名
  </pre>
  此命令执行Apahce的bin目录下的htpasswd.exe来创建一个密码文件，创建完成之后，重启Apache服务。
- 
+
+<p style="height:50px"></p>
+<strong>在原有的passwd文件上新增用户和密码</strong>
+ <pre  title="code" class="brush: xml;">
+  bin>htpasswd -m F:\dev\svn\svnpasswd2 jxsr_lxj
+  命令分析：
+  F:\dev\svn\svnpasswd2 表示在:F:\dev\svn\目录下svnpasswd2文件中新增用户名jxsr_lxj
+ </pre>
+
+ <p style="height:50px"></p>
  <pre  title="code" class="brush: xml;">
       &lt;Location /svn&gt;   #意味着可以通过像这样的URL(http://MyServer/svn)来访问Subversion版本库
       DAV svn     # 告诉Apache哪个模块负责服务像那样的URL－－在这里就是Subversion模块
