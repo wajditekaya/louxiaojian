@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>windows安装基于Apache的SVN服务器(包括SSL配置)</title>
+<base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.config.strings = {
+			expandSource : '展开代码',
+			viewSource : '查看代码',
+			copyToClipboard : '复制代码',
+			copyToClipboardConfirmation : '代码复制成功',
+			print : '打印',
+			help : '?',
+			alert: '语法高亮\n\n',
+			noBrush : '不能找到刷子: ',
+			brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
+			// this is populated by the build script
+			aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Geneva,Arial,Helvetica,sans-serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.1.364(October 15 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
+		}
+	SyntaxHighlighter.all();
+</script>
+</head>
+
+<body>
+<div id="page">
+    <h1>windows安装基于Apache的SVN服务器(包括SSL配置)</h1>
+    <div id="content">
+          <ol>
+            <li><a href="#step1">1. 引言</a></li>
+            <li><a href="#step2">2. 环境</a></li>
+            <li><a href="#step3">3. 安装过程
+              <ol style="margin-left:50px">
+                <li><a href="#step31">3.1. 安装Apache</a></li>
+                <li><a href="#step32">3.2. 安装Subversion</a></li>
+                <li><a href="#step33">3.3. 配置</a></li>
+                <li><a href="#step34">3.4. 使用SSL来保护你的服务器</a></li>
+              </ol>
+           </li>
+       </ol>
+      <pre title="code" class="brush: jscript;">
+      http://bbs.iusesvn.com/thread-158-1-1.html
+      http://www.cnblogs.com/blueskyc/articles/1376982.html
+      </pre>
+       <h2 id="step1">1. 引言</h2>
+       <h2 id="step2">2. 环境</h2>
+       <p>
+        操作系统：Windows2000、Windows XP + sp1或Windows2003
+        <br />Apache版本：2.0.55 
+        <br />subversion版本： Setup-Subversion-1.5.3.msi
+        <br />TortoiseSVN版本： TortoiseSVN-1.5.5.14361-win32-svn-1.5.4.msi
+       </p>
+       <h2 id="step2">3. 安装过程</h2>
+       <h3>3.1. 安装Apache</h3>
+       <p>从<a href="http://httpd.apache.org/download.cgi" target="_blank">http://httpd.apache.org/download.cgi</a>最新版本的Apache Web服务器。确保你下载的版本大于2.0.54。2.0.54版本的Apache将不能与Subversion 1.3.xx配合工作。而且，小于2.0.54的Apache也因为在windows上的编译存在一个bug而导致不能与subversion1.2配合使用。
+
+一旦你已经有了Apache2的安装程序，你可以双击它，它将引导你完成整个安装过程。请确保你输入正确的服务器URL（如果你的服务器没有DNS名称，你可以直接输入IP地址）。我建议你将Apache安装成 for all Users,on Port 80,as a service。注意：如果你已经有一个IIS或者其它的程序使用80端口，安装可能会失败。如果是这样，你可以到程序目录下的Apache Group\Apache2\conf目录中找到文件httpd.conf，将其中的Listen 80改成一个不用的端口，比如Listen 81。然后重新运行这个安装程序，这次应该不会再有问题了。
+
+现在你可以在你的浏览器中键入<a href="http://localhost" target="_blank">http://localhost</a>，如果呈现了一个已经配置好的网站，那么你的Apache就安装成功了。
+</p>
+
+创建passwd文件，你打开命令行(DOS窗口)，将当前目录切换到apache2目录（通常为c:\Program Files\Apache Group\Apache2），然后打入以下命令以创建文件：
+<p>开始-运行-CMD 然后输入"D:" 不要双引号 进入D盘
+<br />cd ProgramFiles\apache
+<br />bin\htpasswd -c F:\passwd jxsr_lxj
+<br />输入密码
+<br />确认密码并生成文件
+</p>
+ <pre  title="code" class="brush: xml;">
+  bin\htpasswd -c passwd 
+  比如： bin\htpasswd -c c:\svn\passwd admin
+  命令分析：
+  c:\svn\passwd 表示会在:c:\svn目录下创建一个passwd文件
+  admin 表示用户名
+ </pre>
+ 此命令执行Apahce的bin目录下的htpasswd.exe来创建一个密码文件，创建完成之后，重启Apache服务。
+ 
+ <pre  title="code" class="brush: xml;">
+      &lt;Location /svn&gt;   #意味着可以通过像这样的URL(http://MyServer/svn)来访问Subversion版本库
+      DAV svn     # 告诉Apache哪个模块负责服务像那样的URL－－在这里就是Subversion模块
+      SVNParentPath C:\svn   #告诉Subversion在目录C:\svn下寻找版本库
+      AuthType Basic  #启用基本的验证，使用用户名/密码验证
+      AuthName "test"   # test为版本库
+      AuthUserFile c:\svn\passwd   #passwd问密码和用户文件，用来验证用户的用户名及密码
+      AuthzSVNAccessFile C:\svn\svnaccessfile    #权限控制文件，限定各个用户或组在版本库中目录的访问权限
+      Require valid-user  #限定用户只有输入正确的用户名及密码后才能访问这个路径
+      &lt;Location&gt;
+</pre>
+
+ <p>然后用文本编辑器创建一个Subversion授权文件。Apache将确保只有有效的用户可以访问你的/svn位置，然后将用户名传到AuthzSVNAccessFile模块，这样可以依据Subversion授权文件得到更精细的权限控制。注意，路径将被指定为[库:路径]或者简单的[路径]。如果你不明确指定一个库，访问规则将应用到由SVNParentPath指定的目录下所有的版本库中。一个授权文件例子可能像这样：</p>
+ <pre  title="code" class="brush: xml;"> 
+    [groups]
+    admin = john, kate
+    devteam1 = john, rachel, sally
+    devteam2 = kate, peter, mark
+    docs = bob, jane, mike
+    training = zak
+    
+    # 为所有库指定默认访问规则
+    # 所有人可以读，管理员可以写，危险分子没有任何权限
+    [/]
+    * = r
+    @admin = rw
+    dangerman =
+    
+    # 允许开发人员可以完全访问他们的项目版本库
+    [proj1:/]
+    @devteam1 = rw
+    [proj2:/]
+    @devteam2 = rw
+    [bigproj:/]
+    @devteam1 = rw
+    @devteam2 = rw
+    trevor = rw
+    
+    # 文档编写人员对所有的docs目录有写权限
+    [/trunk/doc]
+    @docs = rw
+    
+    # 培训人员可以完全访问培训版本库
+    [TrainingRepos:/]
+    @training = rw
+ </pre>
+ 
+ 
+  
+   </div>
+</div>
+</body>
+</html>
