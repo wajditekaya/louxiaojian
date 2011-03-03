@@ -77,6 +77,46 @@
           document.write('background-color！！>'+stylename('background-color')+'<br />');
           document.write('border-bottom-width！！>'+stylename('border-bottom-width'))
         </script>
+        
+        <pre title="code" class="brush: jscript;">
+        /**
+         * Removes the whitespace from the beginning and end of a string.
+         */
+	    function undef(a,undef){
+		   alert(a==undef)
+	    };
+		//undef();
+		function trim(str,undef){
+		   var EMPTY = '',
+			_trim = String.prototype.trim,
+			RE_TRIM = /^\s+|\s+$/g,
+			strtrim=_trim ?  ((str == undef) ? EMPTY : _trim.call(str)) : ((str == undef) ? EMPTY : str.toString().replace(RE_TRIM, EMPTY));
+			return strtrim;
+		};
+		document.getElementById('trim').innerHTML=trim('lxj')+'==>length='+trim('lxj').length;
+		document.getElementById('trim2').innerHTML=trim('lxj')+'==>length='+trim('  lxj  ').length;
+		document.getElementById('trim3').innerHTML='　lxj　==>length='+'　lxj　'.toString().length;
+      </pre>
+      <span id="trim" style="background:#f00; margin-right:20px"></span><span id="trim2" style="background:#f00; margin-right:20px"></span><span id="trim3" style="background:#f00; margin-right:20px"></span>
+	  <script>
+        /**
+         * Removes the whitespace from the beginning and end of a string.
+         */
+	    function undef(a,undef){
+		   alert(a==undef)
+	    };
+		//undef();
+		function trim(str,undef){
+		   var EMPTY = '',
+			_trim = String.prototype.trim,
+			RE_TRIM = /^\s+|\s+$/g,
+			strtrim=_trim ?  ((str == undef) ? EMPTY : _trim.call(str)) : ((str == undef) ? EMPTY : str.toString().replace(RE_TRIM, EMPTY));
+			return strtrim;
+		};
+		document.getElementById('trim').innerHTML=trim('lxj')+'==>length='+trim('lxj').length;
+		document.getElementById('trim2').innerHTML=trim('lxj')+'==>length='+trim('  lxj  ').length;
+		document.getElementById('trim3').innerHTML='　lxj　==>length='+'　lxj　'.toString().length;
+      </script>   
      </div>
 </div>
 </body>
