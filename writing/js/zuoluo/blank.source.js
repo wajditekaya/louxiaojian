@@ -255,8 +255,12 @@ ZBrowser.add_keywords=(function(S){
 			};
 			
 			function hotkey(evt) { 
-				var evt= evt ? evt :window.event
-				if(evt.keyCode==13) {AddWord(evt);} 
+				var evt= evt ? evt :window.event;
+				
+				if(document.activeElement.id=="new-keywords-input"){
+					if(evt.keyCode==13) {AddWord(evt);}
+				}
+				 
 			};
 			document.onkeydown =function(event){ hotkey(event);}
 			addEvent(but,'click',AddWord);
