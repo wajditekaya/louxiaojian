@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<script type="text/javascript" src="base.source.js"></script>
+<title>佐罗浏览器</title>
+<style>
+/*===================================
+author:	lou xiao jian
+email:  jxsr_lxj@163.com
+====================================*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+body{font:12px/22px "Microsoft YaHei",Tahoma,"宋体", sans-serif;word-break:break-all;text-align:center;background:url(mbg.jpg) repeat-x}
+fieldset,img{border:0;} 
+table {border-collapse: collapse;border-spacing:0;} 
+ol,li,ul{list-style:none;} 
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+caption,th{text-align:left;} 
+h1,h2,h3,h4,h5,h6{font-size:100%;} 
+q:before,q:after{content:'';}
+abbr,acronym{border:0;font-variant:normal;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+input,select,textarea{font:normal normal 12px "Verdana";}
+input,textarea,select{*font-size:100%;}
+input,textarea{color:#666}
+select{color:#999}
+/*textList*/
+.tList a{text-decoration:none}
+.tList li{padding-left:8px;height:20px;line-height:20px;overflow:hidden;}
+/*==clear==*/
+a{color:#0066cc;text-decoration:none}
+a:hover{color:#0066cc;text-decoration:underline}
+a:visited {color:#800080;}
+.pitch{margin-bottom:10px}/*间距*/
+
+.sTab,.sTab ul .cur,.sTab ul .dele,
+#nList .nlist-hd,
+.s_btn,.input,
+#nList .tList li,
+.keyBx li,
+#nList .nBx .nl li,
+.title,.title2,
+.tj_btn,
+.scList .del,
+#mailForm .button,
+#search .sForm .i_l,#search .sForm .i_r,#search .s_keyWord .selected,
+#collection .close,
+#nList .add-keywords,#nList .add-keywords-but,.tip-bx .jt,
+.next-previous,
+.tip-bx-close{background-image:url(zuoluo.png);background-repeat:no-repeat}
+
+#wrapper{width:674px;margin:0 auto;text-align:left;padding-bottom:23px}
+#hd{margin-bottom:6px}
+#bd{position:relative;zoom:1;}
+
+
+.bo1{border:1px solid #d5d5d5}
+.bo2{border:1px solid #efddbb}
+
+.title,.title2{height:27px;line-height:27px;padding-left:8px;color:#444;font-weight:normal;background-repeat:repeat-x}
+	.title{background-position:0 -33px}
+	.title2{background-position:0 -61px}
+
+.rowArea{zoom:1}
+.rowArea:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+	.rowArea .main{width:100%;float:left}
+	.rowArea .sBar{float:left;}
+	
+.sTab{background-position:0 -33px;background-repeat:repeat-x;height:27px;position:relative;overflow:hidden}
+	.sTab ul{overflow:hidden;height:27px;position:relative}
+	.sTab ul li{float:left;height:27px;line-height:27px;border-right:1px solid #e4e4e4;cursor:pointer;color:#333;text-align:center;position:relative;white-space:nowrap}
+	.sTab ul .dele{display:none;width:10px;height:11px;overflow:hidden;background-position:-106px -110px;position:absolute;right:2px;top:2px;text-indent:-999px}
+	.sTab ul .dele:hover{background-position:-85px -110px;}
+	.sTab ul .cur{background-color:#fbfbfb;background-position:0 -121px;color:#fff;font-weight:bold}
+	.sTab ul .cur .dele{display:block}
+	
+.s_btn{width:84px;height:32px;background-position:0 -88px;border:0;cursor:pointer;color:#fffbef;font-size:14px;font-weight:bold}
+.tj_btn{width:57px;height:21px;border:0;background-position:-85px -88px;cursor:pointer;text-indent:-9999px}
+
+
+#nList #nMain{background:#f5f5f5 url(bj1.gif) top repeat-x}
+
+
+#secArea .mainIn{margin-right:242px}
+	#secArea .sBar{width:233px;margin-left:-233px}
+
+.tip-bx{position:absolute;top:26px;background:#F6F6F6;display:none}
+	.tip-bx .tip-bx-innert{background:#F6F6F6;position:relative;zoom:1;border:1px solid #d5d5d5;padding:5px}
+	.tip-bx .jt{width:9px;height:5px;overflow:hidden;background-position:-96px -110px;position:absolute;top:-4px;right:110px}
+	.tip-bx-close{width:6px;height:5px;overflow:hidden;text-indent:-9999px;position:absolute;right:5px;top:4px;background-position:-219px -89px}
+	
+#nList .nlist-hd{background-position:0 -33px;background-repeat:repeat-x;position:relative;zoom:1}
+    #nList .nlist-hd .sTab{width:395px}
+    #nList .nlist-hd2{padding:0 50px 0 19px}
+	#nList .nlist-hd2 .sTab{width:361px}
+	#nList .nlist-hd2 .next-previous{display:block}
+	#nList .sTab ul{position:absolute}
+	#nList .next-previous{width:19px;height:26px;overflow:hidden;position:absolute;top:1px;text-indent:-9999px;display:none}
+	#nList #news-previous{background-position:-213px -95px;left:0}
+	#nList #news-next{background-position:-233px -95px;right:30px}
+    #nList .add-keywords{display:block;width:16px;height:16px;overflow:hidden;text-indent:-9999px;background-position:-143px -103px;cursor:pointer;position:absolute; right:7px;top:5px}
+	#nList #add-keywords-bx{width:230px;right:-100px;}
+	#nList .add-keywords-form{overflow:hidden;zoom:1}
+	#nList .add-keywords-form .input{width:205px;height:16px;overflow:hidden;line-height:16px;border:1px solid #c2c2c2;padding:2px 0 0 3px;display:block;margin-bottom:5px; float:left;background:none}
+	#nList .add-keywords-form .add-keywords-but{width:100px;height:23px;display:block;text-indent:-9999px;background-position:0 -180px;clear:both;margin:0 auto}
+    #nList .sTab ul li{border-right:1px solid #e4e4e4;padding:0 14px}
+	#nList .nBx{display:none;padding:0 0 4px 7px;overflow:hidden;zoom:1}
+    #nList .nBx .nBl{width:145px;float:left;padding-top:11px}
+	#nList .nBx .pList{margin-bottom:2px}
+	#nList .nBx .nl{padding:2px 0;background:#f3f3f3; border:1px solid #ececec}
+	#nList .nBx .nl li{line-height:18px;height:18px;overflow:hidden;padding-left:8px;background-position:-275px -96px;*background-position:-275px -97px}
+    #nList .nBx .tList{width:100%;float:right;margin-left:-145px;padding-top:7px}
+	#nList .tList ul{height:220px;overflow:auto;scrollbar-face-color:#f6f5f5;scrollbar-arrow-color:#4f0000;scrollbar-track-color:#ededed; scrollbar-3dlight-color:#d5d5d5;scrollbar-darkshadow-color:#d5d5d5;scrollbar-3dshadow-color:#ededed;scrollbar-highlight-color:#ededed;scrollbar-shadow-color:#ededed;margin:0 2px 0 150px}
+	#nList .tList li{padding-right:8px;background-position:-275px -92px;*background-position:-275px -93px;line-height:25px;height:25px}
+	#nList #rView ul{margin-left:0}
+</style>
+</head>
+
+<body>
+<!--wrapper-->
+<div id="wrapper">
+
+
+  <!--bd-->
+  <div id="bd">
+
+   <!--secArea-->
+   <div id="secArea" class="rowArea pitch">
+     <div class="main">
+       <div class="mainIn">
+         <!--nList-->
+         <div id="nList" class="bo1">
+         
+           <div class="nlist-hd">
+               <a href="#" onclick="return false" id="news-previous" class="next-previous">上一个</a>
+               <div class="sTab">
+                 <ul id="nTab">
+                   <li class="cur">综合<a class="dele" href="#" onclick="return false" title="删除">删除</a></li>
+                   <li>财经<a class="dele" href="#" onclick="return false" title="删除">删除</a></li>
+                   <li>娱乐<a class="dele" href="#" onclick="return false" title="删除">删除</a></li>
+                   <li>最近浏览</li>
+                 </ul>
+               </div>
+               <a href="#" onclick="return false" id="news-next" class="next-previous">下一个</a>
+                 <a href="#" onclick="return false" id="add-keywords" class="add-keywords" title="添加关键词">添加关键词</a>
+                 <div id="add-keywords-bx" class="tip-bx">
+                   <div class="tip-bx-innert">
+                     <div class="add-keywords-form"><input type="text" id="new-keywords-input" class="input" value=""  /><a href="#" id="add-keywords-but" class="add-keywords-but" onclick="return false">添加关键字</a></div>
+                   </div>
+                   <a href="#" onclick="this.parentNode.style.display='none';return false" class="tip-bx-close" title="关闭">关闭</a>
+                   <b class="jt"></b>
+                 </div>
+           
+           </div>
+         </div>
+         <!--/nList-->
+       </div>
+     </div>
+     <div class="sBar">sBar</div>
+   </div>
+   <!--/secArea-->
+
+  </div>
+  <!--/bd-->
+  
+</div>
+<!--/wrapper-->
+<script type="text/javascript" src="blank.source.js"></script>
+</body>
+</html>
