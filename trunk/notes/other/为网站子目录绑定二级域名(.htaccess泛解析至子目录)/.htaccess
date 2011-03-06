@@ -1,0 +1,18 @@
+RewriteEngine on
+
+
+# 把 cdn.xmlhtml.cn改为你要绑定的域名.
+RewriteCond %{HTTP_HOST} ^(www.)?cdn.xmlhtml.cn$
+# 把 cdn改为要绑定的目录.
+RewriteCond %{REQUEST_URI} !^/cdn/
+# 不要改以下两行.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# 把 cdn改为要绑定的目录.
+RewriteRule ^(.*)$ /cdn/$1
+# 把 cdn.xmlhtml.cn改为你要绑定的域名
+# 把 cdn 改为要绑定的目录.
+# cdn/ 后面是首页文件index.php, index.html……
+RewriteCond %{HTTP_HOST} ^(www.)?cdn.xmlhtml.cn$
+RewriteRule ^(/)?$ cdn/index.html [L] 
+

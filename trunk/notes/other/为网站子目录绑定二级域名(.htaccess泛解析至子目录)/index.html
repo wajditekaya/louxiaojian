@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>为网站子目录绑定二级域名(.htaccess泛解析至子目录)</title>
+</head>
+
+<body>
+	<div class="post-body">
+	
+	
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 为网站添加几个二级域名访问的频道，不但可以使网站架构更加清晰，也方便用户的访问，因为在很大程度上缩短了访问地址。二级域名地址的访问，可以让访客对网站产生好感，http://t.qq.com/ 怎么说都比 http://www.qq.com/twitter/ 看着舒服。所以，适当使用二级域名对某些频道的访问，将会提升网站的价值，提高网站在用户心目中的地位。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 如果你的主机空间支持子目录绑定二级域名，那不防更改下网站的结构，适当为某些频道启用二级域名来访问。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 这里介绍的是子目录绑定二级<a target="_blank" href="http://www.webkaka.com/blog/archives/godaddy-domain-name-DNS-setting.html">域名</a>的方法：</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 一、首先，在域名管理后台添加二级域名的&ldquo;别名（CNAME）&rdquo;，我这里添加了一&ldquo;t.webkaka.com&rdquo;的二级域名</p><p style="text-align: center"><img title="" alt="" src="201004150057112137.gif" onload="ResizeImage(this,520)" /></p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 二、进入主机管理后台，在&ldquo;子目录绑定&rdquo;的页面，添加这个二级域名</p><p style="text-align: center"><img title="" alt="" src="201004150101383354.gif" onload="ResizeImage(this,520)" /></p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 三、设置完毕，二级域名马上可以用了。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 如果你的主机不支持绑定子目录，怎么办？如果你用的是PHP主机，可以试下下面的方法看是否有效（资料来源网络，本人没环境测试）。</p><blockquote><p>在网站根目录新建个.htaccess文件，在此文件中加入以下语句： <br /><br />RewriteEngine on <br /># 把 bbs.dakm.cn改为你要绑定的域名. <br />RewriteCond %{HTTP_HOST} ^(www.)?bbs.dakm.cn$ <br /># 把 bbs改为要绑定的目录. <br />RewriteCond %{REQUEST_URI} !^/bbs/ <br /># 不要改以下两行. <br />RewriteCond %{REQUEST_FILENAME} !-f <br />RewriteCond %{REQUEST_FILENAME} !-d <br /># 把 bbs改为要绑定的目录. <br />RewriteRule ^(.*)$ /bbs/$1 <br /># 把 bbs.dakm.cn改为你要绑定的域名 <br /># 把 bbs 改为要绑定的目录. <br /># bbs/ 后面是首页文件index.php, index.html&hellip;&hellip; <br />RewriteCond %{HTTP_HOST} ^(www.)?bbs.dakm.cn$ <br />RewriteRule ^(/)?$ bbs/index.php [L] <br /><br />上面的整套语句是绑定一个子目录，如需绑定多个子目录，你可以重复添加以上的全套语句！</p></blockquote>
+
+        </div>
+
+</body>
+</html>
