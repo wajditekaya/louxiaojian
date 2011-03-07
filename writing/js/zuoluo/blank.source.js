@@ -253,16 +253,12 @@ ZBrowser.add_keywords=(function(S){
 					  closeBx();
 					  S.newListTab(ZBrowser,1);
 			};
-			
-			function hotkey(evt) { 
+			function hotkey(evt){ 
 				var evt= evt ? evt :window.event;
-				
-				if(document.activeElement.id=="new-keywords-input"){
-					if(evt.keyCode==13) {AddWord(evt);}
-				}
+				if(evt.keyCode==13) {AddWord(evt);}
 				 
 			};
-			document.onkeydown =function(event){ hotkey(event);}
+			input.onkeydown =function(event){hotkey(event);}
 			addEvent(but,'click',AddWord);
 			
 			addEvent(bx,'mouseup',function(event){stopPropagation(event);});
