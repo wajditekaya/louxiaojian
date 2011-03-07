@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>js回车提交事件</title>
+<base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.config.strings = {
+			expandSource : '展开代码',
+			viewSource : '查看代码',
+			copyToClipboard : '复制代码',
+			copyToClipboardConfirmation : '代码复制成功',
+			print : '打印',
+			help : '?',
+			alert: '语法高亮\n\n',
+			noBrush : '不能找到刷子: ',
+			brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
+			// this is populated by the build script
+			aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Geneva,Arial,Helvetica,sans-serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.1.364(October 15 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
+		}
+	SyntaxHighlighter.all();
+</script>
+</head>
+
+<body>
+<div id="page">
+    <h1>[].slice.call(arguments, 0)</h1>
+    <div id="content">
+        常常需要捕捉
+        用户的输入后用回车提交的事件，而不是用鼠标单击<br />
+        
+        一般有两种情况<br />
+        <br />
+        <h2>一、整个页面用一个回车提交事件：</h2>
+        <input type="button" value="回车提交" id="auto"/>
+        <pre title="code" class="brush: jscript;">
+        document.onkeydown = function(evt){
+			var evt=evt?evt:(window.event?window.event:null);
+				if((evt.keyCode || evt.which) == 13){
+				alert('整个页面中你按了回车')
+				}
+        }
+        </pre>
+        <script type="text/javascript">
+        document.onkeydown = function(evt){
+			var evt=evt?evt:(window.event?window.event:null);
+				if((evt.keyCode || evt.which) == 13){
+				alert('整个页面中你按了回车')
+				}
+        }
+        </script>
+        <h2>二、某个输入框中注册回车事件，一般用于用户在页面输入后按回车:</h2>
+        <br />
+        <label>input1<input type="text" id ="input1" maxlength="3"/></label>
+        <br/>
+        <label>input2<input type="text" id ="input2" maxlength="3"/></label>
+        <pre title="code" class="brush: jscript;">
+        function enterIn(evt){
+			var evt=evt?evt:(window.event?window.event:null);//兼容IE和FF
+			if (evt.keyCode==13){
+			   alert('input1你按回车了')
+			}
+        }
+		document.getElementById('input1').onkeydown=function(event){enterIn(event)}
+		
+		
+        function enterIn2(evt){
+			var evt=evt?evt:(window.event?window.event:null);//兼容IE和FF
+			if (evt.keyCode==13){
+			    alert('input2你按回车了')
+			}
+        }
+		document.getElementById('input2').onkeydown=function(event){enterIn2(event)}
+        </pre>
+        <script>
+        function enterIn(evt){
+			var evt=evt?evt:(window.event?window.event:null);//兼容IE和FF
+			if (evt.keyCode==13){
+			   alert('input1你按回车了')
+			}
+        }
+		document.getElementById('input1').onkeydown=function(event){enterIn(event)}
+		
+		
+        function enterIn2(evt){
+			var evt=evt?evt:(window.event?window.event:null);//兼容IE和FF
+			if (evt.keyCode==13){
+			    alert('input2你按回车了')
+			}
+        }
+		document.getElementById('input2').onkeydown=function(event){enterIn2(event)}
+        </script>
+        
+        <br />
+        如果一个页面可能需要捕捉多个回车事件，那么就利用上面的方式分开写></p>
+
+    </div>
+</div>
+
+</body>
+</html>
