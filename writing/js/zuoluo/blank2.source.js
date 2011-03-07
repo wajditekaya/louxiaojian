@@ -208,9 +208,9 @@ ZBrowser.add_keywords=(function(S){
 				var value=S.trim(input.value),li;
 				if(value==''){alert('\u8bf7\u8f93\u5165\u65b0\u95fb\u5173\u952e\u5b57');return false};
 				//if(value.length>6){alert('\u65b0\u95fb\u5173\u952e\u5b57\u4e0d\u80fd\u5927\u4e8e6\u4e2a\u5b57\u7b26');return false};
-				//G('nTab').appendChild(li=document.createElement('li'));
-				//li.innerHTML=value;
-				external.RunFunc('kw_add',value);
+				G('nTab').appendChild(li=document.createElement('li'));
+				li.innerHTML=value;
+				//external.RunFunc('kw_add',value);
 				closeBx();
 				S.newListTab(ZBrowser,1);
 	  };
