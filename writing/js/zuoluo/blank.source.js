@@ -168,9 +168,9 @@ ZBrowser.newListTab=function(S,addLast){
 
 	  addEvent(previousBut,'click',function(){	
 			previous=getNP('previous');
-			if(previousTime) clearInterval(previousTime);
-			if(nextTime) clearInterval(nextTime);
-			previousTime=setInterval(function(){
+			//if(previousTime) clearInterval(previousTime);
+			//if(nextTime) clearInterval(nextTime);
+/*			previousTime=setInterval(function(){*/
 					if(previous){
 						var previous_x=S.getObjPos(previous).x;
 						if((previous_x-par_lt)<=0){
@@ -182,19 +182,19 @@ ZBrowser.newListTab=function(S,addLast){
 					   });
 					}
 			
-		   },1000);
+/*		   },0);*/
 			
 	  });
 	  
-	  addEvent(previousBut,'mouseout',function(){
+/*	  addEvent(previousBut,'mouseout',function(){
 			if(previousTime) clearInterval(previousTime);
-	  });
+	  });*/
 	  
 	  addEvent(nextBut,'click',function(){					
             next=getNP('next');
-			if(previousTime) clearInterval(previousTime);
-			if(nextTime) clearInterval(nextTime);
-			nextTime=setInterval(function(){
+			//if(previousTime) clearInterval(previousTime);
+			//if(nextTime) clearInterval(nextTime);
+			/*nextTime=setInterval(function(){*/
 				   if(next){				
 					 var next_x=S.getObjPos(next).x,c;
 					 if((c=(next_x+next.offsetWidth-par_rt))>=0){
@@ -206,13 +206,13 @@ ZBrowser.newListTab=function(S,addLast){
 					 });
 					 
 				   }
-		   },1000)
+		   /*},0)*/
 			  
 	  });
 	  
-	  addEvent(nextBut,'mouseout',function(){
+/*	  addEvent(nextBut,'mouseout',function(){
 			if(nextTime) clearInterval(nextTime); 
-	  });
+	  });*/
 		  
 	 /*===滚动到新添加的关键词位置===*/
 	 if(addLast){
