@@ -1,0 +1,5 @@
+http://socialgraph.apis.google.com/lookup?q=twitter.com%2Flouxiaojian&pretty=1
+
+select title, link,pubDate from rss where url='http://twitter.com/statuses/user_timeline/louxiaojian.rss'
+
+http://developer.yahoo.com/yql/console/#h=select%20title%2C%20link%2CpubDate%20from%20rss%20where%20url%3D%27http%3A//twitter.com/statuses/user_timeline/louxiaojian.rss%27
