@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>两列等高</title>
+<base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.config.strings = {
+			expandSource : '展开代码',
+			viewSource : '查看代码',
+			copyToClipboard : '复制代码',
+			copyToClipboardConfirmation : '代码复制成功',
+			print : '打印',
+			help : '?',
+			alert: '语法高亮\n\n',
+			noBrush : '不能找到刷子: ',
+			brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
+			// this is populated by the build script
+			aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Geneva,Arial,Helvetica,sans-serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.1.364(October 15 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
+		}
+	SyntaxHighlighter.all();
+</script>
+<style type="text/css">
+*{margin:0; padding:0}
+body{font:14px/1.5 Tahoma, Geneva, sans-serif}
+
+.p-cols{width:800px;margin:0 auto;background:#FC9;overflow:hidden;zoom:1;position:relative}
+.p-col{float:left;width:100%;right:220px;background: #9C0;position:relative}
+.p-col1{float:left;left:220px;width:580px;position:relative}
+.p-col2{float:left;width:200px;left:240px;/*right:-240px*/;position:relative}
+</style>
+</head>
+
+<body>
+
+<div id="page">
+    <h1>两列等高</h1>
+    <div id="content">
+        
+        <pre title="code" class="brush: css;">
+          .p-cols{width:800px;margin:0 auto;background:#FC9;overflow:hidden;zoom:1;position:relative}
+          .p-col{float:left;width:100%;right:220px;background: #9C0;position:relative}
+          .p-col1{float:left;left:220px;width:580px;position:relative}
+          .p-col2{float:left;width:200px;left:240px;/*right:-240px*/;position:relative}
+        </pre>
+        <pre title="code" class="brush: xhtml;">
+        &lt;div class=&quot;p-cols&quot;&gt;&lt;!--这里定义第一列的颜色--&gt;
+           &lt;div class=&quot;p-col&quot;&gt;&lt;!--这里定义第二列的颜色--&gt;
+             &lt;div class=&quot;p-col1&quot;&gt;第一列&lt;/div&gt;
+             &lt;div class=&quot;p-col2&quot;&gt;第二列&lt;/div&gt;
+           &lt;/div&gt;
+        &lt;/div&gt;
+        </pre>
+        <div class="p-cols">
+           <div class="p-col">
+             <div class="p-col1">
+             <input type="button" onclick="addInner(this,'左侧的内容')" value="增加内容" />111
+             </div>
+             <div class="p-col2">
+                <input type="button"  onclick="addInner(this,'右侧的内容')" value="增加内容" />
+                <p>2222</p>
+                <p>2222</p>
+                <p>2222</p>
+                <p>2222</p>
+                <p>2222</p>
+                <p>2222</p>
+                <p>2222</p>
+                <p>2222</p>
+                <p>2222</p>
+                <p>2222</p>
+                <p>2222</p>
+             </div>
+           </div>
+        </div>
+        <script type="text/javascript">
+        function addInner(o,text){
+            for(var i=0;i<5;i++){
+                var li;
+                o.parentNode.appendChild(li=document.createElement('div'));
+                li.innerHTML=text
+            }
+        }
+        </script>
+
+    </div>
+</div>
+</body>
+</html>
