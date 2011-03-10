@@ -111,7 +111,7 @@ body{font:14px/1.5 Tahoma, Geneva, sans-serif}
             var color=[],picker_container=document.getElementById('picker_container');
             function pickerback(_e, _who){
                 color[_who]=_e;
-				getECN(document,'p'+_who,'div')[0].style.background="#"+color[_who]
+				getECN(document,'p-'+_who,'div')[0].style.background="#"+color[_who]
                 picker_container.style.display='none';
             };
             function picker(o,s){
