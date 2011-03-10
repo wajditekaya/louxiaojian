@@ -33,7 +33,7 @@
 body{font:14px/1.5 Tahoma, Geneva, sans-serif}
 
 .p-cols{width:800px;margin:0 auto;background:#FC9;overflow:hidden;zoom:1;position:relative}
-.p-col{float:left;width:100%;right:220px;background: #9C0;position:relative}
+.p-col{float:left;width:100%;right:220px;background:#9C0;position:relative}
 .p-col1{float:left;left:220px;width:580px;position:relative}
 .p-col2{float:left;width:200px;left:240px;/*right:-240px*/;position:relative}
 </style>
@@ -52,8 +52,8 @@ body{font:14px/1.5 Tahoma, Geneva, sans-serif}
           .p-col2{float:left;width:200px;left:240px;/*right:-240px*/;position:relative}
         </pre>
         <pre title="code" class="brush: xhtml;">
-        &lt;div class=&quot;p-cols&quot;&gt;&lt;!--这里定义第一列的颜色--&gt;
-           &lt;div class=&quot;p-col&quot;&gt;&lt;!--这里定义第二列的颜色--&gt;
+        &lt;div class=&quot;p-cols&quot;&gt;&lt;!--这里定义第二列的颜色--&gt;
+           &lt;div class=&quot;p-col&quot;&gt;&lt;!--这里定义第一列的颜色--&gt;
              &lt;div class=&quot;p-col1&quot;&gt;第一列&lt;/div&gt;
              &lt;div class=&quot;p-col2&quot;&gt;第二列&lt;/div&gt;
            &lt;/div&gt;
@@ -62,10 +62,13 @@ body{font:14px/1.5 Tahoma, Geneva, sans-serif}
         <div class="p-cols">
            <div class="p-col">
              <div class="p-col1">
-             <input type="button" onclick="addInner(this,'左侧的内容')" value="增加内容" />111
+               <input type="button" onclick="addInner(this,'左侧的内容')" value="增加内容" /><br />
+               <input type="button" id="col" onclick="picker(this,this.id)" value="更改背景" />
              </div>
              <div class="p-col2">
                 <input type="button"  onclick="addInner(this,'右侧的内容')" value="增加内容" />
+                <br />
+             <input type="button" id="cols" onclick="picker(this,this.id)" value="更改背景" />
                 <p>2222</p>
                 <p>2222</p>
                 <p>2222</p>
@@ -80,6 +83,12 @@ body{font:14px/1.5 Tahoma, Geneva, sans-serif}
              </div>
            </div>
         </div>
+
+
+    </div>
+</div>
+
+<div id="picker_container" style="position:absolute;height:264px;width:251px;display:none">
         <script type="text/javascript">
         function addInner(o,text){
             for(var i=0;i<5;i++){
@@ -89,8 +98,31 @@ body{font:14px/1.5 Tahoma, Geneva, sans-serif}
             }
         }
         </script>
-
-    </div>
-</div>
+		<script type="text/javascript">
+		function getECN(node, name, type) {
+					  var r = [], re = new RegExp("(^|\\s)" + name + "(\\s|$)"), e = (node || document).getElementsByTagName(type || "*");
+					  for ( var i = 0,len=e.length; i < len; i++ ) {
+						  if(re.test(e[i].className) )
+							  r.push(e[i]);
+					  }
+					  return r;
+		};
+        (function(){
+            var color=[],picker_container=document.getElementById('picker_container');
+            function pickerback(_e, _who){
+                color[_who]=_e;
+				getECN(window,'p'+_who,'div')[0].style.background="#"+color[_who]
+                picker_container.style.display='none';
+            };
+            function picker(o,s){
+                picker_container.style.top=o.offsetTop+'px';
+                picker_container.style.left=o.offsetLeft+o.offsetWidth+'px';
+                picker_container.style.display='block';
+                picker_container.innerHTML='<object height="264" width="251" type="application/x-shockwave-flash" data="http://louxiaojian.googlecode.com/svn/trunk/custom_skin/ColorPicker.swf" id="color_picker" style="visibility: visible;"><param name="quality" value="high"><param name="movie" value="http://louxiaojian.googlecode.com/svn/trunk/custom_skin/ColorPicker.swf" /><param name="allowScriptAccess" value="always"><param name="wmode" value="Opaque"><param name="allowFullscreen" value="true"><param name="flashvars" value="callback=pickerback&amp;color=rgb(255, 0, 0)&amp;who='+s+'"></object>'
+            };
+            window['picker']=picker;
+            window['pickerback']=pickerback;
+        })();
+        </script>
 </body>
 </html>
