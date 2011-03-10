@@ -89,7 +89,7 @@ body{font:14px/1.5 Tahoma, Geneva, sans-serif}
 </div>
 
 <div id="picker_container" style="position:absolute;height:264px;width:251px;display:none">
-        <script type="text/javascript">
+		<script type="text/javascript">
         function addInner(o,text){
             for(var i=0;i<5;i++){
                 var li;
@@ -97,8 +97,25 @@ body{font:14px/1.5 Tahoma, Geneva, sans-serif}
                 li.innerHTML=text
             }
         }
-        </script>
-		<script type="text/javascript">
+		function getObjPos(obj){
+				  var x = y = 0;    
+				  if (obj.getBoundingClientRect)    
+				  {    
+					  var box = obj.getBoundingClientRect();
+					  if(box.left == 0 && box.top == 0)
+					  {
+						  return;
+					  }
+					  var D = document.documentElement;    
+					  x = box.left + Math.max(D.scrollLeft, document.body.scrollLeft) - D.clientLeft;    
+					  y = box.top + Math.max(D.scrollTop, document.body.scrollTop) - D.clientTop;         
+				  }    
+				  else   
+				  {    
+					  for(; obj != document.body; x += obj.offsetLeft, y += obj.offsetTop, obj = obj.offsetParent );    
+				  }    
+				  return {'x':x, 'y':y};    
+		}
 		function getECN(node, name, type) {
 					  var r = [], re = new RegExp("(^|\\s)" + name + "(\\s|$)"), e = (node || document).getElementsByTagName(type || "*");
 					  for ( var i = 0,len=e.length; i < len; i++ ) {
@@ -115,8 +132,8 @@ body{font:14px/1.5 Tahoma, Geneva, sans-serif}
                 picker_container.style.display='none';
             };
             function picker(o,s){
-                picker_container.style.top=o.offsetTop+'px';
-                picker_container.style.left=o.offsetLeft+o.offsetWidth+'px';
+                picker_container.style.top=getObjPos(o).y+'px';
+                picker_container.style.left=getObjPos(o).x+o.offsetWidth+'px';
                 picker_container.style.display='block';
                 picker_container.innerHTML='<object height="264" width="251" type="application/x-shockwave-flash" data="http://louxiaojian.googlecode.com/svn/trunk/custom_skin/ColorPicker.swf" id="color_picker" style="visibility: visible;"><param name="quality" value="high"><param name="movie" value="http://louxiaojian.googlecode.com/svn/trunk/custom_skin/ColorPicker.swf" /><param name="allowScriptAccess" value="always"><param name="wmode" value="Opaque"><param name="allowFullscreen" value="true"><param name="flashvars" value="callback=pickerback&amp;color=rgb(255, 0, 0)&amp;who='+s+'"></object>'
             };
