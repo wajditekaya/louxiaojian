@@ -1,0 +1,682 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<base target="_blank" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>SeanLou</title>
+
+<style>
+
+/*===================================
+
+{
+
+  author:lou xiao jian,
+
+  email:jxsr_lxj@163.com
+
+}
+
+====================================*/
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+
+body{font:14px/1.5 Tahoma,"\5B8B\4F53",Geneva, sans-serif;word-break:break-all;text-align:center;background:#30322F; color:#CCC}/*word-wrap:break-word;能让连续无空格的英文字符换行，但最好不要再body中全局定义，因为在IE6和IE7下，这样式会使布局标签之间的空格对布局造成的影响*/
+
+fieldset,img{border:none 0;} 
+
+table {border-collapse:collapse;border-spacing:0;} 
+
+ol,li,ul{list-style:none;} 
+
+address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal;}
+
+caption,th{text-align:left;} 
+
+h1,h2,h3,h4,h5,h6{font-size:100%;} 
+
+q:before,q:after{content:'';}
+
+abbr,acronym{border:0;font-variant:normal;}
+
+sup{vertical-align:text-top;}
+
+sub{vertical-align:text-bottom;}
+
+input,select,textarea{font:normal normal 12px "Verdana";outline:none}
+
+input,textarea,select{*font-size:100%;}
+
+input,textarea{color:#666}
+
+select{color:#999}
+
+/* 字体属性 [定义规则，小写f加属性名称] */
+
+.fB{font-weight:bold;}
+
+.fI{font-style:italic;}
+
+/* 字体大小*/
+
+.fs12{font-size:12px;}
+
+.fs14{font-size:14px;}
+
+/* 浮动*/
+
+.fl{float:left;}
+
+.fr{float:right}
+
+/* 其它属性*/
+
+.hide{display:none}
+
+.submit{cursor:pointer;border:0}
+
+.noText{display:block;height:0;width:0;line-height:0;overflow:hidden}
+
+/*textList*/
+
+.tList a{text-decoration:none}
+
+.tList li{padding-left:15px;line-height:24px;height:24px;overflow:hidden;}
+
+/*lrBx*/
+
+.lrBx,.lrBx .rbx{overflow:hidden;zoom:1}
+
+.lrBx .lbx{float:left;_margin-right:-3px}
+
+.lrBx .lbx img{vertical-align:top}
+
+.lrBx .rbx{padding-left:5px}
+
+/*pic_up_text_down*/
+
+.pic-item{float:left;text-align:center}
+
+.pic-item img{vertical-align:top;margin-bottom:2px}
+
+.pic-item h4,.pic-item span,.pic-item em{display:block;overflow:hidden;font-size:12px;font-weight:normal;height:18px;line-height:18px;text-align:center}
+
+
+
+/*==clear==*/
+
+.clear{overflow:hidden;zoom:1}
+
+.clearfix:after {content:".";display:block;height:0;clear:both;visibility:hidden;}
+
+* html>body .clearfix {display: inline-block;width:100%;}
+
+* html .clearfix{/* Hides from IE-mac \*/height: 1%;/* End hide from IE-mac */}
+
+/* ie7 hack*/
+
+*+html .clearfix {min-height:1%;}
+
+.pitch{margin-bottom:20px}/*间距*/
+
+
+
+a{color:#ddd; text-decoration:none}
+
+a:hover{color:#ddd; text-decoration:underline}
+
+.but{height:20px;line-height:20px;display:inline-block;overflow:hidden;background-position:0 -52px;border:1px solid #ff6306;color:#fff;padding:0 8px 0 12px}
+
+.but:hover{color:#fff;text-decoration:none}
+
+
+
+.rela{position:relative;zoom:1}
+
+.rela .act{position:absolute;top:3px;right:8px}
+
+
+
+#page{width:800px; margin:0 auto; text-align:left}
+
+#page #bd{padding-bottom:20px}
+
+#logo{text-align:left}
+
+#logo img{vertical-align:top}
+
+
+
+.p-cols{overflow:hidden;zoom:1}
+
+	.p-cols .p-col1{width:100%;float:left}
+
+	.p-cols .p-col2{float:left;margin-left:-100%}
+
+	.p-cols .p-col3{float:left}
+
+	.new-p-cols .p-col1-1{margin-right:250px;zoom:1}
+
+	.new-p-cols .p-col3{width:230px;margin-left:-230px}
+
+  
+
+.mylist-outer{zoom:1;margin:10px 0 20px 0;text-align:center}
+
+	.mylist-outer .mylist{display:inline-block;_display:inline;overflow:hidden;_zoom:1}
+
+	.mylist-outer .mylist a{float:left;margin:0 5px}
+
+
+
+.slBx{overflow:hidden;zoom:1;text-align:left;}
+
+	.slBx h2{font-size:16px; font-weight:bold; color:#fff; margin-bottom:5px}
+
+
+
+.slBx2{border:2px solid #666;padding:5px 10px;border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px}
+
+    .slBx2 .bd{padding:0 10px}
+
+
+
+#flickr-bx{width:229px;zoom:1}
+
+	#flickr-bx .bd{height:244px}
+
+	#flickr ul{overflow:hidden;zoom:1;padding:1px 0 0 1px}
+
+	#flickr li{float:left;width:75px;text-align:center;overflow:hidden;margin:-1px 0 0 -1px;border:1px solid #eee}
+
+	#flickr li p{height:80px;display:table-cell;vertical-align:middle}/*定义浮动了，display:table-cell属性被block覆盖，图片垂直居中实效。*/
+
+	#flickr li img{vertical-align:middle}
+
+	
+
+.rss .bd{line-height:1.7;overflow:hidden;text-align:left}
+
+    .rss .bd{padding-bottom:8px}
+
+    .rss .time{margin-left:10px; color:#666; font-size:11px}
+
+	.rss li{line-height:18px;padding-bottom:8px}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+<div id="page">
+
+  <div id="hd">
+
+    <h1 id="logo"><img src="asset/app/notes/img/sean_lou_logo.png" alt="SeanLou" /></h1>
+
+  </div>
+
+  <div id="bd">
+
+  
+
+      <div class="mylist-outer">
+
+      
+
+          <div class="mylist">
+
+              <a href="http://twitter.com/louxiaojian" title="twitter" ><img src="asset/app/notes/img/twitter.png" /></a>
+
+              <a href="http://flickr.com/louxiaojian" title="flickr" ><img src="asset/app/notes/img/flickr.png" /></a>
+
+			  <a href="http://www.gmail.com" title="gmail" ><img src="asset/app/notes/img/gmail.png" /></a>
+
+              <a href="http://blog.xmlhtml.cn/" title="blog" ><img src="asset/app/notes/img/wordpress.png" /></a>
+
+              <a href="http://notes.xmlhtml.cn/" title="notes" ><img src="asset/app/notes/img/livejournal.png" /></a>
+
+          </div>
+
+          
+
+      </div>
+
+      
+
+      <div class="p-cols new-p-cols">
+
+        <div class="p-col1">
+
+          <div class="p-col1-1">
+
+
+
+              <div id="twitter-bx" class="slBx slBx2 rss pitch">
+
+                 <h2 class="hd">Twitter<a href="http://twitter.com/louxiaojian">@louxiaojian</a></h2>
+
+                 <div class="bd">
+
+                    <div id="twitter">
+
+                      <div style="text-align:center;color:#fff;font-size:16px;font-weight:bold; line-height:210px;">加载中.......</div>
+
+                      <noscript> <p>由于Javascript被禁用，内容无法显示...</p></noscript> 
+
+                    </div>
+
+                </div>
+
+              </div>
+
+
+
+              <div id="TBUed-bx" class="slBx slBx2 rss pitch">
+
+                 <h2 class="hd">Tao Bao Ued</h2>
+
+                 <div class="bd">
+
+                    <div id="TBUed">
+
+                      <div style="text-align:center;color:#fff;font-size:16px;font-weight:bold; line-height:210px;">加载中.......</div>
+
+                      <noscript> <p>由于Javascript被禁用，内容无法显示...</p></noscript> 
+
+                    </div>
+
+                </div>
+
+              </div>
+
+
+
+              <div id="PlanABC-bx" class="slBx slBx2 rss pitch">
+
+                 <h2 class="hd">Kejun’s Blog</h2>
+
+                 <div class="bd">
+
+                    <div id="kejun">
+
+                      <div style="text-align:center;color:#fff;font-size:16px;font-weight:bold; line-height:210px;">加载中.......</div>
+
+                      <noscript> <p>由于Javascript被禁用，内容无法显示...</p></noscript> 
+
+                    </div>
+
+                </div>
+
+              </div>
+
+              
+
+              <div id="PlanABC-bx" class="slBx slBx2 rss pitch">
+
+                 <h2 class="hd">PlanABC - 怿飞’s Blog</h2>
+
+                 <div class="bd">
+
+                    <div id="PlanABC">
+
+                      <div style="text-align:center;color:#fff;font-size:16px;font-weight:bold; line-height:210px;">加载中.......</div>
+
+                      <noscript> <p>由于Javascript被禁用，内容无法显示...</p></noscript> 
+
+                    </div>
+
+                </div>
+
+              </div>
+
+                            
+
+              
+
+          </div>
+
+        </div>
+
+        <div class="p-col3">
+
+      
+
+              <div id="flickr-bx" class="slBx">
+
+                  <h2 class="hd">Flickr</h2>
+
+                  <div class="bd">
+
+                    <div id="flickr">
+
+                     <div style="text-align:center; color:#fff; font-size:16px; font-weight:bold; line-height:224px;">加载中.......</div>
+
+                     <noscript> <p>由于Javascript被禁用，内容无法显示...</p></noscript>
+
+                    </div>
+
+                  </div>
+
+              </div>
+
+        
+
+        </div>
+
+      </div>
+
+      <!--<script type="text/javascript">
+
+      var zg_person_scope = 2;
+
+      var zg_scope_nsid = '48976747@N03';
+
+      </script>
+
+      <script src="http://www.flickr.com/fun/zeitgeist/badge.js.gne" type="text/javascript"></script>-->
+
+      
+
+      <!--<iframe width="400" height="400" src="http://www.flickr.com/slideShow/index.gne?user_id=48976747@N03" frameborder="0"></iframe>-->
+
+  </div>
+
+  
+
+</div>
+
+
+
+<script type="text/javascript">
+
+var SeanLou={};
+
+SeanLou.JSLoad=function(file) {
+
+		  /*if(!js){*/
+
+		  var _doc = document.getElementsByTagName('head')[0],
+
+		  js = document.createElement('script');
+
+		  js.setAttribute('type', 'text/javascript');
+
+		  _doc.appendChild(js);
+
+		  /*}*/
+
+		  js.setAttribute('src', file+'&v='+new Date().getTime());
+
+		  if (!/*@cc_on!@*/0) { //if not IE
+
+			  js.onload = function () {
+
+				  //alert('Firefox2、Firefox3、Safari3.1+、Opera9.6+ support js.onload');
+
+				  //loading.style.display='none';
+
+				  if ( _doc && js.parentNode ) {_doc.removeChild( js );js=null;}
+
+			  }
+
+		  } else {
+
+			  js.onreadystatechange = function () {
+
+				  if (js.readyState == 'loaded' || js.readyState == 'complete') {
+
+					 //alert('IE6、IE7 support js.onreadystatechange');
+
+					 // 防止 IE 下的内存泄漏
+
+					 js.onreadystatechange = null;
+
+					 
+
+					// if ( _doc && js.parentNode ) {js.parentNode.removeChild( js );js=null}
+
+
+
+				  }
+
+			  }
+
+		  }
+
+	  
+
+		  return false;
+
+	  }
+
+SeanLou.flickr={
+
+	      API:'http://api.flickr.com/services/feeds/photos_public.gne?tagmode=all&format=json&per_page=5&id=48976747@N03&jsoncallback=SeanLou.flickr.callback',
+
+		  
+
+	      callback:function(date){
+
+			  var flickr=document.getElementById('flickr'),text='<ul>',page=9,dataLength=date.items.length;
+
+			  page=dataLength<=page ? dataLength : page;
+
+			  for(var i=0,len=page;i<len;i++){
+
+				  text+='<li><p><a href="'+date.items[i].link+'" target="_blank"><img src="'+date.items[i].media.m.replace('_m.','_s.')+'" alt="'+date.items[i].title+'" /></a></p><div style="display:none">'+date.items[i].title+'</div></li>'
+
+			  }
+
+			  text+='</ul>';
+
+			  flickr.innerHTML=text;
+
+	      },
+
+		  init:function(){
+
+	          SeanLou.JSLoad(this.API);
+
+		 }
+
+}
+
+SeanLou.flickr.init()
+
+
+
+SeanLou.Twitter={
+
+		  API:"http://query.yahooapis.com/v1/public/yql?q=select%20title%2C%20link%2CpubDate%20from%20rss%20where%20url%3D'http%3A%2F%2Ftwitter.com%2Fstatuses%2Fuser_timeline%2Flouxiaojian.rss'&format=json&diagnostics=true&callback=SeanLou.Twitter.callback",
+
+	      callback:function(date){
+
+			  var TBUed=document.getElementById('twitter'),text='<ul>',dataLength=date.query.results.item.length;
+
+			  for(var i=0,len=dataLength;i<len;i++){
+
+				  var queryData=date.query.results.item[i];
+
+				  text+='<li><a href="'+queryData.link+'" target="_blank">'+queryData.title.replace('louxiaojian: ','')+'</a><span class="time">'+(new Date(queryData.pubDate)).toLocaleDateString()+ " " + (new Date(queryData.pubDate)).toLocaleTimeString()+'</span></li>'
+
+			  }
+
+			  text+='</ul>'
+
+			  TBUed.innerHTML=text;
+
+	      },
+
+		  init:function(){
+
+	          SeanLou.JSLoad(this.API);
+
+		 }
+
+	 
+
+}
+
+SeanLou.Twitter.init();
+
+
+
+<!--http://developer.yahoo.com/yql/console/ -->
+
+<!--select title, link,pubDate from rss where url='http://ued.taobao.com/blog/feed/' -->
+
+SeanLou.TBUed={
+
+		  API:"http://query.yahooapis.com/v1/public/yql?q=select%20title%2C%20link%2CpubDate%20from%20rss%20where%20url%3D'http%3A%2F%2Fued.taobao.com%2Fblog%2Ffeed%2F'%20%0A&format=json&diagnostics=true&callback=SeanLou.TBUed.callback",
+
+	      callback:function(date){
+
+			  var TBUed=document.getElementById('TBUed'),text='<ul>',dataLength=date.query.results.item.length;
+
+			  for(var i=0,len=dataLength;i<len;i++){
+
+				  var queryData=date.query.results.item[i];
+
+				  text+='<li><a href="'+queryData.link+'" target="_blank">'+queryData.title+'</a><span class="time">'+(new Date(queryData.pubDate)).toLocaleDateString()+ " " + (new Date(queryData.pubDate)).toLocaleTimeString()+'</span></li>'
+
+			  }
+
+			  text+='</ul>'
+
+			  TBUed.innerHTML=text;
+
+	      },
+
+		  init:function(){
+
+	          SeanLou.JSLoad(this.API);
+
+		 }
+
+	 
+
+}
+
+SeanLou.TBUed.init();
+
+
+
+SeanLou.Kejun={
+		  API:"http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20feed%20where%20url%3D'http%3A%2F%2Fhikejun.com%2Fblog%2F%3Ffeed%3Datom'&format=json&diagnostics=true&callback=SeanLou.Kejun.callback",
+	      callback:function(date){
+			  var TBUed=document.getElementById('kejun'),text='<ul>',dataLength=date.query.results.entry.length;
+			  for(var i=0,len=dataLength;i<len;i++){
+				  var queryData=date.query.results.entry[i];
+				  text+='<li><a href="'+queryData.link[0].href+'" target="_blank">'+queryData.title.content+'</a><span class="time">'+(new Date(queryData.updated)).toLocaleDateString()+ " " + (new Date(queryData.updated)).toLocaleTimeString()+'</span></li>'
+
+			  }
+			  text+='</ul>'
+			  TBUed.innerHTML=text;
+	      },
+		  init:function(){
+	          SeanLou.JSLoad(this.API);
+		 }
+}
+SeanLou.Kejun.init();
+
+
+
+SeanLou.planabc={
+
+		  API:"http://query.yahooapis.com/v1/public/yql?q=select%20title%2C%20link%2CpubDate%20from%20rss%20where%20url%3D'http%3A%2F%2Ffeed.planabc.net%2F'&format=json&diagnostics=true&callback=SeanLou.planabc.callback",
+
+	      callback:function(date){
+
+			  var TBUed=document.getElementById('PlanABC'),text='<ul>',dataLength=date.query.results.item.length;
+
+			  for(var i=0,len=dataLength;i<len;i++){
+
+				  var queryData=date.query.results.item[i];
+
+				  text+='<li><a href="'+queryData.link+'" target="_blank">'+queryData.title+'</a><span class="time">'+(new Date(queryData.pubDate)).toLocaleDateString()+ " " + (new Date(queryData.pubDate)).toLocaleTimeString()+'</span></li>'
+
+			  }
+
+			  text+='</ul>'
+
+			  TBUed.innerHTML=text;
+
+	      },
+
+		  init:function(){
+
+	          SeanLou.JSLoad(this.API);
+
+		 }
+
+	 
+
+}
+
+SeanLou.planabc.init();
+
+
+
+
+
+/*SeanLou.yakexi={
+
+		  API:"http://query.yahooapis.com/v1/public/yql?q=select%20title%2C%20link%2CpubDate%20from%20rss%20where%20url%3D'http%3A%2F%2Fwww.yakexi.us%2Ffeed'&format=json&diagnostics=true&callback=SeanLou.yakexi.callback",
+
+	      callback:function(date){
+
+			  var TBUed=document.getElementById('yakexi'),text='<ul>',dataLength=date.query.results.item.length;
+
+			  for(var i=0,len=dataLength;i<len;i++){
+
+				  var queryData=date.query.results.item[i];
+
+				  text+='<li><a href="'+queryData.link+'" target="_blank">'+queryData.title+'</a><span class="time">'+(new Date(queryData.pubDate)).toLocaleDateString()+ " " + (new Date(queryData.pubDate)).toLocaleTimeString()+'</span></li>'
+
+			  }
+
+			  text+='</ul>'
+
+			  TBUed.innerHTML=text;
+
+	      },
+
+		  init:function(){
+
+	          SeanLou.JSLoad(this.API);
+
+		 }
+
+	 
+
+}
+
+SeanLou.yakexi.init();*/
+
+</script>
+
+<!--公開的 Feed-->
+
+<!--<script src="http://api.flickr.com/services/feeds/photos_public.gne?tagmode=all&format=json&per_page=5&jsoncallback=flickrShow" type="text/javascript"></script>-->
+
+<!--<script src="http://api.flickr.com/services/feeds/photos_public.gne?tagmode=all&format=json&per_page=5&id=48976747@N03&jsoncallback=flickrShow" type="text/javascript"></script>-->
+
+
+
+<!--朋友的 Feed-->
+
+<!--<script src="http://api.flickr.com/services/feeds/photos_friends.gne?tagmode=all&format=json&per_page=5&user_id=48976747@N03&jsoncallback=flickrShow" type="text/javascript"></script>-->
+
+</body>
+
+</html>
