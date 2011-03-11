@@ -459,6 +459,16 @@ SeanLou.JSLoad=function(file) {
 
 	  }
 
+SeanLou.formatDate=function(now) {
+	var year=now.getFullYear(),
+		month=now.getMonth()+1,
+		date=now.getDate(),
+		hour=now.getHours(),
+		minute=now.getMinutes(),
+		second=now.getSeconds();
+	return year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second;
+}
+
 SeanLou.flickr={
 
 	      API:'http://api.flickr.com/services/feeds/photos_public.gne?tagmode=all&format=json&per_page=5&id=48976747@N03&jsoncallback=SeanLou.flickr.callback',
@@ -507,7 +517,7 @@ SeanLou.Twitter={
 
 				  var queryData=date.query.results.item[i];
 
-				  text+='<li><a href="'+queryData.link+'" target="_blank">'+queryData.title.replace('louxiaojian: ','')+'</a><span class="time">'+(new Date(queryData.pubDate)).toLocaleDateString()+ " " + (new Date(queryData.pubDate)).toLocaleTimeString()+'</span></li>'
+				  text+='<li><a href="'+queryData.link+'" target="_blank">'+queryData.title.replace('louxiaojian: ','')+'</a><span class="time">'+SeanLou.formatDate(new Date(queryData.pubDate))+'</span></li>'
 
 			  }
 
@@ -547,7 +557,7 @@ SeanLou.TBUed={
 
 				  var queryData=date.query.results.item[i];
 
-				  text+='<li><a href="'+queryData.link+'" target="_blank">'+queryData.title+'</a><span class="time">'+(new Date(queryData.pubDate)).toLocaleDateString()+ " " + (new Date(queryData.pubDate)).toLocaleTimeString()+'</span></li>'
+				  text+='<li><a href="'+queryData.link+'" target="_blank">'+queryData.title+'</a><span class="time">'+SeanLou.formatDate(new Date(queryData.pubDate))+'</span></li>'
 
 			  }
 
@@ -570,14 +580,13 @@ SeanLou.TBUed={
 SeanLou.TBUed.init();
 
 
-
 SeanLou.Kejun={
 		  API:"http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20feed%20where%20url%3D'http%3A%2F%2Fhikejun.com%2Fblog%2F%3Ffeed%3Datom'&format=json&diagnostics=true&callback=SeanLou.Kejun.callback",
 	      callback:function(date){
 			  var TBUed=document.getElementById('kejun'),text='<ul>',dataLength=date.query.results.entry.length;
 			  for(var i=0,len=dataLength;i<len;i++){
 				  var queryData=date.query.results.entry[i];
-				  text+='<li><a href="'+queryData.link[0].href+'" target="_blank">'+queryData.title.content+'</a><span class="time">'+(new Date(queryData.updated)).toLocaleDateString()+ " " + (new Date(queryData.updated)).toLocaleTimeString()+'</span></li>'
+				  text+='<li><a href="'+queryData.link[0].href+'" target="_blank">'+queryData.title.content+'</a><span class="time">'+SeanLou.formatDate(new Date(queryData.updated))+'</span></li>'
 
 			  }
 			  text+='</ul>'
@@ -603,7 +612,7 @@ SeanLou.planabc={
 
 				  var queryData=date.query.results.item[i];
 
-				  text+='<li><a href="'+queryData.link+'" target="_blank">'+queryData.title+'</a><span class="time">'+(new Date(queryData.pubDate)).toLocaleDateString()+ " " + (new Date(queryData.pubDate)).toLocaleTimeString()+'</span></li>'
+				  text+='<li><a href="'+queryData.link+'" target="_blank">'+queryData.title+'</a><span class="time">'+SeanLou.formatDate(new Date(queryData.pubDate))+'</span></li>'
 
 			  }
 
