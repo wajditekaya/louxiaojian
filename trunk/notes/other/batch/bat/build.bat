@@ -5,9 +5,10 @@ REM 一定要加上上面这句，下面的echo !RESULT_FILE!才有效
 color B
 ::设置YUI Compressor启动目录
 title CSS,JS文件统一压缩发布
+SET CurrentDirectory="%~dp0"
 SET YUIFOLDER=D:\yuicompressor
 ::设置你的JS和CSS根目录，脚本会自动按树层次查找和压缩所有的JS和CSS
-SET FOLDER=F:\batch\bat\src
+SET FOLDER=%CurrentDirectory%src
 echo 正在查找 JavaScript, CSS ...
 chdir /d %FOLDER%
 
@@ -16,6 +17,7 @@ for /r . %%a in (*.source.css *.source.js) do (
 REM 获取压缩后的文件名，规则为：
 REM 1. 文件名有.source时: filename.source.js -> filename.js
 REM 2. 其它情况：filename.js -> filename-min.js
+
 set RESULT_FILE=%%~na-min%%~xa
 dir /b "%%~fa" | find ".source." > nul
 if %ERRORLEVEL% == 0 (
@@ -25,7 +27,6 @@ if %ERRORLEVEL% == 0 (
     )
 )
 REM echo !RESULT_FILE!
-
 
 REM echo 盘符：%%~da
 REM echo %%~pa
