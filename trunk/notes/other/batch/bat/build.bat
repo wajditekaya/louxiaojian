@@ -3,10 +3,12 @@ setlocal EnableDelayedExpansion
 REM 一定要加上上面这句，下面的echo !RESULT_FILE!才有效
 
 color B
-::设置YUI Compressor启动目录
 title CSS,JS文件统一压缩发布
 SET CurrentDirectory="%~dp0"
+
+::设置YUI Compressor启动目录
 SET YUIFOLDER=D:\yuicompressor
+
 ::设置你的JS和CSS根目录，脚本会自动按树层次查找和压缩所有的JS和CSS
 SET FOLDER=%CurrentDirectory%src
 echo 正在查找 JavaScript, CSS ...
