@@ -1,0 +1,33 @@
+/c# PNG output color type: 0=Gray, 2=RGB, 3=Pal, 4=Gray+Alpha, 6=RGB+Alpha
+/f# PNG output filter type: 0=none, 1=x, 2=y, 3=x&y, 4=Paeth, 5=mixed
+/d# Override default bitdepth: 0(min),1,2,4,8 (valid only in /c0,/c3 modes)
+/s# Select strategy. 0:Xtreme(default), 1:Intense, 2:Longest Match,
+    3:Huffman Only, 4:Uncompressed
+/b# Block split threshold (lower=more blocks, 0=1 block/file, default=256)
+    Use trial&error! Suggested values to try are: 0,128,192,256,512,1024,..
+/n# Exact number of Huffman blocks (overrides /b#)
+/r  Randomized initial tables (good for many trials with same options)
+/i  Use image on windows clipboard as input (specify only output filename)
+/k? 0=Remove optional chunks (default), 1=Keep all
+    p=Keep palette indices, s=Keep input settings for /c,/f,/d,/b
+/k(Chunk,Chunk,..) Preserve only named chunk(s). Example: /kgAMA,bKGD,tEXt
+/v,q Verbose,Quiet mode (use bare '-' as file to specify stdin/stdout)
+/y  Assume Yes at the 'overwrite file?' prompt
+/force  Write file even if bigger.
+/mincodes#  Workaround for buggy decoders. 1:Zlib 1.2.1 bug, 2:buggy mobiles
+
+E:\WebCode\googlecode\louxiaojian\trunk\notes\other\batch\bat>pngout.exe logo.png /c3 /f0 /d8, 256 colors
+
+
+
+E:\WebCode\googlecode\louxiaojian\trunk\notes\other\batch\bat>pngout.exe sk.png
+ In:    8206 bytes               sk.png /c3 /f0 /d8
+Out:    7614 bytes               sk.png /c3 /f0 /d8, 247 colors
+Chg:    -592 bytes ( 92% of original)
+
+
+
+E:\WebCode\googlecode\louxiaojian\trunk\notes\other\batch\bat>pngout.exe logo.png /c3 /f0 /d8
+
+
+http://a.tbcdn.cn/p/fp/2011a/??reset-min.css,site-nav/site-nav-min.css,html5-reset-min.css,global-min.css,header/header-min.css,product-list/product-list-min.css,attraction/attraction-min.css,expressway/expressway-min.css,category/category-min.css,category/sub-promotion-min.css,guide/guide-min.css,hotsale/hotsale-min.css,bottom-gg/bottom-gg-min.css,subfooter/subfooter-min.css,footer/footer-min.css?t=20110304.css
