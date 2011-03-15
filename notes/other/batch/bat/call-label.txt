@@ -1,0 +1,25 @@
+call :label arguments
+
+:label
+指定批处理程序要跳转到的标签。使用带有该参数的 call 命令可以创建新的批处理文件上下文，并将控制权交给指定标签后的语句。当首次遇到该批处理文件的末尾时（在跳转到标签后），控制权将交还给 CALL 语句后的语句。第二次遇到批处理文件的末尾，批脚本将被退出。对于可允许您从批处理脚本返回的 goto :eof 命令扩展，要了解关于它的说明，请参阅“相关主题”。
+arguments
+对于以 :label 打头的批处理程序，指定要传送给其新实例的命令行信息，包括命令行选项、文件名、批处理参数（从%1 到 %9）或者变量（比如 %baud%）。
+
+
+例如：
+
+call :intercept "%%~dpnxa 压缩为 !RESULT_FILE!" "测试测试"
+REM 传入两个参数
+
+
+:intercept
+set num=0
+set sub_path=%1
+set sub_path=%sub_path:~1,-1%
+set bb=0
+:loop
+set sub_path=%sub_path:*\=%
+if not %num% equ %layers% set /a num+=1&goto loop
+echo compressed file done %sub_path% %2%
+REM %2%表示获取第二参数
+goto :eof
