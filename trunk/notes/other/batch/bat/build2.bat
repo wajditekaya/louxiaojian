@@ -41,7 +41,7 @@ REM @echo compressed %%~xa file done %%~fa 压缩为!RESULT_FILE!
 set /a filenub=filenub+1
 
 REM 获取相对路径(这里传入了三个参数)
-call :intercept "%%~dpnxa"  "%%~xa"  "压缩为 !RESULT_FILE!"
+call :intercept "%%~dpnxa"  "%%~xa"  "to !RESULT_FILE!"
 REM 获取相对路径结束
 
 )
@@ -64,7 +64,7 @@ set ll=%~3%
 :loop
 set sub_path=%sub_path:*\=%
 if not %num% equ %layers% set /a num+=1&goto loop
-echo compressed %type% file done %sub_path% %ll%
+echo compressed %type% file: %sub_path% %ll%
 goto :eof
 REM 获取相对路径结束
 
