@@ -213,11 +213,13 @@
 		   var js=new Date().getTime();
 		   new function(){
 			 elem.style[pos[0]] =Math.ceil(tw(t,b,c,d))+'px';
-			 if(t==d){
+			 if(t<d){
+				 t++;
+				 elem.time=setTimeout(arguments.callee,10);
+			   }else{
 				 jsdiv.innerHTML=new Date().getTime()-js;
 				 callback &&Object.prototype.toString.call(callback)=='[object Function]' && callback()
-			  }
-			 if(t<d){t++;elem.time=setTimeout(arguments.callee,10)}  
+			 }
 		   };
 	  };
 	  
@@ -233,15 +235,16 @@
 		   },t=0,pos=props.toString().split(':'),c=parseInt(pos[1]) || 0,b=parseInt(elem.style[pos[0]]);
 		   
 		   if(elem.time) clearTimeout(elem.time);
-		   var js=new Date().getTime();
+		   var curTime=new Date().getTime();
 		   new function(){
-			 t=new Date().getTime()-js;
+			 t=new Date().getTime()-curTime;
 			 elem.style[pos[0]] =Math.ceil(tw(t,b,c,d))+'px';
-			 if(t<d){elem.time=setTimeout(arguments.callee,10)}
-			 else{
-				 jsdiv.innerHTML=new Date().getTime()-js
+			 if(t<d){
+				 elem.time=setTimeout(arguments.callee,10);
+			 }else{
+				 jsdiv.innerHTML=t
 				 callback &&Object.prototype.toString.call(callback)=='[object Function]' && callback()
-			  }
+			 }
 		   };
 	  };
 	 
