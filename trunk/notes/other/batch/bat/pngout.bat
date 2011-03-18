@@ -10,12 +10,17 @@ echo 正在查找 JavaScript, CSS ...
 chdir /d %INFOLDER% 
 
 
+
 for /r . %%c in (*.png) do ( 
 @echo 正在查找 png...
 
 cd E:\WebCode\googlecode\louxiaojian\trunk\notes\other\batch\bat
 
-pngout.exe %%~fc /c3 /f0 /d8
+if "%%~xc"==".png" (pngout.exe %%~fc /c3 /f0 /d8)
+
+if "%%~xc"==".jpg" (echo jpg图片不能压缩)
+
+
  
 ) 
 
