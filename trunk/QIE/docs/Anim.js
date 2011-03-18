@@ -1,4 +1,6 @@
-	/*http://myfocus-js.googlecode.com/svn/trunk/myfocus-1.1.0.full.js*/
+	/*http://myfocus-js.googlecode.com/svn/trunk/myfocus-1.1.0.full.js
+	http://myfocus-js.googlecode.com/svn/trunk/
+	*/
 	
 	Anim={
 		animate:function(obj,attr,val,dur,type,fn){
