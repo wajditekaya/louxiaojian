@@ -41,6 +41,7 @@ REM echo %%~pa
 REM echo 文件的名字：%%~na
 REM echo 文件的后缀名：%%~xa
 REM echo 文件的大小：%%~za
+REM echo 文件的属性：%%~aa
 
 @java -jar %YUIFOLDER%\yuicompressor.jar --charset GB2312 "%%~fa" -o "%%~da%%~pa!RESULT_FILE!"
 @echo compressed %%~xa file done %%~a 压缩为!RESULT_FILE!
