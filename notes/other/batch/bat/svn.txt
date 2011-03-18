@@ -1,0 +1,90 @@
+可用的子命令:
+  add
+  blame (praise, annotate, ann) 输出指定文件或URL的追溯内容，包含版本和作者信息。
+  cat  输出指定文件或URL的内容。
+  changelist (cl)  耦合(或解耦)文件与修改列表 CLNAME。
+  checkout (co)
+  cleanup
+  commit (ci)
+  copy (cp)
+  delete (del, remove, rm)
+  diff (di)
+  export
+  help (?, h)
+  import
+  info
+  list (ls)
+  lock
+  log
+  merge
+  mergeinfo
+  mkdir
+  move (mv, rename, ren)
+  propdel (pdel, pd)
+  propedit (pedit, pe)
+  propget (pget, pg)
+  proplist (plist, pl)
+  propset (pset, ps)
+  resolve
+  resolved
+  revert
+  status (stat, st)
+  switch (sw)
+  unlock
+  update (up)
+
+
+D:\Program Files\Subversion>svn help log
+log: 显示一组版本与/或文件的提交日志信息。
+用法: 1、log [PATH]
+      2、log URL[@REV] [PATH...]
+
+  1、显示本地 PATH (默认: “.”) 的日志信息。默认的版本范围是 BASE:1。
+
+  2、显示 URL 中 PATH (默认: “.”) 的日志信息。如果指定了 REV，就从 REV
+     开始查找 URL，版本范围是 REV:1。否则就从 HEAD 开始查找 URL，版本范围
+     是 HEAD:1。
+
+  使用 -v 时，在日志信息中显示受影响的路径名。
+  使用 -q 时，不显示日志信息主体 (请注意，它可与 -v 并存)。
+
+  每条日志信息只会显示一次，即使指定了此版本涉及到的多个路径。默认日志信息
+  会追溯复制历史；使用 --stop-on-copy 可以关闭这种行为，用来找出分支点。
+
+  范例:
+    svn log
+    svn log foo.c
+    svn log http://www.example.com/repo/project/foo.c
+    svn log http://www.example.com/repo/project foo.c bar.c
+
+有效选项:
+  -r [--revision] ARG      : ARG （一些命令也接受ARG1:ARG2范围）
+                             版本参数可以是如下之一:
+                                NUMBER       版本号
+                                '{' DATE '}' 在指定时间以后的版本
+                                'HEAD'       版本库中的最新版本
+                                'BASE'       工作副本的基线版本
+                                'COMMITTED'  最后提交或基线之前
+                                'PREV'       COMMITTED的前一版本
+  -q [--quiet]             : 不打印信息，或只打印概要信息
+  -v [--verbose]           : 打印附加信息
+  -g [--use-merge-history] : 从合并历史使用/显示额外信息
+  -c [--change] ARG        : ARG 引起的改变
+  --targets ARG            : 传递文件 ARG 内容为附件参数
+  --stop-on-copy           : 查看历史不要跨越不同的副本
+  --incremental            : 给予适合串联的输出
+  --xml                    : 输出为 XML
+  -l [--limit] ARG         : 日值项最大值
+  --with-all-revprops      : 获取所有版本属性
+  --with-revprop ARG       : 获取版本属性 ARG
+
+全局选项:
+  --username ARG           : 指定用户名称 ARG
+  --password ARG           : 指定密码 ARG
+  --no-auth-cache          : 不要缓存用户认证令牌
+  --non-interactive        : 不要交互提示
+  --config-dir ARG         : 从目录 ARG 读取用户配置文件
+
+cd D:\Program Files\Subversion
+
+svn log E:\WebCode\googlecode\louxiaojian\trunk\notes\other\batch\bat\src\reprint.css
