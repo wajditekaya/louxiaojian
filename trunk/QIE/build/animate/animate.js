@@ -147,9 +147,16 @@
 			
 	  var animate2=function(jsdiv,elem,props,d,easing,callback){
 		   /*
-		    c:滚动的距离
-			d:滚动的时间
-			b:滚动时的初始距离
+		    @param elem:滚动的对象
+			@param props:滚动的样式
+			@param d:滚动的时间
+			@param easing:滚动时的缓冲模式
+			@param callback:回调函数
+		   */
+		   /*
+		    @param c:滚动的距离
+			@param d:滚动的时间
+			@param b:滚动时的初始距离
 		   */
 		   var tw=easing || function(t,b,c,d){
 			  if ((t/=d/2) < 1) return c/2*t*t + b;
@@ -176,9 +183,16 @@
 	  
 	  var animate=function(jsdiv,elem,props,d,easing,callback){
 		   /*
-		    c:滚动的距离
-			d:滚动的时间
-			b:滚动时的初始距离
+		    @param elem:滚动的对象
+			@param props:滚动的样式
+			@param d:滚动的时间
+			@param easing:滚动时的缓冲模式
+			@param callback:回调函数
+		   */
+		   /*
+		    @param c:滚动的距离
+			@param d:滚动的时间
+			@param b:滚动时的初始距离
 		   */
 		   var tw=easing || function(t,b,c,d){
 			  if ((t/=d/2) < 1) return c/2*t*t + b;
