@@ -201,17 +201,20 @@
 		   t=0,
 		   pos=props.toString().split(':'),
 		   b=parseInt(elem.style[pos[0]]) || 0,//初始位置
-		   c=parseInt(pos[1])-b;//滚动的距离
+		   fb=parseFloat(pos[1]),//最终位置
+		   c=fb-b,//滚动的距离
+		   mm=c<0 ? 'floor' : 'ceil';
 		   if(c===0) return false;
 		   if(elem.time) clearTimeout(elem.time);
 		   var curTime=new Date().getTime();
 		   new function(){
 			 t=new Date().getTime()-curTime;
-			 elem.style[pos[0]] =Math.ceil(tw(t,b,c,d))+'px';
 			 if(t<d){
+				 elem.style[pos[0]] =Math[mm](tw(t,b,c,d))+'px';
 				 elem.time=setTimeout(arguments.callee,10);
 			 }else{
 				 jsdiv.innerHTML=t
+				 elem.style[pos[0]]=fb+'px' //设置最终位置(在计算有误差的情况下调整位置)；
 				 callback &&Object.prototype.toString.call(callback)=='[object Function]' && callback()
 			 }
 		   };
