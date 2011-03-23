@@ -3,53 +3,122 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>animate</title>
+<style>
+ .js em{font-style:normal; margin-right:20px}
+ .panels-outer{position:relative;zoom:1;margin-bottom:20px;overflow:hidden;border:1px solid #ccc}
+ .panels{width:100px;position:absolute;overflow:hidden;background: #6C0}
+</style>
 </head>
 
 <body>
 <input type="button"  value="test" onclick='animate2(document.getElementById("js"),document.getElementById("lxj"),"left:500px",100)'/><span id="js"></span>
-<div style="position:relative;zoom:1; height:10px;margin-bottom:20px;overflow:hidden;border:1px solid #ccc">
-  <div id="lxj" style="position:absolute;top:0;left:100px;width:100px; height:10px;overflow:hidden;background:#f00"></div>
+<div class="panels-outer" style="height:10px">
+  <div id="lxj" class="panels" style="top:0;left:100px;height:10px"></div>
 </div>
 
 <input type="button"  value="test2" onclick='animate2(document.getElementById("js2"),document.getElementById("lxj2"),"right:900px",100,Tween.Bounce.easeOut)'/>
 <span id="js2"></span>
-<div style="position:relative;zoom:1; height:10px;margin-bottom:20px;overflow:hidden;border:1px solid #ccc"">
-<div id="lxj2" style="position:absolute;right:100px;width:100px; height:10px;overflow:hidden;background:#f00"></div>
+<div class="panels-outer" style="height:10px">
+<div id="lxj2" class="panels" style="top:0;right:100px;height:10px;"></div>
 </div>
 
 <input type="button"  value="test3" onclick='animate2(document.getElementById("js3"),document.getElementById("lxj3"),"top:20px",100,Tween.Bounce.easeOut)'/><span id="js3"></span>
-<div style="position:relative;zoom:1; height:30px;margin-bottom:20px;overflow:hidden;border:1px solid #ccc"">
-<div id="lxj3" style="position:absolute;top:0;width:100px; height:10px;overflow:hidden;background:#f00"></div>
+<div class="panels-outer" style="height:30px;">
+<div id="lxj3" class="panels" style="top:0;height:10px;"></div>
 </div>
 
 <input type="button"  value="test4" onclick='animate2(document.getElementById("js4"),document.getElementById("lxj4"),"bottom:20px",100,Tween.Bounce.easeOut,function(){alert("完成了")})' /><span id="js4"></span>
-<div style="position:relative;zoom:1; height:30px;margin-bottom:20px;overflow:hidden;border:1px solid #ccc"">
-<div id="lxj4" style="position:absolute;bottom:0;width:100px; height:10px;overflow:hidden;background:#f00"></div>
+<div class="panels-outer" style="height:30px;">
+<div id="lxj4" class="panels" style="bottom:0;width:100px; height:10px"></div>
 </div>
 
 <p>----------------------------------------------------------华丽分割线----------------------------------------------------------------</p>
 
 
-<input type="button"  value="test5" onclick='animate(document.getElementById("js5"),document.getElementById("lxj5"),"left:500px",1000)'/><span id="js5"></span>
-<div style="position:relative;zoom:1; height:10px;margin-bottom:20px;overflow:hidden;border:1px solid #ccc">
-  <div id="lxj5" style="position:absolute;top:0;left:100px;width:100px; height:10px;overflow:hidden;background:#f00"></div>
+<input type="button" id="test5" value="test5"/><span id="js5" class="js"><em></em><em></em><em></em></span>
+<div class="panels-outer" style="height:10px">
+  <div id="lxj5" class="panels" style="top:0;left:100px;height:10px"></div>
 </div>
+<script>
+document.getElementById('test5').onclick=function(){
+	var js=document.getElementById('js5').getElementsByTagName('em');
+	animate(
+			document.getElementById("lxj5"),
+			{
+				props:{"left":"500px"},
+				d:1000,
+				start:function(){js[0].innerHTML='动画开始'},
+				animimg:function(){js[1].innerHTML='动画中:'+this.twf},
+				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
+			}
+	 )
+}
+</script>
 
-<input type="button"  value="test6" onclick='animate(document.getElementById("js6"),document.getElementById("lxj6"),"right:1000px",1000,Tween.Bounce.easeOut)'/>
-<span id="js6"></span>
-<div style="position:relative;zoom:1; height:10px;margin-bottom:20px;overflow:hidden;border:1px solid #ccc"">
-<div id="lxj6" style="position:absolute;right:100px;width:100px; height:10px;overflow:hidden;background:#f00"></div>
-</div>
 
-<input type="button"  value="test7" onclick='animate(document.getElementById("js7"),document.getElementById("lxj7"),"top:20px",1000,Tween.Bounce.easeOut)'/><span id="js7"></span>
-<div style="position:relative;zoom:1; height:30px;margin-bottom:20px;overflow:hidden;border:1px solid #ccc"">
-<div id="lxj7" style="position:absolute;top:0;width:100px; height:10px;overflow:hidden;background:#f00"></div>
+<input type="button" id="test6" value="test6"/><span id="js6" class="js"><em></em><em></em><em></em></span>
+<div class="panels-outer" style="height:10px">
+<div id="lxj6" class="panels" style="top:0;right:100px;height:10px"></div>
 </div>
+<script>
+document.getElementById('test6').onclick=function(){
+	var js=document.getElementById('js6').getElementsByTagName('em');
+	animate(
+			document.getElementById("lxj6"),
+			{
+				props:{"right":"1000px"},
+				d:1000,
+				easing:Tween.Bounce.easeOut,
+				start:function(){js[0].innerHTML='动画开始'},
+				animimg:function(){js[1].innerHTML='动画中:'+this.twf},
+				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
+			}
+	 )
+}
+</script>
 
-<input type="button"  value="test8" onclick='animate(document.getElementById("js8"),document.getElementById("lxj8"),"bottom:20px",1000,Tween.Bounce.easeOut,function(){alert("完成了")})' /><span id="js8"></span>
-<div style="position:relative;zoom:1; height:30px;margin-bottom:20px;overflow:hidden;border:1px solid #ccc"">
-<div id="lxj8" style="position:absolute;bottom:0;width:100px; height:10px;overflow:hidden;background:#f00"></div>
+
+<input type="button" id="test7" value="test7" /><span id="js7" class="js"><em></em><em></em><em></em></span>
+<div class="panels-outer" style="height:30px">
+<div id="lxj7" class="panels" style="top:0;height:10px"></div>
 </div>
+<script>
+document.getElementById('test7').onclick=function(){
+	var js=document.getElementById('js7').getElementsByTagName('em');
+	animate(
+			document.getElementById("lxj7"),
+			{
+				props:{"top":"20px"},
+				d:1000,
+				easing:Tween.Bounce.easeOut,
+				start:function(){js[0].innerHTML='动画开始'},
+				animimg:function(){js[1].innerHTML='动画中:'+this.twf},
+				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
+			}
+	 )
+}
+</script>
+
+<input type="button" id="test8" value="test8"/><span id="js8" class="js"><em></em><em></em><em></em></span>
+<div class="panels-outer" style="height:30px">
+<div id="lxj8" class="panels" style="bottom:0;height:10px"></div>
+</div>
+<script>
+document.getElementById('test8').onclick=function(){
+	var js=document.getElementById('js8').getElementsByTagName('em');
+	animate(
+			document.getElementById("lxj8"),
+			{
+				props:{"bottom":"20px"},
+				d:1000,
+				easing:Tween.Bounce.easeOut,
+				start:function(){js[0].innerHTML='动画开始'},
+				animimg:function(){js[1].innerHTML='动画中:'+this.twf},
+				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
+			}
+	 )
+}
+</script>
 
 <script src="animate.js" type="text/javascript"></script>
 </body>

@@ -181,42 +181,70 @@
 		   };
 	  };
 	  
-	  var animate=function(jsdiv,elem,props,d,easing,callback){
-		   /*
-		    @param elem:滚动的对象
-			@param props:滚动的样式
-			@param d:滚动的时间
-			@param easing:滚动时的缓冲模式
-			@param callback:回调函数
-		   */
-		   /*
-		    @param c:滚动的距离
-			@param d:滚动的时间
-			@param b:滚动时的初始距离
-		   */
-		   var tw=easing || function(t,b,c,d){
-			  if ((t/=d/2) < 1) return c/2*t*t + b;
-			  return -c/2 * ((--t)*(t-2) - 1) + b;
-		   },
-		   t=0,
-		   pos=props.toString().split(':'),
-		   b=parseInt(elem.style[pos[0]]) || 0,//初始位置
-		   fb=parseFloat(pos[1]),//最终位置
-		   c=fb-b,//滚动的距离
-		   mm=c<0 ? 'floor' : 'ceil';
-		   if(c===0) return false;
-		   if(elem.time) clearTimeout(elem.time);
-		   var curTime=new Date().getTime();
-		   new function(){
-			 t=new Date().getTime()-curTime;
-			 if(t<d){
-				 elem.style[pos[0]] =Math[mm](tw(t,b,c,d))+'px';
-				 elem.time=setTimeout(arguments.callee,10);
-			 }else{
-				 jsdiv.innerHTML=t
-				 elem.style[pos[0]]=fb+'px' //设置最终位置(在计算有误差的情况下调整位置)；
-				 callback &&Object.prototype.toString.call(callback)=='[object Function]' && callback()
-			 }
-		   };
+	  var animate=function(elem,s){
+				   /*
+					@param elem:滚动的对象
+					s={
+					  @param props:{left:'50px'},滚动的样式
+					  @param d:800,滚动的时间
+					  @param easing:,滚动时的缓冲模式
+					  @param start:function(){},开始函数
+					  @param animimg:function(){},动画过程中执行的函数
+					  @param callback:function(){},动画结束后执行的函数
+					}
+				   */
+				   /*
+					@param c:滚动的距离
+					@param d:滚动的时间
+					@param b:滚动时的初始距离
+				   */
+				   var self=this;
+				   if (!(self instanceof animate)) {
+						return new animate(elem,s);
+				   }
+				   var tween=s.easing || function(t,b,c,d){
+					  if ((t/=d/2) < 1) return c/2*t*t + b;
+					  return -c/2 * ((--t)*(t-2) - 1) + b;
+				   },
+				   start=s.start,
+				   animimg=s.animimg,
+				   callback=s.callback,
+				   props=s.props,
+				   d=s.d,
+				   b,//初始位置
+				   fb,//最终位置
+				   c,//滚动的距离
+				   mm,
+				   i=0,
+				   propsArray=[];
+				   
+				   for(var pk in props){
+					   propsArray[i]=[];
+					   propsArray[i][0]=pk;
+					   propsArray[i][1]=props[pk];
+					   i++;
+				   }
+				   b=parseFloat(elem.style[propsArray[0][0]]) || 0,//初始位置
+				   fb=parseFloat(propsArray[0][1]),//最终位置
+				   c=fb-b,//滚动的距离
+				   mm=c<0 ? 'floor' : 'ceil';
+				   
+				   
+				   if(c===0) return false;
+				   if(elem.time) clearTimeout(elem.time);
+				   start &&Object.prototype.toString.call(start)=='[object Function]' && start.call(self)
+				   var curTime=new Date().getTime();
+				   new function(){
+					 self.t=new Date().getTime()-curTime;
+					 if(self.t<d){
+						 self.twf=Math[mm](tween(self.t,b,c,d));//缓动函数返回值
+						 elem.style[propsArray[0][0]] =self.twf+'px';
+						 animimg &&Object.prototype.toString.call(animimg)=='[object Function]' && animimg.call(self)
+						 elem.time=setTimeout(arguments.callee,10);
+					 }else{
+						 elem.style[propsArray[0][0]]=fb+'px' //设置最终位置(在计算有误差的情况下调整位置)；
+						 callback &&Object.prototype.toString.call(callback)=='[object Function]' && callback.call(self)
+					 }
+				   };
 	  };
 	 
