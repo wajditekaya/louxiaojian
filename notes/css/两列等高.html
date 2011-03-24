@@ -33,9 +33,18 @@
 body{font:14px/1.5 Tahoma, Geneva, sans-serif}
 
 .p-cols{width:800px;margin:0 auto;background:#FC9;overflow:hidden;zoom:1;position:relative}
-.p-col{float:left;width:100%;right:220px;background:#9C0;position:relative}
-.p-col1{float:left;left:220px;width:580px;position:relative}
-.p-col2{float:left;width:200px;left:240px;/*right:-240px*/;position:relative}
+	.p-cols .p-col{float:left;width:100%;right:220px;background:#9C0;position:relative}
+	.p-cols .p-col1{float:left;left:220px;width:580px;position:relative}
+	.p-cols .p-col2{float:left;width:200px;left:240px;/*right:-240px*/;position:relative}
+
+/*===两列等高布局(左列宽度自适应)===*/
+.p-cols2-outer{overflow:hidden;position:relative; margin-top:100px; background:#CCF;zoom:1}
+    .p-cols2{width:100%;position:relative;right:215px;background:#39F}
+	.p-cols2:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+	.p-cols2 .p-col1{width:100%;position:relative; float:left}
+	.p-cols2 .p-col1-1{padding:0 20px 15px 20px;margin-left:215px}
+	.p-cols2 .p-col1-1 .nr-title{margin-left:-20px;margin-right:-20px}
+	.p-cols2 .p-col2{width:200px;margin:0 0 0 -200px;float:left;position:relative; right:-215px}
 </style>
 </head>
 
@@ -59,6 +68,7 @@ body{font:14px/1.5 Tahoma, Geneva, sans-serif}
            &lt;/div&gt;
         &lt;/div&gt;
         </pre>
+        <!--p-cols-->
         <div class="p-cols">
            <div class="p-col">
              <div class="p-col1">
@@ -83,7 +93,38 @@ body{font:14px/1.5 Tahoma, Geneva, sans-serif}
              </div>
            </div>
         </div>
-
+        <!--/p-cols-->
+        
+        <!--p-cols2-outer-->
+        <div class="p-cols2-outer">
+            <!--p-cols2-->
+            <div class="p-cols2">
+               <div class="p-col1">
+                 <div class="p-col1-1">
+                   <input type="button" onclick="addInner(this,'左侧的内容')" value="增加内容" /><br />
+                 </div>
+               </div>
+               
+               <div class="p-col2">
+                  <input type="button"  onclick="addInner(this,'右侧的内容')" value="增加内容" />
+                  <br />
+                  <p>2222</p>
+                  <p>2222</p>
+                  <p>2222</p>
+                  <p>2222</p>
+                  <p>2222</p>
+                  <p>2222</p>
+                  <p>2222</p>
+                  <p>2222</p>
+                  <p>2222</p>
+                  <p>2222</p>
+                  <p>2222</p>
+               </div>
+               
+            </div>
+            <!--/p-cols2-->
+        </div>
+        <!--/p-cols2-outer-->
 
     </div>
 </div>
