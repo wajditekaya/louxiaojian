@@ -16,7 +16,7 @@
   <div id="lxj" class="panels" style="top:0;left:100px;height:10px"></div>
 </div>
 
-<input type="button"  value="test2" onclick='animate2(document.getElementById("js2"),document.getElementById("lxj2"),"right:900px",100,Tween.Bounce.easeOut)'/>
+<input type="button"  value="test2" onclick='animate2(document.getElementById("js2"),document.getElementById("lxj2"),"right:1000px",100,Tween.Bounce.easeOut)'/>
 <span id="js2"></span>
 <div class="panels-outer" style="height:10px">
 <div id="lxj2" class="panels" style="top:0;right:100px;height:10px;"></div>
@@ -120,6 +120,24 @@ document.getElementById('test8').onclick=function(){
 }
 </script>
 
+<input value="test2和test6比较" type="button" onclick="bijiao()" />
+<script>
+function bijiao(){
+	  animate2(document.getElementById("js2"),document.getElementById("lxj2"),"right:1000px",100,Tween.Bounce.easeOut);
+	  var js=document.getElementById('js6').getElementsByTagName('em');
+	  animate(
+			  document.getElementById("lxj6"),
+			  {
+				  props:{"right":"1000px"},
+				  d:1000,
+				  easing:Tween.Bounce.easeOut,
+				  start:function(){js[0].innerHTML='动画开始'},
+				  animimg:function(){js[1].innerHTML='动画中:'+this.twf},
+				  callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
+			  }
+	   )
+}
+</script>
 <script src="animate.js" type="text/javascript"></script>
 </body>
 </html>
