@@ -88,3 +88,22 @@ log: 显示一组版本与/或文件的提交日志信息。
 cd D:\Program Files\Subversion
 
 svn log E:\WebCode\googlecode\louxiaojian\trunk\notes\other\batch\bat\src\reprint.css
+
+
+
+svn status E:\WebCode\googlecode\louxiaojian\trunk\notes\other\batch\bat\src
+
+svn status [PATH...]
+别名：stat, st
+描述：输出WC中文件和目录的状态。如果WC提交，这些状态就会同步到库里。
+一般状态有         ' '  没有修改
+'A'  新增
+'D'  删除
+'M'  修改
+'R'  替代
+'C'  冲突
+'I'  忽略
+'?'  未受控
+'!'  丢失，一般是将受控文件直接删除导致
+访问库：加上--show-updates参数时会
+eg：svn status wc
