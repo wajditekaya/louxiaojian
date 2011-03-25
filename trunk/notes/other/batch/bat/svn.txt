@@ -107,3 +107,12 @@ svn status [PATH...]
 '!'  丢失，一般是将受控文件直接删除导致
 访问库：加上--show-updates参数时会
 eg：svn status wc
+
+
+
+
+svn status E:\PPSProject\t\trunk >>E:\PPSProject\t\trunk\svn.txt
+
+svn status E:\PPSProject\t\trunk --xml >>E:\PPSProject\t\trunk\svn.xml
+
+将svn status E:\PPSProject\t\trunk执行后的结果 存在E:\PPSProject\t\trunk\svn.txt文件中
