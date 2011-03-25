@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>scrollTo</title>
+<style>
+*{margin:0; padding:0}
+body{font:16px/2 Tahoma, Geneva, sans-serif}
+#wrapper{width:950px;margin:0 auto;padding:10px 0}
+input{visibility:visible}
+#info {
+    position: fixed; 
+	_position:absolute;
+	top:10px;right:10px;
+    width: 470px;
+    background-color: white;
+    padding:8px;
+    /* 关键代码部分 */
+    -moz-background-clip:padding;     /* Firefox 3.6 */
+    -webkit-background-clip:padding;  /* Safari 4? Chrome 6? */
+    background-clip:padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+    border:8px solid rgba(0,0,0,0.3);
+
+    -webkit-border-radius:15px;
+    -moz-border-radius:15px;
+    border-radius: 15px; 
+	*border:8px solid #ddd;
+	border:8px solid #ddd\0;
+	font-size:14px;
+
+}
+</style>
+</head>
+
+<body>
+    <div id="info">
+     <div id="compatMode"></div>
+     <div>浏览器信息：<span id="navigator"></span></div>
+    </div>
+<div id="wrapper">
+    <div style="height:1200px">
+     <input type="button" value="scrollTo 0" onclick="scrollTo(document.documentElement.scrollTop || document.body.scrollTop,document.getElementById('lxj').offsetTop)" />
+     <input type="button" value="document.documentElement.scrollTop" onclick="alert(document.documentElement.scrollTop)" />
+     <input type="button" value="document.body.scrollTop(webkit内核的浏览器google和苹果)" onclick="alert(document.body.scrollTop)" /><br />
+     1. 为什么<a onclick="javascript:tagshow(event, 'document');" href="http://www.cnblogs.com/qiantuwuliang/admin/javascript:;" target="_self"><U><strong>document</strong></U></a>.body.scrollTop总是0呢?<br />
+        &nbsp;&nbsp;   理解二点：<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 第一点：<br />
+        &nbsp;&nbsp;&nbsp; &nbsp; 在文档页首没有加&lt;!DOCTYPE <a onclick="javascript:tagshow(event, 'html');" href="http://www.cnblogs.com/qiantuwuliang/admin/javascript:;" target="_self"><U><strong>html</strong></U></a> PUBLIC &quot;-//W3C//DTD <a onclick="javascript:tagshow(event, 'XHTML');" href="http://www.cnblogs.com/qiantuwuliang/admin/javascript:;" target="_self"><U><strong>XHTML</strong></U></a> 1.0 Transitional//EN&quot;   &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;<br />
+        &lt;html   xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;，是以<a onclick="javascript:tagshow(event, 'body');" href="http://www.cnblogs.com/qiantuwuliang/admin/javascript:;" target="_self"><U><strong>body</strong></U></a>为文档根元素，因此此时document.body.scrollTop是有值的，不是0，而此时document.documentElement.scrollTop反而是0<br />
+        &nbsp;&nbsp;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;   当在文档页首加了<a onclick="javascript:tagshow(event, 'DOCTYPE');" href="http://www.cnblogs.com/qiantuwuliang/admin/javascript:;" target="_self"><U><strong>DOCTYPE</strong></U></a>声明时,是以html元素为根元素，因此此时document.body.scrollTop总是0,<br />
+        &nbsp;&nbsp;&nbsp;   &nbsp;而要使用document.documentElement.scrollTop(document.documentElement是html元素的对象)<br />
+        &nbsp;&nbsp;&nbsp;   &nbsp;代码中可以写成:<br />
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; var <a onclick="javascript:tagshow(event, 'scrollTop');" href="http://www.cnblogs.com/qiantuwuliang/admin/javascript:;" target="_self"><U><strong>scrollTop</strong></U></a>=document.compatMode==&quot;CSS1Compat&quot;?document.documentElement.scrollTop:document.body.scrollTop;<br />
+        &nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp; 对于document.compatMode理解<br />
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 获取当前的文档渲染, 方式当文档有了标准声明时，   document.compatMode 的值就等于 &quot;CSS1compat&quot;， 因此， 我们可以根据 document.compatMode   的值来判断文档是否加了标准声明<br />
+        &nbsp;&nbsp;&nbsp; 第二点：<br />
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 文档必需要形成滚动<br />
+        &lt;input type=&quot;button&quot;   value=&quot;body.scrollTop&quot; onclick=&quot;alert(document.documentElement.scrollTop)&quot;   /&gt;<br />
+         <input type="button" value="body.scrollTop" onclick="alert(document.documentElement.scrollTop || document.body.scrollTop)" />
+    </div>
+      
+    <input type="button" value="scrollTo 0" onclick="scrollTo(document.documentElement.scrollTop || document.body.scrollTop,0)" />
+    <input type="button" value="body.scrollTop" id="lxj" onclick="alert(document.documentElement.scrollTop || document.body.scrollTop)" />
+</div>
+<script type="text/javascript">
+/*===============动画===============*/
+var animate=function(t,b,c,d){
+     Tween=function(t,b,c,d){
+		if ((t/=d/2) < 1) return c/2*t*t + b;
+		return -c/2 * ((--t)*(t-2) - 1) + b;
+	 };
+	(function(){
+	   dd.scrollTop =Math.ceil(Tween(t,b,c,d))
+	   if(t<d){t++;setTimeout(arguments.callee,10)}
+	})();
+};
+
+function scrollTo(be,to,time){
+	var b=be,c=to-be,d=time || 30,t=0,dd,
+	 webkit=/applewebkit/.test(window.navigator.userAgent.toLowerCase()),//webkit内核浏览器
+     Tween=function(t,b,c,d){
+		if ((t/=d/2) < 1) return c/2*t*t + b;
+		return -c/2 * ((--t)*(t-2) - 1) + b;
+	 };
+	if(document.body.scrollHeight<=document.documentElement.clientHeight) return false;
+	dd=document.compatMode=="CSS1Compat" && !webkit ? document.documentElement : document.body;
+	(function(){
+	   dd.scrollTop =Math.ceil(Tween(t,b,c,d))
+	   if(t<d){t++;setTimeout(arguments.callee,10)}
+	})();
+}
+
+document.compatMode=="CSS1Compat" ? document.getElementById('compatMode').innerHTML='文档渲染方式为标准声明' : '文档渲染方式不是标准声明';
+document.getElementById('navigator').innerHTML=window.navigator.userAgent.toLowerCase()
+</script>
+</body>
+</html>
