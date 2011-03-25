@@ -112,7 +112,19 @@ eg：svn status wc
 
 
 svn status E:\PPSProject\t\trunk >>E:\PPSProject\t\trunk\svn.txt
+将svn status E:\PPSProject\t\trunk执行后的结果 存在E:\PPSProject\t\trunk\svn.txt文件中（如果文件svn.txt存在则写在此文件的末尾）
 
 svn status E:\PPSProject\t\trunk --xml >>E:\PPSProject\t\trunk\svn.xml
 
-将svn status E:\PPSProject\t\trunk执行后的结果 存在E:\PPSProject\t\trunk\svn.txt文件中
+>
+将命令输出写入到文件或设备（如打印机），而不是命令提示符窗口或句柄。
+
+>>
+将命令输出添加到文件末尾而不删除文件中已有的信息。
+
+
+svn status E:\PPSProject\t\trunk >E:\PPSProject\t\trunk\svn.txt
+svn status E:\PPSProject\t\trunk --xml >E:\PPSProject\t\trunk\svn.xml
+
+将svn status E:\PPSProject\t\trunk执行后的结果 存在E:\PPSProject\t\trunk\svn.txt文件中（如果文件svn.txt存在则覆盖文件而不是写在此文件的末尾）
+
