@@ -7,8 +7,18 @@
 </head>
 
 <body>
-addStyle
 <script>
+  var DocumentFragment=document.createDocumentFragment(),i=0,cs=document.getElementsByTagName('head')[0].getElementsByTagName('style')[0]
+  
+  for(var p in cs){
+	  var t;
+	  i++
+	  DocumentFragment.appendChild(t=document.createElement('div'))
+	  t.innerHTML="("+i+":)"+p+"£º==="+cs[p]
+	  
+  }
+  document.body.appendChild(DocumentFragment)
+
   var addStyle = function(css,n) {
           var D = document,
           S = window.style;
