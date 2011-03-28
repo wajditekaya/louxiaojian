@@ -13,8 +13,8 @@
   for(var p in cs){
 	  var t;
 	  i++
-	  DocumentFragment.appendChild(t=document.createElement('div'))
-	  t.innerHTML="("+i+":)"+p+"£º==="+cs[p]
+	  DocumentFragment.appendChild(t=document.createElement('div')).className='zhi'
+	  t.innerHTML="("+i+":)"+p+"£º===<span>"+cs[p]+'</span>'
 	  
   }
   document.body.appendChild(DocumentFragment)
@@ -30,9 +30,10 @@
           };
           S.styleSheet && (S.styleSheet.cssText += css) || S.appendChild(D.createTextNode(css));
   };
-  addStyle('body{background:#f00}')
+  addStyle('body{background:#efefef}')
   addStyle('body{font-size:14px}')
-  addStyle('body{color:#fff}',1)
+  addStyle('body{color:#383838}',1)
+  addStyle('.zhi span{color:#f60;font-weight:bold;margin-left:10px;font-size:14px}',1)
 </script>
 </body>
 </html>
