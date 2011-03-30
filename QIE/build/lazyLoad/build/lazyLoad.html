@@ -114,61 +114,92 @@ img{background:url(loading.gif) center no-repeat}
 		}    
 		return {'x':x, 'y':y};    
 	};
-	function lazyLoad(){
+	
+	/*===lazyLoad===*/
+	function lazyLoad(s){
         var self = this;
-        // factory or constructor
         if (!(self instanceof lazyLoad)) {
-            return new lazyLoad();
+            return new lazyLoad(s);
         }
-		this.config={
-			container:window,//容器
-			mode:"dynamic"//模式
-		};
-		var d=new Date().getTime();
-		var webkit=/applewebkit/.test(window.navigator.userAgent.toLowerCase()),//webkit内核浏览器
-		dd=document.compatMode=="CSS1Compat" && !webkit ? document.documentElement : document.body,
-		clientHeight=document.documentElement.clientHeight,
-		d2=new Date().getTime(),
-		lazyTime,
-		lazyTag="img",
-		lazylength,
-		lazy=[];
-		//alert(d2-d);
-		var _filterImg=function(){
-			var img=document.getElementsByTagName(lazyTag);
+		this.init(s);
+		this._filterImg();
+		this.lazyTime=setInterval(function(){self.loadLazy()},100);
+	};
+	lazyLoad.prototype={
+	  init:function(s){
+		 /*
+		  @param lazyTag:延迟加载的标签，默认为img
+		  @param container:容器
+		  @param mode:加载的模式（垂直或水平）
+		  @param start:加载开始函数
+		  @param loading:加载ing函数
+		  @param callback:回调函数
+		*/
+		this.lazyTag=s.lazyTag || "img";
+		this.container=s.container || window;//容器
+		this.mode=s.mode || "vertical"//垂直模式 horizontal(水平模式)		
+		this.start=s.start || function(){};
+		this.loading=s.loading || function(){};
+		this.callback=s.callback || function(){};
+		
+		if(this.container===window){
+			var webkit=/applewebkit/.test(window.navigator.userAgent.toLowerCase());//webkit内核浏览器
+			this.dd=document.compatMode==="CSS1Compat" && !webkit ? document.documentElement : document.body;
+			this.clientHeight=document.documentElement.clientHeight;
+		}
+		
+		this.lazylength;
+		this.lazy=[];
+	  },
+	  _filterImg:function(){
+			var img=document.getElementsByTagName(this.lazyTag);
 			for(var i=0,len=img.length;i<len;i++){
 				if(img[i].getAttribute("lazy_src")){
 					var lobj={};
 					lobj.o=img[i];
 					lobj.pos=S.getObjPos(img[i]).y;
-					lazy.push(lobj);
+					this.lazy.push(lobj);
 				}
 			}
-			lazylength=lazy.length;
-	   };
-	   var loadLazy=function(){
-		    if(lazylength==0) {clearInterval(lazyTime);document.getElementById('lxj').value='延迟加载完毕';return;};
-		    document.getElementById('lxj').value='还有'+lazylength+'张图未加载';
-			for(var i=0;i<lazylength;i++){
-				if((lazy[i].pos-dd.scrollTop)<clientHeight && lazy[i].o.getAttribute("lazy_src")){
-					lazy[i].o.src=lazy[i].o.getAttribute("lazy_src");
-					lazy[i].o.setAttribute("lazy_src",'');
-					lazy[i].o.removeAttribute("lazy_src");
-					lazy.splice(i,1);
-					lazylength--;
+			this.lazylength=this.lazy.length;
+			this.start();
+	   },
+	   /*==loadLazy==*/
+	   loadLazy:function(){
+		    if(this.lazylength==0) {clearInterval(this.lazyTime);this.callback();return;};
+			this.loading();
+			for(var i=0;i<this.lazylength;i++){
+				if((this.lazy[i].pos-this.dd.scrollTop)<this.clientHeight && this.lazy[i].o.getAttribute("lazy_src")){
+					this.lazy[i].o.src=this.lazy[i].o.getAttribute("lazy_src");
+					this.lazy[i].o.setAttribute("lazy_src",'');
+					this.lazy[i].o.removeAttribute("lazy_src");
+					this.lazy.splice(i,1);
+					this.lazylength--;
 				}
 			};
-	   };
-	   _filterImg();
-	   document.getElementById('lxj2').value="总共有"+lazy.length+"张图片需要延迟加载";
-	   lazyTime=setInterval(loadLazy,100)
+	   }
+	  /*==/loadLazy==*/ 
+	   
 	};
+	/*===/lazyLoad===*/
 	
 	S.lazyLoad=lazyLoad;
 	
 })('QIE');
 
-new QIE.lazyLoad();
+QIE.lazyLoad(
+		     {
+			   start:function(){
+				   document.getElementById('lxj2').value="总共有"+this.lazy.length+"张图片需要延迟加载";
+			   },
+			   loading:function(){
+				   document.getElementById('lxj').value='还有'+this.lazylength+'张图未加载';
+			   },
+			   callback:function(){
+				   document.getElementById('lxj').value='延迟加载完毕';
+			   }
+		    }
+);
 
 /*var lxj=["a","c","e","d"]
 lxj.splice(0,1);
