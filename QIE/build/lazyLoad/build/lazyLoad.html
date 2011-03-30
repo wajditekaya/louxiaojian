@@ -22,7 +22,10 @@ img{background:#fff url(loading.gif) center no-repeat; margin:5px 0 10px 0}
 <p><a href="#"><img alt="" width="160" height="240" lazy_src="http://farm5.static.flickr.com/4054/4486930930_68c6592449_m.jpg" /></a></p>
 
 <p>核心提示：继股份制银行全面取消首套房贷优惠利率。最近两天，四大行终于有所动作，银行个贷部门人士表示，如客户接受基准利率则马上放款；如只能接受下浮利率则要排队，何时能放款谁也说不准。消息称四大银行将从2月1日开始执行二套房贷首付提高至60%的</p>
-<p><a href="#"><img width="240" height="180" lazy_src="http://farm6.static.flickr.com/5055/5480638126_7941556462_m.jpg" /></a></p>
+<input type="button" value="显示隐藏的内容" onclick="document.getElementById('hiddenImg2').style.display=''" />
+<p><a href="#"><img width="240" height="180" lazy_src="http://farm6.static.flickr.com/5055/5480638126_7941556462_m.jpg" /></a>
+<img lazy_src="http://img4.cache.netease.com/photo/0031/2011-03-29/70BFB44543UD0031.jpg" width="500" id="hiddenImg2" style="display:none" height="361" />
+</p>
 
 <p>核心提示：继股份制银行全面取消首套房贷优惠利率。最近两天，四大行终于有所动作，银行个贷部门人士表示，如客户接受基准利率则马上放款；如只能接受下浮利率则要排队，何时能放款谁也说不准。消息称四大银行将从2月1日开始执行二套房贷首付提高至60%的</p>
 <p><a href="#"><img width="180" height="240" lazy_src="http://farm6.static.flickr.com/5052/5480036787_7c86ed3ed7_m.jpg" /></a></p>
@@ -117,6 +120,21 @@ img{background:#fff url(loading.gif) center no-repeat; margin:5px 0 10px 0}
 	} : function(fn){
 		   document.addEventListener('DOMContentLoaded', fn, false);
 	};
+	S.getStyle=function(elem,atrr){
+		var r;
+		function camelize(s) {
+			return s.replace(/-(\w)/g, function (strMatch, p1){
+				return p1.toUpperCase();
+			});
+		}
+		if(!+'\v1'){
+			if(atrr.indexOf('-')!=-1) atrr=camelize(atrr);
+			r=elem.currentStyle[atrr]
+		}else{
+			r=document.defaultView.getComputedStyle(elem, null).getPropertyValue(atrr);
+		}
+		return r
+	};
 	S.getObjPos=function(obj){    
 		var x = y = 0;    
 		if (obj.getBoundingClientRect){
@@ -187,7 +205,7 @@ img{background:#fff url(loading.gif) center no-repeat; margin:5px 0 10px 0}
 					lobj.o=img[i];
 					
 					/*==过滤隐藏的图片(隐的图片的S.getObjPos(img[i])值不存在)，对于隐藏图片不进行pos赋值===*/
-					if(pos>=0 && img[i].offsetWidth!==0 && img[i].offsetHeight!==0){
+					if(pos>=0 && !this.isHidden(img[i])){
 					  lobj.pos=pos;
 					}
 					this.lazy.push(lobj);
@@ -195,6 +213,9 @@ img{background:#fff url(loading.gif) center no-repeat; margin:5px 0 10px 0}
 			}
 			this.lazylength=this.lazy.length;
 			this.start();
+	   },
+	   isHidden:function(elem){
+	     return ((elem.offsetWidth===0 && elem.offsetHeight===0) || S.getStyle(elem,'display')==='none') ? true :false;
 	   },
 	   /*==loadLazy==*/
 	   loadLazy:function(){
@@ -204,7 +225,7 @@ img{background:#fff url(loading.gif) center no-repeat; margin:5px 0 10px 0}
 			
 			for(var i=0;i<this.lazylength;i++){
 				var ly=this.lazy[i];
-				if(ly.pos && (ly.pos-this.dd.scrollTop)<this.clientHeight && ly.o.offsetWidth!==0 && ly.o.offsetHeight!==0){
+				if(ly.pos && (ly.pos-this.dd.scrollTop)<this.clientHeight &&!this.isHidden(ly.o)){
 					ly.o.src=ly.o.getAttribute("lazy_src");
 					ly.o.setAttribute("lazy_src",'');
 					ly.o.removeAttribute("lazy_src");
