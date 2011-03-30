@@ -124,6 +124,7 @@ img{background:url(loading.gif) center no-repeat}
 		this.init(s);
 		this._filterImg();
 		this.lazyTime=setInterval(function(){self.loadLazy()},100);
+		window.onresize=function(){self._containerInfo()};
 	};
 	lazyLoad.prototype={
 	  init:function(s){
@@ -142,14 +143,15 @@ img{background:url(loading.gif) center no-repeat}
 		this.loading=s.loading || function(){};
 		this.callback=s.callback || function(){};
 		
-		if(this.container===window){
-			var webkit=/applewebkit/.test(window.navigator.userAgent.toLowerCase());//webkit内核浏览器
-			this.dd=document.compatMode==="CSS1Compat" && !webkit ? document.documentElement : document.body;
-			this.clientHeight=document.documentElement.clientHeight;
-		}
-		
+		if(this.container===window){this._containerInfo();}
+
 		this.lazylength;
 		this.lazy=[];
+	  },
+	  _containerInfo:function(){
+			var webkit=/applewebkit/.test(window.navigator.userAgent.toLowerCase()),d=document,db=d.body,dd=d.documentElement;//webkit内核浏览器
+			this.dd=d.compatMode==="CSS1Compat" && !webkit ? dd : db;
+			this.clientHeight=this.mode==='vertical' ? dd.clientHeight : dd.clientWidth;
 	  },
 	  _filterImg:function(){
 			var img=document.getElementsByTagName(this.lazyTag);
@@ -157,7 +159,7 @@ img{background:url(loading.gif) center no-repeat}
 				if(img[i].getAttribute("lazy_src")){
 					var lobj={};
 					lobj.o=img[i];
-					lobj.pos=S.getObjPos(img[i]).y;
+					lobj.pos=this.mode==='vertical' ? S.getObjPos(img[i]).y : S.getObjPos(img[i]).x;
 					this.lazy.push(lobj);
 				}
 			}
