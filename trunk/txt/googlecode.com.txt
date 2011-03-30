@@ -31,3 +31,8 @@ http://lifesinger.org/share/
 
 
 https://github.com/kissyteam/kissy-tools
+
+
+
+www.csdn.net={u:jxsr_lxj@163.com,p:15)}
+www.cnblogs.com={u:jxsr_lxj,n:SeanLou,p:15)}
