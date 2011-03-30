@@ -293,8 +293,8 @@
 			  },
 			  getObjPos:function(obj){
 				  var x = y = 0;    
-				  if (obj.getBoundingClientRect)    
-				  {    
+				  if (obj.getBoundingClientRect){ //for IE,FF3.0+,Opera9.5+ ,google  
+				  
 					  var box = obj.getBoundingClientRect();
 					  if(box.left == 0 && box.top == 0)
 					  {
@@ -302,10 +302,10 @@
 					  }
 					  var D = document.documentElement;    
 					  x = box.left + Math.max(D.scrollLeft, document.body.scrollLeft) - D.clientLeft;    
-					  y = box.top + Math.max(D.scrollTop, document.body.scrollTop) - D.clientTop;         
-				  }    
-				  else   
-				  {    
+					  y = box.top + Math.max(D.scrollTop, document.body.scrollTop) - D.clientTop;  
+					  
+				  } else {    //个别低版本不支持getBoundingClientRect()t的浏览器
+				  
 					  for(; obj != document.body; x += obj.offsetLeft, y += obj.offsetTop, obj = obj.offsetParent );    
 				  }    
 				  return {'x':x, 'y':y};    
