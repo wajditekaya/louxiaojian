@@ -53,7 +53,7 @@ Rotation.prototype={
 			  auto:[0,2000],
 			  cur:"cur",
 			  intTabTime:50,
-			  interval:50,
+			  interval:500,
 			  nTag:function(){},
 			  mTag:function(){},
 			  text:function(){},//文字数组
@@ -98,13 +98,21 @@ Rotation.prototype={
 			 this.lDiv=this.aMtag[n];
 		},
 		slider:function(n){
-			var t=0,b=parseInt(this.sbj.style[this.dir]),c=-n*this.dis-b;
+			var t=0,b=parseInt(this.sbj.style[this.dir]),c=-n*this.dis-b,beginTime,tm;
+			tm=c > 0 ? 'ceil' :'floor';
 			this.Move=function(){
+				t=new Date().getTime()-beginTime
 				if(!c){return false}
 				if(this.moveTime){clearTimeout(this.moveTime)}
-				this.sbj.style[this.dir]=Math.round(this.Tween(t,b,c,this.s.interval))+"px";
-				if(t<this.s.interval){t++;this.moveTime=setTimeout(this.B(this,this.Move),10)}
+				
+				if(t<this.s.interval){
+					this.sbj.style[this.dir]=Math[tm](this.Tween(t,b,c,this.s.interval))+"px";
+					this.moveTime=setTimeout(this.B(this,this.Move),10)
+				}else{
+					this.id.style[this.dir]=b+c+'px';//以防计算误差，动画结束后重置位置。
+				}
 			};
+			beginTime=new Date().getTime();
 			this.Move();
 		},
 		clearintTab:function(){if(this.intTab){clearTimeout(this.intTab)}},
