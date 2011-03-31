@@ -63,7 +63,7 @@ Rotation.prototype={
 			  auto:[0,2000],
 			  cur:"cur",
 			  intTabTime:50,
-			  interval:50,
+			  interval:500,
 			  nTag:[],
 			  mTag:[],
 			  text:[],//文字数组
@@ -120,19 +120,28 @@ Rotation.prototype={
 		slider:function(n){
 			var sb=this.sbj,
 			dr=this.dir,/*滑动方向*/
-			ds=this.dis;/*滑动距离*/
+			ds=this.dis,/*滑动距离*/
+			beginTime,
+			tm;
 			if(ds && !this.sliderInit){
 				sb.style.position='absolute';
 				sb.style[dr]=-this.de*this.dis+"px";
 				this.sliderInit=true;
 			}/*程序加载后这执行一次，以后都不执行*/
 			var t=0,b=parseInt(this.sbj.style[dr]),c=-n*ds-b,d=this.s.interval;
+			tm=c > 0 ? 'ceil' :'floor';
 			this.Move=function(){
+				t=new Date().getTime()-beginTime
 				if(!c){return false}
 				if(this.moveTime){clearTimeout(this.moveTime)}
-				sb.style[dr]=Math.round(this.Tween(t,b,c,d))+"px";
-				if(t<d){t++;this.moveTime=setTimeout(this.B(this,this.Move),10)}
+				if(t<d){
+					sb.style[dr]=Math[tm](this.Tween(t,b,c,d))+"px";
+					this.moveTime=setTimeout(this.B(this,this.Move),10)
+				}else{
+					sb.style[dr]=b+c+'px';//以防计算误差，动画结束后重置位置。
+				}
 			};
+			beginTime=new Date().getTime();
 			this.Move();
 		},
 		clearintTab:function(){if(this.intTab){clearTimeout(this.intTab)}},
