@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>测试getObjPos获取坐标的性能</title>
+</head>
+
+<body><div id="time"></div>
+<div id="lxj"></div>
+
+<script>
+(function(S){
+   if (window[S] === undefined) window[S] = {};
+	S = window[S];
+	S.ready = !+'\v1' ? function(fn){(function(){
+				  try{
+					  document.documentElement.doScroll('left');
+				  } catch (error){
+					  setTimeout(arguments.callee, 0);
+					  return;
+				  };
+				  fn();
+			  })();
+	} : function(fn){
+		   document.addEventListener('DOMContentLoaded', fn, false);
+	};
+	S.getStyle=function(elem,atrr){
+		var r;
+		function camelize(s) {
+			return s.replace(/-(\w)/g, function (strMatch, p1){
+				return p1.toUpperCase();
+			});
+		}
+		if(!+'\v1'){
+			if(atrr.indexOf('-')!=-1) atrr=camelize(atrr);
+			r=elem.currentStyle[atrr]
+		}else{
+			r=document.defaultView.getComputedStyle(elem, null).getPropertyValue(atrr);
+		}
+		return r
+	};
+	S.getObjPos=function(obj){    
+		var x = y = 0;    
+		if (obj.getBoundingClientRect){
+			//for IE,FF3.0+,Opera9.5+ ,google  
+			var box = obj.getBoundingClientRect();
+			var D = document.documentElement;    
+			x = box.left + Math.max(D.scrollLeft, document.body.scrollLeft) - D.clientLeft;    
+			y = box.top + Math.max(D.scrollTop, document.body.scrollTop) - D.clientTop;         
+		}    
+		else   
+		{    //个别低版本不支持getBoundingClientRect的浏览器
+			for(; obj != document.body; x += obj.offsetLeft, y += obj.offsetTop, obj = obj.offsetParent );    
+		}    
+		return {'x':x, 'y':y};    
+	};
+	
+})('QIE');
+
+QIE.ready(function(){
+	var S=QIE,DocumentFragment=document.createDocumentFragment(),img,lxj=document.getElementById('lxj'),dd=[],pos=[];
+	for(var i=0;i<500;i++){
+		DocumentFragment.appendChild(img=document.createElement('img')).src='http://s1.ppsimg.com/t_images/t/e/20110328/41/13798498/middle/jpge57212f8970ec9fbc459c73bc52f00a3.jpg';
+		dd.push(img)
+	}
+	lxj.appendChild(DocumentFragment);
+	var be=new Date().getTime();
+/*	window.setInterval(function(){
+		  for(var j=0;j<dd.length;j++){
+			  var llll=S.getObjPos(dd[j]).x;
+			  llll=null;
+		  }						
+	},100)*/
+
+	document.getElementById('time').innerHTML=new Date().getTime()-be
+})
+
+</script>
+</body>
+</html>
