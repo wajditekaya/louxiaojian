@@ -7,9 +7,19 @@
 
 <body>
 <h1> DOM READY's TEST </h1>
-<img src="image.php" alt="delay image" />
+<div id="djs"></div>
+<img width="470" height="300" style="background:url(loading.gif) center no-repeat" src="image.php" alt="delay image" />
 <p id="status"> DOM is not ready </p>
-<!--<script src="js.php" type="text/javascript"></script>-->
+<p id="status2"> DOM is not ready </p>
+<script>
+var t=0,time
+time=window.setInterval(function(){
+	t++
+	document.getElementById('djs').innerHTML=t;
+	if(t===30) clearInterval(time);
+},1000)
+</script>
+<script src="js.php" type="text/javascript"></script>
 <script>
 if(document.addEventListener){
     function DOMContentLoaded(){
@@ -18,7 +28,7 @@ if(document.addEventListener){
     document.addEventListener( "DOMContentLoaded", DOMContentLoaded, false );
 }
 window.onload=function(){
-            document.getElementById("status").innerHTML="DOM is ready AND wondow.onload is excute!";
+            document.getElementById("status2").innerHTML="DOM is ready AND wondow.onload is excute!";
 }
 </script>
 </body>
