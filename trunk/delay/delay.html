@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>delay</title>
+</head>
+
+<body>
+<h1> DOM READY's TEST </h1>
+<img src="image.php" alt="delay image" />
+<p id="status"> DOM is not ready </p>
+<!--<script src="js.php" type="text/javascript"></script>-->
+<script>
+if(document.addEventListener){
+    function DOMContentLoaded(){
+        document.getElementById("status").innerHTML="DOM is ready now!";
+    }
+    document.addEventListener( "DOMContentLoaded", DOMContentLoaded, false );
+}
+window.onload=function(){
+            document.getElementById("status").innerHTML="DOM is ready AND wondow.onload is excute!";
+}
+</script>
+</body>
+</html>
