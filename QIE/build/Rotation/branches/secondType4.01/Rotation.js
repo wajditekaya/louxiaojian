@@ -1,5 +1,5 @@
 /*=======Author:louxiaojian<E-mail:louxiaojian@gmail.com>=========*/
-/*===========Version:4.0===========*/
+/*===========Version:4.01===========*/
 /*===================================
 
 date:2010-05-25  
@@ -27,6 +27,7 @@ function Rotation(set){
 	   this.run();
 }
 Rotation.prototype={
+	    version:4.01,
 		B:function(object, fun) {
 		  var args = Array.prototype.slice.call(arguments).slice(2);
 		  return function() {

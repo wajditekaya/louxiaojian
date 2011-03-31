@@ -17,6 +17,7 @@ function Rotation(set){
 	   this.run();
 }
 Rotation.prototype={
+	    version:4.0,
 		B:function(object, fun) {
 		  var args = Array.prototype.slice.call(arguments).slice(2);
 		  return function() {
@@ -109,7 +110,7 @@ Rotation.prototype={
 					this.sbj.style[this.dir]=Math[tm](this.Tween(t,b,c,this.s.interval))+"px";
 					this.moveTime=setTimeout(this.B(this,this.Move),10)
 				}else{
-					this.id.style[this.dir]=b+c+'px';//以防计算误差，动画结束后重置位置。
+					this.sbj.style[this.dir]=b+c+'px';//以防计算误差，动画结束后重置位置。
 				}
 			};
 			beginTime=new Date().getTime();
