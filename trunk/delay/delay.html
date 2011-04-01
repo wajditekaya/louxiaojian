@@ -11,12 +11,13 @@
 <p id="status"> DOM is not ready </p>
 <p id="status2"> wondow.onload is not excute! </p>
 <img width="470" height="300" style="background:url(loading.gif) center no-repeat" src="delay.php?type=image&time=15" alt="delay image" />
+<iframe src="delay.php?type=iframe&time=20" height="300" width="470" frameborder="0" ></iframe>
 <script>
 var t=0,time
 time=window.setInterval(function(){
 	t++
 	document.getElementById('djs').innerHTML=t;
-	if(t===15) clearInterval(time);
+	if(t===30) clearInterval(time);
 },1000)
 </script>
 <script src="delay.php?type=js&time=10" type="text/javascript"></script>

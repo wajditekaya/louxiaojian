@@ -12,6 +12,10 @@ class delay
 	  sleep($this->time);
 	  header('Location:QIE.js');
 	}
+	function iframe(){
+	  sleep($this->time);
+	  header('Location:iframe.html');
+	}
 };
 $newDelay=new delay();
 $newDelay->time=$time;
