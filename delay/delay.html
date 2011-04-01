@@ -13,24 +13,29 @@
 <img width="470" height="300" style="background:url(loading.gif) center no-repeat" src="delay.php?type=image&time=20" alt="delay image" />
 <iframe src="delay.php?type=iframe&time=30" height="300" width="470" frameborder="0" ></iframe>
 <script>
-var t=0,time
+var t=0,time;
 time=window.setInterval(function(){
 	t++
 	document.getElementById('djs').innerHTML=t;
 },1000)
 </script>
+
 <script src="delay.php?type=js&time=10" type="text/javascript"></script>
+
 <script>
 if(document.addEventListener){
     function DOMContentLoaded(){
-        document.getElementById("status").innerHTML="DOM is ready now!";
-		document.getElementById("status").style.color="#36F";
+		var status=document.getElementById("status");
+        status.innerHTML="DOM is ready now!";
+		status.style.cssText="color:#36F;font-weight:bold";
     }
     document.addEventListener( "DOMContentLoaded", DOMContentLoaded, false );
 }
 window.onload=function(){
 	        clearInterval(time)
-            document.getElementById("status2").innerHTML="DOM is ready AND wondow.onload is excute!";
+			var status2=document.getElementById("status2");
+            status2.innerHTML="DOM is ready AND wondow.onload is excute!";
+			status2.style.cssText="color:#36F;font-weight:bold";
 }
 </script>
 </body>
