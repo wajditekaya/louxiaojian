@@ -7,8 +7,8 @@
 
 <body>
 <h1> DOM READY's TEST </h1>
-<div id="djs"></div>
-<img width="470" height="300" style="background:url(loading.gif) center no-repeat" src="image.php" alt="delay image" />
+<div id="djs" style="height:22px"></div>
+<img width="470" height="300" style="background:url(loading.gif) center no-repeat" src="delay.php?type=image&time=15" alt="delay image" />
 <p id="status"> DOM is not ready </p>
 <p id="status2"> DOM is not ready </p>
 <script>
@@ -19,7 +19,7 @@ time=window.setInterval(function(){
 	if(t===30) clearInterval(time);
 },1000)
 </script>
-<script src="js.php" type="text/javascript"></script>
+<script src="delay.php?type=js&time=10" type="text/javascript"></script>
 <script>
 if(document.addEventListener){
     function DOMContentLoaded(){
