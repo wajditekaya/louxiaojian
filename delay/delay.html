@@ -8,15 +8,15 @@
 <body>
 <h1> DOM READY's TEST </h1>
 <div id="djs" style="height:22px"></div>
-<img width="470" height="300" style="background:url(loading.gif) center no-repeat" src="delay.php?type=image&time=15" alt="delay image" />
 <p id="status"> DOM is not ready </p>
-<p id="status2"> DOM is not ready </p>
+<p id="status2"> wondow.onload is not excute! </p>
+<img width="470" height="300" style="background:url(loading.gif) center no-repeat" src="delay.php?type=image&time=15" alt="delay image" />
 <script>
 var t=0,time
 time=window.setInterval(function(){
 	t++
 	document.getElementById('djs').innerHTML=t;
-	if(t===30) clearInterval(time);
+	if(t===15) clearInterval(time);
 },1000)
 </script>
 <script src="delay.php?type=js&time=10" type="text/javascript"></script>
@@ -24,6 +24,7 @@ time=window.setInterval(function(){
 if(document.addEventListener){
     function DOMContentLoaded(){
         document.getElementById("status").innerHTML="DOM is ready now!";
+		document.getElementById("status").style.color="#36F";
     }
     document.addEventListener( "DOMContentLoaded", DOMContentLoaded, false );
 }
