@@ -10,14 +10,13 @@
 <div id="djs" style="height:22px"></div>
 <p id="status"> DOM is not ready </p>
 <p id="status2"> wondow.onload is not excute! </p>
-<img width="470" height="300" style="background:url(loading.gif) center no-repeat" src="delay.php?type=image&time=15" alt="delay image" />
-<iframe src="delay.php?type=iframe&time=20" height="300" width="470" frameborder="0" ></iframe>
+<img width="470" height="300" style="background:url(loading.gif) center no-repeat" src="delay.php?type=image&time=20" alt="delay image" />
+<iframe src="delay.php?type=iframe&time=30" height="300" width="470" frameborder="0" ></iframe>
 <script>
 var t=0,time
 time=window.setInterval(function(){
 	t++
 	document.getElementById('djs').innerHTML=t;
-	if(t===30) clearInterval(time);
 },1000)
 </script>
 <script src="delay.php?type=js&time=10" type="text/javascript"></script>
@@ -30,6 +29,7 @@ if(document.addEventListener){
     document.addEventListener( "DOMContentLoaded", DOMContentLoaded, false );
 }
 window.onload=function(){
+	        clearInterval(time)
             document.getElementById("status2").innerHTML="DOM is ready AND wondow.onload is excute!";
 }
 </script>
