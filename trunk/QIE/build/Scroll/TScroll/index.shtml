@@ -50,7 +50,7 @@ fieldset{border:none;}
 <div id="wrapper">
     <div class="scrollBx">
       <!--<div id="previous" class="previous" onclick="clickGoto(150)">上一组</div>-->
-      <div id="previous" class="previous" onclick="clickGoto(180)" onmouseout="autoScroll()">上一组</div>
+      <div id="previous" class="previous">上一组</div>
       <div class="scrollBd">
         <ul id="scrollid">
          <li><a href="#"><img src="img/sf-01.jpg" alt="" /></a></li>
@@ -77,125 +77,11 @@ fieldset{border:none;}
          <li><a href="#"><img src="img/kof-10.jpg" alt="" /></a></li>
         </ul>
       </div>
-      <div id="next" class="next" onclick="clickGoto(-180);" onmouseout="autoScroll()">下一组</div>
+      <div id="next" class="next">下一组</div>
       <!--<div id="next" class="next" onclick="clickGoto(-150)">下一组</div>-->
     </div>
     
 </div>
-<script type="text/javascript">
-(function(){
-	  /*===
-	  t: current time（当前时间）；
-	  b: beginning value（初始值）；
-	  c: change in value（变化量）；单位像素
-	  d: duration（持续时间）。
-	  ps：Elastic和Back有其他可选参数，里面都有说明。
-	  =====*/
-	  var Tween = {
-		  Quad: {
-			  easeIn: function(t,b,c,d){
-				  return c*(t/=d)*t + b;
-			  }
-		  }
-	  } 
-	  function $(o){return typeof(o)=='string' ? document.getElementById(o) : o}
-	  function uncamelize(s, sep) {
-		  sep = sep || '-';
-		  return s.replace(/([a-z])([A-Z])/g, function (strMatch, p1, p2){
-			  return p1 + sep + p2.toLowerCase();
-		  });
-	  };
-	  function camelize(s) {
-		  return s.replace(/-(\w)/g, function (strMatch, p1){
-			  return p1.toUpperCase();
-		  });
-	  }
-	  function setStyle(element, styles) {
-		  // Retrieve an object reference
-		  if(!(element = $(element))) return false;
-		  // Loop through  the styles object an apply each property
-		  for (property in styles) {
-			  if(!styles.hasOwnProperty(property)) continue;
-			  if(element.style.setProperty) {
-				  //DOM2 Style method
-				  element.style.setProperty(
-				  uncamelize(property,'-'),styles[property],null);
-			  } else {
-				  //Alternative method
-				  element.style[camelize(property)] = styles[property];
-			  }
-		  }
-		  return true;
-	  };
-	  var timeid,scrollid=$('scrollid'),previous=$('previous'),next=$('next'),op,autoTimeId;
-	  
-	  /*获取滚动内容的宽度*/
-	  function getWidth(a){
-		  var subTags=scrollid.getElementsByTagName('li'),w=0;
-		  if(a){w=subTags.length*a}else{
-			  for(var i=0,j=subTags.length;i<j;i++){
-				  w+=subTags[i].clientWidth > subTags[i].offsetWidth ? subTags[i].clientWidth : subTags[i].offsetWidth;
-			  }
-		  }
-		  return w;
-	  }
-	  
-	  /*上一页和下一页的样式*/
-      function judgePageStyle(){
-		 var l=scrollid.style['left'];
-		 parseInt(l)==0 || !l ? setStyle(previous,{color:'#ccc',cursor:'text'}) : setStyle(previous,{color:'#000',cursor:'pointer'})
-		 Math.abs(parseInt(l))==getWidth()-scrollid.parentNode.offsetWidth ? setStyle(next,{color:'#ccc',cursor:'text'}) : setStyle(next,{color:'#000',cursor:'pointer'});
-		  
-	  };
-	  /*滚动函数*/
-	  function goto(c,d,t){
-		if(timeid){clearTimeout(timeid)}
-		b=parseInt(scrollid.style['left']) || 0;
-		var abs_b=Math.abs(b);
-		if(c<0){
-			if((op-abs_b)<Math.abs(c)){c=abs_b-op}//纠正移动路程
-		    if(abs_b==op){return false}
-		    }else{
-			if(abs_b<c && abs_b!=op){c=abs_b}//纠正移动路程
-			if(abs_b==0){return true}
-		}
-		new function(){
-			scrollid.style['left'] = Math.ceil(Tween.Quad.easeIn(t,b,c,d)) + "px";
-			judgePageStyle();
-			if(t<d){t++; timeid=setTimeout(arguments.callee, 10);}else{t=0}
-		};
-		
-	 }
-	 window['goto']=goto;
-	 
-	 /*上一页和下一页的点击滚动函数*/
-	 function clickGoto(c){
-		 if(autoTimeId){clearInterval(autoTimeId)}
-		 var d=20,t=0;
-		 goto(c,d,t);
-	 }
-	 window['clickGoto']=clickGoto;
-	 /*自动匀速地滚动*/
-	 function autoScroll(){
-	     if(autoTimeId){clearInterval(autoTimeId)}
-		 var c=-2,t=d=1;
-		 autoTimeId=setInterval("goto("+c+","+d+","+t+")",30)
-	 };
-	 /*间歇性性滚动*/
-	 function IntermittentScroll(){
-	     if(autoTimeId){clearInterval(autoTimeId)}
-		 var d=20,t=0,c=-180;
-		 autoTimeId=setInterval("goto("+c+","+d+","+t+")",1000)
-	 };
-	 window['autoScroll']=autoScroll;
-	 /*初始化函数*/
-	 var init=function(){
-		 op=getWidth()-scrollid.parentNode.offsetWidth; //能滚动的总路程
-		 scrollid.style.width=getWidth()+'px';
-         judgePageStyle();
-         IntermittentScroll();
-	}();
-})()
-</script>
+<script type="text/javascript" src="TScroll.js"></script>
 </body>
 </html>
