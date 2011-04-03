@@ -181,13 +181,19 @@ fieldset{border:none;}
 		 var c=-2,t=d=1;
 		 autoTimeId=setInterval("goto("+c+","+d+","+t+")",30)
 	 };
+	 /*间歇性性滚动*/
+	 function IntermittentScroll(){
+	     if(autoTimeId){clearInterval(autoTimeId)}
+		 var d=20,t=0,c=-180;
+		 autoTimeId=setInterval("goto("+c+","+d+","+t+")",1000)
+	 };
 	 window['autoScroll']=autoScroll;
 	 /*初始化函数*/
 	 var init=function(){
 		 op=getWidth()-scrollid.parentNode.offsetWidth; //能滚动的总路程
 		 scrollid.style.width=getWidth()+'px';
          judgePageStyle();
-         autoScroll();
+         IntermittentScroll();
 	}();
 })()
 </script>
