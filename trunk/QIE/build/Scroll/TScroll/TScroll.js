@@ -86,9 +86,9 @@ TScroll.prototype={
 		   this.auto=s.auto;//是否自动滚动
 		   this.cycle=s.cycle;//是否循环滚动
 		   this.related={'previous':1,'next':-1,'left':'width','top':'height'}
-		   width=this.getWidth();
-		   this.maxScroll=width-this.content.parentNode.offsetWidth; //能滚动的总路程
-		   this.content.style.width=width+'px';
+		   getBx=this.getBx();
+		   this.maxScroll=getBx-this.content.parentNode['offset'+replaceReg(this.related[this.direction])]; //能滚动的总路程
+		   this.content.style[this.related[this.direction]]=getBx+'px';
 		   this.judgePageStyle();
 		   
 		   //@问题一，怎么区别click和mousedown时间触发区别
@@ -127,13 +127,13 @@ TScroll.prototype={
 		   this.IntermittentScroll();
 		},
 		/*获取滚动内容的宽度*/
-		getWidth:function(a){
+		getBx:function(a){
 			var subTags=this.content.getElementsByTagName(this.tagName),w=0;
 			if(a){//对于等宽的，可以直接设置宽度
 				w=subTags.length*a
 			}else{//自动获取宽度
 			  for(var i=0,j=subTags.length;i<j;i++){
-					w+=subTags[i].clientWidth > subTags[i].offsetWidth ? subTags[i].clientWidth : subTags[i].offsetWidth;
+					w+=subTags[i]['client'+replaceReg(this.related[this.direction])] > subTags[i]['offset'+replaceReg(this.related[this.direction])] ? subTags[i]['client'+replaceReg(this.related[this.direction])] : subTags[i]['offset'+replaceReg(this.related[this.direction])];
 			  }
 			}
 			return w;
@@ -221,5 +221,3 @@ TScroll.prototype={
 									 1000)
 		}
 }
-
-TScroll({'content':'scrollid','c':90,'previous':'previous','next':'next','auto':false})

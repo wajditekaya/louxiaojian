@@ -34,26 +34,23 @@ fieldset{border:none;}
 .tList li{overflow:hidden}
 
 #wrapper{width:960px;margin:0 auto;text-align:left}
-.scrollBx{width:800px;position:relative;margin:0 auto}
-	.scrollBx .scrollBd{width:720px;margin:0 auto;background:#eee;height:90px;position:relative;overflow:hidden}
-	.scrollBx .scrollBd ul{overflow:hidden;height:80px;position:absolute;top:5px}
-	.scrollBx .scrollBd ul li{float:left;padding:0 5px;display:inline}
-	.scrollBx .scrollBd ul li img{width:80px;height:80px;vertical-align:top}
-	.scrollBx .previous,.scrollBx .next{width:15px;position:absolute;cursor:pointer;top:12px}
-	.scrollBx .previous{left:0}
-	.scrollBx .next{right:0}
 
-#test span em{display:inline-block;width:80px;text-align:right}
+.scrollBx{width:100px;position:relative;margin:20px auto;padding:30px 0}
+	.scrollBx .scrollBd{height:450px;margin:0 auto;background:#eee;position:relative;overflow:hidden}
+	.scrollBx .scrollBd ul{position:absolute;top:0}
+	.scrollBx .scrollBd ul li{padding:5px 10px}
+	.scrollBx .scrollBd ul li img{width:80px;height:80px;vertical-align:top}
+	.scrollBx .previous,.scrollBx .next{width:100px;height:22px;background:#eee;text-align:center;line-height:22px;cursor:pointer;position:absolute;left:0; font-weight:bold}
+	.scrollBx .previous{top:0}
+	.scrollBx .next{bottom:0}
+
 </style>
 
 </head>
 
 <body>
 <div id="wrapper">
-    一个onclick事件是由先触发onmousedown再触发onmouseup两个事件部分组成，并且这两部分的时间差在200毫秒之内。<br />而
-    <div id="test-down" style="background:#CF9;cursor:pointer; margin-bottom:5px">点我</div>
-    <div id="shijian" style="background:#CF9;cursor:pointer">点我</div>
-    <div id="test" style="height:90px">1.<span id="ondown"></span><br />2.<span id="onup"></span><br />3.<span id="onclick"></span></div>
+
     <div class="scrollBx">
       <div id="previous" class="previous">上一组</div>
       <div class="scrollBd">
@@ -88,26 +85,7 @@ fieldset{border:none;}
 </div>
 <script type="text/javascript" src="TScroll.js"></script>
 <script type="text/javascript">
-TScroll({'content':'scrollid','c':90,'previous':'previous','next':'next','auto':false})
-var cTime,dTime,uTime,n=0;
-addEvent('shijian','click',function(){
-			cTime=new Date().getTime();
-			$('onclick').innerHTML='<em>click的时间：</em>'+cTime;
-		 })
-addEvent('shijian','mousedown',function(){
-			dTime=new Date().getTime();
-			$('ondown').innerHTML='<em>down的时间：</em>'+dTime
-		})
-addEvent('shijian','mouseup',function(){
-			uTime=new Date().getTime();
-			var t=uTime-dTime
-			$('onup').innerHTML='<em>up的时间：</em>'+uTime+'　　　　　up-dowclin='+t;
-		})
-
-addEvent('test-down','mousedown',function(){
-             this.innerHTML=n;
-			 n++
-		})
+   TScroll({'content':'scrollid','direction':'top','c':90,'previous':'previous','next':'next','auto':true})
 </script>
 </body>
 </html>
