@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>TScroll</title>
+<style type="text/css">
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{padding:0;margin:0;} 
+body{font:12px/22px Tahoma,Verdana,"宋体";word-break:break-all;color:#333;text-align:center;}
+fieldset,img{border:0;} 
+table {border-collapse:collapse;border-spacing:0;} 
+ol,li,ul{list-style:none;} 
+address,caption,cite,code,dfn,em,strong,th,var{font-weight:normal;font-style:normal;} 
+caption,th{text-align:left;} 
+h1,h2,h3,h4,h5,h6{font-size:100%;} 
+q:before,q:after{content:'';} 
+abbr,acronym{border:0;}
+input,select,textarea{font:normal normal 12px "Verdana";}
+input,textarea{color:#666}
+select{color:#999}
+a{color:#2b6bad;text-decoration:none;outline:none;}
+a:hover{color:#f60;text-decoration:underline;}
+.fl{float:left;}
+.fr{float:right}
+fieldset{border:none;}
+.hide{display:none;}
+.center{text-align:center;}
+.textr{text-align:right}
+.clear:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+* html>body .clear {display: inline-block;width:100%;}
+* html .clear {/* Hides from IE-mac \*/height: 1%;/* End hide from IE-mac */}
+/* ie7 hack*/
+*+html .clearfix {min-height: 1% ;}
+.tList a{text-decoration:none}
+.tList li{overflow:hidden}
+
+#wrapper{width:960px;margin:0 auto;text-align:left}
+.scrollBx{width:800px;position:relative;margin:0 auto}
+.scrollBx .scrollBd{width:720px;margin:0 auto;background:#eee;height:90px;position:relative;overflow:hidden}
+.scrollBx .scrollBd ul{overflow:hidden;height:80px;position:absolute;top:5px}
+.scrollBx .scrollBd ul li{float:left;padding:0 5px;display:inline}
+.scrollBx .scrollBd ul li img{width:80px;height:80px;vertical-align:top}
+.scrollBx .previous,.scrollBx .next{width:15px;position:absolute;cursor:pointer;top:12px}
+.scrollBx .previous{left:0}
+.scrollBx .next{right:0}
+
+#test span em{display:inline-block;width:80px;text-align:right}
+</style>
+
+</head>
+
+<body>
+<div id="wrapper">
+    一个onclick事件是由先触发onmousedown再触发onmouseup两个事件部分组成，并且这两部分的时间差在200毫秒之内。<br />而
+    <div id="shijian">点我</div>
+    <div id="test" style="height:90px">1.<span id="ondown"></span><br />2.<span id="onup"></span><br />3.<span id="onclick"></span></div>
+    <div class="scrollBx">
+      <div id="previous" class="previous">上一组</div>
+      <div class="scrollBd">
+        <ul id="scrollid">
+         <li><a href="#"><img src="img/sf-01.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/sf-02.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/sf-03.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/sf-04.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/sf-05.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/sf-06.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/sf-07.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/sf-08.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/sf-09.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/sf-10.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/sf-11.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/sf-12.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/kof-01.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/kof-02.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/kof-03.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/kof-04.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/kof-05.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/kof-06.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/kof-07.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/kof-08.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/kof-09.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="img/kof-10.jpg" alt="" /></a></li>
+        </ul>
+      </div>
+      <div id="next" class="next">下一组</div>
+    </div>
+    
+</div>
+<script type="text/javascript" src="TScroll.js"></script>
+<script type="text/javascript">
+var cTime,dTime,uTime;
+addEvent('shijian','click',function(){
+			cTime=new Date().getTime();
+			$('onclick').innerHTML='<em>click的时间：</em>'+cTime;
+		 })
+addEvent('shijian','mousedown',function(){
+			dTime=new Date().getTime();
+			$('ondown').innerHTML='<em>down的时间：</em>'+dTime
+		})
+addEvent('shijian','mouseup',function(){
+			uTime=new Date().getTime();
+			var t=uTime-dTime
+			$('onup').innerHTML='<em>up的时间：</em>'+uTime+'　　　　　up-dowclin='+t;
+		})
+
+ document.write(replaceReg('share javascript')+'<br />'); 
+ document.write(replaceReg('SHARE JAVASCRIPT')+'<br />'); 
+ document.write(replaceReg('Test \n str is no good!')+'<br />'); 
+ document.write(replaceReg('final test')+'<br />'); 
+ document.write(replaceReg('width')+'<br />');
+ document.write(replaceReg('height')+'<br />');
+</script>
+</body>
+</html>
