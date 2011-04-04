@@ -13,6 +13,16 @@ var Tween = {
 	}
 } 
 function $(o){return typeof(o)=='string' ? document.getElementById(o) : o}
+
+/*===将英文单词第一个字母转为大写字母*/
+ function replaceReg(str){ 
+  reg = /\b(\w)|\s(\w)/g;
+  str = str.toLowerCase(); 
+  return str.replace(reg,function(m){return m.toUpperCase()}) 
+ }  
+/*===将英文单词第一个字母转为大写字母*/
+
+
 function uncamelize(s, sep) {
 	sep = sep || '-';
 	return s.replace(/([a-z])([A-Z])/g, function (strMatch, p1, p2){
@@ -75,12 +85,45 @@ TScroll.prototype={
 		   this.direction=s.direction || 'left';
 		   this.auto=s.auto;//是否自动滚动
 		   this.cycle=s.cycle;//是否循环滚动
+		   this.related={'previous':1,'next':-1,'left':'width','top':'height'}
 		   width=this.getWidth();
-		   this.maxScrollWidth=width-this.content.parentNode.offsetWidth; //能滚动的总路程
+		   this.maxScroll=width-this.content.parentNode.offsetWidth; //能滚动的总路程
 		   this.content.style.width=width+'px';
 		   this.judgePageStyle();
-		   addEvent(this.oPrevious,'click',function(){self.previous()})
-		   addEvent(this.oNext,'click',function(){self.next()})
+		   
+		   //@问题一，怎么区别click和mousedown时间触发区别
+		   addEvent(this.oPrevious,'click',function(){self.goScroll('previous')})
+		   addEvent(this.oPrevious,'mousedown',function(){
+						self.mdm=setTimeout(function(){self.DS=true;self.goScrollDown('previous')},200)
+					})
+		   addEvent(this.oPrevious,'mouseup',function(){
+						//@判断是否执行过self.goScrollDown函数
+						if(self.DS){
+							self.DownStop=true;
+							self.DS=false
+						}
+						//@判断是否执行过self.goScrollDown函数
+						if(self.mdm){clearTimeout(self.mdm);self.mdm=null}
+						//if(self.mdTime){clearInterval(self.mdTime);self.mdTime=null}
+					})
+		   
+		   addEvent(this.oNext,'click',function(){self.goScroll('next')})
+		   addEvent(this.oNext,'mousedown',function(){
+					 self.mdm=setTimeout(function(){self.DS=true;self.goScrollDown('next')},200)
+					})
+		   addEvent(this.oNext,'mouseup',function(){
+						
+						//@判断是否执行过self.goScrollDown函数
+						if(self.DS){
+							self.DownStop=true;
+							self.DS=false
+						}
+						//@判断是否执行过self.goScrollDown函数
+						
+						if(self.mdm){clearTimeout(self.mdm);self.mdm=null}
+						//if(self.mdTime){clearInterval(self.mdTime);self.mdTime=null}
+					})
+		   
 		   this.IntermittentScroll();
 		},
 		/*获取滚动内容的宽度*/
@@ -99,39 +142,61 @@ TScroll.prototype={
 		judgePageStyle:function(){
 		   var l=this.content.style[this.direction];
 		   parseInt(l)==0 || !l ? setStyle(this.oPrevious,{color:'#ccc',cursor:'text'}) : setStyle(this.oPrevious,{color:'#000',cursor:'pointer'})
-		   Math.abs(parseInt(l))===this.maxScrollWidth ? setStyle(this.oNext,{color:'#ccc',cursor:'text'}) : setStyle(this.oNext,{color:'#000',cursor:'pointer'});
+		   Math.abs(parseInt(l))===this.maxScroll ? setStyle(this.oNext,{color:'#ccc',cursor:'text'}) : setStyle(this.oNext,{color:'#000',cursor:'pointer'});
 		},
 		/*滚动函数*/
-		goto:function(c,d){
+		goto:function(c,d,callback){
 		  if(this.timeid){clearTimeout(this.timeid);this.timeid=null};
-		  var b=parseInt(this.content.style[this.direction]) || 0,abs_b=Math.abs(b),t=0,self=this;
+		  var b=parseInt(this.content.style[this.direction]) || 0,abs_b=Math.abs(b),t=0,self=this,tm;
 		  
 		  //不自动循环滚动
 		  if(c<0){
-				if((this.maxScrollWidth-abs_b)<Math.abs(c)){c=abs_b-this.maxScrollWidth}//纠正移动路程
-				if(abs_b===this.maxScrollWidth){
+				if((this.maxScroll-abs_b)<Math.abs(c)){c=abs_b-this.maxScroll}//纠正移动路程
+				if(abs_b===this.maxScroll){
 					this.stopScroll();return false
 				}
 		  }else{
-				if(abs_b<c && abs_b!==this.maxScrollWidth){c=abs_b}//纠正移动路程
+				if(abs_b<c && abs_b!==this.maxScroll){c=abs_b}//纠正移动路程
 				if(abs_b==0){this.stopScroll();return true}
 		  }
 		  //不自动循环滚动
-		  
+		  tm=c>0 ? 'ceil' : 'floor'
 		  new function(){
-			  self.content.style[self.direction] = Math.ceil(Tween.Quad.easeIn(t,b,c,d)) + "px";
+			  self.content.style[self.direction] = Math[tm](Tween.Quad.easeIn(t,b,c,d)) + "px";
 			  self.judgePageStyle();
-			  if(t<d){t++; self.timeid=setTimeout(arguments.callee, 10);}else{t=d}
+			  if(t<d){
+				  t++; self.timeid=setTimeout(arguments.callee, 10);
+			  }else{
+				  self.content.style[self.direction]=b+c+'px';
+				  callback && callback()
+			      t=d;
+			  }
 		  };
 		  
 		},
-		previous:function(){
+		goScroll:function(n){
 		   this.stopScroll();
-		   this.goto(this.c,this.d);
+		   this.goto(this.c*this.related[n],this.d);
 		},
-		next:function(){
+		goScrollDown:function(n){
 		   this.stopScroll();
-		   this.goto(-this.c,this.d);
+		   var d=15,self=this;
+		   if(this.mdTime){clearInterval(this.mdTime);this.mdTime=null}
+		   this.mdTime=setInterval(function(){
+							
+							self.goto(
+									  self.c*self.related[n],
+									  d,
+									  function(){
+										if(self.DownStop){clearInterval(self.mdTime);self.DownStop=false;return false} 								
+									  }
+							);
+					   },30)
+		},
+		//mousedown快速滚动后，确保滚动后的位置是步长的整数倍
+		correctPosition:function(){
+			var zuobiao=parseInt(this.content.style[this.direction]);
+			this.goto(this.c*this.related[n],this.d);
 		},
 		/*自动匀速地滚动*/
 		autoScroll:function(){
@@ -141,8 +206,7 @@ TScroll.prototype={
 		   this.autoTime=setInterval(function(){
 										 self.goto(-self.c,self.d)
 									 },
-									 1000
-                            )
+									 1000)
 		},
 		stopScroll:function(){
 			if(this.autoTime){clearTimeout(this.autoTime);this.autoTime=null}
@@ -154,9 +218,8 @@ TScroll.prototype={
 		   this.autoTime=setInterval(function(){
 										 self.goto(-self.c,self.d)
 									 },
-									 1000
-                            )
+									 1000)
 		}
 }
 
-TScroll({'content':'scrollid','c':90,'previous':'previous','next':'next','auto':true})
+TScroll({'content':'scrollid','c':90,'previous':'previous','next':'next','auto':false})
