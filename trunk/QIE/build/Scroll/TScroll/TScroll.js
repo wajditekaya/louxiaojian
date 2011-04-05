@@ -78,11 +78,11 @@ TScroll.prototype={
 		   var width;
 		   this.content=$(s.content);
 		   this.c=s.c || 180;
-		   this.d=s.d || 20;
+		   this.d=s.d || 200;
 		   this.interval=s.interval || 1000;
 		   this.tagName=s.tagName || 'li';
-		   this.oPrevious=$(s.previous);
-		   this.oNext=$(s.next);
+		   this.oPrevious=$(s.previous) || null;
+		   this.oNext=$(s.next) || null;
 		   this.direction=s.direction || 'left';
 		   this.auto=s.auto;//是否自动滚动
 		   this.cycle=s.cycle;//是否循环滚动
@@ -114,6 +114,7 @@ TScroll.prototype={
 		},
 		bindingEvents:function(){
 		   var self=this;
+		   if(!this.oPrevious || !this.oNext) return false
 		   //@问题一，怎么区别click和mousedown时间触发区别
 		   addEvent(this.oPrevious,'mousedown',function(){
 						self.goScroll('previous')
@@ -150,7 +151,7 @@ TScroll.prototype={
 		/*滚动函数*/
 		goto:function(c,d,callback){
 		  if(this.timeid){clearTimeout(this.timeid);this.timeid=null};
-		  var b=parseInt(this.content.style[this.direction]) || 0,abs_b=Math.abs(b),t=0,self=this,tm;
+		  var b=parseInt(this.content.style[this.direction]) || 0,abs_b=Math.abs(b),t=0,self=this,tm,beginTime;
 		  
 		  //不自动循环滚动
 		  if(c<0){
@@ -163,12 +164,14 @@ TScroll.prototype={
 				if(abs_b==0){this.stopScroll();return true}
 		  }
 		  //不自动循环滚动
-		  tm=c>0 ? 'ceil' : 'floor'
+		  tm=c>0 ? 'ceil' : 'floor';
+		  beginTime=new Date().getTime();
 		  new function(){
-			  self.content.style[self.direction] = Math[tm](Tween.Quad.easeIn(t,b,c,d)) + "px";
-			  self.judgePageStyle();
-			  if(t<d){
-				  t++; self.timeid=setTimeout(arguments.callee, 10);
+			  var curTime=new Date().getTime();
+			  if((t=curTime-beginTime)<d){
+				  self.content.style[self.direction] = Math[tm](Tween.Quad.easeIn(t,b,c,d)) + "px";
+				  self.judgePageStyle();
+				  self.timeid=setTimeout(arguments.callee, 10);
 			  }else{
 				  self.content.style[self.direction]=b+c+'px';
 				  callback && callback()
@@ -183,10 +186,9 @@ TScroll.prototype={
 		},
 		goScrollDown:function(n){
 		   this.stopScroll();
-		   var d=15,self=this;
+		   var d=100,self=this;
 		   if(this.mdTime){clearInterval(this.mdTime);this.mdTime=null}
 		   this.mdTime=setInterval(function(){
-							
 							self.goto(
 									  self.c*self.related[n],
 									  d,
@@ -194,7 +196,7 @@ TScroll.prototype={
 										if(self.DownStop){clearInterval(self.mdTime);self.DownStop=false;return false} 								
 									  }
 							);
-					   },30)
+					   },20)
 		},
 		/*自动匀速地滚动*/
 		autoScroll:function(){
