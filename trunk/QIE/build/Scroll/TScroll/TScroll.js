@@ -75,10 +75,11 @@ function TScroll(s){
 TScroll.prototype={
 		/*初始化函数*/
 		init:function(s){
-		   var width,self=this;
+		   var width;
 		   this.content=$(s.content);
 		   this.c=s.c || 180;
 		   this.d=s.d || 20;
+		   this.interval=s.interval || 1000;
 		   this.tagName=s.tagName || 'li';
 		   this.oPrevious=$(s.previous);
 		   this.oNext=$(s.next);
@@ -90,40 +91,7 @@ TScroll.prototype={
 		   this.maxScroll=getBx-this.content.parentNode['offset'+replaceReg(this.related[this.direction])]; //能滚动的总路程
 		   this.content.style[this.related[this.direction]]=getBx+'px';
 		   this.judgePageStyle();
-		   
-		   //@问题一，怎么区别click和mousedown时间触发区别
-		   addEvent(this.oPrevious,'click',function(){self.goScroll('previous')})
-		   addEvent(this.oPrevious,'mousedown',function(){
-						self.mdm=setTimeout(function(){self.DS=true;self.goScrollDown('previous')},200)
-					})
-		   addEvent(this.oPrevious,'mouseup',function(){
-						//@判断是否执行过self.goScrollDown函数
-						if(self.DS){
-							self.DownStop=true;
-							self.DS=false
-						}
-						//@判断是否执行过self.goScrollDown函数
-						if(self.mdm){clearTimeout(self.mdm);self.mdm=null}
-						//if(self.mdTime){clearInterval(self.mdTime);self.mdTime=null}
-					})
-		   
-		   addEvent(this.oNext,'click',function(){self.goScroll('next')})
-		   addEvent(this.oNext,'mousedown',function(){
-					 self.mdm=setTimeout(function(){self.DS=true;self.goScrollDown('next')},200)
-					})
-		   addEvent(this.oNext,'mouseup',function(){
-						
-						//@判断是否执行过self.goScrollDown函数
-						if(self.DS){
-							self.DownStop=true;
-							self.DS=false
-						}
-						//@判断是否执行过self.goScrollDown函数
-						
-						if(self.mdm){clearTimeout(self.mdm);self.mdm=null}
-						//if(self.mdTime){clearInterval(self.mdTime);self.mdTime=null}
-					})
-		   
+           this.bindingEvents();
 		   this.IntermittentScroll();
 		},
 		/*获取滚动内容的宽度*/
@@ -143,6 +111,41 @@ TScroll.prototype={
 		   var l=this.content.style[this.direction];
 		   parseInt(l)==0 || !l ? setStyle(this.oPrevious,{color:'#ccc',cursor:'text'}) : setStyle(this.oPrevious,{color:'#000',cursor:'pointer'})
 		   Math.abs(parseInt(l))===this.maxScroll ? setStyle(this.oNext,{color:'#ccc',cursor:'text'}) : setStyle(this.oNext,{color:'#000',cursor:'pointer'});
+		},
+		bindingEvents:function(){
+		   var self=this;
+		   //@问题一，怎么区别click和mousedown时间触发区别
+		   addEvent(this.oPrevious,'mousedown',function(){
+						self.goScroll('previous')
+						self.mdm=setTimeout(function(){self.DS=true;self.goScrollDown('previous')},200)
+					})
+		   addEvent(this.oPrevious,'mouseup',function(){
+						//@判断是否执行过self.goScrollDown函数
+						if(self.DS){
+							self.DownStop=true;
+							self.DS=false
+						}
+						//@判断是否执行过self.goScrollDown函数
+						if(self.mdm){clearTimeout(self.mdm);self.mdm=null}
+						if(self.mdTime){clearInterval(self.mdTime);self.mdTime=null}
+					})
+		   
+		   addEvent(this.oNext,'mousedown',function(){
+					 self.goScroll('next')
+					 self.mdm=setTimeout(function(){self.DS=true;self.goScrollDown('next')},200)
+					})
+		   addEvent(this.oNext,'mouseup',function(){
+						
+						//@判断是否执行过self.goScrollDown函数
+						if(self.DS){
+							self.DownStop=true;
+							self.DS=false
+						}
+						//@判断是否执行过self.goScrollDown函数
+						
+						if(self.mdm){clearTimeout(self.mdm);self.mdm=null}
+						if(self.mdTime){clearInterval(self.mdTime);self.mdTime=null}
+					})
 		},
 		/*滚动函数*/
 		goto:function(c,d,callback){
@@ -193,11 +196,6 @@ TScroll.prototype={
 							);
 					   },30)
 		},
-		//mousedown快速滚动后，确保滚动后的位置是步长的整数倍
-		correctPosition:function(){
-			var zuobiao=parseInt(this.content.style[this.direction]);
-			this.goto(this.c*this.related[n],this.d);
-		},
 		/*自动匀速地滚动*/
 		autoScroll:function(){
 		   var self=this;
@@ -206,7 +204,7 @@ TScroll.prototype={
 		   this.autoTime=setInterval(function(){
 										 self.goto(-self.c,self.d)
 									 },
-									 1000)
+									 this.interval)
 		},
 		stopScroll:function(){
 			if(this.autoTime){clearTimeout(this.autoTime);this.autoTime=null}
@@ -218,6 +216,6 @@ TScroll.prototype={
 		   this.autoTime=setInterval(function(){
 										 self.goto(-self.c,self.d)
 									 },
-									 1000)
+									 this.interval)
 		}
 }
