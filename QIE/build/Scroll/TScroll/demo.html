@@ -5,7 +5,7 @@
 <title>TScroll</title>
 <style type="text/css">
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{padding:0;margin:0;} 
-body{font:12px/22px Tahoma,Verdana,"宋体";word-break:break-all;color:#333;text-align:center;}
+body{font:14px/1.5 Tahoma,Verdana,"宋体";word-break:break-all;color:#333;text-align:center;}
 fieldset,img{border:0;} 
 table {border-collapse:collapse;border-spacing:0;} 
 ol,li,ul{list-style:none;} 
@@ -39,21 +39,24 @@ fieldset{border:none;}
 	.scrollBx .scrollBd ul{overflow:hidden;height:80px;position:absolute;top:5px}
 	.scrollBx .scrollBd ul li{float:left;padding:0 5px;display:inline}
 	.scrollBx .scrollBd ul li img{width:80px;height:80px;vertical-align:top}
-	.scrollBx .previous,.scrollBx .next{width:15px;position:absolute;cursor:pointer;top:12px}
+	.scrollBx .previous,.scrollBx .next{width:15px;position:absolute;cursor:pointer;top:12px;font-size:12px}
 	.scrollBx .previous{left:0}
 	.scrollBx .next{right:0}
 
-#test span em{display:inline-block;width:80px;text-align:right}
+#test span em{display:inline-block;width:95px;text-align:right}
 </style>
 
 </head>
 
 <body>
 <div id="wrapper">
+   onclick = onmousedown + onmouseup <br />
+   <p>在JavaScript中，mousedown、mouseup、click执行顺序是从左到右的，更重要的是一旦mousedown事件激 活，正常情况下后面两个事件也肯定会被激活。平时我们在一个标签上只绑定一个click事件，其实触发click事件也都调用了mousedown、 mouseup等事件，只是它们调用周期极短，而且我们又没有编写相关函数与这两个事件绑定，所以不会觉察到。</p>
     一个onclick事件是由先触发onmousedown再触发onmouseup两个事件部分组成，并且这两部分的时间差在200毫秒之内。<br />而
     <div id="test-down" style="background:#CF9;cursor:pointer; margin-bottom:5px">点我</div>
     <div id="shijian" style="background:#CF9;cursor:pointer">点我</div>
     <div id="test" style="height:90px">1.<span id="ondown"></span><br />2.<span id="onup"></span><br />3.<span id="onclick"></span></div>
+    <a href="demo2.html">垂直方向</a>
     <div class="scrollBx">
       <div id="previous" class="previous">上一组</div>
       <div class="scrollBd">
