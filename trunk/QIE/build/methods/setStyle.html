@@ -7,7 +7,7 @@
 
 <body>
 <div id="exp"></div>
-<input type="button" value="给exp添加样式" onclick="setStyle('exp',{width:'500px',height:'50px',background:'#f00'})" />
+<input type="button" value="给exp添加样式" onclick="setStyle('exp',{width:'500px',height:'50px',background:'#f00',opacity:0.1})" />
 <script>
 function $(o) {return typeof(o)=='string' ? document.getElementById(o) : o};
 function uncamelize(s, sep) {
@@ -22,17 +22,21 @@ function camelize(s) {
 	});
 }
 	  
-	  
 function setStyle(elem, styles) {
-  if(!(elem = $(elem))) return false;
   for (property in styles) {
 	  if(!styles.hasOwnProperty(property)) continue;
-	  if(elem.style.setProperty) {
-		  elem.style.setProperty(
-		  uncamelize(property,'-'),styles[property],null);
-	  } else {
-		  elem.style[camelize(property)] = styles[property];
+      if(property ==='opacity'){
+            elem.style.filter = "alpha(opacity=" + styles[property] * 100 + ")";
+            elem.style.opacity = styles[property];
+      }else{
+		  if(elem.style.setProperty) {
+			  elem.style.setProperty(
+			  uncamelize(property,'-'),styles[property],null);
+		  } else {
+			  elem.style[camelize(property)] = styles[property];
+		  }
 	  }
+
   }
 }
 

@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <!--SyntaxHighlighter-->
+     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
+     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
+     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+     <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+     <link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
+     <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
+     <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+     <script type="text/javascript">
+        SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
+        SyntaxHighlighter.all();
+     </script>
+<title>parseColor解析颜色值</title>
+</head>
+
+<body>
+<div id="page">
+    <h1>js解析颜色值</h1>
+    <div id="content">
+        <pre class="brush: jscript;" title="code">
+          /**
+          
+           * 解析颜色值, 支持16进制与RGB颜色值(#FFFFFF, #FFF, rgb(255, 0, 0))
+           * @param {String} 颜色值字符串
+           * @return {Array} RGB的颜色数组，默认返白色
+           */
+          
+          parseColor = (function(){
+              var hex6 = (/^#?(\w{2})(\w{2})(\w{2})$/);	
+              var hex3 = (/^#?(\w{1})(\w{1})(\w{1})$/);
+              var rgb = (/^rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)$/); 
+              return function(str){      
+                  var color = str.match(hex6);
+                  if(color && color.length == 4){
+                      return [parseInt(color[1], 16), parseInt(color[2], 16), parseInt(color[3], 16)];
+          
+                  }
+                  color = str.match(rgb);
+                  if(color && color.length == 4){
+                      return [parseInt(color[1], 10), parseInt(color[2], 10), parseInt(color[3], 10)];
+                  }
+                  color = str.match(hex3);
+                  if(color && color.length == 4){
+                      return [parseInt(color[1] + color[1], 16), parseInt(color[2] + color[2], 16), parseInt(color[3] + color[3], 16)];
+                  }
+                  return [255, 255, 255];
+              }
+          })();
+        </pre>
+      </div>
+</div>
+<script type="text/javascript">
+/**
+
+ * 解析颜色值, 支持16进制与RGB颜色值(#FFFFFF, #FFF, rgb(255, 0, 0))
+ * @param {String} 颜色值字符串
+ * @return {Array} RGB的颜色数组，默认返白色
+ */
+
+parseColor = (function(){
+	var hex6 = (/^#?(\w{2})(\w{2})(\w{2})$/);	
+	var hex3 = (/^#?(\w{1})(\w{1})(\w{1})$/);
+	var rgb = (/^rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)$/); 
+	return function(str){      
+		var color = str.match(hex6);
+		if(color && color.length == 4){
+			return [parseInt(color[1], 16), parseInt(color[2], 16), parseInt(color[3], 16)];
+
+		}
+		color = str.match(rgb);
+		if(color && color.length == 4){
+			return [parseInt(color[1], 10), parseInt(color[2], 10), parseInt(color[3], 10)];
+		}
+		color = str.match(hex3);
+		if(color && color.length == 4){
+			return [parseInt(color[1] + color[1], 16), parseInt(color[2] + color[2], 16), parseInt(color[3] + color[3], 16)];
+		}
+		return [255, 255, 255];
+	}
+})();
+
+alert(parseColor('#f60'))
+alert(parseColor('#ff6600'))
+alert(parseColor('#ff6600'))
+alert(parseColor('rgb(255,0,0)'))
+</script>
+</body>
+</html>
