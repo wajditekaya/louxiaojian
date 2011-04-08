@@ -11,7 +11,17 @@
 		doc = win['document'],
 		docElem = doc.documentElement,
 		LOADED = 2,ATTACHED = 4;
-		
+	function uncamelize(s, sep) {
+		sep = sep || '-';
+		return s.replace(/([a-z])([A-Z])/g, function (strMatch, p1, p2){
+			return p1 + sep + p2.toLowerCase();
+		});
+	}
+	function camelize(s) {
+		return s.replace(/-(\w)/g, function (strMatch, p1){
+			return p1.toUpperCase();
+		});
+	}		
 	// Copies all the properties of s to r
 	S.mix = function(r, s, ov, wl) {
 		if (!s || !r) return r;
@@ -263,7 +273,7 @@
 					if(elem.className.indexOf(c)==-1) elem.className+=' '+c;
 				  }
 			  },
-			  cssValue:function(o,s){
+			  getStyle:function(elem,s){
 				  var r;
 				  function camelize(s) {
 					  return s.replace(/-(\w)/g, function (strMatch, p1){
@@ -277,6 +287,18 @@
 					  r=document.defaultView.getComputedStyle(o, null).getPropertyValue(s);
 				  }
 				  return r
+			  },
+			  setStyle:function(elem, styles) {
+				for (property in styles) {
+					if(!styles.hasOwnProperty(property)) continue;
+					if(elem.style.setProperty) {
+						elem.style.setProperty(
+						uncamelize(property,'-'),styles[property],null);
+					} else {
+						elem.style[camelize(property)] = styles[property];
+					}
+				}
+				return true;
 			  },
 			  on:function(node, type, listener ) {
 				  //if(!(node = S.$(node))) return false;
