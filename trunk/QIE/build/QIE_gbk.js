@@ -300,7 +300,6 @@
 						elem.style[camelize(property)] = styles[property];
 					}
 				}
-				return true;
 			  },
 			  on:function(node, type, listener ) {
 				  //if(!(node = S.$(node))) return false;
