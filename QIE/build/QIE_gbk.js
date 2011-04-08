@@ -293,12 +293,18 @@
 			  setStyle:function(elem, styles) {
 				for (property in styles) {
 					if(!styles.hasOwnProperty(property)) continue;
-					if(elem.style.setProperty) {
-						elem.style.setProperty(
-						uncamelize(property,'-'),styles[property],null);
-					} else {
-						elem.style[camelize(property)] = styles[property];
+					if(property ==='opacity'){
+						  elem.style.filter = "alpha(opacity=" + styles[property] * 100 + ")";
+						  elem.style.opacity = styles[property];
+					}else{
+						if(elem.style.setProperty) {
+							elem.style.setProperty(
+							uncamelize(property,'-'),styles[property],null);
+						} else {
+							elem.style[camelize(property)] = styles[property];
+						}
 					}
+			  
 				}
 			  },
 			  on:function(node, type, listener ) {

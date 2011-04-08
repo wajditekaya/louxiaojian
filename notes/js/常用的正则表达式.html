@@ -11,6 +11,9 @@
 <link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
 <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
 <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+<style>
+.zzlist li{padding-bottom:40px;list-style:inside decimal-leading-zero}
+</style>
 <script type="text/javascript">
 	SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
 	SyntaxHighlighter.config.strings = {
@@ -34,8 +37,9 @@
 <div id="page">
     <h1>常用的正则表达式</h1>
     <div id="content">
-      <ol class="">
+      <ol class="zzlist">
        <li>
+            <h2>将一个驼峰形式的CSS属性转换为由链接符的形式，例如(fontSize --> font-size)</h2>
             <pre title="code" class="brush: jscript;">
               var s='backgroundColor';
               var t=s.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(); // backgroundColor => background-color
@@ -50,6 +54,7 @@
             </script>
         </li>
         <li>
+            <h2>将一个CSS属性转换为驼峰形式，例如(font-size --> fontSize)</h2>
             <pre title="code" class="brush: jscript;">
               function stylename(name){
                   var RE_DASH = /-([a-z])/ig;
@@ -82,6 +87,7 @@
             </script>
         </li>
         <li>
+           <h2>去掉字符串首位的空格</h2>
             <pre title="code" class="brush: jscript;">
             /**
              * Removes the whitespace from the beginning and end of a string.
@@ -123,6 +129,7 @@
           </script> 
       </li>
       <li>
+        <h2>将英文单词第一个字母转为大写字母</h2>
           <pre title="code" class="brush: jscript;">
           /*===将英文单词第一个字母转为大写字母*/
            function replaceReg(str){ 
