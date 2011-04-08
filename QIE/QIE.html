@@ -58,6 +58,7 @@ input,textarea,select{*font-size:100%;}
 
 <body>
 <div id="content">
+<div id="test2" >test2</div>
 <div id="test" >test</div>
 <div id="test-inner"></div>
 <div id="lxj" style="cursor:pointer">qwewq</div>
@@ -80,7 +81,10 @@ QIE.domReady(function(S){
 			  alert(this.id)
 			  S.$(this).removeClass('b');						   
 		  })
-		  alert(test.cssValue('padding-left'))
+		  S.$('test2').setStyle({'background':'#f00','padding-left':'10px','color':'#fff','font-weight':'bold'}).on('click',function(){
+			  alert(this.id)					   
+		  })
+		  alert(test.getStyle('padding-left'))
 		  alert(test.getObjPos().x)
 });
 </script>

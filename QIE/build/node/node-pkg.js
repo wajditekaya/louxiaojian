@@ -116,6 +116,6 @@ QIE.add('node-attach', function(S, undefined) {
     });
 
     // dom-class
-    attach(['hasClass', 'addClass', 'removeClass', 'replaceClass', 'toggleClass','cssValue','on','getObjPos']);
+    attach(['hasClass', 'addClass', 'removeClass', 'replaceClass', 'toggleClass','getStyle','setStyle','on','getObjPos']);
 
 });

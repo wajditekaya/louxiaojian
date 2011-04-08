@@ -284,7 +284,7 @@
 					  if(s.indexOf('-')!=-1) s=camelize(s);
 					  r=o.currentStyle[s]
 				  }else{
-					  r=document.defaultView.getComputedStyle(o, null).getPropertyValue(s);
+					  r=document.defaultView.getComputedStyle(elem, null).getPropertyValue(s);
 				  }
 				  return r
 			  },
@@ -298,7 +298,6 @@
 						elem.style[camelize(property)] = styles[property];
 					}
 				}
-				return true;
 			  },
 			  on:function(node, type, listener ) {
 				  //if(!(node = S.$(node))) return false;
