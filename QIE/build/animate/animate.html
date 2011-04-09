@@ -172,7 +172,7 @@ document.getElementById('test5').onclick=function(){
 				props:{"left":"500px"},
 				d:1000,
 				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){js[1].innerHTML='动画中:'+'left:'+this.twf['left']},
+				animimg:function(){js[1].innerHTML='动画中:'+'left:'+this.tvalue['left']},
 				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
 			}
 	 )
@@ -194,7 +194,7 @@ document.getElementById('test6').onclick=function(){
 				d:1000,
 				easing:Tween.Bounce.easeOut,
 				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){js[1].innerHTML='动画中:'+'right:'+this.twf['right']},
+				animimg:function(){js[1].innerHTML='动画中:'+'right:'+this.tvalue['right']},
 				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
 			}
 	 )
@@ -216,7 +216,7 @@ document.getElementById('test7').onclick=function(){
 				d:1000,
 				easing:Tween.Linear,
 				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){js[1].innerHTML='动画中:'+'top:'+this.twf['top']+';left:'+this.twf['left']},
+				animimg:function(){js[1].innerHTML='动画中:'+'top:'+this.tvalue['top']+';left:'+this.tvalue['left']},
 				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
 			}
 	 )
@@ -237,7 +237,9 @@ document.getElementById('test8').onclick=function(){
 				d:1000,
 				easing:Tween.Bounce.easeOut,
 				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){js[1].innerHTML='动画中:'+'left:'+this.twf['left']+';width:'+this.twf['width']+';height:'+this.twf['height']},
+				animimg:function(){
+					js[1].innerHTML='动画中:'+'left:'+this.tvalue['left']+';width:'+this.tvalue['width']+';height:'+this.tvalue['height']
+				},
 				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
 			}
 	 )
@@ -259,7 +261,7 @@ document.getElementById('test9').onclick=function(){
 				d:500,
 				easing:Tween.Bounce.easeOut,
 				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){js[1].innerHTML='动画中:'+'opacity:'+this.twf['opacity']},
+				animimg:function(){js[1].innerHTML='动画中:'+'opacity:'+this.tvalue['opacity']},
 				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
 			}
 	 )
@@ -268,19 +270,27 @@ document.getElementById('test9').onclick=function(){
 
 
 <input type="button" id="test10" value="test10"/><span id="js10" class="js"><em></em><em></em><em></em></span><br />
-<div id="lxj10" class="panels" style=" position:absolute;width:0;height:0;overflow:hidden;top:0;left:0;background:#f00;opacity:0.1"></div>
+<div id="lxj10" class="panels" style="position:absolute;width:0;height:0;overflow:hidden;top:0;left:0;background:#f00;opacity:0.1;text-align:center;color:#fff; font-weight:bold;font-size:48px">yes</div>
 <script>
 document.getElementById('test10').onclick=function(){
-	var js=document.getElementById('js10').getElementsByTagName('em');
+	var lxj=document.getElementById("lxj10"),js=document.getElementById('js10').getElementsByTagName('em'),w=400,h=400,bh=document.body.clientHeight,bw=document.body.clientWidth,lf,tp;
+    lf=(bw-w)/2;
+	tp=(bh-h)/2;
 	animate(
-			document.getElementById("lxj10"),
+			lxj,
 			{
-				props:{'left':'200px','top':'200px','opacity':1,'width':'400px','height':'400px'},
+				props:{'left':lf+'px','top':tp+'px','opacity':1,'width':w+'px','height':h+'px'},
 				d:1000,
 				easing:Tween.Bounce.easeOut,
 				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){js[1].innerHTML='动画中:'+'left:'+this.twf['left']},
-				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
+				animimg:function(){
+					this.tvalue['left'] && (js[1].innerHTML='动画中:'+'left:'+this.tvalue['left']);
+					this.tvalue['height'] && (lxj.style.lineHeight=this.tvalue['height']+'px');
+				},
+				callback:function(){
+					lxj.style.lineHeight=400+'px'
+					js[2].innerHTML='动画结束，耗时:'+this.t
+				}
 			}
 	 )
 }
