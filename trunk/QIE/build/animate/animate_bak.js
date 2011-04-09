@@ -25,44 +25,54 @@ var animate=function(elem,s){
 animate.prototype={
 			 init:function(elem,s){
 				   var tween=s.easing || this.tween.Quart.easeOut,
+				   self=this,
 				   start=s.start,
 				   animimg=s.animimg,
 				   callback=s.callback,
 				   props=s.props,
-				   d=s.d;
-				   this.twf=[];
-				   elem.time=[];
-
+				   d=s.d,
+				   opacity,
+				   b,//初始位置
+				   fb,//最终位置
+				   c,//滚动的距离
+				   mm,
+				   i=0,
+				   attrArray=[];
+				   
 				   for(var pk in props){
-					   this._animate(elem,pk+':'+props[pk],d,start,animimg,callback,tween)
+					   attrArray[i]=[];
+					   attrArray[i]['css']=pk;
+					   attrArray[i]['b']=pk==='opacity' ? (parseFloat(elem.style[pk]) || 1):(parseFloat(elem.style[pk]) || 0);//初始位置
+					   attrArray[i]['fb']=parseFloat(props[pk]);//最终位置
+					   attrArray[i]['c']=attrArray[i]['fb']-attrArray[i]['b'];//滚动的距离
+					   i++;
 				   }
 				   
-			 },
-			 _animate:function(elem,attr,d,start,animimg,callback,tween){
-				   var self=this,
-				   css=attr.split(':')[0],
-				   opacity=css==='opacity',
-				   b=opacity ? (parseFloat(elem.style[css]) || 1):(parseFloat(elem.style[css]) || 0),//初始位置
-				   fb=opacity ? (parseFloat(attr.split(':')[1])==0 ? 0 : parseFloat(attr.split(':')[1]) || 1):(parseFloat(attr.split(':')[1]) || 0),//最终位置
-				   c=fb-b,//滚动的距离
-				   t,
-				   mm;
 				   if(c===0) return false;
-				   if(elem.time[css]) clearTimeout(elem.time[css]);
-				   mm=c<0 ? 'floor' : 'ceil';
+				   if(elem.time) clearTimeout(elem.time);
 				   start && this.isFunction(start) && start.call(self);
 				   var curTime=new Date().getTime();
+				   
+				   
 				   new function(){
-					 t=new Date().getTime()-curTime;
-					 if(t<d){
-						 opacity ? self.setOpacity(elem,self.twf[css]=Math[mm](tween(t,b*100,c*100,d))) : (elem.style[css] =(self.twf[css]=Math[mm](tween(t,b,c,d)))+'px');
-						 animimg && self.isFunction(animimg) && animimg.call(self)
-						 elem.time[css]=setTimeout(arguments.callee,10);
-					 }else{
-						 self.t=t;
-						 opacity ? self.setOpacity(elem,fb*100) : (elem.style[css]=fb+'px');
-						 if(elem.time[css]) clearTimeout(elem.time[css]);
-						 callback && self.isFunction(callback) && callback.call(self);
+					 self.t=new Date().getTime()-curTime;
+					 self.twf=[];
+					 for(var n=0,nen=attrArray.length;n<nen;n++){
+						 var pa=attrArray[n],css=pa['css'];
+						 b=pa['b'];
+						 c=pa['c'];
+						 fb=pa['fb']
+						 opacity=css==='opacity';
+						 mm=c<0 ? 'floor' : 'ceil';
+						 if(self.t<d){
+							 opacity ? self.setOpacity(elem,self.twf[css]=Math[mm](tween(self.t,b*100,c*100,d))) : (elem.style[css] =(self.twf[css]=Math[mm](tween(self.t,b,c,d)))+'px');
+							 animimg && self.isFunction(animimg) && animimg.call(self)
+							 elem.time=setTimeout(arguments.callee,10);
+						 }else{
+							 opacity ? self.setOpacity(elem,fb*100) : (elem.style[css]=fb+'px');
+							 if(elem.time) clearTimeout(elem.time);
+							 callback && self.isFunction(callback) && callback.call(self);
+						 }
 					 }
 					 
 				   };
