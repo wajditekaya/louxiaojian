@@ -30,8 +30,9 @@ animate.prototype={
 				   callback=s.callback,
 				   props=s.props,
 				   d=s.d;
-				   this.tvalue=[];
-				   elem.time=[];
+				   this.elem=elem;
+				   this.tvalue=[];//存放动画过程中样式变化值
+				   elem.time=[];//存放各个样式动画setTimeout的id
 
 				   for(var pk in props){
 					   this._animate(elem,pk+':'+props[pk],d,start,animimg,callback,tween)
@@ -41,9 +42,11 @@ animate.prototype={
 			 _animate:function(elem,attr,d,start,animimg,callback,tween){
 				   var self=this,
 				   css=attr.split(':')[0],
+				   cssValue=parseFloat(attr.split(':')[1]),
+				   initialvalue=parseFloat(elem.style[css]),
 				   opacity=css==='opacity',
-				   b=opacity ? (parseFloat(elem.style[css]) || 1):(parseFloat(elem.style[css]) || 0),//初始位置
-				   fb=opacity ? (parseFloat(attr.split(':')[1])==0 ? 0 : parseFloat(attr.split(':')[1]) || 1):(parseFloat(attr.split(':')[1]) || 0),//最终位置
+				   b=opacity ? ( initialvalue==0 ? 0 : initialvalue || 1 ) : ( initialvalue || 0 ),//初始位置
+				   fb=opacity ? ( cssValue==0 ? 0 : cssValue || 1 ) : ( cssValue || 0 ),//最终位置
 				   c=fb-b,//滚动的距离
 				   t,
 				   mm;
@@ -75,6 +78,11 @@ animate.prototype={
 			 },
 			 isFunction:function(fn){
 				 return Object.prototype.toString.call(fn)=='[object Function]' ? true :false
+			 },
+			 stop:function(){
+				 	for(var timeid in this.elem.time){
+						this.elem.time[timeid] && clearTimeout(this.elem.time[timeid]);
+					}
 			 },
 			 tween:{
 				  Linear: function(t,b,c,d){ return c*t/d + b; },

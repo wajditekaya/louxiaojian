@@ -269,14 +269,15 @@ document.getElementById('test9').onclick=function(){
 </script>
 
 
-<input type="button" id="test10" value="test10"/><span id="js10" class="js"><em></em><em></em><em></em></span><br />
-<div id="lxj10" class="panels" style="position:absolute;width:0;height:0;overflow:hidden;top:0;left:0;background:#f00;opacity:0.1;text-align:center;color:#fff; font-weight:bold;font-size:48px">yes</div>
+<input type="button" id="test10" value="test10"/><input type="button" onclick="dira.stop()" value="停止"/><span id="js10" class="js"><em></em><em></em><em></em></span><br />
+<div id="lxj10" class="panels" style="position:absolute;width:0;height:0;overflow:hidden;top:0;left:0;background:#f00;opacity:0;text-align:center;color:#fff; font-weight:bold;font-size:48px"><a href="#" style="position:absolute;top:5px;right:10px;font-size:12px;color:#fff;line-height:18px" onclick="animate(document.getElementById('lxj10'),{props:{'left':0,'top':0,'opacity':0,'width':0,'height':0},d:1000,easing:Tween.Bounce.easeOut});return false">关闭</a>yes</div>
 <script>
+var iiiii;
 document.getElementById('test10').onclick=function(){
-	var lxj=document.getElementById("lxj10"),js=document.getElementById('js10').getElementsByTagName('em'),w=400,h=400,bh=document.body.clientHeight,bw=document.body.clientWidth,lf,tp;
+	var lxj=document.getElementById("lxj10"),js=document.getElementById('js10').getElementsByTagName('em'),w=500,h=300,bh=document.body.clientHeight,bw=document.body.clientWidth,lf,tp;
     lf=(bw-w)/2;
 	tp=(bh-h)/2;
-	animate(
+	dira=animate(
 			lxj,
 			{
 				props:{'left':lf+'px','top':tp+'px','opacity':1,'width':w+'px','height':h+'px'},
@@ -288,7 +289,7 @@ document.getElementById('test10').onclick=function(){
 					this.tvalue['height'] && (lxj.style.lineHeight=this.tvalue['height']+'px');
 				},
 				callback:function(){
-					lxj.style.lineHeight=400+'px'
+					lxj.style.lineHeight=h+'px'
 					js[2].innerHTML='动画结束，耗时:'+this.t
 				}
 			}
