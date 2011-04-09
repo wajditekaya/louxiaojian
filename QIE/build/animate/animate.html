@@ -27,7 +27,7 @@
 <div id="lxj3" class="panels" style="top:0;height:10px;"></div>
 </div>
 
-<input type="button"  value="test4" onclick='animate2(document.getElementById("js4"),document.getElementById("lxj4"),"bottom:20px",100,Tween.Bounce.easeOut,function(){alert("完成了")})' /><span id="js4"></span>
+<input type="button"  value="test4" onclick='animate2(document.getElementById("js4"),document.getElementById("lxj4"),"bottom:20px",100,Tween.Bounce.easeOut,function(){})' /><span id="js4"></span>
 <div class="panels-outer" style="height:30px;">
 <div id="lxj4" class="panels" style="bottom:0;width:100px; height:10px"></div>
 </div>
@@ -48,7 +48,7 @@ document.getElementById('test5').onclick=function(){
 				props:{"left":"500px"},
 				d:1000,
 				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){js[1].innerHTML='动画中:'+this.twf},
+				animimg:function(){js[1].innerHTML='动画中:'+'left:'+this.twf['left']},
 				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
 			}
 	 )
@@ -70,7 +70,7 @@ document.getElementById('test6').onclick=function(){
 				d:1000,
 				easing:Tween.Bounce.easeOut,
 				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){js[1].innerHTML='动画中:'+this.twf},
+				animimg:function(){js[1].innerHTML='动画中:'+'right:'+this.twf['right']},
 				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
 			}
 	 )
@@ -88,11 +88,11 @@ document.getElementById('test7').onclick=function(){
 	animate(
 			document.getElementById("lxj7"),
 			{
-				props:{"top":"20px"},
+				props:{"top":"20px",'left':'200px'},
 				d:1000,
-				easing:Tween.Bounce.easeOut,
+				easing:Tween.Linear,
 				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){js[1].innerHTML='动画中:'+this.twf},
+				animimg:function(){js[1].innerHTML='动画中:'+'top:'+this.twf['top']+';left:'+this.twf['left']},
 				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
 			}
 	 )
@@ -109,11 +109,53 @@ document.getElementById('test8').onclick=function(){
 	animate(
 			document.getElementById("lxj8"),
 			{
-				props:{"bottom":"20px"},
+				props:{"left":"200px",'width':'500px','height':'150px'},
 				d:1000,
 				easing:Tween.Bounce.easeOut,
 				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){js[1].innerHTML='动画中:'+this.twf},
+				animimg:function(){js[1].innerHTML='动画中:'+'left:'+this.twf['left']+';width:'+this.twf['width']+';height:'+this.twf['height']},
+				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
+			}
+	 )
+}
+</script>
+
+
+<input type="button" id="test9" value="test9"/><span id="js9" class="js"><em></em><em></em><em></em></span>
+<div class="panels-outer" style="height:30px; background:#C9C">
+   <div id="lxj9" class="panels" style="width:auto;height:30px;position:static;background:#f00"></div>
+</div>
+<script>
+document.getElementById('test9').onclick=function(){
+	var js=document.getElementById('js9').getElementsByTagName('em');
+	animate(
+			document.getElementById("lxj9"),
+			{
+				props:{'opacity':0},
+				d:500,
+				easing:Tween.Bounce.easeOut,
+				start:function(){js[0].innerHTML='动画开始'},
+				animimg:function(){js[1].innerHTML='动画中:'+'opacity:'+this.twf['opacity']},
+				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
+			}
+	 )
+}
+</script>
+
+
+<input type="button" id="test10" value="test10"/><span id="js10" class="js"><em></em><em></em><em></em></span><br />
+<div id="lxj10" class="panels" style=" position:absolute; width:100px; height:100px;top:-100px;left:-100px;background:#f00;opacity:0.1"></div>
+<script>
+document.getElementById('test10').onclick=function(){
+	var js=document.getElementById('js10').getElementsByTagName('em');
+	animate(
+			document.getElementById("lxj10"),
+			{
+				props:{'left':'200px','top':'200px','opacity':1,'width':'400px','height':'400px'},
+				d:1000,
+				easing:Tween.Bounce.easeOut,
+				start:function(){js[0].innerHTML='动画开始'},
+				animimg:function(){js[1].innerHTML='动画中:'+'left:'+this.twf['left']},
 				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
 			}
 	 )
@@ -139,5 +181,6 @@ function bijiao(){
 }
 </script>
 <script src="animate.js" type="text/javascript"></script>
+<script src="animate2.js" type="text/javascript"></script>
 </body>
 </html>
