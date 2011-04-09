@@ -30,7 +30,7 @@ animate.prototype={
 				   callback=s.callback,
 				   props=s.props,
 				   d=s.d;
-				   this.twf=[];
+				   this.tvalue=[];
 				   elem.time=[];
 
 				   for(var pk in props){
@@ -55,7 +55,7 @@ animate.prototype={
 				   new function(){
 					 t=new Date().getTime()-curTime;
 					 if(t<d){
-						 opacity ? self.setOpacity(elem,self.twf[css]=Math[mm](tween(t,b*100,c*100,d))) : (elem.style[css] =(self.twf[css]=Math[mm](tween(t,b,c,d)))+'px');
+						 opacity ? self.setOpacity(elem,self.tvalue[css]=Math[mm](tween(t,b*100,c*100,d))) : (elem.style[css] =(self.tvalue[css]=Math[mm](tween(t,b,c,d)))+'px');
 						 animimg && self.isFunction(animimg) && animimg.call(self)
 						 elem.time[css]=setTimeout(arguments.callee,10);
 					 }else{
