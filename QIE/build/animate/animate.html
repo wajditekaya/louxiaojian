@@ -172,7 +172,13 @@ document.getElementById('test5').onclick=function(){
 				props:{"left":"500px"},
 				d:1000,
 				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){js[1].innerHTML='动画中:'+'left:'+this.tvalue['left']},
+				animimg:function(){
+					var g='动画中:';
+					for(var tv in this.tvalue){
+						g+=';'+tv+':'+this.tvalue[tv];
+					}
+					js[1].innerHTML=g
+				},
 				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
 			}
 	 )
@@ -194,7 +200,13 @@ document.getElementById('test6').onclick=function(){
 				d:1000,
 				easing:Tween.Bounce.easeOut,
 				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){js[1].innerHTML='动画中:'+'right:'+this.tvalue['right']},
+				animimg:function(){
+					var g='动画中:';
+					for(var tv in this.tvalue){
+						g+=';'+tv+':'+this.tvalue[tv];
+					}
+					js[1].innerHTML=g
+				},
 				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
 			}
 	 )
@@ -216,7 +228,13 @@ document.getElementById('test7').onclick=function(){
 				d:1000,
 				easing:Tween.Linear,
 				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){js[1].innerHTML='动画中:'+'top:'+this.tvalue['top']+';left:'+this.tvalue['left']},
+				animimg:function(){
+					var g='动画中:';
+					for(var tv in this.tvalue){
+						g+=';'+tv+':'+this.tvalue[tv];
+					}
+					js[1].innerHTML=g
+				},
 				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
 			}
 	 )
@@ -238,7 +256,11 @@ document.getElementById('test8').onclick=function(){
 				easing:Tween.Bounce.easeOut,
 				start:function(){js[0].innerHTML='动画开始'},
 				animimg:function(){
-					js[1].innerHTML='动画中:'+'left:'+this.tvalue['left']+';width:'+this.tvalue['width']+';height:'+this.tvalue['height']
+					var g='动画中:';
+					for(var tv in this.tvalue){
+						g+=';'+tv+':'+this.tvalue[tv];
+					}
+					js[1].innerHTML=g
 				},
 				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
 			}
@@ -261,7 +283,13 @@ document.getElementById('test9').onclick=function(){
 				d:500,
 				easing:Tween.Bounce.easeOut,
 				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){js[1].innerHTML='动画中:'+'opacity:'+this.tvalue['opacity']},
+				animimg:function(){
+					var g='动画中:';
+					for(var tv in this.tvalue){
+						g+=';'+tv+':'+this.tvalue[tv];
+					}
+					js[1].innerHTML=g
+				},
 				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
 			}
 	 )
@@ -285,7 +313,11 @@ document.getElementById('test10').onclick=function(){
 				easing:Tween.Bounce.easeOut,
 				start:function(){js[0].innerHTML='动画开始'},
 				animimg:function(){
-					this.tvalue['left'] && (js[1].innerHTML='动画中:'+'left:'+this.tvalue['left']);
+					var g='动画中:';
+					for(var tv in this.tvalue){
+						g+=';'+tv+':'+this.tvalue[tv];
+					}
+					js[1].innerHTML=g;
 					this.tvalue['height'] && (lxj.style.lineHeight=this.tvalue['height']+'px');
 				},
 				callback:function(){
