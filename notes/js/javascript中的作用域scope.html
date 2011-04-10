@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>javascript中的作用域scope</title>
+</head>
+
+<body>
+<p>在一般程序设计语言中，作用域是按块来划分的。即“变量定义在哪个块之内，这个块就是变量的有效范围”。而在javascript中，变量的作用域是按函数来划分的——变量在某个函数范围内有效。比如：</p>
+<script>
+
+var f3 = false;
+if(true) {var f3 = true; }   //此时f位于if内，也就是块内，等价于还是全局范围内
+alert(f3)//结果为true
+
+
+var f2 = false;
+function test2() {
+　　var f2 = true;  //这是函数内定义的变量，只在函数内部有效，函数执行完毕后，该变量将被释放
+}
+test2();
+alert(f2) //结果为false
+
+var f=true;
+function test() {
+　　f = false;
+}
+test();
+alert(f)  //结果为false
+</script>
+</body>
+</html>
