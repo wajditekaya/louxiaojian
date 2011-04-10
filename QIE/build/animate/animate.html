@@ -2,6 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="../QIE.js" type="text/javascript"></script>
+<script src="../node/node-pkg.js" type="text/javascript"></script>
 <title>animate</title>
 <style>
  .js em{font-style:normal; margin-right:20px}
@@ -270,8 +272,8 @@ document.getElementById('test4').onclick=function(){
 
 
 <input type="button" id="test5" value="test5"/><span id="js5" class="js"><em></em><em></em><em></em></span>
-<div class="panels-outer" style="height:30px; background:#C9C">
-   <div id="lxj5" class="panels" style="width:auto;height:30px;position:static;background:#f00"></div>
+<div class="panels-outer" style="height:30px;width:470px; background:url(../../../asset/app/notes/img/9016279.jpg) no-repeat">
+   <div id="lxj5" class="panels" style="width:auto;height:30px;position:static;background:url(../../../asset/app/notes/img/810877276.jpg) no-repeat"></div>
 </div>
 <script>
 document.getElementById('test5').onclick=function(){
@@ -298,35 +300,66 @@ document.getElementById('test5').onclick=function(){
 
 
 <input type="button" id="test10" value="test10"/><input type="button" onclick="dira.stop()" value="停止"/><span id="js10" class="js"><em></em><em></em><em></em></span><br />
-<div id="lxj10" class="panels" style="position:absolute;width:0;height:0;overflow:hidden;top:0;left:0;background:#f00;opacity:0;text-align:center;color:#fff; font-weight:bold;font-size:48px"><a href="#" style="position:absolute;top:5px;right:10px;font-size:12px;color:#fff;line-height:18px" onclick="animate(document.getElementById('lxj10'),{props:{'left':0,'top':0,'opacity':0,'width':0,'height':0},d:1000,easing:Tween.Bounce.easeOut});return false">关闭</a>yes</div>
+<div id="lxj10" class="panels" style="position:absolute;z-index:99999;width:0;height:0;overflow:hidden;top:0;left:0;background:#f00;opacity:0;text-align:center;color:#fff; font-weight:bold;font-size:48px"><img src="../../../asset/app/notes/img/713731580.jpg" /><a href="#" style="position:absolute;top:5px;right:10px;font-size:12px;color:#fff;line-height:18px" id="test10-close" onclick="return false">关闭</a>yes</div>
 <script>
-var iiiii;
-document.getElementById('test10').onclick=function(){
-	var lxj=document.getElementById("lxj10"),js=document.getElementById('js10').getElementsByTagName('em'),w=500,h=300,bh=document.body.clientHeight,bw=document.body.clientWidth,lf,tp;
-    lf=(bw-w)/2;
-	tp=(bh-h)/2;
-	dira=animate(
-			lxj,
-			{
-				props:{'left':lf+'px','top':tp+'px','opacity':1,'width':w+'px','height':h+'px'},
-				d:1000,
-				easing:Tween.Bounce.easeOut,
-				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){
-					var g='动画中:';
-					for(var tv in this.tvalue){
-						g+=';'+tv+':'+this.tvalue[tv];
-					}
-					js[1].innerHTML=g;
-					this.tvalue['height'] && (lxj.style.lineHeight=this.tvalue['height']+'px');
-				},
-				callback:function(){
-					lxj.style.lineHeight=h+'px'
-					js[2].innerHTML='动画结束，耗时:'+this.t
-				}
-			}
-	 )
-}
+QIE.domReady(function(S){
+	  var test10=S.$('test10'),
+	  test10Close=S.$('test10-close'),
+	  tx=test10.getObjPos().x,
+	  ty=test10.getObjPos().y,
+	  lxj=S.$("lxj10")[0],
+	  js=S.$('js10')[0].getElementsByTagName('em');
+	  S.$("lxj10").setStyle({'top':ty+'px','left':tx+'px'});
+	  test10.on('click',function(){
+		  var w=470,h=300,
+		  bh=document.body.clientHeight,
+		  bw=document.body.clientWidth,
+		  lf,tp;
+		  lf=(bw-w)/2;
+		  tp=(bh-h)/2;
+		  window.dira=animate(
+				  lxj,
+				  {
+					  props:{'left':lf+'px','top':tp+'px','opacity':1,'width':w+'px','height':h+'px'},
+					  d:1000,
+					  easing:Tween.Bounce.easeOut,
+					  start:function(){js[0].innerHTML='动画开始'},
+					  animimg:function(){
+						  var g='动画中:';
+						  for(var tv in this.tvalue){
+							  g+=';'+tv+':'+this.tvalue[tv];
+						  }
+						  js[1].innerHTML=g;
+						  this.tvalue['height'] && (lxj.style.lineHeight=this.tvalue['height']+'px');
+					  },
+					  callback:function(){
+						  lxj.style.lineHeight=h+'px'
+						  js[2].innerHTML='动画结束，耗时:'+this.t
+					  }
+				  }
+		   )						 
+	  
+	  });
+	  
+	  test10Close.on('click',function(){
+			animate(
+					    S.$("lxj10")[0],
+						{
+							props:{'left':tx+'px','top':ty+'px','opacity':0,'width':0,'height':0},
+							d:1000,
+							easing:Tween.Bounce.easeOut,
+							animimg:function(){
+								var g='动画中:';
+								for(var tv in this.tvalue){
+									g+=';'+tv+':'+this.tvalue[tv];
+								}
+								js[1].innerHTML=g;
+							},
+						}
+			 );						  
+	  });
+
+})
 </script>
 
 <script src="animate.js" type="text/javascript"></script>
