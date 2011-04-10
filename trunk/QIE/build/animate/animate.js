@@ -1,16 +1,17 @@
-// JavaScript Document
+/**
+ * @module animate
+ * @author louxiaojian@gmail.com
+ * @param elem:滚动的对象
+ * s={
+	  @param props:{left:'50px'},滚动的样式
+	  @param d:800,滚动的时间
+	  @param easing:,滚动时的缓冲模式
+	  @param start:function(){},开始函数
+	  @param animimg:function(){},动画过程中执行的函数
+	  @param callback:function(){},动画结束后执行的函数
+     }
+ */
 var animate=function(elem,s){
-			 /*
-			  @param elem:滚动的对象
-			  s={
-				@param props:{left:'50px'},滚动的样式
-				@param d:800,滚动的时间
-				@param easing:,滚动时的缓冲模式
-				@param start:function(){},开始函数
-				@param animimg:function(){},动画过程中执行的函数
-				@param callback:function(){},动画结束后执行的函数
-			  }
-			 */
 			 /*
 			  @param c:滚动的距离
 			  @param d:滚动的时间
