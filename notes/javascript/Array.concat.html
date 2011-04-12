@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.config.strings = {
+			expandSource : '展开代码',
+			viewSource : '查看代码',
+			copyToClipboard : '复制代码',
+			copyToClipboardConfirmation : '代码复制成功',
+			print : '打印',
+			help : '?',
+			alert: '语法高亮\n\n',
+			noBrush : '不能找到刷子: ',
+			brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
+			// this is populated by the build script
+			aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Geneva,Arial,Helvetica,sans-serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.1.364(October 15 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
+		}
+	SyntaxHighlighter.all();
+</script>
+<title>Array.concat</title>
+</head>
+
+<body>
+<div id="page">
+    <h1>Array.concat</h1>
+    <div id="content">
+      <pre title="code" class="brush: jscript;">
+      </pre>
+	  <script type="text/javascript">
+      
+      /**
+       *满分答案，得满分，算法复杂度控制在O(1)
+       */ 
+      Array.prototype.distinct = function(){
+          var self = this;
+          var _a = this.concat().sort();
+          _a.sort(function(a,b){
+					if(a == b){
+						var n = self.indexOf(a);
+						self.splice(n,1);
+					}
+                  }
+          );
+          return self;
+      };
+      
+      /**
+       *答案2，得分30%，如果没有使用splice和concate，扣分20%
+       */
+      Array.prototype.distinct2 = function(){
+          var a = [],b=[],oa = this.concat();
+          for(var i = 1;i<oa.length;i++){
+              for(var j = 0;j<i;j++){
+                  if(b.indexOf(j)>-1)continue;
+                  if(oa[j] == oa[i]){
+                      b.push(j);
+                  }
+              }
+          }
+          this.splice(0,this.length);
+          for(var i = 0;i<oa.length;i++){
+              if(b.indexOf(i)>-1)continue;
+              this.push(oa[i ]);
+          }
+          return this;
+      };
+      
+      /**
+       *答案3，得分80%，算法复杂度控制在O(n)
+       */
+      Array.prototype.distinct3 = function(){
+          for(var i = 0;i<this.length;i++){
+            var n = this[i ];
+            this.splice(i,1,null);
+            if(this.indexOf(n) < 0){
+                this.splice(i,1,n);//不存在重复
+                }else{
+                this.splice(i,1);//存在重复
+            }
+          }
+         return this;
+      };
+	  
+      var a=['a','b','c','d','e','f'],b,c;
+      b=a;//引用a数组，a或b数组任意一个改变了，都会改变另一个
+      c=a.concat();//复制a数组，此时操作a或c数组都不会影响到对方
+      document.write('a=['+a+']<br />')
+      document.write('b=['+b+']<br />')
+      document.write('c=['+c+']<br />')
+      a.push('www');
+      document.write('---------------------------------------------<br />')
+      document.write('a.push(\'www\');<br />')
+      document.write('a=['+a+']<br />')
+      document.write('b=['+b+']<br />')
+      document.write('c=['+c+']<br />')
+      b.push('gggggg');
+      document.write('---------------------------------------------<br />')
+      document.write('b.push(\'gggggg\');;<br />')
+      document.write('a=['+a+']<br />')
+      document.write('b=['+b+']<br />')
+      document.write('c=['+c+']<br />')
+      
+      c.push('kkkkkkkkkkkkkkkkkkkkkkk');
+      document.write('---------------------------------------------<br />')
+      document.write('c.push(\'kkkkkkkkkkkkkkkkkkkkkkk\');<br />')
+      document.write('a=['+a+']<br />')
+      document.write('b=['+b+']<br />')
+      document.write('c=['+c+']<br />')
+
+      alert(['a','a','b','b'].distinct())
+      alert(['a3','a3','b3','b3'].distinct3())
+      alert(['a2','a2','b2','b2'].distinct2())
+      </script>
+    </div>
+</div>
+
+</body>
+</html>
