@@ -2,14 +2,17 @@
  * @module animate
  * @author louxiaojian@gmail.com
  * @param elem:滚动的对象
- * s={
-	  @param props:{left:'50px'},滚动的样式
-	  @param d:800,滚动的时间
-	  @param easing:,滚动时的缓冲模式
-	  @param start:function(){},开始函数
-	  @param animimg:function(){},动画过程中执行的函数
-	  @param callback:function(){},动画结束后执行的函数
-     }
+ * function(
+			elem,//@param 滚动的对象
+			{
+			  props:{left:'50px'},//@param 滚动的样式
+			  d:800,//@param滚动的时间
+			  easing:,//@param滚动时的缓冲模式
+			  start:function(){},//@param开始函数
+			  animimg:function(){},//@param动画过程中执行的函数
+			  callback:function(){},//@param动画结束后执行的函数
+           }
+    )
  */
 var animate=function(elem,s){
 			 /*
@@ -26,11 +29,11 @@ var animate=function(elem,s){
 animate.prototype={
 			 init:function(elem,s){
 				   var tween=s.easing || this.tween.Quart.easeOut,
-				   start=s.start,
-				   animimg=s.animimg,
-				   callback=s.callback,
-				   props=s.props,
-				   d=s.d;
+				   start=s.start || function(){},
+				   animimg=s.animimg || function(){},
+				   callback=s.callback  || function(){},
+				   props=s.props || {},
+				   d=s.d || 800;
 				   this.elem=elem;
 				   this.tvalue=[];//存放动画过程中样式变化值
 				   elem.time=[];//存放各个样式动画setTimeout的id
