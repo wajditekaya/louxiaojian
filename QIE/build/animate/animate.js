@@ -2,7 +2,7 @@
  * @module animate
  * @author louxiaojian@gmail.com
  * @param elem:滚动的对象
- * function(
+ * animate(
 			elem,//@param 滚动的对象
 			{
 			  props:{left:'50px'},//@param 滚动的样式
