@@ -7,7 +7,6 @@ build time: ${build.time}
  * @module  node
  * @author  lifesinger@gmail.com
  */
-
 QIE.add('node', function(S) {
 
     var DOM = S.DOM;
@@ -50,6 +49,27 @@ QIE.add('node', function(S) {
     S.Node = Node;
 });
 
+QIE.add('nodeList', function(S) {
+
+    var DOM = S.DOM;
+    /**
+     * The Node class provides a wrapper for manipulating DOM Node.
+     */
+    function NodeList(html, props, ownerDocument) {
+        var self = this, domNode;
+
+        // factory or constructor
+        if (!(self instanceof Node)) {
+            return new Node(html, props, ownerDocument);
+        }
+
+
+        domNode = html;
+
+        self[0] = domNode;
+    }
+    S.NodeList = NodeList;
+});
 /**
  * Notes:
  *
@@ -70,6 +90,7 @@ QIE.add('node-attach', function(S, undefined) {
 								
     var DOM = S.DOM,
         Node = S.Node,
+		NodeList = S.NodeList,
         NLP = NodeList.prototype,
 		NP = Node.prototype,
         GET_DOM_NODE = 'getDOMNode',
