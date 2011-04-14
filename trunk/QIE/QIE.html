@@ -3,8 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>QIE</title>
-<script src="build/QIE.js?v=20100114" type="text/javascript"></script>
-<script src="build/node/node-pkg.js?v=20100114" type="text/javascript"></script>
 <style type="text/css">
 /*======================================
 author:	lou xiao jian<jxsr_lxj@163.com>
@@ -60,32 +58,14 @@ input,textarea,select{*font-size:100%;}
 
 <body>
 <div id="content">
-<div id="test2" >test2</div>
-<div id="test" >test</div>
-<div id="test-inner"></div>
-<div id="lxj" style="cursor:pointer">qwewq</div>
+    <div id="test2" >test2</div>
+    <div id="test" >test</div>
+    <div id="test-inner"></div>
+    <div id="lxj" style="cursor:pointer">qwewq</div>
 </div>
-<script type="text/javascript">
-QIE.domReady(function(S){
-	var i=0,DOM=S.DOM,
-	     lxj=S.$('lxj'),
-		  test=S.$('test');
-		  DOM.on(test[0],'click',function(){
-				this.className.indexOf('b')==-1 ? DOM.addClass(this,'b') :DOM.removeClass(this,'b');
-				S.$('test-inner')[0].innerHTML='内容是：'+this.innerHTML+';X坐标是：'+DOM.getObjPos(this).x+';Y坐标是：'+DOM.getObjPos(this).y+';====='+i++;
-		  })	;
-		  
-		  lxj.addClass('b');
-		  lxj.on('click',function(){
-			  alert(this.id)
-			  S.$(this).removeClass('b');						   
-		  })
-		  S.$('test2').setStyle({'background':'#fff','padding-left':'10px','color':'#000','font-weight':'bold','opacity':0.3}).on('click',function(){
-			  alert(this.id)					   
-		  })
-		  alert(test.getStyle('padding-left'))
-		  alert(test.getObjPos().x)
-});
-</script>
+<script src="build/QIE.js?v=20100114" type="text/javascript"></script>
+<script src="build/node/node-pkg.js?v=20100114" type="text/javascript"></script>
+
+
 </body>
 </html>
