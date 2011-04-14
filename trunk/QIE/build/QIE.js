@@ -1,7 +1,7 @@
 /*
 20101122
 */
-(function(S,undef){
+;(function(S,undef){
    if (window[S] === undefined) window[S] = {};
 	S = window[S];
 	S.DOM={};
@@ -258,7 +258,6 @@
 			return ret;
 		}
 	};
-	
     S.mix(S.DOM,{
 			  removeClass:function(elem,c){
 				  if(!elem || !elem.className) return false;
@@ -338,9 +337,7 @@
 				  return {'x':x, 'y':y};    
 			  }
 	});
-	
 })('QIE');
-
 (function(S, undef) {
     var host = S.__HOST,
 
@@ -358,18 +355,17 @@
         class2type = {};
 		S.mix(S, {
 	
-			/**
-			 * Determine the internal JavaScript [[Class]] of an object.
-			 */
-			type: function(o) {
-				return o == null ?
-					String(o) :
-					class2type[toString.call(o)] || 'object';
-			},
-			isPlainObject: function(o) {
-				return o && toString.call(o) === '[object Object]' && 'isPrototypeOf' in o;
-			},
-		
+				/**
+				 * Determine the internal JavaScript [[Class]] of an object.
+				 */
+				type: function(o) {
+					return o == null ?
+						String(o) :
+						class2type[toString.call(o)] || 'object';
+				},
+				isPlainObject: function(o) {
+					return o && toString.call(o) === '[object Object]' && 'isPrototypeOf' in o;
+				}
 		  }
 		);
 		
@@ -384,4 +380,4 @@
 				}
 			});
 	
-})(QIE)
+})(QIE);
