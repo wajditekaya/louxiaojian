@@ -57,19 +57,19 @@ animate.prototype={
 				   if(c===0) return false;
 				   if(elem.time[css]) clearTimeout(elem.time[css]);
 				   mm=c<0 ? 'floor' : 'ceil';
-				   start && this.isFunction(start) && start.call(self);
+				   start && this.isFunction(start) && start.call(self,self);
 				   var curTime=new Date().getTime();
 				   new function(){
 					 t=new Date().getTime()-curTime;
 					 if(t<d){
 						 opacity ? self.setOpacity(elem,self.tvalue[css]=Math[mm](tween(t,b*100,c*100,d))) : (elem.style[css] =(self.tvalue[css]=Math[mm](tween(t,b,c,d)))+'px');
-						 animimg && self.isFunction(animimg) && animimg.call(self)
+						 animimg && self.isFunction(animimg) && animimg.call(self,self)
 						 elem.time[css]=setTimeout(arguments.callee,10);
 					 }else{
 						 self.t=t;
 						 opacity ? self.setOpacity(elem,fb*100) : (elem.style[css]=fb+'px');
 						 if(elem.time[css]) clearTimeout(elem.time[css]);
-						 callback && self.isFunction(callback) && callback.call(self);
+						 callback && self.isFunction(callback) && callback.call(self,self);
 					 }
 					 
 				   };
@@ -234,3 +234,31 @@ animate.prototype={
 			  }
 	
 }
+/**
+ *@把动画类的公开接口函数的this换成变量，以防被调用它的函数使用call()方法后把this替换成别的对象(2011-04-14)
+   var te=function(){
+	  var js=document.getElementById('js5').getElementsByTagName('em');
+	  animate(
+			  document.getElementById("lxj5"),
+			  {
+				  props:{'opacity':0},
+				  d:500,
+				  callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
+			  }
+	   )
+  }
+  
+  var te2=function(){
+	  var js=document.getElementById('js5').getElementsByTagName('em');
+	  animate(
+			  document.getElementById("lxj5"),
+			  {
+				  props:{'opacity':0},
+				  d:500,
+				  callback:function(a){js[2].innerHTML='动画结束，耗时:'+a.t}
+			  }
+	   )
+  }
+  te.call(window) //这样调用时，callback函数中的this指针就指向windw了，而不是当前实例动画对象
+  te2.call(window)//这样调用时，callback函数中不存在this指针，不存在this被替换
+ */
