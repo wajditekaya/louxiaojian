@@ -281,7 +281,7 @@
 				  }
 				  if(!+'\v1'){
 					  if(s.indexOf('-')!=-1) s=camelize(s);
-					  r=o.currentStyle[s]
+					  r=elem.currentStyle[s]
 				  }else{
 					  r=document.defaultView.getComputedStyle(elem, null).getPropertyValue(s);
 				  }
