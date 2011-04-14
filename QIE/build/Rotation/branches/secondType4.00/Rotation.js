@@ -13,6 +13,7 @@ function Rotation(set){
 	   this.dir=this.s.slider.dir || this.s.dir;
 	   this.Tween=this.s.slider.Tween || this.s.Tween;
 	   this.de=this.s.index;
+	   this.callBack=this.s.callBack;
 	   this.eType=['click','mouseover'];
 	   this.run();
 }
@@ -69,7 +70,7 @@ Rotation.prototype={
 				this.TabLi(n);
 				this.TabText(n);
                 this.dis ? this.slider(n) : this.TabChange(n);
-				this.s.callBack();
+				this.callBack();
 		},
 		autoplay:function(m){
 			  if(m){this.de = (this.de<this.aMtag.length-1) ? this.de+1 :0;}
