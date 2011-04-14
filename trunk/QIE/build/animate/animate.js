@@ -259,6 +259,6 @@ animate.prototype={
 			  }
 	   )
   }
-  te.call(window) //这样调用时，callback函数中的this指针就指向windw了，而不是当前实例动画对象
+  te.call(window) //这样调用时，callback函数中的this指针就指向windw了（当然callback在animate中被调用时this还是指向前实例动画对象），只是这样会造成全局变量的污染
   te2.call(window)//这样调用时，callback函数中不存在this指针，不存在this被替换
  */
