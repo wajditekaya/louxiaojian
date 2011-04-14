@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script src="../QIE.js" type="text/javascript"></script>
 <script src="../node/node-pkg.js" type="text/javascript"></script>
+<script src="animate.js" type="text/javascript"></script>
 <title>animate</title>
 <style>
  .js em{font-style:normal; margin-right:20px}
@@ -174,14 +175,14 @@ document.getElementById('test').onclick=function(){
 				props:{"left":"500px"},
 				d:1000,
 				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){
+				animimg:function(a){
 					var g='动画中:';
-					for(var tv in this.tvalue){
-						g+=';'+tv+':'+this.tvalue[tv];
+					for(var tv in a.tvalue){
+						g+=';'+tv+':'+a.tvalue[tv];
 					}
 					js[1].innerHTML=g
 				},
-				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
+				callback:function(a){js[2].innerHTML='动画结束，耗时:'+a.t}
 			}
 	 )
 }
@@ -202,14 +203,14 @@ document.getElementById('test2').onclick=function(){
 				d:1000,
 				easing:Tween.Bounce.easeOut,
 				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){
+				animimg:function(a){
 					var g='动画中:';
-					for(var tv in this.tvalue){
-						g+=';'+tv+':'+this.tvalue[tv];
+					for(var tv in a.tvalue){
+						g+=';'+tv+':'+a.tvalue[tv];
 					}
 					js[1].innerHTML=g
 				},
-				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
+				callback:function(a){js[2].innerHTML='动画结束，耗时:'+a.t}
 			}
 	 )
 }
@@ -230,14 +231,14 @@ document.getElementById('test3').onclick=function(){
 				d:1000,
 				easing:Tween.Linear,
 				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){
+				animimg:function(a){
 					var g='动画中:';
-					for(var tv in this.tvalue){
-						g+=';'+tv+':'+this.tvalue[tv];
+					for(var tv in a.tvalue){
+						g+=';'+tv+':'+a.tvalue[tv];
 					}
 					js[1].innerHTML=g
 				},
-				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
+				callback:function(a){js[2].innerHTML='动画结束，耗时:'+a.t}
 			}
 	 )
 }
@@ -257,14 +258,14 @@ document.getElementById('test4').onclick=function(){
 				d:1000,
 				easing:Tween.Bounce.easeOut,
 				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){
+				animimg:function(a){
 					var g='动画中:';
-					for(var tv in this.tvalue){
-						g+=';'+tv+':'+this.tvalue[tv];
+					for(var tv in a.tvalue){
+						g+=';'+tv+':'+a.tvalue[tv];
 					}
 					js[1].innerHTML=g
 				},
-				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
+				callback:function(a){js[2].innerHTML='动画结束，耗时:'+a.t}
 			}
 	 )
 }
@@ -285,14 +286,14 @@ document.getElementById('test5').onclick=function(){
 				d:500,
 				easing:Tween.Bounce.easeOut,
 				start:function(){js[0].innerHTML='动画开始'},
-				animimg:function(){
+				animimg:function(a){
 					var g='动画中:';
-					for(var tv in this.tvalue){
-						g+=';'+tv+':'+this.tvalue[tv];
+					for(var tv in a.tvalue){
+						g+=';'+tv+':'+a.tvalue[tv];
 					}
 					js[1].innerHTML=g
 				},
-				callback:function(){js[2].innerHTML='动画结束，耗时:'+this.t}
+				callback:function(a){js[2].innerHTML='动画结束，耗时:'+a.t}
 			}
 	 )
 }
@@ -324,17 +325,17 @@ QIE.domReady(function(S){
 					  d:1000,
 					  easing:Tween.Bounce.easeOut,
 					  start:function(){js[0].innerHTML='动画开始'},
-					  animimg:function(){
+					  animimg:function(a){
 						  var g='动画中:';
-						  for(var tv in this.tvalue){
-							  g+=';'+tv+':'+this.tvalue[tv];
+						  for(var tv in a.tvalue){
+							  g+=';'+tv+':'+a.tvalue[tv];
 						  }
 						  js[1].innerHTML=g;
-						  this.tvalue['height'] && (lxj.style.lineHeight=this.tvalue['height']+'px');
+						  a.tvalue['height'] && (lxj.style.lineHeight=a.tvalue['height']+'px');
 					  },
-					  callback:function(){
+					  callback:function(a){
 						  lxj.style.lineHeight=h+'px'
-						  js[2].innerHTML='动画结束，耗时:'+this.t
+						  js[2].innerHTML='动画结束，耗时:'+a.t
 					  }
 				  }
 		   )						 
@@ -348,13 +349,13 @@ QIE.domReady(function(S){
 							props:{'left':tx+'px','top':ty+'px','opacity':0,'width':0,'height':0},
 							d:1000,
 							easing:Tween.Bounce.easeOut,
-							animimg:function(){
+							animimg:function(a){
 								var g='动画中:';
-								for(var tv in this.tvalue){
-									g+=';'+tv+':'+this.tvalue[tv];
+								for(var tv in a.tvalue){
+									g+=';'+tv+':'+a.tvalue[tv];
 								}
 								js[1].innerHTML=g;
-							},
+						   }
 						}
 			 );						  
 	  });
@@ -362,6 +363,6 @@ QIE.domReady(function(S){
 })
 </script>
 
-<script src="animate.js" type="text/javascript"></script>
+
 </body>
 </html>
