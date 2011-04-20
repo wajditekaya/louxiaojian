@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>纯css星际评分</title>
+<style>
+/*===================================
+{
+  author:lou xiao jian,
+  email:jxsr_lxj@163.com
+}
+====================================*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+body{font:12px/22px Tahoma,"\5B8B\4F53",Geneva, sans-serif;word-break:break-all;text-align:center;color:#1C1C1C}
+fieldset,img{border:none 0;} 
+table {border-collapse:collapse;border-spacing:0;} 
+ol,li,ul{list-style:none;} 
+address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal;}
+caption,th{text-align:left;} 
+h1,h2,h3,h4,h5,h6{font-size:100%;} 
+q:before,q:after{content:'';}
+abbr,acronym{border:0;font-variant:normal;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+input,select,textarea{font:normal normal 12px "Verdana";outline:none;/*去除Opera浏览器这些标签的默认样式*/}
+textarea,input[type|="text"],input[type|="password"]{-webkit-appearance:none/*去除webkit浏览器这些标签的默认样式*/}
+textarea{resize:none}
+input,textarea,select{*font-size:100%;}
+input,textarea{color:#666}
+select{color:#999}
+/* 字体属性 [定义规则，小写f加属性名称] */
+.fB{font-weight:bold;}
+.fI{font-style:italic;}
+/* 字体大小*/
+.fs12{font-size:12px;}
+.fs14{font-size:14px;}
+/* 浮动*/
+.fl{float:left;}
+.fr{float:right}
+/* 其它属性*/
+.hide{display:none}
+.submit{cursor:pointer;border:0}
+.noText{display:block;height:0;width:0;line-height:0;overflow:hidden}
+/*textList*/
+.tList a{text-decoration:none}
+.tList li{padding-left:15px;line-height:24px;height:24px;overflow:hidden;}
+/*lrBx*/
+.lrBx,.lrBx .rbx{overflow:hidden;zoom:1}
+.lrBx .lbx{float:left;_margin-right:-3px}
+.lrBx .lbx img{vertical-align:top}
+.lrBx .rbx{padding-left:5px}
+
+/*==clear==*/
+.clear{overflow:hidden;zoom:1}
+.clearfix:after {content:".";display:block;height:0;clear:both;visibility:hidden;}
+* html>body .clearfix {display: inline-block;width:100%;}
+* html .clearfix{/* Hides from IE-mac \*/height: 1%;/* End hide from IE-mac */}
+/* ie7 hack*/
+*+html .clearfix {min-height:1%;}
+
+/*===评分===*/
+.rating li,
+.rating li a{background-image:url(img/rating.png);background-repeat:repeat-x}
+    .rating{padding-right:60px}
+	.rating ul{overflow:hidden;zoom:1;position:relative; _display:inline}
+	.rating li{float:left;width:19px;height:15px;background-position:0 -32px}
+	.rating li a{display:block;width:19px;height:15px;overflow:hidden;text-indent:-9999px;background-position:-100px -100px;position:absolute;z-index:20}
+	.rating li a:hover,
+	.rating .rating1-cur a,
+	.rating .rating2-cur a,
+	.rating .rating3-cur a,
+	.rating .rating4-cur a,
+	.rating .rating5-cur a{background-position:0 0;left:0;position:absolute;z-index:10}
+	.rating .rating1 a:hover,.rating .rating1-cur a{width:19px}
+	.rating .rating2 a:hover,.rating .rating2-cur a{width:34px}
+	.rating .rating3 a:hover,.rating .rating3-cur a{width:53px}
+	.rating .rating4 a:hover,.rating .rating4-cur a{width:72px}
+	.rating .rating5 a:hover,.rating .rating5-cur a{width:91px}
+	.rating .score{position:absolute;top:-30px;right:0}
+	.rating .score span{font:bold 30px/2 Arial, Helvetica, sans-serif; color:#fa8c00}
+	.rating .score sup{font-size:16px}
+/*===/评分===*/
+</style>
+</head>
+
+<body>
+               <!--rating-->
+               <div class="rating" style="width:100px; margin:50px auto; position:relative">
+                 <ul>
+                   <li class="rating1"><a href="#">1分</a></li>
+                   <li class="rating2 rating2-cur"><a href="#">2分</a></li>
+                   <li class="rating3"><a href="#">3分</a></li>
+                   <li class="rating4"><a href="#">4分</a></li>
+                   <li class="rating5"><a href="#">5分</a></li>
+                 </ul>
+                 <div class="score"><span>9.<sup>1</sup></span>分</div>
+               </div>
+               <!--/rating-->
+</body>
+</html>
