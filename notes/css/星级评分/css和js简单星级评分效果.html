@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>css和js简单星级评分效果</title>
+    <style> 
+/*!css reset*/ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;}body,button,input,select,textarea{font:11pt/1.8 tahoma,arial,\5b8b\4f53,sans-serif;}h1,h2,h3,h4,h5,h6{font-size:100%;}code,kbd,pre,samp{font-family:courier new,courier,monospace;}fieldset,img{border:0;}table{border-collapse:collapse;border-spacing:0;}ul,ol{list-style:none;}a{text-decoration:none;outline:none;color:#36c;}a:hover,a:active{text-decoration:underline;color:#FF4E00}
+ 
+	#div1{margin:100px auto;width:500px;}
+	.grade_stars,.grade_stars div {background:transparent url(img/grade.png) 0 -32px repeat-x}
+	.grade_stars{cursor:pointer;position:relative;line-height:28px;width:300px;display:inline-block;*display:inline;*zoom:1}
+    .grade_stars div{background-position:0 0;text-indent:-9999px;width:150px; }
+	#score{margin-left:20px}
+    </style> 
+</head>
+
+<body>
+<div id="div1"> 
+<h3>css和js简单星级评分效果</h3> 
+<br/> 
+<p>利用e.offsetX和e.layerX两个属性</p><br/> 
+请评分：
+
+<div class="grade_stars" id="grade_stars"><div>&nbsp;</div></div><span id="score">5.0分</span> 
+
+</div>
+<script> 
+!function(){
+	var g=function(id){return typeof(id)==="string"?document.getElementById(id):id};
+	var f;
+	g("grade_stars").onmousemove=function(e){
+		e=window.event || e;
+		var w=e.offsetX ||e.layerX;
+		this.children[0].style.width=w+"px";
+		f=(w/this.offsetWidth*10).toFixed(1)+"分";
+		g("score").innerHTML=f;
+	}
+	g("grade_stars").onclick=function(e){alert(f);}
+ 
+}();
+</script> 
+</body>
+</html>

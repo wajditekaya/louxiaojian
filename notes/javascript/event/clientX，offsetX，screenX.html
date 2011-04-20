@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>clientX，offsetX，screenX</title>
+    <style> 
+/*!css reset*/ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;}body,button,input,select,textarea{font:11pt/1.8 tahoma,arial,\5b8b\4f53,sans-serif;}h1,h2,h3,h4,h5,h6{font-size:100%;}code,kbd,pre,samp{font-family:courier new,courier,monospace;}fieldset,img{border:0;}table{border-collapse:collapse;border-spacing:0;}ul,ol{list-style:none;}a{text-decoration:none;outline:none;color:#36c;}a:hover,a:active{text-decoration:underline;color:#FF4E00}
+    body{padding:20px}
+    </style> 
+</head>
+<body onclick='test(event)'>  
+
+概念
+<ul>
+ <li>clientX 设置或获取鼠标指针位置相对于窗口客户区域的 x 坐标，其中客户区域不包括窗口自身的控件和滚动条。</li>
+ <li>clientY 设置或获取鼠标指针位置相对于窗口客户区域的 y 坐标，其中客户区域不包括窗口自身的控件和滚动条。 </li>
+ <li>offsetX 设置或获取鼠标指针位置相对于触发事件的对象的 x 坐标。(火狐(Geckos内核)浏览器下不支持offsetX，但支持layerX)</li>
+ <li>offsetY 设置或获取鼠标指针位置相对于触发事件的对象的 y 坐标。(火狐(Geckos内核)浏览器下不支持offsetX，但支持layerY) </li>
+ <li>screenX 设置或获取获取鼠标指针位置相对于用户屏幕的 x 坐标。 </li>
+ <li>screenY 设置或获取鼠标指针位置相对于用户屏幕的 y 坐标。 </li>
+ <li>x 设置或获取鼠标指针位置相对于父文档的 x 像素坐标。 </li>
+ <li>y 设置或获取鼠标指针位置相对于父文档的 y 像素坐标</li>
+</ul>
+
+<span style="color:#008000">设置或获取鼠标指针位置相对于窗口客户区域的 x,y 坐标，其中客户区域不包括窗口自身的控件和滚动条。</span>  
+<br/>   
+clientX=<input type="text" name="x1" id="x1">   
+clientY=<INPUT TYPE="text" NAME="x2" id="x2">   
+<br/>   
+<br/>   
+<span style="color:#0000FF">设置或获取鼠标指针位置相对于触发事件的对象的 x,y 坐标。 </span> 
+<br/>   
+offsetX =<input type="text" name="x3" id="x3">   
+offsetY =<input type="text" name="x4" id="x4">   
+<br/>   
+<br/>   
+<span style="color:#008000">设置或获取获取鼠标指针位置相对于用户屏幕的 x,y 坐标 </span>   
+<br/>   
+screenX =<input type="text" name="x5" id="x5">   
+screenY =<input type="text" name="x6" id="x6">   
+<br/>   
+<br/>   
+<span style="color:#0000FF">设置或获取鼠标指针位置相对于父文档的 x,y 像素坐标。</span> 
+<br/>   
+x=<input type="text" name="x7" id="x7">   
+y=<input type="text" name="x8" id="x8">    
+<br/>   
+<br/>   
+<div id="test" style=" height:300px; background:#9F9; margin:0 300px; position:relative">offsetX或layerX在这里测试</div>
+<script type="text/ecmascript">   
+<!-- 
+document.body.onmousemove=function(e){
+	var e=e || window.event;
+	document.getElementById('x1').value=e.clientX;   
+	document.getElementById('x2').value=e.clientY; 
+	document.getElementById('x5').value=e.screenX;   
+	document.getElementById('x6').value=e.screenY; 
+	document.getElementById('x7').value=e.x;   
+	document.getElementById('x8').value=e.y; 
+}
+document.getElementById('test').onmousemove=function(e){  
+	var e=e || window.event;
+	document.getElementById('x3').value=e.offsetX || e.layerX;   
+	document.getElementById('x4').value=e.offsetY || e.layerY; 
+}   
+//-->   
+</script>  
+</body>   
+</html>   
