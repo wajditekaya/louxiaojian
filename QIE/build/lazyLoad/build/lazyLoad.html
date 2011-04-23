@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="../../QIE.js" type="text/javascript"></script>
 <title>lazyLoad</title>
 <style type="text/css">
 *{margin:0; padding:0}
@@ -95,8 +96,8 @@ img{background:#fff url(loading.gif) center no-repeat; margin:5px 0 10px 0}
 <div id="hiddenImg" style="display:none">
 <img width="440" height="357" lazy_src="http://s3.ppsimg.com/t_images/t/e/20110315/37/76198868/middle/17ba08f9f32d591b96f75cf55c0ae562jpg.jpg"/>
 </div>
-<input type="button" id="lxj" value="加载中....." style="position: fixed; top:5px;right:5px" />
-<input type="button" id="lxj2" value="加载中....." style="position: fixed; top:5px;right:200px" />
+<input type="button" id="lxj" value="加载中....." style="width:200px;position: fixed; top:5px;right:5px" />
+<input type="button" id="lxj2" value="加载中....." style="width:200px;position: fixed; top:5px;right:200px" />
 <input type="button" value="显示隐藏的内容" onclick="document.getElementById('hiddenImg').style.display='block'" />
 
 <script type="text/javascript" src="lazyLoad-1.0.1.js" ></script>
