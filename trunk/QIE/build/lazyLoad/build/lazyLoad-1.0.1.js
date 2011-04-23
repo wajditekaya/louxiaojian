@@ -2,53 +2,10 @@
 	var d=new Date().getTime()
 	var clientHeight=document.documentElement.clientHeight;
 	document.getElementById('time').innerHTML=new Date().getTime()-d;
-})('QIE');
-
-(function(S){
-   if (window[S] === undefined) window[S] = {};
-	S = window[S];
-	S.ready = !+'\v1' ? function(fn){(function(){
-				  try{
-					  document.documentElement.doScroll('left');
-				  } catch (error){
-					  setTimeout(arguments.callee, 0);
-					  return;
-				  };
-				  fn();
-			  })();
-	} : function(fn){
-		   document.addEventListener('DOMContentLoaded', fn, false);
-	};
-	S.getStyle=function(elem,atrr){
-		var r;
-		function camelize(s) {
-			return s.replace(/-(\w)/g, function (strMatch, p1){
-				return p1.toUpperCase();
-			});
-		}
-		if(!+'\v1'){
-			if(atrr.indexOf('-')!=-1) atrr=camelize(atrr);
-			r=elem.currentStyle[atrr]
-		}else{
-			r=document.defaultView.getComputedStyle(elem, null).getPropertyValue(atrr);
-		}
-		return r
-	};
-	S.getObjPos=function(obj){    
-		var x = y = 0;    
-		if (obj.getBoundingClientRect){
-			//for IE,FF3.0+,Opera9.5+ ,google  
-			var box = obj.getBoundingClientRect();
-			var D = document.documentElement;    
-			x = box.left + Math.max(D.scrollLeft, document.body.scrollLeft) - D.clientLeft;    
-			y = box.top + Math.max(D.scrollTop, document.body.scrollTop) - D.clientTop;         
-		}    
-		else   
-		{    //个别低版本不支持getBoundingClientRect的浏览器
-			for(; obj != document.body; x += obj.offsetLeft, y += obj.offsetTop, obj = obj.offsetParent );    
-		}    
-		return {'x':x, 'y':y};    
-	};
+})(QIE);
+QIE.plugins={};
+QIE.plugins.lazyLoad=(function(S){
+	var DOM=S.DOM;
 	/*===lazyLoad===*/
 	function lazyLoad(s){
         var self = this;
@@ -58,9 +15,12 @@
 		this.init(s);
 		this._filterImg();
 		this.complete();
-		this.lazyTime=setInterval(function(){self.loadLazy()},100);
-		window.onresize=function(){self._containerInfo()};
-		//window.onscroll=function(){}
+		this.loadLazy()
+		DOM.on(window,'resize',this.resize=function(){
+								if(self.resizeTime) clearTimeout(self.resizeTime);
+								self.resizeTime=setTimeout(function(){self._containerInfo()},100);
+							   }
+		)
 	};
 	lazyLoad.version=1.01;
 	lazyLoad.prototype={
@@ -94,8 +54,8 @@
 			return this.clientHeight;
 	  },
 	  _getPos:function(o){
-		  if(S.getObjPos(o)){
-		     return this.mode==='vertical' ? S.getObjPos(o).y : S.getObjPos(o).x;
+		  if(DOM.getObjPos(o)){
+		     return this.mode==='vertical' ? DOM.getObjPos(o).y : DOM.getObjPos(o).x;
 		  }else{
 			 return 0
 		  }
@@ -109,16 +69,16 @@
 				}
 			}
 			this.lazylength=this.lazy.length;
-			this.start();
+			this.start.call(this,this);
 	   },
 	   isHidden:function(elem){
-	     return ((elem.offsetWidth===0 && elem.offsetHeight===0) || S.getStyle(elem,'display')==='none') ? true :false;
+	     return ((elem.offsetWidth===0 && elem.offsetHeight===0) || DOM.getStyle(elem,'display')==='none') ? true :false;
 	   },
 	   /*==loadLazy==*/
 	   loadLazy:function(){
-		   
+		    var self=this;
 		    this.complete();
-			this.loading();
+			this.loading.call(this,this);
 			
 			for(var i=0;i<this.lazylength;i++){
 				var elem=this.lazy[i];
@@ -126,14 +86,22 @@
 					elem.src=elem.getAttribute("lazy_src");
 					elem.setAttribute("lazy_src",'');
 					elem.removeAttribute("lazy_src");
-					this.lazy.splice(i,1);
+					this.lazy.splice(i--,1);
 					this.lazylength--;
 				}
 			};
+			
+			this.lazyTime=setTimeout(function(){self.loadLazy()},100);
 	   },
 	  /*==/loadLazy==*/ 
 	  complete:function(){
-		  if(this.lazylength===0) {clearInterval(this.lazyTime);this.callback();return true;};
+		  if(this.lazylength===0) {
+			  clearTimeout(this.lazyTime);
+			  DOM.removeEvent(window,'resize',this.resize)
+			  this.callback.call(this,this);
+			  this.lazy=null;
+			  return true;
+		  };
 		  return false
 	  }
 	   
@@ -142,20 +110,19 @@
 	
 	S.lazyLoad=lazyLoad;
 	
-})('QIE');
+})(QIE);
 
-QIE.ready(function(){
-	var S=QIE;
-	QIE.lazyLoad(
+QIE.ready(function(S){
+	S.lazyLoad(
 				 {
 				   start:function(){
-					   document.getElementById('lxj2').value="总共有"+this.lazy.length+"张图片需要延迟加载";
+					   S.$('lxj2').value="总共有"+this.lazy.length+"张图片需要延迟加载";
 				   },
 				   loading:function(){
-					   document.getElementById('lxj').value='还有'+this.lazylength+'张图未加载';
+					   S.$('lxj').value='还有'+this.lazylength+'张图未加载';
 				   },
 				   callback:function(){
-					   document.getElementById('lxj').value='延迟加载完毕';
+					   S.$('lxj').value='延迟加载完毕';
 				   }
 				}
 	);

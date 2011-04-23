@@ -51,7 +51,7 @@
 				  var elem="string" == typeof id ? document.getElementById(id) : id;
 				  return elem;
 			  },
-			  domReady:function(fn){
+			  ready:function(fn){
 				   var self=this;
 				   if(!+'\v1'){
 					  (function(){
@@ -315,6 +315,20 @@
 					  node.attachEvent( 'on'+type, node[type+listener] );
 					  return true;
 				  }
+				  return false;
+			  },
+			  removeEvent:function(node, type, listener ) {
+				  //if(!(node = $(node))) return false;
+				  if (node.removeEventListener) {
+					  node.removeEventListener( type, listener, false );
+					  return true;
+				  } else if (node.detachEvent) {
+					  // MSIE method
+					  node.detachEvent( 'on'+type, node[type+listener] );
+					  node[type+listener] = null;
+					  return true;
+				  }
+				  // Didn't have either so return false
 				  return false;
 			  },
 			  getObjPos:function(obj){

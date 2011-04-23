@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>两数组对比</title>
+</head>
+
+<body>
+<p>数组arr1和arr2，长度都不固定，怎样从arr1中删除和arr2中重复值的元素。</p>
+<script type="text/javascript">
+(function(){
+  var a = [1, 4, 6, 2, 3, 2, 3, 5, 7, 8, 23, 10];
+  var b = [4, 6, 9, 8, 5, 1];
+  var c = {};
+  for(var i = 0; i < b.length; i ++){
+	c[b[i]] = true;
+  }
+  for(var i = 0; i < a.length; i ++){
+	if(a[i] in c){
+		a.splice(i --, 1);
+	}
+  }
+  alert(a);	  
+})();
+
+</script>
+
+<script language="javascript">
+	var arr1 = ["i", "b", "c", "d", "e", "f","x"];
+    var arr2 = ["a", "b", "c", "d", "e", "f", "g"];
+    var temp = {};
+    var temparray = [];
+    for (var i = 0; i < arr2.length; i++) {
+        temp[arr2[i]] = true;
+    };
+    for (var i = 0; i < arr1.length; i++) {
+        if (!temp[arr1[i]]) {
+            temparray.push(arr1[i]);
+        } ;
+    };
+    document.write(temparray.join(",") + "<br />");
+
+</script>
+</body>
+</html>
