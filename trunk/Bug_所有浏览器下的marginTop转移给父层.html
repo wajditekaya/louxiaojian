@@ -6,7 +6,8 @@
 </head>
 
 <body>
-
+<p>触发bug的条件：父层<strong>没有定义overflow:hidden</strong>或<strong>IE6下没触发layout</strong>,且定义<strong>margin-top的子层前面</strong>或<strong>定义margin-bottom的子层</strong>后面<strong>没有其它节点</strong>,父层<strong>没有定义padding-top或padding-bottom</strong></p>
+<p>margin-bottom在IE6下不会有转移给父层bug，不过其它浏览器下会</p>
 <div style="background:#f00; margin-bottom:30px">
   <div style="background:#03C; margin-top:30px;color:#fff; font-weight:bold; font-size:14px; padding:10px">
   在FF下，webkit浏览器，Opera,IE所有版本下margin-top:30px值转移给父层了，导致父层没撑开
