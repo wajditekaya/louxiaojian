@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>IE中伪类:hover的BUG </title>
+</head>
+
+<body>
+
+<p>&lt;style&gt;<br />
+a {}<br />
+a span {color: green;}<br />
+a:hover {}<br />
+a:hover span {color: red; }<br />
+&lt;/style&gt;<br />
+&lt;a href=&rdquo;<a href="http://www.taobao.com/">http://www.taobao.com</a>&ldquo;&gt; 淘宝网 &lt;span&gt; 淘你喜欢 &lt;/span&gt;&lt;/a&gt;</p>
+<p>在IE7/FF中，鼠标移动到链接上时，&rdquo;淘你喜欢&rdquo;字样会变为红色，但IE6则无反应。所以IE6的bug就是如果a 与 a:hover   的css定义是一样的，也就是说如果a:hover 中没有样式的改变，hover就不会被触发。但如果在a:hover{}增加一些特定的属性，例如</p>
+<p>a:hover{border:none;}<br />
+  或者<br />
+  a:hover{padding:0;}<br />
+  又或者<br />
+  a:hover{background: none;}</p>
+<p>此时hover就可以触发了。这样的属性还包括direction/text-align/text-indent/float/overflow/position &hellip;&hellip; 等等。我在数码产品畅销榜页面就是选择了使用border:none。更详细的信息请参考：</p>
+<p>我们再用其他属性进行设置：width，positon，background，text-decoration，font-size，font- weight，font-family，border，float，display，font-style，margin，padding，text- align，overflow，text-transform，text-indent，z-index，vertical-align。
+  
+  我们发现除了 text-decoration，color，z-index 不能触发显示（对于不能触发显示的部分，可以还有某些遗漏的属性，欢迎朋友补充）外，其他属性均可以做为消除伪类 :hover BUG 的特定属性。 </p>
+</body>
+</html>
