@@ -1,0 +1,6 @@
+http://www.cnblogs.com/jikey/archive/2010/12/25/1916938.html
+
+
+代码增加缩进：选中要缩进的代码 再按tab建
+
+代码减少缩进：选中要缩进的代码 再按shitf+tab建

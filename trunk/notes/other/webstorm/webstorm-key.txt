@@ -1,0 +1,10 @@
+username:    webstorm
+
+key
+
+===== LICENSE BEGIN =====
+72149-12042010
+00000cI5EYta7xt""jWOIDohDqQx7S
+SSsCH4oSb"1Y4edvtuSYyQ"iqGYhuo
+!8r1Zrqkj"TmWPZ!Eu"puCi6KV2SVe
+===== LICENSE END =====
