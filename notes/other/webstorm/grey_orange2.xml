@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scheme name="grey/orange" version="1" parent_scheme="Default">
   <option name="LINE_SPACING" value="1.2" />
-  <option name="EDITOR_FONT_SIZE" value="13" />
-  <option name="EDITOR_FONT_NAME" value="Monospaced" />
+  <option name="EDITOR_FONT_SIZE" value="12" />
+  <option name="EDITOR_FONT_NAME" value="YaHei Consolas Hybrid" />
   <colors>
     <option name="ADDED_LINES_COLOR" value="" />
     <option name="ANNOTATIONS_COLOR" value="ff" />
     <option name="CARET_COLOR" value="ffff99" />
-    <option name="CARET_ROW_COLOR" value="2e2e2e" />
+    <option name="CARET_ROW_COLOR" value="" />
     <option name="CONSOLE_BACKGROUND_KEY" value="" />
-    <option name="FOLDING_TREE_COLOR" value="ffff00" />
-    <option name="INDENT_GUIDE" value="525050" />
+    <option name="FOLDING_TREE_COLOR" value="ffffff" />
     <option name="LINE_NUMBERS_COLOR" value="3f3f3f" />
     <option name="MODIFIED_LINES_COLOR" value="808080" />
     <option name="READONLY_FRAGMENT_BACKGROUND" value="" />
-    <option name="RIGHT_MARGIN_COLOR" value="" />
+    <option name="RIGHT_MARGIN_COLOR" value="666666" />
     <option name="SELECTED_FOLDING_TREE_COLOR" value="ffffff" />
     <option name="SELECTION_BACKGROUND" value="6633" />
     <option name="SELECTION_FOREGROUND" value="" />
@@ -342,7 +341,7 @@
     </option>
     <option name="HTML_COMMENT">
       <value>
-        <option name="FOREGROUND" value="ff6600" />
+        <option name="FOREGROUND" value="9900cc" />
         <option name="BACKGROUND" />
         <option name="FONT_TYPE" value="2" />
         <option name="EFFECT_COLOR" />
@@ -792,10 +791,10 @@
     </option>
     <option name="MATCHED_BRACE_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="ff4000" />
+        <option name="FOREGROUND" />
         <option name="BACKGROUND" />
         <option name="FONT_TYPE" value="1" />
-        <option name="EFFECT_COLOR" />
+        <option name="EFFECT_COLOR" value="c0c0c0" />
         <option name="EFFECT_TYPE" value="0" />
         <option name="ERROR_STRIPE_COLOR" />
       </value>
@@ -860,16 +859,6 @@
         <option name="ERROR_STRIPE_COLOR" />
       </value>
     </option>
-    <option name="SCOPE_KEY_Non-Project Files">
-      <value>
-        <option name="FOREGROUND" />
-        <option name="BACKGROUND" />
-        <option name="FONT_TYPE" value="0" />
-        <option name="EFFECT_COLOR" />
-        <option name="EFFECT_TYPE" value="0" />
-        <option name="ERROR_STRIPE_COLOR" />
-      </value>
-    </option>
     <option name="SCOPE_KEY_Problems">
       <value>
         <option name="FOREGROUND" />
@@ -881,16 +870,6 @@
       </value>
     </option>
     <option name="SCOPE_KEY_Production">
-      <value>
-        <option name="FOREGROUND" />
-        <option name="BACKGROUND" />
-        <option name="FONT_TYPE" value="0" />
-        <option name="EFFECT_COLOR" />
-        <option name="EFFECT_TYPE" value="0" />
-        <option name="ERROR_STRIPE_COLOR" />
-      </value>
-    </option>
-    <option name="SCOPE_KEY_Project Files">
       <value>
         <option name="FOREGROUND" />
         <option name="BACKGROUND" />
