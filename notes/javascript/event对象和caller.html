@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>event对象和caller</title>
+<base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.config.strings = {
+			expandSource : '展开代码',
+			viewSource : '查看代码',
+			copyToClipboard : '复制代码',
+			copyToClipboardConfirmation : '代码复制成功',
+			print : '打印',
+			help : '?',
+			alert: '语法高亮\n\n',
+			noBrush : '不能找到刷子: ',
+			brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
+			// this is populated by the build script
+			aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Geneva,Arial,Helvetica,sans-serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.1.364(October 15 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
+		}
+	SyntaxHighlighter.all();
+</script>
+</head>
+
+<body>
+<div id="page">
+    <h1>event对象和caller</h1>
+    <div id="content">
+          <p>(引：JavaScript高级程序设计P259)每个函数都有一个caller属性，它包含了指向调用它的方法的引用。例如，如果funcA()调用了funcB()，那么funcB.caller就等于funcA。假设某个事件处理函数调用了Event.getEvent()，那么Event.getEvent.caller就指向这个事件处理函数本身。</p>
+          <p>因为caller属性是指向函数的，所以可访问事件处理函数的arguments属性。而event对象总是事件处理函数的第一个参数，也就是说可以访问事件处理函数的argument[0]来获取event对象：</p>
+          <pre title="code" class="brush: jscript;">
+          QIE.event.getEvent = function() {
+              if (window.event) {
+                  return this.formatEvent(window.event);
+              } else {
+                  return this.getEvent.caller.arguments[0];
+              }
+          }
+          </pre>
+          <p>这个方法可在事件处理函数中使用，如下：</p>
+          <pre title="code" class="brush: jscript;">
+          oDiv.onclick=fucntion(){
+            var e=QIE.event.getEvent(); 
+          }
+          </pre> 
+          <input type="button" value="EventUtil" id="EventUtil" style="padding:3px 10px" />
+          <a href="#" id="EventUtil-link" style="display:inline-block;padding:3px 10px">EventUtil-link</a>
+          <input type="button" value="handleCaller" id="handleCaller"  style="padding:3px 10px"/>
+          <input type="button" value="callerDemo" onclick="callerDemo()"  style="padding:3px 10px"/>
+          <pre title="code" class="brush: jscript;">
+          var QIE={}
+          QIE.event = {
+              addEventHandler : function (oTarget, sEventType, fnHandler) {
+                  if (oTarget.addEventListener) {
+                      oTarget.addEventListener(sEventType, fnHandler, false);
+                  } else if (oTarget.attachEvent) {
+                      oTarget.attachEvent("on" + sEventType, fnHandler);
+                  } else {
+                      oTarget["on" + sEventType] = fnHandler;
+                  }
+              },       
+              removeEventHandler : function (oTarget, sEventType, fnHandler) {
+                  if (oTarget.removeEventListener) {
+                      oTarget.removeEventListener(sEventType, fnHandler, false);
+                  } else if (oTarget.detachEvent) {
+                      oTarget.detachEvent("on" + sEventType, fnHandler);
+                  } else { 
+                      oTarget["on" + sEventType] = null;
+                  }
+              },
+              formatEvent : function (oEvent) {
+                  if (!document.addEventListener) {
+                      oEvent.charCode = (oEvent.type == "keypress") ? oEvent.keyCode : 0;
+                      oEvent.eventPhase = 2;
+                      oEvent.isChar = (oEvent.charCode > 0);
+                      oEvent.pageX = oEvent.clientX + document.body.scrollLeft;
+                      oEvent.pageY = oEvent.clientY + document.body.scrollTop;
+                      oEvent.preventDefault = function () {
+                          this.returnValue = false;
+                      };
+              
+                      if (oEvent.type == "mouseout") {
+                          oEvent.relatedTarget = oEvent.toElement;
+                      } else if (oEvent.type == "mouseover") {
+                          oEvent.relatedTarget = oEvent.fromElement;
+                      }
+              
+                      oEvent.stopPropagation = function () {
+                          this.cancelBubble = true;
+                      };
+              
+                      oEvent.target = oEvent.srcElement;
+                      oEvent.time = (new Date).getTime();
+                  }
+                  return oEvent;
+              },
+              getEvent : function() {
+                  if (window.event) {
+                      return this.formatEvent(window.event);
+                  } else {
+                      return this.getEvent.caller.arguments[0];
+                  }
+              }
+          };
+          
+          function callerDemo() {
+              if (callerDemo.caller) {
+                  var a= callerDemo.caller.toString();
+                  alert(a);
+                  alert(callerDemo.caller.arguments[0]);
+              } else {
+                  alert("this is a top function");
+              }
+          }
+          /**
+           *handleCaller函数调用了callerDemo，所以callerDemo.caller等于handleCaller
+           */
+          function handleCaller() {
+              callerDemo();
+          };
+          
+          callerDemo();
+          
+          (function(S){
+              var evt=S.event;
+              handleCaller();
+              callerDemo();
+              evt.addEventHandler(document.getElementById('handleCaller'),'click',handleCaller)
+              evt.addEventHandler(document.getElementById('EventUtil'),'click',function(){
+                                          var e=evt.getEvent();
+                                          alert('type:'+e.type+'\n'+'pageX:'+e.pageX+'\n'+'pageY:'+e.pageY+'\n'+'tagName:'+e.target.tagName)
+                                        });
+              evt.addEventHandler(document.getElementById('EventUtil-link'),'click',function(){
+                                          var e=evt.getEvent();
+                                          e.preventDefault();
+                                          alert('type:'+e.type+'\n'+'pageX:'+e.pageX+'\n'+'pageY:'+e.pageY+'\n'+'tagName:'+e.target.tagName)
+                                        });		  
+          })(QIE);
+          </pre>
+    </div>
+</div>
+<script>
+var QIE={}
+QIE.event = {
+	addEventHandler : function (oTarget, sEventType, fnHandler) {
+		if (oTarget.addEventListener) {
+			oTarget.addEventListener(sEventType, fnHandler, false);
+		} else if (oTarget.attachEvent) {
+			oTarget.attachEvent("on" + sEventType, fnHandler);
+		} else {
+			oTarget["on" + sEventType] = fnHandler;
+		}
+	},       
+	removeEventHandler : function (oTarget, sEventType, fnHandler) {
+		if (oTarget.removeEventListener) {
+			oTarget.removeEventListener(sEventType, fnHandler, false);
+		} else if (oTarget.detachEvent) {
+			oTarget.detachEvent("on" + sEventType, fnHandler);
+		} else { 
+			oTarget["on" + sEventType] = null;
+		}
+	},
+	formatEvent : function (oEvent) {
+		if (!document.addEventListener) {
+			oEvent.charCode = (oEvent.type == "keypress") ? oEvent.keyCode : 0;
+			oEvent.eventPhase = 2;
+			oEvent.isChar = (oEvent.charCode > 0);
+			oEvent.pageX = oEvent.clientX + document.body.scrollLeft;
+			oEvent.pageY = oEvent.clientY + document.body.scrollTop;
+			oEvent.preventDefault = function () {
+				this.returnValue = false;
+			};
+	
+			if (oEvent.type == "mouseout") {
+				oEvent.relatedTarget = oEvent.toElement;
+			} else if (oEvent.type == "mouseover") {
+				oEvent.relatedTarget = oEvent.fromElement;
+			}
+	
+			oEvent.stopPropagation = function () {
+				this.cancelBubble = true;
+			};
+	
+			oEvent.target = oEvent.srcElement;
+			oEvent.time = (new Date).getTime();
+		}
+		return oEvent;
+	},
+	getEvent : function() {
+		if (window.event) {
+			return this.formatEvent(window.event);
+		} else {
+			return this.getEvent.caller.arguments[0];
+		}
+	}
+};
+
+function callerDemo() {
+	if (callerDemo.caller) {
+		var a= callerDemo.caller.toString();
+		alert(a);
+		alert(callerDemo.caller.arguments[0]);
+	} else {
+		alert("this is a top function");
+	}
+}
+/**
+ *handleCaller函数调用了callerDemo，所以callerDemo.caller等于handleCaller
+ */
+function handleCaller() {
+	callerDemo();
+};
+
+callerDemo();
+
+(function(S){
+	var evt=S.event;
+	handleCaller();
+	callerDemo();
+	evt.addEventHandler(document.getElementById('handleCaller'),'click',handleCaller)
+	evt.addEventHandler(document.getElementById('EventUtil'),'click',function(){
+								var e=evt.getEvent();
+								alert('type:'+e.type+'\n'+'pageX:'+e.pageX+'\n'+'pageY:'+e.pageY+'\n'+'tagName:'+e.target.tagName)
+							  });
+	evt.addEventHandler(document.getElementById('EventUtil-link'),'click',function(){
+								var e=evt.getEvent();
+								e.preventDefault();
+								alert('type:'+e.type+'\n'+'pageX:'+e.pageX+'\n'+'pageY:'+e.pageY+'\n'+'tagName:'+e.target.tagName)
+							  });		  
+})(QIE);
+</script>
+
+</body>
+</html>
