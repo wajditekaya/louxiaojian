@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>解析url地址参数</title>
+</head>
+
+<body>
+<script>
+var url='http://www.pps.tv?cat_id=1232322&pid=45678&name=louxiaojian'
+function QueryString(val){
+	  //var svalue = url.search.match(new RegExp("[\?\&]" + val + "=([^\&]*)(\&?)", "i"));//正则解析当前文件url
+	  var svalue = url.match(new RegExp("[\?\&]" + val + "=([^\&]*)(\&?)", "i"));
+	  return svalue ? svalue[1] : "";
+}
+ var catid =(QueryString("cat_id"));//获取cat_id的值
+ var pid = (QueryString("pid"));//获取pid的值
+ var name = (QueryString("name"));//获取pid的值
+ alert(catid)
+ alert(pid)
+ alert(name)
+</script>
+</body>
+</html>
