@@ -317,6 +317,7 @@
 				  }
 				  return false;
 			  },
+			  //addEvent:this.on,
 			  removeEvent:function(node, type, listener ) {
 				  //if(!(node = $(node))) return false;
 				  if (node.removeEventListener) {
