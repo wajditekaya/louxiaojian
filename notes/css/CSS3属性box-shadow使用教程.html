@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="gbk"/>
+    <title>CSS3属性box-shadow使用教程</title>
+    <base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
+    <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+    <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
+    <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+    <link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
+    <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
+    <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+    <script type="text/javascript">
+        SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
+        SyntaxHighlighter.config.strings = {
+            expandSource : '展开代码',
+            viewSource : '查看代码',
+            copyToClipboard : '复制代码',
+            copyToClipboardConfirmation : '代码复制成功',
+            print : '打印',
+            help : '?',
+            alert: '语法高亮\n\n',
+            noBrush : '不能找到刷子: ',
+            brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
+            // this is populated by the build script
+            aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Geneva,Arial,Helvetica,sans-serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.1.364(October 15 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
+        }
+        SyntaxHighlighter.all();
+    </script>
+<body>
+<div id="page">
+    <h1>box-shadow使用教程</h1>
+    <div id="content">
+
+        <p><strong><a href='http://paranimage.com/category/dede/css/'>CSS</a>3的box-shadow属性</strong>可以让我们轻松实现图层阴影效果。我们来实战详解一下这个属性。</p>
+        <h2>1. box-shadow属性的浏览器兼容性</h2>
+        <p>先来看一个这个属性的浏览器兼容性:</p>
+        <ul>
+            <li>Opera: 不知道是从哪个版本开始支持的，我在发这篇文章测试的时候，正好更新了Opera到最新的10.53版本，已经支持box-shadow属性。</li>
+            <li><a href='http://paranimage.com/category/apps/firefox/'>firefox</a>通过私有属性<strong>-moz-box-shadow</strong>支持。</li>
+            <li>Safari和Chrome通过私有属性<strong>-webkit-box-shadow</strong>支持。</li>
+            <li>所有IE不支持(不知道IE9是否有所改善)。别急，我们将在文章最后会介绍一些针对IE的Hack。</li>
+        </ul>
+        <h2>2. box-shadow属性的语法</h2>
+        <p>box-shadow有六个可设值:</p>
+        <p><strong>img{box-shadow:阴影类型 X轴位移 Y轴位移 阴影大小 阴影扩展 阴影颜色 }</strong></p>
+        <ul>
+            <li>当不设阴影类型时，默认为投影效果。当设为inset时，为内阴影效果。</li>
+            <li>X轴和Y轴位移不等同但类似于<a href='http://paranimage.com/category/apps/photoshop/'>photoshop</a>里面的&#8221;角度&#8221;和&#8221;位置。</li>
+            <li>阴影大小、扩展、颜色和Photoshop里面的都同理。</li>
+        </ul>
+        <h2>3. 实例解析</h2>
+        <p>让我们通过几个实例来看一个box-shadow的效果，先弄个简单的<a href='http://paranimage.com/category/dede/html/'>html</a>供测试:</p>
+<pre>
+    <pre title="code" class="brush: html;">&lt;html&gt;
+    &lt;head&gt;
+    &lt;style type="text/css"&gt;CSS部份写在这里&lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;img  src="test.jpg" /&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+    </pre>
+</pre>
+        <p><span style="color: #ff0000;"><strong>请注意</strong></span>:为了省事儿，下面的CSS代码中只写了box-shadow，在实际使用中，你应该把-moz-box-shadow和-webkit-shadow也写上。你需要做的很简，复制两个box-shadow,在它们前面分别加上-moz-和-webkit-。</p>
+<pre title="code" class="brush: xhtml;">
+    img {
+    -moz-box-shadow:2px 2px 10px #06C;
+    -webkit-box-shadow:2px 2px 10px #06C;
+    box-shadow:2px 2px 10px #06C;
+    }
+</pre>
+        <h3>(1). 投影，没有位移，10px的阴影大小，没有扩展，颜色#06C</h3>
+        <pre title="code" class="brush: css;"> img{box-shadow:0 0 10px #06C;}</pre>
+        <p><img class="aligncenter size-full wp-image-11651" title="css3-box-shadow-1" src="app/notes/img/css3-box-shadow-1.png" alt="css3 box shadow 1 CSS3属性box shadow使用教程" width="500" height="320" /></p>
+        <p>这里的颜色值是HEX值，我们还可以使用RGBA值，RGBA值的好处是，它多了一个Alpha透明值，你可以控制阴影的透明度。</p>
+        <pre title="code" class="brush: css;">img{box-shadow: 0 0 10px rgba(0, 255, 0, .5)}</pre>
+        <h3>(2). 在上面的基础上加上20px的扩展</h3>
+        <pre title="code" class="brush: css;"> img{box-shadow:0 0 10px 20px #06C;}</pre>
+        <p><img class="aligncenter size-full wp-image-11652" title="css3-box-shadow-2" src="app/notes/img/css3-box-shadow-2.png" alt="css3 box shadow 2 CSS3属性box shadow使用教程" width="500" height="320" /></p>
+        <h3>(3).  内阴影，无位移，10px大小，没有扩展，颜色#06C</h3>
+        <pre title="code" class="brush: css;"> img{box-shadow:inset 0 0 10px #06C;}</pre>
+        <p><img class="aligncenter size-full wp-image-11653" title="css3-box-shadow-3" src="app/notes/img/css3-box-shadow-3.png" alt="css3 box shadow 3 CSS3属性box shadow使用教程" width="500" height="320" /></p>
+        <h3>(4).  多重阴影效果</h3>
+        <p>box-shadow可以同时使用多次，我们来个四色的阴影。</p>
+<pre title="code" class="brush: css;">
+    img{box-shadow:-10px 0 10px red, box-shadow:10px 0 10px blue,box-shadow:0 -10px 10px yellow,box-shadow:0 10px 10px green}
+</pre>
+        <p><img class="aligncenter size-full wp-image-11654" title="css3-box-shadow-4" src="app/notes/img/css3-box-shadow-4.png" alt="css3 box shadow 4 CSS3属性box shadow使用教程" width="500" height="320" /></p>
+        <h3>(5). 使用多个阴影属性的顺序问题</h3>
+        <p>当给同一个元素使用多个阴影属性时，需要注意它的顺序，最先写的阴影将显示在最顶层。比如下面这段代码，我们先写一个10px的绿色阴影，再写一个10px大小但扩展20px的阴影。结果是：绿色阴影层在黄色阴影层之上。</p>
+        <pre title="code" class="brush: css;">img{box-shadow:0 0 10px green;box-shadow:0 0 10px 20px yellow}</pre>
+        <p><img class="aligncenter size-full wp-image-11655" title="css3-box-shadow-5" src="app/notes/img/css3-box-shadow-5.png" alt="css3 box shadow 5 CSS3属性box shadow使用教程" width="500" height="320" /></p>
+        <p>但如果我们把顺序调一下，像这样:</p>
+        <pre title="code" class="brush: css;">img{box-shadow:0 0 10px 20px yellow,box-shadow:0 0 10px green;}</pre>
+        <p><img class="aligncenter size-full wp-image-11650" title="css3-box-shadow-6" src="app/notes/img/css3-box-shadow-6.png" alt="css3 box shadow 6 CSS3属性box shadow使用教程" width="500" height="320" /></p>
+        <p>我们将看不到后写的绿色阴影层，因为它先写且半径比较大的黄色层覆盖掉了。</p>
+        <h2>4. 让IE也支持box-shadow</h2>
+        <p>IE本身是shadow滤镜可以实现类似效果的，还有一些js和.htc的hack文件可以帮助你在IE中实现这一效果。我也无法一一都去尝试，这里只介绍我用过的一个。</p>
+        <p><a href="http://fetchak.com/ie-css3/" target="_blank">ie-css3.htc</a>是一个可以让IE浏览器支持部份CSS3属性的htc文件，不只是box-shadow，它还可以让你的IE浏览器支持圆角属性border-radius和文字阴影属性text-shadow。</p>
+        <p>它的使用方法是：下载它并放到你的服务器目录</p>
+        <p>在你的&lt;head&gt;&lt;/head&gt;里面写入下面的代码:</p>
+<pre title="code" class="brush: xhtml;">&lt;!--[if IE]&gt;
+    &lt;style type="text/css"&gt;
+    <span style="color: #3366ff;">img, #testdiv, .testbox</span>{behavior: url(<span style="color: #339966;">http://yourdomain.com/js/ie-css3.htc</span>);}
+    &lt;/style&gt;
+    &lt;![endif]--&gt
+</pre>
+        <p>蓝色部份输入要使用box-shadow属性的选择器，绿色部份输入ie-css3.htc的绝对路径，或相对路径，反正要保证能访问得到。</p>
+        <p>然后这样就OK了。但还是有几点需要注意的是：</p>
+        <ul>
+            <li>当你使用了这个htc文件后，你的CSS里面，只要写有box-shadow, -moz-box-shadow或-webkit-box-shadow的任何一种，IE就会渲染。</li>
+            <li>当使用了这个htc文件后，你不能这样写box-shadow: 0 0 10px red; 而应该是box-shadow: 0px 0px 10px red; 否则IE中会失效。</li>
+            <li>不支持RGBA值中的alpha透明度。</li>
+            <li>不支持inset内阴影。</li>
+            <li>不支持阴影扩展。</li>
+            <li>阴影在IE中只会显示为黑色，不管你设置成其它什么颜色。</li>
+        </ul>
+        <p>所以说，这个脚本了仅仅是让IE支持了部份的box-shadow值。如果你有其它更好的IE hacks脚本，欢迎留言分享。</p>
+    </div>
+</div>
+</body>
+</html>
