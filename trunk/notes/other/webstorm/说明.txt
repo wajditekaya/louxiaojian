@@ -9,3 +9,5 @@ http://www.cnblogs.com/jikey/archive/2010/12/25/1916938.html
 
 
 ctrl+alt+l 整理代码快捷键(也可以选中要整理的代码 再快捷键)
+
+ctrl+e 显示最近打开的文档
