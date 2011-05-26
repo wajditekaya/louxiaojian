@@ -1,0 +1,40 @@
+Windows 用户如何利用 GitHub Pages 搭建自己的个人主页（教程）
+本文基于官方的 GitHub Pages 和 GitHub Help 作些许提醒和补充。
+
+GitHub Pages 是由 GitHub 免费提供的静态空间托管服务，它利用 Git 技术方便快捷地部署网页文件，支持绑定个人域名。GitHub Pages 存在的本意是为了给开发者提供一处宣传和演示作品的地方，但只要你会用 Git，就能够免费使用它，我的个人主页便是利用它搭建而成。
+
+准备：注册 GitHub 服务，下载安装 Git for Windows（选择下载类似于 Git-1.7.*-preview.exe 的文件）
+
+打开安装好的 Git Bash，依次输入：
+
+git config --global user.name "your username"
+git config --global user.email "username@email.com"
+请确保 name 和 email 信息与在 GitHub 注册时的信息相符。
+
+紧接着创建一个 SSH Public Keys，输入：
+
+ssh-keygen -t rsa -C "username@email.com"
+回车后，你会看到类似画面：
+
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/Tekkub/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/Tekkub/.ssh/id_rsa.
+Your public key has been saved in /c/Users/Tekkub/.ssh/id_rsa.pub.
+The key fingerprint is:
+e8:ae:60:8f:38:c2:98:1d:6d:84:60:8c:9e:dd:47:81 tekkub@gmail.com
+此时，你需要的 SSH Public Keys 就保存在 id_rsa.pub 文件中，找到并打开它，将里面的代码复制到 Account Settings 的相应区域。
+
+后面就轻松多了，因为，除非重装系统或换新机器，你都不必再重复操作以上步骤。
+
+在默认目录（大部分情况是我的文档）中创建一个新目录，把你的网页文件（比如 .html .css .jpg 等等静态文件）放进去，然后最核心的一步来了。
+
+同样，打开 Git Bash，依次输入：
+
+cd myhomepage // 进入你创建的新目录
+git init // 初始化
+git commit // 提交到 Github，会要求你写一句说明，比如“本人的第一次提交”、“添加了几个友情链接”等等随意
+搞定。对，只需要这三步，进入目录，初始化，提交，没有第四步，以后也没有。
+
+几十秒之后，GitHub 会发给你一封站内信，告知网站已成功发布。

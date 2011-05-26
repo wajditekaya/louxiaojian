@@ -13,6 +13,7 @@ QIE.plugins.lazyLoad=(function(S){
             return new lazyLoad(s);
         }
 		this.init(s);
+		//this.init.apply(this,arguments);
 		this._filterImg();
 		this.complete();
 		this.loadLazy();
