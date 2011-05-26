@@ -1,0 +1,1 @@
+关闭google浏览器，打开安装目录，再打开User Data\Default\Preferences文件，找到pinned_urls，把里面的网址改成你想要的就行了
