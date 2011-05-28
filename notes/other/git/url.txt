@@ -1,1 +1,7 @@
 http://saberma.me/other/2010/09/20/saberma-github-page-blog-build-with-jekyll.html
+
+
+²©ÎÄ²Î¿¼£º
+http://www.cnblogs.com/cocowool/archive/2010/10/19/1855616.html
+http://www.pureweber.com/article/git-and-github/
+http://progit.org/book/zh/
