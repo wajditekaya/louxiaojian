@@ -39,3 +39,9 @@ www.cnblogs.com={u:jxsr_lxj,n:SeanLou,p:15)}
 
 
 http://wx.onlinedown.net/down/httpwatch_20063.zip
+
+
+
+[JavaScript]精华JS兼容性总结2011-06-10 15:54:51
+ http://www.blueidea.com/tech/web/2008/5422.asp
+http://www.cnblogs.com/wiky/archive/2010/01/09/IE-and-Firefox-Javascript-compatibility.html
