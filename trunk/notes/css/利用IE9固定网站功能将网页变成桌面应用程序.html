@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>利用IE9固定网站功能将网页变成桌面应用程序</title>
+    <base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
+    <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+    <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
+    <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+    <link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
+    <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
+    <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+    <script type="text/javascript">
+        SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
+        SyntaxHighlighter.config.strings = {
+            expandSource : '展开代码',
+            viewSource : '查看代码',
+            copyToClipboard : '复制代码',
+            copyToClipboardConfirmation : '代码复制成功',
+            print : '打印',
+            help : '?',
+            alert: '语法高亮\n\n',
+            noBrush : '不能找到刷子: ',
+            brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
+            // this is populated by the build script
+            aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Geneva,Arial,Helvetica,sans-serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.1.364(October 15 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
+        }
+        SyntaxHighlighter.all();
+    </script>
+</head>
+
+<body>
+<div id="page">
+    <h1>利用IE9固定网站功能将网页变成桌面应用程序</h1>
+    <div id="content">
+      http://www.weisay.com/blog/use-ie9-change-page-to-application.html
+      <p>　　淘宝网有着国内数一数二的UED团队，所以淘宝的前端是很强悍的，在很多细节方面他们都追求至善至美。</p> 
+      <p>　　今天的说的这个效果最初是在淘宝上看到的。</p> 
+      <p>　　随着IE9的推出，浏览器又掀起一番大战，除了IE9利用图形显卡加速这一特性外，还有什么值得我们关注的呢？看到这里，聪明的你肯定想到那就是IE9的将网页转变为桌面应用的功能，的确，我们可以直接将选项卡拖动到开始栏上，让其成为一个按钮，下次访问时就可以直接双击这个按钮来启动这个网页“程序”，这也被称为“固定网站”功能，是不是很方便呢？微软推出一些特定的meta元标签来让网页开发者自己定制应用程序的行为，让我们看看都有哪些功能吧。<span id="more-442"></span></p> 
+                          <p>看TB的前端代码，Meta处最近更新了这么一段：</p> 
+      <pre class="brush: html; "> 
+      &lt;meta name=&quot;application-name&quot; content=&quot;淘宝网 - 淘！我喜欢&quot; /&gt;
+      &lt;meta name=&quot;msapplication-tooltip&quot; content=&quot;淘宝网 - 淘！我喜欢&quot; /&gt;
+      &lt;meta name=&quot;msapplication-task&quot; content=&quot;name=淘宝商城;action-uri=http://www.tmall.com/;icon-uri=http://img02.taobaocdn.com/tps/i2/T1bZNxXjXjXXXXXXXX.png&quot; /&gt;
+      &lt;meta name=&quot;msapplication-task&quot; content=&quot;name=聚划算;action-uri=http://ju.taobao.com/index.htm;icon-uri=http://www.taobao.com/favicon.ico&quot; /&gt;
+      &lt;meta name=&quot;msapplication-task&quot; content=&quot;name=登录;action-uri=https://login.taobao.com/member/login.jhtml;icon-uri=http://www.taobao.com/favicon.ico&quot; /&gt;
+      &lt;meta name=&quot;msapplication-navbutton-color&quot; content=&quot;#FF6600&quot; /&gt;
+      </pre> 
+      <p>苦于一直使用2003的系统，没有办法测试这些Meta的具体用处，只能搜索之：</p> 
+      <ul> 
+      <li>application-name：设置该app的名字；</li> 
+      <li>msapplication-tooltip：鼠标悬停在任务栏的app图标上时的提示信息；</li> 
+      <li>msapplication-starturl：打开app后打开的网页地址；</li> 
+      <li>msapplication-window：打开app后显示的大小；</li> 
+      <li>msapplication-navbutton-color：运行app后，导航按钮的背景颜色；</li> 
+      <li>msapplication-task：用来设置jumplist</li> 
+      </ul> 
+      <blockquote><p>直接拖动浏览器的favicon到任务栏就可以了。<br /> 
+      然后IE9就会自动关闭当前的窗口/标签页，然后再以应用是形式打开。</p></blockquote> 
+      <p>因为只有IE9支持，所以TB把它放到了条件注释里：</p> 
+      <blockquote><p>&lt;!&#8211;[if IE 9 ]&gt;&lt;![endif]&#8211;&gt;</p></blockquote> 
+      <p>　　通过 <a href="http://msdn.microsoft.com/zh-cn/library/gg491732(v=VS.85).aspx" rel="external">MSDN上的介绍</a> 我们知道可供定制的主要有：</p> 
+      <p>　　•设置固定网站的起始页<br /> 
+      　　•指定当鼠标指针悬停在任务栏和桌面上的固定网站按钮上时出现的工具提示文本<br /> 
+      　　•限制浏览器窗口的初始大小<br /> 
+      　　•自定义固定网站浏览器窗口中“后退”和“前进”按钮的颜色<br /> 
+      　　•向跳转列表添加静态任务</p> 
+      <p><a href="http://sharepic.googlecode.com/files/application4.jpg" class="highslide-image" onclick="return hs.expand(this);"><img alt="" src="app/notes/img/application4.jpg" title="利用IE9将网页变为桌面应用程序(Application)" class="aligncenter" width="600" height="43" /></a></p> 
+      <p>　　如bing.com的实例。</p> 
+      <pre class="brush: html" title=""> 
+      &lt;meta content=&quot;Bing&quot; name=&quot;application-name&quot; /&gt;&lt;!--指定应用程序的标题--&gt;
+      &lt;meta content=&quot;Bing&quot; name=&quot;msapplication-tooltip&quot; /&gt;&lt;!--指定tooltip，当鼠标悬停在选项卡或图标时出现--&gt;
+      &lt;meta content=&quot;width=1024;height=768&quot; name=&quot;msapplication-window&quot; /&gt;&lt;!--指定初始网站的大小，每次打开将处于这样的大小下--&gt;
+      &lt;meta content=&quot;/&quot; name=&quot;msapplication-starturl&quot; /&gt;&lt;!--浏览器后退和前进按钮的颜色--&gt;
+      </pre> 
+      <p>　　淘宝的那种就多了点内容，结合了Windows 7的Jump List功能的导航，显得更加的个性。</p> 
+      <p><a href="http://sharepic.googlecode.com/files/application2.jpg" class="highslide-image" onclick="return hs.expand(this);"><img alt="" src="app/notes/img/application2.jpg" title="利用IE9将网页变为桌面应用程序(Application)" class="aligncenter" width="304" height="311" /></a></p> 
+      <pre class="brush: html" title=""> 
+      &lt;!--[if IE 9 ]&gt;
+      &lt;meta name=&quot;application-name&quot; content=&quot;淘宝网 - 淘！我喜欢&quot; /&gt;
+      &lt;meta name=&quot;msapplication-tooltip&quot; content=&quot;淘宝网 - 淘！我喜欢&quot; /&gt;
+      &lt;meta name=&quot;msapplication-task&quot; content=&quot;name=淘宝商城;action-uri=http://www.tmall.com/;icon-uri=http://img02.taobaocdn.com/tps/i2/T1bZNxXjXjXXXXXXXX.png&quot; /&gt;
+      &lt;meta name=&quot;msapplication-task&quot; content=&quot;name=聚划算;action-uri=http://ju.taobao.com/index.htm;icon-uri=http://www.taobao.com/favicon.ico&quot; /&gt;
+      &lt;meta name=&quot;msapplication-task&quot; content=&quot;name=登录;action-uri=https://login.taobao.com/member/login.jhtml;icon-uri=http://www.taobao.com/favicon.ico&quot; /&gt;
+      &lt;meta name=&quot;msapplication-navbutton-color&quot; content=&quot;#FF6600&quot; /&gt;
+      &lt;link rel=&quot;shortcut icon&quot; href=&quot;http://www.taobao.com/favicon2.ico&quot; type=&quot;image/x-icon&quot; /&gt;
+      &lt;![endif]--&gt;
+      </pre> 
+      <p>　　我自己的内容并没有淘宝的多，我只加了一个“关于”。<br /> 
+      <a href="http://sharepic.googlecode.com/files/application1.jpg" class="highslide-image" onclick="return hs.expand(this);"><img alt="" src="app/notes/img/application1.jpg" title="利用IE9将网页变为桌面应用程序(Application)" class="aligncenter" width="304" height="264" /></a><br /> 
+      <a href="http://sharepic.googlecode.com/files/application3.jpg" class="highslide-image" onclick="return hs.expand(this);"><img alt="" src="app/notes/img/application3.jpg" title="利用IE9将网页变为桌面应用程序(Application)" class="aligncenter" width="257" height="131" /></a></p> 
+      <pre class="brush: html" title="">  
+      &lt;!--[if IE 9 ]&gt;
+      &lt;meta name=&quot;application-name&quot; content=&quot;威言威语&quot; /&gt;
+      &lt;meta name=&quot;msapplication-tooltip&quot; content=&quot;威言威语&quot; /&gt;
+      &lt;meta name=&quot;msapplication-task&quot; content=&quot;name=关于;action-uri=http://www.weisay.com/blog/about;icon-uri=http://www.weisay.com/favicon.ico&quot; /&gt;
+      &lt;meta name=&quot;msapplication-navbutton-color&quot; content=&quot;#db0b0b&quot; /&gt;
+      &lt;link rel=&quot;shortcut icon&quot; href=&quot;http://www.weisay.com/favicon2.ico&quot; type=&quot;image/x-icon&quot; /&gt;
+      &lt;![endif]--&gt;
+      </pre> 
+      <p>　　大家不难看出content后面指示了每个Item项目的配置，其中name代表显示的名称，action-uri代表跳转的地址，icon-uri代表前面的小图标地址，怎么样是不是很容易？</p> 
+      <p>　　当然了小图标ico的自己去做一个，这一个图标得包含32px和16px两个大小，这样在地址栏上显示16px的，而在开始栏上显示32px的那个图标。如我网站的favicon2.ico就是这样的，我是用IconWorkshop做的，比较简单，大家也可以试试。</p> 
+      <p>　　如果想深入研究的话建议参考微软的MSDN文档<a href="http://msdn.microsoft.com/zh-cn/library/gg491731(v=VS.85).aspx" rel="external">《固定网站开发人员文档》</a> 。</p> 
+    </div>
+</div>
+</body>
+</html>
