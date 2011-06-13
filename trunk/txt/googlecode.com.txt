@@ -45,3 +45,8 @@ http://wx.onlinedown.net/down/httpwatch_20063.zip
 [JavaScript]精华JS兼容性总结2011-06-10 15:54:51
  http://www.blueidea.com/tech/web/2008/5422.asp
 http://www.cnblogs.com/wiky/archive/2010/01/09/IE-and-Firefox-Javascript-compatibility.html
+
+
+
+http://www.cnblogs.com/snandy/archive/2011/03/28/1997414.html (mouseenter)
+http://blogs.oracle.com/greimer/entry/mouse_over_out_versus_mouse  (mouseenter)
