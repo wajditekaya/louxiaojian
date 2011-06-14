@@ -50,3 +50,4 @@ http://www.cnblogs.com/wiky/archive/2010/01/09/IE-and-Firefox-Javascript-compati
 
 http://www.cnblogs.com/snandy/archive/2011/03/28/1997414.html (mouseenter)
 http://blogs.oracle.com/greimer/entry/mouse_over_out_versus_mouse  (mouseenter)
+http://hszy00232.blog.163.com/blog/static/4302275320103653437408/ ([javascript·½·¨]containsºÍcompareDocumentPosition)
