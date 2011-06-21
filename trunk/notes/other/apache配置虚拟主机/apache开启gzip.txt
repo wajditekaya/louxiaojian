@@ -1,0 +1,53 @@
+1) 去掉#LoadModule headers_module modules/mod_headers.so前面的注释#,
+2) 添加LoadModule deflate_module modules/mod_deflate.so
+3) 在VirtualHost中添加
+
+<Location "/">
+SetOutputFilter DEFLATE
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+Header append Vary User-Agent env=!dont-vary
+</Location>
+
+我这里面有一个完整的演示
+1# 加载deflate模块
+LoadModule headers_module modules/mod_headers.so
+LoadModule deflate_module modules/mod_deflate.so
+<VirtualHost *:80>
+ <Location "/">
+SetOutputFilter DEFLATE
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+ BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+  Header append Vary User-Agent env=!dont-vary
+</Location>
+</VirtualHost>
+
+
+
+=============================================================================================================
+
+
+１、Apache启用gzip
+
+如果要开启gzip的话,一定要打开下面二个模块.
+LoadModule headers_module modules/mod_headers.so
+LoadModule deflate_module modules/mod_deflate.so
+
+设置压缩比率，取值范围在 1(最低) 到 9(最高)之间,不建议设置太高，虽然有很高的压缩率，但是占用更多的CPU资源.
+DeflateCompressionLevel 3
+AddOutputFilter DEFLATE html xml php js css
+<Location />
+SetOutputFilter DEFLATE
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+SetEnvIfNoCase Request_URI \\.(?:gif|jpe?g|png)$ no-gzip dont-vary
+SetEnvIfNoCase Request_URI .(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
+SetEnvIfNoCase Request_URI .(?:pdf|mov|avi|mp3|mp4|rm)$ no-gzip dont-vary
+
+Header append Vary User-Agent env=!dont-vary #对代理的设置
+</Location>
