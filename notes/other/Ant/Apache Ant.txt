@@ -1,0 +1,33 @@
+1.下载地址：http://ant.apache.org/bindownload.cgi   http://www.apache.org/dist/ant/binaries/
+
+2.安装：直接解压：到D:\Program Files\apache-ant
+
+3.系统环境变量中设置：
+
+path: 加上：D:\Program Files\apache-ant\bin 
+
+新建ANT_HOME：D:\Program Files\apache-ant
+
+4.在cmd命令中：输入ant，如果输出： 
+
+Buildfile:build.xml does not exist! 
+
+Build failed 
+
+或
+
+在cmd模式下输入 ant -version回车，看到输出说明配置成功。
+
+说明ant安装成功。
+
+
+
+http://jonsion.iteye.com/blog/621967
+
+http://www.zxbc.cn/html/20080623/57738.html
+
+http://constforce.blog.163.com/blog/static/16388123520112164455275/
+
+http://www.herbertyang.com/2010/07/20/ant-automatic-compression-js-css-and-change-the-version-number-2.html
+
+http://blog.csdn.net/kituq520/archive/2010/12/28/6103061.aspx
