@@ -1,0 +1,76 @@
+fileset 是包含从基文件夹往下的所有一组文件。
+总共有下面几种写法：
+<fileset dir="src" includes="**/*.java" id="one"/>
+包含多种类型
+<fileset dir="src" includes="**/*.java,**/*.txt"/> 
+
+另一种写法：
+<fileset dir="src">
+   <include="**/*.java"/>    这个事包含一组扩展名是java的文件，而且是src下的所有子文件和子文件夹
+</fileset>
+多个文件不能这样写
+<fileset dir="src">
+    <include="**/*.java,**/*.txt"/>
+</fileset>
+这样写是不行的，只会包含前面的文件，后面的包含不上，应该这样写：
+<fileset dir="src">
+    <include=**/*.java/>
+    <include="**/*.txt"/>
+</fileset>
+下面我看一下他的应用：我做了一个拷贝文件的例子，大家可以参考下：
+<?xml version="1.0" encoding="utf-8"?>
+<project name="filesetTest" default="copy">
+    <target name="init">
+        <mkdir dir="build/classes"/>
+        <mkdir dir="dest"/>
+    </target>
+    
+    <target name="compile" depends="init">
+        <javac srcdir="src" destdir="build/classes"/>
+    </target>
+    
+    <target name="archive" depends="compile">
+        <jar destfile="dest/lesson003.jar" basedir="build/classes"/>
+    </target>
+   下面是几种写法，我给大家解释一下：
+    <target name="copy" depends="archive">
+        <copy todir="copy001">
+            <fileset dir="lib" includes="**/*.jar"/>//包含的文件类型，注意这里是includes
+        </copy>
+    </target>
+   产生的效果就是把lib下的所有子文件以及子文件夹.jar文件都拷贝到了copy001文件夹中。
+另一种写法：
+<target name="copy" depends="archive">
+        <copy todir="copy001">
+            <fileset dir="lib">
+                <include name="**/*.jar"/>注意这里是include
+            </fileset>
+        </copy>
+    </target>
+多种类型的写法：
+    <target name="copy" depends="archive">
+        <copy todir="copy001">
+            <fileset dir="lib">
+                <include name="**/*.jar"/>
+                <include name="**/*.txt"/>
+            </fileset>
+        </copy>
+    </target>   
+不包含子文件夹的效果
+        <target name="copy" depends="archive">
+        <copy todir="copy001">
+            <fileset dir="lib">
+                <include name="*.jar"/>也就是说他不会忘下找，只是找lib目录下的，而**/*会找子文件夹
+            </fileset>
+        </copy>
+    </target>
+    最后做一点扩展：和include相对应的是不包含exclude,同理他也有上面的几种写法。
+这里有一个属性是casesensitive，不区分大小写，但是我测试的结果是，加不加也就是不管是true还是false，都不区分大小写（指的是include和exclude）。下面是一个例子：
+    <target name="excopy" depends="archive">
+        <copy todir="copy001">
+            <fileset dir="lib"  casesensitive="true">
+                <EXClude name="**/*.txt"/>
+            </fileset>
+        </copy>
+    </target>
+</project>
