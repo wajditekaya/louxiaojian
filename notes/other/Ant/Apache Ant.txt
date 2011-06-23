@@ -31,3 +31,7 @@ http://constforce.blog.163.com/blog/static/16388123520112164455275/
 http://www.herbertyang.com/2010/07/20/ant-automatic-compression-js-css-and-change-the-version-number-2.html
 
 http://blog.csdn.net/kituq520/archive/2010/12/28/6103061.aspx
+
+
+
+Building Web Applications With Apache Ant(http://www.julienlecomte.net/blog/2007/09/16/)
