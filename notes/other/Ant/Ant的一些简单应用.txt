@@ -1,0 +1,56 @@
+1、ant当前时间(相对与当前时间的偏移)的获得
+
+    <tstamp>
+          <format property="yesterday" pattern="yyyyMMdd" offset="-1" unit="day"/>
+    </tstamp>
+
+    有了上面的代码，于是就可以使用${yesterday}得到昨天的时间，pattern是时间的格式，offset是偏移量，unit是单位。
+
+    也可以使用${DSTAMP}得到当前时间。
+
+2、ant编译运行java程序时，类库的引入以及参数的传递
+
+   (没有使用fileset引入jar包，ant可能会报java.lang.NoClassDefFoundError异常)
+
+<java classname="com.sina.HelloWorld" fork="true">
+ <classpath>
+     <pathelement location="HelloWorld.jar"/>
+     <pathelement path="HelloWorld.jar"/>   
+     <fileset dir="${basedir}/${lib.name}">
+         <include name="**/*.jar"/>
+      </fileset>  
+ </classpath>
+ <arg value="Jack" />
+</java>
+
+location是类打包所处的位置，path是.class的位置
+
+使用fileset可以引入在HelloWorld中使用了类库
+
+arg是使用ant传递参数，   也就是 java com.sina.HelloWorld jack
+
+会打印出HelloWorld jack
+
+3、ant执行命令行命令  exec
+<property name="args" value="-Dmydate=${mydate} >
+
+<exec executable="cmd" inputstring="${args}" dir="">
+ <arg value="/c run.bat"/>
+</exec>
+
+run.bat可以接受一个date的参数，可以通过inputString传入
+
+4、ant和antcall
+<antcall target="run" inheritAll="false">
+ <param name = "date" value="${yesterday}"/>
+</antcall>
+
+<ant antfile="com/build_run.xml" target="run" inheritAll="false">
+ <property name = "date" value="${yesterday}"/>
+ </ant>
+
+antcall是调用自身.xml中target任务，使用param传入参数
+
+ant 是调用其他的.xml中的任务，使用property传入参数
+
+5、ant -f 可以调用名称不是build.xml的script
