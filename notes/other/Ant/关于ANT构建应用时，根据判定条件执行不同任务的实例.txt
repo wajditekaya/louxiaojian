@@ -1,0 +1,148 @@
+http://ajava.org/course/other/8862.html
+
+关于ANT构建应用时，根据判定条件执行不同任务的实例(以操作系统类型为判定条件举例)
+最近在一个项目(湖北质检)，要求搭建一个专门的版本发布服务器，为了将源代码构建并在服务器上测试，而选用ANT来实现。但是，在执行起动 Tomcat 服务时会有二个起动脚本（startup.sh与startup.bat），这二个脚本分别用于Unix与Windows操作系统；因此，为了适应不同平台的构建，需要根据不同OS来执行不同的脚本。但是，ANT本身还没有条件判断的功能，所以，此处需要借助Ant-Contrib包来实现。具体如下：
+一：）下载apache-ant-版本号-bin.zip文件（此处是apache-ant-1.7.0-bin.zip）：
+               下载apache-ant-1.7.0-bin.zip
+二：）下载ant-contrib-版本号.jar文件（此处是ant-contrib-1.0b3.jar）：
+              下载ant-contrib-1.0b3.jar
+三：）解压ANT安装文件（apache-ant-1.7.0-bin.zip）到某一目录，如：
+
+            D:\Program Files\Apache_ANT_1.7.0
+
+四：）配置环境变量（path与classpath）：
+            ANT_HOME=D:\Program Files\Apache_ANT_1.7.0
+
+            path=%path%;%ANT_HOME%\bin;
+            classpath=%ANT_HOME%\lib;
+五：）安装ant-contrib-1.0b3.jar，下面是ant-contrib-1.0b3.jar解压包中的指南对安装的说明，如下：
+           
+Installation
+
+First you must install Apache Ant itself, most of the Ant-Contrib tasks require Ant 1.5 or higher to work properly, however, there are some tasks, specifically <for> which require Ant 1.6. You can download Ant from Apache.
+
+Then you need the Ant-Contrib tasks themselves. As there is no release of these tasks yet, you have to build them from sources. Fortunately this is easy, check out the sources (grab the ant-contrib module from CVS), change into the source directory of ant-contrib and type ant. After Ant has completed, you'll find ant-contrib-version.jar in the lib subdirectory.
+
+You now have the choice:
+
+   1. Copy ant-contrib-version.jar to the lib directory of your Ant installation, or on your CLASSPATH environment variable. If you want to use one of the tasks in your project, add the line
+
+      <taskdef resource="net/sf/antcontrib/antlib.xml"/>
+        
+
+      to your build file.
+
+   2. Keep ant-contrib-version.jar in a separate location. You now have to tell Ant explicitly where to find it (say in /usr/share/java/lib):
+
+      <taskdef resource="net/sf/antcontrib/antlib.xml">
+          <classpath>
+          <pathelement location="/usr/share/java/lib/ant-contrib-version.jar"/>
+          </classpath>
+          </taskdef>
+        
+
+   3. If you would like to use run with Ant Version 1.5 you must use the the .properties file instead. Keep in mind that some tasks will not be available to you , such as the <for> task:
+
+      <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+          <classpath>
+          <pathelement location="/usr/share/java/lib/ant-contrib-version.jar"/>
+          </classpath>
+          </taskdef>
+
+六：）现在可以使用ant-contrib的功能来添加到ANT构建文件中，下面是本项目（湖北质检）的构建文件，如下(注意红色部分的条件定义与判断的执行):
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="QCSystem" default="startWebApplication" basedir=".">
+
+<description>湖北质检ANT构建与Tomcat应用起动配置文件，起动应用时根据不同的操作系统调用不同的Tomcat起运脚本（startup.sh或startup.bat）!</description>
+
+<!-- ********** 构件文件相关属性 *********** -->
+<!-- 系统环境变量 -->
+<property environment="sys-env"/>
+
+<!-- 通用路径或文件夹名称 -->
+<property name="srcDir" location="src"/>
+<property name="webAppDir" location="webapp"/>
+
+<property name="webInfName" value="WEB-INF"/>
+<property name="destDirName" value="classes"/>
+
+<property name="tomcatCommonName" value="common"/>
+
+
+<!-- 添加"Ant-Contrib"对ANT构建文件的支持 -->
+
+<taskdef resource="net/sf/antcontrib/antcontrib.properties"> 
+
+    <classpath>  
+
+        <pathelement location="${sys-env.ANT_HOME}/Ant-Contrib/ant-contrib-1.0b3.jar"/>
+
+    </classpath>
+
+</taskdef>
+
+ 
+
+<!-- 初始化操作系统判断条件 -->
+
+<property name="winOS" value="win"/>
+
+<property name="unixOS" value="unix"/>
+<target name="init"> 
+
+    <echo message="初始化操作系统判断条件[开始]..." /> 
+
+    <condition property="OSType" value="${winOS}">  
+
+        <os family="Windows"/> 
+
+    </condition>
+
+    <condition property="OSType" value="${unixOS}">
+
+        <os family="UNIX"/>
+
+    </condition> 
+
+    <echo message="初始化操作系统判断条件[结束]..." />
+
+  </target>
+
+<!-- 第三方类库-->  
+<path id="compileLibFiles">   
+<fileset dir="${webAppDir}/${webInfName}/lib">       
+<include name="**/*.jar"/>   
+</fileset>
+  <fileset dir="${sys-env.CATALINA_HOME}/${tomcatCommonName}/lib">    
+<include name="**/*.jar"/>   
+</fileset>  
+</path> 
+<!-- 编译工程 -->  
+<target name="compile">   
+<echo message="湖北质检项目编译[开始] ..."/>   
+<javac srcdir="${srcDir}" debug="on" destdir="${webAppDir}/${webInfName}/${destDirName}" includes="**/*.java">    
+<classpath refid="compileLibFiles"/>   
+</javac>
+  <!-- 拷贝配置文件到编译目录 -->   
+<copy todir="${webAppDir}/${webInfName}/${destDirName}">    
+<fileset dir="${srcDir}" excludes="**/*.java"/>   
+</copy>   
+<echo message="湖北质检项目编译[结束] ..."/>  
+</target>
+<!-- 根据不同的操作系统调用不同的Tomcat起动程序(Windows操作系统:startup.bat  Unix操作系统:startup.sh) -->  
+<target name="startWebApplication" depends="init, compile">   
+<echo message="起动湖北质检应用[开始] ..."/>   
+  <if>   
+    <equals arg1="${OSType}" arg2="${winOS}"/>   
+    <!-- 下边这种方式直接判断操作系统也可以 -->   
+    <!--os family="WINDOWS"/-->   
+    <then>    
+        <exec dir="${sys-env.CATALINA_HOME}/bin" executable="${sys-env.CATALINA_HOME}/bin/startup.bat"/>
+    </then>   
+    <else>    
+        <exec dir="${sys-env.CATALINA_HOME}/bin" executable="${sys-env.CATALINA_HOME}/bin/startup.sh"/>   
+    </else>  
+  </if> 
+  <echo message="起动湖北质检应用[结束] ..."/>  </target>
+</project>

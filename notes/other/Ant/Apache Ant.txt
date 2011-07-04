@@ -35,3 +35,5 @@ http://blog.csdn.net/kituq520/archive/2010/12/28/6103061.aspx
 
 
 Building Web Applications With Apache Ant(http://www.julienlecomte.net/blog/2007/09/16/)
+
+http://ajava.org/course/other/8862.html(关于ANT构建应用时，根据判定条件执行不同任务的实例)
