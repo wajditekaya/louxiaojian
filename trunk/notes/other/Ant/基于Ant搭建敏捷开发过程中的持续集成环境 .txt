@@ -1,0 +1,215 @@
+Ant 如何帮助持续集成
+
+Ant 作为 Java 开发领域应用最为广泛的自动构建工具，不仅可以帮助开发团队实施每日构建生成构建包，更支持在此构建包基础之上，生成测试团队和版本发布团队所需要的构建包以完成后续的产品测试与发布工作，最终使得整个迭代周期过程的产品集成实现自动化。本文不会对 Ant 的基本概念和所有任务进行逐一介绍，而是将作者在实践过程中认为对持续集成有所帮助的概念和任务加以解释阐明，以期读者更好地了解 Ant 的能力，并加以灵活的运用。
+
+<Ant> 与 <Antcall>（<AntFetch> 与 <AntCallback>）
+
+<ant> 任务提供了在一个构建脚本内调用外部脚本特定目标（target）的能力，这种能力可以很好的帮助我们管理整个持续集成过程。特别是在有多个项目构建需求的情况时，设计一个独立的控制脚本，借助 <ant> 任务使其通过调用不同的项目构建脚本完成整体项目的集成，这样做的一个最明显好处是使我们可以快速的适应项目变动，符合随需应变（On Demand）的开发模式。
+
+<antcall> 任务区别于 <ant> 任务之处在于，其只能调用同一个构建脚本之内的构建目标，他所提供的是对一个构建脚本自身的清晰管理。以往依赖于 depends 属性的方式使得我们很容易迷失在复杂的目标依赖关系中，而使用 <antcall> 则能够将每个构建脚本的任务以显式的、易修改的方式呈现给项目构建者。
+
+<antfetch> 和 <antcallback> 是 ant-contrib 开源项目提供的扩展任务，是增强版本的 <ant> 和 <antcall> 任务，他们不仅具备前二者的基本能力，还可以返回外部脚本或同脚本其他目标中的属性，可类比编程语言中带返回值的方法调用。
+
+Available 与 Condition
+
+在构建过程中，构建脚本不可避免地会对许多外部资源（文件，目录，URL 等）进行访问甚至修改，而为了能够有效的对这些资源进行操作，所需做的第一步通常是验证资源的可用性。<available> 任务可以帮助我们对各种外部资源进行判断，通过设置相应的属性来表明判断结果，进而引导后续的构建操作。
+
+另外，在某些情况下，构建脚本或许需要对多个资源同时进行判断而不仅仅是单个资源。<condition> 任务通过支持丰富的内嵌标记（nested element），如 <and>/<or>/<xor> 等，具备了对资源进行更加复杂的逻辑判断能力。
+
+For 与 If
+
+当我们使用 Ant 脚本编写一些较为复杂的逻辑功能，比如循环和流程判断时，自然希望 Ant 能支持这种编程能力。然而 Ant 核心任务中并没有提供 <if> 任务，只是在 <target> 任务的属性中支持 if 属性，比如 <target name="build-module-A" if="module-A-present"/>，即表示只有 module-A-present 属性存在才执行 build-module-A 目标。但是，必须注意的一点是，这里的 if 并不是判断 module-A-present 属性是否设置为特定值，而仅仅是检查该属性是否被设置了，因而其可编程性并不是很强。
+
+Ant-contrib 为 Ant 提供了与通常所使用的编程语言功能相同的 <if> 和 <for> 任务，在构建过程中灵活运用这两个任务，将大大增强 Ant 对逻辑操作的控制能力，这其实就是一种基于 XML 脚本的编程。
+
+在具体的实践过程，有一点需要特别注意：在使用 <for> 任务的过程中，如果我们期望在循环体内使用一个变量，而非 Ant 的 property，则需借助由 ant-contrib 提供的 <variable> 任务（ant-contrib 任务）来实现。尽管这与 property 的值一经设置便无法改变的设计原则相抵，但有时能够给构建脚本很大程度上的灵活性。
+
+Replace 与 ReplaceRegExp
+
+在由开发构建包向产品构建包转变的过程中，替换与开发环境相关的属性值是主要工作之一 , 比如我们不能假设用户会将 JDK 安装在与开发环境相同的路径下，这时便可以使用 ant 的 <replace> 任务，<replace> 任务可以针对特定的字符串的执行替换操作。不仅如此，利用 Ant 扩展任务所提供的 <replaceRegExp> 任务，还可以实现基于正则表达式的替换。
+
+
+
+
+
+例如，要将 test.bat 文件中的行首“java”字符串替换为“../../java/bin/java”而不影响其他“java”字符串，可以使用如下 ant 脚本：
+
+<replaceregexp 
+    file="test.bat" 
+    byline="true" 
+    match="^java " 
+    replace="../../ java/bin/java "
+/> 
+
+
+例如，要实现将 A 文件夹复制到 B 文件夹，同时对 B 文件夹中所有 jsp 文件的文件头添加 copyright.txt 文件内容的任务，可以使用如下 ant 脚本。
+<copy todir="${B}"> 
+    <fileset dir="${A}" includes="*.jsp"/> 
+    <filterchain> 
+        <concatfilter prepend="copyright.txt"/> 
+    </filterchain> 
+</copy> 
+
+
+清单 1. 产生其它动作所需要的产品包
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SampleOverall" basedir="." default="fetch_Code">
+  <property file="SampleOverall.properties" />
+
+  <taskdef name ="teamFetch" classname="com.ibm.team.build.ant.task.TeamFetchTask" />
+  <taskdef name ="teamAccept" classname="com.ibm.team.build.ant.task.TeamAcceptTask" />
+  
+  <tstamp><format property="build.time" pattern="yyyy-MM-dd$hh-mm-ss" /></tstamp>
+  
+  <target name="perform_DailyBuild"> 
+    <antcall target="generate_SmokeTest_Package"/>
+    <antcall target="mail"/>
+  </target>
+  
+  <target name="perform_FVTBuild"> 
+    <antcall target="generate_FVTTest_Package" />
+    <antcall target="upload_to_FTP" />
+  </target>
+        
+  <target name="perform_ProductBuild"> 
+    <antFetch dir="${basedir}" antfile="checkLicense.xml" target="checkLicense" 
+          return="reportFile" />
+    <available property="reportFile_exist" file="${reportFile}"/>
+    <fail message="Unlicensed file found, please check ${reportFile}" 
+          if="${reportFile_exist}"/>
+    <antcall target="generate_Product_Package" />
+    <antcall target="upload_to_FTP" />
+  </target>
+
+  <target name="fetch_Code">
+    <teamAccept repositoryAddress="${repositoryAddress}" userId="${userId}" 
+          password="${password}" workspaceName="${workspaceName}" verbose="true" />
+    <teamFetch repositoryAddress="${repositoryAddress}" userId="${userId}" 
+          password="${password}" workspaceName="${workspaceName}" 
+          destination="${destination}"
+      verbose="true" />
+  </target>
+        
+  <target name="generate_SmokeTest_Package" depends="fetch_Code">        
+    <!-- may also include other project,like SampleApp2, SampleApp3 -->
+    <ant dir="${SampleApp1.dir}" antfile="build.xml" target="war" 
+          inheritAll="false" />
+  </target>
+        
+  <target name="generate_FVTTest_Package" depends="fetch_Code">
+    <ant dir="${SampleApp1.dir}" antfile="build.xml" target="ear_FVT" 
+          inheritAll="false" />
+  </target>
+        
+  <target name="generate_Product_Package" depends="fetch_Code">
+    <ant dir="${SampleApp1.dir}" antfile="build.xml" target="product" 
+          inheritAll="false" />
+  </target>
+        
+  <target name="upload_to_FTP">
+    <zip destfile = "${BuildPackage}/SampleApp1.zip" basedir="${BuildPackage}" />
+
+    <ftp action="mkdir" server="${FTPAddress}" userid="${FTPUserName}" 
+          password="${FTPPassword}" remotedir="${FTPSharedFolder}/${build.time}"/>
+    <ftp server="${FTPAddress}" userid="${FTPUserName}" password="${FTPPassword}" 
+          remotedir="${FTPSharedFolder}/${build.time}">
+      <fileset file="${BuildPackage}/SampleApp1.zip" />
+    </ftp>
+  </target>
+        
+  <target name="mail">
+    <mail mailhost="${MailServer}" mailport="${MailServerPort}" 
+          subject="Build Report Mail" tolist="${MailList}" messagemimetype="text/html" 
+          messagefile="mailcontent.html">
+      <from address="${fromMailAddr}" />   
+    </mail> 
+  </target> 
+</project>
+
+
+
+
+清单 2. 使用 Ant 实现版权信息检查的部分脚本
+
+<target name="checkLicense" >
+  <for list="${scanFolderList}" param="folderList">
+    <sequential>
+      <for list="${scanFileType}" param="fileType">
+        <sequential>
+          <for param="file">
+            <path>
+              <fileset dir="@{folderList}" includes=**/*.@{fileType}>
+                <not>
+                  <contains text="${licenseFragment}" />
+                </not>
+              </fileset>
+            </path>
+        
+            <sequential>
+              <echo file="${reportFile}" message="@{file},${line.separator}" 
+                            append="true" encoding="UTF-8"/>
+            </sequential>
+          </for>
+        </sequential>
+      </for>
+    </sequential>
+  </for>
+</target>
+
+
+清单 3. 获取产品包并自动部署
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SampleProductEnv" basedir="." default="updateProduct">
+
+  <taskdef name="wsadmin" classname="com.ibm.websphere.ant.tasks.WsAdmin"/>
+  <taskdef name="wsStopServer" classname="com.ibm.websphere.ant.tasks.StopServer"/> 
+  <taskdef name="wsStartServer" 
+    classname="com.ibm.websphere.ant.tasks.StartServer"/>
+
+  <target name="getFromFTP" >
+    <ftp action="get" server="${FTPAddr}" userid="${FTPUsr}" password="${FTPPasswd}"
+      remotedir="${product_FTP}">
+      <fileset dir="${basedir}/FTPDownload">
+        <include name="production.*"/>
+      </fileset>
+    </ftp>
+  </target>
+
+  <target name="generateUpdatePack" depends="getFromFTP">
+    <unzip src="${basedir}/FTPDownload/Production.zip" 
+          dest="${basedir}/Production">
+      <globmapper from="code_build" to="app1"/>
+    </unzip>                
+  </target>
+
+  <target name="updateProduct">
+    <wsadmin script="${basedir}/updateApp1.py" user="${MMC_user_name}" 
+          password="${MMC_user_password}" conntype="NONE" failonerror="yes">
+      <arg value="${update_files_location}/app1/WEB-INF/web.xml" /> 
+    </wsadmin>
+
+    <antcall target="stop-server" />
+  
+    <copy todir="${product_Home}" overwrite="true">
+      <fileset dir="${update_files_location}/app1 ">
+        <exclude name="**/web.xml"/>
+      </fileset>
+    </copy>
+                        
+    <antcall target="start-server" />                
+  </target>
+
+  <target name="start-server">
+    <wsStartServer server="server1" noWait="false" trace="true" 
+          username="${MMC_user_name}" password="${MMC_user_password}" failonerror="yes">
+    </wsStartServer>
+  </target>
+
+  <target name="stop-server">
+    <wsStopServer server="server1" noWait="false" trace="true" 
+          username="${MMC_user_name}" password="${MMC_user_password}" failonerror="yes">
+    </wsStopServer>
+  </target>
+</project>
+
+
