@@ -49,7 +49,7 @@ input,textarea,select{*font-size:100%;}
 *+html .clearfix {min-height:1%;}
 
 .exp{text-align:left; line-height:30px; width:600px; margin:0 auto; cursor:pointer}
-.dialog{position:absolute;background:#fff;padding:10px;border:1px solid #ccc;border-radius:5px;-moz-border-radius:5px; -webkit-border-radius:5px;box-shadow:5px 5px 5px #ccc;-moz-box-shadow:5px 5px 5px #ccc;-webkit-box-shadow:5px 5px 5px #ccc; text-align:left; display:none}
+.dialog{position:absolute;background:#fff;padding:10px;border:1px solid #ccc;border-radius:5px;-moz-border-radius:5px; -webkit-border-radius:5px;box-shadow:0px 0px 5px #ccc;-moz-box-shadow:0px 0px 5px #ccc;-webkit-box-shadow:0px 0px 5px #ccc; text-align:left; display:none}
 </style>
 </head>
 
@@ -59,147 +59,180 @@ input,textarea,select{*font-size:100%;}
 <div class="exp" onclick="new dialog({id:'lxj',width:350,Layer:0})">new dialog({id:'lxj',width:350,Layer:0})</div>
 <div class="exp" onclick="new dialog({id:'lxj',width:350,fix:1})">new dialog({id:'lxj',width:350,fix:1})</div>
 <div class="exp" onclick="new dialog({id:'lxj2',width:350,Layer:0,left:this.offsetLeft,top:this.offsetTop+30})">new dialog({id:'lxj',width:350,Layer:0,left:this.offsetLeft,top:this.offsetTop+30})当left的值为0时还有待完善</div>
+<select>
+    <option>asdasdsadsadasdsadsadsadsadsa</option>
+    <option>asdasdsadsadasdsadsadsadsadsa</option>
+    <option>asdasdsadsadasdsadsadsadsadsa</option>
+    <option>asdasdsadsadasdsadsadsadsadsa</option>
+</select>
+<object height="500" width="590" id="movie_player" codebase="http://www.macromedia.com/go/getflashplayer" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
+    <param value="url_key=3003ZD&video_id=181400852" name="flashvars">
+    <param value="always" name="allowscriptaccess">
+    <param value="true" name="allowfullscreen">
+    <param value="high" name="quality">
+    <param value="#000" name="bgcolor">
+    <param value="application/x-shockwave-flash" name="type">
+    <param value="http://player.pps.tv/player.php/sid/3003ZD/v.swf" name="movie">
+    <embed height="500" width="590" type="application/x-shockwave-flash"
+           src="http://player.pps.tv/player.php/sid/3003ZD/v.swf" id="movie_player"
+           name="movie_player" bgcolor="#FFFFFF" quality="high" allowfullscreen="true"
+           allowscriptaccess="always" flashvars="url_key=3001NC&video_id=181400852"
+           pluginspage="http://www.macromedia.com/go/getflashplayer">
+</object>
 <div style="height:2000px"></div>
-<div id="lxj" class="dialog" onclick="alert(Math.max(document.body.scrollHeight,document.documentElement.clientHeight) +'和'+ document.documentElement.scrollTop)">lxj<textarea style="width:100%; height:50px" id="textarea"></textarea><a href="#" onclick="return false" class="p_close">关闭一</a><a href="#" onclick="return false" class="p_close">关闭二</a></div>
+<div class="exp" onclick="new dialog({id:'lxj',width:350})">new dialog({id:'lxj',width:350})</div>
 
+<div id="lxj" class="dialog" onclick="alert(Math.max(document.body.scrollHeight,document.documentElement.clientHeight) +'和'+ document.documentElement.scrollTop)">lxj<textarea style="width:100%; height:50px" id="textarea"></textarea><a href="#" onclick="return false" class="p_close">关闭一</a><a href="#" onclick="return false" class="p_close">关闭二</a></div>
 <div id="lxj2" class="dialog" onclick="alert(Math.max(document.body.scrollHeight,document.documentElement.clientHeight) +'和'+ document.documentElement.scrollTop)">第二种<textarea style="width:100%; height:50px" id="textarea"></textarea><a href="#" onclick="return false" class="p_close">关闭一</a></div>
 
 <script type="text/javascript">
-function dialog(set){
-	  this.sets(set);
-	  this.dialog=this.$(this.boxSet.id);
-	  this.openBack=this.boxSet.openBack;
-	  this.closeBack=this.boxSet.closeBack;
-	  this.top=parseInt(this.boxSet.top);
-	  this.left=parseInt(this.boxSet.left);
-	  this.Layer=this.boxSet.Layer
-	  this.fix=this.boxSet.fix;
-	  this.opacity=this.boxSet.opacity || 0.5;
-	  this.dialogInit();
-	  this.open();
-	  window.onresize=this.B(this,this.setPosition);
-};
-dialog.close=function(){
-	        var layDic=document.getElementById('layDic'),dialog=document.getElementById('dialog');
-			if(layDic){layDic.style.display="none";layDic.parentNode.removeChild(layDic)}
-			dialog.style.display="none";
-			if(document.all && ([/MSIE (\d)\.0/i.exec(navigator.userAgent)][0][1] == 6)){
-				selects = document.getElementsByTagName("select");
-				for(i = 0; i < selects.length; i++) {selects[i].style.visibility = 'visible';}
-			}
-}
-dialog.prototype={
-	  $:function(id){return "string" == typeof id ? document.getElementById(id) : id;},
-	  isIE6:document.all && ([/MSIE (\d)\.0/i.exec(navigator.userAgent)][0][1] == 6),
-	  B:function(object, fun) {
-		var args = Array.prototype.slice.call(arguments).slice(2);
-		return function() {
-			return fun.apply(object, args);
-		}
-	   },
-	  Extend:function(destination, source) {
-		  for (var property in source) {
-			  destination[property] = source[property];
-		  }
-	  },
-	  getECN:function(node, name, type) {
-			  var r = [], re = new RegExp("(^|\\s)" + name + "(\\s|$)"), e = (node || document).getElementsByTagName(type || "*");
-			  for ( var i = 0,len=e.length; i < len; i++ ) {
-				  if(re.test(e[i].className) )
-					  r.push(e[i]);
-			  }
-			  return r;
-	  },
-	  sets:function(s){
-		  this.boxSet={
-			  Layer:1,
-			  width:"",
-			  height:"",
-			  left:'undefind',
-			  top:'undefind',
-			  fix:0,
-			  openBack:function(){},
-			  closeBack:function(){},
-			  closeName:'p_close'
-		  };
-		  this.Extend(this.boxSet, s || {});
-	  },
-	  shadingLayer:function(){
-		      if(!this.$('layDic')){
-				  this.layDic=document.createElement("div");
-				  this.layDic.setAttribute('id','layDic');
-				  this.layDic.style.cssText="opacity:"+this.opacity+";-moz-opacity:"+this.opacity+";filter:alpha(opacity="+this.opacity*100+");background:#000;position:absolute;top:0;left:0;z-index:9998;display:none";
-				  document.body.appendChild(this.layDic);
-			  }else{
-				  this.layDic=this.$('layDic');
-			  }
-	  },
-	  hideSelects: function(v){
-			if(this.isIE6){
-				selects = document.getElementsByTagName("select");
-				for(i = 0; i < selects.length; i++) {selects[i].style.visibility = v;}
-			}
-	  },
-	  dialogInit:function(){
-			var closebut,_this=this;
-			this.dialog.style.display="block";
-			this.pHeight=this.boxSet.height ?  parseInt(this.boxSet.height) : this.dialog.offsetHeight;
-			this.pWidth=parseInt(this.boxSet.width);
-			this.dialog.style.width=this.pWidth+"px";
-			this.dialog.style.zIndex=9999; 
-			this.dialog.style.display="none";
-			closebut=this.getECN(this.dialog,this.boxSet.closeName,'*');
-			for(var i=0,len=closebut.length;i<len;i++){
-				closebut[i].onclick=function(){_this.close.call(_this);return false;
-				}
-			}
-	  },
-	  fixed:function(){
-		  var d=document,db=d.body,dd=d.documentElement;
-		  if(this.isIE6){
-			var top=this.top ? this.top : this.cTop;
-			var expression=";top:expression(documentElement.scrollTop+"+top+");)"
-			this.dialog.style.position='absolute';
-			this.dialog.style.cssText+=expression;
-			document.body.style.cssText+=';background:url(about:blank) fixed';
-		  }else{
-			this.dialog.style.position='fixed';
-			this.dialog.style.top=this.top ? (this.top+'px') : this.cTop+"px";
-		  }
-		  return this;
-	  },
-	  unfixed:function(){
-		  var d=document,db=d.body,dd=d.documentElement;
-		  this.dialog.style.position="absolute";
-		  this.dialog.style.top=this.top ? (this.top+'px') : (dd.scrollTop+this.cTop+"px");
-	  },
-	  setPosition:function(){
-		  var d=document,db=d.body,dd=d.documentElement;
-		  if(this.Layer){
-			  this.layDic.style.width = Math.max(db.scrollWidth, db.clientWidth) + dd.scrollLeft+"px";
-			  this.layDic.style.height = Math.max(dd.scrollHeight, dd.clientHeight) + dd.scrollTop+"px";
-		  }
-		  this.cTop=(dd.clientHeight-this.pHeight)*0.382;
-		  if(this.cTop<0) this.cTop=0;
-          this.fix ? this.fixed() : this.unfixed();
-		  this.dialog.style.left=this.left ? (this.left+'px') : ((dd.clientWidth-this.pWidth)/2+"px");
-	  },
-	  open:function(){
-		  if(this.Layer){this.shadingLayer();this.layDic.style.display="block";this.hideSelects("hidden")};
-		  this.setPosition();
-		  this.dialog.style.display="block";
-		  this.openBack();
-	  },
-	  close:function(){
-		if(this.Layer){this.layDic.style.display="none";this.layDic.parentNode.removeChild(this.layDic);this.hideSelects("visible")}
-		this.dialog.style.display="none";
-		this.closeBack();
-	  }
+    function dialog(set){
+        this.sets(set);
+        this.dialog=this.$(this.boxSet.id);
+        this.openBack=this.boxSet.openBack;
+        this.closeBack=this.boxSet.closeBack;
+        this.top=parseInt(this.boxSet.top);
+        this.left=parseInt(this.boxSet.left);
+        this.Layer=this.boxSet.Layer
+        this.fix=this.boxSet.fix;
+        this.opacity=this.boxSet.opacity || 0.5;
+        this.dialogInit();
+        this.open();
+        window.onresize=this.B(this,this.setPosition);
+    };
+    dialog.close=function(){
+        var layDic=document.getElementById('layDic'),layDicIframe=document.getElementById('layDic-iframe'),dialog=document.getElementById('dialog');
+        if(layDic){
+            layDic.style.display="none";
+            layDicIframe.style.display="none";
+            layDic.parentNode.removeChild(layDic);
+            layDicIframe.parentNode.removeChild(layDicIframe);
+        }
+        dialog.style.display="none";
+    }
+    dialog.prototype={
+        $:function(id){return "string" == typeof id ? document.getElementById(id) : id;},
+        isIE6:document.all && ([/MSIE (\d)\.0/i.exec(navigator.userAgent)][0][1] == 6),
+        B:function(object, fun) {
+            var args = Array.prototype.slice.call(arguments).slice(2);
+            return function() {
+                return fun.apply(object, args);
+            }
+        },
+        Extend:function(destination, source) {
+            for (var property in source) {
+                destination[property] = source[property];
+            }
+        },
+        getECN:function(node, name, type) {
+            var r = [], re = new RegExp("(^|\\s)" + name + "(\\s|$)"), e = (node || document).getElementsByTagName(type || "*");
+            for ( var i = 0,len=e.length; i < len; i++ ) {
+                if(re.test(e[i].className) )
+                    r.push(e[i]);
+            }
+            return r;
+        },
+        sets:function(s){
+            this.boxSet={
+                Layer:1,
+                width:"",
+                height:"",
+                left:'undefind',
+                top:'undefind',
+                fix:0,
+                openBack:function(){},
+                closeBack:function(){},
+                closeName:'p_close'
+            };
+            this.Extend(this.boxSet, s || {});
+        },
+        shadingLayer:function(){
+            if(!this.$('layDic')){
+                this.layDic=document.createElement("div");
+                this.layDic.setAttribute('id','layDic');
+                this.iframe=document.createElement("iframe");
+                this.iframe.setAttribute('id','layDic-iframe');
+                this.iframe.setAttribute('frameborder','0');
+                this.iframe.setAttribute('marginheight','0');
+                this.iframe.setAttribute('marginwidth','0');
+                this.layDic.style.cssText="opacity:"+this.opacity+";-moz-opacity:"+this.opacity+";filter:alpha(opacity="+this.opacity*100+");background:#000;position:absolute;top:0;left:0;z-index:9998;display:none";
+                this.iframe.style.cssText="opacity:0;-moz-opacity:0;filter:alpha(opacity=0);background:#000;position:absolute;top:0;left:0;z-index:9997;display:none";
+                document.body.appendChild(this.layDic);
+                document.body.appendChild(this.iframe);
+            }else{
+                this.layDic=this.$('layDic');
+            }
+        },
+        dialogInit:function(){
+            var closebut,_this=this;
+            this.dialog.style.display="block";
+            this.pHeight=this.boxSet.height ?  parseInt(this.boxSet.height) : this.dialog.offsetHeight;
+            this.pWidth=parseInt(this.boxSet.width);
+            this.dialog.style.width=this.pWidth+"px";
+            this.dialog.style.zIndex=9999;
+            this.dialog.style.display="none";
+            closebut=this.getECN(this.dialog,this.boxSet.closeName,'*');
+            for(var i=0,len=closebut.length;i<len;i++){
+                closebut[i].onclick=function(){_this.close.call(_this);return false;
+                }
+            }
+        },
+        fixed:function(){
+            var d=document,db=d.body,dd=d.documentElement;
+            if(this.isIE6){
+                var top=this.top ? this.top : this.cTop;
+                var expression=";top:expression(documentElement.scrollTop+"+top+");)"
+                this.dialog.style.position='absolute';
+                this.dialog.style.cssText+=expression;
+                document.body.style.cssText+=';background:url(about:blank) fixed';
+            }else{
+                this.dialog.style.position='fixed';
+                this.dialog.style.top=this.top ? (this.top+'px') : this.cTop+"px";
+            }
+            return this;
+        },
+        unfixed:function(){
+            var d=document,db=d.body,dd=d.documentElement;
+            this.dialog.style.position="absolute";
+            this.dialog.style.top=this.top ? (this.top+'px') : (Math.max(dd.scrollTop, db.scrollTop)+this.cTop+"px");
+        },
+        setPosition:function(){
+            var d=document,db=d.body,dd=d.documentElement;
+            if(this.Layer){
+                this.layDic.style.width = db.scrollWidth+"px";
+                this.layDic.style.height = db.scrollHeight+"px";
+                this.iframe.style.width = db.scrollWidth+"px";
+                this.iframe.style.height = db.scrollHeight+"px";
+            }
+            this.cTop=(dd.clientHeight-this.pHeight)*0.382;
+            if(this.cTop<0) this.cTop=0;
+            this.fix ? this.fixed() : this.unfixed();
+            this.dialog.style.left=this.left ? (this.left+'px') : ((dd.clientWidth-this.pWidth)/2+"px");
+        },
+        open:function(){
+            if(this.Layer){
+                this.shadingLayer();
+                this.layDic.style.display="block";
+                this.iframe.style.display="block"
+            };
+            this.setPosition();
+            this.dialog.style.display="block";
+            this.openBack();
+        },
+        close:function(){
+            if(this.Layer){
+                this.layDic.style.display="none";
+                this.iframe.style.display="none";
+                this.layDic.parentNode.removeChild(this.layDic);
+            }
+            this.dialog.style.display="none";
+            this.closeBack();
+        }
 
 
-};
-//new dialog({id:'playHistory_float',width:178})
-//dialog end
+    };
+    //new dialog({id:'playHistory_float',width:178})
+    //dialog end
 </script>
 </body>
 </html>
