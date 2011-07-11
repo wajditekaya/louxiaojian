@@ -158,13 +158,13 @@ QIE.ready(function(S){
 	S.lazyLoad(
 				 {
 				   start:function(){
-					   S.$('lxj2').value="总共有"+this.lazy.length+"张图片需要延迟加载";
+					   S.$('lxj2')[0].value="总共有"+this.lazy.length+"张图片需要延迟加载";
 				   },
 				   loading:function(){
-					   S.$('lxj').value='还有'+this.lazylength+'张图未加载';
+					   S.$('lxj')[0].value='还有'+this.lazylength+'张图未加载';
 				   },
 				   callback:function(){
-					   S.$('lxj').value='延迟加载完毕';
+					   S.$('lxj')[0].value='延迟加载完毕';
 				   }
 				}
 	);
