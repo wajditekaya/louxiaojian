@@ -148,6 +148,7 @@ input,textarea,select{*font-size:100%;}
         },
         shadingLayer:function(){
             if(!this.$('layDic')){
+                var DocumentFragment=document.createDocumentFragment();
                 this.layDic=document.createElement("div");
                 this.layDic.setAttribute('id','layDic');
                 this.iframe=document.createElement("iframe");
@@ -157,10 +158,12 @@ input,textarea,select{*font-size:100%;}
                 this.iframe.setAttribute('marginwidth','0');
                 this.layDic.style.cssText="opacity:"+this.opacity+";-moz-opacity:"+this.opacity+";filter:alpha(opacity="+this.opacity*100+");background:#000;position:absolute;top:0;left:0;z-index:9998;display:none";
                 this.iframe.style.cssText="opacity:0;-moz-opacity:0;filter:alpha(opacity=0);background:#000;position:absolute;top:0;left:0;z-index:9997;display:none";
-                document.body.appendChild(this.layDic);
-                document.body.appendChild(this.iframe);
+                DocumentFragment.appendChild(this.layDic);
+                DocumentFragment.appendChild(this.iframe);
+                document.body.appendChild(DocumentFragment);
             }else{
                 this.layDic=this.$('layDic');
+                this.iframe=this.$('layDic-iframe');
             }
         },
         dialogInit:function(){
@@ -224,6 +227,7 @@ input,textarea,select{*font-size:100%;}
                 this.layDic.style.display="none";
                 this.iframe.style.display="none";
                 this.layDic.parentNode.removeChild(this.layDic);
+                this.iframe.parentNode.removeChild(this.iframe);
             }
             this.dialog.style.display="none";
             this.closeBack();
