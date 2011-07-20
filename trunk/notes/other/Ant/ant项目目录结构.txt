@@ -1,0 +1,118 @@
+http://www.ibm.com/developerworks/cn/linux/sdk/ant/
+
+一个 ant 项目目录结构：
+  c:/HelloWorld ：项目主目录
+        /src ：源程序目录
+        /classes ：编译后的 class 文件目录
+        /lib ：开发项目所需要的类库目录，比如开发数据库时所需要的 jdbc lib（这次没用到）
+        /jar ：打包好的 jar 程序目录（这次没用到）
+        /build.xml ：项目配置文件
+
+
+
+app.home-----------+                              --Web应用项目的顶层目录
+                              +----build                 ---存放由Ant工具生成的web应用的开放目录结构
+                              +----deploy              ---存放由Ant工具生成的web应用的WAR文件
+                              +----doc                    ---存放由Ant工具生成的JavaDoc文件
+                              +----lib                       ---存放所有的Jar文件
+                              +----classes                --存放由Ant编译生成的.class文件
+                              +----src                       ----存放Java源文件和属性文件
+                              +----webRoot（或者是web）     ---存放web应用的jsp，html 和 图片 以及css和js文件
+                                           |
+                                           |
+                                           +----web_INF    ----存放web.xml，struts.xml，和TLD文件等
+
+
+
+
+
+
+
+
+
+
+http://hi.baidu.com/yux82/blog/item/c25d113bac4da8ea14cecba4.html
+
+${project.dir}     （一般与项目代号相同）
+    |
+    |--build.xml   Ant的make脚本
+    |
+    |--build       存放build.xml使用的文件目录
+    |    |
+    |    |--manifest.mf  build.xml脚本执行jar命令时用到的定义文件
+    |    |--package-list build.xml脚本执行javadoc时用到的包定义文件
+    |
+    |--ext         存放本项目用到的第三方类库和文件
+    |
+    |--docs        存放本项目有关的原始文档
+    |
+    |--src         存放该项目的源文件
+    |    |
+    |    |--main   存放该项目的主体程序源文件
+    |    |    |
+    |    |    |--com
+    |    |         |
+    |    |         |--公司或组织代号（uusee）
+    |    |              |
+    |    |              |--${项目代号}
+    |    |                  |
+    |    |                  |--*.java
+    |    |                     （注：*Test.java保留为JUnit测试用例文件名）
+    |    |
+    |    |--test   存放JUnit测试用例程序源文件
+    |    |    |
+    |    |    |--com
+    |    |         |
+    |    |         |--公司或组织代号
+    |    |              |
+    |    |              |--${项目代号}
+    |    |                  |
+    |    |                  |--*Test.java
+    |    |
+    |    |--conf(可选)存放该项目的程序执行时用到的配置文件，Java 特性（键=值）
+    |    |            格式文件建议以*.properties形式命名，XML格式文件以*.xml
+    |    |            形式命名
+    |    |
+    |    |--dbs(可选) 存放该项目用到的数据库表生成脚本文件，
+    |    |            建议以*.sql形式命名
+    |    |--htmls     存放该项目用到的HTML等WEB静态文件
+    |    |--templates(可选) 存放该项目用到的模板文件
+
+
+以下目录由Ant执行build.xml脚本自动形成，放置该项目软件发行时的所有文件和目录，并且该目录下所有的文件和目录均由build.xml脚本自动形成。
+dist/${project.dir}    
+    |
+    |--dbs(可选) 存放该项目用到的数据库表生成脚本文件，从
+    |            ../../../${project.dir}/src/dbs拷贝过来
+    |
+    |--web       该项目web应用的根
+    |    |
+    |    |--存放了所有的HTML文件（*.htm, *.html等），从
+    |    |  ../../../${project.dir}/src/htmls拷贝过来
+    |    |
+    |    |--WEB-INF       Web包容器使用目录
+    |         |
+    |         |--web.xml  部署描述器，以及其他从
+    |         |           ../../../../${project.dir}/src/conf拷贝过来
+    |         |           的配置文件
+    |         |
+    |         |--lib      应用程序所需要的第三方API支撑库，从
+    |         |           ../../../../../${project.dir}/ext中拷贝过来。 
+    |         |
+    |         |--classes  存放用java编译../../../../../${project.dir}/src/main
+    |                     下的*.java文件后生成的类文件。
+    |                     也包括从../../../../../${project.dir}/src/templates
+    |                     拷贝过来的模板文件
+    |
+    |--tests     存放用java编译../../../${project.dir}/src/test
+    |            下的*.java文件后的生成的类文件。正式发行时，该目录可以删去。
+    |
+    |--logs(可选)正式运行时，存放日志文件
+    |
+    |--docs      存放项目有关的文档，部分文档可从
+    |    |       ../../../${project.dir}/docs中拷贝过来，
+    |    |       正式发行时，该目录可以删去。
+    |    |--api  存放用javadoc形成的../../../../${project.dir}/src/main下的
+    |            *.java程序API文档。
+    |
+    |--temp      存放一些临时文件，如单元测试的结果报告文件等。

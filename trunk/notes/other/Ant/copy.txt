@@ -1,0 +1,107 @@
+Ant Copy任务的几个有用参数 (最后修改时间, 覆盖, 目录结构)
+=====================================================================================
+关键字: 最后修改时间, 覆盖, 目录结构
+在使用Ant的copy任务过程中,我们有时会用到几个有用的参数: 
+
+1. preservelastmodified  
+   缺省值: false 
+   建议值: true 
+   看字面意思,就大概能猜到这个参数是做什么用的.使用copy任务时, 默认拷贝会修改文件的最后修改时间,这是我们一般情况下不想看到的。 所以一般来说,会将此参数设为 true 
+
+2. overwrite 
+   缺省值: false 
+   建议值: 根据情况决定 
+   即默认情况下,不会去覆盖同目录下的同名文件. 
+
+3. flatten 
+   缺省值: false 
+   建议值:根据情况决定 
+   这个参数很有用. 就是在拷贝文件时,不拷贝文件的目录结构. 
+   例: 
+      我要把 dist\dir1\a.jar 
+                 \dir2\b.jar 
+      都拷贝到 WEB-INF\lib下, 如果不设置该参数,如下: 
+      <copy todir="WEB-INF\lib"> 
+       <fileset dir="dist"> 
+         <include name="**/*.jar" /> 
+       </fileset> 
+      </copy> 
+      ,运行它,再看看 \WEB-INF\lib目录里的文件 
+      \WEB-INF\lib 
+                  \dir1\a.jar 
+                  \dir2\b.jar 
+      这可不是我想要的结果。 
+      加上 flattern="true"试试,哈哈,这正是我要的结果, 
+      a.jar 和 b.jar 就在 WEB-INF\lib的目录下. 
+
+
+
+
+
+ant中copy操作学习心得
+=================================================================================================================
+Ant真是太方便了，以前都没注意到它。功能很强大，能创建数据库，配置服务器，部署发布应用……只需要写好build.xml文件，剩下的就交给ant来“安装”你的WEB应用了。
+
+Appfuse的第一个ant命令是ant new，其任务是建立一个新命名的project，少不了会复制很多文件。build.xml中也有很多copy操作，为了搞清楚ant new到底干了些什么事，还是先把copy操作了解一下。看了会ant的DOCS，网上也找了些文章，发现copy这部分都是一带而过，讲得很浅，于是我就只有自己实验下，发现还有点收获。 ant版本为1.6.5。
+
+1. 拷贝单个文件到指定目录下。
+例：<copy todir="${basedir}/new" file="${basedir}/old/old1.txt1"> 
+将${basedir}/old/old.txt文件拷贝到${basedir}/new下
+
+2. 拷贝一批文件到指定目录下
+例：<copy todir="${basedir}/new">
+           <fileset dir="${basedir}/old">
+              <include name="old1.txt" />
+              <include name="old2.txt" />
+              <exclude name="old8.txt" />
+          </fileset>
+       </copy>
+      这里fileset定义的是原文件的组成形式，<include/>子属性表示包括，<exclude/>子属性表示排除，很简单，通过他们组合实现多文件的筛选，当然我这个例子用得很傻。比如
+                <include name="appgen/**"/>
+                <include name="ibatis/**"/>
+                <exclude name="**/*.log"/>
+      拷贝appget目录和ibatis目录下除了.log文件以外的其它所有文件和子目录。
+
+      可以把<fileset/>简写成<fileset dir="${basedir}/old" includes="old1.txt,old2.txt" />，includes可以理解成include的复数形式，包含多个文件时用逗号隔开，excludes也一样。
+
+3. 拷贝一个目录到指定目录下
+例：<copy todir="${basedir}/new">
+           <fileset dir="${basedir}/old">
+             <include name="appgen" />
+             <include name="appgen/" />
+             <include name=appgen/**" />
+             <include name="appgen/***" />
+           </fileset>
+       </copy>
+      同样使用<fileset/>属性，name指定目录名，不过这里要分两种情况，用<include/>子属性和不用<include/>子属性.
+      若使用<include/>， 又要分三种情况
+          若是“appgen”，则只会拷贝名为appgen的空目录过去，它里面的文件和子目录则不会拷贝。
+          若是“appgen/”，或“appgen/**”，则会把整个appgen目录拷贝过去，包括里面的文件和子目录。
+          若是“appgen/*”，则只会把该目录和该目录下第一级子目录的所有东西拷贝过去，而不会拷贝第二级和第二级以下的。注：“appgen/*”这儿是一个*号，*号若大于两个，也跟一个*号是同样效果。比如“appgen/*”和“appgen/****”都只拷贝appgen目录下第一级子目录。
+
+注：若appeng这个目录本身就是个空目录，无论怎么写，这个空目录都不会被拷贝。也就是说，copy操作不会产生创建空目录的作用，要想创建空目录，只有用mkdir。
+
+      若不使用任何<include>属性，如
+           <fileset dir="${basedir}/old">
+           </fileset>
+      则会拷贝${basedir}/old下的所有文件和子目录。
+
+注：使用<exclude/>排除目录时，目录名必须写成“appgen/”或“appgen/**”形式，否则不会生效。
+
+      以上是三种拷贝到目录的种类，注意如果计算机中没有todir指定的路径，ant将会自动创建这个路径。
+
+4. 拷贝单个的文件： 
+〈copy tofile="old.txt" file="new.txt" /〉就这么简单就行了。
+当然也可以写成
+  <copy tofile="${basedir}/new/new.txt">
+     <fileset dir="${basedir}/old" includes="old.txt" />
+  </copy>
+      这里includes就只能写一个文件，不能写上多个文件，因为不能将多个文件复制到一个文件中去，所以这样麻烦的写法是没有意义的。
+
+
+
+      复制肯定还要涉及到同名覆盖的问题，ant在copy类的API中说明：Files are only copied if the source file is newer than the destination file，这里的newer是指文件的修改时间，即使你在修改时文件内容没有任何变化，只是导致修改时间变了，ant同样会覆盖同名文件，也就是说，ant不会检查文件内容。
+
+      对于是复制目录的情况，由于目录没有修改时间，ant还是通过检查目录内文件的修改时间来决定是否覆盖的，若目录内某文件修改时间有变化，则会覆盖这个文件，而不是整个目录。
+
+如果要强行覆盖，<copy/>有个overwrite属性，默认为false，改成true就行了。
