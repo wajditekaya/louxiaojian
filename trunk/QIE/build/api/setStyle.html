@@ -23,6 +23,7 @@ function camelize(s) {
 }
 	  
 function setStyle(elem, styles) {
+  var elem=$(elem);
   for (property in styles) {
 	  if(!styles.hasOwnProperty(property)) continue;
       if(property ==='opacity'){
