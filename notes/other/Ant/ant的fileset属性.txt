@@ -69,7 +69,7 @@ fileset 是包含从基文件夹往下的所有一组文件。
     <target name="excopy" depends="archive">
         <copy todir="copy001">
             <fileset dir="lib"  casesensitive="true">
-                <EXClude name="**/*.txt"/>
+                <exclude name="**/*.txt"/>
             </fileset>
         </copy>
     </target>
