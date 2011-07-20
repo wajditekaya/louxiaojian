@@ -9,12 +9,12 @@
 <body>
 <script>
   var DocumentFragment=document.createDocumentFragment(),i=0,cs=document.getElementsByTagName('head')[0].getElementsByTagName('style')[0]
-  
+
   for(var p in cs){
 	  var t;
-	  i++
-	  DocumentFragment.appendChild(t=document.createElement('div')).className='zhi'
-	  t.innerHTML="("+i+":)"+p+"£º===<span>"+cs[p]+'</span>'
+	  i++;
+	  DocumentFragment.appendChild(t=document.createElement('div')).className="zhi";
+	  t.innerHTML="("+i+":)"+p+"£º===<span>"+cs[p]+"</span>";
 	  
   }
   document.body.appendChild(DocumentFragment)
