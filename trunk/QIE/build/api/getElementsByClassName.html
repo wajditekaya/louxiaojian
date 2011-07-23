@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>通用getElementsByClassName的写法</title>
+</head>
+
+<body>
+<div class="action"></div>
+<div class="action"></div>
+<div class="action"></div>
+<div class="action"></div>
+<div class="action"></div>
+<div class="action"></div>
+<div class="action"></div>
+<div class="action"></div>
+<p class="action"></p>
+<p class="action"></p>
+<p class="action"></p>
+<p class="action"></p>
+<script type="text/javascript">
+	function getElementsByClassName(node, name, type) {
+		if (node.getElementsByClassName){
+			  var nodes= node.getElementsByClassName(name);
+			  arr = [].slice.call(nodes);
+			  return arr;
+			}
+		    else {
+			var r = [], re = new RegExp("(^|\\s)" + name + "(\\s|$)"), e = (node || document).getElementsByTagName(type || "*");
+			for ( var i = 0; i < e.length; i++ ) {
+				if( re.test(e[i].className) )
+					r.push(e[i]);
+			}
+			return r;
+		}
+	}
+	
+var ui=getElementsByClassName(document,"action","div");
+var lxj=ui.concat([1,2])
+alert(ui.length);
+alert(lxj.length);
+</script>
+</body>
+</html>
