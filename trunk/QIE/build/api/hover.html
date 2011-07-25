@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="gbk"/>
+    <title>hover</title>
+    <style type="text/css">
+        *{margin: 0;padding:0}
+        .test{background:#eee;margin:0 50px;line-height: 22px;padding:10px;margin-bottom:20px}
+        .hover{background:#f60}
+    </style>
+</head>
+<body>
+<div id="test" class="test">
+    <span>mouseenter and mouseleave</span>
+    <p id="nub">sadasdsad</p>
+    <p>mouseenter and mouseleave</p>
+</div>
+
+<div id="test3" class="test">
+    <span>onmouseover and onmouseout</span>
+    <p id="nub2">sadasdsad</p>
+    <p>onmouseover and onmouseout</p>
+</div>
+
+<div id="test2" class="test">
+    <span>asdasds</span>
+    <p>sadasdsad</p>
+    <p>sadasdsad</p>
+</div>
+
+<div style="position:relative;zoom:1;width:200px;margin-left:200px">
+    <div id="J_dm" style="width: 200px;line-height:22px;background:#f60;padding:0 10px">sadasd</div>
+    <div id="J_dm2" style="width:200px;position:absolute;top:50px;left:0;height:200px;background:#f60;padding:10px;display:none;">
+        <span>asdasds</span>
+        <p>sadasdsad</p>
+        <p>sadasdsad</p>
+    </div>
+</div>
+
+<script>
+    var hover = function(elem,over,out){
+        function elContains(a, b){
+            try{
+                return a.contains ? a != b && a.contains(b) : !!(a.compareDocumentPosition(b) & 16);
+            }catch(e){}
+        }
+
+        function _hover(elem, type, listener){
+            function fun(e){
+                var a = e.currentTarget, b = e.relatedTarget;
+                if(!elContains(a, b) && a!=b){
+                    listener.call(e.currentTarget,e);
+                }
+            }
+            if (elem.addEventListener){
+                if(type=='mouseenter'){
+                    elem.addEventListener('mouseover', fun, false);
+                }else if(type=='mouseleave'){
+                    elem.addEventListener('mouseout', fun, false);
+                }else{
+                    elem.addEventListener(type, fn, false);
+                }
+            }else if(elem.attachEvent){
+                elem['e'+type+listener] = listener;
+                elem[type+listener] = function(){elem['e'+type+listener](window.event)}
+                elem.attachEvent( 'on'+type, elem[type+listener])
+                return true;
+            }
+        }
+        over && (Object.prototype.toString.call(over)==='[object Function]') && _hover(elem,'mouseenter',over);
+        out && (Object.prototype.toString.call(out)==='[object Function]') && _hover(elem,'mouseleave',out);
+    };
+
+    var nubn=0,nubn2=0;
+    hover(
+            document.getElementById('test'),
+            function(){
+                (this.className.indexOf('hover')==-1) && (this.className+=" hover");
+                document.getElementById('nub').innerHTML=++nubn;
+            },
+            function(){
+                (this.className.indexOf('hover')!=-1) && (this.className=this.className.replace('hover',''))
+            }
+    );
+    hover(
+            document.getElementById('test2'),
+            function(){(this.className.indexOf('hover')==-1) && (this.className+=" hover");}
+    );
+    (function(){
+        var J_dm=document.getElementById('J_dm'),J_dm2=document.getElementById('J_dm2'),time;
+        hover(
+                J_dm,
+                function(){
+                    time && clearTimeout(time);
+                    J_dm2.style.display='block'
+                },
+                function(){
+                    time=setTimeout(function(){
+                        J_dm2.style.display='none'
+                    },100)
+
+                }
+        );
+        hover(
+                J_dm2,
+                function(){
+                    time && clearTimeout(time);
+                    J_dm2.style.display='block'
+                },
+                function(){
+                    J_dm2.style.display='none'
+                }
+        );
+    })();
+
+
+    document.getElementById('test3').onmouseover=function(){
+        (this.className.indexOf('hover')==-1) && (this.className+=" hover");
+        document.getElementById('nub2').innerHTML=++nubn2;
+    }
+</script>
+</body>
+</html>
