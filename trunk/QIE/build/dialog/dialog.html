@@ -4,49 +4,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>弹出框js</title>
 <style type="text/css">
-/*======================================
-author:	lou xiao jian<jxsr_lxj@163.com>
-======================================*/
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
 body{font:12px/22px Tahoma,"宋体";word-break:break-all;text-align:center;color:#383838}
-#page{padding-bottom:15px}
 fieldset,img{border:none 0;} 
 table {border-collapse:collapse;border-spacing:0;} 
 ol,li,ul{list-style:none;} 
 address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal;}
 caption,th{text-align:left;} 
-h1,h2,h3,h4,h5,h6{font-size:100%;} 
-q:before,q:after{content:'';}
-abbr,acronym{border:0;font-variant:normal;}
-sup{vertical-align:text-top;}
-sub{vertical-align:text-bottom;}
-input,select,textarea{font:normal normal 12px "Verdana";outline:none}
-input,textarea,select{*font-size:100%;}
-/* 字体属性 [定义规则，小写f加属性名称] */
-.fB{font-weight:bold;}
-.fI{font-style:italic;}
-/* 字体大小*/
-.fs12{font-size:12px;}
-.fs14{font-size:14px;}
-.mr10{margin-right:10px}
-.ml10{margin-left:10px}
-/* 浮动*/
-.fl{float:left;}
-.fr{float:right}
-/* 其它属性*/
-.hide{display:none}
-/*lrBx*/
-.lrBx,.lrBx .rbx{overflow:hidden;zoom:1}
-.lrBx .lbx{float:left;_margin-right:-3px}
-.lrBx .lbx img{vertical-align:top}
-/*.lrBx .rbx{padding-left:10px}*/
-/*==clear==*/
-.clear{overflow:hidden;zoom:1}
-.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
-* html>body .clearfix {display: inline-block;width:100%;}
-* html .clearfix{/* Hides from IE-mac \*/height: 1%;/* End hide from IE-mac */}
-/* ie7 hack*/
-*+html .clearfix {min-height:1%;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
 
 .exp{text-align:left; line-height:30px; width:600px; margin:0 auto; cursor:pointer}
 .dialog{position:absolute;background:#fff;padding:10px;border:1px solid #ccc;border-radius:5px;-moz-border-radius:5px; -webkit-border-radius:5px;box-shadow:0px 0px 5px #ccc;-moz-box-shadow:0px 0px 5px #ccc;-webkit-box-shadow:0px 0px 5px #ccc; text-align:left; display:none}
@@ -55,6 +20,7 @@ input,textarea,select{*font-size:100%;}
 
 <body>
 <div class="exp" onclick="new dialog({id:'lxj',width:350})">new dialog({id:'lxj',width:350})</div>
+<div class="exp" onclick="new dialog({id:'lxj',width:350,left:0,top:0})">new dialog({id:'lxj',width:350,left:0,top:0})</div>
 <div class="exp" onclick="new dialog({id:'lxj',width:350,opacity:0.1})">new dialog({id:'lxj',width:350,opacity:0.1})</div>
 <div class="exp" onclick="new dialog({id:'lxj',width:350,Layer:0})">new dialog({id:'lxj',width:350,Layer:0})</div>
 <div class="exp" onclick="new dialog({id:'lxj',width:350,fix:1})">new dialog({id:'lxj',width:350,fix:1})</div>
@@ -82,161 +48,9 @@ input,textarea,select{*font-size:100%;}
 <div style="height:2000px"></div>
 <div class="exp" onclick="new dialog({id:'lxj',width:350})">new dialog({id:'lxj',width:350})</div>
 
-<div id="lxj" class="dialog" onclick="alert(Math.max(document.body.scrollHeight,document.documentElement.clientHeight) +'和'+ document.documentElement.scrollTop)">lxj<textarea style="width:100%; height:50px" id="textarea"></textarea><a href="#" onclick="return false" class="p_close">关闭一</a><a href="#" onclick="return false" class="p_close">关闭二</a></div>
-<div id="lxj2" class="dialog" onclick="alert(Math.max(document.body.scrollHeight,document.documentElement.clientHeight) +'和'+ document.documentElement.scrollTop)">第二种<textarea style="width:100%; height:50px" id="textarea"></textarea><a href="#" onclick="return false" class="p_close">关闭一</a></div>
+<div id="lxj" class="dialog" >lxj<textarea style="width:100%; height:50px" id="textarea"></textarea><a href="#" onclick="return false" class="p_close">关闭一</a><a href="#" onclick="return false" class="p_close">关闭二</a></div>
+<div id="lxj2" class="dialog" >第二种<textarea style="width:100%; height:50px" id="textarea"></textarea><a href="#" onclick="return false" class="p_close">关闭一</a></div>
 
-<script type="text/javascript">
-    function dialog(set){
-        this.sets(set);
-        this.dialog=this.$(this.boxSet.id);
-        this.openBack=this.boxSet.openBack;
-        this.closeBack=this.boxSet.closeBack;
-        this.top=parseInt(this.boxSet.top);
-        this.left=parseInt(this.boxSet.left);
-        this.Layer=this.boxSet.Layer
-        this.fix=this.boxSet.fix;
-        this.opacity=this.boxSet.opacity || 0.5;
-        this.dialogInit();
-        this.open();
-        window.onresize=this.B(this,this.setPosition);
-    };
-    dialog.close=function(){
-        var layDic=document.getElementById('layDic'),layDicIframe=document.getElementById('layDic-iframe'),dialog=document.getElementById('dialog');
-        if(layDic){
-            layDic.style.display="none";
-            layDicIframe.style.display="none";
-            layDic.parentNode.removeChild(layDic);
-            layDicIframe.parentNode.removeChild(layDicIframe);
-        }
-        dialog.style.display="none";
-    }
-    dialog.prototype={
-        $:function(id){return "string" == typeof id ? document.getElementById(id) : id;},
-        isIE6:document.all && ([/MSIE (\d)\.0/i.exec(navigator.userAgent)][0][1] == 6),
-        B:function(object, fun) {
-            var args = Array.prototype.slice.call(arguments).slice(2);
-            return function() {
-                return fun.apply(object, args);
-            }
-        },
-        Extend:function(destination, source) {
-            for (var property in source) {
-                destination[property] = source[property];
-            }
-        },
-        getECN:function(node, name, type) {
-            var r = [], re = new RegExp("(^|\\s)" + name + "(\\s|$)"), e = (node || document).getElementsByTagName(type || "*");
-            for ( var i = 0,len=e.length; i < len; i++ ) {
-                if(re.test(e[i].className) )
-                    r.push(e[i]);
-            }
-            return r;
-        },
-        sets:function(s){
-            this.boxSet={
-                Layer:1,
-                width:"",
-                height:"",
-                left:'undefind',
-                top:'undefind',
-                fix:0,
-                openBack:function(){},
-                closeBack:function(){},
-                closeName:'p_close'
-            };
-            this.Extend(this.boxSet, s || {});
-        },
-        shadingLayer:function(){
-            if(!this.$('layDic')){
-                var DocumentFragment=document.createDocumentFragment();
-                this.layDic=document.createElement("div");
-                this.layDic.setAttribute('id','layDic');
-                this.iframe=document.createElement("iframe");
-                this.iframe.setAttribute('id','layDic-iframe');
-                this.iframe.setAttribute('frameborder','0');
-                this.iframe.setAttribute('marginheight','0');
-                this.iframe.setAttribute('marginwidth','0');
-                this.layDic.style.cssText="opacity:"+this.opacity+";-moz-opacity:"+this.opacity+";filter:alpha(opacity="+this.opacity*100+");background:#000;position:absolute;top:0;left:0;z-index:9998;display:none";
-                this.iframe.style.cssText="opacity:0;-moz-opacity:0;filter:alpha(opacity=0);background:#000;position:absolute;top:0;left:0;z-index:9997;display:none";
-                DocumentFragment.appendChild(this.layDic);
-                DocumentFragment.appendChild(this.iframe);
-                document.body.appendChild(DocumentFragment);
-            }else{
-                this.layDic=this.$('layDic');
-                this.iframe=this.$('layDic-iframe');
-            }
-        },
-        dialogInit:function(){
-            var closebut,_this=this;
-            this.dialog.style.display="block";
-            this.pHeight=this.boxSet.height ?  parseInt(this.boxSet.height) : this.dialog.offsetHeight;
-            this.pWidth=parseInt(this.boxSet.width);
-            this.dialog.style.width=this.pWidth+"px";
-            this.dialog.style.zIndex=9999;
-            this.dialog.style.display="none";
-            closebut=this.getECN(this.dialog,this.boxSet.closeName,'*');
-            for(var i=0,len=closebut.length;i<len;i++){
-                closebut[i].onclick=function(){_this.close.call(_this);return false;
-                }
-            }
-        },
-        fixed:function(){
-            var d=document,db=d.body,dd=d.documentElement;
-            if(this.isIE6){
-                var top=this.top ? this.top : this.cTop;
-                var expression=";top:expression(documentElement.scrollTop+"+top+");)"
-                this.dialog.style.position='absolute';
-                this.dialog.style.cssText+=expression;
-                document.body.style.cssText+=';background:url(about:blank) fixed';
-            }else{
-                this.dialog.style.position='fixed';
-                this.dialog.style.top=this.top ? (this.top+'px') : this.cTop+"px";
-            }
-            return this;
-        },
-        unfixed:function(){
-            var d=document,db=d.body,dd=d.documentElement;
-            this.dialog.style.position="absolute";
-            this.dialog.style.top=this.top ? (this.top+'px') : (Math.max(dd.scrollTop, db.scrollTop)+this.cTop+"px");
-        },
-        setPosition:function(){
-            var d=document,db=d.body,dd=d.documentElement;
-            if(this.Layer){
-                this.layDic.style.width = db.scrollWidth+"px";
-                this.layDic.style.height = db.scrollHeight+"px";
-                this.iframe.style.width = db.scrollWidth+"px";
-                this.iframe.style.height = db.scrollHeight+"px";
-            }
-            this.cTop=(dd.clientHeight-this.pHeight)*0.382;
-            if(this.cTop<0) this.cTop=0;
-            this.fix ? this.fixed() : this.unfixed();
-            this.dialog.style.left=this.left ? (this.left+'px') : ((dd.clientWidth-this.pWidth)/2+"px");
-        },
-        open:function(){
-            if(this.Layer){
-                this.shadingLayer();
-                this.layDic.style.display="block";
-                this.iframe.style.display="block"
-            };
-            this.setPosition();
-            this.dialog.style.display="block";
-            this.openBack();
-        },
-        close:function(){
-            if(this.Layer){
-                this.layDic.style.display="none";
-                this.iframe.style.display="none";
-                this.layDic.parentNode.removeChild(this.layDic);
-                this.iframe.parentNode.removeChild(this.iframe);
-            }
-            this.dialog.style.display="none";
-            this.closeBack();
-        }
-
-
-    };
-    //new dialog({id:'playHistory_float',width:178})
-    //dialog end
-</script>
+<script type="text/javascript" src="dialog.js"></script>
 </body>
 </html>
