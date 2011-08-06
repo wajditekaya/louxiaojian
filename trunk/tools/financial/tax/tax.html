@@ -7,17 +7,25 @@
         *{margin:0;padding:0}
         body{font-size:14px}
         .input{border:1px solid #ccc;font-size:18px;color:#f00;font-weight:bold;height:24px;width:200px;vertical-align:top;}
-        .from-item{line-height:26px;padding-bottom:10px}
-        .button{padding:4px 7px}
+        .from-item{line-height:26px;padding-bottom:10px;overflow:hidden;zoom:1}
+		.from-item label,.from-item .input{float:left}
+		.from-item label{width:60px;text-align:right}
+        .button{padding:4px 7px;margin-left:60px}
     </style>
+	<script>
+	function $(id){
+	  return typeof(id)=='string' ? document.getElementById(id) : id
+	}
+	</script>
 </head>
 <body>
 
 <div style="width:500px;margin:0 auto;padding:10px">
     <div class="from-item"><label>薪水：</label><input type="text" id="xinshui" value="" class="input"></div>
-    <!--<div class="from-item"><label>三金：</label><input type="text" id="xinshui" value="" class="input"></div>-->
+    <div class="from-item"><label>公积金：</label><input type="text" id="gongjijin" value="1354" class="input"></div>
+	<div class="from-item"><label>社保：</label><input type="text" id="shebao" value="1063.5" class="input"></div>
     <div class="from-item"><label>个税：</label><input type="text" id="test" value="" class="input"></div>
-    <input type="button" class="button" value="计算" onclick="document.getElementById('test').value=chinaTax.getTax(document.getElementById('xinshui').value-chinaTax.begin);" />
+    <input type="button" class="button" value="计算" onclick="$('test').value=chinaTax.getTax($('xinshui').value-chinaTax.begin-$('gongjijin').value/2-$('shebao').value);" />
 </div>
 
 <script>
@@ -25,13 +33,13 @@
     window['chinaTax']={
         'begin':3500,
         'jb':[
-            {level:1,income:'1-4500',tax:0.03,deduct:0},
-            {level:2,income:'4500-7500',tax:0.1,deduct:75},
-            {level:3,income:'7500-12000',tax:0.2,deduct:525},
-            {level:5,income:'12000-38000',tax:0.25,deduct:975},
-            {level:4,income:'38000-58000',tax:0.3,deduct:2725},
-            {level:6,income:'58000-83000',tax:0.35,deduct:5475},
-            {level:7,income:'83000-above',tax:0.45,deduct:13475}
+            {level:1,income:'1-1500',tax:0.03,deduct:0},
+            {level:2,income:'1500-4500',tax:0.1,deduct:105},
+            {level:3,income:'4500-9000',tax:0.2,deduct:555},
+            {level:5,income:'9000-35000',tax:0.25,deduct:1005},
+            {level:4,income:'35000-55000',tax:0.3,deduct:2755},
+            {level:6,income:'55000-80000',tax:0.35,deduct:5505},
+            {level:7,income:'80000-above',tax:0.45,deduct:13505}
         ],
         'getLevel': function (value){
             var l,suanfa=this.jb;
