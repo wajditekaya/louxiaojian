@@ -11,6 +11,7 @@
 		.from-item label,.from-item .input{float:left}
 		.from-item label{width:100px;text-align:right}
         .button{padding:4px 7px;margin-left:100px}
+		h2{font-size:14px;padding-left:100px;margin-bottom:15px}
     </style>
 	<script>
 	function $(id){
@@ -20,47 +21,79 @@
 </head>
 <body>
 
-<div style="width:500px;margin:0 auto;padding:10px">
-    <div class="from-item"><label>薪水：</label><input type="text" id="xinshui" value="" class="input"></div>
-    <div class="from-item"><label>公积金：</label><input type="text" id="gongjijin" value="1354" class="input"></div>
-	<div class="from-item"><label>社保：</label><input type="text" id="shebao" value="1063.5" class="input"></div>
-    <div class="from-item"><label>个税：</label><input type="text" id="test" value="" class="input"></div>
-    <div class="from-item"><label>实发薪水：</label><input type="text" id="shifaxinshui" value="" class="input"></div>
-    <input id="J_Button" type="button" class="button" value="计算"/>
-</div>
+<div style="width:1000px;margin:0 auto;overflow:hidden">
 
+        <div style="width:480px;margin:0 auto;padding:10px;float:left">
+            <h2>新个税</h2>
+            <div class="from-item"><label>薪水：</label><input type="text" id="xinshui" value="" class="input"></div>
+            <div class="from-item"><label>公积金：</label><input type="text" id="gongjijin" value="1354" class="input"></div>
+            <div class="from-item"><label>社保：</label><input type="text" id="shebao" value="1063.5" class="input"></div>
+            <div class="from-item"><label>个税：</label><input type="text" id="test" value="" class="input"></div>
+            <div class="from-item"><label>实发薪水：</label><input type="text" id="shifaxinshui" value="" class="input"></div>
+            <input id="J_Button" type="button" class="button" value="计算"/>
+        </div>
+
+        <div style="width:480px;margin:0 auto;padding:10px;float:left">
+        	<h2>旧个税</h2>
+            <div class="from-item"><label>薪水：</label><input type="text" id="xinshui2" value="" class="input"></div>
+            <div class="from-item"><label>公积金：</label><input type="text" id="gongjijin2" value="1354" class="input"></div>
+            <div class="from-item"><label>社保：</label><input type="text" id="shebao2" value="1063.5" class="input"></div>
+            <div class="from-item"><label>个税：</label><input type="text" id="test2" value="" class="input"></div>
+            <div class="from-item"><label>实发薪水：</label><input type="text" id="shifaxinshui2" value="" class="input"></div>
+            <input id="J_Button2" type="button" class="button" value="计算"/>
+        </div>
+             
+</div>
 <script>
 (function(){
     window['chinaTax']={
-        'begin':3500,
-        'jb':[
-            {level:1,income:'1-1500',tax:0.03,deduct:0},
-            {level:2,income:'1500-4500',tax:0.1,deduct:105},
-            {level:3,income:'4500-9000',tax:0.2,deduct:555},
-            {level:4,income:'9000-35000',tax:0.25,deduct:1005},
-            {level:5,income:'35000-55000',tax:0.3,deduct:2755},
-            {level:6,income:'55000-80000',tax:0.35,deduct:5505},
-            {level:7,income:'80000-above',tax:0.45,deduct:13505}
-        ],
-        'getLevel': function (value){
-            var l,suanfa=this.jb;
-            for(var i=0,ii=suanfa.length;i<ii;i++){
+        'jb':{
+			'begin':3500,
+			'grade':
+				[
+					{level:1,income:'1-1500',tax:0.03,deduct:0},
+					{level:2,income:'1500-4500',tax:0.1,deduct:105},
+					{level:3,income:'4500-9000',tax:0.2,deduct:555},
+					{level:4,income:'9000-35000',tax:0.25,deduct:1005},
+					{level:5,income:'35000-55000',tax:0.3,deduct:2755},
+					{level:6,income:'55000-80000',tax:0.35,deduct:5505},
+					{level:7,income:'80000-above',tax:0.45,deduct:13505}
+				]
+		},
+        'jb2':{
+			'begin':2000,
+			'grade':[
+					{level:1,income:'1-500',tax:0.05,deduct:0},
+					{level:2,income:'500-2000',tax:0.1,deduct:25},
+					{level:3,income:'2000-5000',tax:0.15,deduct:125},
+					{level:4,income:'5000-20000',tax:0.2,deduct:375},
+					{level:5,income:'20000-40000',tax:0.25,deduct:1375},
+					{level:6,income:'40000-60000',tax:0.30,deduct:3375},
+					{level:7,income:'60000-80000',tax:0.35,deduct:6375},
+					{level:8,income:'80000-100000',tax:0.4,deduct:10375},
+					{level:9,income:'100000-above',tax:0.45,deduct:15375}
+			]
+		},
+		'suanfa':function(type){return type==='old' ? this.jb2 : this.jb},
+        'getLevel': function (value,type){
+            var l,suanfa=this.suanfa(type),grade=suanfa.grade;
+            for(var i=0,ii=grade.length;i<ii;i++){
                 var income;
-                if(value>suanfa[ii-1].income.split('-')[0]){
-                    l=suanfa[ii-1].level;
+                if(value>grade[ii-1].income.split('-')[0]){
+                    l=grade[ii-1].level;
                     break;
                 }
-                income=suanfa[i].income.split('-');
-                if(value>=income[0] && value<income[1] && value<suanfa[6].income.split('-')[0]){
-                    l=suanfa[i].level;
+                income=grade[i].income.split('-');
+                if(value>=income[0] && value<income[1] && value<grade[ii-1].income.split('-')[0]){
+                    l=grade[i].level;
                     break;
                 }
             }
             return l;
         },
-        'getTax': function (value){
-            var l=this.getLevel(value)-1,suanfa=this.jb;
-            return value*suanfa[l].tax-suanfa[l].deduct;
+        'getTax': function (value,type){
+            var suanfa=this.suanfa(type),grade=suanfa.grade,value=value-suanfa.begin,l=this.getLevel(value,type)-1;
+            return value*grade[l].tax-grade[l].deduct;
         }
     };
 	
@@ -82,10 +115,23 @@
 			return false;
 		}
 		var xinshui=$('xinshui').value,gongjijin=$('gongjijin').value/2,shebao=$('shebao').value,
-		    gesui=chinaTax.getTax(xinshui-chinaTax.begin-gongjijin-shebao),
+		    gesui=chinaTax.getTax(xinshui-gongjijin-shebao),
 		    shijixinshui=xinshui-gongjijin-shebao-gesui;
 		    $('test').value=gesui;
 		    $('shifaxinshui').value=shijixinshui;
+		
+	}
+	
+	$('J_Button2').onclick=function(){
+		if(!trim($('xinshui2').value)){
+			alert('薪水不能为空');
+			return false;
+		}
+		var xinshui=$('xinshui2').value,gongjijin=$('gongjijin2').value/2,shebao=$('shebao2').value,
+		    gesui=chinaTax.getTax((xinshui-gongjijin-shebao),'old'),
+		    shijixinshui=xinshui-gongjijin-shebao-gesui;
+		    $('test2').value=gesui;
+		    $('shifaxinshui2').value=shijixinshui;
 		
 	}
 	
