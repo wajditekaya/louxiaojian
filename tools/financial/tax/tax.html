@@ -9,8 +9,8 @@
         .input{border:1px solid #ccc;font-size:18px;color:#f00;font-weight:bold;height:24px;width:200px;vertical-align:top;}
         .from-item{line-height:26px;padding-bottom:10px;overflow:hidden;zoom:1}
 		.from-item label,.from-item .input{float:left}
-		.from-item label{width:60px;text-align:right}
-        .button{padding:4px 7px;margin-left:60px}
+		.from-item label{width:100px;text-align:right}
+        .button{padding:4px 7px;margin-left:100px}
     </style>
 	<script>
 	function $(id){
@@ -25,7 +25,8 @@
     <div class="from-item"><label>公积金：</label><input type="text" id="gongjijin" value="1354" class="input"></div>
 	<div class="from-item"><label>社保：</label><input type="text" id="shebao" value="1063.5" class="input"></div>
     <div class="from-item"><label>个税：</label><input type="text" id="test" value="" class="input"></div>
-    <input type="button" class="button" value="计算" onclick="$('test').value=chinaTax.getTax($('xinshui').value-chinaTax.begin-$('gongjijin').value/2-$('shebao').value);" />
+    <div class="from-item"><label>实发薪水：</label><input type="text" id="shifaxinshui" value="" class="input"></div>
+    <input id="J_Button" type="button" class="button" value="计算"/>
 </div>
 
 <script>
@@ -62,6 +63,33 @@
             return value*suanfa[l].tax-suanfa[l].deduct;
         }
     };
+	
+	/**
+	 * Removes the whitespace from the beginning and end of a string.
+	 */
+	//undef();
+	function trim(str,undef){
+	   var EMPTY = '',
+		_trim = String.prototype.trim,
+		RE_TRIM = /^\s+|\s+$/g,
+		strtrim=_trim ?  ((str == undef) ? EMPTY : _trim.call(str)) : ((str == undef) ? EMPTY : str.toString().replace(RE_TRIM, EMPTY));
+		return strtrim;
+	};
+	
+	$('J_Button').onclick=function(){
+		if(!trim($('xinshui').value)){
+			alert('薪水不能为空');
+			return false;
+		}
+		var xinshui=$('xinshui').value,gongjijin=$('gongjijin').value/2,shebao=$('shebao').value,
+		    gesui=chinaTax.getTax(xinshui-chinaTax.begin-gongjijin-shebao),
+		    shijixinshui=xinshui-gongjijin-shebao-gesui;
+		
+		    $('test').value=gesui;
+		    $('shifaxinshui').value=shijixinshui;
+		
+	}
+	
 })();
 </script>
 </body>
