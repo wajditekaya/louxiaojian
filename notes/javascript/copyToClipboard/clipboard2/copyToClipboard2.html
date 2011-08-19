@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="gbk"/>
+    <title>copyToClipboard</title>
+</head>
+<body>
+<div>
+    <textarea id="ceshi2" style="width:500px;height:300px">width:500px;height:300pxwidth:500px;height:300pxwidth:500px;height:300px</textarea>
+    <textarea style="width:500px;height:300px"></textarea>
+    <span id="forLoadSwf"></span>
+    <script src="http://www.zhangxinxu.com/Scripts/swfobject_modified.js?ver=20100817" type="text/javascript"></script>
+    <script type="text/javascript">
+        var copyCon = document.getElementById("ceshi2").value;
+        var flashvars = {
+            content: encodeURIComponent(copyCon),
+            uri: '../copy.png'
+        };
+        var params = {
+            wmode: "transparent",
+            allowScriptAccess: "always"
+        };
+        swfobject.embedSWF("clipboard2.swf", "forLoadSwf", "61", "21", "9.0.0", null, flashvars, params);
+        function copySuccess(){
+            //flash回调
+            alert("复制成功asdasdsadas！");
+        }
+    </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+<flash_project name="~clipboard" version="1">
+    <project_file path="./~clipboard.fla" filetype="fla" profile="" />
+    <project_file path="./.\ClipboardBase.as" filetype="as" />
+    <project_file path="./.\Clipboard.as" filetype="as" />
+</flash_project>
