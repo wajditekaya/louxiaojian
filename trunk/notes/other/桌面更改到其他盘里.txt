@@ -1,0 +1,5 @@
+首先在开始/运行输入regedit回车打开注册表找到[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders] 然后在右边窗口里可以看到desktop(桌面文件)Favorites(收藏夹)等双击改为其他地址（如果你想把你的桌面放到D：盘那么就把路径改为d盘路径）就可以修改桌面位置和修改收藏夹位置！设置后重启电脑。 
+
+比如：双击右边的dosktop，弹出一个对话框，在数据数值里写上你想存到那个文件夹的路径，D:\******\*****\***** 
+
+注意：更改后需要把以前位置的文件复制到你刚改好的位置。
