@@ -61,7 +61,7 @@ select{color:#999}
 #content{padding:0 20px 100px;margin-left: 100px;}
 #content ul li{list-style:inside disc;padding-bottom:10px}
 #content ol li{list-style:inside decimal;padding-bottom:10px}
-h1{font:bold 24px/2 "微软雅黑";text-align:left;height:70px;background: url(img/header_bg.gif) left top repeat-x;color:#fff; border-bottom:24px #efefef solid}
+h1{font:bold 24px/2 "微软雅黑";text-align:left;height:70px;background: url(img/header_bg.gif) left top repeat-x;color:#fff}
 h1 a{color:#fff;text-decoration:none}
 h1 a:hover{text-decoration:underline; color:#fff}
 h2{font:bold 14px/1.5 Tahoma;padding:15px 0 5px 0}
