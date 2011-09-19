@@ -1,0 +1,7 @@
+将 php.ini-production改成 php.ini
+
+直接解压缩就可以用的  http://115.com/file/e6mjo9ea#php配置好的.rar
+
+
+
+php.ini 核心配置选项说明 http://www.php.net/manual/zh/ini.core.php
