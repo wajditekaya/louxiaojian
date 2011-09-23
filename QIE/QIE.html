@@ -83,8 +83,15 @@ QIE.ready(function(S){
 		  S.$('test2').setStyle({'background':'#fff','padding-left':'10px','color':'#000','font-weight':'bold','opacity':0.3}).on('click',function(){
 			  alert(this.id)					   
 		  })
-		  alert(test.getStyle('padding-left'))
-		  alert(test.getObjPos().x)
+		  alert("test.getStyle('padding-left')="+test.getStyle('padding-left'))
+		  alert("test.css('padding-left')="+test.css('padding-left'))
+		  alert("test.getObjPos().x="+test.getObjPos().x)
+		  alert("test.getObjPos().left="+test.getObjPos().left)
+		  alert("test.getObjPos().top="+test.getObjPos().top)
+		  alert("test.offset().left="+test.offset().left)
+		  alert("test.offset().top="+test.offset().top)
+		  alert("test.position().left="+test.position().left)
+		  alert("test.position().top="+test.position().top)
 });
 </script>
 </body>

@@ -304,9 +304,12 @@
 
                 for(; obj != document.body; x += obj.offsetLeft, y += obj.offsetTop, obj = obj.offsetParent );
             }
-            return {'x':x, 'y':y};
+            return {'x':x, 'y':y,'left':x, 'top':y};
         }
     });
+	S.DOM.css=S.DOM.getStyle;
+    S.DOM.offset=S.DOM.getObjPos;
+	S.DOM.position=S.DOM.getObjPos;
 
     S.mix(S.event,{
         addEvent:function(node, type, listener ) {
@@ -546,6 +549,6 @@ QIE.add('node-attach', function(S, undefined) {
     });
 
     // dom-class
-    attach(['hasClass', 'addClass', 'removeClass', 'replaceClass', 'toggleClass','getStyle','setStyle','on','getObjPos']);
+    attach(['hasClass', 'addClass', 'removeClass', 'replaceClass', 'toggleClass','getStyle','css','setStyle','on','getObjPos','offset','position']);
 
 });
