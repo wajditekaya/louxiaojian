@@ -292,10 +292,6 @@
             if (obj.getBoundingClientRect){ //for IE,FF3.0+,Opera9.5+ ,google
 
                 var box = obj.getBoundingClientRect();
-                if(box.left == 0 && box.top == 0)
-                {
-                    return;
-                }
                 var D = document.documentElement;
                 x = box.left + Math.max(D.scrollLeft, document.body.scrollLeft) - D.clientLeft;
                 y = box.top + Math.max(D.scrollTop, document.body.scrollTop) - D.clientTop;

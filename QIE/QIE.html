@@ -57,18 +57,20 @@ input,textarea,select{*font-size:100%;}
 </head>
 
 <body>
+<div id="test3">test3</div>
 <div id="content">
     <div id="test2" >test2</div>
     <div id="test" >test</div>
     <div id="test-inner"></div>
     <div id="lxj" style="cursor:pointer">qwewq</div>
+	<div id="out"></div>
 </div>
 <script src="build/QIE.js?v=20100114" type="text/javascript"></script>
 
 <script type="text/javascript">
 QIE.ready(function(S){
 	var i=0,DOM=S.DOM,
-	     lxj=S.$('lxj'),
+	     lxj=S.$('lxj'),s='',
 		  test=S.$('test');
 		  DOM.on(test[0],'click',function(){
 				this.className.indexOf('b')==-1 ? DOM.addClass(this,'b') :DOM.removeClass(this,'b');
@@ -81,17 +83,27 @@ QIE.ready(function(S){
 			  S.$(this).removeClass('b');						   
 		  })
 		  S.$('test2').setStyle({'background':'#fff','padding-left':'10px','color':'#000','font-weight':'bold','opacity':0.3}).on('click',function(){
-			  alert(this.id)					   
+			  alert(this.id);
 		  })
-		  alert("test.getStyle('padding-left')="+test.getStyle('padding-left'))
-		  alert("test.css('padding-left')="+test.css('padding-left'))
-		  alert("test.getObjPos().x="+test.getObjPos().x)
-		  alert("test.getObjPos().left="+test.getObjPos().left)
-		  alert("test.getObjPos().top="+test.getObjPos().top)
-		  alert("test.offset().left="+test.offset().left)
-		  alert("test.offset().top="+test.offset().top)
-		  alert("test.position().left="+test.position().left)
-		  alert("test.position().top="+test.position().top)
+		  S.$('test3').on('click',function(){
+			  alert(S.$(this).offset().top);
+			  alert(S.$(this).offset().left)
+		  })
+		  s+="test.getStyle('padding-left')="+test.getStyle('padding-left')+'<br />';
+		  s+="test.css('padding-left')="+test.css('padding-left')+'<br />';
+		  s+="test.getObjPos().x="+test.getObjPos().x+'<br />';
+		  s+="test.getObjPos().left="+test.getObjPos().left+'<br />';
+		  s+="test.getObjPos().top="+test.getObjPos().top+'<br />';
+		  s+="test.offset().left="+test.offset().left+'<br />';
+		  s+="test.offset().top="+test.offset().top+'<br />';
+		  s+="test.position().left="+test.position().left+'<br />';
+		  s+="test.position().top="+test.position().top+'<br />';
+		  S.$('out')[0].innerHTML=s;
+
+		  S.each(['aa','bb','cc','dd','ee','ff'],function(v,i){
+			  alert(v)
+			  alert(i)
+		  })
 });
 </script>
 </body>
