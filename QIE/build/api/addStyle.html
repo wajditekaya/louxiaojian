@@ -7,19 +7,23 @@
 </head>
 
 <body>
+<div id="test" onclick="alert('test')" class="test">test</div>
+<div id="test2" onclick="document.getElementById('test').onclick()" class="test">test2</div>
+<div id="list"></div>
 <script>
+  alert(document.getElementById('test').onclick)
   var DocumentFragment=document.createDocumentFragment(),i=0,cs=document.getElementsByTagName('head')[0].getElementsByTagName('style')[0]
-
-  for(var p in cs){
+  var test=document.getElementById('test');
+  for(var p in test){
 	  var t;
-	  i++;
-	  DocumentFragment.appendChild(t=document.createElement('div')).className="zhi";
-	  t.innerHTML="("+i+":)"+p+"：===<span>"+cs[p]+"</span>";
-	  
+	  if(p && test[p]){
+		  DocumentFragment.appendChild(t=document.createElement('div')).className="zhi";
+		  t.innerHTML="("+(++i)+")&nbsp;&nbsp;test."+p+"：===<span>"+test[p]+"</span>"; 
+	  }
   }
-  document.body.appendChild(DocumentFragment)
+  document.getElementById('list').appendChild(DocumentFragment);
 
-  var addStyle = function(css,n) {
+  var addStyle = function(css,n){
           var D = document,
           S = window.style;
 		  n && (S = D.getElementsByTagName('head')[0].getElementsByTagName('style')[0]);//如果head中有style，那么在原有的第一个style后面添加样式
