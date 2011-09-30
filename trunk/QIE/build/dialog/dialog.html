@@ -13,24 +13,26 @@ address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal;}
 caption,th{text-align:left;} 
 h1,h2,h3,h4,h5,h6{font-size:100%;}
 
-.exp{text-align:left; line-height:30px; width:600px; margin:0 auto; cursor:pointer}
+.exp{text-align:left;line-height:30px;width:960px;margin:0 auto;cursor:pointer;font-size:14px}
+
 .dialog{position:absolute;background:#fff;padding:10px;border:1px solid #ccc;border-radius:5px;-moz-border-radius:5px; -webkit-border-radius:5px;box-shadow:0px 0px 5px #ccc;-moz-box-shadow:0px 0px 5px #ccc;-webkit-box-shadow:0px 0px 5px #ccc; text-align:left; display:none}
 
 a{color:#00E;text-decoration:none;}
 a:hover{color:#f60;text-decoration:underline}
 
+#textarea3{width:330px;border:1px solid #ECE9D8;height:30px;padding:10px}
 .dialog-close{cursor:pointer;color:#00E;font-weight:bold}
 .dialog-close:hover{color:#f60}
 </style>
 </head>
 
 <body>
-<div class="exp" onclick="dialog({id:'lxj',width:350})">new dialog({id:'lxj',width:350})</div>
-<div class="exp" onclick="dialog({id:'lxj',width:350,left:0,top:0})">new dialog({id:'lxj',width:350,left:0,top:0})</div>
-<div class="exp" onclick="dialog({id:'lxj',width:350,opacity:0.1})">new dialog({id:'lxj',width:350,opacity:0.1})</div>
-<div class="exp" onclick="dialog({id:'lxj',width:350,Layer:0})">new dialog({id:'lxj',width:350,Layer:0})</div>
-<div class="exp" onclick="dialog({id:'lxj',width:350,fix:1})">new dialog({id:'lxj',width:350,fix:1})</div>
-<div class="exp" onclick="dialog({id:'lxj2',width:350,Layer:0,left:this.offsetLeft,top:this.offsetTop+30})">new dialog({id:'lxj',width:350,Layer:0,left:this.offsetLeft,top:this.offsetTop+30})当left的值为0时还有待完善</div>
+<div class="exp" onclick="dialog({id:'lxj',width:350})">dialog({id:'lxj',width:350})</div>
+<div class="exp" onclick="dialog({id:'lxj',width:350,left:0,top:0})">dialog({id:'lxj',width:350,left:0,top:0})</div>
+<div class="exp" onclick="dialog({id:'lxj',width:350,opacity:0.1})">dialog({id:'lxj',width:350,opacity:0.1})</div>
+<div class="exp" onclick="dialog({id:'lxj',width:350,Layer:0})">dialog({id:'lxj',width:350,Layer:0})</div>
+<div class="exp" onclick="dialog({id:'lxj3',width:350,fix:1});var n=1;document.getElementById('tr').innerHTML=10;setInterval(function(){document.getElementById('tr').innerHTML=11-(++n);if(n==11){dialog.close('lxj3')}},1000);">dialog({id:'lxj3',width:350,fix:1})</div>
+<div class="exp" onclick="dialog({id:'lxj2',width:350,Layer:0,left:this.offsetLeft,top:this.offsetTop+30})">dialog({id:'lxj2',width:350,Layer:0,left:this.offsetLeft,top:this.offsetTop+30})当left的值为0时还有待完善</div>
 <select>
     <option>asdasdsadsadasdsadsadsadsadsa</option>
     <option>asdasdsadsadasdsadsadsadsadsa</option>
@@ -43,15 +45,23 @@ a:hover{color:#f60;text-decoration:underline}
 
 <div id="lxj" class="dialog" >
 	<p>lxj</p>
-	<textarea style="width:100%; height:50px" id="textarea"></textarea>
+	<textarea style="width:100%; height:50px" id="textarea" class="textarea"></textarea>
 	<a href="#" onclick="return false" class="p_close">关闭一</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="return false" class="p_close">关闭二</a>
-	<div onclick="dialog.close('lxj')" class="dialog-close">dialog.close</div>
+	<div onclick="dialog.close('lxj')" class="dialog-close">dialog.close('lxj')</div>
 </div>
+
 <div id="lxj2" class="dialog" >
 	<p>第二种</p>
-	<textarea style="width:100%; height:50px" id="textarea"></textarea>
+	<textarea style="width:100%; height:50px" id="textarea2"></textarea>
 	<a href="#" onclick="return false" class="p_close">关闭一</a>
-	<div onclick="dialog.close('lxj2')" class="dialog-close">dialog.close</div>
+	<div onclick="dialog.close('lxj2')" class="dialog-close">dialog.close('lxj2')</div>
+</div>
+
+<div id="lxj3" class="dialog" >
+	<p>lxj3</p>
+	<div id="textarea3" class="textarea">还剩<span id="tr" style="color:#f00;margin:0 3px;font-weight:bold"></span>秒关闭窗口</div>
+	<a href="#" onclick="return false" class="p_close">关闭一</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="return false" class="p_close">关闭二</a>
+	<div onclick="dialog.close('lxj3')" class="dialog-close">dialog.close('lxj3')</div>
 </div>
 
 <script type="text/javascript" src="dialog.js"></script>
