@@ -31,7 +31,7 @@ a:hover{color:#f60;text-decoration:underline}
 <div class="exp" onclick="dialog({id:'lxj',width:350,left:0,top:0})">dialog({id:'lxj',width:350,left:0,top:0})</div>
 <div class="exp" onclick="dialog({id:'lxj',width:350,opacity:0.1})">dialog({id:'lxj',width:350,opacity:0.1})</div>
 <div class="exp" onclick="dialog({id:'lxj',width:350,Layer:0})">dialog({id:'lxj',width:350,Layer:0})</div>
-<div class="exp" onclick="dialog({id:'lxj3',width:350,fix:1});var n=1;document.getElementById('tr').innerHTML=10;setInterval(function(){document.getElementById('tr').innerHTML=11-(++n);if(n==11){dialog.close('lxj3')}},1000);">dialog({id:'lxj3',width:350,fix:1})</div>
+<div class="exp" onclick="var n=1;dialog({id:'lxj3',width:350,fix:1});document.getElementById('tr').innerHTML=10;setInterval(function(){document.getElementById('tr').innerHTML=11-(++n);if(n==11){dialog.close('lxj3')}},1000);">dialog({id:'lxj3',width:350,fix:1})</div>
 <div class="exp" onclick="dialog({id:'lxj2',width:350,Layer:0,left:this.offsetLeft,top:this.offsetTop+30})">dialog({id:'lxj2',width:350,Layer:0,left:this.offsetLeft,top:this.offsetTop+30})当left的值为0时还有待完善</div>
 <select>
     <option>asdasdsadsadasdsadsadsadsadsa</option>
