@@ -122,7 +122,7 @@ dialog.prototype={
         };
         this.setPosition();
         this.dialog.style.display="block";
-        Object.prototype.toString.call(this.openBack)==='[Array Function]' && this.openBack();
+        Object.prototype.toString.call(this.openBack)==='[object Function]' && this.openBack();
     },
     close:function(){
         if(this.Layer){
@@ -132,7 +132,7 @@ dialog.prototype={
             this.iframe.parentNode.removeChild(this.iframe);
         }
         this.dialog.style.display="none";
-        Object.prototype.toString.call(this.closeBack)==='[Array Function]' && this.closeBack();
+        Object.prototype.toString.call(this.closeBack)==='[object Function]' && this.closeBack();
     }
 };
 //new dialog({id:'playHistory_float',width:178})
