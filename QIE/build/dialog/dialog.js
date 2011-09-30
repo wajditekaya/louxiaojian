@@ -86,7 +86,7 @@ dialog.prototype={
         }
     },
     fixed:function(undef){
-        if(dialog.isIE6){
+        if(dialog.isIE6()){
             var top=this.top!==undef ? parseInt(this.top) : this.cTop;
             var expression=";top:expression(documentElement.scrollTop+"+top+");)"
             this.dialog.style.position='absolute';
