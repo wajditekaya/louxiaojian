@@ -5,32 +5,35 @@
  * Mail: louxiaojian@gmail.com
  */
 function dialog(s){
-  this.init(s)
+	var self = this;
+	if (!(self instanceof dialog)) {
+		return new dialog(s);
+	}
+	this.init(s)
+
 };
-dialog.close=function(){
-    var layDic=document.getElementById('layDic'),layDicIframe=document.getElementById('layDic-iframe'),dialog=document.getElementById('dialog');
-    if(layDic){
-        layDic.style.display="none";
-        layDicIframe.style.display="none";
-        layDic.parentNode.removeChild(layDic);
-        layDicIframe.parentNode.removeChild(layDicIframe);
-    }
-    dialog.style.display="none";
+dialog.close=function(elem){
+	var closebut=this.getECN(this.$(elem),'p_close','*');
+    closebut.length!=0 && closebut[0].onclick();
 }
-dialog.prototype={
-    $:function(id){return "string" == typeof id ? document.getElementById(id) : id;},
-    isIE6:document.all && ([/MSIE (\d)\.0/i.exec(navigator.userAgent)][0][1] == 6),
-    getECN:function(node, name, type) {
+dialog.$=function(id){
+	return "string" == typeof id ? document.getElementById(id) : id;
+}
+dialog.getECN=function(node, name, type){
         var r = [], re = new RegExp("(^|\\s)" + name + "(\\s|$)"), e = (node || document).getElementsByTagName(type || "*");
         for ( var i = 0,len=e.length; i < len; i++ ) {
             if(re.test(e[i].className) )
                 r.push(e[i]);
         }
         return r;
-    },
-    init:function(s){
+}
+dialog.isIE6=function(){
+	return document.all && ([/MSIE (\d)\.0/i.exec(navigator.userAgent)][0][1] == 6);
+}
+dialog.prototype={
+    init:function(s,undef){
         var _this=this;
-        this.dialog=this.$(s.id);
+        this.dialog=dialog.$(s.id);
         this.openBack=s.openBack;
         this.closeBack=s.closeBack;
         this.top=s.top;
@@ -38,7 +41,7 @@ dialog.prototype={
         this.height=s.height;
         this.width=s.width;
         this.closeName=s.closeName || 'p_close';
-        this.Layer=s.Layer
+        this.Layer=s.Layer===undef ? 1 : s.Layer;
         this.fix=s.fix;
         this.opacity=s.opacity || 0.5;
         this.d=document;
@@ -49,7 +52,7 @@ dialog.prototype={
         window.onresize=function(){_this.setPosition.call(_this)};
     },
     shadingLayer:function(){
-        if(!this.$('layDic')){
+        if(!dialog.$('layDic')){
             var DocumentFragment=document.createDocumentFragment();
             this.layDic=document.createElement("div");
             this.layDic.setAttribute('id','layDic');
@@ -64,8 +67,8 @@ dialog.prototype={
             DocumentFragment.appendChild(this.iframe);
             document.body.appendChild(DocumentFragment);
         }else{
-            this.layDic=this.$('layDic');
-            this.iframe=this.$('layDic-iframe');
+            this.layDic=dialog.$('layDic');
+            this.iframe=dialog.$('layDic-iframe');
         }
     },
     dialogInit:function(){
@@ -76,14 +79,14 @@ dialog.prototype={
         this.dialog.style.width=this.pWidth+"px";
         this.dialog.style.zIndex=9999;
         this.dialog.style.display="none";
-        closebut=this.getECN(this.dialog,this.closeName,'*');
+        closebut=dialog.getECN(this.dialog,this.closeName,'*');
         for(var i=0,len=closebut.length;i<len;i++){
             closebut[i].onclick=function(){_this.close.call(_this);return false;
             }
         }
     },
     fixed:function(undef){
-        if(this.isIE6){
+        if(dialog.isIE6){
             var top=this.top!==undef ? parseInt(this.top) : this.cTop;
             var expression=";top:expression(documentElement.scrollTop+"+top+");)"
             this.dialog.style.position='absolute';

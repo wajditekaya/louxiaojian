@@ -19,37 +19,28 @@ h1,h2,h3,h4,h5,h6{font-size:100%;}
 </head>
 
 <body>
-<div class="exp" onclick="new dialog({id:'lxj',width:350})">new dialog({id:'lxj',width:350})</div>
-<div class="exp" onclick="new dialog({id:'lxj',width:350,left:0,top:0})">new dialog({id:'lxj',width:350,left:0,top:0})</div>
-<div class="exp" onclick="new dialog({id:'lxj',width:350,opacity:0.1})">new dialog({id:'lxj',width:350,opacity:0.1})</div>
-<div class="exp" onclick="new dialog({id:'lxj',width:350,Layer:0})">new dialog({id:'lxj',width:350,Layer:0})</div>
-<div class="exp" onclick="new dialog({id:'lxj',width:350,fix:1})">new dialog({id:'lxj',width:350,fix:1})</div>
-<div class="exp" onclick="new dialog({id:'lxj2',width:350,Layer:0,left:this.offsetLeft,top:this.offsetTop+30})">new dialog({id:'lxj',width:350,Layer:0,left:this.offsetLeft,top:this.offsetTop+30})当left的值为0时还有待完善</div>
+<div class="exp" onclick="dialog({id:'lxj',width:350})">new dialog({id:'lxj',width:350})</div>
+<div class="exp" onclick="dialog({id:'lxj',width:350,left:0,top:0})">new dialog({id:'lxj',width:350,left:0,top:0})</div>
+<div class="exp" onclick="dialog({id:'lxj',width:350,opacity:0.1})">new dialog({id:'lxj',width:350,opacity:0.1})</div>
+<div class="exp" onclick="dialog({id:'lxj',width:350,Layer:0})">new dialog({id:'lxj',width:350,Layer:0})</div>
+<div class="exp" onclick="dialog({id:'lxj',width:350,fix:1})">new dialog({id:'lxj',width:350,fix:1})</div>
+<div class="exp" onclick="dialog({id:'lxj2',width:350,Layer:0,left:this.offsetLeft,top:this.offsetTop+30})">new dialog({id:'lxj',width:350,Layer:0,left:this.offsetLeft,top:this.offsetTop+30})当left的值为0时还有待完善</div>
 <select>
     <option>asdasdsadsadasdsadsadsadsadsa</option>
     <option>asdasdsadsadasdsadsadsadsadsa</option>
     <option>asdasdsadsadasdsadsadsadsadsa</option>
     <option>asdasdsadsadasdsadsadsadsadsa</option>
 </select>
-<object height="500" width="590" id="movie_player" codebase="http://www.macromedia.com/go/getflashplayer" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
-    <param value="url_key=3003ZD&video_id=181400852" name="flashvars">
-    <param value="always" name="allowscriptaccess">
-    <param value="true" name="allowfullscreen">
-    <param value="high" name="quality">
-    <param value="#000" name="bgcolor">
-    <param value="application/x-shockwave-flash" name="type">
-    <param value="http://player.pps.tv/player.php/sid/3003ZD/v.swf" name="movie">
-    <embed height="500" width="590" type="application/x-shockwave-flash"
-           src="http://player.pps.tv/player.php/sid/3003ZD/v.swf" id="movie_player"
-           name="movie_player" bgcolor="#FFFFFF" quality="high" allowfullscreen="true"
-           allowscriptaccess="always" flashvars="url_key=3001NC&video_id=181400852"
-           pluginspage="http://www.macromedia.com/go/getflashplayer">
-</object>
-<div style="height:2000px"></div>
-<div class="exp" onclick="new dialog({id:'lxj',width:350})">new dialog({id:'lxj',width:350})</div>
 
-<div id="lxj" class="dialog" >lxj<textarea style="width:100%; height:50px" id="textarea"></textarea><a href="#" onclick="return false" class="p_close">关闭一</a><a href="#" onclick="return false" class="p_close">关闭二</a></div>
-<div id="lxj2" class="dialog" >第二种<textarea style="width:100%; height:50px" id="textarea"></textarea><a href="#" onclick="return false" class="p_close">关闭一</a></div>
+<div style="height:2000px"></div>
+<div class="exp" onclick="dialog({id:'lxj',width:350})">new dialog({id:'lxj',width:350})</div>
+
+<div id="lxj" class="dialog" >lxj<textarea style="width:100%; height:50px" id="textarea"></textarea><a href="#" onclick="return false" class="p_close">关闭一</a><a href="#" onclick="return false" class="p_close">关闭二</a>
+<div onclick="dialog.close('lxj')" style="cursor: pointer;">dialog.close</div>
+</div>
+<div id="lxj2" class="dialog" >第二种<textarea style="width:100%; height:50px" id="textarea"></textarea><a href="#" onclick="return false" class="p_close">关闭一</a>
+<div onclick="dialog.close('lxj2')" style="cursor: pointer;">dialog.close</div>
+</div>
 
 <script type="text/javascript" src="dialog.js"></script>
 </body>
