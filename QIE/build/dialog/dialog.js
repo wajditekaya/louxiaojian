@@ -12,8 +12,8 @@ function dialog(s){
 	this.init(s)
 
 };
-dialog.close=function(elem){
-	var closebut=this.getECN(this.$(elem),'p_close','*');
+dialog.close=function(elem,s){
+	var s=s || 'dialog-close-handle',closebut=this.getECN(this.$(elem),s,'*');
     closebut.length!=0 && closebut[0].onclick();
 }
 dialog.$=function(id){
@@ -40,7 +40,7 @@ dialog.prototype={
         this.left=s.left;
         this.height=s.height;
         this.width=s.width;
-        this.closeName=s.closeName || 'p_close';
+        this.closeName=s.closeName || 'dialog-close-handle';
         this.Layer=s.Layer===undef ? 1 : s.Layer;
         this.fix=s.fix;
         this.opacity=s.opacity || 0.5;
