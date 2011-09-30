@@ -115,17 +115,25 @@ document.getElementById('dialog4').onclick=function(){
 }
 document.getElementById('dialog5').onclick=function(){
   var n=1,self=this;
-  dialog({id:'lxj3',width:350,fix:1});
-  document.getElementById('tr').innerHTML=10;
-  self.time && clearInterval(self.time)
-  self.time=setInterval(
-  function(){
-	  document.getElementById('tr').innerHTML=11-(++n);
-	  if(n==11){dialog.close('lxj3');
-	  clearInterval(self.time);
-	  n=1;
-  }
-  },1000);
+  dialog(
+	  {
+		  id:'lxj3',
+		  width:350,
+		  fix:1,
+		  openBack:function(){
+			  document.getElementById('tr').innerHTML=10;
+			  self.time && clearInterval(self.time)
+			  self.time=setInterval(
+			  function(){
+				  document.getElementById('tr').innerHTML=11-(++n);
+				  if(n==11){dialog.close('lxj3');
+				  clearInterval(self.time);
+				  n=1;
+			  }
+			  },1000);
+		  }
+	  }
+  );
 }
 document.getElementById('dialog6').onclick=function(){
   dialog({id:'lxj2',width:350,Layer:0,left:this.offsetLeft,top:this.offsetTop+30})
