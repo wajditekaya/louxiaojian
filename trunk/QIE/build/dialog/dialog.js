@@ -27,8 +27,7 @@
 		var butText=s.text || '确定',butText2=s.text2 || '取消',html='<p>'+text+'</p><div class="tal"><input class="jfk-button jfk-button-action" value="'+butText+'" type="button" /><input class="gac_bt" value="'+butText2+'" type="button" /></div>';
 		dialog(html,s);
 		S.on(S.getECN(S.$('v-dialog'),'jfk-button-action','input')[0],'click',function(){
-			s.textback && s.textback();
-            dialog.close();
+			s.textback && s.textback()===true && dialog.close();
 		})
 		S.on(S.getECN(S.$('v-dialog'),'gac_bt','input')[0],'click',function(){
 			s.textback2 && s.textback2();
@@ -94,7 +93,7 @@
 			}else{
 				if(!S.$('v-dialog')){
 					var html,div;
-					html='<div id="v-dialog" class="dialog dialog-b"><div class="dialog-hd dialog-bk"><span class="dhd-1"><span class="dhd-2"></span></span><b></b><s></s></div><div class="dialog-bd"><div class="dialog-wrap"><div class="dialog-main"><div class="dialog-mbd"></div><div onclick="QIE.dialog.close()" class="dialog2-close" style="padding-left:10px"><span class="code">dialog.close()</span></div></div></div><div class="dialog-lf"></div><div class="dialog-rg"></div></div><div class="dialog-close"><a href="#" class="dialog-close-handle" title="关闭">关闭</a></div><b class="jt" style="left:30px"></b><div class="dialog-ft dialog-bk"><span class="dhd-1"><span class="dhd-2"></span></span><b></b><s></s></div></div>';
+					html='<div id="v-dialog" class="dialog dialog-b"><div class="dialog-hd dialog-bk"><span class="dhd-1"><span class="dhd-2"></span></span><b></b><s></s></div><div class="dialog-bd"><div class="dialog-wrap"><div class="dialog-main"><div class="dialog-mbd"></div></div></div><div class="dialog-lf"></div><div class="dialog-rg"></div></div><div class="dialog-close"><a href="#" class="dialog-close-handle" title="关闭">关闭</a></div><b class="jt" style="left:30px"></b><div class="dialog-ft dialog-bk"><span class="dhd-1"><span class="dhd-2"></span></span><b></b><s></s></div></div>';
 					div=document.createElement('div');
 					div.innerHTML=html;
 					document.body.appendChild(div.firstChild)
