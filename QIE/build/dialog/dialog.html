@@ -1,20 +1,33 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>弹出框组件</title>
+<script type="text/javascript" src="http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link type="text/css" rel="stylesheet" href="http://louxiaojian.googlecode.com/svn/trunk/asset/app/notes/case.css"/>
+<link type="text/css" rel="stylesheet" href="http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
+<link type="text/css" rel="stylesheet" href="http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = 'http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.config.strings = {
+			expandSource : '展开代码',
+			viewSource : '查看代码',
+			copyToClipboard : '复制代码',
+			copyToClipboardConfirmation : '代码复制成功',
+			print : '打印',
+			help : '?',
+			alert: '语法高亮\n\n',
+			noBrush : '不能找到刷子: ',
+			brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
+			// this is populated by the build script
+			aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Geneva,Arial,Helvetica,sans-serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.1.364(October 15 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
+		}
+	SyntaxHighlighter.all();
+</script>
 <style type="text/css">
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
-body{font:12px/22px 'Times New Roman', Georgia, serif;word-break:break-all;text-align:center;color:#383838;background:#9CCB47}
-fieldset,img{border:none 0;} 
-table {border-collapse:collapse;border-spacing:0;} 
-ol,li,ul{list-style:none;} 
-address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal;}
-caption,th{text-align:left;} 
-h1,h2,h3,h4,h5,h6{font-size:100%;}
-
-#page{width:960px;margin:0 auto;padding-top:10px;text-align:left;}
-
 .exp{
 	padding:0 10px;
 	text-align:left;
@@ -62,12 +75,14 @@ a:hover{color:#f60;text-decoration:underline}
 
 <body>
 <div id="page">
+    <h1>弹出框组件</h1>
+    <div id="content">
 		<div id="dialog" class="exp"><span class="code">dialog({id:'lxj',width:350})</span></div>
 		<div id="dialog2" class="exp"><span class="code">dialog({id:'lxj',width:350,left:0,top:0})</span></div>
 		<div id="dialog3" class="exp"><span class="code">dialog({id:'lxj',width:350,opacity:0.1})</span></div>
 		<div id="dialog4" class="exp"><span class="code">dialog({id:'lxj',width:350,Layer:0})</span></div>
 		<div id="dialog5" class="exp"><span class="code">dialog({id:'lxj3',width:350,fix:1})</span></div>
-		<div id="dialog6" class="exp"><span class="code">dialog({id:'lxj2',width:350,Layer:0,left:this.offsetLeft,top:this.offsetTop+30})</span>当left的值为0时还有待完善</div>
+		<div id="dialog6" class="exp"><span class="code">dialog({id:'lxj2',width:350,Layer:0,left:this.offsetLeft,top:this.offsetTop+30})</span></div>
 		<select>
 			<option>asdasdsadsadasdsadsadsadsadsa</option>
 			<option>asdasdsadsadasdsadsadsadsadsa</option>
@@ -76,6 +91,7 @@ a:hover{color:#f60;text-decoration:underline}
 		</select>
 		<div style="height:1000px"></div>
 		<div id="dialog7"  class="exp"><span class="code">new dialog({id:'lxj',width:350})</span></div>
+    </div>
 </div>
 
 <div id="lxj" class="dialog" >
@@ -98,7 +114,6 @@ a:hover{color:#f60;text-decoration:underline}
 	<a href="#" onclick="return false" class="dialog-close-handle">关闭一</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="return false" class="dialog-close-handle">关闭二</a>
 	<div onclick="dialog.close('lxj3')" class="dialog-close"><span class="code">dialog.close('lxj3')</span></div>
 </div>
-
 <script type="text/javascript" src="dialog.js"></script>
 <script>
 document.getElementById('dialog').onclick=function(){
