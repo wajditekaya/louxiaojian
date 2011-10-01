@@ -1,10 +1,4 @@
-;(function(S){
-    var d=new Date().getTime()
-    var clientHeight=document.documentElement.clientHeight;
-    document.getElementById('time').innerHTML=new Date().getTime()-d;
-})(QIE);
-QIE.plugins={};
-QIE.plugins.lazyLoad=(function(S){
+(function(S){
     var DOM=S.DOM,event=S.event;
     /*===lazyLoad===*/
     function lazyLoad(s){
@@ -14,9 +8,6 @@ QIE.plugins.lazyLoad=(function(S){
         }
         this.init(s);
         //this.init.apply(this,arguments);
-        this._filterImg();
-        this.complete();
-        this.loadLazy();
         DOM.on(window,'resize',this.resize=function(){
             if(self.resizeTime) clearTimeout(self.resizeTime);
             self.resizeTime=setTimeout(function(){self._containerInfo()},100);
@@ -47,6 +38,9 @@ QIE.plugins.lazyLoad=(function(S){
 
             this.lazylength;
             this.lazy=[];//存放需要延时加载的图片
+			this._filterImg();
+			this.complete();
+			this.loadLazy();
         },
         _containerInfo:function(){
             var webkit=/applewebkit/.test(window.navigator.userAgent.toLowerCase()),d=document,db=d.body,dd=d.documentElement;//webkit内核浏览器
