@@ -66,7 +66,7 @@
 	text-align:left;
 	display:none
 }
-
+.dialog2 .tal{margin:15px -10px -10px}
 a{color:#00E;text-decoration:none;}
 a:hover{color:#f60;text-decoration:underline}
 
@@ -97,10 +97,10 @@ a:hover{color:#f60;text-decoration:underline}
 	cursor:pointer;
 	font-size:11px;
 	font-weight:bold;
-	height:29px;
-	line-height:27px;
-	margin:11px 6px;
-	min-width:54px;
+	height:25px;
+	line-height:22px;
+	margin:0 6px;
+	min-width:50px;
 	padding:0 8px;
 	text-align:center
 }
@@ -127,10 +127,10 @@ a:hover{color:#f60;text-decoration:underline}
 	font-size:11px;
 	font-weight:bold;
 	text-align:center;
-	margin:11px 6px;
-	height:29px;
-	line-height:27px;
-	min-width:54px;
+	margin:0 6px;
+	height:25px;
+	line-height:22px;
+	min-width:50px;
 	outline:0px;
 	padding:0 8px
 }
@@ -163,7 +163,80 @@ a:hover{color:#f60;text-decoration:underline}
 	-moz-box-shadow:inset 0 1px 2px rgba(0,0,0,0.3);
 	box-shadow:inset 0 1px 2px rgba(0,0,0,0.3)
 }
-.tal{margin-left:-6px;zoom:1}
+
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  background-color: #e6e6e6;
+  background-repeat: no-repeat;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(0.25, #ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff 0.25, #e6e6e6);
+  background-image: -moz-linear-gradient(#ffffff, #ffffff 0.25, #e6e6e6);
+  background-image: -ms-linear-gradient(#ffffff, #ffffff 0.25, #e6e6e6);
+  background-image: -o-linear-gradient(#ffffff, #ffffff 0.25, #e6e6e6);
+  background-image: linear-gradient(#ffffff, #ffffff 0.25, #e6e6e6);
+  padding:4px 10px 5px;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  color: #333;
+  margin:0 6px;
+  font-size: 12px;
+  line-height: normal;
+  border: 1px solid #ccc;
+  border-bottom-color: #bbb;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -webkit-transition: 0.1s linear all;
+  -moz-transition: 0.1s linear all;
+  transition: 0.1s linear all;
+}
+.btn:hover {
+  background-position: 0 -15px;
+  color: #333;
+  text-decoration: none;
+}
+.btn.primary {
+  color: #fff;
+  background-color: #0064cd;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
+  background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
+  background-image: -ms-linear-gradient(top, #049cdb, #0064cd);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
+  background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);
+  background-image: -o-linear-gradient(top, #049cdb, #0064cd);
+  background-image: linear-gradient(top, #049cdb, #0064cd);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-color: #0064cd #0064cd #003f81;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+.btn.disabled {
+  cursor: default;
+  background-image: none;
+  filter: alpha(opacity=65);
+  -khtml-opacity: 0.65;
+  -moz-opacity: 0.65;
+  opacity: 0.65;
+}
+.btn:disabled {
+  cursor: default;
+  background-image: none;
+  filter: alpha(opacity=65);
+  -khtml-opacity: 0.65;
+  -moz-opacity: 0.65;
+  opacity: 0.65;
+}
+.btn:active {
+  -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.tal{zoom:1;margin:15px -20px -20px;padding:8px 0 8px 14px;background:whiteSmoke;border-top: 1px solid #DDD;  -webkit-box-shadow: inset 0 1px 0 #ffffff;
+  -moz-box-shadow: inset 0 1px 0 #ffffff;
+  box-shadow: inset 0 1px 0 #ffffff;}
 .tac{text-align:center;}
 </style>
 </head>
@@ -194,10 +267,13 @@ a:hover{color:#f60;text-decoration:underline}
 		<div id="dialog7"  class="exp"><span class="code">QIE.dialog('&lt;p style="height:100px;line-height:100px;"&gt;《新闻联播》片头曲明年更换&lt;/p&gt;',{width:350})</span></div>
 
         <div style="height:100px"></div>
-		<div id="dialog11" class="exp"><span class="code">QIE.dialog.uio('你确定离开本页面了吗？',{width:350})</span></div>
+		<div id="dialog11" class="exp"><span class="code">QIE.dialog.prompt('你确定离开本页面了吗？',{width:350})</span></div>
 
-        <div id="dialog12" class="exp"><span class="code">S.dialog.uio('回答错误',{width:350,title:'提示框','text':'不来了','text2':'继续',})</span></div>
-		
+        <div id="dialog12" class="exp"><span class="code">QIE.dialog.prompt('回答错误',{width:350,title:'提示框','text':'不来了','text2':'继续',})</span></div>
+
+		<div id="dialog13" class="exp"><span class="code">S.dialog.remind('恭喜你获得本公司提供的IPAD2奖品',{width:350,title:'提示框',})</span></div>
+
+        <div id="dialog14" class="exp"><span class="code">S.dialog.remind('恭喜你获得本公司提供的IPAD2奖品',{width:350,title:'提示框',textback:function(){alert('返回了')}}</span></div>
 		
     </div>
 </div>
@@ -205,31 +281,31 @@ a:hover{color:#f60;text-decoration:underline}
 <div id="lxj" class="dialog2" >
 	<p>lxj</p>
 	<textarea style="width:100%; height:50px" id="textarea" class="textarea"></textarea>
-	<div class="tal">
-		<input class="jfk-button jfk-button-action dialog-close-handle" value="确定" type="button" />
-		<input class="gac_bt dialog-close-handle" value="取消" type="button" />
-	</div>
 	<div onclick="QIE.dialog.close('lxj')" class="dialog2-close"><span class="code">dialog.close('lxj')</span></div>
+	<div class="tal">
+		<input class="btn primary dialog-close-handle" value="确定" type="button" />
+		<input class="btn secondary dialog-close-handle" value="取消" type="button" />
+	</div>
 </div>
 
 <div id="lxj2" class="dialog2" >
 	<p>第二种</p>
 	<textarea style="width:100%; height:50px" id="textarea2"></textarea>
+    <div onclick="QIE.dialog.close('lxj2')" class="dialog2-close"><span class="code">dialog.close('lxj2')</span></div>
 	<div class="tal">
 		<input class="jfk-button jfk-button-action dialog-close-handle" value="确定" type="button" />
 		<input class="gac_bt dialog-close-handle" value="取消" type="button" />
 	</div>
-	<div onclick="QIE.dialog.close('lxj2')" class="dialog2-close"><span class="code">dialog.close('lxj2')</span></div>
 </div>
 
 <div id="lxj3" class="dialog2" >
 	<p>lxj3</p>
 	<div id="textarea3" class="textarea">还剩<span id="tr" style="color:#f00;margin:0 3px;font-weight:bold"></span>秒关闭窗口</div>
+	<div onclick="QIE.dialog.close('lxj3')" class="dialog2-close"><span class="code">dialog.close('lxj3')</span></div>
 	<div class="tal">
 		<input class="jfk-button jfk-button-action dialog-close-handle" value="确定" type="button" />
 		<input class="gac_bt dialog-close-handle" value="取消" type="button" />
 	</div>
-	<div onclick="QIE.dialog.close('lxj3')" class="dialog2-close"><span class="code">dialog.close('lxj3')</span></div>
 </div>
 <div id="bushiduli" style="padding:20px;display:none">
   莫文蔚今日（10月1日）将在意大利佛罗伦萨与初恋男友Johannes完婚。近一个多月来，莫文蔚不时通过微博晒出婚礼细节。此次婚礼将在佛罗伦萨一个酒庄就行，一对新人只邀请了一些亲朋好友出席，并未邀请媒体。
@@ -317,25 +393,34 @@ a:hover{color:#f60;text-decoration:underline}
 	  S.dialog('not-reg',{width:540,title:'登录'})
 	}
 	S.$('dialog11').onclick=function(){
-	  S.dialog.uio('你确定离开本页面了吗？',
+	  S.dialog.prompt('你确定离开本页面了吗？',
 				  {
 					  width:350,
 					  title:'提示框',
-					  textback:function(){alert('走了，回家了');return true},
+					  textback:function(){alert('走了，回家了')},
 					  textback2:function(){alert('不走了，再玩会')}
 				  }
 	  )
 	}
 
 	S.$('dialog12').onclick=function(){
-	  S.dialog.uio('1+1=<input type="text" id="daan" value="" />',
+	  S.dialog.prompt('1+1=<input type="text" id="daan" value="" />',
 				  {
 					  width:350,
 					  title:'提示框',
 					  'text':'我知道答案',
-					  textback:function(){if(S.$('daan').value==2){return true}else{alert('错了，真是猪')}},
-					  'text2':'继续'
+					  textback:function(){if(S.$('daan').value==2){alert(this.title);}else{alert('错了，真是猪');return false}},
+					  'text2':'跳过这题'
 				  }
+	  )
+	}
+
+	S.$('dialog13').onclick=function(){
+	  S.dialog.remind('恭喜你获得本公司提供的IPAD2奖品',{width:350,title:'提示框',})
+	}
+
+	S.$('dialog14').onclick=function(){
+	  S.dialog.remind('恭喜你获得本公司提供的IPAD2奖品',{width:350,title:'提示框',textback:function(){alert('返回了')}}
 	  )
 	}
 
