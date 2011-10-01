@@ -3,7 +3,7 @@ author:	lou xiao jian
 email:  jxsr_lxj@163.com
 ====================================*/
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
-body{font:14px/1.5  Tahoma, Geneva,"宋体", sans-serif;word-break:break-all;text-align:center;background:#edf3f5 url(img/texture_3.png);padding-top:30px}
+body{font:14px/1.5  Tahoma, Geneva,"宋体", sans-serif;word-break:break-all;text-align:center;background:#edf3f5 url(img/texture_3.png);padding:30px 0}
 fieldset,img{border:0;} 
 table {border-collapse: collapse;border-spacing:0;} 
 ol,li,ul{list-style:none;} 
@@ -61,7 +61,7 @@ select{color:#999}
 #content{padding:0 20px 100px;}
 #content ul li{list-style:inside disc;padding-bottom:10px}
 #content ol li{list-style:inside decimal;padding-bottom:10px}
-h1{font:bold 24px/70px "微软雅黑";text-align:left;height:70px;background:#E6F6FA url(img/intro_texture.png) center no-repeat;color:#4CB1CA;padding-left:20px}
+h1{font:bold 24px/70px "微软雅黑";text-align:left;height:70px;background:#E6F6FA url(img/intro_texture.png) center no-repeat;color:#4CB1CA;padding-left:20px;margin-bottom:20px}
 h1 a{color:#fff;text-decoration:none}
 h1 a:hover{text-decoration:underline;color:#fff}
 h2{font:bold 14px/1.5 Tahoma;padding:15px 0 5px 0}
