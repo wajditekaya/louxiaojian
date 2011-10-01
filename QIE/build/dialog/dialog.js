@@ -23,6 +23,18 @@
 		var elem=elem || 'v-dialog',s=s || 'dialog-close-handle',closebut=S.getECN(S.$(elem),s,'*');
 		closebut.length!=0 && closebut[0].onclick();
 	}
+	dialog.uio=function(text,s){
+		var butText=s.text || '确定',butText2=s.text2 || '取消',html='<p>'+text+'</p><div class="tal"><input class="jfk-button jfk-button-action" value="'+butText+'" type="button" /><input class="gac_bt" value="'+butText2+'" type="button" /></div>';
+		dialog(html,s);
+		S.on(S.getECN(S.$('v-dialog'),'jfk-button-action','input')[0],'click',function(){
+			s.textback && s.textback();
+            dialog.close();
+		})
+		S.on(S.getECN(S.$('v-dialog'),'gac_bt','input')[0],'click',function(){
+			s.textback2 && s.textback2();
+            dialog.close();
+		})
+	}
 	dialog.prototype={
 		init:function(elem,s,undef){
 			var _this=this;
