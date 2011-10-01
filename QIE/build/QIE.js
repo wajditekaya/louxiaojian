@@ -306,7 +306,7 @@
 	S.DOM.css=S.DOM.getStyle;
     S.DOM.offset=S.DOM.getObjPos;
 	S.DOM.position=S.DOM.getObjPos;
-
+    S.mix(S,S.DOM);
     S.mix(S.event,{
         addEvent:function(node, type, listener ) {
             //if(!(node = S.$(node))) return false;
@@ -371,6 +371,7 @@
     });
     S.event.on=S.event.addEvent;
     S.DOM.on=S.event.addEvent;
+	S.mix(S,S.event);
 })('QIE');
 (function(S, undef) {
     var host = S.__HOST,

@@ -11,6 +11,8 @@
 <link type="text/css" rel="stylesheet" href="http://louxiaojian.googlecode.com/svn/trunk/asset/app/notes/case.css"/>
 <link type="text/css" rel="stylesheet" href="http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
 <link type="text/css" rel="stylesheet" href="http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+
+<script type="text/javascript" src="../QIE.js"></script>
 <script type="text/javascript">
 	SyntaxHighlighter.config.clipboardSwf = 'http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
 	SyntaxHighlighter.config.strings = {
@@ -79,18 +81,18 @@ a:hover{color:#f60;text-decoration:underline}
     <h1>弹出框组件</h1>
     <div id="content">
 	    <h2>有各自马甲的弹出框</h2>
-		<div id="dialog" class="exp"><span class="code">dialog({id:'lxj',width:350,type:'duli'})</span></div>
-		<div id="dialog2" class="exp"><span class="code">dialog({id:'lxj',width:350,type:'duli',left:0,top:0})</span></div>
-		<div id="dialog3" class="exp"><span class="code">dialog({id:'lxj',width:350,type:'duli',opacity:0.1})</span></div>
-		<div id="dialog4" class="exp"><span class="code">dialog({id:'lxj',width:350,type:'duli',Layer:0})</span></div>
-		<div id="dialog5" class="exp"><span class="code">dialog({id:'lxj3',width:350,type:'duli',fix:1})</span></div>
-		<div id="dialog6" class="exp"><span class="code">dialog({id:'lxj2',width:350,Layer:0,type:'duli',left:this.offsetLeft,top:this.offsetTop+30})</span></div>
+		<div id="dialog" class="exp"><span class="code">QIE.dialog('lxj',{width:350,type:'duli'})</span></div>
+		<div id="dialog2" class="exp"><span class="code">QIE.dialog('lxj',{width:350,type:'duli',left:0,top:0})</span></div>
+		<div id="dialog3" class="exp"><span class="code">QIE.dialog('lxj',{width:350,type:'duli',opacity:0.1})</span></div>
+		<div id="dialog4" class="exp"><span class="code">QIE.dialog('lxj',{width:350,type:'duli',Layer:0})</span></div>
+		<div id="dialog5" class="exp"><span class="code">QIE.dialog('lxj3',{width:350,type:'duli',fix:1})</span></div>
+		<div id="dialog6" class="exp"><span class="code">QIE.dialog('lxj',{width:350,Layer:0,type:'duli',left:this.offsetLeft,top:this.offsetTop+30})</span></div>
 
 
 		<h2 style="margin-top:200px">同穿一个马甲的弹出框</h2>
-		<div id="dialog8"  class="exp"><span class="code">dialog({id:'&lt;p style="height:200px;line-height:200px"&gt;111111111111111111&lt;/p&gt;',width:600,title:'提示框'})</span></div>
-		<div id="dialog9"  class="exp"><span class="code">dialog({id:'bushiduli',width:550,title:'莫文蔚今日与初恋男友完婚'})</span></div>
-		<div id="dialog10"  class="exp"><span class="code">dialog({id:'not-reg',width:540,title:'登录'})</span></div>
+		<div id="dialog8"  class="exp"><span class="code">QIE.dialog('&lt;p style="height:120px;line-height:120px"&gt;111111111111111111&lt;/p&gt;',{width:600,title:'一二三木头人'})</span></div>
+		<div id="dialog9"  class="exp"><span class="code">QIE.dialog('bushiduli',{width:550,title:'莫文蔚今日与初恋男友完婚'})</span></div>
+		<div id="dialog10"  class="exp"><span class="code">QIE.dialog('not-reg',{width:540,title:'登录'})</span></div>
 		<select>
 			<option>asdasdsadsadasdsadsadsadsadsa</option>
 			<option>asdasdsadsadasdsadsadsadsadsa</option>
@@ -98,7 +100,7 @@ a:hover{color:#f60;text-decoration:underline}
 			<option>asdasdsadsadasdsadsadsadsadsa</option>
 		</select>
 		<div style="height:1000px"></div>
-		<div id="dialog7"  class="exp"><span class="code">dialog({id:'&lt;p style="height:100px;line-height:100px;"&gt;《新闻联播》片头曲明年更换&lt;/p&gt;',width:350})</span></div>
+		<div id="dialog7"  class="exp"><span class="code">QIE.dialog('&lt;p style="height:100px;line-height:100px;"&gt;《新闻联播》片头曲明年更换&lt;/p&gt;',{width:350})</span></div>
 		
     </div>
 </div>
@@ -107,21 +109,21 @@ a:hover{color:#f60;text-decoration:underline}
 	<p>lxj</p>
 	<textarea style="width:100%; height:50px" id="textarea" class="textarea"></textarea>
 	<a href="#" onclick="return false" class="dialog-close-handle">关闭一</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="return false" class="dialog-close-handle">关闭二</a>
-	<div onclick="dialog.close('lxj')" class="dialog2-close"><span class="code">dialog.close('lxj')</span></div>
+	<div onclick="QIE.dialog.close('lxj')" class="dialog2-close"><span class="code">dialog.close('lxj')</span></div>
 </div>
 
 <div id="lxj2" class="dialog2" >
 	<p>第二种</p>
 	<textarea style="width:100%; height:50px" id="textarea2"></textarea>
 	<a href="#" onclick="return false" class="dialog-close-handle">关闭一</a>
-	<div onclick="dialog.close('lxj2')" class="dialog2-close"><span class="code">dialog.close('lxj2')</span></div>
+	<div onclick="QIE.dialog.close('lxj2')" class="dialog2-close"><span class="code">dialog.close('lxj2')</span></div>
 </div>
 
 <div id="lxj3" class="dialog2" >
 	<p>lxj3</p>
 	<div id="textarea3" class="textarea">还剩<span id="tr" style="color:#f00;margin:0 3px;font-weight:bold"></span>秒关闭窗口</div>
 	<a href="#" onclick="return false" class="dialog-close-handle">关闭一</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="return false" class="dialog-close-handle">关闭二</a>
-	<div onclick="dialog.close('lxj3')" class="dialog2-close"><span class="code">dialog.close('lxj3')</span></div>
+	<div onclick="QIE.dialog.close('lxj3')" class="dialog2-close"><span class="code">dialog.close('lxj3')</span></div>
 </div>
 <div id="bushiduli" style="padding:20px;display:none">
   莫文蔚今日（10月1日）将在意大利佛罗伦萨与初恋男友Johannes完婚。近一个多月来，莫文蔚不时通过微博晒出婚礼细节。此次婚礼将在佛罗伦萨一个酒庄就行，一对新人只邀请了一些亲朋好友出席，并未邀请媒体。
@@ -135,7 +137,7 @@ a:hover{color:#f60;text-decoration:underline}
                     <li class="form-item"><label class="lb">用户名：</label><input type="text" name="user" id="user" class="e-input" /></li>
                     <li class="form-item"><label class="lb">密　码：</label><input type="password" name="password" id="password" class="e-input" /><a href="#" class="oer">忘记密码</a></li>
                 </ul>
-                <div class="form-act"><a href="#" class="new-g-but6 g-but" onclick="dialog.close();return false"><span class="b">登录</span></a></div>
+                <div class="form-act"><a href="#" class="new-g-but6 g-but" onclick="QIE.dialog.close();return false"><span class="b">登录</span></a></div>
             </form>
         </div>
 
@@ -147,64 +149,68 @@ a:hover{color:#f60;text-decoration:underline}
 </div>
 <script type="text/javascript" src="dialog.js"></script>
 <script>
-document.getElementById('dialog').onclick=function(){
-  dialog({id:'lxj',width:350,type:'duli'})
-}
-document.getElementById('dialog2').onclick=function(){
-  dialog({id:'lxj',width:350,type:'duli',left:0,top:0})
-}
-document.getElementById('dialog3').onclick=function(){
-  dialog({id:'lxj',width:350,type:'duli',opacity:0.1})
-}
-document.getElementById('dialog4').onclick=function(){
-  dialog({id:'lxj',width:350,type:'duli',Layer:0})
-}
-document.getElementById('dialog5').onclick=function(){
-  var n=1,self=this;
-  dialog(
-	  {
-		  id:'lxj3',
-		  width:350,
-          type:'duli',
-		  fix:1,
-		  openBack:function(){
-			  document.getElementById('tr').innerHTML=10;
-			  self.time && clearInterval(self.time)
-			  self.time=setInterval(
-			  function(){
-				  document.getElementById('tr').innerHTML=11-(++n);
-				  if(n==11){dialog.close('lxj3');
-				  clearInterval(self.time);
-				  n=1;
+(function(S){
+	S.$=function(id) {
+            var elem="string" == typeof id ? document.getElementById(id) : id;
+            return elem;
+    };
+	S.$('dialog').onclick=function(){
+	  S.dialog('lxj',{width:350,type:'duli'})
+	}
+	S.$('dialog2').onclick=function(){
+	  S.dialog('lxj',{width:350,type:'duli',left:0,top:0})
+	}
+	S.$('dialog3').onclick=function(){
+	  S.dialog('lxj',{width:350,type:'duli',opacity:0.1})
+	}
+	S.$('dialog4').onclick=function(){
+	  S.dialog('lxj',{width:350,type:'duli',Layer:0})
+	}
+	S.$('dialog5').onclick=function(){
+	  var n=1,self=this;
+	  S.dialog(
+		  'lxj3',
+		  {
+			  width:350,
+			  type:'duli',
+			  fix:1,
+			  openBack:function(){
+				  document.getElementById('tr').innerHTML=10;
+				  self.time && clearInterval(self.time)
+				  self.time=setInterval(
+				  function(){
+					  document.getElementById('tr').innerHTML=11-(++n);
+					  if(n==11){QIE.dialog.close('lxj3');
+					  clearInterval(self.time);
+					  n=1;
+				  }
+				  },1000);
+			  },
+			  closeBack:function(){
+				  self.time && clearInterval(self.time)
 			  }
-			  },1000);
-		  },
-		  closeBack:function(){
-		      self.time && clearInterval(self.time)
 		  }
-	  }
-  );
-}
-document.getElementById('dialog6').onclick=function(){
-  dialog({id:'lxj2',width:350,type:'duli',Layer:0,left:this.offsetLeft,top:this.offsetTop+30})
-}
+	  );
+	}
+	S.$('dialog6').onclick=function(){
+	  S.dialog('lxj2',{width:350,type:'duli',Layer:0,left:this.offsetLeft,top:this.offsetTop+30})
+	}
 
 
-document.getElementById('dialog7').onclick=function(){
-  dialog({id:'<p style="height:100px;line-height:100px;">《新闻联播》片头曲明年更换</p>',width:350})
-}
-document.getElementById('dialog8').onclick=function(){
-  dialog({id:'<p style="height:200px;line-height:200px">111111111111111111</p>',width:600,title:'提示框'})
-}
-document.getElementById('dialog9').onclick=function(){
-  dialog({id:'bushiduli',width:550,title:'莫文蔚今日与初恋男友完婚'})
-}
+	S.$('dialog7').onclick=function(){
+	  S.dialog('<p style="height:100px;line-height:100px;">《新闻联播》片头曲明年更换</p>',{width:350})
+	}
+	S.$('dialog8').onclick=function(){
+	  S.dialog('<p style="height:120px;line-height:120px">111111111111111111</p>',{width:600,title:'一二三木头人'})
+	}
+	S.$('dialog9').onclick=function(){
+	  S.dialog('bushiduli',{width:550,title:'莫文蔚今日与初恋男友完婚'})
+	}
 
-document.getElementById('dialog10').onclick=function(){
-  dialog({id:'not-reg',width:540,title:'登录'})
-}
-
-
+	S.$('dialog10').onclick=function(){
+	  S.dialog('not-reg',{width:540,title:'登录'})
+	}
+})(QIE)
 </script>
 </body>
 </html>
