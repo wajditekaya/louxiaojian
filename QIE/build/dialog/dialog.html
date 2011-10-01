@@ -181,7 +181,7 @@ a:hover{color:#f60;text-decoration:underline}
 		<div id="dialog6" class="exp"><span class="code">QIE.dialog('lxj',{width:350,Layer:0,type:'duli',left:this.offsetLeft,top:this.offsetTop+30})</span></div>
 
 
-		<h2 style="margin-top:200px">同穿一个马甲的弹出框</h2>
+		<h2 style="margin-top:100px">同穿一个马甲的弹出框</h2>
 		<div id="dialog8"  class="exp"><span class="code">QIE.dialog('&lt;p style="height:120px;line-height:120px"&gt;111111111111111111&lt;/p&gt;',{width:600,title:'一二三木头人'})</span></div>
 		<div id="dialog9"  class="exp"><span class="code">QIE.dialog('bushiduli',{width:550,title:'莫文蔚今日与初恋男友完婚'})</span></div>
 		<div id="dialog10"  class="exp"><span class="code">QIE.dialog('not-reg',{width:540,title:'登录'})</span></div>
@@ -191,9 +191,9 @@ a:hover{color:#f60;text-decoration:underline}
 			<option>asdasdsadsadasdsadsadsadsadsa</option>
 			<option>asdasdsadsadasdsadsadsadsadsa</option>
 		</select>
-		<div style="height:1000px"></div>
 		<div id="dialog7"  class="exp"><span class="code">QIE.dialog('&lt;p style="height:100px;line-height:100px;"&gt;《新闻联播》片头曲明年更换&lt;/p&gt;',{width:350})</span></div>
 
+        <div style="height:100px"></div>
 		<div id="dialog11" class="exp"><span class="code">QIE.dialog.uio('你确定离开本页面了吗？',{width:350})</span></div>
 
         <div id="dialog12" class="exp"><span class="code">S.dialog.uio('回答错误',{width:350,title:'提示框','text':'不来了','text2':'继续',})</span></div>
@@ -321,14 +321,22 @@ a:hover{color:#f60;text-decoration:underline}
 				  {
 					  width:350,
 					  title:'提示框',
-					  textback:function(){alert('走了，回家了')},
+					  textback:function(){alert('走了，回家了');return true},
 					  textback2:function(){alert('不走了，再玩会')}
 				  }
 	  )
 	}
 
 	S.$('dialog12').onclick=function(){
-	  S.dialog.uio('回答错误',{width:350,title:'提示框','text':'不来了','text2':'继续',})
+	  S.dialog.uio('1+1=<input type="text" id="daan" value="" />',
+				  {
+					  width:350,
+					  title:'提示框',
+					  'text':'我知道答案',
+					  textback:function(){if(S.$('daan').value==2){return true}else{alert('错了，真是猪')}},
+					  'text2':'继续'
+				  }
+	  )
 	}
 
 })(QIE)
