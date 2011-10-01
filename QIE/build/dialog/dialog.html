@@ -7,6 +7,7 @@
 <script type="text/javascript" src="http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
 <script type="text/javascript" src="http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
 <script type="text/javascript" src="http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<link href="movie_index.css?v=2011-09-28_18:07:55" type="text/css" rel="stylesheet" />
 <link type="text/css" rel="stylesheet" href="http://louxiaojian.googlecode.com/svn/trunk/asset/app/notes/case.css"/>
 <link type="text/css" rel="stylesheet" href="http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
 <link type="text/css" rel="stylesheet" href="http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
@@ -49,7 +50,7 @@
 	font:italic 16px/1.5 'Times New Roman'
 }
 
-.dialog{
+.dialog2{
 	position:absolute;
 	background:#fff;
 	padding:10px;
@@ -68,8 +69,8 @@ a{color:#00E;text-decoration:none;}
 a:hover{color:#f60;text-decoration:underline}
 
 #textarea3{width:330px;border:1px solid #ECE9D8;height:40px;padding:5px 10px}
-.dialog-close{cursor:pointer;color:#00E;font-weight:bold}
-.dialog-close:hover{color:#f60}
+.dialog2-close{cursor:pointer;color:#00E;font-weight:bold}
+.dialog2-close:hover{color:#f60}
 </style>
 </head>
 
@@ -77,12 +78,19 @@ a:hover{color:#f60;text-decoration:underline}
 <div id="page">
     <h1>弹出框组件</h1>
     <div id="content">
-		<div id="dialog" class="exp"><span class="code">dialog({id:'lxj',width:350})</span></div>
-		<div id="dialog2" class="exp"><span class="code">dialog({id:'lxj',width:350,left:0,top:0})</span></div>
-		<div id="dialog3" class="exp"><span class="code">dialog({id:'lxj',width:350,opacity:0.1})</span></div>
-		<div id="dialog4" class="exp"><span class="code">dialog({id:'lxj',width:350,Layer:0})</span></div>
-		<div id="dialog5" class="exp"><span class="code">dialog({id:'lxj3',width:350,fix:1})</span></div>
-		<div id="dialog6" class="exp"><span class="code">dialog({id:'lxj2',width:350,Layer:0,left:this.offsetLeft,top:this.offsetTop+30})</span></div>
+	    <h2>有各自马甲的弹出框</h2>
+		<div id="dialog" class="exp"><span class="code">dialog({id:'lxj',width:350,type:'duli'})</span></div>
+		<div id="dialog2" class="exp"><span class="code">dialog({id:'lxj',width:350,type:'duli',left:0,top:0})</span></div>
+		<div id="dialog3" class="exp"><span class="code">dialog({id:'lxj',width:350,type:'duli',opacity:0.1})</span></div>
+		<div id="dialog4" class="exp"><span class="code">dialog({id:'lxj',width:350,type:'duli',Layer:0})</span></div>
+		<div id="dialog5" class="exp"><span class="code">dialog({id:'lxj3',width:350,type:'duli',fix:1})</span></div>
+		<div id="dialog6" class="exp"><span class="code">dialog({id:'lxj2',width:350,Layer:0,type:'duli',left:this.offsetLeft,top:this.offsetTop+30})</span></div>
+
+
+		<h2 style="margin-top:200px">同穿一个马甲的弹出框</h2>
+		<div id="dialog8"  class="exp"><span class="code">dialog({id:'&lt;p style="height:200px;line-height:200px"&gt;111111111111111111&lt;/p&gt;',width:600,title:'提示框'})</span></div>
+		<div id="dialog9"  class="exp"><span class="code">dialog({id:'bushiduli',width:550,title:'莫文蔚今日与初恋男友完婚'})</span></div>
+		<div id="dialog10"  class="exp"><span class="code">dialog({id:'not-reg',width:540,title:'登录'})</span></div>
 		<select>
 			<option>asdasdsadsadasdsadsadsadsadsa</option>
 			<option>asdasdsadsadasdsadsadsadsadsa</option>
@@ -90,43 +98,66 @@ a:hover{color:#f60;text-decoration:underline}
 			<option>asdasdsadsadasdsadsadsadsadsa</option>
 		</select>
 		<div style="height:1000px"></div>
-		<div id="dialog7"  class="exp"><span class="code">new dialog({id:'lxj',width:350})</span></div>
+		<div id="dialog7"  class="exp"><span class="code">dialog({id:'&lt;p style="height:100px;line-height:100px;"&gt;《新闻联播》片头曲明年更换&lt;/p&gt;',width:350})</span></div>
+		
     </div>
 </div>
 
-<div id="lxj" class="dialog" >
+<div id="lxj" class="dialog2" >
 	<p>lxj</p>
 	<textarea style="width:100%; height:50px" id="textarea" class="textarea"></textarea>
 	<a href="#" onclick="return false" class="dialog-close-handle">关闭一</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="return false" class="dialog-close-handle">关闭二</a>
-	<div onclick="dialog.close('lxj')" class="dialog-close"><span class="code">dialog.close('lxj')</span></div>
+	<div onclick="dialog.close('lxj')" class="dialog2-close"><span class="code">dialog.close('lxj')</span></div>
 </div>
 
-<div id="lxj2" class="dialog" >
+<div id="lxj2" class="dialog2" >
 	<p>第二种</p>
 	<textarea style="width:100%; height:50px" id="textarea2"></textarea>
 	<a href="#" onclick="return false" class="dialog-close-handle">关闭一</a>
-	<div onclick="dialog.close('lxj2')" class="dialog-close"><span class="code">dialog.close('lxj2')</span></div>
+	<div onclick="dialog.close('lxj2')" class="dialog2-close"><span class="code">dialog.close('lxj2')</span></div>
 </div>
 
-<div id="lxj3" class="dialog" >
+<div id="lxj3" class="dialog2" >
 	<p>lxj3</p>
 	<div id="textarea3" class="textarea">还剩<span id="tr" style="color:#f00;margin:0 3px;font-weight:bold"></span>秒关闭窗口</div>
 	<a href="#" onclick="return false" class="dialog-close-handle">关闭一</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="return false" class="dialog-close-handle">关闭二</a>
-	<div onclick="dialog.close('lxj3')" class="dialog-close"><span class="code">dialog.close('lxj3')</span></div>
+	<div onclick="dialog.close('lxj3')" class="dialog2-close"><span class="code">dialog.close('lxj3')</span></div>
+</div>
+<div id="bushiduli" style="padding:20px;display:none">
+  莫文蔚今日（10月1日）将在意大利佛罗伦萨与初恋男友Johannes完婚。近一个多月来，莫文蔚不时通过微博晒出婚礼细节。此次婚礼将在佛罗伦萨一个酒庄就行，一对新人只邀请了一些亲朋好友出席，并未邀请媒体。
+</div>
+<div id="not-reg" class="not-reg" style="display:none;margin:-20px;font-size:12px">
+    <div class="not-reg-in">
+        <div id="login-form" class="form-field">
+            <p class="yy">已有PPS视频、PPS账号，可直接登录</p>
+            <form id="" name="" method="post" action="">
+                <ul>
+                    <li class="form-item"><label class="lb">用户名：</label><input type="text" name="user" id="user" class="e-input" /></li>
+                    <li class="form-item"><label class="lb">密　码：</label><input type="password" name="password" id="password" class="e-input" /><a href="#" class="oer">忘记密码</a></li>
+                </ul>
+                <div class="form-act"><a href="#" class="new-g-but6 g-but" onclick="dialog.close();return false"><span class="b">登录</span></a></div>
+            </form>
+        </div>
+
+        <div class="fast-reg">
+            还未开通？赶快免费注册一个吧！
+            <br /><a href="#" class="new-g-but7 g-but"><span class="b">快速注册</span></a>
+        </div>
+    </div>
 </div>
 <script type="text/javascript" src="dialog.js"></script>
 <script>
 document.getElementById('dialog').onclick=function(){
-  dialog({id:'lxj',width:350})
+  dialog({id:'lxj',width:350,type:'duli'})
 }
 document.getElementById('dialog2').onclick=function(){
-  dialog({id:'lxj',width:350,left:0,top:0})
+  dialog({id:'lxj',width:350,type:'duli',left:0,top:0})
 }
 document.getElementById('dialog3').onclick=function(){
-  dialog({id:'lxj',width:350,opacity:0.1})
+  dialog({id:'lxj',width:350,type:'duli',opacity:0.1})
 }
 document.getElementById('dialog4').onclick=function(){
-  dialog({id:'lxj',width:350,Layer:0})
+  dialog({id:'lxj',width:350,type:'duli',Layer:0})
 }
 document.getElementById('dialog5').onclick=function(){
   var n=1,self=this;
@@ -134,6 +165,7 @@ document.getElementById('dialog5').onclick=function(){
 	  {
 		  id:'lxj3',
 		  width:350,
+          type:'duli',
 		  fix:1,
 		  openBack:function(){
 			  document.getElementById('tr').innerHTML=10;
@@ -146,16 +178,33 @@ document.getElementById('dialog5').onclick=function(){
 				  n=1;
 			  }
 			  },1000);
+		  },
+		  closeBack:function(){
+		      self.time && clearInterval(self.time)
 		  }
 	  }
   );
 }
 document.getElementById('dialog6').onclick=function(){
-  dialog({id:'lxj2',width:350,Layer:0,left:this.offsetLeft,top:this.offsetTop+30})
+  dialog({id:'lxj2',width:350,type:'duli',Layer:0,left:this.offsetLeft,top:this.offsetTop+30})
 }
+
+
 document.getElementById('dialog7').onclick=function(){
-  dialog({id:'lxj',width:350})
+  dialog({id:'<p style="height:100px;line-height:100px;">《新闻联播》片头曲明年更换</p>',width:350})
 }
+document.getElementById('dialog8').onclick=function(){
+  dialog({id:'<p style="height:200px;line-height:200px">111111111111111111</p>',width:600,title:'提示框'})
+}
+document.getElementById('dialog9').onclick=function(){
+  dialog({id:'bushiduli',width:550,title:'莫文蔚今日与初恋男友完婚'})
+}
+
+document.getElementById('dialog10').onclick=function(){
+  dialog({id:'not-reg',width:540,title:'登录'})
+}
+
+
 </script>
 </body>
 </html>
