@@ -164,6 +164,68 @@ a:hover{color:#f60;text-decoration:underline}
 	box-shadow:inset 0 1px 2px rgba(0,0,0,0.3)
 }
 
+.modal {
+  text-align:left;
+  width: 560px;
+  display:none;
+  background-color: #ffffff;
+  border: 1px solid #999;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  *border: 1px solid #999;
+  /* IE6-7 */
+
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.modal .modal-header {
+  border-bottom: 1px solid #eee;
+  padding: 5px 20px;
+}
+.modal .modal-header .close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #999;
+  line-height: 10px;
+  font-size: 18px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.modal .modal-body {
+  padding: 20px;
+}
+.modal .modal-footer {
+  background-color: #f5f5f5;
+  padding: 14px 20px 15px;
+  border-top: 1px solid #ddd;
+  -webkit-border-radius: 0 0 6px 6px;
+  -moz-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+  -webkit-box-shadow: inset 0 1px 0 #ffffff;
+  -moz-box-shadow: inset 0 1px 0 #ffffff;
+  box-shadow: inset 0 1px 0 #ffffff;
+  zoom: 1;
+  margin-bottom: 18px;
+  margin-bottom: 0;
+}
+.modal .modal-footer:before, .modal .modal-footer:after {
+  display: table;
+  content: "";
+}
+.modal .modal-footer:after {
+  clear: both;
+}
+.modal .modal-footer .btn {
+  float: right;
+  margin-left: 10px;
+}
+
 .btn {
   cursor: pointer;
   display: inline-block;
@@ -250,7 +312,7 @@ a:hover{color:#f60;text-decoration:underline}
 		<div id="dialog2" class="exp"><span class="code">QIE.dialog('lxj',{width:350,type:'duli',left:0,top:0})</span></div>
 		<div id="dialog3" class="exp"><span class="code">QIE.dialog('lxj',{width:350,type:'duli',opacity:0.1})</span></div>
 		<div id="dialog4" class="exp"><span class="code">QIE.dialog('lxj',{width:350,type:'duli',Layer:0})</span></div>
-		<div id="dialog5" class="exp"><span class="code">QIE.dialog('lxj3',{width:350,type:'duli',fix:1})</span></div>
+		<div id="dialog5" class="exp"><span class="code">QIE.dialog('lxj3',{width:390,type:'duli',fix:1})</span></div>
 		<div id="dialog6" class="exp"><span class="code">QIE.dialog('lxj',{width:350,Layer:0,type:'duli',left:this.offsetLeft,top:this.offsetTop+30})</span></div>
 
 
@@ -278,35 +340,49 @@ a:hover{color:#f60;text-decoration:underline}
     </div>
 </div>
 
-<div id="lxj" class="dialog2" >
-	<p>lxj</p>
-	<textarea style="width:100%; height:50px" id="textarea" class="textarea"></textarea>
-	<div onclick="QIE.dialog.close('lxj')" class="dialog2-close"><span class="code">dialog.close('lxj')</span></div>
-	<div class="tal">
-		<input class="btn primary dialog-close-handle" value="确定" type="button" />
-		<input class="btn secondary dialog-close-handle" value="取消" type="button" />
-	</div>
+<div id="lxj" class="modal" style="position:absolute;z-index: 9999">
+          <div class="modal-header">
+            <h3>QIE.dialog('lxj',{width:350,type:'duli'})</h3>
+            <a href="#" class="close dialog-close-handle">&times;</a>
+          </div>
+          <div class="modal-body">
+            <p>有各自马甲的弹出框</p>
+          </div>
+          <div class="modal-footer">
+		    <a href="#" class="btn secondary" onclick="QIE.dialog.close('lxj')">取消</a>
+            <a href="#" class="btn primary" onclick="QIE.dialog.close('lxj')">确定</a>
+          </div>
 </div>
 
-<div id="lxj2" class="dialog2" >
-	<p>第二种</p>
-	<textarea style="width:100%; height:50px" id="textarea2"></textarea>
-    <div onclick="QIE.dialog.close('lxj2')" class="dialog2-close"><span class="code">dialog.close('lxj2')</span></div>
-	<div class="tal">
-		<input class="jfk-button jfk-button-action dialog-close-handle" value="确定" type="button" />
-		<input class="gac_bt dialog-close-handle" value="取消" type="button" />
-	</div>
+
+<div id="lxj2" class="modal" style="position:absolute;z-index: 9999">
+          <div class="modal-header">
+            <h3>QIE.dialog('lxj',{width:350,type:'duli'})</h3>
+            <a href="#" class="close dialog-close-handle">&times;</a>
+          </div>
+          <div class="modal-body">
+            <p>有各自马甲的弹出框</p>
+          </div>
+          <div class="modal-footer">
+		    <a href="#" class="btn secondary" onclick="QIE.dialog.close('lxj2')">取消</a>
+            <a href="#" class="btn primary" onclick="QIE.dialog.close('lxj2')">确定</a>
+          </div>
 </div>
 
-<div id="lxj3" class="dialog2" >
-	<p>lxj3</p>
-	<div id="textarea3" class="textarea">还剩<span id="tr" style="color:#f00;margin:0 3px;font-weight:bold"></span>秒关闭窗口</div>
-	<div onclick="QIE.dialog.close('lxj3')" class="dialog2-close"><span class="code">dialog.close('lxj3')</span></div>
-	<div class="tal">
-		<input class="jfk-button jfk-button-action dialog-close-handle" value="确定" type="button" />
-		<input class="gac_bt dialog-close-handle" value="取消" type="button" />
-	</div>
+<div id="lxj3" class="modal" style="position:absolute;z-index: 9999">
+          <div class="modal-header">
+            <h3>自动关闭</h3>
+            <a href="#" class="close dialog-close-handle">&times;</a>
+          </div>
+          <div class="modal-body">
+            <div id="textarea3" class="textarea">还剩<span id="tr" style="color:#f00;margin:0 3px;font-weight:bold"></span>秒关闭窗口</div>
+          </div>
+          <div class="modal-footer">
+		    <a href="#" class="btn secondary" onclick="QIE.dialog.close('lxj3')">取消</a>
+            <a href="#" class="btn primary" onclick="QIE.dialog.close('lxj3')">确定</a>
+          </div>
 </div>
+
 <div id="bushiduli" style="padding:20px;display:none">
   莫文蔚今日（10月1日）将在意大利佛罗伦萨与初恋男友Johannes完婚。近一个多月来，莫文蔚不时通过微博晒出婚礼细节。此次婚礼将在佛罗伦萨一个酒庄就行，一对新人只邀请了一些亲朋好友出席，并未邀请媒体。
 </div>
@@ -353,7 +429,7 @@ a:hover{color:#f60;text-decoration:underline}
 	  S.dialog(
 		  'lxj3',
 		  {
-			  width:350,
+			  width:390,
 			  type:'duli',
 			  fix:1,
 			  openBack:function(){
