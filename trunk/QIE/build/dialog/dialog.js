@@ -6,205 +6,302 @@
  * Mail: louxiaojian@gmail.com
  */
 (function(S){
-	function dialog(elem,s){
-		var self = this;
-		//alert(arguments[0].id)
-			//alert(arguments[0].width)
-		if (!(self instanceof dialog)) {
-			return new dialog(elem,s);
-		}
-		this.init(elem,s)
-	};
-	S.$=function(id) {
-            var elem="string" == typeof id ? document.getElementById(id) : id;
-            return elem;
+    var toString=Object.prototype.toString;
+    function show(elem){
+        elem.style.display='block';
+    }
+    function hide(elem){
+        elem.style.display='none';
+    }
+    function dialog(elem,s){
+        var self = this;
+        if (!(self instanceof dialog)) {
+            return new dialog(elem,s);
+        }
+        this.init(elem,s)
     };
-	dialog.close=function(elem,s){
-		var elem=elem || 'v-dialog',s=s || 'dialog-close-handle',closebut=S.getECN(S.$(elem),s,'*');
-		closebut.length!=0 && closebut[0].onclick();
-	}
-	dialog.remind=function(text,s){
-		var butText=s.text || '确定',
-			html='<p>'+text+'</p><div class="tal"><input class="btn primary" value="'+butText+'" type="button" /></div>',
-			textback=s.textback || function(){},
-			d,
-			vd;
-		d=dialog(html,s);
-		vd=S.$('v-dialog');
-		S.on(S.getECN(vd,'primary','input')[0],'click',function(){
-			textback.call(d)!==false && dialog.close();
-		})
-	}
-	dialog.prompt=function(text,s){
-		var butText=s.text || '确定',
-			butText2=s.text2 || '取消',
-			html='<p>'+text+'</p><div class="tal"><input class="btn primary" value="'+butText+'" type="button" /><input class="btn secondary" value="'+butText2+'" type="button" /></div>',
-			textback=s.textback || function(){},
-			textback2=s.textback2 || function(){},
-			d,
-			vd;
-		d=dialog(html,s);
-		vd=S.$('v-dialog');
-		S.on(S.getECN(vd,'primary','input')[0],'click',function(){
-			textback.call(d)!==false && dialog.close();
-		})
-		S.on(S.getECN(vd,'secondary','input')[0],'click',function(){	
-            textback2.call(d)!==false && dialog.close();
-		})
-	}
-	dialog.prototype={
-		init:function(elem,s,undef){
-			var _this=this;
-			this.elem=elem;
-			this.openBack=s.openBack;
-			this.closeBack=s.closeBack;
-			this.top=s.top;
-			this.left=s.left;
-			this.height=s.height;
-			this.width=s.width;
-			this.title=s.title;
-			this.type=s.type || 'default';
-			this.closeName=s.closeName || 'dialog-close-handle';
-			this.Layer=s.Layer===undef ? 1 : s.Layer;
-			this.fix=s.fix;
-			this.opacity=s.opacity || 0.5;
-			this.d=document;
-			this.db=this.d.body;
-			this.dd=this.d.documentElement;
-			this.dialogInit();
-			this.open();
-			window.onresize=function(){_this.setPosition.call(_this)};
-		},
-		shadingLayer:function(){
-			var layDic,iframe;
-			if(!S.$('layDic')){
-				var DocumentFragment=document.createDocumentFragment();
-				layDic=document.createElement("div");
-				layDic.setAttribute('id','layDic');
-				iframe=document.createElement("iframe");
-				iframe.setAttribute('id','layDic-iframe');
-				iframe.setAttribute('frameborder','0');
-				iframe.setAttribute('marginheight','0');
-				iframe.setAttribute('marginwidth','0');
-				layDic.style.cssText="opacity:0.5;background:#000;position:absolute;top:0;left:0;z-index:9998;display:none";
-				iframe.style.cssText="opacity:0;-moz-opacity:0;filter:alpha(opacity=0);background:#000;position:absolute;top:0;left:0;z-index:9997;display:none";
-				DocumentFragment.appendChild(layDic);
-				DocumentFragment.appendChild(iframe);
-				document.body.appendChild(DocumentFragment);
-			}
-			layDic=this.layDic=S.$('layDic');
-			iframe=this.iframe=S.$('layDic-iframe');
-			layDic.style.filter = "alpha(opacity=" + this.opacity*100 + ")";
-			layDic.style.opacity = this.opacity;
-		},
-		dialogInit:function(){
-			var closebut,
-				_this=this,
-				dialogPanel,
-				elemmain,
-				elembd,
-				elemhd,
-				title=this.title,
-				elem=S.$(this.elem);
-			if(this.type==='duli'){
-			   dialogPanel=this.dialog=S.$(this.elem);
-			}else{
-				if(!S.$('v-dialog')){
-					var html,div;
-					html='<div id="v-dialog" class="dialog dialog-b"><div class="dialog-hd dialog-bk"><span class="dhd-1"><span class="dhd-2"></span></span><b></b><s></s></div><div class="dialog-bd"><div class="dialog-wrap"><div class="dialog-main"><div class="dialog-mbd"></div></div></div><div class="dialog-lf"></div><div class="dialog-rg"></div></div><div class="dialog-close"><a href="#" class="dialog-close-handle" title="关闭">关闭</a></div><b class="jt" style="left:30px"></b><div class="dialog-ft dialog-bk"><span class="dhd-1"><span class="dhd-2"></span></span><b></b><s></s></div></div>';
-					div=document.createElement('div');
-					div.innerHTML=html;
-					document.body.appendChild(div.firstChild)
-				}
-				dialogPanel=this.dialog=S.$('v-dialog');
-				dialogmain=S.getECN(dialogPanel,'dialog-main','div')[0];
-				dialogbd=S.getECN(dialogPanel,'dialog-mbd','div')[0];
-				dialoghd=S.getECN(dialogPanel,'dialog-mhd','div')[0];
-				dialogbd.innerHTML='';
-				if(title){
-				   !dialoghd && (function(){
-					   var tmp,hdhtml;
-						hdhtml='<div class="dialog-mhd"></div>';
-						tmp=document.createElement('div');
-						tmp.innerHTML=hdhtml;
-						dialoghd=tmp.firstChild;
-						dialogmain.insertBefore(tmp.firstChild,dialogbd);
-					})();
-					dialoghd.innerHTML=title;
-				}else{
-				   dialoghd && dialoghd.parentNode.removeChild(dialoghd);
-				}
-				if(elem){
-				   elem.style.display="block"
-				   dialogbd.appendChild(elem);
-				}else{
-				   dialogbd.innerHTML=this.elem;
-				}
-			}
-			dialogPanel.style.display="block";
-			this.pHeight=this.height ?  parseInt(this.height) : dialogPanel.offsetHeight;
-			this.pWidth=parseInt(this.width);
-			S.setStyle(dialogPanel,{'width':this.pWidth+"px",'z-index':'9999','display':'none'});
-			closebut=S.getECN(dialogPanel,this.closeName,'*');
-			for(var i=0,len=closebut.length;i<len;i++){
-				closebut[i].onclick=function(){_this.close.call(_this);return false;
-				}
-			}
-		},
-		fixed:function(undef){
-			var dialogPanel=this.dialog;
-			if(S.Browser.isIE6){
-				var top=this.top!==undef ? parseInt(this.top) : this.cTop;
-				var expression=";top:expression(documentElement.scrollTop+"+top+");)"
-				dialogPanel.style.position='absolute';
-				dialogPanel.style.cssText+=expression;
-				document.body.style.cssText+=';background:url(about:blank) fixed';
-			}else{
+    S.mix(dialog,{
+        close:function(elem,s){
+            var elem=elem || 'v-dialog',s=s || 'dialog-close-handle',closebut=S.getECN(S.$(elem),s,'*');
+            closebut.length!=0 && closebut[0].onclick();
+        },
+        remind:function(text,s){
+            s.btnSl=1;
+            this.prompt(text,s);
+        },
+        prompt:function(text,s){
+            var butText=s.text || '确定',
+                    butText2=s.text2 || '取消',
+                    html='<p>'+text+'</p><div class="tal"><input class="btn primary" value="'+butText+'" type="button" />',
+                    textback=s.textback || function(){},
+                    textback2=s.textback2 || function(){},
+                    d,
+                    vd,
+                    btnSl=s.btnSl || 2;
+            if(btnSl==2){
+                html+='<input class="btn secondary" value="'+butText2+'" type="button" />'
+            }
+            html+='</div>';
+            d=dialog(html,s);
+            vd=S.$('v-dialog');
+            S.on(S.getECN(vd,'primary','input')[0],'click',function(){
+                textback.call(d)!==false && dialog.close();
+            })
+            if(btnSl==2){
+                S.on(S.getECN(vd,'secondary','input')[0],'click',function(){
+                    textback2.call(d)!==false && dialog.close();
+                })
+            }
+        },
+        ajax:function(url,s){
+            if(!S.ajax){alert('缺少ajax模块');return false}
+            dialog(s.ajaxLoading || 'ajax页面正在加载中',s);
+            S.ajax(url,{
+                'method':'get',
+                'loadFun':function(t){
+                    dialog(t.responseText,s);
+                }
+            })
+        },
+        iframe:function(url,s){
+            if(!S.iframeLoad){alert('缺少iframeLoad模块');return false}
+            var d=dialog('<p id="dialog-iframe-loading">加载中.....</p><iframe id="dialog_iframe" src="'+url+'" name="dialog_iframe" class="iframe-hidden" name="dialog_iframe" width="100%" frameborder="no" scrolling="no" frameborder="0" marginheight="0" marginwidth="0"></iframe>',s),iframe=S.$('dialog_iframe');
+            S.iframeLoad(iframe,function(){
+                iframe.style.height=this.newHeight;
+                S.$('dialog-iframe-loading').style.display='none';
+                d.setPosition();
+            })
+            iframe.src=url
+        },
+        img:function(url,s){
+            dialog(s.imgLoading || '图片正在加载中',s);
+            var img=new Image();
+            img.onload=function(){
+                //在这种情况下（img图片还没有dom结构）img.offsetWidth的值为0，此时图片的宽度也该用img.width来获取
+                //s.width=this.offsetHeight+52;
+                !s.width && (s.width=this.width+52);
+                dialog('<img src="'+url+'" alt="" style="width:'+(s.width-52)+'px" />',s);
+            }
+            img.src=url;
+        }
+    })
+
+    dialog.prototype={
+        init:function(elem,s,undef){
+            var _this=this;
+            this.elem=elem;
+            this.openBack=s.openBack;
+            this.closeBack=s.closeBack || function(){};
+            this.top=s.top;
+            this.left=s.left;
+            this.height=s.height;
+            this.width=parseInt(s.width);
+            this.title=s.title;
+            this.type=s.type || 'default';
+            this.closeName=s.closeName || 'dialog-close-handle';
+            this.Layer=s.Layer===undef ? 1 : s.Layer;
+            this.fix=s.fix;
+            this.opacity=s.opacity || 0.5;
+            this.autoClose=s.autoClose;//自动几秒后关闭功能
+            this.dragKey=s.dragKey;
+            this.dragTrigger=s.dragTrigger;
+            this.d=document;
+            this.db=this.d.body;
+            this.dd=this.d.documentElement;
+            this.dialogInit();
+            this.open();
+            if(this.dragKey) this.drag();
+            S.on(window,'resize',this.resize=function(){_this.setPosition.call(_this)})
+        },
+        shadingLayer:function(){
+            var layDic,iframe;
+            if(!S.$('layDic')){
+                var DocumentFragment=document.createDocumentFragment();
+                layDic=document.createElement("div");
+                layDic.setAttribute('id','layDic');
+                iframe=document.createElement("iframe");
+                iframe.setAttribute('id','layDic-iframe');
+                iframe.setAttribute('frameborder','0');
+                iframe.setAttribute('marginheight','0');
+                iframe.setAttribute('marginwidth','0');
+                layDic.style.cssText="opacity:0.5;background:#000;position:absolute;top:0;left:0;z-index:9998;display:none";
+                iframe.style.cssText="opacity:0;-moz-opacity:0;filter:alpha(opacity=0);background:#000;position:absolute;top:0;left:0;z-index:9997;display:none";
+                DocumentFragment.appendChild(layDic);
+                DocumentFragment.appendChild(iframe);
+                document.body.appendChild(DocumentFragment);
+            }
+            layDic=this.layDic=S.$('layDic');
+            iframe=this.iframe=S.$('layDic-iframe');
+            layDic.style.filter = "alpha(opacity=" + this.opacity*100 + ")";
+            layDic.style.opacity = this.opacity;
+        },
+        dialogInit:function(){
+            var closebut,
+                    _this=this,
+                    dialogPanel,
+                    elemmain,
+                    elembd,
+                    elemhd,
+                    title=this.title,
+                    elem=S.$(this.elem);
+            if(this.type==='duli'){
+                dialogPanel=this.dialog=S.$(this.elem);
+            }else{
+                if(!S.$('v-dialog')){
+                    var html,div;
+                    html='<div id="v-dialog" class="dialog dialog-b"><div class="dialog-hd dialog-bk"><span class="dhd-1"><span class="dhd-2"></span></span><b></b><s></s></div><div class="dialog-bd"><div class="dialog-wrap"><div class="dialog-main"><div class="dialog-mbd"></div></div></div><div class="dialog-lf"></div><div class="dialog-rg"></div></div><div class="dialog-close"><a href="#" class="dialog-close-handle" title="关闭">&times;</a></div><b class="jt" style="left:30px"></b><div class="dialog-ft dialog-bk"><span class="dhd-1"><span class="dhd-2"></span></span><b></b><s></s></div></div>';
+                    div=document.createElement('div');
+                    div.innerHTML=html;
+                    document.body.appendChild(div.firstChild)
+                }
+                dialogPanel=this.dialog=S.$('v-dialog');
+                dialogmain=S.getECN(dialogPanel,'dialog-main','div')[0];
+                dialogbd=S.getECN(dialogPanel,'dialog-mbd','div')[0];
+                dialoghd=S.getECN(dialogPanel,'dialog-mhd','div')[0];
+                dialogbd.innerHTML='';
+                if(title){
+                    !dialoghd && (function(){
+                        var tmp,hdhtml;
+                        hdhtml='<div class="dialog-mhd"></div>';
+                        tmp=document.createElement('div');
+                        tmp.innerHTML=hdhtml;
+                        dialoghd=tmp.firstChild;
+                        dialogmain.insertBefore(tmp.firstChild,dialogbd);
+                    })();
+                    dialoghd.innerHTML=title;
+                }else{
+                    dialoghd && dialoghd.parentNode.removeChild(dialoghd);
+                }
+                if(elem){
+                    show(elem);
+                    dialogbd.appendChild(elem);
+                }else{
+                    dialogbd.innerHTML=this.elem;
+                }
+                this.dragTrigger=dialoghd;
+                this.dragKey ? (dialoghd.style.cursor='move') : (dialoghd.style.cursor='')
+            }
+            S.setStyle(dialogPanel,{'width':this.width+"px",'z-index':'9999','display':'none'});
+            closebut=S.getECN(dialogPanel,this.closeName,'*');
+            for(var i=0,len=closebut.length;i<len;i++){
+                closebut[i].onclick=function(){_this.close.call(_this);return false;
+                }
+            }
+        },
+        fixed:function(undef){
+            var dialogPanel=this.dialog;
+            if(S.Browser.isIE6){
+                var top=this.top!==undef ? parseInt(this.top) : this.cTop;
+                var expression=";top:expression(documentElement.scrollTop+"+top+");)"
+                dialogPanel.style.position='absolute';
+                dialogPanel.style.cssText+=expression;
+                document.body.style.cssText+=';background:url(about:blank) fixed';
+            }else{
                 S.setStyle(dialogPanel,{'position':"fixed",'top':this.top!==undef ? (parseInt(this.top)+'px') : this.cTop+"px"});
-			}
-			return this;
-		},
-		unfixed:function(undef){
-			var dialogPanel=this.dialog;
-			S.setStyle(dialogPanel,{'position':"absolute",'top':this.top!==undef ? (parseInt(this.top)+'px') : (Math.max(this.dd.scrollTop, this.db.scrollTop)+this.cTop+"px")});
-		},
-		setPosition:function(undef){
-			var dialogPanel=this.dialog,layDic=this.layDic,iframe=this.iframe,sw=this.db.scrollWidth,sh=this.db.scrollHeight;
-			if(this.Layer){
-				layDic.style.width=iframe.style.width = sw+"px";
-				layDic.style.height=iframe.style.height = sh+"px";
-			}
-			this.cTop=(this.dd.clientHeight-this.pHeight)*0.382;
-			if(this.cTop<0) this.cTop=0;
-			this.fix ? this.fixed() : this.unfixed();
-			dialogPanel.style.left=this.left!==undef ? (parseInt(this.left)+'px') : ((this.dd.clientWidth-this.pWidth)/2+"px");
-		},
-		open:function(){
-			if(this.Layer){
-				this.shadingLayer();
-				this.layDic.style.display="block";
-				this.iframe.style.display="block"
-			};
-			this.setPosition();
-			this.dialog.style.display="block";
-			Object.prototype.toString.call(this.openBack)==='[object Function]' && this.openBack();
-		},
-		close:function(){
-			var dialogPanel=this.dialog,
-				layDic=this.layDic,
-				iframe=this.iframe,
-				elem=S.$(this.elem);
-			if(this.Layer){
-				layDic.style.display="none";
-				iframe.style.display="none";
-			}
-			dialogPanel.style.display="none";
-			if(this.type!=='duli' && elem){
-				elem.style.display="none";
-				document.body.appendChild(elem);
-			}
-			Object.prototype.toString.call(this.closeBack)==='[object Function]' && this.closeBack();
-		}
-	};
-	S.dialog=dialog;
+            }
+            return this;
+        },
+        unfixed:function(undef){
+            var dialogPanel=this.dialog;
+            S.setStyle(dialogPanel,{'position':"absolute",'top':this.top!==undef ? (parseInt(this.top)+'px') : (Math.max(this.dd.scrollTop, this.db.scrollTop)+this.cTop+"px")});
+        },
+        setPosition:function(undef){
+            var dialogPanel=this.dialog,layDic,iframe,sw=this.db.scrollWidth,sh=this.db.scrollHeight;
+            if(this.Layer){
+                this.shadingLayer();
+                layDic=this.layDic;
+                iframe=this.iframe;
+                layDic.style.width=iframe.style.width = sw+"px";
+                layDic.style.height=iframe.style.height = sh+"px";
+                show(layDic);
+                show(iframe);
+            }
+            show(this.dialog);
+            this.pHeight=this.height ?  parseInt(this.height) : dialogPanel.offsetHeight;
+            this.cTop=(this.dd.clientHeight-this.pHeight)*0.382;
+            if(this.cTop<0) this.cTop=0;
+            this.fix ? this.fixed() : this.unfixed();
+            dialogPanel.style.left=this.left!==undef ? (parseInt(this.left)+'px') : ((this.dd.clientWidth-this.width)/2+"px");
+        },
+        open:function(){
+            var self=this;
+            this.setPosition();
+            if(this.autoClose){
+                this.autoCloseTime && clearTimeout(this.autoCloseTime);
+                this.autoCloseTime=setTimeout(
+                        function(){
+                            self.close()
+                        },
+                        this.autoClose
+                        )
+            }
+            toString.call(this.openBack)==='[object Function]' && this.openBack();
+        },
+        close:function(){
+            if(toString.call(this.closeBack)==='[object Function]' && this.closeBack()!==false){
+                var dialogPanel=this.dialog,
+                        layDic=this.layDic,
+                        iframe=this.iframe,
+                        elem=S.$(this.elem);
+                if(this.Layer){
+                    hide(layDic);
+                    hide(iframe);
+                }
+                hide(dialogPanel);
+                if(this.type!=='duli' && elem){
+                    hide(elem);
+                    document.body.appendChild(elem);
+                }
+                S.removeEvent(window,'resize',this.resize);
+                this.dragKey && S.removeEvent(this.dragTrigger,'mousedown',this.mousedown);
+                this.autoClose && this.autoCloseTime && clearTimeout(this.autoCloseTime);
+            }
+        },
+        drag:function(){
+            var dragYz,zj_x,zj_y,db=document.body,dd=document.documentElement,dragTrigger=this.dragTrigger,dialogPanel=this.dialog,mx,my,self=this;
+            function mousedown(){
+                var e=arguments[0] || window.event;
+                mx=e.clientX-S.offset(dialogPanel).left;
+                my=e.clientY+Math.max(db.scrollTop,dd.scrollTop)-S.offset(dialogPanel).top;
+                this.style.cursor='move';
+                dragYz=document.createElement('div');
+                S.setStyle(dragYz,{width:dialogPanel.offsetWidth-2+'px',height:dialogPanel.offsetHeight-2+'px',position:'absolute',top:S.offset(dialogPanel).top+'px',left:S.offset(dialogPanel).left+'px',border:'1px dashed #f00','cursor':'move','z-index':99999});
+                document.body.appendChild(dragYz);
+                S.on(document,'mousemove',move);
+                S.on(document,'mouseup',stop);
+            }
+            function move(){
+                var e=arguments[0] || window.event,
+                        cw=Math.min(dd.clientWidth,db.clientWidth),
+                        ch=Math.min(dd.clientHeight,db.clientHeight),
+                        st=Math.max(db.scrollTop,dd.scrollTop);
+                //清除选择
+                window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+                zj_x=e.clientX-mx;
+                zj_y=e.clientY+st-my;
+                if(zj_x<0){
+                    zj_x=0;
+                }
+                if(zj_x+dragYz.offsetWidth>cw){
+                    zj_x=cw-dragYz.offsetWidth;
+                }
+                if(zj_y<st){
+                    zj_y=st;
+                }
+                if(zj_y-st+dragYz.offsetHeight>ch){
+                    zj_y=st+ch-dragYz.offsetHeight;
+                }
+                S.setStyle(dragYz,{top:zj_y+'px',left:zj_x+'px'})
+            };
+            function stop(){
+                dragYz && dragYz.parentNode && dragYz.parentNode.removeChild(dragYz);
+                S.setStyle(dialogPanel,{position:'absolute',top:zj_y+'px',left:zj_x+'px'})
+                dialogPanel.style.cursor='';
+                S.removeEvent(document,'mousemove',move)
+                S.removeEvent(document,'mouseup',stop)
+            };
+            S.on(dragTrigger,'mousedown',this.mousedown=mousedown)
+        }
+    };
+    S.dialog=dialog;
 })(QIE)

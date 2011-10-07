@@ -450,7 +450,7 @@ QIE.add('node', function(S) {
      return elem ? new Node(elem) : null;
      };*/
 
-    S.$=function(id) {
+    S.one=function(id) {
         var elem="string" == typeof id ? document.getElementById(id) : id;
         return elem ? new Node(elem) : null;/*返回Node对象而不是原生 的DOM ;*/
     };
