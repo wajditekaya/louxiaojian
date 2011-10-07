@@ -70,24 +70,24 @@ input,textarea,select{*font-size:100%;}
 <script type="text/javascript">
 QIE.ready(function(S){
 	var i=0,DOM=S.DOM,
-	     lxj=S.$('lxj'),s='',
-		  test=S.$('test');
+	     lxj=S.one('lxj'),s='',
+		  test=S.one('test');
 		  DOM.on(test[0],'click',function(){
 				this.className.indexOf('b')==-1 ? DOM.addClass(this,'b') :DOM.removeClass(this,'b');
-				S.$('test-inner')[0].innerHTML='内容是：'+this.innerHTML+';X坐标是：'+DOM.getObjPos(this).x+';Y坐标是：'+DOM.getObjPos(this).y+';====='+i++;
+				S.one('test-inner')[0].innerHTML='内容是：'+this.innerHTML+';X坐标是：'+DOM.getObjPos(this).x+';Y坐标是：'+DOM.getObjPos(this).y+';====='+i++;
 		  })	;
 		  
 		  lxj.addClass('b');
 		  lxj.on('click',function(){
 			  alert(this.id)
-			  S.$(this).removeClass('b');						   
+			  S.one(this).removeClass('b');						   
 		  })
-		  S.$('test2').setStyle({'background':'#fff','padding-left':'10px','color':'#000','font-weight':'bold','opacity':0.3}).on('click',function(){
+		  S.one('test2').setStyle({'background':'#fff','padding-left':'10px','color':'#000','font-weight':'bold','opacity':0.3}).on('click',function(){
 			  alert(this.id);
 		  })
-		  S.$('test3').on('click',function(){
-			  alert(S.$(this).offset().top);
-			  alert(S.$(this).offset().left)
+		  S.one('test3').on('click',function(){
+			  alert(S.one(this).offset().top);
+			  alert(S.one(this).offset().left)
 		  })
 		  s+="test.getStyle('padding-left')="+test.getStyle('padding-left')+'<br />';
 		  s+="test.css('padding-left')="+test.css('padding-left')+'<br />';
@@ -98,7 +98,7 @@ QIE.ready(function(S){
 		  s+="test.offset().top="+test.offset().top+'<br />';
 		  s+="test.position().left="+test.position().left+'<br />';
 		  s+="test.position().top="+test.position().top+'<br />';
-		  S.$('out')[0].innerHTML=s;
+		  S.one('out')[0].innerHTML=s;
 
 		  S.each(['aa','bb','cc','dd','ee','ff'],function(v,i){
 			  alert(v)

@@ -3,33 +3,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>弹出框组件</title>
-<script type="text/javascript" src="http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
-<script type="text/javascript" src="http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
-<script type="text/javascript" src="http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
-<script type="text/javascript" src="http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
 <link href="movie_index.css?v=2011-09-28_18:07:55" type="text/css" rel="stylesheet" />
-<link type="text/css" rel="stylesheet" href="http://louxiaojian.googlecode.com/svn/trunk/asset/app/notes/case.css"/>
-<link type="text/css" rel="stylesheet" href="http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
-<link type="text/css" rel="stylesheet" href="http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
+<link type="text/css" rel="stylesheet" href="http://www.lxj.com/WebCode/googlecode/louxiaojian/trunk/asset/app/notes/case.css"/>
+
 
 <script type="text/javascript" src="../QIE.js"></script>
-<script type="text/javascript">
-	SyntaxHighlighter.config.clipboardSwf = 'http://louxiaojian.googlecode.com/svn/trunk/asset/FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
-	SyntaxHighlighter.config.strings = {
-			expandSource : '展开代码',
-			viewSource : '查看代码',
-			copyToClipboard : '复制代码',
-			copyToClipboardConfirmation : '代码复制成功',
-			print : '打印',
-			help : '?',
-			alert: '语法高亮\n\n',
-			noBrush : '不能找到刷子: ',
-			brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
-			// this is populated by the build script
-			aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Geneva,Arial,Helvetica,sans-serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.1.364(October 15 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
-		}
-	SyntaxHighlighter.all();
-</script>
+<script type="text/javascript" src="../ajax/ajax.js"></script>
+<script type="text/javascript" src="../iframeLoad/iframeLoad.js"></script>
+
 <style type="text/css">
 .exp{
 	padding:0 10px;
@@ -300,6 +281,63 @@ a:hover{color:#f60;text-decoration:underline}
   -moz-box-shadow: inset 0 1px 0 #ffffff;
   box-shadow: inset 0 1px 0 #ffffff;}
 .tac{text-align:center;}
+
+.dialog .dialog-close a{
+	display: block;
+	overflow: hidden;
+	text-indent:0px;
+	line-height: 10px;
+	font-size: 18px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color:#999
+}
+.dialog .dialog-close a:hover{
+	color:#000
+}
+.iframe-hidden{height:0; font-size:0; line-height:0; overflow:hidden; border:0; padding:0; margin:0}
+
+.tabs:before,
+.tabs:after{
+  display: table;
+  content: "";
+}
+.tabs:after{
+  clear: both;
+}
+.tabs {
+  width: 100%;
+  border-bottom: 1px solid #bfbfbf;
+  margin: 0 0 20px;
+  padding: 0;
+  zoom: 1;
+  margin-bottom: 18px;
+}
+.tabs li{
+  display: inline;
+}
+.tabs li a {
+  margin-bottom: -1px;
+  margin-right: 2px;
+  padding: 0 15px;
+  line-height: 35px;
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+    float: left;
+  width: auto;
+}
+.tabs li a:hover {
+  background-color: #e6e6e6;
+  border-bottom: 1px solid #bfbfbf;
+}
+.tabs li.active a {
+  background-color: #fff;
+  padding: 0 14px;
+  border: 1px solid #ccc;
+  border-bottom: 0;
+  color: #808080;
+}
+
 </style>
 </head>
 
@@ -307,10 +345,16 @@ a:hover{color:#f60;text-decoration:underline}
 <div id="page">
     <h1>弹出框组件</h1>
     <div id="content">
+
+	<ul class="tabs">
+        <li class="active"><a href="#">原生态JS版本</a></li>
+        <li><a href="#">jQuery版本</a></li>
+      </ul>
+
 	    <h2>有各自马甲的弹出框</h2>
-		<div id="dialog" class="exp"><span class="code">QIE.dialog('lxj',{width:350,type:'duli'})</span></div>
+		<div id="dialog" class="exp"><span class="code">QIE.dialog('seanlou',{width:350,type:'duli'})</span></div>
 		<div id="dialog2" class="exp"><span class="code">QIE.dialog('lxj',{width:350,type:'duli',left:0,top:0})</span></div>
-		<div id="dialog3" class="exp"><span class="code">QIE.dialog('lxj',{width:350,type:'duli',opacity:0.1})</span></div>
+		<div id="dialog3" class="exp"><span class="code">QIE.dialog('lxj',{width:350,type:'duli',opacity:0.1,dragKey:true})</span></div>
 		<div id="dialog4" class="exp"><span class="code">QIE.dialog('lxj',{width:350,type:'duli',Layer:0})</span></div>
 		<div id="dialog5" class="exp"><span class="code">QIE.dialog('lxj3',{width:390,type:'duli',fix:1})</span></div>
 		<div id="dialog6" class="exp"><span class="code">QIE.dialog('lxj',{width:350,Layer:0,type:'duli',left:this.offsetLeft,top:this.offsetTop+30})</span></div>
@@ -318,7 +362,7 @@ a:hover{color:#f60;text-decoration:underline}
 
 		<h2 style="margin-top:100px">同穿一个马甲的弹出框</h2>
 		<div id="dialog8"  class="exp"><span class="code">QIE.dialog('&lt;p style="height:120px;line-height:120px"&gt;111111111111111111&lt;/p&gt;',{width:600,title:'一二三木头人'})</span></div>
-		<div id="dialog9"  class="exp"><span class="code">QIE.dialog('bushiduli',{width:550,title:'莫文蔚今日与初恋男友完婚'})</span></div>
+		<div id="dialog9"  class="exp"><span class="code">QIE.dialog('bushiduli',{width:550,title:'莫文蔚今日与初恋男友完婚',autoClose:3000})</span></div>
 		<div id="dialog10"  class="exp"><span class="code">QIE.dialog('not-reg',{width:540,title:'登录'})</span></div>
 		<select>
 			<option>asdasdsadsadasdsadsadsadsadsa</option>
@@ -329,15 +373,41 @@ a:hover{color:#f60;text-decoration:underline}
 		<div id="dialog7"  class="exp"><span class="code">QIE.dialog('&lt;p style="height:100px;line-height:100px;"&gt;《新闻联播》片头曲明年更换&lt;/p&gt;',{width:350})</span></div>
 
         <div style="height:100px"></div>
-		<div id="dialog11" class="exp"><span class="code">QIE.dialog.prompt('你确定离开本页面了吗？',{width:350})</span></div>
+
+<h2>有各自马甲的弹出框</h2>
+		<div id="dialog11" class="exp"><span class="code">QIE.dialog.prompt('你确定离开本页面了吗？',{width:350,dragKey:true})</span></div>
 
         <div id="dialog12" class="exp"><span class="code">QIE.dialog.prompt('回答错误',{width:350,title:'提示框','text':'不来了','text2':'继续',})</span></div>
 
-		<div id="dialog13" class="exp"><span class="code">S.dialog.remind('恭喜你获得本公司提供的IPAD2奖品',{width:350,title:'提示框',})</span></div>
+
+<h2>提醒框</h2>
+		<div id="dialog13" class="exp"><span class="code">S.dialog.remind('恭喜你获得本公司提供的IPAD2奖品',{width:350,title:'提示框',dragKey:true})</span></div>
 
         <div id="dialog14" class="exp"><span class="code">S.dialog.remind('恭喜你获得本公司提供的IPAD2奖品',{width:350,title:'提示框',textback:function(){alert('返回了')}}</span></div>
-		
+
+<h2>Ajax请求</h2>
+        <div id="dialog-ajax" class="exp"><span class="code">S.dialog.ajax('a.html',{width:350,title:'AJax请求'}}</span></div>	
+<h2>iframe页面加载</h2>		
+        <div id="dialog-iframe" class="exp"><span class="code">S.dialog.iframe('../../../delay/delay3.html',{width:350,title:'iframe页面'}}</span></div>	
+<h2>图片加载</h2>
+		<div id="dialog-img" class="exp"><span class="code">S.dialog.img('../../../asset/app/notes/img/20100812095511964.jpg',{width:450,title:'iframe页面'}}</span></div>
+
     </div>
+</div>
+
+<div id="seanlou" class="modal" style="position:absolute;z-index: 9999">
+          <div class="modal-header">
+            <h3>QIE.dialog('seanlou',{width:350,type:'duli'})</h3>
+            <a href="#" class="close dialog-close-handle">&times;</a>
+          </div>
+          <div class="modal-body">
+		  名字不能为空，要不然不能关闭弹出框
+            <p class="form-item" style="overflow:hidden"><label class="lb">名字：</label><input id="user-name" value='' type="text" class="e-input" /></p>
+          </div>
+          <div class="modal-footer">
+		    <a href="#" class="btn secondary" onclick="QIE.dialog.close('seanlou')">取消</a>
+            <a href="#" class="btn primary" onclick="QIE.dialog.close('seanlou')">确定</a>
+          </div>
 </div>
 
 <div id="lxj" class="modal" style="position:absolute;z-index: 9999">
@@ -383,7 +453,7 @@ a:hover{color:#f60;text-decoration:underline}
           </div>
 </div>
 
-<div id="bushiduli" style="padding:20px;display:none">
+<div id="bushiduli" style="padding:20px;display:none"><p>3秒后自动关闭</p>
   莫文蔚今日（10月1日）将在意大利佛罗伦萨与初恋男友Johannes完婚。近一个多月来，莫文蔚不时通过微博晒出婚礼细节。此次婚礼将在佛罗伦萨一个酒庄就行，一对新人只邀请了一些亲朋好友出席，并未邀请媒体。
 </div>
 <div id="not-reg" class="not-reg" style="display:none;margin:-20px;font-size:12px">
@@ -408,18 +478,14 @@ a:hover{color:#f60;text-decoration:underline}
 <script type="text/javascript" src="dialog.js"></script>
 <script>
 (function(S){
-	S.$=function(id) {
-            var elem="string" == typeof id ? document.getElementById(id) : id;
-            return elem;
-    };
 	S.$('dialog').onclick=function(){
-	  S.dialog('lxj',{width:350,type:'duli'})
+	  S.dialog('seanlou',{width:350,type:'duli',closeBack:function(){if(S.$('user-name').value==''){return false}}})
 	}
 	S.$('dialog2').onclick=function(){
 	  S.dialog('lxj',{width:350,type:'duli',left:0,top:0})
 	}
 	S.$('dialog3').onclick=function(){
-	  S.dialog('lxj',{width:350,type:'duli',opacity:0.1})
+	  S.dialog('lxj',{width:350,type:'duli',opacity:0.1,dragKey:true})
 	}
 	S.$('dialog4').onclick=function(){
 	  S.dialog('lxj',{width:350,type:'duli',Layer:0})
@@ -462,7 +528,7 @@ a:hover{color:#f60;text-decoration:underline}
 	  S.dialog('<p style="height:120px;line-height:120px">111111111111111111</p>',{width:600,title:'一二三木头人'})
 	}
 	S.$('dialog9').onclick=function(){
-	  S.dialog('bushiduli',{width:550,title:'莫文蔚今日与初恋男友完婚'})
+	  S.dialog('bushiduli',{width:550,title:'莫文蔚今日与初恋男友完婚',autoClose:3000})
 	}
 
 	S.$('dialog10').onclick=function(){
@@ -474,7 +540,8 @@ a:hover{color:#f60;text-decoration:underline}
 					  width:350,
 					  title:'提示框',
 					  textback:function(){alert('走了，回家了')},
-					  textback2:function(){alert('不走了，再玩会')}
+					  textback2:function(){alert('不走了，再玩会')},
+					  dragKey:true
 				  }
 	  )
 	}
@@ -483,7 +550,7 @@ a:hover{color:#f60;text-decoration:underline}
 	  S.dialog.prompt('1+1=<input type="text" id="daan" value="" />',
 				  {
 					  width:350,
-					  title:'提示框',
+					  title:'一个简单的算术题',
 					  'text':'我知道答案',
 					  textback:function(){if(S.$('daan').value==2){alert(this.title);}else{alert('错了，真是猪');return false}},
 					  'text2':'跳过这题'
@@ -492,14 +559,25 @@ a:hover{color:#f60;text-decoration:underline}
 	}
 
 	S.$('dialog13').onclick=function(){
-	  S.dialog.remind('恭喜你获得本公司提供的IPAD2奖品',{width:350,title:'提示框',})
+	  S.dialog.remind('恭喜你获得本公司提供的IPAD2奖品',{width:350,title:'没有回调的提示框',dragKey:true})
 	}
 
 	S.$('dialog14').onclick=function(){
-	  S.dialog.remind('恭喜你获得本公司提供的IPAD2奖品',{width:350,title:'提示框',textback:function(){alert('返回了')}}
+	  S.dialog.remind('恭喜你获得本公司提供的IPAD2奖品',{width:350,title:'有回调的提示框',textback:function(){alert('返回了')}}
 	  )
 	}
 
+	S.$('dialog-ajax').onclick=function(){
+	  S.dialog.ajax('a.html',{width:450,title:'ajax请求页面'})
+	}
+
+	S.$('dialog-iframe').onclick=function(){
+	  S.dialog.iframe('../../../delay/delay3.html',{width:450,title:'ifrme请求页面'})
+	}
+
+	S.$('dialog-img').onclick=function(){
+	  S.dialog.img('../../../asset/app/notes/img/20100812095511964.jpg',{width:450,title:'加载img图片'})
+	}
 })(QIE)
 </script>
 </body>
