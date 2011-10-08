@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>弹出框组件</title>
-<link href="movie_index.css?v=2011-09-28_18:07:55" type="text/css" rel="stylesheet" />
-<link type="text/css" rel="stylesheet" href="http://www.lxj.com/WebCode/googlecode/louxiaojian/trunk/asset/app/notes/case.css"/>
+<link href="src/movie_index.css?v=2011-09-28_18:07:55" type="text/css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="../../../asset/app/notes/case.css"/>
 
 
 <script type="text/javascript" src="../QIE.js"></script>
@@ -12,6 +12,8 @@
 <script type="text/javascript" src="../iframeLoad/iframeLoad.js"></script>
 
 <style type="text/css">
+#page{width:950px;margin:0 auto}
+#content{width:auto;margin:0;padding:0 20px}
 .exp{
 	padding:0 10px;
 	text-align:left;
@@ -475,7 +477,8 @@ a:hover{color:#f60;text-decoration:underline}
         </div>
     </div>
 </div>
-<script type="text/javascript" src="dialog.js"></script>
+
+<script type="text/javascript" src="src/dialog.js"></script>
 <script>
 (function(S){
 	S.$('dialog').onclick=function(){
@@ -485,7 +488,7 @@ a:hover{color:#f60;text-decoration:underline}
 	  S.dialog('lxj',{width:350,type:'duli',left:0,top:0})
 	}
 	S.$('dialog3').onclick=function(){
-	  S.dialog('lxj',{width:350,type:'duli',opacity:0.1,dragKey:true})
+	  S.dialog('lxj',{width:350,type:'duli',opacity:0.1,dragKey:true,dragTrigger:S.getECN(S.$('lxj'),'modal-header','div')[0]})
 	}
 	S.$('dialog4').onclick=function(){
 	  S.dialog('lxj',{width:350,type:'duli',Layer:0})
@@ -568,7 +571,7 @@ a:hover{color:#f60;text-decoration:underline}
 	}
 
 	S.$('dialog-ajax').onclick=function(){
-	  S.dialog.ajax('a.html',{width:450,title:'ajax请求页面'})
+	  S.dialog.ajax('src/a.html',{width:450,title:'ajax请求页面'})
 	}
 
 	S.$('dialog-iframe').onclick=function(){

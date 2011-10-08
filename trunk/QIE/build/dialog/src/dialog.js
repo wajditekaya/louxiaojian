@@ -4,9 +4,14 @@
  * Date: 11-8-3 上午8:23
  * 2011-10-01修改重构
  * Mail: louxiaojian@gmail.com
+ * 解决IE6下dialog.ajax和dialog.img不能关闭的bug(2011-10-08)
  */
 (function(S){
-    var toString=Object.prototype.toString;
+    var toString=Object.prototype.toString,
+		win=window,
+		doc=document,
+		db=doc.body,
+		dd=doc.documentElement;
     function show(elem){
         elem.style.display='block';
     }
@@ -59,6 +64,7 @@
             S.ajax(url,{
                 'method':'get',
                 'loadFun':function(t){
+					dialog.close();
                     dialog(t.responseText,s);
                 }
             })
@@ -80,6 +86,7 @@
                 //在这种情况下（img图片还没有dom结构）img.offsetWidth的值为0，此时图片的宽度也该用img.width来获取
                 //s.width=this.offsetHeight+52;
                 !s.width && (s.width=this.width+52);
+				dialog.close();
                 dialog('<img src="'+url+'" alt="" style="width:'+(s.width-52)+'px" />',s);
             }
             img.src=url;
@@ -105,21 +112,18 @@
             this.autoClose=s.autoClose;//自动几秒后关闭功能
             this.dragKey=s.dragKey;
             this.dragTrigger=s.dragTrigger;
-            this.d=document;
-            this.db=this.d.body;
-            this.dd=this.d.documentElement;
             this.dialogInit();
             this.open();
             if(this.dragKey) this.drag();
-            S.on(window,'resize',this.resize=function(){_this.setPosition.call(_this)})
+            S.on(win,'resize',this.resize=function(){_this.setPosition.call(_this)})
         },
         shadingLayer:function(){
             var layDic,iframe;
             if(!S.$('layDic')){
-                var DocumentFragment=document.createDocumentFragment();
-                layDic=document.createElement("div");
+                var DocumentFragment=doc.createDocumentFragment();
+                layDic=doc.createElement("div");
                 layDic.setAttribute('id','layDic');
-                iframe=document.createElement("iframe");
+                iframe=doc.createElement("iframe");
                 iframe.setAttribute('id','layDic-iframe');
                 iframe.setAttribute('frameborder','0');
                 iframe.setAttribute('marginheight','0');
@@ -128,7 +132,7 @@
                 iframe.style.cssText="opacity:0;-moz-opacity:0;filter:alpha(opacity=0);background:#000;position:absolute;top:0;left:0;z-index:9997;display:none";
                 DocumentFragment.appendChild(layDic);
                 DocumentFragment.appendChild(iframe);
-                document.body.appendChild(DocumentFragment);
+                db.appendChild(DocumentFragment);
             }
             layDic=this.layDic=S.$('layDic');
             iframe=this.iframe=S.$('layDic-iframe');
@@ -150,9 +154,9 @@
                 if(!S.$('v-dialog')){
                     var html,div;
                     html='<div id="v-dialog" class="dialog dialog-b"><div class="dialog-hd dialog-bk"><span class="dhd-1"><span class="dhd-2"></span></span><b></b><s></s></div><div class="dialog-bd"><div class="dialog-wrap"><div class="dialog-main"><div class="dialog-mbd"></div></div></div><div class="dialog-lf"></div><div class="dialog-rg"></div></div><div class="dialog-close"><a href="#" class="dialog-close-handle" title="关闭">&times;</a></div><b class="jt" style="left:30px"></b><div class="dialog-ft dialog-bk"><span class="dhd-1"><span class="dhd-2"></span></span><b></b><s></s></div></div>';
-                    div=document.createElement('div');
+                    div=doc.createElement('div');
                     div.innerHTML=html;
-                    document.body.appendChild(div.firstChild)
+                    doc.body.appendChild(div.firstChild)
                 }
                 dialogPanel=this.dialog=S.$('v-dialog');
                 dialogmain=S.getECN(dialogPanel,'dialog-main','div')[0];
@@ -163,12 +167,13 @@
                     !dialoghd && (function(){
                         var tmp,hdhtml;
                         hdhtml='<div class="dialog-mhd"></div>';
-                        tmp=document.createElement('div');
+                        tmp=doc.createElement('div');
                         tmp.innerHTML=hdhtml;
                         dialoghd=tmp.firstChild;
                         dialogmain.insertBefore(tmp.firstChild,dialogbd);
                     })();
                     dialoghd.innerHTML=title;
+                    this.dragTrigger=dialoghd;
                 }else{
                     dialoghd && dialoghd.parentNode.removeChild(dialoghd);
                 }
@@ -178,9 +183,8 @@
                 }else{
                     dialogbd.innerHTML=this.elem;
                 }
-                this.dragTrigger=dialoghd;
-                this.dragKey ? (dialoghd.style.cursor='move') : (dialoghd.style.cursor='')
             }
+            this.dragKey ? (this.dragTrigger && (this.dragTrigger.style.cursor='move')) : (this.dragTrigger && (this.dragTrigger.style.cursor=''));
             S.setStyle(dialogPanel,{'width':this.width+"px",'z-index':'9999','display':'none'});
             closebut=S.getECN(dialogPanel,this.closeName,'*');
             for(var i=0,len=closebut.length;i<len;i++){
@@ -195,7 +199,7 @@
                 var expression=";top:expression(documentElement.scrollTop+"+top+");)"
                 dialogPanel.style.position='absolute';
                 dialogPanel.style.cssText+=expression;
-                document.body.style.cssText+=';background:url(about:blank) fixed';
+                db.style.cssText+=';background:url(about:blank) fixed';
             }else{
                 S.setStyle(dialogPanel,{'position':"fixed",'top':this.top!==undef ? (parseInt(this.top)+'px') : this.cTop+"px"});
             }
@@ -203,10 +207,10 @@
         },
         unfixed:function(undef){
             var dialogPanel=this.dialog;
-            S.setStyle(dialogPanel,{'position':"absolute",'top':this.top!==undef ? (parseInt(this.top)+'px') : (Math.max(this.dd.scrollTop, this.db.scrollTop)+this.cTop+"px")});
+            S.setStyle(dialogPanel,{'position':"absolute",'top':this.top!==undef ? (parseInt(this.top)+'px') : (Math.max(dd.scrollTop,db.scrollTop)+this.cTop+"px")});
         },
         setPosition:function(undef){
-            var dialogPanel=this.dialog,layDic,iframe,sw=this.db.scrollWidth,sh=this.db.scrollHeight;
+            var dialogPanel=this.dialog,layDic,iframe,sw=db.scrollWidth,sh=db.scrollHeight;
             if(this.Layer){
                 this.shadingLayer();
                 layDic=this.layDic;
@@ -218,10 +222,10 @@
             }
             show(this.dialog);
             this.pHeight=this.height ?  parseInt(this.height) : dialogPanel.offsetHeight;
-            this.cTop=(this.dd.clientHeight-this.pHeight)*0.382;
+            this.cTop=(dd.clientHeight-this.pHeight)*0.382;
             if(this.cTop<0) this.cTop=0;
             this.fix ? this.fixed() : this.unfixed();
-            dialogPanel.style.left=this.left!==undef ? (parseInt(this.left)+'px') : ((this.dd.clientWidth-this.width)/2+"px");
+            dialogPanel.style.left=this.left!==undef ? (parseInt(this.left)+'px') : ((dd.clientWidth-this.width)/2+"px");
         },
         open:function(){
             var self=this;
@@ -250,33 +254,34 @@
                 hide(dialogPanel);
                 if(this.type!=='duli' && elem){
                     hide(elem);
-                    document.body.appendChild(elem);
+                    doc.body.appendChild(elem);
                 }
-                S.removeEvent(window,'resize',this.resize);
-                this.dragKey && S.removeEvent(this.dragTrigger,'mousedown',this.mousedown);
+                S.removeEvent(win,'resize',this.resize);
+                this.dragKey && this.dragTrigger && S.removeEvent(this.dragTrigger,'mousedown',this.mousedown);
                 this.autoClose && this.autoCloseTime && clearTimeout(this.autoCloseTime);
             }
         },
         drag:function(){
-            var dragYz,zj_x,zj_y,db=document.body,dd=document.documentElement,dragTrigger=this.dragTrigger,dialogPanel=this.dialog,mx,my,self=this;
+			if(!this.dragTrigger) return false;
+            var dragYz,zj_x,zj_y,dragTrigger=this.dragTrigger,dialogPanel=this.dialog,mx,my,self=this;
             function mousedown(){
-                var e=arguments[0] || window.event;
+                var e=arguments[0] || win.event;
                 mx=e.clientX-S.offset(dialogPanel).left;
                 my=e.clientY+Math.max(db.scrollTop,dd.scrollTop)-S.offset(dialogPanel).top;
-                this.style.cursor='move';
-                dragYz=document.createElement('div');
-                S.setStyle(dragYz,{width:dialogPanel.offsetWidth-2+'px',height:dialogPanel.offsetHeight-2+'px',position:'absolute',top:S.offset(dialogPanel).top+'px',left:S.offset(dialogPanel).left+'px',border:'1px dashed #f00','cursor':'move','z-index':99999});
-                document.body.appendChild(dragYz);
-                S.on(document,'mousemove',move);
-                S.on(document,'mouseup',stop);
+                dragYz=doc.createElement('div');
+                S.setStyle(dragYz,{width:dialogPanel.offsetWidth-4+'px',height:dialogPanel.offsetHeight-4+'px',position:'absolute',top:S.offset(dialogPanel).top+'px',left:S.offset(dialogPanel).left+'px',border:'2px dashed #333','z-index':999999});
+                db.appendChild(dragYz);
+				db.style.cursor='move';
+                S.on(doc,'mousemove',move);
+                S.on(doc,'mouseup',stop);		
             }
             function move(){
-                var e=arguments[0] || window.event,
+                var e=arguments[0] || win.event,
                         cw=Math.min(dd.clientWidth,db.clientWidth),
                         ch=Math.min(dd.clientHeight,db.clientHeight),
                         st=Math.max(db.scrollTop,dd.scrollTop);
                 //清除选择
-                window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+                win.getSelection ? win.getSelection().removeAllRanges() : doc.selection.empty();
                 zj_x=e.clientX-mx;
                 zj_y=e.clientY+st-my;
                 if(zj_x<0){
@@ -296,11 +301,11 @@
             function stop(){
                 dragYz && dragYz.parentNode && dragYz.parentNode.removeChild(dragYz);
                 S.setStyle(dialogPanel,{position:'absolute',top:zj_y+'px',left:zj_x+'px'})
-                dialogPanel.style.cursor='';
-                S.removeEvent(document,'mousemove',move)
-                S.removeEvent(document,'mouseup',stop)
+				db.style.cursor='auto';
+                S.removeEvent(doc,'mousemove',move);
+                S.removeEvent(doc,'mouseup',stop);
             };
-            S.on(dragTrigger,'mousedown',this.mousedown=mousedown)
+            S.on(dragTrigger,'mousedown',this.mousedown=mousedown);
         }
     };
     S.dialog=dialog;
