@@ -188,7 +188,9 @@
             S.setStyle(dialogPanel,{'width':this.width+"px",'z-index':'9999','display':'none'});
             closebut=S.getECN(dialogPanel,this.closeName,'*');
             for(var i=0,len=closebut.length;i<len;i++){
-                closebut[i].onclick=function(){_this.close.call(_this);return false;
+                closebut[i].onclick=function(){
+					_this.close.call(_this);
+					return false;
                 }
             }
         },
@@ -265,18 +267,29 @@
 			if(!this.dragTrigger) return false;
             var dragYz,zj_x,zj_y,dragTrigger=this.dragTrigger,dialogPanel=this.dialog,mx,my,self=this;
             function mousedown(){
-                var e=arguments[0] || win.event;
+                var e=S.getEvent();
                 mx=e.clientX-S.offset(dialogPanel).left;
                 my=e.clientY+Math.max(db.scrollTop,dd.scrollTop)-S.offset(dialogPanel).top;
                 dragYz=doc.createElement('div');
                 S.setStyle(dragYz,{width:dialogPanel.offsetWidth-4+'px',height:dialogPanel.offsetHeight-4+'px',position:'absolute',top:S.offset(dialogPanel).top+'px',left:S.offset(dialogPanel).left+'px',border:'2px dashed #333','z-index':999999});
                 db.appendChild(dragYz);
 				db.style.cursor='move';
+				if(S.Browser.isIE6){
+					//焦点丢失
+					S.on(dragYz, "losecapture", stop);
+					//设置鼠标捕获
+					dragYz.setCapture();
+				}else{
+					//焦点丢失
+					S.on(window, "blur", stop);
+					//阻止默认动作
+					e.preventDefault();
+				};
                 S.on(doc,'mousemove',move);
                 S.on(doc,'mouseup',stop);		
             }
             function move(){
-                var e=arguments[0] || win.event,
+                var e=S.getEvent(),
                         cw=Math.min(dd.clientWidth,db.clientWidth),
                         ch=Math.min(dd.clientHeight,db.clientHeight),
                         st=Math.max(db.scrollTop,dd.scrollTop);
@@ -302,6 +315,12 @@
                 dragYz && dragYz.parentNode && dragYz.parentNode.removeChild(dragYz);
                 S.setStyle(dialogPanel,{position:'absolute',top:zj_y+'px',left:zj_x+'px'})
 				db.style.cursor='auto';
+				if(S.Browser.isIE6){
+					S.removeEvent(dragYz, "losecapture", stop);
+					dragYz.releaseCapture();
+				}else{
+					S.removeEvent(window, "blur", stop);
+				};
                 S.removeEvent(doc,'mousemove',move);
                 S.removeEvent(doc,'mouseup',stop);
             };
