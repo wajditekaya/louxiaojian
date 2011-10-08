@@ -187,12 +187,15 @@
             this.dragKey ? (this.dragTrigger && (this.dragTrigger.style.cursor='move')) : (this.dragTrigger && (this.dragTrigger.style.cursor=''));
             S.setStyle(dialogPanel,{'width':this.width+"px",'z-index':'9999','display':'none'});
             closebut=S.getECN(dialogPanel,this.closeName,'*');
-            for(var i=0,len=closebut.length;i<len;i++){
-                closebut[i].onclick=function(){
+			S.each(closebut,function(val){
+                val.onclick=function(){
 					_this.close.call(_this);
 					return false;
                 }
-            }
+				S.on(val,'mousedown',function(){S.getEvent().stopPropagation()})
+				S.on(val,'mouseup',function(){S.getEvent().stopPropagation()})
+
+			});
         },
         fixed:function(undef){
             var dialogPanel=this.dialog;
@@ -312,15 +315,15 @@
                 S.setStyle(dragYz,{top:zj_y+'px',left:zj_x+'px'})
             };
             function stop(){
-                dragYz && dragYz.parentNode && dragYz.parentNode.removeChild(dragYz);
-                S.setStyle(dialogPanel,{position:'absolute',top:zj_y+'px',left:zj_x+'px'})
-				db.style.cursor='auto';
 				if(S.Browser.isIE6){
 					S.removeEvent(dragYz, "losecapture", stop);
 					dragYz.releaseCapture();
 				}else{
 					S.removeEvent(window, "blur", stop);
 				};
+                dragYz && dragYz.parentNode && dragYz.parentNode.removeChild(dragYz);
+                S.setStyle(dialogPanel,{position:'absolute',top:zj_y+'px',left:zj_x+'px'})
+				db.style.cursor='auto';
                 S.removeEvent(doc,'mousemove',move);
                 S.removeEvent(doc,'mouseup',stop);
             };
