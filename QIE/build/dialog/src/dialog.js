@@ -294,7 +294,7 @@
             function move(){
                 var e=S.getEvent(),
                         cw=Math.min(dd.clientWidth,db.clientWidth),
-                        ch=Math.min(dd.clientHeight,db.clientHeight),
+                        ch=dd.clientHeight,
                         st=Math.max(db.scrollTop,dd.scrollTop);
                 //Çå³ýÑ¡Ôñ
                 win.getSelection ? win.getSelection().removeAllRanges() : doc.selection.empty();
