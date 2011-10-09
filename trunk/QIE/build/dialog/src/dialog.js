@@ -277,7 +277,7 @@
                 S.setStyle(dragYz,{width:dialogPanel.offsetWidth-4+'px',height:dialogPanel.offsetHeight-4+'px',position:'absolute',top:S.offset(dialogPanel).top+'px',left:S.offset(dialogPanel).left+'px',border:'2px dashed #333','z-index':999999});
                 db.appendChild(dragYz);
 				db.style.cursor='move';
-				if(S.Browser.isIE6){
+				if(S.Browser.isIE){
 					//焦点丢失
 					S.on(dragYz, "losecapture", stop);
 					//设置鼠标捕获
@@ -315,7 +315,7 @@
                 S.setStyle(dragYz,{top:zj_y+'px',left:zj_x+'px'})
             };
             function stop(){
-				if(S.Browser.isIE6){
+				if(S.Browser.isIE){
 					S.removeEvent(dragYz, "losecapture", stop);
 					dragYz.releaseCapture();
 				}else{
