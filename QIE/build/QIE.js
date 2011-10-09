@@ -217,7 +217,7 @@
             return slice2Arr(o);
         },
         Browser:{
-            ie: /msie/.test(window.navigator.userAgent.toLowerCase()),
+            isIE: /msie/.test(window.navigator.userAgent.toLowerCase()),
             isIE6:document.all && ([/MSIE (\d)\.0/i.exec(navigator.userAgent)][0][1] == 6),
             moz: /gecko/.test(window.navigator.userAgent.toLowerCase()),
             opera: /opera/.test(window.navigator.userAgent.toLowerCase())
