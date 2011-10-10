@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+.carousel{ height:200px; position:relative;}
+.carousel img{ box-shadow:2px 2px 2px #000; border-radius:3px;}
+</style>
+<script type="text/javascript" >
+var extend=function(target,source){
+	for(var key in source){
+		target[key]=source[key];	
+	}	
+}
+var each=function(iterate,callback,context){
+	if(Object.prototype.toString.call(iterate)==="[Array object]"){
+		for(var i=0,len=iterate.length;i<len;i++){
+			if(callback.call(context,iterate[i],i,iterate)==="false") break;	
+		}	
+	}
+	else{
+		for(var key in iterate){
+			if(callback.call(context,iterate[key],key,iterate)==="false") break;	
+		}	
+	}
+}
+var bind=function(context,fun){
+	var arg=Array.prototype.slice.call(arguments,2);
+	return function(){
+		fun.apply(context,arg.concat(Array.prototype.slice.call(arguments)));	
+	}
+}
+var Class={
+	create:function(){
+			return function(){
+				this.init.apply(this,arguments);	
+			}
+	}	
+}
+var Item=Class.create(),
+	Carousel=Class.create();
+Item.prototype={
+	init:function(parent,radians,imgOptions){
+		var elem=document.createElement("img");
+		this.element=elem;
+		this.radians=radians;
+		this.parent=parent;
+		this.setAttributes(imgOptions);
+		elem.style.position="absolute";
+		parent.element.appendChild(elem);
+	    elem.onclick=bind(this,function(){
+			var rad=this.getRotateRadians();
+			if(Math.abs(rad)<0.00001){
+				//console.log("clicked current item");	can do something here
+			}
+			this.parent.rotate(this.getRotateRadians());
+		});
+	},
+	setAttributes:function(options){
+		extend(this.element,options)
+	},
+	update:function(deltaRadians){
+		this.radians=(this.radians+deltaRadians+2*Math.PI)%(Math.PI*2);
+		var opt=this.parent.options,
+			radius=opt.radius,
+			center=opt.center,
+			itemSize=opt.itemSize,
+			_left=radius[0]*Math.cos(this.radians),
+			_top=radius[1]*Math.sin(this.radians),
+			zRadius=this.parent.zoomAxis?radius[1]:radius[0],//select out the short base radius
+			zFactor=this.parent.zoomAxis?_top:_left,         //            
+			zoom=(zFactor+zRadius*1.5)/(2.5*zRadius),
+			_width=itemSize[0]*zoom,
+			_height=itemSize[1]*zoom,
+			z=Math.floor(zoom*100),
+			xx=center[0]+_left-_width/2+'px',
+			yy=center[1]+_top-_height/2+'px';
+		var style=this.element.style;
+		style.left=xx;
+		style.top=yy;
+		style.width=_width+'px';
+		style.height=_height+'px';
+		style.zIndex=z;
+	},
+	getRotateRadians:function(){
+		var PI=Math.PI,
+			r=this.radians%(PI*2),
+			tr=this.parent.targetRotate,
+			target=tr-r,
+			delta=target<-PI?target+2*PI:target;
+		return delta;
+	}
+}
+Carousel.prototype={
+	init:function(){
+		if(!arguments||!arguments[0].items){ 
+			console.log("in if ");
+			return
+		};
+		var arg=arguments[0],
+			elem=document.getElementById(arg.container),
+			_this=this,
+			sperateRadians=2*Math.PI/arg.items.length,
+			radius;
+		this.element=elem;
+		this.items=[];
+		this.timer=null;
+		this.flag=false;
+		this.setConfig(arg.configs||{});
+		radius=this.options.radius;
+		this.zoomAxis=Math.abs(radius[0])>Math.abs(radius[1]);//选短轴，即true时选y,false选x
+		this.targetRotate=(this.zoomAxis)? Math.PI/2:0;    
+		each(arg.items,function(val,index){
+			var _item=new Item(this,sperateRadians*index,val);
+			this.items.push(_item);
+		},this);
+		this.rotate(this.targetRotate);
+		
+	},
+	setConfig:function(opts){
+		this.options={
+			interval:20,
+			duration:1000,
+			center:[this.element.offsetWidth/2,this.element.offsetHeight/2],// x,y
+			radius:[200,50],  // x,y
+			itemSize:[200,120], //width,height
+			radiusX:200,
+			radiusY:50,
+			initRotate:Math.PI/-2,
+			easy:function(p){
+				return 1-Math.pow(1-p,3);
+			}
+		}
+		extend(this.options,opts);
+		
+	},
+	rotate:function(radians){
+		if(this.flag){
+			clearInterval(this.timer);	
+		}
+		clearInterval(this.timer);
+		this.begin=(new Date()).getTime();
+		this.rotateRadians=radians;
+		this.completeFraction=0;
+		this.timer=setInterval(bind(this,function(){this.update();}),this.options.interval);
+	},
+	update:function(){
+		var opt=this.options,
+			_this=this,
+			fraction,
+			rad
+			now=(new Date()).getTime();
+		if((this.begin+opt.duration)<=now){
+			clearInterval(this.timer);
+			this.flag=false;
+			rad=(1-this.completeFraction)*this.rotateRadians;
+			each(this.items,function(val,key){
+				val.update(rad);						 
+			});
+		}
+		else{
+			fraction=opt.easy((now-this.begin)/opt.duration);
+			rad=this.rotateRadians*(fraction-this.completeFraction);
+			this.completeFraction=fraction;
+			each(this.items,function(val,key){
+				val.update(rad);					 
+			});
+		}
+		
+	}
+}
+
+</script>
+</head>
+
+<body>
+<div id="con" class="carousel"></div>
+<div id="con2" class="carousel"></div>
+<div id="con3" class="carousel" style="height:400px;"></div>
+<div id="con4" class="carousel" style="height:400px;"></div>
+<script type="text/javascript" >
+var c=new Carousel({
+	container:"con",
+	configs:{
+		duration:800,
+		interval:25,
+		radius:[200,-50]
+	},
+	items:[
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_480.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_477.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_473.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_474.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_475.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_465.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_467.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_462.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_479.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_463.jpg"}
+	]
+});
+var c2=new Carousel({
+	container:"con2",
+	configs:{
+		duration:800,
+		interval:25,
+		radius:[250,40],
+		itemSize:[460,300]
+	},
+	items:[
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_480.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_477.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_473.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_474.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_475.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_465.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_467.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_462.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_479.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_463.jpg"}
+	]
+});
+var c3=new Carousel({
+	container:"con3",
+	configs:{
+		duration:800,
+		interval:25,
+		radius:[10,100]
+	},
+	items:[
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_480.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_477.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_473.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_474.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_475.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_465.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_467.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_462.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_479.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_463.jpg"}
+	]
+});
+var c4=new Carousel({
+	container:"con4",
+	configs:{
+		duration:800,
+		interval:25,
+		radius:[-80,100]
+	},
+	items:[
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_480.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_477.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_473.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_474.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_475.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_465.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_467.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_462.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_479.jpg"},
+		{src:"http://images.cnblogs.com/cnblogs_com/onlysea/326678/r_463.jpg"}
+	]
+});
+</script>
+</body>
+</html>
