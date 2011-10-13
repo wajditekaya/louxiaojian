@@ -57,7 +57,7 @@ select{color:#999}
 	.dlFrom dd img,.dlFrom dd input,.dlFrom dd a,.dlFrom dd em{float:left;margin-right:5px}
 	.login_btn a,.login_btn input{float:left}
 .imp{color:#f00}
-#warpper,#wrapper,#page{width:950px;margin:0 auto;text-align:left;background:#fff;margin:0 100px; background:#fff;border: 1px solid #fff;box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);-o-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);-moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);-webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1)}
+#warpper,#wrapper,#page{width:950px;text-align:left;background:#fff;margin:0 auto;background:#fff;border: 1px solid #fff;box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);-o-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);-moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);-webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1)}
 #content{padding:0 20px 100px;}
 #content ul li{list-style:inside disc;padding-bottom:10px}
 #content ol li{list-style:inside decimal;padding-bottom:10px}
