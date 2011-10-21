@@ -27,8 +27,7 @@
     };
     S.mix(dialog,{
         close:function(elem,s){
-            var elem=elem || 'v-dialog',s=s || 'dialog-close-handle',closebut=S.getECN(S.$(elem),s,'*');
-            closebut.length!=0 && closebut[0].onclick();
+            S.$(elem || 'v-dialog').close();
         },
         remind:function(text,s){
             s.btnSl=1;
@@ -187,9 +186,13 @@
             this.dragKey ? (this.dragTrigger && (this.dragTrigger.style.cursor='move')) : (this.dragTrigger && (this.dragTrigger.style.cursor=''));
             S.setStyle(dialogPanel,{'width':this.width+"px",'z-index':'9999','display':'none'});
             closebut=S.getECN(dialogPanel,this.closeName,'*');
+			this.dialog.close=function(){
+					_this.close.call(_this);
+					return false;
+			}
 			S.each(closebut,function(val){
                 val.onclick=function(){
-					_this.close.call(_this);
+					_this.dialog.close();
 					return false;
                 }
 				S.on(val,'mousedown',function(){S.getEvent().stopPropagation()})
