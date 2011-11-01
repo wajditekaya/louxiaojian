@@ -140,7 +140,10 @@ SliderLayer.prototype={
 				   t=0;
 				   o.mKey=o.mKey ? 0 : 1
 				   this.end();
-				   if(this.lm!=hb && this.ln!=o) this.lm=hb;this.ln=o
+				   if(this.lm!=hb && this.ln!=o){
+					   this.lm=hb;
+					   this.ln=o;
+				   };
 				 };
 			 };
 			 
