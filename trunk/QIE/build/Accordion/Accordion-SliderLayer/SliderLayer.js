@@ -124,7 +124,7 @@ SliderLayer.prototype={
 		  };
 		  this.E(this.options,s||{})
 	  },
-	 slider:function(o,hb){
+	 slider:function(o,hb,k){
 			 var b=0,c=this.getEle(hb).h,d=this.interval,t=0;
 			 if(!hb.style.overflow) hb.style.overflow='hidden';
 			 if(o.timer) clearTimeout(o.timer);
@@ -140,7 +140,7 @@ SliderLayer.prototype={
 				   t=0;
 				   o.mKey=o.mKey ? 0 : 1
 				   this.end();
-				   if(this.lm!=hb && this.ln!=o){
+				   if(this.lm!=hb && this.ln!=o && !k){
 					   this.lm=hb;
 					   this.ln=o;
 				   };
@@ -164,7 +164,7 @@ SliderLayer.prototype={
 					  if(!this.lm && !this.ln){
 						  this.lm=hb;this.ln=o
 						  }else{
-						  if(!this.ln.mKey && this.ln!=o) {this.slider(this.ln,this.lm)}
+						  if(!this.ln.mKey && this.ln!=o) {this.slider(this.ln,this.lm,1)}//此处传入参数1是为了确保当关闭上一个比展开当前慢时，this.lm和this.ln赋值错误bug
 					  }
 				  };
 				  this.slider(o,hb);
@@ -183,59 +183,3 @@ SliderLayer.prototype={
 	 }
 	  
 };
-
-function getCN(node, name, type) {
-	  if (node.getElementsByClassName)
-		  return node.getElementsByClassName(name);
-		  else {
-		  var r = [], re = new RegExp("(^|\\s)" + name + "(\\s|$)"), e = (node || document).getElementsByTagName(type || "*");
-		  for ( var i = 0,len=e.length; i < len; i++ ) {
-			  if( re.test(e[i].className) )
-				  r.push(e[i]);
-		  }
-		  return r;
-	  }
-};
-domReady(function(){
-	  var d=new Date().getTime();
-	  var tvguide=function(){
-			var h=getCN($('exp1'),'SliderHandle','div'),hb=getCN($('exp1'),'SliderBx','div');
-			new SliderLayer({
-							'handle':h,
-							'handleBx':hb,
-							'end':function(){},
-							'start':function(){this.handle[this.index].innerHTML=this.handle[this.index].mKey ? '收缩' : '展开'},
-							'evt':'click',
-							'cl':0,
-							'Tween':function(t,b,c,d){
-								if ((t/=d/2) < 1) return c/2*t*t + b;
-								return -c/2 * ((--t)*(t-2) - 1) + b;
-							}
-			})
-	  }();
-	  
-	  var tvguide2=function(){
-			var h=getCN($('exp2'),'SliderHandle','div'),hb=getCN($('exp2'),'SliderBx','div');
-			new SliderLayer({
-							'handle':h,
-							'handleBx':hb,
-							'end':function(){},
-							'start':function(){
-								if(this.ln) this.ln.innerHTML=this.ln.mKey ? '收缩' : '展开';
-								this.handle[this.index].innerHTML=this.handle[this.index].mKey ? '收缩' : '展开'
-							 },
-							'evt':'mouseover',
-							'cl':1,
-							'index':0,
-							'interval':40,
-							'cs':0,
-							'delay':50,
-							'Tween':function(t,b,c,d){
-								if ((t/=d/2) < 1) return c/2*t*t + b;
-								return -c/2 * ((--t)*(t-2) - 1) + b;
-							}
-			})
-	  }();
-	 // alert(new Date().getTime()-d)
-	  
-})

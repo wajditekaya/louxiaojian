@@ -191,6 +191,63 @@ body{font:14px/1.5 Tahoma, Geneva, sans-serif}
 <!--/wrapper-->
 <script type="text/javascript" src="SliderLayer.js" ></script> 
 <script type="text/javascript">
+
+function getCN(node, name, type) {
+	  if (node.getElementsByClassName)
+		  return node.getElementsByClassName(name);
+		  else {
+		  var r = [], re = new RegExp("(^|\\s)" + name + "(\\s|$)"), e = (node || document).getElementsByTagName(type || "*");
+		  for ( var i = 0,len=e.length; i < len; i++ ) {
+			  if( re.test(e[i].className) )
+				  r.push(e[i]);
+		  }
+		  return r;
+	  }
+};
+domReady(function(){
+	  var d=new Date().getTime();
+	  var tvguide=function(){
+			var h=getCN($('exp1'),'SliderHandle','div'),hb=getCN($('exp1'),'SliderBx','div');
+			new SliderLayer({
+							'handle':h,
+							'handleBx':hb,
+							'end':function(){},
+							'start':function(){this.handle[this.index].innerHTML=this.handle[this.index].mKey ? '收缩' : '展开'},
+							'evt':'click',
+							'cl':0,
+							'Tween':function(t,b,c,d){
+								if ((t/=d/2) < 1) return c/2*t*t + b;
+								return -c/2 * ((--t)*(t-2) - 1) + b;
+							}
+			})
+	  }();
+	  
+	  var tvguide2=function(){
+			var h=getCN($('exp2'),'SliderHandle','div'),hb=getCN($('exp2'),'SliderBx','div');
+			new SliderLayer({
+							'handle':h,
+							'handleBx':hb,
+							'end':function(){},
+							'start':function(){
+								if(this.ln) this.ln.innerHTML=this.ln.mKey ? '收缩' : '展开';
+								this.handle[this.index].innerHTML=this.handle[this.index].mKey ? '收缩' : '展开'
+							 },
+							'evt':'mouseover',
+							'cl':1,
+							'index':0,
+							'interval':40,
+							'cs':0,
+							'delay':50,
+							'Tween':function(t,b,c,d){
+								if ((t/=d/2) < 1) return c/2*t*t + b;
+								return -c/2 * ((--t)*(t-2) - 1) + b;
+							}
+			})
+	  }();
+	 // alert(new Date().getTime()-d)
+	  
+})
+
 var b={}
 b.ui=function(p){
 	alert(p)
