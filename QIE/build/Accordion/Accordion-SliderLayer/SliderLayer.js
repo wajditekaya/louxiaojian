@@ -41,6 +41,7 @@ function SliderLayer(s){
 	 this.key=true;//控制是否展开的开关
 	 this.start=this.options.start;
 	 this.end=this.options.end;
+     this.firstInit=this.options.firstInit || 'yes';//是否初始化展开
 	 this.run();
 }
 SliderLayer.prototype={
@@ -82,7 +83,7 @@ SliderLayer.prototype={
 	  },
 	  setStyle:function(element, styles) {
 		  if(!(element = this.$(element))) return false;
-		  for (property in styles) {
+		  for (var property in styles) {
 			  if(!styles.hasOwnProperty(property)) continue;
 			  if(element.style.setProperty) {
 				  element.style.setProperty(
@@ -179,7 +180,12 @@ SliderLayer.prototype={
 			  this.on(this.handle[i],this.evt,this.B(this,this.act,this.handle[i]));
 			  if(this.evt=='mouseover') this.on(this.handle[i],'mouseout',this.B(this,function(){if(this.sTime) clearTimeout(this.sTime);}));
 		  }
-		  if(this.index>=0 && this.cl) {this.act(this.handle[this.index]);}
+		if(this.index>=0 && this.cl && this.firstInit==='yes'){
+			this.act(this.handle[this.index]);
+		}else{
+			this.lm=this.handleBx[this.index];
+			this.ln=this.handle[this.index];
+		};
 	 }
 	  
 };
