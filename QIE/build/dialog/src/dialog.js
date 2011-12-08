@@ -8,10 +8,10 @@
  */
 (function(S){
     var toString=Object.prototype.toString,
-		win=window,
-		doc=document,
-		db=doc.body,
-		dd=doc.documentElement;
+        win=window,
+        doc=document,
+        db=doc.body,
+        dd=doc.documentElement;
     function show(elem){
         elem.style.display='block';
     }
@@ -35,13 +35,13 @@
         },
         prompt:function(text,s){
             var butText=s.text || '确定',
-                    butText2=s.text2 || '取消',
-                    html='<p>'+text+'</p><div class="tal"><input class="btn primary" value="'+butText+'" type="button" />',
-                    textback=s.textback || function(){},
-                    textback2=s.textback2 || function(){},
-                    d,
-                    vd,
-                    btnSl=s.btnSl || 2;
+                butText2=s.text2 || '取消',
+                html='<p>'+text+'</p><div class="tal"><input class="btn primary" value="'+butText+'" type="button" />',
+                textback=s.textback || function(){},
+                textback2=s.textback2 || function(){},
+                d,
+                vd,
+                btnSl=s.btnSl || 2;
             if(btnSl==2){
                 html+='<input class="btn secondary" value="'+butText2+'" type="button" />'
             }
@@ -63,7 +63,7 @@
             S.ajax(url,{
                 'method':'get',
                 'loadFun':function(t){
-					dialog.close();
+                    dialog.close();
                     dialog(t.responseText,s);
                 }
             })
@@ -85,7 +85,7 @@
                 //在这种情况下（img图片还没有dom结构）img.offsetWidth的值为0，此时图片的宽度也该用img.width来获取
                 //s.width=this.offsetHeight+52;
                 !s.width && (s.width=this.width+52);
-				dialog.close();
+                dialog.close();
                 dialog('<img src="'+url+'" alt="" style="width:'+(s.width-52)+'px" />',s);
             }
             img.src=url;
@@ -113,7 +113,7 @@
             this.dragTrigger=s.dragTrigger;
             this.dialogInit();
             this.open();
-            if(this.dragKey) this.drag();
+            if(this.dragKey) this.drag(this.dragTrigger,this.dialog);
             S.on(win,'resize',this.resize=function(){_this.setPosition.call(_this)})
         },
         shadingLayer:function(){
@@ -140,13 +140,10 @@
         },
         dialogInit:function(){
             var closebut,
-                    _this=this,
-                    dialogPanel,
-                    elemmain,
-                    elembd,
-                    elemhd,
-                    title=this.title,
-                    elem=S.$(this.elem);
+                _this=this,
+                dialogPanel,
+                title=this.title,
+                elem=S.$(this.elem);
             if(this.type==='duli'){
                 dialogPanel=this.dialog=S.$(this.elem);
             }else{
@@ -186,19 +183,19 @@
             this.dragKey ? (this.dragTrigger && (this.dragTrigger.style.cursor='move')) : (this.dragTrigger && (this.dragTrigger.style.cursor=''));
             S.setStyle(dialogPanel,{'width':this.width+"px",'z-index':'9999','display':'none'});
             closebut=S.getECN(dialogPanel,this.closeName,'*');
-			this.dialog.close=function(){
-					_this.close.call(_this);
-					return false;
-			}
-			S.each(closebut,function(val){
+            this.dialog.close=function(){
+                _this.close.call(_this);
+                return false;
+            }
+            S.each(closebut,function(val){
                 val.onclick=function(){
-					_this.dialog.close();
-					return false;
+                    _this.dialog.close();
+                    return false;
                 }
-				S.on(val,'mousedown',function(){S.getEvent().stopPropagation()})
-				S.on(val,'mouseup',function(){S.getEvent().stopPropagation()})
+                S.on(val,'mousedown',function(){S.getEvent().stopPropagation()})
+                S.on(val,'mouseup',function(){S.getEvent().stopPropagation()})
 
-			});
+            });
         },
         fixed:function(undef){
             var dialogPanel=this.dialog;
@@ -241,20 +238,20 @@
             if(this.autoClose){
                 this.autoCloseTime && clearTimeout(this.autoCloseTime);
                 this.autoCloseTime=setTimeout(
-                        function(){
-                            self.close()
-                        },
-                        this.autoClose
-                        )
+                    function(){
+                        self.close()
+                    },
+                    this.autoClose
+                )
             }
             toString.call(this.openBack)==='[object Function]' && this.openBack();
         },
         close:function(){
             if(toString.call(this.closeBack)==='[object Function]' && this.closeBack()!==false){
                 var dialogPanel=this.dialog,
-                        layDic=this.layDic,
-                        iframe=this.iframe,
-                        elem=S.$(this.elem);
+                    layDic=this.layDic,
+                    iframe=this.iframe,
+                    elem=S.$(this.elem);
                 if(this.Layer){
                     hide(layDic);
                     hide(iframe);
@@ -269,9 +266,9 @@
                 this.autoClose && this.autoCloseTime && clearTimeout(this.autoCloseTime);
             }
         },
-        drag:function(){
-			if(!this.dragTrigger) return false;
-            var dragYz,zj_x,zj_y,dragTrigger=this.dragTrigger,dialogPanel=this.dialog,mx,my,self=this;
+        drag:function(trigger,panel){
+            if(!trigger) return false;
+            var dragYz,zj_x,zj_y,dragTrigger=trigger,dialogPanel=panel || trigger ,mx,my;
             function mousedown(){
                 var e=S.getEvent();
                 mx=e.clientX-S.offset(dialogPanel).left;
@@ -279,26 +276,26 @@
                 dragYz=doc.createElement('div');
                 S.setStyle(dragYz,{width:dialogPanel.offsetWidth-4+'px',height:dialogPanel.offsetHeight-4+'px',position:'absolute',top:S.offset(dialogPanel).top+'px',left:S.offset(dialogPanel).left+'px',border:'2px dashed #333','z-index':999999});
                 db.appendChild(dragYz);
-				db.style.cursor='move';
-				if(S.Browser.isIE){
-					//焦点丢失
-					S.on(dragYz, "losecapture", stop);
-					//设置鼠标捕获
-					dragYz.setCapture();
-				}else{
-					//焦点丢失
-					S.on(window, "blur", stop);
-					//阻止默认动作
-					e.preventDefault();
-				};
+                db.style.cursor='move';
+                if(S.Browser.isIE){
+                    //焦点丢失
+                    S.on(dragYz, "losecapture", stop);
+                    //设置鼠标捕获
+                    dragYz.setCapture();
+                }else{
+                    //焦点丢失
+                    S.on(window, "blur", stop);
+                    //阻止默认动作
+                    e.preventDefault();
+                };
                 S.on(doc,'mousemove',move);
-                S.on(doc,'mouseup',stop);		
+                S.on(doc,'mouseup',stop);
             }
             function move(){
                 var e=S.getEvent(),
-                        cw=Math.min(dd.clientWidth,db.clientWidth),
-                        ch=dd.clientHeight,
-                        st=Math.max(db.scrollTop,dd.scrollTop);
+                    cw=Math.min(dd.clientWidth,db.clientWidth),
+                    ch=dd.clientHeight,
+                    st=Math.max(db.scrollTop,dd.scrollTop);
                 //清除选择
                 win.getSelection ? win.getSelection().removeAllRanges() : doc.selection.empty();
                 zj_x=e.clientX-mx;
@@ -318,15 +315,15 @@
                 S.setStyle(dragYz,{top:zj_y+'px',left:zj_x+'px'})
             };
             function stop(){
-				if(S.Browser.isIE){
-					S.removeEvent(dragYz, "losecapture", stop);
-					dragYz.releaseCapture();
-				}else{
-					S.removeEvent(window, "blur", stop);
-				};
+                if(S.Browser.isIE){
+                    S.removeEvent(dragYz, "losecapture", stop);
+                    dragYz.releaseCapture();
+                }else{
+                    S.removeEvent(window, "blur", stop);
+                };
                 dragYz && dragYz.parentNode && dragYz.parentNode.removeChild(dragYz);
                 S.setStyle(dialogPanel,{position:'absolute',top:zj_y+'px',left:zj_x+'px'})
-				db.style.cursor='auto';
+                db.style.cursor='auto';
                 S.removeEvent(doc,'mousemove',move);
                 S.removeEvent(doc,'mouseup',stop);
             };
