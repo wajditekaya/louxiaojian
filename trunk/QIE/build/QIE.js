@@ -271,7 +271,7 @@
             return r
         },
         setStyle:function(elem, styles) {
-            for (property in styles) {
+            for (var property in styles) {
                 if(!styles.hasOwnProperty(property)) continue;
                 if(property ==='opacity'){
                     elem.style.filter = "alpha(opacity=" + styles[property] * 100 + ")";
