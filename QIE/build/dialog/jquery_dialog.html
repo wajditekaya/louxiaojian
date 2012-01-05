@@ -355,8 +355,8 @@ a:hover{color:#f60;text-decoration:underline}
 			<div id="test33" class="exp">直接传入html结构无title类型<span class="code">$.dialog('&lt;p style="padding:30px 15px"&gt;test333&lt;/p&gt;',{width:'320px'})</span>;</div>
 			<div id="lxjtest" onclick="alert('lxjtest')" class="exp">lxjtest click()</div>
 			<div id="lxjtest2" class="exp">lxjtest2 click2</div>
-			<div id="test-login" class="exp">直接传入ID有title类型<span class="code">$.dialog('#not-reg',{width:'540px',title:'用户登录'});</span>;</div>
-			<div id="test2" style="height:600px" class="exp">ID链式调用有title能拖动类型<span class="code">$('#not-reg').dialog({width:'540px',dragKey:'1',title:'用户登录'})</span>;</div>
+			<div id="test-login" class="exp">直接传入ID有title类型<span class="code">$.dialog('#not-reg',{width:'580px',title:'用户登录'});</span>;</div>
+			<div id="test2" style="height:600px" class="exp">ID链式调用有title能拖动类型<span class="code">$('#not-reg').dialog({width:'580px',dragKey:'1',title:'用户登录'})</span>;</div>
 		</div>
 		<script>
 			document.getElementById('lxjtest2').onclick=function(){
@@ -430,11 +430,11 @@ a:hover{color:#f60;text-decoration:underline}
     });
 
     $('#test2').click(function(){
-        $('#not-reg').dialog({width:'540px',dragKey:'1',title:'用户登录'});
+        $('#not-reg').dialog({width:'580px',dragKey:'1',title:'用户登录'});
     });
 
     $('#test-login').click(function(){
-        $.dialog('#not-reg',{width:'540px',title:'用户登录'});
+        $.dialog('#not-reg',{width:'580px',title:'用户登录'});
     });
 
     $('#test22').click(function(){
