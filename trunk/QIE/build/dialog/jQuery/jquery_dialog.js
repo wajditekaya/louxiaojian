@@ -53,7 +53,7 @@
         },
         maskClose:function(){
             this.mask.fadeOut(200);
-            this.mask_iframe.hide()
+            this.mask_iframe.hide();
         },
         layoutInit:function(){
             var self=this,dialog,dialoghd;
@@ -84,12 +84,13 @@
             }
 			this.dialog=dialog;
 			this.dragTrigger=dialoghd;
+			this.closeHandle=$('#v-dialog .dialog-close-handle');
 			this.position();
 			(this.dragKey && this.dragTrigger) ? this.dragTrigger.css({"cursor":"move"}) : this.dragTrigger.css({"cursor":""});
-            $('#v-dialog .dialog-close-handle').click(function(){
+            this.closeHandle.bind('click',function(){
                 self.close();
                 return false
-            })
+            });
         },
         position:function(){
             var w = $win.width(), h = $win.height(), st = $win.scrollTop();
@@ -98,11 +99,8 @@
         isDom:function(elem){
             return elem[0] && elem[0].nodeType && elem[0].nodeType==1;
         },
-		close_handle:function(){
-		},
         close:function(){
             var self=this;
-			alert(this.closeBack)
 			if(toString.call(this.closeBack)==='[object Function]' && this.closeBack()!==false){
 				this.dialog.fadeOut(200,
 					function(){
@@ -112,6 +110,7 @@
 						};
 					});
 				this.maskClose();
+				this.closeHandle.unbind('click');
 				$win.unbind('resize', this.resize);
 				this.dragKey && this.dragTrigger && this.dragTrigger.unbind('mousedown',this.mousedown);
 			}
