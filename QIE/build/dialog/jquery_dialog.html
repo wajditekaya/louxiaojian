@@ -333,6 +333,7 @@ a:hover{color:#f60;text-decoration:underline}
   border-bottom: 0;
   color: #808080;
 }
+.code{margin-left:20px;font-size:14px}
     </style>
 </head>
 <body>
@@ -347,15 +348,15 @@ a:hover{color:#f60;text-decoration:underline}
       </ul>
 
 		<div style="padding:30px;font-size:14px;line-height:30px">
-			<div id="test" class="exp">注册(点我)<span class="code">$.dialog('#test3',{width:'320px'})</span></div>
-			<div id="test4" class="exp">注册(点我)<span class="code">$.dialog('#test3',{width:'320px','closeBack':function(){return false}})</span></div>
-			<div id="test11" class="exp">test11(点我)<span class="code">$('#test3').dialog({width:'320px'})</span>;</div>
+			<div id="test" class="exp">直接传入ID无title类型<span class="code">$.dialog('#test3',{width:'320px'})</span></div>
+			<div id="test4" class="exp">直接传入ID无title但有关闭回调类型<span class="code">$.dialog('#test3',{width:'320px','closeBack':function(){return false}})</span></div>
+			<div id="test11" class="exp">ID链式调用无title类型<span class="code">$('#test3').dialog({width:'320px'})</span>;</div>
 			<div id="test22" class="exp">直接传入非选择器的字符串(点我)<span class="code">$.dialog('直接传入非选择器的字符串',{width:'320px'})</span>;</div>
-			<div id="test33" class="exp"><span class="code">$.dialog('&lt;p style="padding:30px 15px"&gt;test333&lt;/p&gt;',{width:'320px'})</span>;</div>
+			<div id="test33" class="exp">直接传入html结构无title类型<span class="code">$.dialog('&lt;p style="padding:30px 15px"&gt;test333&lt;/p&gt;',{width:'320px'})</span>;</div>
 			<div id="lxjtest" onclick="alert('lxjtest')" class="exp">lxjtest click()</div>
 			<div id="lxjtest2" class="exp">lxjtest2 click2</div>
-			<div id="test-login" class="exp">登陆(点我)<span class="code">$.dialog('#not-reg',{width:'540px'});</span>;</div>
-			<div id="test2" style="height:600px" class="exp">登陆(点我)<span class="code">$('#not-reg').dialog({width:'540px'})</span>;</div>
+			<div id="test-login" class="exp">直接传入ID有title类型<span class="code">$.dialog('#not-reg',{width:'540px',title:'用户登录'});</span>;</div>
+			<div id="test2" style="height:600px" class="exp">ID链式调用有title能拖动类型<span class="code">$('#not-reg').dialog({width:'540px',dragKey:'1',title:'用户登录'})</span>;</div>
 		</div>
 		<script>
 			document.getElementById('lxjtest2').onclick=function(){
@@ -412,8 +413,14 @@ a:hover{color:#f60;text-decoration:underline}
         $.dialog('#test3',{
 								width:'320px',
 								'closeBack':function(){
-								return false
-								}
+									  var r=prompt("1+1")
+									  if (r==2){
+										alert('答对了')
+									  }else{
+										alert('错了，再想想')
+										return false
+										}
+									 }
 							}
 		);
     });
