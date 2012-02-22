@@ -1,3 +1,5 @@
+在VirtualBox下修改Ubuntu的分辨率的一种方法
+
 http://exsbn.com/post/224
 
 打开终端输入 df -h 看到最下面的一行就是你刚才载入的CD,我的是/media/VBOXADDITIONS_3.2.6_63113（这里千万不要copy使用，各人不同，以自己的为准，看看上面提到的那些转帖都复制cdrom0后，你照打后能找到才怪）
