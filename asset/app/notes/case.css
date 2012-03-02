@@ -58,9 +58,14 @@ select{color:#999}
 	.login_btn a,.login_btn input{float:left}
 .imp{color:#f00}
 #warpper,#wrapper,#page{width:950px;text-align:left;background:#fff;margin:0 auto;background:#fff;border: 1px solid #fff;box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);-o-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);-moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);-webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1)}
-#content{padding:0 20px 100px;}
+
+#content{padding:0 20px 100px;color:#626566;font:17px/1.6 Georgia, serif;}
+#content h1, #content h2, #content h3, #content h4, #content h5 { margin-bottom: 10px; margin-top: 25px; }
+#content p{margin-bottom:20px}
 #content ul li{list-style:inside disc;padding-bottom:10px}
 #content ol li{list-style:inside decimal;padding-bottom:10px}
+#content hr { background-color: #e0e2e1; margin: 30px 0; border: 0; height: 1px; }
+
 h1{font:bold 24px/70px "微软雅黑";text-align:left;height:70px;background:#E6F6FA url(img/intro_texture.png) center no-repeat;color:#4CB1CA;padding-left:20px;margin-bottom:20px}
 h1 a{color:#fff;text-decoration:none}
 h1 a:hover{text-decoration:underline;color:#fff}
