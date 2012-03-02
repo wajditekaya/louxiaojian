@@ -57,22 +57,39 @@ select{color:#999}
 	.dlFrom dd img,.dlFrom dd input,.dlFrom dd a,.dlFrom dd em{float:left;margin-right:5px}
 	.login_btn a,.login_btn input{float:left}
 .imp{color:#f00}
+
 #warpper,#wrapper,#page{width:950px;text-align:left;background:#fff;margin:0 auto;background:#fff;border: 1px solid #fff;box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);-o-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);-moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);-webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1)}
 
 #content{padding:0 20px 100px;color:#626566;font:17px/1.6 Georgia, serif;}
-#content h1, #content h2, #content h3, #content h4, #content h5 { margin-bottom: 10px; margin-top: 25px; }
-#content p{margin-bottom:20px}
-#content ul li{list-style:inside disc;padding-bottom:10px}
-#content ol li{list-style:inside decimal;padding-bottom:10px}
-#content hr {background-color: #e0e2e1; border:0;height:1px;}
-#content a{ color:#f55b2c;border-bottom: 1px solid #E0E2E1;margin-top: -1px;padding: 1px 0;}
-#content a:hover{background-color: #fff7a5;color: #131313}
+	#content h1, #content h2, #content h3, #content h4, #content h5 { margin-bottom: 10px; margin-top: 25px; }
+	#content p{margin-bottom:20px}
 
-h1{font:bold 24px/70px "微软雅黑";text-align:left;height:70px;background:#E6F6FA url(img/intro_texture.png) center no-repeat;color:#4CB1CA;padding-left:20px;margin-bottom:20px}
-h1 a{color:#fff;text-decoration:none}
-h1 a:hover{text-decoration:underline;color:#fff}
-h2{font:bold 14px/1.5 Tahoma;padding:15px 0 5px 0}
-h3{font:bold 12px/1.5 Tahoma;padding:15px 0 5px 0}
+	/*#content ol { list-style-type: decimal; list-style-position: inside; }
+	#content ol { margin-left: 20px; list-style-position: outside; }
+	#content ol li, #content ul li { padding: 1px }
+	#content ol ol, #content ul ul { padding: 1px 0 0; margin-bottom: -1px; }
+	#content ol ol li { list-style-type: lower-alpha }
+	#content ol ol ol li { list-style-type: lower-roman }
+	#content ul li { padding-left: 20px }
+	#content ul li:before { content: "●"; font-weight: normal; padding-right: 10px; margin-left: -18px; }
+	#content ul ul li:before { content: "○" }
+	#content ul ul ul li:before { content: "—" }*/
+
+	#content ul li{list-style:inside disc;padding-bottom:10px}
+	#content ol li{list-style:inside decimal;padding-bottom:10px}
+	#content hr {background-color: #e0e2e1; border:0;height:1px;}
+	#content a{ color:#f55b2c;border-bottom: 1px solid #E0E2E1;margin-top: -1px;padding: 1px 0;text-decoration:none;}
+	#content a:hover{background-color: #fff7a5;color: #131313;border-color:#F55B2C;}
+
+	h1, h2, h3, h4, h5, h6{color:#424242;font-weight:bold;line-height: 1.2;font-family: Georgia, serif;}
+	h1 {font-size:24px}
+	h2 {font-size:18px}
+	h3 {font-size:16px}
+	h4 {font-size:13px;text-transform: uppercase; letter-spacing: 1px; }
+
+	h1{font:bold 24px/70px "微软雅黑";text-align:left;height:70px;background:#E6F6FA url(img/intro_texture.png) center no-repeat;color:#4CB1CA;padding-left:20px;margin-bottom:20px}
+	h1 a{color:#fff;text-decoration:none}
+	h1 a:hover{text-decoration:underline;color:#fff}
 
 .article{text-align:left;width:810px; margin:0 auto 0 150px}
 
