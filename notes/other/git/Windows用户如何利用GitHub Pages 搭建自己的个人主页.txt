@@ -13,7 +13,7 @@ git config --global user.email "username@email.com"
 
 紧接着创建一个 SSH Public Keys，输入：
 
-ssh-keygen -t rsa -C "username@email.com"
+ssh-keygen -t rsa -C "louxiaojian@gmail.com"
 回车后，你会看到类似画面：
 
 Generating public/private rsa key pair.
