@@ -1,45 +1,19 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>å¸¸ç”¨çš„æ­£åˆ™è¡¨è¾¾å¼</title>
-<base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
-<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
-<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
-<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
-<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
-<link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
-<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
-<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
-<style>
-.zzlist li{padding-bottom:40px;list-style:inside decimal-leading-zero}
-</style>
-<script type="text/javascript">
-	SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
-	SyntaxHighlighter.config.strings = {
-			expandSource : 'å±•å¼€ä»£ç ',
-			viewSource : 'æŸ¥çœ‹ä»£ç ',
-			copyToClipboard : 'å¤åˆ¶ä»£ç ',
-			copyToClipboardConfirmation : 'ä»£ç å¤åˆ¶æˆåŠŸ',
-			print : 'æ‰“å°',
-			help : '?',
-			alert: 'è¯­æ³•é«˜äº®\n\n',
-			noBrush : 'ä¸èƒ½æ‰¾åˆ°åˆ·å­: ',
-			brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
-			// this is populated by the build script
-			aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Geneva,Arial,Helvetica,sans-serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.1.364(October 15 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
-		}
-	SyntaxHighlighter.all();
-</script>
+<meta charset="gbk"/>
+<link type="text/css" rel="stylesheet" href="http://assets.xmlhtml.cn/notes/notes.css"/>
+<script type="text/javascript" src="http://assets.xmlhtml.cn/notes/notes.js"></script>
+<title>³£ÓÃµÄÕıÔò±í´ïÊ½</title>
 </head>
 
 <body>
 <div id="page">
-    <h1>å¸¸ç”¨çš„æ­£åˆ™è¡¨è¾¾å¼</h1>
+    <h1>³£ÓÃµÄÕıÔò±í´ïÊ½</h1>
     <div id="content">
       <ol class="zzlist">
        <li>
-            <h2>å°†ä¸€ä¸ªé©¼å³°å½¢å¼çš„CSSå±æ€§è½¬æ¢ä¸ºç”±é“¾æ¥ç¬¦çš„å½¢å¼ï¼Œä¾‹å¦‚(fontSize --> font-size)</h2>
+            <h2>½«Ò»¸öÍÕ·åĞÎÊ½µÄCSSÊôĞÔ×ª»»ÎªÓÉÁ´½Ó·ûµÄĞÎÊ½£¬ÀıÈç(fontSize --> font-size)</h2>
             <pre title="code" class="brush: jscript;">
               var s='backgroundColor';
               var t=s.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(); // backgroundColor => background-color
@@ -49,12 +23,12 @@
             <script type="text/javascript">
               var s='backgroundColor';
               var t=s.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(); // backgroundColor => background-color
-              document.write('backgroundColorâ€”â€”>'+t+'<br />');
-              document.write('borderBottomWidthâ€”â€”>'+'borderBottomWidth'.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase());
+              document.write('backgroundColor¡ª¡ª>'+t+'<br />');
+              document.write('borderBottomWidth¡ª¡ª>'+'borderBottomWidth'.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase());
             </script>
         </li>
         <li>
-            <h2>å°†ä¸€ä¸ªCSSå±æ€§è½¬æ¢ä¸ºé©¼å³°å½¢å¼ï¼Œä¾‹å¦‚(font-size --> fontSize)</h2>
+            <h2>½«Ò»¸öCSSÊôĞÔ×ª»»ÎªÍÕ·åĞÎÊ½£¬ÀıÈç(font-size --> fontSize)</h2>
             <pre title="code" class="brush: jscript;">
               function stylename(name){
                   var RE_DASH = /-([a-z])/ig;
@@ -62,13 +36,13 @@
                       return letter.toUpperCase();
                   };
                   if (name.indexOf('-') > 0) {
-                      // webkit è®¤è¯† camel-case, å…¶å®ƒå†…æ ¸åªè®¤è¯† cameCase
+                      // webkit ÈÏÊ¶ camel-case, ÆäËüÄÚºËÖ»ÈÏÊ¶ cameCase
                       name = name.replace(RE_DASH, CAMELCASE_FN);
                   }
                   return name;
               }
-              document.write('background-colorâ€”â€”>'+stylename('background-color')+'<br />');
-              document.write('border-bottom-widthâ€”â€”>'+stylename('border-bottom-width'))
+              document.write('background-color¡ª¡ª>'+stylename('background-color')+'<br />');
+              document.write('border-bottom-width¡ª¡ª>'+stylename('border-bottom-width'))
             </pre>
             <script>
               function stylename(name){
@@ -77,17 +51,17 @@
                       return letter.toUpperCase();
                   };
                   if (name.indexOf('-') > 0) {
-                      // webkit è®¤è¯† camel-case, å…¶å®ƒå†…æ ¸åªè®¤è¯† cameCase
+                      // webkit ÈÏÊ¶ camel-case, ÆäËüÄÚºËÖ»ÈÏÊ¶ cameCase
                       name = name.replace(RE_DASH, CAMELCASE_FN);
                   }
                   return name;
               }
-              document.write('background-colorâ€”â€”>'+stylename('background-color')+'<br />');
-              document.write('border-bottom-widthâ€”â€”>'+stylename('border-bottom-width'))
+              document.write('background-color¡ª¡ª>'+stylename('background-color')+'<br />');
+              document.write('border-bottom-width¡ª¡ª>'+stylename('border-bottom-width'))
             </script>
         </li>
         <li>
-           <h2>å»æ‰å­—ç¬¦ä¸²é¦–ä½çš„ç©ºæ ¼</h2>
+           <h2>È¥µô×Ö·û´®Ê×Î»µÄ¿Õ¸ñ</h2>
             <pre title="code" class="brush: jscript;">
             /**
              * Removes the whitespace from the beginning and end of a string.
@@ -105,7 +79,7 @@
             };
             document.getElementById('trim').innerHTML=trim('lxj')+'==>length='+trim('lxj').length;
             document.getElementById('trim2').innerHTML=trim('lxj')+'==>length='+trim('  lxj  ').length;
-            document.getElementById('trim3').innerHTML='ã€€lxjã€€==>length='+'ã€€lxjã€€'.toString().length;
+            document.getElementById('trim3').innerHTML='¡¡lxj¡¡==>length='+'¡¡lxj¡¡'.toString().length;
           </pre>
           <span id="trim" style="background:#f00; margin-right:20px"></span><span id="trim2" style="background:#f00; margin-right:20px"></span><span id="trim3" style="background:#f00; margin-right:20px"></span>
           <script>
@@ -125,13 +99,13 @@
             };
             document.getElementById('trim').innerHTML=trim('lxj')+'==>length='+trim('lxj').length;
             document.getElementById('trim2').innerHTML=trim('lxj')+'==>length='+trim('  lxj  ').length;
-            document.getElementById('trim3').innerHTML='ã€€lxjã€€==>length='+'ã€€lxjã€€'.toString().length;
+            document.getElementById('trim3').innerHTML='¡¡lxj¡¡==>length='+'¡¡lxj¡¡'.toString().length;
           </script> 
       </li>
       <li>
-        <h2>å°†è‹±æ–‡å•è¯ç¬¬ä¸€ä¸ªå­—æ¯è½¬ä¸ºå¤§å†™å­—æ¯</h2>
+        <h2>½«Ó¢ÎÄµ¥´ÊµÚÒ»¸ö×ÖÄ¸×ªÎª´óĞ´×ÖÄ¸</h2>
           <pre title="code" class="brush: jscript;">
-          /*===å°†è‹±æ–‡å•è¯ç¬¬ä¸€ä¸ªå­—æ¯è½¬ä¸ºå¤§å†™å­—æ¯*/
+          /*===½«Ó¢ÎÄµ¥´ÊµÚÒ»¸ö×ÖÄ¸×ªÎª´óĞ´×ÖÄ¸*/
            function replaceReg(str){ 
             reg = /\b(\w)|\s(\w)/g;
             str = str.toLowerCase(); 
@@ -139,7 +113,7 @@
            } 
           </pre>
 		  <script type="text/javascript">
-          /*===å°†è‹±æ–‡å•è¯ç¬¬ä¸€ä¸ªå­—æ¯è½¬ä¸ºå¤§å†™å­—æ¯*/
+          /*===½«Ó¢ÎÄµ¥´ÊµÚÒ»¸ö×ÖÄ¸×ªÎª´óĞ´×ÖÄ¸*/
            function replaceReg(str){ 
             reg = /\b(\w)|\s(\w)/g;
             str = str.toLowerCase(); 
@@ -151,7 +125,7 @@
            document.write(replaceReg('final test')+'<br />'); 
            document.write(replaceReg('width')+'<br />');
            document.write(replaceReg('height')+'<br />');
-          /*===å°†è‹±æ–‡å•è¯ç¬¬ä¸€ä¸ªå­—æ¯è½¬ä¸ºå¤§å†™===å­—æ¯*/
+          /*===½«Ó¢ÎÄµ¥´ÊµÚÒ»¸ö×ÖÄ¸×ªÎª´óĞ´===×ÖÄ¸*/
           </script>
       </li>
       </ol>

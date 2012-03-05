@@ -1,38 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>JavaScripté™æ€æ–¹æ³•å’ŒåŠ¨æ€æ–¹æ³•</title>
-<base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
-<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
-<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
-<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
-<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
-<link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
-<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
-<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
-<script type="text/javascript">
-	SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
-	SyntaxHighlighter.config.strings = {
-			expandSource : 'å±•å¼€ä»£ç ',
-			viewSource : 'æŸ¥çœ‹ä»£ç ',
-			copyToClipboard : 'å¤åˆ¶ä»£ç ',
-			copyToClipboardConfirmation : 'ä»£ç å¤åˆ¶æˆåŠŸ',
-			print : 'æ‰“å°',
-			help : '?',
-			alert: 'è¯­æ³•é«˜äº®\n\n',
-			noBrush : 'ä¸èƒ½æ‰¾åˆ°åˆ·å­: ',
-			brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
-			// this is populated by the build script
-			aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Geneva,Arial,Helvetica,sans-serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.1.364(October 15 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
-		}
-	SyntaxHighlighter.all();
-</script>
+<meta charset="gbk"/>
+<link type="text/css" rel="stylesheet" href="http://assets.xmlhtml.cn/notes/notes.css"/>
+<script type="text/javascript" src="http://assets.xmlhtml.cn/notes/notes.js"></script>
+<title>JavaScript¾²Ì¬·½·¨ºÍ¶¯Ì¬·½·¨</title>
 </head>
 
 <body>
 <div id="page">
-    <h1>JavaScripté™æ€æ–¹æ³•å’ŒåŠ¨æ€æ–¹æ³•</h1>
+    <h1>JavaScript¾²Ì¬·½·¨ºÍ¶¯Ì¬·½·¨</h1>
     <div id="content">
     
           <pre title="code" class="brush: jscript;">
@@ -55,13 +32,13 @@
                 alert(pParm);
           }
           
-          document.write("<br />===========ä»¥ä¸‹æ˜¯Classä¸­çš„ï¼Œå³æ‰€è°“çš„é™æ€ï¼Œä¸èƒ½ç”±å®ä¾‹è°ƒç”¨ï¼Œåªèƒ½ç”¨ç±»åè°ƒç”¨================<br />");
+          document.write("<br />===========ÒÔÏÂÊÇClassÖĞµÄ£¬¼´ËùÎ½µÄ¾²Ì¬£¬²»ÄÜÓÉÊµÀıµ÷ÓÃ£¬Ö»ÄÜÓÃÀàÃûµ÷ÓÃ================<br />");
           
           for(var o in JObj){
           document.write(o," = ",eval("JObj." + o),"<br />");
           }
           JObj.cc("123")
-          document.write("<br />===========ä»¥ä¸‹æ˜¯å®ä¾‹ä¸­çš„ï¼Œåªèƒ½ç”¨å®ä¾‹æ¥è°ƒç”¨================<br />");
+          document.write("<br />===========ÒÔÏÂÊÇÊµÀıÖĞµÄ£¬Ö»ÄÜÓÃÊµÀıÀ´µ÷ÓÃ================<br />");
           
           var obj = new JObj();
           for(var o in obj){
@@ -89,13 +66,13 @@
                 alert(pParm);
           }
           
-          document.write("<br />===========ä»¥ä¸‹æ˜¯Classä¸­çš„ï¼Œå³æ‰€è°“çš„é™æ€ï¼Œä¸èƒ½ç”±å®ä¾‹è°ƒç”¨ï¼Œåªèƒ½ç”¨ç±»åè°ƒç”¨================<br />");
+          document.write("<br />===========ÒÔÏÂÊÇClassÖĞµÄ£¬¼´ËùÎ½µÄ¾²Ì¬£¬²»ÄÜÓÉÊµÀıµ÷ÓÃ£¬Ö»ÄÜÓÃÀàÃûµ÷ÓÃ================<br />");
           
           for(var o in JObj){
           document.write(o," = ",eval("JObj." + o),"<br />");
           }
           JObj.cc("123")
-          document.write("<br />===========ä»¥ä¸‹æ˜¯å®ä¾‹ä¸­çš„ï¼Œåªèƒ½ç”¨å®ä¾‹æ¥è°ƒç”¨================<br />");
+          document.write("<br />===========ÒÔÏÂÊÇÊµÀıÖĞµÄ£¬Ö»ÄÜÓÃÊµÀıÀ´µ÷ÓÃ================<br />");
           
           var obj = new JObj();
           for(var o in obj){

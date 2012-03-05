@@ -1,41 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>eventå¯¹è±¡å’Œcaller</title>
-<base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
-<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
-<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
-<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
-<script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
-<link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
-<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
-<link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
-<script type="text/javascript">
-	SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
-	SyntaxHighlighter.config.strings = {
-			expandSource : 'å±•å¼€ä»£ç ',
-			viewSource : 'æŸ¥çœ‹ä»£ç ',
-			copyToClipboard : 'å¤åˆ¶ä»£ç ',
-			copyToClipboardConfirmation : 'ä»£ç å¤åˆ¶æˆåŠŸ',
-			print : 'æ‰“å°',
-			help : '?',
-			alert: 'è¯­æ³•é«˜äº®\n\n',
-			noBrush : 'ä¸èƒ½æ‰¾åˆ°åˆ·å­: ',
-			brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
-			// this is populated by the build script
-			aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Geneva,Arial,Helvetica,sans-serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.1.364(October 15 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
-		}
-	SyntaxHighlighter.all();
-</script>
+<meta charset="gbk"/>
+<link type="text/css" rel="stylesheet" href="http://assets.xmlhtml.cn/notes/notes.css"/>
+<script type="text/javascript" src="http://assets.xmlhtml.cn/notes/notes.js"></script>
+<title>event¶ÔÏóºÍcaller</title>
 </head>
 
 <body>
 <div id="page">
-    <h1>eventå¯¹è±¡å’Œcaller</h1>
+    <h1>event¶ÔÏóºÍcaller</h1>
     <div id="content">
-          <p>(å¼•ï¼šJavaScripté«˜çº§ç¨‹åºè®¾è®¡P259)æ¯ä¸ªå‡½æ•°éƒ½æœ‰ä¸€ä¸ªcallerå±æ€§ï¼Œå®ƒåŒ…å«äº†æŒ‡å‘è°ƒç”¨å®ƒçš„æ–¹æ³•çš„å¼•ç”¨ã€‚ä¾‹å¦‚ï¼Œå¦‚æœfuncA()è°ƒç”¨äº†funcB()ï¼Œé‚£ä¹ˆfuncB.callerå°±ç­‰äºfuncAã€‚å‡è®¾æŸä¸ªäº‹ä»¶å¤„ç†å‡½æ•°è°ƒç”¨äº†Event.getEvent()ï¼Œé‚£ä¹ˆEvent.getEvent.callerå°±æŒ‡å‘è¿™ä¸ªäº‹ä»¶å¤„ç†å‡½æ•°æœ¬èº«ã€‚</p>
-          <p>å› ä¸ºcallerå±æ€§æ˜¯æŒ‡å‘å‡½æ•°çš„ï¼Œæ‰€ä»¥å¯è®¿é—®äº‹ä»¶å¤„ç†å‡½æ•°çš„argumentså±æ€§ã€‚è€Œeventå¯¹è±¡æ€»æ˜¯äº‹ä»¶å¤„ç†å‡½æ•°çš„ç¬¬ä¸€ä¸ªå‚æ•°ï¼Œä¹Ÿå°±æ˜¯è¯´å¯ä»¥è®¿é—®äº‹ä»¶å¤„ç†å‡½æ•°çš„argument[0]æ¥è·å–eventå¯¹è±¡ï¼š</p>
+          <p>(Òı£ºJavaScript¸ß¼¶³ÌĞòÉè¼ÆP259)Ã¿¸öº¯Êı¶¼ÓĞÒ»¸öcallerÊôĞÔ£¬Ëü°üº¬ÁËÖ¸Ïòµ÷ÓÃËüµÄ·½·¨µÄÒıÓÃ¡£ÀıÈç£¬Èç¹ûfuncA()µ÷ÓÃÁËfuncB()£¬ÄÇÃ´funcB.caller¾ÍµÈÓÚfuncA¡£¼ÙÉèÄ³¸öÊÂ¼ş´¦Àíº¯Êıµ÷ÓÃÁËEvent.getEvent()£¬ÄÇÃ´Event.getEvent.caller¾ÍÖ¸ÏòÕâ¸öÊÂ¼ş´¦Àíº¯Êı±¾Éí¡£</p>
+          <p>ÒòÎªcallerÊôĞÔÊÇÖ¸Ïòº¯ÊıµÄ£¬ËùÒÔ¿É·ÃÎÊÊÂ¼ş´¦Àíº¯ÊıµÄargumentsÊôĞÔ¡£¶øevent¶ÔÏó×ÜÊÇÊÂ¼ş´¦Àíº¯ÊıµÄµÚÒ»¸ö²ÎÊı£¬Ò²¾ÍÊÇËµ¿ÉÒÔ·ÃÎÊÊÂ¼ş´¦Àíº¯ÊıµÄargument[0]À´»ñÈ¡event¶ÔÏó£º</p>
           <pre title="code" class="brush: jscript;">
           QIE.event.getEvent = function() {
               if (window.event) {
@@ -45,7 +22,7 @@
               }
           }
           </pre>
-          <p>è¿™ä¸ªæ–¹æ³•å¯åœ¨äº‹ä»¶å¤„ç†å‡½æ•°ä¸­ä½¿ç”¨ï¼Œå¦‚ä¸‹ï¼š</p>
+          <p>Õâ¸ö·½·¨¿ÉÔÚÊÂ¼ş´¦Àíº¯ÊıÖĞÊ¹ÓÃ£¬ÈçÏÂ£º</p>
           <pre title="code" class="brush: jscript;">
           oDiv.onclick=fucntion(){
             var e=QIE.event.getEvent(); 
@@ -121,7 +98,7 @@
               }
           }
           /**
-           *handleCallerå‡½æ•°è°ƒç”¨äº†callerDemoï¼Œæ‰€ä»¥callerDemo.callerç­‰äºhandleCaller
+           *handleCallerº¯Êıµ÷ÓÃÁËcallerDemo£¬ËùÒÔcallerDemo.callerµÈÓÚhandleCaller
            */
           function handleCaller() {
               callerDemo();
@@ -213,7 +190,7 @@ function callerDemo() {
 	}
 }
 /**
- *handleCallerå‡½æ•°è°ƒç”¨äº†callerDemoï¼Œæ‰€ä»¥callerDemo.callerç­‰äºhandleCaller
+ *handleCallerº¯Êıµ÷ÓÃÁËcallerDemo£¬ËùÒÔcallerDemo.callerµÈÓÚhandleCaller
  */
 function handleCaller() {
 	callerDemo();
