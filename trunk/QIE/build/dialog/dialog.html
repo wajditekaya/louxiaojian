@@ -392,7 +392,7 @@ a:hover{color:#f60;text-decoration:underline}
 <h2>iframe页面加载</h2>		
         <div id="dialog-iframe" class="exp"><span class="code">S.dialog.iframe('../../../delay/delay3.html',{width:350,title:'iframe页面'}}</span></div>	
 <h2>图片加载</h2>
-		<div id="dialog-img" class="exp"><span class="code">S.dialog.img('../../../asset/app/notes/img/20100812095511964.jpg',{width:450,title:'iframe页面'}}</span></div>
+		<div id="dialog-img" class="exp"><span class="code">S.dialog.img('http://assets.xmlhtml.cn/img/20100812095511964.jpg',{width:450,title:'iframe页面'}}</span></div>
 
     </div>
 </div>
@@ -407,8 +407,8 @@ a:hover{color:#f60;text-decoration:underline}
             <p class="form-item" style="overflow:hidden"><label class="lb">名字：</label><input id="user-name" value='' type="text" class="e-input" /></p>
           </div>
           <div class="modal-footer">
-		    <a href="#" class="btn secondary" onclick="QIE.dialog.close('seanlou')">取消</a>
-            <a href="#" class="btn primary" onclick="QIE.dialog.close('seanlou')">确定</a>
+		    <a href="#" class="btn secondary" onClick="QIE.dialog.close('seanlou')">取消</a>
+            <a href="#" class="btn primary" onClick="QIE.dialog.close('seanlou')">确定</a>
           </div>
 </div>
 
@@ -421,8 +421,8 @@ a:hover{color:#f60;text-decoration:underline}
             <p>有各自马甲的弹出框</p>
           </div>
           <div class="modal-footer">
-		    <a href="#" class="btn secondary" onclick="QIE.dialog.close('lxj')">取消</a>
-            <a href="#" class="btn primary" onclick="QIE.dialog.close('lxj')">确定</a>
+		    <a href="#" class="btn secondary" onClick="QIE.dialog.close('lxj')">取消</a>
+            <a href="#" class="btn primary" onClick="QIE.dialog.close('lxj')">确定</a>
           </div>
 </div>
 
@@ -436,8 +436,8 @@ a:hover{color:#f60;text-decoration:underline}
             <p>有各自马甲的弹出框</p>
           </div>
           <div class="modal-footer">
-		    <a href="#" class="btn secondary" onclick="QIE.dialog.close('lxj2')">取消</a>
-            <a href="#" class="btn primary" onclick="QIE.dialog.close('lxj2')">确定</a>
+		    <a href="#" class="btn secondary" onClick="QIE.dialog.close('lxj2')">取消</a>
+            <a href="#" class="btn primary" onClick="QIE.dialog.close('lxj2')">确定</a>
           </div>
 </div>
 
@@ -450,8 +450,8 @@ a:hover{color:#f60;text-decoration:underline}
             <div id="textarea3" class="textarea">还剩<span id="tr" style="color:#f00;margin:0 3px;font-weight:bold"></span>秒关闭窗口</div>
           </div>
           <div class="modal-footer">
-		    <a href="#" class="btn secondary" onclick="QIE.dialog.close('lxj3')">取消</a>
-            <a href="#" class="btn primary" onclick="QIE.dialog.close('lxj3')">确定</a>
+		    <a href="#" class="btn secondary" onClick="QIE.dialog.close('lxj3')">取消</a>
+            <a href="#" class="btn primary" onClick="QIE.dialog.close('lxj3')">确定</a>
           </div>
 </div>
 
@@ -467,7 +467,7 @@ a:hover{color:#f60;text-decoration:underline}
                     <li class="form-item"><label class="lb">用户名：</label><input type="text" name="user" id="user" class="e-input" /></li>
                     <li class="form-item"><label class="lb">密　码：</label><input type="password" name="password" id="password" class="e-input" /><a href="#" class="oer">忘记密码</a></li>
                 </ul>
-                <div class="form-act"><a href="#" class="new-g-but6 g-but" onclick="QIE.dialog.close();return false"><span class="b">登录</span></a></div>
+                <div class="form-act"><a href="#" class="new-g-but6 g-but" onClick="QIE.dialog.close();return false"><span class="b">登录</span></a></div>
             </form>
         </div>
 
@@ -579,7 +579,7 @@ a:hover{color:#f60;text-decoration:underline}
 	}
 
 	S.$('dialog-img').onclick=function(){
-	  S.dialog.img('../../../asset/app/notes/img/20100812095511964.jpg',{width:450,title:'加载img图片'})
+	  S.dialog.img('http://assets.xmlhtml.cn/img/20100812095511964.jpg',{width:450,title:'加载img图片'})
 	}
 })(QIE)
 </script>

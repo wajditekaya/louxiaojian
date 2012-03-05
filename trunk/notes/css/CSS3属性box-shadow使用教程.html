@@ -2,32 +2,9 @@
 <html>
 <head>
     <meta charset="gbk"/>
+    <link type="text/css" rel="stylesheet" href="http://assets.xmlhtml.cn/notes/notes.css"/>
+    <script type="text/javascript" src="http://assets.xmlhtml.cn/notes/notes.js"></script>
     <title>CSS3属性box-shadow使用教程</title>
-    <base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
-    <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
-    <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
-    <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
-    <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
-    <link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
-    <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
-    <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
-    <script type="text/javascript">
-        SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
-        SyntaxHighlighter.config.strings = {
-            expandSource : '展开代码',
-            viewSource : '查看代码',
-            copyToClipboard : '复制代码',
-            copyToClipboardConfirmation : '代码复制成功',
-            print : '打印',
-            help : '?',
-            alert: '语法高亮\n\n',
-            noBrush : '不能找到刷子: ',
-            brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
-            // this is populated by the build script
-            aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Geneva,Arial,Helvetica,sans-serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.1.364(October 15 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
-        }
-        SyntaxHighlighter.all();
-    </script>
 <body>
 <div id="page">
     <h1>box-shadow使用教程</h1>
@@ -73,28 +50,28 @@
 </pre>
         <h3>(1). 投影，没有位移，10px的阴影大小，没有扩展，颜色#06C</h3>
         <pre title="code" class="brush: css;"> img{box-shadow:0 0 10px #06C;}</pre>
-        <p><img class="aligncenter size-full wp-image-11651" title="css3-box-shadow-1" src="app/notes/img/css3-box-shadow-1.png" alt="css3 box shadow 1 CSS3属性box shadow使用教程" width="500" height="320" /></p>
+        <p><img class="aligncenter size-full wp-image-11651" title="css3-box-shadow-1" src="http://assets.xmlhtml.cn/img/css3-box-shadow-1.png" alt="css3 box shadow 1 CSS3属性box shadow使用教程" width="500" height="320" /></p>
         <p>这里的颜色值是HEX值，我们还可以使用RGBA值，RGBA值的好处是，它多了一个Alpha透明值，你可以控制阴影的透明度。</p>
         <pre title="code" class="brush: css;">img{box-shadow: 0 0 10px rgba(0, 255, 0, .5)}</pre>
         <h3>(2). 在上面的基础上加上20px的扩展</h3>
         <pre title="code" class="brush: css;"> img{box-shadow:0 0 10px 20px #06C;}</pre>
-        <p><img class="aligncenter size-full wp-image-11652" title="css3-box-shadow-2" src="app/notes/img/css3-box-shadow-2.png" alt="css3 box shadow 2 CSS3属性box shadow使用教程" width="500" height="320" /></p>
+        <p><img class="aligncenter size-full wp-image-11652" title="css3-box-shadow-2" src="http://assets.xmlhtml.cn/img/css3-box-shadow-2.png" alt="css3 box shadow 2 CSS3属性box shadow使用教程" width="500" height="320" /></p>
         <h3>(3).  内阴影，无位移，10px大小，没有扩展，颜色#06C</h3>
         <pre title="code" class="brush: css;"> img{box-shadow:inset 0 0 10px #06C;}</pre>
-        <p><img class="aligncenter size-full wp-image-11653" title="css3-box-shadow-3" src="app/notes/img/css3-box-shadow-3.png" alt="css3 box shadow 3 CSS3属性box shadow使用教程" width="500" height="320" /></p>
+        <p><img class="aligncenter size-full wp-image-11653" title="css3-box-shadow-3" src="http://assets.xmlhtml.cn/img/css3-box-shadow-3.png" alt="css3 box shadow 3 CSS3属性box shadow使用教程" width="500" height="320" /></p>
         <h3>(4).  多重阴影效果</h3>
         <p>box-shadow可以同时使用多次，我们来个四色的阴影。</p>
 <pre title="code" class="brush: css;">
     img{box-shadow:-10px 0 10px red, box-shadow:10px 0 10px blue,box-shadow:0 -10px 10px yellow,box-shadow:0 10px 10px green}
 </pre>
-        <p><img class="aligncenter size-full wp-image-11654" title="css3-box-shadow-4" src="app/notes/img/css3-box-shadow-4.png" alt="css3 box shadow 4 CSS3属性box shadow使用教程" width="500" height="320" /></p>
+        <p><img class="aligncenter size-full wp-image-11654" title="css3-box-shadow-4" src="http://assets.xmlhtml.cn/img/css3-box-shadow-4.png" alt="css3 box shadow 4 CSS3属性box shadow使用教程" width="500" height="320" /></p>
         <h3>(5). 使用多个阴影属性的顺序问题</h3>
         <p>当给同一个元素使用多个阴影属性时，需要注意它的顺序，最先写的阴影将显示在最顶层。比如下面这段代码，我们先写一个10px的绿色阴影，再写一个10px大小但扩展20px的阴影。结果是：绿色阴影层在黄色阴影层之上。</p>
         <pre title="code" class="brush: css;">img{box-shadow:0 0 10px green;box-shadow:0 0 10px 20px yellow}</pre>
-        <p><img class="aligncenter size-full wp-image-11655" title="css3-box-shadow-5" src="app/notes/img/css3-box-shadow-5.png" alt="css3 box shadow 5 CSS3属性box shadow使用教程" width="500" height="320" /></p>
+        <p><img class="aligncenter size-full wp-image-11655" title="css3-box-shadow-5" src="http://assets.xmlhtml.cn/img/css3-box-shadow-5.png" alt="css3 box shadow 5 CSS3属性box shadow使用教程" width="500" height="320" /></p>
         <p>但如果我们把顺序调一下，像这样:</p>
         <pre title="code" class="brush: css;">img{box-shadow:0 0 10px 20px yellow,box-shadow:0 0 10px green;}</pre>
-        <p><img class="aligncenter size-full wp-image-11650" title="css3-box-shadow-6" src="app/notes/img/css3-box-shadow-6.png" alt="css3 box shadow 6 CSS3属性box shadow使用教程" width="500" height="320" /></p>
+        <p><img class="aligncenter size-full wp-image-11650" title="css3-box-shadow-6" src="http://assets.xmlhtml.cn/img/css3-box-shadow-6.png" alt="css3 box shadow 6 CSS3属性box shadow使用教程" width="500" height="320" /></p>
         <p>我们将看不到后写的绿色阴影层，因为它先写且半径比较大的黄色层覆盖掉了。</p>
         <h2>4. 让IE也支持box-shadow</h2>
         <p>IE本身是shadow滤镜可以实现类似效果的，还有一些js和.htc的hack文件可以帮助你在IE中实现这一效果。我也无法一一都去尝试，这里只介绍我用过的一个。</p>

@@ -1,33 +1,10 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="gbk"/>
-    <title>javascript词法作用域和闭包分析说明</title>
-    <base href="http://louxiaojian.googlecode.com/svn/trunk/asset/" />
-    <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shCore.js"></script>
-    <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushJScript.js"></script>
-    <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushCss.js"></script>
-    <script type="text/javascript" src="FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/shBrushXml.js"></script>
-    <link type="text/css" rel="stylesheet" href="app/notes/case.css"/>
-    <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shCore.css"/>
-    <link type="text/css" rel="stylesheet" href="FCKEditor-syntaxhighlight/syntaxhighlighter/styles/shThemeDefault.css"/>
-    <script type="text/javascript">
-        SyntaxHighlighter.config.clipboardSwf = 'FCKEditor-syntaxhighlight/syntaxhighlighter/scripts/clipboard.swf';
-        SyntaxHighlighter.config.strings = {
-            expandSource : '展开代码',
-            viewSource : '查看代码',
-            copyToClipboard : '复制代码',
-            copyToClipboardConfirmation : '代码复制成功',
-            print : '打印',
-            help : '?',
-            alert: '语法高亮\n\n',
-            noBrush : '不能找到刷子: ',
-            brushNotHtmlScript : 'Brush wasn\'t configured for html-script option: ',
-            // this is populated by the build script
-            aboutDialog : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>About SyntaxHighlighter</title></head><body style="font-family:Geneva,Arial,Helvetica,sans-serif;background-color:#fff;color:#000;font-size:1em;text-align:center;"><div style="text-align:center;margin-top:3em;"><div style="font-size:xx-large;">SyntaxHighlighter</div><div style="font-size:.75em;margin-bottom:4em;"><div>version 2.1.364(October 15 2009)</div><div><a href="http://alexgorbatchev.com" target="_blank" style="color:#0099FF;text-decoration:none;">http://alexgorbatchev.com</a></div></div><div>JavaScript code syntax highlighter.</div><div>Copyright 2004-2009 Alex Gorbatchev.</div></div></body></html>'
-        }
-        SyntaxHighlighter.all();
-    </script>
+<meta charset="gbk"/>
+<link type="text/css" rel="stylesheet" href="http://assets.xmlhtml.cn/notes/notes.css"/>
+<script type="text/javascript" src="http://assets.xmlhtml.cn/notes/notes.js"></script>
+<title>javascript词法作用域和闭包分析说明</title>
 <body>
 <div id="page">
 <h1>javascript词法作用域和闭包分析说明</h1>
@@ -168,7 +145,7 @@
 <p>词法作用域：变量的作用域是在定义时决定而不是执行时决定，也就是说词法作用域取决于源码，通过静态分析就能确定，因此词法作用域也叫做静态作用域。 with和eval除外，所以只能说JS的作用域机制非常接近词法作用域（Lexical scope） </p>
 <p>作用域链：词法作用域的实现机制就是作用域链（scopeChain）。作用域链是一套按名称查找（Name Lookup）的机制，首先在当前执行环境的 ActiveObject 中寻找，没找到，则顺着作用域链到父 ActiveObject 中寻找，一直找到全局调用对象（Global Object） </p>
 <h3>4、实体表示</h3>
-<img src="app/notes/img/20100812095511964.jpg" />
+<img src="http://assets.xmlhtml.cn/img/20100812095511964.jpg" />
 <h2>解析模拟</h2>
 <p>估计，看到这儿，大家还是很朦胧吧，什么是语法分析树，语法分析树到底长什么样子，作用域链又怎么实现的，活动对象又有什么内容等等，还是不是太清晰，下面我们就通过一段实际的代码来模拟整个解析过程，我们就把语法分析树，活动对象实实在在的创建出来，理解作用域，作用域链的到底是怎么实现的</p>
 <h3>1、模拟代码</h3>
