@@ -56,11 +56,11 @@ $imgbase64=base64_encode(file_get_contents("$imgbase64Url"));
 	</form> 
 </div>
 <?php if($imgbase64){?>
-<textarea name="" rows="" cols="" style="width:100%;height:200px"><?=$imgbase64;?></textarea>
+<textarea name="" rows="" cols="" style="width:100%;height:200px">data:image/gif;base64,<?=$imgbase64;?></textarea>
 <p>Í¼Æ¬Â·¾¶£º<?=$imgbase64Url;?></p>
 <p><img src="data:image/gif;base64,<?=$imgbase64;?>" /></p>
 
-<p style="height:500px;background:url(data:image/gif;base64,<?=$imgbase64;?>) no-repeat"><img src="data:image/gif;base64,<?=$imgbase64;?>" /></p>
+<p style="height:500px;background:url(data:image/gif;base64,<?=$imgbase64;?>) no-repeat"><img src="data:image/png;base64,<?=$imgbase64;?>" /></p>
 <?php }?>
 
 </body>
