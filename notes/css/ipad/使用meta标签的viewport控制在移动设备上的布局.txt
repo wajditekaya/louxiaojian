@@ -1,0 +1,16 @@
+
+
+http://www.scriptlover.com/static/1002-meta-viewport
+http://www.cnblogs.com/linlf03/archive/2011/12/23/2299009.html
+http://www.w3school.com.cn/html5/html5_meta.asp
+http://tech.it168.com/a2009/0721/609/000000609580_2.shtml
+
+http://hi.baidu.com/%D3%C0%D4%B6%CE%DE%BB%DA2009/blog/item/52d839b4c572b7d137d3caf8.html
+
+http://developer.apple.com/library/safari/#documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html
+
+https://developer.mozilla.org/en/Mobile/Viewport_meta_tag
+
+http://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html
+
+http://www.quirksmode.org/mobile/viewports2.html
