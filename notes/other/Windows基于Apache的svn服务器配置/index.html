@@ -48,6 +48,84 @@
 现在你可以在你的浏览器中键入<a href="http://localhost">http://localhost</a>，如果呈现了一个已经配置好的网站，那么你的Apache就安装成功了。
 </p>
 
+<h3>3.2. 安装Subversion</h3>
+
+<p>下载最新版本的Subversion,运行Subversion安装程序，如果安装程序能够识别你已经安装了Apache，那么你的安装基本上就OK了。如果它不能，那么你要做一些额外的步骤。
+注：如果你先安装Apache，再安装Subversion，正常情况下下面的工作(2.3配置前)Subversion安装程序已经帮你完成了
+使用资源管理器，<code>进入Sibversion的安装目录（通常为D:\Program Files\Subversion\bin），找到文件<strong>mod_dav_svn.so</strong>和<strong>mod_authz_svn.so</strong>，将它们拷贝到Apache的modules目录（通常为D:\program files\apache group\apache2\modules）。</code></p>
+
+<p><code>从Subversion的安装目录拷贝文件<strong>libdb43.dll</strong>到Apache的modules目录。</code></p>
+
+<p>使用如记事本之类的文本编辑器编辑Apache的配置文件(通常为c:\program files\apache group\apache2\conf\httd.conf)，修改以下内容：</p>
+<p>去掉以下行的注释（将开头的#删除）：</p>
+
+<pre  title="code" class="brush: xml;">
+#LoadModule dav_fs_module modules/mod_dav_fs.so 
+#LoadModule dav_module modules/mod_dav.so
+</pre>
+
+<p>在LoadModule节的最后添加以下两行：</p>
+
+<pre  title="code" class="brush: xml;">
+LoadModule dav_svn_module modules/mod_dav_svn.so 
+LoadModule authz_svn_module modules/mod_authz_svn.so
+</pre>
+
+<h3>3.3. 配置</h3>
+
+<p>现在，你已经安装了Apache和Subversion，但是Apache还不知道如果处理像TortoiseSVN一样的Subversion客户端。要让Apache知道哪个URL将被Subversion使用，你要像下面这样编辑Apache的配置文件（通常在D:\program files\apache group\apache2\conf\httpd.conf）：</p>
+
+<p>在配置文件的最后添加下面这些行：</p>
+
+<pre  title="code" class="brush: xml;">
+	<Location /svn>
+	DAV svn
+	SVNParentPath D:\SVN 
+	AuthType Basic 
+	AuthName "Subversion repositories" 
+	AuthUserFile D:\passwd 
+	#AuthzSVNAccessFile D:\svnaccessfile 
+	Require valid-user 
+	</Location>
+</pre>
+
+<p>这样配置表示：你所有的版本库将位于D:\SVN目录下，要访问你的版本库可以使用这样的URL：http://locahost/svn/，访问权限将由passwd文件中的用户名/密码来限制。</p>
+
+<p>将你的浏览器指向http://locahost/svn/MyNewRepository(MyNewRepository是你之前创建的Subversion版本库)。如果一切正常，你将被提示输入用户名密码，输入正确的用户名密码后你就可以看到版本库中的内容了。</p>
+
+<p>对你刚刚输入的apache配置作一些简短的说明：</p>
+
+<pre  title="code" class="brush: xml;">
+<Location /svn>
+#意味着可以通过像这样的URL(http://MyServer/svn)来访问Subversion版本库
+
+DAV svn
+#告诉Apache哪个模块负责服务像那样的URL－－在这里就是Subversion模块
+
+SVNListParentPath on
+#在Subversion 1.3及更高版本中，这个指示器使得Subversion列出由SVNParentPath指定的目录下所有的版本库
+
+SVNParentPath D:\SVN
+#告诉Subversion在目录D:\SVN下寻找版本库
+
+AuthType Basic
+#启用基本的验证，比如用户名/密码对
+
+AuthName "Subversion repositories"
+#当一个验证对话框弹出时，告诉用户这个验证是用来做什么的
+
+AuthUserFile D:\passwd
+#指定D:\passwd用为密码文件用来验证用户的用户名及密码
+
+AuthzSVNAccessFile D:\svnaccessfile
+#指定D:\svnaccessfile来限定各个用户或组在版本库中目录的访问权限
+
+Require valid-user
+#限定用户只有输入正确的用户名及密码后才能访问这个路径
+</Location>
+</pre>
+
+<h3>3.4. 创建passwd文件</h3>
 创建passwd文件，你打开命令行(DOS窗口)，将当前目录切换到apache2目录（通常为c:\Program Files\Apache Group\Apache2），然后打入以下命令以创建文件：
 <p>开始-运行-CMD 然后输入"D:" 不要双引号 进入D盘
 <br />cd ProgramFiles\apache
