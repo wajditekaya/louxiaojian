@@ -586,7 +586,7 @@ SeanLou.Kejun={
 			  var TBUed=document.getElementById('kejun'),text='<ul>',dataLength=date.query.results.entry.length;
 			  for(var i=0,len=dataLength;i<len;i++){
 				  var queryData=date.query.results.entry[i];
-				  text+='<li><a href="'+queryData.link[0].href+'" target="_blank">'+queryData.title.content+'</a><span class="time">'+SeanLou.formatDate(new Date(queryData.updated))+'</span></li>'
+				  text+='<li><a href="'+queryData.link[0].href+'" target="_blank">'+queryData.title.content+'</a><span class="time">'+queryData.updated+'</span></li>'
 
 			  }
 			  text+='</ul>'
