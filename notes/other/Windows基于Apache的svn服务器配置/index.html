@@ -54,7 +54,7 @@
 注：如果你先安装Apache，再安装Subversion，正常情况下下面的工作(2.3配置前)Subversion安装程序已经帮你完成了
 使用资源管理器，<code>进入Sibversion的安装目录（通常为D:\Program Files\Subversion\bin），找到文件<strong>mod_dav_svn.so</strong>和<strong>mod_authz_svn.so</strong>，将它们拷贝到Apache的modules目录（通常为D:\program files\apache group\apache2\modules）。</code></p>
 
-<p><code>从Subversion的安装目录拷贝文件<strong>libdb43.dll</strong>到Apache的modules目录。</code></p>
+<p><code>从Subversion的安装目录拷贝文件<strong>libdb开头的的dll文件和libapr-1.dll文件</strong>到Apache的modules目录。</code></p>
 
 <p>使用如记事本之类的文本编辑器编辑Apache的配置文件(通常为c:\program files\apache group\apache2\conf\httd.conf)，修改以下内容：</p>
 <p>去掉以下行的注释（将开头的#删除）：</p>
