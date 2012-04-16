@@ -17,6 +17,10 @@
             d=0,
             css={'vertical':['offsetHeight','top'],'level':['offsetWidth','left']}[mode];
 
+        function isFunction(ar){
+          return Object.prototype.toString.call(ar)=="[object Function]";
+		};
+
         function scrollBase(){
             var self = this;
             if (!(self instanceof scrollBase)) {
