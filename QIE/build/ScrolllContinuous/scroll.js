@@ -14,7 +14,6 @@
             panel = S.$(elem),
             wrap=S.$(s.wrap),
             mode=s.mode || 'level',//vertical垂直和level水平
-            d=0,
             css={'vertical':['offsetHeight','top'],'level':['offsetWidth','left']}[mode];
 
         function isFunction(ar){
@@ -29,27 +28,37 @@
             this.init();
         };
         scrollBase.prototype={
-            init:function(){
+            init : function(){
                 if(!wrap || !panel || (panel[css[0]] <= wrap[css[0]] && panel[css[0]]!=0)){
                     return false;
                 };
                 panel.innerHTML += panel.innerHTML;
                 this.ss=Math.floor(panel[css[0]] / 2);
+				this.d=0;
                 this.event();
+				this.begin();
             },
-            cycle:function(){
+            cycle : function(){
+				var self = this;
                 (this.ss==0)  && (this.ss=Math.floor(panel[css[0]] / 2));//避免在隐藏状态下 获取的值为0，导致滚动不正常bug
-                var p=Math.abs(d)-this.ss;
-                panel.style[css[1]] = ( p>=0 ? (0-p)  : (d=d-space) ) +'px';
-                p>=0 && (d=0);
+                var p=Math.abs(this.d)-this.ss;
+                panel.style[css[1]] = ( p>=0 ? (0-p)  : (this.d=this.d-space) ) +'px';
+                p>=0 && (this.d=0);
+                this.cycleTime = setTimeout(function(){self.cycle()}, isFunction(speed) ? (speed.call(this,panel,space,css[1]) || speed) : speed)
             },
-            event:function(){
-                var self = this,cycleTime = setInterval(function(){self.cycle()}, speed)
+			stop : function(){
+				  this.cycleTime && clearInterval(this.cycleTime);
+			},
+			begin : function(){
+				  this.cycle();
+			},
+            event : function(){
+                var self = this;
                 panel.onmouseover = function(){
-                    clearInterval(cycleTime);
+					self.stop();
                 };
                 panel.onmouseout = function(){
-                    cycleTime = setInterval(function(){self.cycle()}, speed);
+                    self.begin();
                 };
             }
         };
