@@ -1,0 +1,135 @@
+@charset "gb2312";
+/* CSS Document */
+/*===================================
+author:	lou xiao jian
+email:  jxsr_lxj@163.com
+====================================*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+body{font:12px/22px Tahoma,"\5B8B\4F53",Geneva, sans-serif;word-break:break-all;text-align:center;background:url(../img/body.gif);padding-top:10px;color:#333}
+fieldset,img{border:none 0;} 
+table {border-collapse:collapse;border-spacing:0;} 
+ol,li,ul{list-style:none;} 
+address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:normal;}
+caption,th{text-align:left;} 
+h1,h2,h3,h4,h5,h6{font-size:100%;} 
+q:before,q:after{content:'';}
+abbr,acronym{border:0;font-variant:normal;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+input,select,textarea{font:normal normal 12px "Verdana";outline:none}
+input,textarea,select{*font-size:100%;}
+input,textarea{color:#666}
+select{color:#999}
+/* 字体属性 [定义规则，小写f加属性名称] */
+.fB{font-weight:bold;}
+.fI{font-style:italic;}
+/* 字体大小*/
+.fs12{font-size:12px;}
+.fs14{font-size:14px;}
+/* 浮动*/
+.fl{float:left;}
+.fr{float:right}
+/* 其它属性*/
+.hide{display:none}
+.submit{cursor:pointer;border:0}
+.noText{display:block;height:0;width:0;line-height:0;overflow:hidden}
+/*lrBx*/
+.lrBx,.lrBx .rbx{overflow:hidden;zoom:1}
+.lrBx .lbx{float:left;_margin-right:-3px}
+.lrBx .lbx img{vertical-align:top}
+.lrBx .rbx{padding-left:5px}
+/*==clear==*/
+.clear{overflow:hidden;zoom:1}
+.clearfix:after {content:".";display:block;height:0;clear:both;visibility:hidden;}
+* html>body .clearfix {display: inline-block;width:100%;}
+* html .clearfix{/* Hides from IE-mac \*/height: 1%;/* End hide from IE-mac */}
+/* ie7 hack*/
+*+html .clearfix {min-height:1%;}
+.pitch{margin-bottom:8px}/*间距*/
+
+a{color:#333;text-decoration:none}
+a:hover {color:#ff4300;text-decoration:underline}
+.a2 a{color:#F78431}
+.a2 a:hover{ color:#0c8e28;text-decoration:none}
+.but{height:20px;line-height:20px;display:inline-block;overflow:hidden;background-position:0 -52px;border:1px solid #ff6306;color:#fff;padding:0 8px 0 12px}
+.but:hover{color:#fff;text-decoration:none}
+
+.rela{position:relative;zoom:1}
+    .rela .act{position:absolute;top:3px;right:8px}
+
+.p-cols{overflow:hidden;zoom:1}
+    .p-cols .p-col1{width:100%;float:left}
+    .p-cols .p-col1 .p-col1-1{margin-right:240px}
+    .p-cols .p-col2{width:190px;float:left;margin-left:-100%}
+    .p-cols .p-col3{width:230px;float:left;margin-left:-230px}
+    .new-p-cols .p-col1 .p-col1-1{margin-right:425px}
+    .new-p-cols .p-col3{width:425px;margin-left:-425px}
+
+#header,#content,#footer{width:950px;margin:0 auto;text-align:left;border:1px solid #e4e4e4;background:#fff;padding:0 5px}
+#header{border-bottom:0; padding-bottom:15px}
+#content{border-top:0}
+#content{margin-bottom:15px}
+
+#menu,
+#menu .b,
+#menu .s,
+#menu .hi,
+#menu .hw,
+#menu .mn-item,
+.bx .hd,
+.bx-a .hd,
+.pagenav a,
+.pagenav span{background-image:url(../img/zafzl.png);background-repeat:no-repeat}
+
+#header .masthead{overflow:hidden;zoom:1;padding:5px 0 10px 0}
+    #header #logo{width:220px;float:left}
+    #header #logo a{display:block;height:55px;background:url(../img/logo.gif) no-repeat;text-indent:-9999px}
+    #header .mhd-cell{width:730px;float:right}
+    #header .quick-nav{color:#ddd;text-align:right}
+    #header .quick-nav .qn-item{ margin:0 5px}
+
+#menu{line-height:33px;height:37px;color:#fff;background-position:0 -66px;background-repeat:repeat-x;position:relative;zoom:1; padding-left:15px}
+    #menu .b,#menu .s{width:2px;height:37px;overflow:hidden;position:absolute;top:0}
+    #menu .b{background-position:0 -103px;left:0}
+    #menu .s{background-position:-2px -103px;right:0}
+    #menu a{color:#fff}
+    #menu .mn-list{overflow:hidden;zoom:1;padding-top:2px}
+    #menu .mn-item{float:left;display:inline;background-position:-90px -103px;margin:0 10px 0 -2px;padding-left:10px}
+    #menu .mn-item .hi,#menu .hw{display:block; background-position:-200px 0}
+    #menu .mn-item .hw{padding-left:5px}
+    #menu .mn-item .hi{padding:0 8px 0 3px;cursor:pointer}
+    #menu .mn-item .hw:hover,#menu .select .hw{background-position:left 0;color:#116406;text-decoration:none}
+    #menu .mn-item .hw:hover .hi,#menu .select .hi{background-position:right -33px}
+
+.bx,.bx-a{padding:3px;margin-bottom:10px}
+    .bx{border:1px solid #dcdcdc;background:#eeeeee}
+    .bx-a{border:1px solid #ffd99b;background:#fff3d5}
+    .bx .hd,.bx-a .hd{padding:0 5px;line-height:28px;background-position:0 -140px;background-repeat:repeat-x}
+    .bx h2.hd,.bx-a h2.hd{font:bold 14px/28px 'Microsoft YaHei';color:#ed701a}
+    .bx .bd,.bx-a .bd{padding:5px;background:#fff}
+
+.img-120-160{width:120px;height:160px;vertical-align:top;border:1px solid #ccc;padding:2px;}
+.img-120-90{width:120px;height:90px;vertical-align:top;border:1px solid #ccc;padding:2px;}
+
+.p-list{overflow:hidden;zoom:1;line-height:18px;text-align:center;margin-bottom:-10px}
+    .p-list .p-item{float:left;display:inline;padding-bottom:10px}
+    .p-list .p-item{vertical-align:top;margin-bottom:3px}
+    .p-list .p-item a:hover{background:#fff}
+    .p-list .p-item a:hover img{border:1px solid #53941a}
+    .p-list .t{height:18px;overflow:hidden}
+    .new-p-list .p-item{width:126px;margin-right:15px;}
+
+.tlist a{text-decoration:none}
+    .tlist .t-item{line-height:22px;height:22px;overflow:hidden;}
+    .new-tlist .t-item{padding-left:8px; background:url(../img/ico-2.gif) 0 10px no-repeat;margin-left:5px}
+
+.fp-bx .bd{zoom:1;padding:10px 5px}
+    .fp-bx .p-list{margin-right:-30px}
+
+.pagenav{font-size:0;line-height:0;overflow:hidden;font-family:"宋体";position:relative;text-align:center;padding:10px 0 5px 0}
+    .pagenav a,.pagenav span{line-height:21px;font-size:12px;display:inline-block;vertical-align:top}
+    .pagenav a{background-position:left -172px;margin:0 3px;padding-left:2px}
+    .pagenav a:hover{text-decoration:none;color:#ff4300}
+    .pagenav a span{padding:0 7px 0 5px; background-position:right -193px;cursor:pointer}
+    .pagenav .nb,.pagenav .nb span,.pagenav .cur,.pagenav .cur span{background:none}
+    .pagenav .cur span{cursor:text}
