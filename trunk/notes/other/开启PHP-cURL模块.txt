@@ -1,0 +1,29 @@
+我的php版本是PHP Version 5.3.8
+
+一般的开启方法：
+
+1.拷贝PHP目录中的libeay32.dll 和 ssleay32.dll 两个文件到 C:\windows\system32 目录。 
+2.修改php.ini。去掉 extension = php_curl.dll 前面的分号。
+3.重启Apache服务
+4.查看phpinfo，可以看到curl已开启.
+
+但有时候还是开启不了，我就是一个例子，现在要做的是：
+
+在apache的配置文件http.conf中加载这两个文件：
+LoadFile "D:/Program Files/php/ssleay32.dll"
+LoadFile "D:/Program Files/php/libeay32.dll"
+然后重启apache，
+查看phpinfo()中的信息，curl已开启开启成功
+
+
+
+$ch = curl_init();  
+// 设置选项，包括URL  
+curl_setopt($ch, CURLOPT_URL, "http://www.baidu.com");  
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  
+curl_setopt($ch, CURLOPT_HEADER, 0);  
+// 执行并获取HTML文档内容  
+$output = curl_exec($ch);  
+print_r($output);  
+//释放curl句柄  
+curl_close($ch);  
