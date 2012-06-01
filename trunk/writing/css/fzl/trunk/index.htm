@@ -12,6 +12,11 @@
 
         <div class="masthead">
             <h1 id="logo"><a href="#">最爱非主流</a></h1>
+            <form id="searchform" method="get" action="<?php bloginfo('home'); ?>">
+                <div class="topSearch">
+                    <input type="text" name="s" class="input" id="s" size="15" value="请输入关键字" onblur="if(this.value=='') this.value=defaultValue;" onfocus="if(this.value==defaultValue) this.value='';"/><input type="submit" value="search" class="tsubmit" />
+                </div>
+            </form>
             <div class="mhd-cell">
                 <div id="head-bar" class="quick-nav"><a href="#" class="qn-item">设为首页</a>|<a href="#" class="qn-item">加入收藏</a>|<a href="#" class="qn-item">帮助中心</a></div>
             </div>
