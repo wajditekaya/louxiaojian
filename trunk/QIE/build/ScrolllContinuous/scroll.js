@@ -11,8 +11,8 @@
          */
         var speed = s.speed || 15,//滚动的间隔
             space = s.space || 1,//滚动的间距
-            panel = S.$(elem),
-            wrap=S.$(s.wrap),
+            panel = typeof elem == "string" ? S.$(elem) : elem,
+            wrap = typeof s.wrap == "string" ? S.$(s.wrap) : s.wrap,
             mode=s.mode || 'level',//vertical垂直和level水平
             css={'vertical':['offsetHeight','top'],'level':['offsetWidth','left']}[mode];
 
