@@ -13,6 +13,7 @@ h1{text-align:center;font:bold 36px/2 "微软雅黑";text-align:left;padding:5px 0}
 img{border:0}
 .fl{float:left}
 .fr{float:right}
+
 .focusPic{width:350px;font-size:12px;position:relative;z-index:20;overflow:hidden}
 .focusWrap{position:relative;height:230px;overflow:hidden;margin-bottom:5px;z-index:10}
 .focusWrap ul{position:absolute;z-index:99}
@@ -85,7 +86,7 @@ img{border:0}
      <li class="exp_item">
               <div class="nub">1.</div>
               <!--focusPic-->
-              <div class="focusPic plug-rotation" data-rotation-config="evt=0&auto=3000&dis=230&text=1&trigger=1&rotationInitBack=lxj">
+              <div class="focusPic plug-rotation" data-rotation-config="evt=0&auto=3000&dis=230&text=1&trigger=1&rotationInitBack=Rotation.lxj">
                   <div class="focusWrap">
                      <ul class="rotation-panel">
                       <li class="rp-item">
@@ -114,7 +115,7 @@ img{border:0}
      <li class="exp_item">
             <div class="nub">2.</div>
             <!--focusPic-->
-            <div class="focusPic plug-rotation" data-rotation-config="evt=0&auto=3000&dis=230&text=1&rigger=1">
+            <div class="focusPic plug-rotation" data-rotation-config="evt=0&auto=3000&dis=230&text=1">
             
                 <div class="focusWrap">
                    <ul class="rotation-panel">
@@ -228,7 +229,7 @@ img{border:0}
      <li class="exp_item" style="width:100%">
          <div class="nub">7.</div>
           <!--pic-->
-          <div id="pic" class="plug-rotation"  data-rotation-config="evt=0&auto=1000&dis=270&trigger=1">
+          <div id="pic" class="plug-rotation" data-rotation-config="evt=0&auto=1000&dis=270&trigger=1">
             <div id="aPic">
               <ul id="a_pic" class="rotation-panel" style="top:0;">
                 <li class="a2 rp-item"><img src="../../img/06.jpg" alt="" /></li>
@@ -258,7 +259,7 @@ img{border:0}
            <li class="trigger-item" url="http://www.dianying.com" id="u123"><a href="#a111">样式一</a></li>
            <li class="trigger-item" url="http://www.tv.com" id="u456"><a href="#a222">样式二</a></li>
            <li class="trigger-item" url="http://www.tiyu.com" id="u789"><a href="#a333">样式三</a></li>
-           <li class="trigger-item" url="http://www.donghuapian.com" lang="s" style="background:#fff">&nbsp;&nbsp;&nbsp;跳过&nbsp;&nbsp;&nbsp;</li>
+           <li url="http://www.donghuapian.com" lang="s" style="background:#fff">&nbsp;&nbsp;&nbsp;跳过&nbsp;&nbsp;&nbsp;</li>
           </ul>
         </div>
         <!--/menu-->
@@ -266,7 +267,7 @@ img{border:0}
         <div class="area rp-item" id="m456">22222</div>
         <div class="area rp-item" id="m789">33333</div>
      </li>
-     <li class="exp_item  plug-rotation">
+     <li class="exp_item  plug-rotation" data-rotation-config="auto=1000&evt=1">
         <div class="nub">9.</div>
         <!--menu-->
         <div id="menu" class="menu">
@@ -274,7 +275,7 @@ img{border:0}
            <li class="trigger-item" url="http://www.dianying.com"><a href="#a111">样式一</a></li>
            <li class="trigger-item ui" url="http://www.tv.com"><a href="#a222">样式二</a></li>
            <li class="trigger-item" url="http://www.tiyu.com"><a href="#a333">样式三</a></li>
-           <li class="trigger-item" url="http://www.donghuapian.com" lang="s" style="background:#fff">&nbsp;&nbsp;&nbsp;跳过&nbsp;&nbsp;&nbsp;</li>
+           <li url="http://www.donghuapian.com" lang="s" style="background:#fff">&nbsp;&nbsp;&nbsp;跳过&nbsp;&nbsp;&nbsp;</li>
           </ul>
         </div>
         <!--/menu-->
@@ -294,7 +295,7 @@ img{border:0}
            <li class="trigger-item" url="http://www.dianying.com"><a href="#a111">例子10</a></li>
            <li class="ui trigger-item" url="http://www.tv.com"><a href="#a222">例子10</a></li>
            <li class="trigger-item" url="http://www.tiyu.com"><a href="#a333">例子10</a></li>
-           <li class="trigger-item" url="http://www.donghuapian.com" lang="s" style="background:#fff">&nbsp;&nbsp;&nbsp;跳过&nbsp;&nbsp;&nbsp;</li>
+           <li url="http://www.donghuapian.com" lang="s" style="background:#fff">&nbsp;&nbsp;&nbsp;跳过&nbsp;&nbsp;&nbsp;</li>
           </ul>
         </div>
         <!--/menu-->
@@ -303,12 +304,12 @@ img{border:0}
 	      <li class="exp_item">
           <div class="nub">11.</div>
         <!--menu-->
-        <div id="menu_hover2" class="menu plug-rotation">
+        <div id="menu_hover2" class="menu plug-rotation" data-rotation-config="evt=1">
           <ul class="rotation-trigger">
            <li class="trigger-item" url="http://www.dianying.com"><a href="#a111">例子10</a></li>
            <li class="trigger-item" class="ui" url="http://www.tv.com"><a href="#a222">例子10</a></li>
            <li class="trigger-item" url="http://www.tiyu.com"><a href="#a333">例子10</a></li>
-           <li class="trigger-item" url="http://www.donghuapian.com" lang="s" style="background:#fff">&nbsp;&nbsp;&nbsp;跳过&nbsp;&nbsp;&nbsp;</li>
+           <li url="http://www.donghuapian.com" lang="s" style="background:#fff">&nbsp;&nbsp;&nbsp;跳过&nbsp;&nbsp;&nbsp;</li>
           </ul>
         </div>
         <!--/menu-->
@@ -325,6 +326,16 @@ img{border:0}
 			         var _this = this;
 					 document.getElementById("left_op").onclick=function(){_this.autoplay(0)}
 					 document.getElementById("right_op").onclick=function(){_this.autoplay(1)}
+			   };
+
+			   function testinitfun(){
+			     console.log("testinitfun")
+				 return [];
+			   };
+
+			   Rotation.testinitfun = function(){
+			     console.log("Rotation.testinitfun")
+				 return [];
 			   };
 
 			  (function(S){
@@ -346,6 +357,22 @@ img{border:0}
 					return pa;
 				};
 				
+			   S.initFun = function(str){
+				   var str = new String(str),strTOa = str.split('.'),curContent = window;
+				   for(var i = 0;i<strTOa.length;i++){
+				      if(!curContent[strTOa[i]]){
+                        curContent = false;
+					    break;
+					  }
+					  curContent = curContent[strTOa[i]];
+				   };
+				   return curContent;
+			   };
+              
+			  console.log(S.initFun("testinitfunsdfsf"));
+              S.initFun("testinitfun")();
+			  S.initFun("Rotation.testinitfun")();
+
 				Rotation.rotationLayout = {
                           trigger :function(plugRotation,mTag){
 									var items = mTag,
@@ -417,16 +444,16 @@ img{border:0}
 
 						  nTag = S.$$(plugRotation,'trigger-item','*');
 						  if(nTag.length == 0){
-						     config.trigger && (nTag = Rotation.rotationLayout.trigger(plugRotation,mTag));
+							 config.trigger && (nTag = typeof S.initFun(config.trigger) == "function" ?  S.initFun(config.trigger)(plugRotation,mTag) : Rotation.rotationLayout.trigger(plugRotation,mTag));
 						  }
-						  config.nTag = nTag.length > 0 && (config.nTag = nTag);
+						  config.nTag = nTag && nTag.length > 0 && (config.nTag = nTag);
 
 
 						  text = S.$$(plugRotation,'tt-item','*');
 						  if(text.length == 0){
-						     config.text && (text = Rotation.rotationLayout.text(plugRotation,mTag));
+							 config.text && (text = typeof S.initFun(config.text) == "function" ?  S.initFun(config.text)(plugRotation,mTag) : Rotation.rotationLayout.text(plugRotation,mTag));
 						  }
-						  config.text = text.length > 0 && (config.text = text);
+						  config.text = text && text.length > 0 && (config.text = text);
 
 						if(config.dis){
 						  config.slider={};
@@ -435,9 +462,8 @@ img{border:0}
 						  config.slider.obj = rotation_panel;
 						};
 						config.auto && (config.auto = [1,config.auto]);
-						console.log(config);
 						var nr = new Rotation(config);
-						config.rotationInitBack && Rotation[config.rotationInitBack].call(nr,config);
+						config.rotationInitBack && S.initFun(config.rotationInitBack).call(nr,config);
 					}
 				}();
 			  })(window);
