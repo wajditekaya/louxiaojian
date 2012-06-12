@@ -242,11 +242,11 @@ a:hover {color:#ff4300;text-decoration:underline}
     .rotation-panel-wrap .rp-item{height:300px;overflow:hidden}
     .rotation-panel-wrap .f-img{width:500px;height:300px;vertical-align:top}
     .rotation-trigger{position:absolute;right:5px;bottom:5px;z-index:13}
-    .rotation-trigger .rt-item{float:left;width:30px;height:28px;overflow:hidden;text-align:center;line-height:32px;overflow:hidden;color:#fff}
-    .rotation-trigger .rt-item a{zoom:1;cursor:pointer;display:block}
-    .rotation-trigger .rt-item .t-img{width:80px;height:50px;margin:5px 0 0 10px;vertical-align:top}
+    .rotation-trigger .trigger-item{float:left;width:30px;height:28px;overflow:hidden;text-align:center;line-height:32px;overflow:hidden;color:#fff}
+    .rotation-trigger .trigger-item a{zoom:1;cursor:pointer;display:block}
+    .rotation-trigger .trigger-item .t-img{width:80px;height:50px;margin:5px 0 0 10px;vertical-align:top}
     .rotation-trigger .select{text-decoration:none;background:url(../img/f.png) no-repeat;color:#fff;font-weight:bold}
-	.text-trigger{position:absolute;width:325px;height:22px;overflow:hidden;left:18px;bottom:5px;color:#fff;z-index:12}
+	.text-trigger{position:absolute;width:335px;height:22px;overflow:hidden;left:10px;bottom:5px;color:#fff;z-index:12}
 	.text-trigger .tt-item{display:block}
     .rotation-mask{position:absolute;height:23px;width:500px;left:5px;bottom:5px;z-index:11;background-color:#000000;opacity:.5;filter:alpha(opacity=50)}
 
