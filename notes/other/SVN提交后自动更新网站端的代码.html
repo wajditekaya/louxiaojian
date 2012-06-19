@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="gbk"/>
+    <title>SVN提交后自动更新网站端的代码</title>
+</head>
+<body >
+
+<div id="page">
+<ol>
+  <li><a href="http://www.iammecn.com/2012/03/05/svn_commit_to_automatically_update_the_site_-side_code/" target="_blank">http://www.iammecn.com/2012/03/05/svn_commit_to_automatically_update_the_site_-side_code/</a><li>
+  <li><a href="http://blog.qibar.com/2012/svn%E6%8F%90%E4%BA%A4%E5%90%8E%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0post-commit/" target="_blank">http://blog.qibar.com/2012/svn%E6%8F%90%E4%BA%A4%E5%90%8E%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0post-commit/</a><li>
+</ol>
+
+<h1>SVN提交后自动更新网站端的代码</h1>
+
+<p>对于提交svn代码后,如果你想在你的网站上看到效果,一般来说需要登陆到服务器去&#8221;svn up&#8221;,这无疑是多此一举&#8230;</p>
+<p>svn服务端的项目目录那里有一个hooks/目录,里面有一个post-commit.tmpl,可以改名为:post-commit,并加上+x运行权限就可以在代码提交后运行 post-commit这个文件里的命令&#8230;<br />
+网上一些教程都是针对svn和网站在同一台服务器上的情况.<br />
+所以我就想在网站端增加php文件,内容如下:</p>
+<blockquote><p>&lt;?php</p>
+<p>$ret = exec(‘svn update /opt/lampp/htdocs’, $ret2, $ret3);<br />
+echo  $ret;</p>
+<p>?&gt;</p></blockquote>
+<p>但是我在本地使用 /bin/php 运行这个文件是没有问题,但就是通过网页的url访问时没有效果,把svn update改成svn info ,svn log等都可以,就是svn up没有效果,权限什么的也改了,也没有效果&#8230;百思不得其解&#8230;.</p>
+<p>在网上也找了一些资料:</p>
+<p>http://palaniraja.wordpress.com/2008/09/05/svn-auto-update-working-copy-after-commit/</p>
+<p>好像他没有解决&#8230;.</p>
+<p>最后还是通过 ssh登陆目标服务器上更新&#8230;</p>
+
+<h1>SVN提交后自动更新post-commit</h1>
+			<p>使用svnadmin create 创建一个版本库:<br />
+svnadmin create REPO</p>
+<p>每个版本库的目录下有一个hooks目录：</p>
+<p>root@SVN:/home/svn/repo# ls /home/svn/repo/<br />
+conf dav db format hooks locks README.txt</p>
+<p>在每个版本库下有hooks文件夹,里面有很多钩子程序:</p>
+<p>root@SVN:/home/svn/repo# ls -l hooks/<br />
+total 40<br />
+-rwxr-xr-x 1 www-data www-data 332 2010-05-30 16:47 post-commit<br />
+-rw-r&#8211;r&#8211; 1 www-data www-data 2000 2010-05-30 15:22 post-commit.tmpl<br />
+-rw-r&#8211;r&#8211; 1 www-data www-data 1663 2010-05-29 23:28 post-lock.tmpl<br />
+-rw-r&#8211;r&#8211; 1 www-data www-data 2322 2010-05-29 23:28 post-revprop-change.tmpl<br />
+-rw-r&#8211;r&#8211; 1 www-data www-data 1592 2010-05-29 23:28 post-unlock.tmpl<br />
+-rw-r&#8211;r&#8211; 1 www-data www-data 3488 2010-05-29 23:28 pre-commit.tmpl<br />
+-rw-r&#8211;r&#8211; 1 www-data www-data 2410 2010-05-29 23:28 pre-lock.tmpl<br />
+-rw-r&#8211;r&#8211; 1 www-data www-data 2796 2010-05-29 23:28 pre-revprop-change.tmpl<br />
+-rw-r&#8211;r&#8211; 1 www-data www-data 2100 2010-05-29 23:28 pre-unlock.tmpl<br />
+-rw-r&#8211;r&#8211; 1 www-data www-data 2830 2010-05-29 23:28 start-commit.tmpl</p>
+<p>在执行commit操作之后会自动执行post-commit这个钩子程序。<br />
+因此可以设置post-commit来自动更新：<br />
+操作步骤如下：</p>
+<p>1. 使用checkout建立一个工作复本</p>
+<p>mkdir /home/web</p>
+<p>root@SVN:/home# chown www-data:www-data web</p>
+<p>ls -l web<br />
+drwxr-xr-x 2 www-data www-data 4096 2010-05-30 16:15 web</p>
+<p>必须使用apache的所属用户和组（在ubuntu下面的是www-data）来执行：check out</p>
+<p>root@SVN:/home/web# sudo su www-data<br />
+$ cd /home/web<br />
+$ svn checkout http://svn.love.com/svn/repo/www/</p>
+<p>Authentication realm: &lt;http://svn.love.com:80&gt; Repo Auth<br />
+Password for &#8216;www-data&#8217;:<br />
+Authentication realm: &lt;http://svn.love.com:80&gt; Repo Auth<br />
+Username: jack<br />
+Password for &#8216;jack&#8217;:</p>
+<p>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;<br />
+ATTENTION! Your password for authentication realm:</p>
+<p>&lt;http://svn.love.com:80&gt; Repo Auth</p>
+<p>can only be stored to disk unencrypted! You are advised to configure<br />
+your system so that Subversion can store passwords encrypted, if<br />
+possible. See the documentation for details.</p>
+<p>You can avoid future appearances of this warning by setting the value<br />
+of the &#8216;store-plaintext-passwords&#8217; option to either &#8216;yes&#8217; or &#8216;no&#8217; in<br />
+&#8216;/var/www/.subversion/servers&#8217;.<br />
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;<br />
+Store password unencrypted (yes/no)? yes</p>
+<p>连续输入2次 &#8220;yes&#8221;</p>
+<p>root@SVN:/home/web# ls -al www/<br />
+drwxr-xr-x 6 www-data www-data 4096 2010-05-30 16:18 .svn<br />
+可以看到.svn的权限，userown、goupown都是www-data</p>
+<p>&nbsp;</p>
+<p>2，使用svn update测试，看www-data用户是否有权限更新。</p>
+<p>$ svn update /home/web/www &#8211;username svnuser &#8211;password svnpasswd<br />
+在连续输入2次&#8221;yes&#8221;或者&#8221;no&#8221;之后、可以看到已经更新成功：<br />
+Store password unencrypted (yes/no)? At revision 37.</p>
+<p>3，在hooks目录下面的添加一个post-commit脚本文件</p>
+<p>#!/bin/sh</p>
+<p>REPOS=&#8221;$1&#8243;<br />
+REV=&#8221;$2&#8243;<br />
+export LANG=en_US.UTF-8<br />
+svn update /home/web/www &#8211;username svnuser &#8211;password svnpasswd</p>
+<p>在客户端commit后报错<br />
+sudo su www-data<br />
+$ cd /home/svn/repo/hooks<br />
+$ ./post-commit</p>
+<p>提示：<br />
+Store password unencrypted (yes/no)?</p>
+<p>在svn update &#8211;help中找到了 &#8211;no-auth-cache 这个参数：</p>
+<p>&#8211;no-auth-cache : do not cache authentication tokens</p>
+<p>加上这个参数后终于可以了：</p>
+<p>root@SVN:/home/svn/repo/hooks# cat post-commit</p>
+<p>#!/bin/sh</p>
+<p>REPOS=&#8221;$1&#8243;<br />
+REV=&#8221;$2&#8243;<br />
+export LANG=en_US.UTF-8<br />
+svn update /home/web/www &#8211;username svnuser &#8211;password svnpasswd &#8211;no-auth-cache</p>
+</body>
+</html>
