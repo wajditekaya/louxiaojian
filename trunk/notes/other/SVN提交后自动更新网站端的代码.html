@@ -8,8 +8,11 @@
 
 <div id="page">
 <ol>
-  <li><a href="http://www.iammecn.com/2012/03/05/svn_commit_to_automatically_update_the_site_-side_code/" target="_blank">http://www.iammecn.com/2012/03/05/svn_commit_to_automatically_update_the_site_-side_code/</a><li>
-  <li><a href="http://blog.qibar.com/2012/svn%E6%8F%90%E4%BA%A4%E5%90%8E%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0post-commit/" target="_blank">http://blog.qibar.com/2012/svn%E6%8F%90%E4%BA%A4%E5%90%8E%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0post-commit/</a><li>
+  <li><a href="http://www.iammecn.com/2012/03/05/svn_commit_to_automatically_update_the_site_-side_code/" target="_blank">http://www.iammecn.com/2012/03/05/svn_commit_to_automatically_update_the_site_-side_code/</a></li>
+  <li><a href="http://blog.qibar.com/2012/svn%E6%8F%90%E4%BA%A4%E5%90%8E%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0post-commit/" target="_blank">http://blog.qibar.com/2012/svn%E6%8F%90%E4%BA%A4%E5%90%8E%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0post-commit/</a></li>
+  <li><a href="http://www.ohlinux.com/archives/322/" target="_blank">http://www.ohlinux.com/archives/322/</a></li>
+  <li><a href="http://subversion.apache.org/faq.zh.html#hook-debugging" target="_blank">http://subversion.apache.org/faq.zh.html#hook-debugging</a></li>
+  <li><a href="http://hi.baidu.com/jianglu07/blog/item/a3772e13ab794d8c6538db1e.html" target="_blank">团队开发配合SVN HOOKS同步更新在线服务器源码</a></li>
 </ol>
 
 <h1>SVN提交后自动更新网站端的代码</h1>
@@ -105,5 +108,318 @@ Store password unencrypted (yes/no)?</p>
 REV=&#8221;$2&#8243;<br />
 export LANG=en_US.UTF-8<br />
 svn update /home/web/www &#8211;username svnuser &#8211;password svnpasswd &#8211;no-auth-cache</p>
+
+
+<h1>团队开发配合SVN HOOKS同步更新在线服务器源码</h1>
+<table class="FCK__ShowTableBorders" cellspacing="0" cellpadding="0">
+    <tbody>
+        <tr>
+            <td class="t_msgfont">最近为了协调整个<span class="t_tag" onxxxxx="tagshow(event)" href="tag.php?name=%BF%AA%B7%A2">开发</span>团队的开发过程，让团队协作更加流畅，考虑减少开发人员更新<span class="t_tag" onxxxxx="tagshow(event)" href="tag.php?name=%B4%FA%C2%EB">代码</span>维护代码的中间环节，于是考虑使用了SVN服务端HOOKS<br>
+            <br>
+            SVN服务端的 HOOKS 存在于每个 Project 仓库的hooks目录，里面的&nbsp;&nbsp; *.tmpl 是hooks脚本<span class="t_tag" onxxxxx="tagshow(event)" href="tag.php?name=%C4%A3%B0%E5">模板</span>，我使用的是 <span class="t_tag" onxxxxx="tagshow(event)" href="tag.php?name=windows">windows</span> 来做内网<span class="t_tag" onxxxxx="tagshow(event)" href="tag.php?name=%D4%B4%C2%EB">源码</span>版本 <span class="t_tag" onxxxxx="tagshow(event)" href="tag.php?name=%B7%FE%CE%F1%C6%F7">服务器</span><span class="t_tag" onxxxxx="tagshow(event)" href="tag.php?name=%CF%B5%CD%B3">系统</span>，<br>
+            <br>
+            所以使用 *.bat 批处理<span class="t_tag" onxxxxx="tagshow(event)" href="tag.php?name=%CE%C4%BC%FE">文件</span>来做 Hooks脚本！ 但是总所周知 *.bat 批处理文件能执行的任务有限，所以我的批处理只是吧参数引导到<span class="t_tag" onxxxxx="tagshow(event)" href="tag.php?name=PHP">PHP</span>脚本上，由PHP<br>
+            <br>
+            脚本来实现我所需要的结果。<br>
+            <br>
+            一、首先提高 svn 服务<span class="t_tag" onxxxxx="tagshow(event)" href="tag.php?name=%B3%CC%D0%F2">程序</span>的权限，修改 &quot;服务&quot; 中 SVN 服务程序的登录帐户为超级管理员 <br>
+            <br>
+            二、编写批处理。因为我只是需要在开发人员提交脚本后执行我的任务，所以只编写了&nbsp;&nbsp;<strong><span class="t_tag" onxxxxx="tagshow(event)" href="tag.php?name=post">post</span>-commit.bat</strong> 批处理引导到了PHP脚本 post-commit.php上<br>
+            [code]<br>
+            @echo off<br>
+            setlocal<br>
+            SET PHP=E:\PHP5\php.exe<br>
+            %PHP% -f %1\hooks\post-commit.php %*<br>
+            [/code]<br>
+            <br>
+            关于hooks脚本，各位可以看这里 <a href="http://www.subversion.org.cn/svnbook/1.4/svnbook.html#svn.ref.reposhooks" target="_blank">http://www.subversion.org.cn/svn ... #svn.ref.reposhooks</a> <br>
+            <br>
+            三、建立 post-commit.php 在每次提交试执行判断是否需要执行同步操作<br>
+            我这里加了 SVN 账户判断，以便只有特定的用户才有权限向线上服务器同步源码<br>
+            还加了[UPTO_RUN_SERVER] 标记，只有特定的用户在提交时，加入了这个标记才会触发同步到在线服务器的工作<br>
+            <br>
+            四、建立一个临时目录用于从版本仓库抽取需要更新的文件，如：E:\svn_tmp\MY_PROJECT_NAME<br>
+            <br>
+            五、至于如何在团队协同开发中部署这个<span class="t_tag" onxxxxx="tagshow(event)" href="tag.php?name=%D3%A6%D3%C3">应用</span>，或如何更合理有效和安全，各位可以发挥一下想象力<br>
+            <br>
+            以下是 post-commit.php 代码的主要部分，有BUG仅供参考<br>
+            <br>
+            [php]<br>
+            &lt;?php<br>
+            //-----------------------------<br>
+            //&nbsp;&nbsp; 初始化设置<br>
+            //-----------------------------<br>
+            <br>
+            //临时更新目录，用于svn checkout 得到最新的文件后，上传到FTP<br>
+            $TMP_UPDATE_DIR = &quot;E:\\svn_tmp\\MY_PROJECT_NAME&quot;;<br>
+            <br>
+            //获得当前更新的log<br>
+            $svnlook_log = &quot;\&quot;C:\\Program Files\\VisualSVN Server\\bin\\svnlook.exe\&quot; log -r {$argv[2]} {$argv[1]}&quot;;<br>
+            <br>
+            //获得当前更新者帐户名<br>
+            $svnlook_author = &quot;\&quot;C:\\Program Files\\VisualSVN Server\\bin\\svnlook.exe\&quot; author -r {$argv[2]} {$argv[1]}&quot;;<br>
+            <br>
+            //更新最新的源码到临时更新目录<br>
+            $svn_update = &quot;\&quot;C:\\Program Files\\VisualSVN Server\\bin\\svn.exe\&quot; update -r {$argv[2]} {$TMP_UPDATE_DIR}&quot;;<br>
+            <br>
+            //有权限更新到运行服务器的svn帐户<br>
+            $upto_run_managers = array('terry39', 'user02', 'user03', 'user04');<br>
+            <br>
+            //更新状态记录文件<br>
+            $update_status_file = &quot;E:\\svn_tmp\\MY_PROJECT_NAME_update_status.txt&quot;;<br>
+            <br>
+            $output = array();<br>
+            exec($svnlook_log, $output);<br>
+            $log = $output;<br>
+            <br>
+            $output = array();<br>
+            exec($svnlook_author, $output);<br>
+            $author = $output;<br>
+            <br>
+            <br>
+            //-----------------------------<br>
+            //&nbsp;&nbsp;<span class="t_tag" onxxxxx="tagshow(event)" href="tag.php?name=%BA%AF%CA%FD">函数</span><br>
+            //-----------------------------<br>
+            <br>
+            <br>
+            /**<br>
+            * 在FTP服务器上创建目录<br>
+            *<br>
+            * @author terry39<br>
+            */<br>
+            function ftp_create_dir($path)<br>
+            {<br>
+                global $ftp;<br>
+            <br>
+                $dir=split(&quot;/&quot;, $path);<br>
+                $path=&quot;&quot;;<br>
+                $ret = true;<br>
+            <br>
+                for ($i=0;$i&lt;count($dir);$i++)<br>
+                {<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $path.=&quot;/&quot;.$dir[$i];<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; if(!@ftp_chdir($ftp,$path)){<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   @ftp_chdir($ftp,&quot;/&quot;);<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   if(!@ftp_mkdir($ftp,$path)){<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;    $ret=false;<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;    break;<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   }<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; }<br>
+                }<br>
+                return $ret;<br>
+            }<br>
+            <br>
+            /**<br>
+            * 删除&nbsp;&nbsp; FTP 中指定的目录 <br>
+            *<br>
+            * @param resource $ftp_stream The link identifier of the FTP connection<br>
+            * @param string   $directory The directory to delete<br>
+            *<br>
+            * @author terry39<br>
+            */<br>
+            function ftp_rmdirr($ftp_stream, $directory)<br>
+            {<br>
+                if (!is_resource($ftp_stream) ||<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; get_resource_type($ftp_stream) !== 'FTP Buffer') {<br>
+            <br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; return false;<br>
+                }<br>
+            <br>
+                // Init<br>
+                $i  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;    = 0;<br>
+                $files  &nbsp;&nbsp;  &nbsp;&nbsp;   = array();<br>
+                $folders  &nbsp;&nbsp;    = array();<br>
+                $statusnext    = false;<br>
+                $currentfolder = $directory;<br>
+            <br>
+                // Get raw file listing<br>
+                $list = ftp_rawlist($ftp_stream, $directory, true);<br>
+            <br>
+                foreach ($list as $current) {<br>
+            <br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; if (empty($current)) {<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   $statusnext = true;<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   continue;<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; }<br>
+            <br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; if ($statusnext === true) {<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   $currentfolder = substr($current, 0, -1);<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   $statusnext = false;<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   continue;<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; }<br>
+            <br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $split = preg_split('[ ]', $current, 9, PREG_SPLIT_NO_EMPTY);<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $entry = $split[8];<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $isdir = ($split[0]{0} === 'd') ? true : false;<br>
+            <br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; // Skip pointers<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; if ($entry === '.' || $entry === '..') {<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   continue;<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; }<br>
+            <br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; if ($isdir === true) {<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   $folders[] = $currentfolder . '/' . $entry;<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; } else {<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   $files[] = $currentfolder . '/' . $entry;<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; }<br>
+            <br>
+                }<br>
+            <br>
+                foreach ($files as $file) {<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; ftp_delete($ftp_stream, $file);<br>
+                }<br>
+            <br>
+                rsort($folders);<br>
+                foreach ($folders as $folder) {<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; ftp_rmdir($ftp_stream, $folder);<br>
+                }<br>
+            <br>
+                return ftp_rmdir($ftp_stream, $directory);<br>
+            }<br>
+            <br>
+            /**<br>
+            * 把更新到的文件列表上传到服务器上<br>
+            *<br>
+            * 更新的同时记录更新日志，如过有一个文件或者目录更新失败，则返回错误<br>
+            *<br>
+            * @param array $update_list<br>
+            * @return bool<br>
+            *<br>
+            * @author terry39<br>
+            */<br>
+            function update_to_ftp($update_list)<br>
+            {<br>
+                global $argv, $ftp, $author_name, $TMP_UPDATE_DIR;<br>
+            <br>
+                $ftp_update_logfile='E:\svn_tmp\ftp_MY_PROJECT_NAME_upload.log';    //执行更新的日志文件<br>
+                $ftp_root_dir = '/';  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   //服务器上的地址源码对应的起始目录<br>
+            <br>
+                $log = &quot;&quot;;<br>
+                $log .= date('Y-m-d H:i:s') . &quot; BEGIN UPDATE TO FTP\n&quot;;<br>
+                $log .= date('Y-m-d H:i:s') . &quot; Reversion: {$argv[2]}\n&quot;;<br>
+                $log .= date('Y-m-d H:i:s') . &quot; Author: {$author_name}\n&quot;;<br>
+            <br>
+                $ftp = ftp_connect('FTP服务器地址');<br>
+                $ftp_login = ftp_login($ftp, 'FTP账户', 'FTP密码');<br>
+            <br>
+                if($ftp &amp;&amp; $ftp_login){<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $log .= date('Y-m-d H:i:s') . &quot; Connected to FTP Server Success\n&quot;;<br>
+                }else{<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $log .= date('Y-m-d H:i:s') . &quot; Connected to FTP Server False\n&quot;;<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $log .= date('Y-m-d H:i:s') . &quot; UPDATE FALSE\n&quot;;<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $log .= date('Y-m-d H:i:s') . &quot; QUIT UPDATE\n\n&quot;;<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; return false;<br>
+                }<br>
+            <br>
+                $result = true;<br>
+                foreach($update_list as $file_cmd){<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; if(substr($file_cmd, 0, 6) == 'Update') continue;  &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; //这里有最后一行的&nbsp;&nbsp; Update Reversion NNN 要忽略<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $file_cmd = trim($file_cmd);<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $cmd = substr($file_cmd, 0, 1);<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $file = trim(substr($file_cmd, 1));<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $from = $file;<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $file = substr($file, strlen($TMP_UPDATE_DIR) + 1);    //去掉路径中的开头 $TMP_UPDATE_DIR 路径<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $filename = is_dir($from) ? null : array_pop(explode('/', $file));<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $to   = $ftp_root_dir . str_replace(&quot;\\&quot;, &quot;/&quot;, $file);<br>
+            <br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; //计算出路径并创建FTP目录 (如果不存在的话)<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $dir = is_dir($from) ? $to : dirname($to);<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; if(!@ftp_chdir($ftp,$dir)){<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   $log .= date('Y-m-d H:i:s') . &quot; FTP_MKD\t{$dir}\n&quot;;<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   ftp_create_dir($dir);  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   //创建目录<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; }<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; if(is_dir($from)) continue;<br>
+            <br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; //更新或创建文件<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; if($cmd == &quot;U&quot; || $cmd == &quot;A&quot;){<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   $result = $result &amp;&amp; ftp_put($ftp, $to, $from, FTP_BINARY);<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   //记录日志<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   $log .= date('Y-m-d H:i:s') . &quot; FTP_PUT\t{$from}\t{$to}&quot; . ($result ? &quot;\tSUCCESS\n&quot; : &quot;\tFALSE\n&quot;);<br>
+            <br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; //删除文件或目录<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; }else if($cmd == &quot;D&quot;){<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   //-------------------------------<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   //&nbsp;&nbsp; 这里要判断目标是目录还是文件<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   //-------------------------------<br>
+            <br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   if(@ftp_chdir($ftp,$to)){<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;    $r = ftp_rmdirr($ftp, $to);<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;    $log .= date('Y-m-d H:i:s') . &quot; FTP_RMD\t{$to}&quot; . ($r ? &quot;\tSUCCESS\n&quot; : &quot;\tFALSE\n&quot;);<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   }else{<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;    $result = $result &amp;&amp; ftp_delete($ftp, $to);<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;    //记录日志<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;    $log .= date('Y-m-d H:i:s') . &quot; FTP_DEL\t{$to}&quot; . ($result ? &quot;\tSUCCESS\n&quot; : &quot;\tFALSE\n&quot;);<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   }<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; }else{<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   $log .= date('Y-m-d H:i:s') . &quot; UNKNOWN CMD\t{$cmd}\n&quot;;<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   continue;<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; }<br>
+                }<br>
+                //记录最后一次更新成功的版本<br>
+                if($result){<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $log .= date('Y-m-d H:i:s') . &quot; UPDATE SUCCESS\n&quot;;<br>
+                }else{<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $log .= date('Y-m-d H:i:s') . &quot; UPDATE FALSE\n&quot;;<br>
+                }<br>
+                $log .= date('Y-m-d H:i:s') . &quot; END UPDATE\n\n&quot;;<br>
+                file_put_contents($ftp_update_logfile, $log, FILE_APPEND);<br>
+            <br>
+                return $result;<br>
+            }<br>
+            <br>
+            //-----------------------------<br>
+            //&nbsp;&nbsp; 判断并执行同步更新<br>
+            //-----------------------------<br>
+            <br>
+            <br>
+            //取得当前更新者帐户名，判断是否有权限更新到运行服务器<br>
+            $author_name = $author[count($author) -1];<br>
+            if(in_array($author_name, $upto_run_managers)){<br>
+            <br>
+                //查看log中是否包含 [UPTO_RUN_SERVER] 指令标记<br>
+                if(strpos(implode(&quot;\n&quot;, $log), '[UPTO_RUN_SERVER]') !== false){<br>
+            <br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; //-------------------------------------------<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; //&nbsp;&nbsp; 准备开始同步更新在线服务器上的文件<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; //-------------------------------------------<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $new_rev = $argv[2];<br>
+            <br>
+            <br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; if(!file_exists($update_status_file)){<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   file_put_contents($update_status_file, '1|1');<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; }<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $update_status = explode('|', file_get_contents($update_status_file));<br>
+            <br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; //当记录的更新状态为更新成功的版本号{$update_status[0]} 比最后一次更新的版本号 {$update_status[1]} 小时<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; //还原临时更新目录到最后一次更新成功的版本 {$update_status[0]}，然后再 update 获得更新文件列表<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; //然后提交到在线服务器<br>
+            <br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; if($update_status[0] &lt; $update_status[1]){<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   $svn_update_r = &quot;\&quot;C:\\Program Files\\VisualSVN Server\\bin\\svn.exe\&quot; update -r {$update_status[0]} {$TMP_UPDATE_DIR}&quot;;<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   exec($svn_update_r);<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; }<br>
+            <br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $output = array();<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; exec($svn_update, $output);<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $update = $output;<br>
+            <br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; //这里根据update列表更新服务器上的文件<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $update_success = true;<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; $update_success = update_to_ftp($update);<br>
+            <br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; //记录更新后的更新状态到到文件<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; if($update_success){<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   file_put_contents($update_status_file, &quot;{$new_rev}|{$new_rev}&quot;);<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; }else{  &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   <br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;   file_put_contents($update_status_file, &quot;{$update_status[0]}|{$new_rev}&quot;);<br>
+              &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; }<br>
+                }<br>
+            }<br>
+            ?&gt;<br>
+            [/php]</td>
+        </tr>
+    </tbody>
+</table>
 </body>
 </html>
