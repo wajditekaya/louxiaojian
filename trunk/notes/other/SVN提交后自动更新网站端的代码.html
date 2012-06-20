@@ -8,12 +8,13 @@
 
 <div id="page">
 <ol>
-  <li><a href="http://www.iammecn.com/2012/03/05/svn_commit_to_automatically_update_the_site_-side_code/" target="_blank">http://www.iammecn.com/2012/03/05/svn_commit_to_automatically_update_the_site_-side_code/</a></li>
-  <li><a href="http://blog.qibar.com/2012/svn%E6%8F%90%E4%BA%A4%E5%90%8E%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0post-commit/" target="_blank">http://blog.qibar.com/2012/svn%E6%8F%90%E4%BA%A4%E5%90%8E%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0post-commit/</a></li>
-  <li><a href="http://www.ohlinux.com/archives/322/" target="_blank">http://www.ohlinux.com/archives/322/</a></li>
-  <li><a href="http://subversion.apache.org/faq.zh.html#hook-debugging" target="_blank">http://subversion.apache.org/faq.zh.html#hook-debugging</a></li>
+  <li><a href="http://www.iammecn.com/2012/03/05/svn_commit_to_automatically_update_the_site_-side_code/" target="_blank">SVN提交后自动更新网站端的代码</a></li>
+  <li><a href="http://blog.qibar.com/2012/svn%E6%8F%90%E4%BA%A4%E5%90%8E%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0post-commit/" target="_blank">SVN提交后自动更新post-commit</a></li>
+  <li><a href="http://www.ohlinux.com/archives/322/" target="_blank">利用SVN钩子同步程序注意事项</a></li>
+  <li><a href="http://subversion.apache.org/faq.zh.html#hook-debugging" target="_blank">Subversion FAQ(常见问题解答)</a></li>
   <li><a href="http://hi.baidu.com/jianglu07/blog/item/a3772e13ab794d8c6538db1e.html" target="_blank">团队开发配合SVN HOOKS同步更新在线服务器源码</a></li>
   <li><a href="http://www.luochunhui.com/%E5%BB%BA%E7%AB%8B%E4%B8%80%E4%B8%AAsubversion%E7%9A%84%E5%90%8C%E6%AD%A5%E6%B5%8B%E8%AF%95%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_blank">建立一个subversion的同步测试服务器</a></li>
+  <li><a href="" target="_blank">SVN的基本原理 配置自动更新WEB服务器</a></li>
 </ol>
 
 <h1>SVN提交后自动更新网站端的代码</h1>
@@ -422,5 +423,395 @@ svn update /home/web/www &#8211;username svnuser &#8211;password svnpasswd &#821
         </tr>
     </tbody>
 </table>
+<h1>利用SVN钩子同步程序注意事项 </h1>
+<p>前言：其实利用SVN实时同步到WEB服务器即时展现出来的文章已经到处都是，但是我在做的时候 还是有不少的小问题，很多文章也没有提出来过，还有同步也是，我还是记录下自己做过的尤其是一些细节，时间一长又会忘掉了。</p><p>同步程序思路：用户提交程序到SVN，SVN触发hooks,按不同的hooks进行处理，这里用到的是post-commit，利用post-commit到代码检出到SVN服务器的本地硬盘目录，再通过rsync同步到远程的WEB服务器上。</p><p>知识点：<br />
+1、SVN的hooks<br />
+# start-commit 提交前触发事务<br />
+# pre-commit 提交完成前触发事务<br />
+# post-commit 提交完成时触发事务<br />
+# pre-revprop-change 版本属性修改前触发事务<br />
+# post-revprop-change 版本属性修改后触发事务<br />
+通过上面这些名称编写的脚本就就可以实现多种功能了，相当强大。<br />
+2、同步命令rsync的具体参数使用<br />
+3、具有基个语言的编程能力bash python perl都可以实现</p><p>post-commit具体实现细节<br />
+post-commit脚本<br /><pre lang="bash">
+#!/bin/sh
+# -------------------------------------------------------------------------------
+# Filename:    post-commit
+# Revision:    1.0
+# Date:        2009/03/20
+# Author:      Ajian
+# Email:       ajian521#gmail.com
+# Website:     www.ohlinux.com
+# Description: WEB server with synchronization code by SVN
+# -------------------------------------------------------------------------------
+# Copyright:   2009 (c) Ajian
+# License:     GPL
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty
+# of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# -------------------------------------------------------------------------------
+#Version 1.0
+#When users submit finished code, put the code up-to-date detection and synchronization to the WEB server, taking care not to include the delete operation.
+	
+#Set variable
+SVN=/usr/bin/svn
+WEB=/home/test_nokia/
+RSYNC=/usr/bin/rsync
+LOG=/tmp/rsync_test_nokia.log
+WEBIP="192.168.0.23"
+export LANG=en_US.UTF-8
+
+#update the code from the SVN
+$SVN update $WEB --username user --password  password
+#If the previous command completed successfully, to continue the following
+if [ $? == 0 ]
+then
+    echo ""     >> $LOG
+    echo `date` >> $LOG
+    echo "##############################" >> $LOG
+    chown -R nobody:nobody /home/test_nokia/
+    #Synchronization code from the SVN server to the WEB server, notes:by the key 
+    $RSYNC -vaztpH  --timeout=90   --exclude-from=/home/svn/exclude.list $WEB root@$WEBIP:/www/ >> $LOG
+fi
+</pre><br />
+以上是具体的post-commit程序<br />
+注意事项：<br />
+1、一定要定义变量，主要是用过的命令的路径。因为SVN的考虑的安全问题，没有调用系统变量，如果手动执行是没有问题，但SVN自动执行就会无法执行了。<br />
+2、SVN update 之前一定要先手动checkout一份出来，还有这里一定要添加用户和密码 如果只是手动一样会更新，但自动一样的不行。<br />
+3、加上了对前一个命令的判断，如果update的时候出了问题，程序没有退出的话还会继续同步代码到WEB服务器上，这样会造成代码有问题<br />
+4、记得要设置所属用户，因为rsync可以同步文件属性，而且我们的WEB服务器一般都不是root用户，用户不正确会造成WEB程序无法正常工作。<br />
+5、建议最好记录日志，出错的时候可以很快的排错<br />
+6、最后最关键的数据同步，rsync的相关参数一定要清楚，这个就不说了。注意几个场景：<br />
+这里的环境是SVN服务器与WEB服务器是开的<br />
+把SVN服务器定义为源服务器 WEB服务器为目的服务器<br />
+场景一、如果目的WEB服务器为综合的混杂的，像只有一个WEB静态资源，用户提交的，自动生成的都在WEB的一个目录下，建议不要用--delete这个参数<br />
+上面这个程序就是这样，实现的是源服务器到目的服务器的更新和添加，而没有删除操作，WEB服务器的内容会多于源SVN的服务器的<br />
+场景二、实现镜像，即目的WEB服务器与源SVN服务器一样的数据，SVN上任何变化WEB上一样的变化，就需要--delete参数<br />
+场景三、不需要同步某些子目录，可能有些目录是缓存的临时垃圾目录，或者是专用的图片目录（而不是样式或者排版的）要用exclude这个参数<br />
+注意：这个参数的使用不用写绝对路径，只要目录名称就行 aa代表文件 aa/ 代表目录  ，缺点就是如果有多个子目录都是一样的名称 那么这些名称就都不会被同步<br />
+建议用--exclude-from=/home/svn/exclude.list  用文件的形式可以方便的添加和删除<br />
+exclude.list<br /><pre lang="bash" >
+.svn/
+.DS_Store
+images/
+</pre><p>利用SVN的钩子还可以写出很多的程序来控制SVN 如代码提交前查看是否有写日志，是否有tab，有将换成空格，是否有不允许上传的文件，是否有超过限制大小的文件等等。</p>
+
+<h1>建立一个subversion的同步测试服务器</h1>
+
+<p>很多人开始使用subversion之后，就想着，要建立一个测试用的服务器，不需要把文件update到本地再进行测试。这个在我以前的一篇文章中写过，但当时理解也不深，也写得很含糊。现在连自己都看不懂了。</p>
+<p>原理： 基于subversion的钩子，即hook。在subversion执行一个操作时，那会相应的首先去调用相关的钩子程序（如果存在的话）。那么实现一个同步的测试服务器，我们只需要在一个用户执行完毕一个commit操作之后，让钩子程序去自动更新测试服务器的文件即可。通过这个思路，我们需要作的就是建立一个post-commit的钩子。</p>
+<p>钩子文件在你的svn源目录下，即存放subversion版本数据的文件夹。以前面我写的两篇文章中的情况为例，<br/>
+<a href="/id/156" title="apache+subversion安装指引（图文版）">文一（win）</a>的钩子文件应该在 <u>E:\svn2\hooks</u><br/>
+<a href="/id/162" title="在linux(Ubuntu)下安装subversion">文二（Linux）</a>的钩子文件应该在 <u>/var/svn/hooks</u><br/>
+文件夹内已经存在有一些.tmpl文件，这些只是一些模板（TeMPLate）或者说是示例文件。它们不会被执行。</p>
+<p>先以linux为例，来讲讲如何构建一个同步的测试服务器127.0.0.2<strong>(在Ubuntu 6.10, apache2.0.55,subversion1.3.1下调试通过。2007/1/18)</strong><br/>
+我们假设你已经建立好了一个apache＋subversion的环境。<br/>
+0.准备工作<br/>
+为同步服务器建立访问subversion版本的权限，清参考以前的文章</p>
+<pre name=code class=bash>
+$ sudo htpasswd2 /etc/apache2/dav_svn.passwd server
+</pre>
+<p>1. 使用checkout建立一个工作复本</p>
+<blockquote><pre name=code class=bash>
+cd /var/www
+sudo mkdir /var/www/127.0.0.2 #建立测试服务器站点根目录
+sudo chown www-data.www-data 127.0.0.2 #更改用户所有者
+sudo su www-data #切换到www-data，需要使用sudo，因为超级权限可以使用任何用户，而不需要密码，执行后会发现命令提示符可能会有变化
+svn checkout http://127.0.0.10/lab.luochunhui.com/trunk 127.0.0.2  #取出subversion上的文件，可能需要密码
+                                                                                  # 请保证执行checkout语句的用户是www-data，否则在以后钩子调用update时会出现无法创建或修改文件的错误
+exit #退出www-data用户
+</pre>
+</blockquote>
+<p>说明：我们必须把/var/www/127.0.0.2目录的所有者设置成apache的运行者（www-data）， 他必须对文件夹具有完全的可读写操作权限。我使用</p>
+<blockquote><p>sudo chown www-data www<br/>
+sudo su www-data</p></blockquote>
+<p>这样的方式来避免把/var/www/127.0.0.2目录设置成777的权限。<br/>
+另外可以执行下面的代码实现相同的功能：</p>
+<pre name=code class=bash>
+cd /var/www
+sudo mkdir /var/www/127.0.0.2 #建立测试服务器站点根目录
+sudo svn checkout http://127.0.0.10/lab.luochunhui.com/trunk 127.0.0.2 #取出subversion上的文件，可能需要密码
+sudo chown -R www-data.www-data 127.0.0.2/ #把文件用户修改成apache的执行用户
+</pre>
+<p>之后使用</p>
+<blockquote>
+<pre name=code class=bash>
+ls -Al 127.0.0.2
+</pre>
+</blockquote>
+<p>应该可以得到</p>
+<blockquote><p>
+drwxr-xr-x 7 www-data www-data 4096 2007-01-17 10:21 .svn<br/>
+&#8230;一些其他的文件
+</p></blockquote>
+<p>2。设置apache，把你需要的域名指向这个文件夹。</p>
+<blockquote><pre name=code class=bash>
+sudo gedit /etc/apache2/sites-available/127.0.0.2
+</pre>
+</blockquote>
+<p>输入以下文字</p>
+<blockquote><pre name=code class=bash>
+<VirtualHost 127.0.0.2>
+        ServerAdmin rollenc@localhost.com
+        ServerName localhost
+        DocumentRoot /var/www/127.0.0.2
+	<Directory/>
+	Options FollowSymLinks
+	AllowOverride None
+	</Directory>
+	<Directory /var/www/127.0.0.2>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order allow,deny
+		allow from all
+		# Uncomment this directive is you want to see apache2's
+		# default start page (in /apache2-default) when you go to /
+		#RedirectMatch ^/$ /apache2-default/
+	</Directory>
+
+	ErrorLog /var/log/apache2/127.0.0.2_error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+	CustomLog /var/log/apache2/127.0.0.2_access.log combined
+	ServerSignature On
+</VirtualHost>
+</pre>
+</blockquote>
+<p>启用他</p>
+<blockquote><pre name=code class=bash>
+sudo ln -s /etc/apache2/sites-available/127.0.0.2 /etc/apache2/sites-enabled/127.0.0.2
+</pre>
+</blockquote>
+<p>重启apache。</p>
+<blockquote><pre name=code class=bash>
+sudo apache2 -k restart
+</pre>
+</blockquote>
+<p>在浏览器上使用http://127.0.0.2可以浏览到你subversion上最新版本</p>
+<p>3。建立钩子<br/>
+现在是关键的一步，我们需要使我门的测试服务器127.0.0.2进行同步更新：<br/>
+在/var/svn/hooks/目录下建立post-commit文件</p>
+<blockquote><pre name=code class=bash>
+cd /var/svn/hooks/
+sudo gedit post-commit
+</pre>
+</blockquote>
+<p>输入以下内容</p>
+<blockquote><pre name=code class=bash>
+#!/bin/sh
+REPOS="$1"
+REV="$2"
+svn update /var/www/127.0.0.2 --username server --password serverpassword
+#echo `whoami`,$REPOS,$REV >> /home/rollenc/svn_hook_var.txt
+#svn update /var/www/127.0.0.2 --username server --password serverpassword 2>/home/rollenc/svn_hook_log.txt
+</pre>
+</blockquote>
+<p><em>说明：REPOS即第一个变量$1是subversion数据库的地址，REV即第二的变量$2是commit之后的版本号。</em><br/>
+编辑完毕后设置文件权限为可执行：</p>
+<blockquote><pre name=code class=bash>
+sudo chmod 755 post-commit
+</pre>
+</blockquote>
+<p>搞定。<br/>
+下面来试一下，同步有没有成功。<br/>
+再建立一个工作副本，然后添加或者修改一些东西，最后上传。<br/>
+以下的操作是在客户端中进行了，不需要在服务器断进行。</p>
+<blockquote><pre name=code class=bash>
+cd /var/www
+svn checkout http://127.0.0.10/lab.luochunhui.com/trunk 127.0.0.6 #取出subversion上的文件作为你的工作副本，你的工作以后就在这个文件夹内展开。
+                                        ＃所以，不需要sudo，但要保证有127.0.0.6文件夹存在，而且可写
+echo '<?php phpinfo(); ?>' > phpinfo.php #建立一个phpinfo文件
+svn add phpinfo.php   #把phpinfo加入版本库
+svn commit  #提交
+</pre>
+</blockquote>
+<p>在浏览器中你设定的同步服务器地址http://127.0.0.2/phpinfo.php，愿上帝保佑你的成果一切正常。可以看到phpinfo的信息。</p>
+<p>如果不正常你可以稍微修改上面使用#注释掉的命名，使其输出的文件目录符合你的系统。<br/>
+去掉#，重新运行，并通过查看上面设置的txt来获得一些信息。<br/>
+第一句[#echo ...]是获取当前的执行用户（如果正常应该与apache的执行用户和测试服务器文件所有者相同），$REPOS,$REV是获得的两个参数<br/>
+第二句[#svn...]是把update的获取update的结果，一般错误信息在这里可以得到。</p>
+<p>在Windows下我使用同样的方法试图建立钩子，<STRIKE>但没有成功</STRIKE>。感谢<strong>水蓝色青蛙</strong>（QQ:565259）的帮助，windows下的钩子问题解决。<br/>
+以下是方法和代码，在windows XP下测试成功。<br/>
+1，2步很类似，不再重复了<br/>
+经过1，2步的操作之后，DIR的值E:/htddocs/testserver.lab.luochunhui.com 为测试服务器的根目录。如果是win2003，你可能还需要参照ubuntu的方法设置一些权限。<br/>
+第三步的中的钩子程序名称需要改为：<strong>post-commit.bat</strong>写成如下：</p>
+<blockquote><pre name=code class=bash>
+@echo off
+SET REPOS=%1
+SET USER=%2
+SET SVN="D:/subversion/bin/svn.exe"
+SET DIR="E:/htddocs/testserver.lab.luochunhui.com"
+(call %SVN% update %DIR% --username server --password serverpassword --non-interactive)
+</pre>
+</blockquote>
+<p><STRIKE>&#8212;&#8212;&#8212;&#8212;-以下内容已删除&#8212;&#8212;&#8212;&#8211;</p>
+<blockquote><pre name=code class=bash>
+SET REPOS=%1
+SET REV=%2
+SET svn="D:/subversion/bin/svn.exe"
+SET DIR="E:/htdocs/testserver.lab.luochunhui.com"
+%svn% update %DIR%
+</pre>
+</blockquote>
+<p>按理说，和linux的执行是一样的，但就是出错。<br/>
+如commit一个test文件，则显示错误信息为：</p>
+<blockquote><p>Modified: E:\htdocs\testcopy\test.php<br/>
+Sending content: E:\htdocs\testcopy\test.php<br/>
+Error: Commit failed (details follow):<br/>
+Error: MERGE request failed on &#8216;/lab.luochunhui.com/trunk&#8217;<br/>
+Error: MERGE of &#8216;/lab.luochunhui.com/trunk&#8217;: 200 OK (http://127.0.0.10) </p></blockquote>
+<p>而此时，test.php已经commit成功，在subversion数据库中已经存在有本次记录，但E:\htdocs\testcopy工作复本还是显示为没有commit。需要同步的E:/htdocs/testserver.lab.luochunhui.com也没有update。</p>
+<p>我个人压根不懂windows下的编程，以上代码是边google边学来的。所以还是希望有达人帮忙，好让我完成这篇blog，我也好给大家一个完整的交待。</p>
+<p>最终参考了一些文档，还是没能解决ｗｉｎ下的问题，我把测试和输出结果放下面：</p>
+<pre name=code class=bash>
+@echo off
+echo "" >  E:/hookLog.txt
+echo "1" >> E:/hookLog.txt
+SET REPOS=%1
+echo "2" >> E:/hookLog.txt
+SET USER=%2
+echo "3" >> E:/hookLog.txt
+echo %REPOS%, %USER% >> E:/hookLog.txt
+SET SVN="D:/subversion/bin/svn.exe"
+echo "4" >> E:/hookLog.txt
+SET DIR="E:/htdocs/testserver.lab.luochunhui.com"
+echo "5" >> E:/hookLog.txt
+REM call %SVN% update %DIR% >> E:/hookLog.txt
+REM SET PATH=D:/subversion/bin/
+REM svn update "E:/htdocs/testserver.lab.luochunhui.com" >> E:/hookLog.txt
+(call %SVN% update "E:/htdocs/testserver.lab.luochunhui.com") >> E:/hookLog.txt
+echo "6" >> E:/hookLog.txt
+</pre>
+<p>REM是注释，REM掉了我使用的很多种测试，切换REM可以运行其它的一些测试，但是全部无效。<br/>
+以下是上面代码的输出：</p>
+<pre name=code class=plain>
+"" 
+"1" 
+"2" 
+"3" 
+E:/svn2, 54 
+"4" 
+"5" 
+"6" 
+</pre>
+<p>1-6全部正常输出，惟一的是 svn update这一句没有输出任何东西。<br/>
+完全放弃！等待达人。。。。<br/>
+&#8212;&#8212;&#8212;&#8212;以上内容已删除&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;</STRIKE></p>
+<p>有问题也欢迎在下面贴出，乐意帮忙：）</p>
+
+<h1>SVN提交后自动更新post-commit</h1>
+			<p>使用svnadmin create 创建一个版本库:<br />
+svnadmin create REPO</p>
+<p>每个版本库的目录下有一个hooks目录：</p>
+<p>root@SVN:/home/svn/repo# ls /home/svn/repo/<br />
+conf dav db format hooks locks README.txt</p>
+<p>在每个版本库下有hooks文件夹,里面有很多钩子程序:</p>
+<p>root@SVN:/home/svn/repo# ls -l hooks/<br />
+total 40<br />
+-rwxr-xr-x 1 www-data www-data 332 2010-05-30 16:47 post-commit<br />
+-rw-r&#8211;r&#8211; 1 www-data www-data 2000 2010-05-30 15:22 post-commit.tmpl<br />
+-rw-r&#8211;r&#8211; 1 www-data www-data 1663 2010-05-29 23:28 post-lock.tmpl<br />
+-rw-r&#8211;r&#8211; 1 www-data www-data 2322 2010-05-29 23:28 post-revprop-change.tmpl<br />
+-rw-r&#8211;r&#8211; 1 www-data www-data 1592 2010-05-29 23:28 post-unlock.tmpl<br />
+-rw-r&#8211;r&#8211; 1 www-data www-data 3488 2010-05-29 23:28 pre-commit.tmpl<br />
+-rw-r&#8211;r&#8211; 1 www-data www-data 2410 2010-05-29 23:28 pre-lock.tmpl<br />
+-rw-r&#8211;r&#8211; 1 www-data www-data 2796 2010-05-29 23:28 pre-revprop-change.tmpl<br />
+-rw-r&#8211;r&#8211; 1 www-data www-data 2100 2010-05-29 23:28 pre-unlock.tmpl<br />
+-rw-r&#8211;r&#8211; 1 www-data www-data 2830 2010-05-29 23:28 start-commit.tmpl</p>
+<p>在执行commit操作之后会自动执行post-commit这个钩子程序。<br />
+因此可以设置post-commit来自动更新：<br />
+操作步骤如下：</p>
+<p>1. 使用checkout建立一个工作复本</p>
+<p>mkdir /home/web</p>
+<p>root@SVN:/home# chown www-data:www-data web</p>
+<p>ls -l web<br />
+drwxr-xr-x 2 www-data www-data 4096 2010-05-30 16:15 web</p>
+<p>必须使用apache的所属用户和组（在ubuntu下面的是www-data）来执行：check out</p>
+<p>root@SVN:/home/web# sudo su www-data<br />
+$ cd /home/web<br />
+$ svn checkout http://svn.love.com/svn/repo/www/</p>
+<p>Authentication realm: &lt;http://svn.love.com:80&gt; Repo Auth<br />
+Password for &#8216;www-data&#8217;:<br />
+Authentication realm: &lt;http://svn.love.com:80&gt; Repo Auth<br />
+Username: jack<br />
+Password for &#8216;jack&#8217;:</p>
+<p>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;<br />
+ATTENTION! Your password for authentication realm:</p>
+<p>&lt;http://svn.love.com:80&gt; Repo Auth</p>
+<p>can only be stored to disk unencrypted! You are advised to configure<br />
+your system so that Subversion can store passwords encrypted, if<br />
+possible. See the documentation for details.</p>
+<p>You can avoid future appearances of this warning by setting the value<br />
+of the &#8216;store-plaintext-passwords&#8217; option to either &#8216;yes&#8217; or &#8216;no&#8217; in<br />
+&#8216;/var/www/.subversion/servers&#8217;.<br />
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;<br />
+Store password unencrypted (yes/no)? yes</p>
+<p>连续输入2次 &#8220;yes&#8221;</p>
+<p>root@SVN:/home/web# ls -al www/<br />
+drwxr-xr-x 6 www-data www-data 4096 2010-05-30 16:18 .svn<br />
+可以看到.svn的权限，userown、goupown都是www-data</p>
+<p>&nbsp;</p>
+<p>2，使用svn update测试，看www-data用户是否有权限更新。</p>
+<p>$ svn update /home/web/www &#8211;username svnuser &#8211;password svnpasswd<br />
+在连续输入2次&#8221;yes&#8221;或者&#8221;no&#8221;之后、可以看到已经更新成功：<br />
+Store password unencrypted (yes/no)? At revision 37.</p>
+<p>3，在hooks目录下面的添加一个post-commit脚本文件</p>
+<p>#!/bin/sh</p>
+<p>REPOS=&#8221;$1&#8243;<br />
+REV=&#8221;$2&#8243;<br />
+export LANG=en_US.UTF-8<br />
+svn update /home/web/www &#8211;username svnuser &#8211;password svnpasswd</p>
+<p>在客户端commit后报错<br />
+sudo su www-data<br />
+$ cd /home/svn/repo/hooks<br />
+$ ./post-commit</p>
+<p>提示：<br />
+Store password unencrypted (yes/no)?</p>
+<p>在svn update &#8211;help中找到了 &#8211;no-auth-cache 这个参数：</p>
+<p>&#8211;no-auth-cache : do not cache authentication tokens</p>
+<p>加上这个参数后终于可以了：</p>
+<p>root@SVN:/home/svn/repo/hooks# cat post-commit</p>
+<p>#!/bin/sh</p>
+<p>REPOS=&#8221;$1&#8243;<br />
+REV=&#8221;$2&#8243;<br />
+export LANG=en_US.UTF-8<br />
+svn update /home/web/www &#8211;username svnuser &#8211;password svnpasswd &#8211;no-auth-cache</p>
+
+<h1>SVN的基本原理 配置自动更新WEB服务器</h1>
+                        <p> 自动更新的配置：</p>
+                        <p> 开发中经常要在更新SVN的同时要更新WEB服务器。可以用过Subversion的钩子(Hook)来实现。</p>
+                        <p> 以下是Windows操作系统下的配置：</p>
+                        <p> 在SVN库的hooks目录下面新建post-commit.bat文件，用记事本打开，然后写入如下的代码：</p>
+                        <p>@echo off</p>
+                        <p>SET REPOS=%1<br>
+                          SET REV=%2</p>
+                        <p>SET DIR=%REPOS%/hooks<br>
+                          SET PATH=%PATH%;</p>
+                        <p>SET WORKING_COPY=D:\Websites\Latisse<br>
+                          svn update %WORKING_COPY% –username user –password pwd</p>
+                        <p> 此处的D:\Websites\Latisse即是WEB网站的目录（当然得先建好这个目录，并且从svn服务器上签出相应的项目）。</p>
+                        <p> 这样在用户提交完后，便会自动更新到WEB服务器上。</p>
+                        <p>需要注意到问题是：</p>
+                        <p> 1.不要在WEB网站文件夹下作修改或其它操作，防止出现文件夹被锁。无法更新。</p>
+                        <p> 2.在这里我明确写明了用户名（user)，密码(pwd)。在我设置时发现，如果没有设置的话会出现错误，在直接运行这个bat文件时是能正常执行的，但是，在Subversion提交后却不能正常运行。并且可以看到服务器进程中会出现cmd,svn两个进程，并且不会自己结束，而用户在提交内容到服务器后，会出现客户端无法正常返回的问题。</p>
+                        <p> 3.如果运行不能正常，可以通过下面的方法看到出错信息：</p>
+                        <p>将刚才的post-commit.bat改名为post-commit-run.bat，然后再建一个post-commit.bat的文件，里面写入如下的代码：</p>
+                        <p>call %~dp0post-commit-run.bat %* &gt; %1/hooks/post-commit.log 
+                          2&gt;&amp;1</p>
+                        <p>这样运行结果就会被写入到post-commit.log文件中，如果出错，也可以找到出错的原因。</p>
+                        <p>-------------------------------------------------------------------</p>
+
 </body>
 </html>
