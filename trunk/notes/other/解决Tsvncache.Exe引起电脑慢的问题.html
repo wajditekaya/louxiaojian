@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>解决Tsvncache.Exe引起电脑慢的问题[SVN使用技巧]</title>
+<body>
+如果你觉得SVN的cache程序使得你的机器反应很慢的话,那可以参考这个方案.不过可能要改变你以前使用习惯.<br>这个方案有两部分,第一部分是关闭SVN的cache监视;第二部分是显示文件差异时,使用SVN的&#8220;check for modifications&#8221;显示差异。 <br>1.关闭SVN的cache监视。即关闭tsvncache.exe这个程序对目录的监视。<br>具体操作步骤如下：<br>a) 右击任意目录打开右键菜单,打开"tortoisesvn" =&gt; "settings"下的设置窗口<br>b) 找到"icon overlays"的设置项，将"status cache"设置成"none"<br>2.使用SVN的&#8220;check for modifications&#8221;显示差异<br>具体操作步骤如下：<br>a) 右击需要比较差异的目录，打开右键菜单，打开"tortoisesvn" =&gt; "check for modifications"，打开比较差异窗口<br>注：这样显示文件差异是因为上面关闭监视后，再有修改程序文件，文件夹不再更新修改标识了，无法再通过查看文件平图标来知道是否有文件修改。<br>&nbsp;<br>今天本人这样修改了，感觉机器强多了！不再有explorer疆死的情况了！爽！<br>&nbsp;<br>以下是SVN设置框中具体的设置的介绍(摘自:http://tortoisesvn.net/docs/release/TortoiseSVN_zh_CN/tsvn-dug-settings.html)<br>&nbsp;<br>
+
+<h4 class=title>&nbsp;</h4>
+
+<div class=figure>图标叠加设置<a id=tsvn-dug-settings-dia-overlay name=tsvn-dug-settings-dia-overlay></a>
+
+<p class=title><strong>图&nbsp;5.43.&nbsp;设置对话框，外观与样式页面</strong></p>
+
+<div><img alt=设置对话框，外观与样式页面 src="http://tortoisesvn.net/docs/release/TortoiseSVN_zh_CN/images/SettingsOverlay.png"></div>
+
+</div>
+
+<p>此页面允许你选择TSVN为哪些条目显示图标覆盖。选择网络磁盘可能会非常慢，所以默认情况下不为定位于网络共享中的工作副本显示图标覆盖。你甚至可以取消所有的图标覆盖，但那样做还剩下什么好玩儿的呢？</p>
+
+<p>USB闪存看上去是个特殊情况，因为驱动类型是设备自主标识的。于是有些显示为固定驱动器，而有些显示为可移动磁盘。</p>
+
+<p>By default, overlay icons will appear in all open/save dialogs as well as in Windows Explorer. If you want them to appear <span class=emphasis><em>only</em></span> in Windows Explorer, check the <span class=guilabel>Show overlays only in explorer</span> box.</p>
+
+<p>Since it takes quite a while to fetch the status of a working copy, TortoiseSVN uses a cache to store the status in so the explorer doesn't get hogged too much when showing the overlays. You can choose which type of cache TortoiseSVN should use according to your system and working copy size here:</p>
+
+<div class=variablelist>
+
+<dl>
+
+<dt><span class=term>默认</span>
+
+<dd>
+
+<p>把所有状态信息缓存在一个独立进程中(<code class=filename>TSVNCache.exe</code>)。该进程监视所有驱动器的更改，并在工作副本中的文件被修改时重新获取其状态。该进程以最低优先级运行，所以其他程序不会被它挤兑。这同样意味着状态信息并不是 <span class=emphasis><em>实时</em></span> 的，因为它需要几秒钟时间处理图标覆盖的变化。</p>
+
+<p>优点: 图标覆盖递归地显示状态，就是说，如果一个处在工作副本深处的文件被修改了，所有途径的文件夹包括工作副本的根目录都会显示出修改的图标覆盖。也因为该进程可以向Windows外壳发送通知，资源管理器左面的树形图通常也会更改。</p>
+
+<p>缺点: 即使你已经不在项目下工作了，该进程仍然持续运行。取决于你工作副本的数量和大小，它将占用10-50 MB的RAM内存空间。</p>
+
+<dt><span class=term>Windows 外壳</span>
+
+<dd>
+
+<p>缓存在外壳扩展dll中直接完成，但仅仅是为那些当前可见的文件夹。每次你浏览到其他文件夹，状态信息就会被重新获取。</p>
+
+<p>优点: 仅仅需要很少的内存(大约1 MB)，并且可以 <span class=emphasis><em>实时</em></span> 显示状态。</p>
+
+<p>缺点: 因为仅有一个文件夹被缓存，图标覆盖不会递归地显示状态。在大一些的工作副本下，它在浏览器中显示一个文件夹将比默认缓存模式花费更多时间。而且 mime-type 列将无效。</p>
+
+<dt><span class=term>无</span>
+
+<dd>
+
+<p>在这种设置下，TSVN在浏览器里就完全不去获取状态了。因此，版本控制下的文件将不会获得任何图标覆盖。文件夹也仅仅有个&#8220;正常&#8221;状态的图标覆盖，其他的不会显示，也不会有其他额外的列可用。</p>
+
+<p>优点: 绝对不会占用任何额外的内存，也完全不会减慢浏览器的浏览速度。</p>
+
+<p>缺点: 文件、文件夹的状态信息不会显示在浏览器中。要获知你的工作副本是否被修改了，你需要使用&#8220;检查更新&#8221;对话框。</p>
+
+</dd></dl></div>
+
+<p>若你选择了默认选项，将同样决定如下选择: 在文件夹包含非版本控制的项目时，把文件夹图标覆盖标记为已修改。这个有用的设置可以提醒你已经创建了非版本控制的新文件。</p>
+
+<p><span class=guilabel>排除路径</span> 是被用来告诉TSVN <span class=emphasis><em>不用</em></span> 在哪些路径下显示图标覆盖和状态列。如果你有些很大的工作副本，而这些工作副本仅仅包含你完全不想改变的库文件，从而你也不需要显示图标覆盖，这时该功能将会很有用。举个例子:</p>
+
+<p>填写 <code class=filename>f:\development\SVN\Subversion</code> 将 <span class=emphasis><em>仅仅</em></span> 在这个特殊文件夹上取消图标覆盖。你仍然可以在该路径下的所有文件、文件夹上看到图标覆盖。</p>
+
+<p>填写 <code class=filename>f:\development\SVN\Subversion*</code> 将在路径以 <code class=filename>f:\development\SVN\Subversion</code> 开始的 <span class=emphasis><em>所有</em></span> 文件和文件夹上取消图标覆盖。这意味着你在该路径下的任何文件/文件夹上都将看不到图标覆盖了。</p>
+
+<p><span class=guilabel>包含路径</span> 也使用同样的语法。除了有些反例: 即使该路径处在某个取消图标覆盖显示的特定驱动类型下，或是处在上面的排除路径之下，也依然会显示图标覆盖。</p>
+
+<p>TSVNCache.exe 同样使用这些路径来限制它的扫描。如果你想让它仅仅在某些特定文件夹里监视，就取消所有的驱动器类型，并仅仅包含你允许被扫描的文件夹。</p>
+
+</body>
+</html>
