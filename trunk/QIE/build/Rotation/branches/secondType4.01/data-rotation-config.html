@@ -348,13 +348,14 @@
             return r;
         };
         S.parse_config = function(str){
-            var pa={};
-            str.toString().replace(/[?&]*((?:(?!=).)*)=*((?:(?!&)(?!\?).)*)/ig,function(k0,k1,k2){
-                if(k1){
-                    pa[k1] = k2;
-                }
-            });
-            return pa;
+			var cache={},str = str.toString();
+			str = /\?/.test(str) ? str.split(/\?+/)[1] : str;
+			str.replace(/[?&]*((?:(?!=)(?!\?).)*)=*((?:(?!&)(?!\?).)*)/ig,function(k0,key,value){
+				if(key){
+					cache[key] = value;
+				}
+			});
+			return cache;
         };
 
         S.initFun = function(str){
