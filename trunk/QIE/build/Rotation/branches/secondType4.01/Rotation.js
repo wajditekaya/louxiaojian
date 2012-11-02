@@ -88,10 +88,19 @@ Rotation.prototype={
     },
     autoplay:function(m){
         var n=this.aMtag.length || this.aNtag.length;
-        if(m){this.de = (this.de<n-1) ? this.de+1 :0;}
-        else{this.de = (this.de!=0) ? this.de-1 :n-1;}
+        if(m){this.de = (this.de<n-1) ? this.de+1 :0;}else{this.de = (this.de!=0) ? this.de-1 :n-1;}
         this.action(this.de);
     },
+	pre:function(){
+        this.clearAuto();
+        this.autoplay();
+		this.s.auto && this.s.auto[0]==1 && this.autoFun();
+	},
+	next:function(){
+		this.clearAuto();
+		this.autoplay(1);
+		this.s.auto && this.s.auto[0]==1 && this.autoFun();
+	},
     autoFun:function(){this.clearAuto();this.intAuto=setInterval(this.B(this,this.autoplay,1),this.s.auto[1])},
     clearAuto:function(){if(this.intAuto){clearInterval(this.intAuto)}},
     TabLi:function(n){
