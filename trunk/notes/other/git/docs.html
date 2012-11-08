@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="gbk"/>
+<title>Git</title>
+</head>
+
+<body>
+<div id="page">
+    <h1>Git参考笔记</h1>
+    <div id="content">
+		<h3>1、创建验证用的公钥</h3>
+		<ul>
+			<li>1)进入到git安装目录，运行Git Bash</li>
+			<li>2)运行Git Bash后弹出一个dos命令框，在框中使用命令：ssh-keygen -C 'you email louxiaojian@gmail.com' -t rsa
+			会在用户目录 ~/.ssh/ 下建立相应的密钥文件
+			可以使用 ssh -v git@github.com 命令来测试链接是否畅通</li>
+		</ul>
+		<h3>2、上传公钥</h3>
+		<p>
+		在 github.com 的界面中 选择右上角的 Account Settings，然后选择 SSH Public Keys ，选择新加。
+		Title 可以随便命名，Key 的内容拷贝自 ~/.ssh/id_rsa.pub 中的内容，完成后，可以再使用 ssh -v git@github.com 进行测试。看到下面的信息表示验证成功。
+		</p>
+		<h3>参考</h3>
+		<ol>
+		  <li><a href="http://www.cnblogs.com/cocowool/archive/2010/10/19/1855616.html" target="_blank">git与github在ubuntu下的使用</a></li>
+		  <li><a href="http://saberma.me/other/2010/09/20/saberma-github-page-blog-build-with-jekyll.html" target="_blank">应用jekyll构建基于github page的博客</a></li>
+		  <li><a href="http://www.pureweber.com/article/git-and-github/" target="_blank">Git与Github的使用(ubuntu)</a></li>
+		  <li><a href="http://www.360doc.com/content/11/0116/15/38375_86900246.shtml" target="_blank">copssh git 在windowXp上搭建git服务器</a></li>
+		  <li><a href="http://progit.org/book/zh/" target="_blank">http://progit.org/book/zh/</a></li>
+		<ol>
+   </div>
+</div>
+</body>
+</html>
