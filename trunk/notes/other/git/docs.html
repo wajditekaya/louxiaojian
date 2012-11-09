@@ -11,10 +11,14 @@
     <div id="content">
 		<h3>1、创建验证用的公钥</h3>
 		<ul>
-			<li>1)进入到git安装目录，运行Git Bash</li>
-			<li>2)运行Git Bash后弹出一个dos命令框，在框中使用命令：ssh-keygen -C 'you email louxiaojian@gmail.com' -t rsa
-			会在用户目录 ~/.ssh/ 下建立相应的密钥文件
-			可以使用 ssh -v git@github.com 命令来测试链接是否畅通</li>
+			<li>1)运行Git Bash</li>
+			<li>2)在弹出的dos命令框中使用命令：
+			<p>ssh-keygen -C 'you email louxiaojian@gmail.com' -t rsa</p>
+             <p>然后会询问一些保存文件的位置，设置密码神马的，直接回车，回车，回车，默认的就可以了,
+			 就会为你生成一个 SSH Key。
+			 因为主要是在本地使用，可不使用口令，直接回车就可以了！</p>
+			 <img src="images/source.gif" alt="" />
+			</li>
 		</ul>
 		<h3>2、上传公钥</h3>
 		<p>
@@ -23,6 +27,7 @@
 		</p>
 		<h3>参考</h3>
 		<ol>
+		  <li><a href="http://www.xbc.me/install-git-on-windows/" target="_blank">在windows安装配置Git开发环境</a></li>
 		  <li><a href="http://www.cnblogs.com/cocowool/archive/2010/10/19/1855616.html" target="_blank">git与github在ubuntu下的使用</a></li>
 		  <li><a href="http://saberma.me/other/2010/09/20/saberma-github-page-blog-build-with-jekyll.html" target="_blank">应用jekyll构建基于github page的博客</a></li>
 		  <li><a href="http://www.pureweber.com/article/git-and-github/" target="_blank">Git与Github的使用(ubuntu)</a></li>
