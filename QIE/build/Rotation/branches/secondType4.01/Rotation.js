@@ -91,7 +91,7 @@ Rotation.prototype={
         if(m){this.de = (this.de<n-1) ? this.de+1 :0;}else{this.de = (this.de!=0) ? this.de-1 :n-1;}
         this.action(this.de);
     },
-	pre:function(){
+	prev:function(){
         this.clearAuto();
         this.autoplay();
 		this.s.auto && this.s.auto[0]==1 && this.autoFun();
