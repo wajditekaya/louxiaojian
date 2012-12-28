@@ -1,0 +1,9 @@
+d:
+
+cd Program Files\apache\bin
+
+httpd.exe -k install
+
+httpd.exe -k start
+
+此方法比较适合用于 电脑重新系统 而apache安装文件还存在时
