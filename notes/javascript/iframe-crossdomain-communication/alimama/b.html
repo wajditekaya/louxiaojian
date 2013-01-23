@@ -15,7 +15,7 @@
   js对跨域iframe访问问题,因为要控制a.html中iframe的高度和宽度就必须首先读取得到b.html的大小,A、B不属于同一个域,浏览器为了安全性考虑，使js跨域访问受限,读取不到b.html的高度和宽度.</p>
 <p><strong>解决方案:</strong><br />
   引入代理代理页面c.html与a.html所属相同域A，c.html是A域下提供好的中间代理页面，假设c.html的地址：<a href="http://www.taobao.com/c.html">www.taobao.com/c.html</a>,它负责读取location.hash里面的width和height的值,然后设置与它同域下的a.html中的iframe的宽度和高度.</p>
-<iframe id="c_iframe" name="c_iframe"  height="0" width="0"  src="http://10.11.2.49/WebCode/googlecode/louxiaojian/notes/js/iframe-crossdomain-communication/alimama/c.html" style="display:none" ></iframe>
+<iframe id="c_iframe" name="c_iframe"  height="0" width="0"  src="http://louxiaojian.googlecode.com/svn/trunk/notes/javascript/iframe-crossdomain-communication/alimama/c.html" style="display:none" ></iframe>
 <script type="text/javascript">
 var b_width = Math.max(document.body.scrollWidth,document.body.clientWidth);
 var b_height = Math.max(document.body.scrollHeight,document.body.clientHeight);
