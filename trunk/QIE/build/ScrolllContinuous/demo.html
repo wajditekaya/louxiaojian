@@ -150,6 +150,27 @@ a{outline:none}
 								</div>
                             </div>
 
+                            <div class="laster-notice2 ">
+                                <h2 class="ln ">最新公告</h2>
+								<div id="J_scroll_wrap4" class="scroll-wrap" style="height:180px">
+									<div class="scroll-width" style="height:180px;background:#7B9DC1">
+										<div id="J_scroll_panel4" class="scroll-panel" style="line-height:45px">
+											<a href="#" class="nt-name" style="color:#fff">【1】情感剧场</a>
+											<a href="#" class="nt-name" style="color:#fff">【2】雪豹2</a>
+											<a href="#" class="nt-name" style="color:#fff">【3】啊撒旦撒旦撒旦</a>
+											<a href="#" class="nt-name" style="color:#fff">【4】啊撒旦撒旦撒旦</a>
+											<a href="#" class="nt-name" style="color:#fff">【5】二二.雪豹5</a>
+											<a href="#" class="nt-name" style="color:#fff">【6】建.雪豹雪豹雪豹6</a>
+											<a href="#" class="nt-name" style="color:#fff">【7】温热温热温热为热污染.雪豹情感剧场.雪豹情感剧场.雪豹情感剧场.雪豹7</a>
+											<a href="#" class="nt-name" style="color:#fff">【8】共和国海关符合规范.雪豹8</a>
+											<a href="#" class="nt-name" style="color:#fff">【9】可可接口即可.雪豹9</a>
+											<a href="#" class="nt-name" style="color:#fff">【10】参差荇菜下常兴寨村.雪豹10</a>
+											<a href="#" class="nt-name" style="color:#fff">【11】雪豹11</a>
+										</div>
+									</div>
+								</div>
+                            </div>
+
 <script>
 var PPS=QIE;
 </script>
@@ -188,11 +209,37 @@ QIE.ready(function(S){
 
 			},delay);
         })();
+
+        var k4;
+        
+		(function(){
+		    var delay=2000,dis=45;
+			setTimeout(function(){
+						k4=S.scroll(
+								'J_scroll_panel4',
+								{
+								wrap:'J_scroll_wrap4',
+								space:2,
+								speed:function(panel,space,css){
+								   var ys=Math.abs(this.d%dis);
+								   if(ys+space > dis){
+									 this.d=(this.d-(dis-ys))
+									 panel.style[css]=this.d+'px';
+								   };
+								   return (this.d!=0 && this.d%dis==0) && delay;
+								},
+								mode:'vertical'
+								}
+						);
+
+			},delay);
+        })();
+
 		document.getElementById('stop').onclick=function(){
-		   k1.stop();k2.stop();k3.stop();
+		   k1.stop();k2.stop();k3.stop();k4.stop();
 		}
 		document.getElementById('begin').onclick=function(){
-		   k1.begin();k2.begin();k3.begin();
+		   k1.begin();k2.begin();k3.begin();k4.begin();
 		}
     })();
 });
