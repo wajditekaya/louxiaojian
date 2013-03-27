@@ -1,0 +1,40 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta charset="gb2312" />
+<title>meta标签的viewport控制在移动设备上的布局</title>
+</head>
+
+
+<body>
+<h2>什么是Viewport</h2>
+<p>手机浏览器是把页面放在一个虚拟的“窗口”（viewport）中，通常这个虚拟的“窗口”（viewport）比屏幕宽，这样就不用把每个网页挤到很小的窗口中（这样会破坏没有针对手机浏览器优化的网页的布局），用户可以通过平移和缩放来看网页的不同部分。移动版的 Safari 浏览器最新引进了 viewport 这个 meta tag，让网页开发者来控制 viewport 的大小和缩放，其他手机浏览器也基本支持。</p>
+<p></p>
+<h2>Viewport 基础</h2>
+<p>一个常用的针对移动网页优化过的页面的 viewport meta 标签大致如下：</p>
+<p>&lt;meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1″&gt;</p>
+<p>width：控制 viewport 的大小，可以指定的一个值，如果 600，或者特殊的值，如 device-width 为设备的宽度（单位为缩放为 100% 时的 CSS 的像素）。
+<br />height：和 width 相对应，指定高度。
+<br />initial-scale：初始缩放比例，也即是当页面第一次 load 的时候缩放比例。
+<br />maximum-scale：允许用户缩放到的最大比例。
+<br />minimum-scale：允许用户缩放到的最小比例。
+<br />user-scalable：用户是否可以手动缩放</p>
+<p></p>
+<h2>Viewport 参考资料</h2>
+
+<ul>
+	<li>Mozilla 开发者博客上有 <a href="https://developer.mozilla.org/en/Mobile/Viewport_meta_tag">viewport 使用教程</a></li>
+	<li>Apple 开发者站上面有<a class="external" href="http://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html" target="_blank"> viewport 详细的描述</a></li>
+	<li>quirksmode.org 有<a class="external" href="http://www.quirksmode.org/mobile/viewports2.html" target="_blank">详细的 viewport 在各个手机浏览器不同之处介绍</a></li>
+	<li><a href="http://www.scriptlover.com/static/1002-meta-viewport" target="_blank">http://www.scriptlover.com/static/1002-meta-viewport</a></li>
+	<li><a href="http://www.cnblogs.com/linlf03/archive/2011/12/23/2299009.html" target="_blank">http://www.cnblogs.com/linlf03/archive/2011/12/23/2299009.html</a></li>
+	<li><a href="http://www.w3school.com.cn/html5/html5_meta.asp" target="_blank">http://www.w3school.com.cn/html5/html5_meta.asp</a></li>
+	<li><a href="http://tech.it168.com/a2009/0721/609/000000609580_2.shtml" target="_blank">http://tech.it168.com/a2009/0721/609/000000609580_2.shtml</a></li>
+	<li><a href="http://hi.baidu.com/%D3%C0%D4%B6%CE%DE%BB%DA2009/blog/item/52d839b4c572b7d137d3caf8.html" target="">http://hi.baidu.com/%D3%C0%D4%B6%CE%DE%BB%DA2009/blog/item/52d839b4c572b7d137d3caf8.html</a></li>
+	<li><a href="http://developer.apple.com/library/safari/#documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html" target="_blank">http://developer.apple.com/library/safari/#documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html</a></li>
+	<li><a href="https://developer.mozilla.org/en/Mobile/Viewport_meta_tag" target="_blank">https://developer.mozilla.org/en/Mobile/Viewport_meta_tag</a></li>
+	<li><a href="http://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html" target="_blank">http://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/UsingtheViewport/UsingtheViewport.html</a></li>
+	<li><a href="http://www.quirksmode.org/mobile/viewports2.html" target="_blank">http://www.quirksmode.org/mobile/viewports2.html</a></li>
+</ul>
+</body>
+</html>
