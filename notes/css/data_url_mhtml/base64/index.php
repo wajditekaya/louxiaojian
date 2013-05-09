@@ -32,10 +32,11 @@ if($_GET['act']=='base64'){
 	$imgbase64Url="upload/" . $basename;
 }
 //fileupload
+//echo '<pre>'.print_r($_FILES ["file"]).'</pre>';
 
 
 //base64
-$imgbase64=base64_encode(file_get_contents("$imgbase64Url"));
+$imgbase64='data:'.$_FILES ["file"]["type"].';base64,'.base64_encode(file_get_contents("$imgbase64Url"));
 //base64
 
 ?>
@@ -55,12 +56,9 @@ $imgbase64=base64_encode(file_get_contents("$imgbase64Url"));
 		<input type="submit" name="submit" value="×ª»»Îªbase64" />  
 	</form> 
 </div>
-<?php if($imgbase64){?>
-<textarea name="" rows="" cols="" style="width:100%;height:200px">data:image/gif;base64,<?=$imgbase64;?></textarea>
-<p>Í¼Æ¬Â·¾¶£º<?=$imgbase64Url;?></p>
-<p><img src="data:image/gif;base64,<?=$imgbase64;?>" /></p>
-
-<p style="height:500px;background:url(data:image/gif;base64,<?=$imgbase64;?>) no-repeat"><img src="data:image/png;base64,<?=$imgbase64;?>" /></p>
+<?php if($imgbase64 && $_GET['act']){?>
+<textarea name="" rows="" cols="" style="width:100%;height:200px"><?=$imgbase64;?></textarea>
+<p style="height:500px;background:url(<?=$imgbase64;?>) no-repeat"><img src="<?=$imgbase64;?>" /></p>
 <?php }?>
 
 </body>
