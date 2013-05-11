@@ -1,43 +1,54 @@
-<?php  
+<?php
 
 if($_GET['act']=='base64'){
-	//fileupload
-	$filetype=$_FILES ["file"] ["type"];
-	$filesize=$_FILES ["file"] ["size"];
-	$filename=$_FILES ["file"] ["name"];
+    $uploadFiles = array();
+    function singleFile($filename,$tmp_name,$filetype,$filesize,$error){
+        if ((($filetype == "image/gif") || ($filetype == "image/jpeg") || ($filetype == "image/jpg") || ($filetype == "image/png") || ($filetype == "image/pjpeg")) && ($filesize < 2000000)) {
+            if ($error > 0) {
+                echo "Return Code: " .$error. "<br />";
+            } else {
+                //echo "Upload: " . $_FILES ["file"] ["name"] . "<br />";
+                //echo "Type: " . $_FILES ["file"] ["type"] . "<br />";
+                //echo "Size: " . ($_FILES ["file"] ["size"] / 1024) . " Kb<br />";
+                //echo "Temp file: " . $_FILES ["file"] ["tmp_name"] . "<br />";
+                //date_default_timezone_set(PRC);
+                $showtime=date("Ymd_His").'_'.md5(uniqid());
+                $fileExtensionPos=strrpos($filename,".");
+                $fileExtension=substr($filename,$fileExtensionPos+1);
+                $basename = $showtime.'.'.$fileExtension;
+                move_uploaded_file ($tmp_name, "upload/" .$basename );
+                //echo "Stored in: " . "upload/" . $_FILES ["file"] ["name"];
+            }
+        } else {
+            echo "Invalid file";
+        }
+        //$imgbase64Url="upload/" . $_FILES ["file"] ["name"];
+        $imgbase64Url="upload/" . $basename;
 
-	if ((($filetype == "image/gif") || ($filetype == "image/jpeg") || ($filetype == "image/jpg") || ($filetype == "image/png") || ($filetype == "image/pjpeg")) && ($filesize < 2000000)) {   
-		if ($_FILES ["file"] ["error"] > 0) {   
-			echo "Return Code: " . $_FILES ["file"] ["error"] . "<br />";   
-		} else {   
-			//echo "Upload: " . $_FILES ["file"] ["name"] . "<br />";   
-			//echo "Type: " . $_FILES ["file"] ["type"] . "<br />";   
-			//echo "Size: " . ($_FILES ["file"] ["size"] / 1024) . " Kb<br />";   
-			//echo "Temp file: " . $_FILES ["file"] ["tmp_name"] . "<br />";  
+        //fileupload
+        //echo '<pre>'.print_r($_FILES ["file"]).'</pre>';
 
-			date_default_timezone_set(PRC);
-			$showtime=date("Ymd_His");
-			$fileExtensionPos=strrpos($filename,".");
-            $fileExtension=substr($filename,$fileExtensionPos+1);
-			$basename = $showtime.'.'.$fileExtension;
-			move_uploaded_file ( $_FILES ["file"] ["tmp_name"], "upload/" .$basename );   
-			//echo "Stored in: " . "upload/" . $_FILES ["file"] ["name"];  
-			
+        //base64
+        $imgbase64='data:'.$filetype.';base64,'.base64_encode(file_get_contents("$imgbase64Url"));
 
-		}   
-	} else {   
-		echo "Invalid file";   
-	}
-	//$imgbase64Url="upload/" . $_FILES ["file"] ["name"];
-	$imgbase64Url="upload/" . $basename;
+        return array(
+            'base64'=>$imgbase64,
+            'newfilename'=>$imgbase64Url,
+            'filename'=>$filename
+        );
+    };
+
+    //echo '<pre>'.print_r($_FILES).'</pre>';
+
+    foreach($_FILES['file'] as $key=>$fileSingle){
+        if($key==="name"){
+            foreach($fileSingle as $nub=>$single){
+                $uploadFiles[] = singleFile($_FILES['file']['name'][$nub],$_FILES['file']['tmp_name'][$nub],$_FILES['file']['type'][$nub],$_FILES['file']['size'][$nub],$_FILES['file']['error'][$nub]);
+            }
+        };
+    };
+
 }
-//fileupload
-//echo '<pre>'.print_r($_FILES ["file"]).'</pre>';
-
-
-//base64
-$imgbase64='data:'.$_FILES ["file"]["type"].';base64,'.base64_encode(file_get_contents("$imgbase64Url"));
-//base64
 
 ?>
 
@@ -49,16 +60,59 @@ $imgbase64='data:'.$_FILES ["file"]["type"].';base64,'.base64_encode(file_get_co
 </head>
 <body>
 
-<div style="margin-bottom:20px">
-	<form action="index.php?act=base64" method="post" enctype="multipart/form-data">   
-		<input type="file" name="file" id="file" />    
-		<br />  
-		<input type="submit" name="submit" value="转换为base64" />  
-	</form> 
+<div id="page" style="margin-bottom:20px">
+    <form action="index.php?act=base64" method="post" enctype="multipart/form-data">
+        <input type="file" name="file[]" multiple="true" id="file" />
+        <input type="submit" name="submit" value="转换为base64" />
+    </form>
 </div>
-<?php if($imgbase64 && $_GET['act']){?>
-<textarea name="" rows="" cols="" style="width:100%;height:200px"><?=$imgbase64;?></textarea>
-<p style="height:500px;background:url(<?=$imgbase64;?>) no-repeat"><img src="<?=$imgbase64;?>" /></p>
+<div id="files-list">
+
+</div>
+<script>
+    var browe,version;
+    if(browe = navigator.userAgent.match(/msie\s*(\d+?\.*\d+?)\s*;/i)){
+        version = browe[1];
+        version = parseFloat(version);
+        document.getElementById('page').innerHTML="<p style='text-align:center;padding:20px;font-size:20px'>请用高级浏览器</p>";
+    }
+    function funGetFiles(e) {
+        // 获取文件列表对象
+        var files = e.target.files || e.dataTransfer.files;
+        console.log(files);
+        if(files.length > 0){
+            document.getElementById('files-list').innerHTML='';
+            for(var i=0,ien=files.length;i<ien;i++){
+                var p = document.createElement('p');
+                p.innerHTML = '文件名：'+files[i].name + '&nbsp;&nbsp;&nbsp;&nbsp;大小：'+files[i].size/1000 +'kb';
+                document.getElementById('files-list').appendChild(p)
+            }
+        }
+        //继续添加文件
+        //this.fileFilter = this.fileFilter.concat(this.filter(files));
+        //this.funDealFiles();
+        return this;
+    };
+    document.getElementById('file').onchange=function(e){
+        funGetFiles(e);
+    }
+</script>
+
+<?php if($uploadFiles && $_GET['act']){?>
+
+    <?php foreach($uploadFiles as $nub=>$uploadFilesItem){ ?>
+        <div class="fileItem" style="position:relative;overflow:hidden;*zoom:1">
+            <div style="float:left;padding-right:10px">
+                <?=$nub+1;?>
+                <p style="background:url(<?=$uploadFilesItem['base64'];?>) no-repeat"><img src="<?=$uploadFilesItem['base64'];?>" /></p>
+                <?=$uploadFilesItem['filename'];?>
+            </div>
+            <div style="width:500px;float:left">
+                <textarea name="" rows="" cols="" style="width:100%;height:200px;border:0"><?=$uploadFilesItem['base64'];?></textarea>
+            </div>
+        </div>
+    <?php }?>
+
 <?php }?>
 
 </body>
