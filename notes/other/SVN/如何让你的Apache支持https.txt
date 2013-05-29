@@ -1,0 +1,37 @@
+如何让你的Apache支持https
+主要讲述在windows下apache配置SSL以实现http转换为https
+SSL: SSl是为Http传输提供安全的协议，通过证书认证来确保客户端和网站服务器之间的数据是安全。也就是说在SSL下http传输是安全的，我们成为https.
+过程：
+步骤一：安装apache,使其支持SSL,并安装php
+    1.安装配有SSL模块的apache,apache_2.2.8-win32-x86-openssl-0.9.8g
+    2.配置apache以支持SSL:打开apache的配置文件conf/httpd.conf
+        1)LoadModule ssl_module modules/mod_ssl.so
+          Include conf/extra/httpd-ssl.conf
+          去掉两行前面的#
+        2)注意修改httpd-ssl.conf 文件里的两个字段：
+           SSLCertificateFile "C:/Apache2.2/conf/server.crt"
+           SSLCertificateKeyFile "C:/Apache2.2/conf/server.key"
+    3.安装php,整合apache和Php(略)  //此步可以省略，如果你不需要PHP的话。
+           为下面你所生成的证书和密钥地址。
+步骤二：为网站服务器生成证书及私钥文件
+      1. 生成服务器的私钥
+         进入命令行:
+         D:\local\apache2\bin\openssl genrsa -out server.key 1024
+         在当前目录下生成了一个server.key生成签署申请
+      2. 生成签署申请
+         D:\local\apache2\bin>openssl req -new –out server.csr -key server.key -config ..\conf\openssl.cnf
+         此时生成签署文件server.csr.
+步骤三：通过CA为网站服务器签署证书     
+       1.生成CA私钥
+         D:\local\apache2\bin\openssl genrsa  -out ca.key 1024
+         多出ca.key文件
+       2.利用CA的私钥产生CA的自签署证书
+         D:\local\apache2\bin\openssl req  -new -x509 -days 365 -key ca.key -out ca.crt  -config ..\conf\openssl.cnf
+         此时需要输入一些信息，注意Common Name为服务器域名，如果在本机，为本机IP。
+       3.CA为网站服务器签署证书
+         D:\local\apache2\bin\openssl ca -in server.csr -out server.crt -cert ca.crt -keyfile ca.key -config ..\conf\openssl.cnf
+但，此时会报错：
+         于是在在当前目录创建demoCA，里面创建以下文件，index.txt,serial内容为01，其他为空,以及文件夹newcert.再执行一遍，即可生成server.crt文件
+步骤四：然后将  server.crt,server.key复制到apache的conf文件夹下，重启apache
+步骤五：访问http://localhost即支持https
+不过由于，我们的CA不是由第三方机构颁发的，而是我们自己颁发的，所以，IE访问的时候，会显示，这个证书不是由Trused CA Authenticator颁发，告诉我们可能有安全隐患
