@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="gbk"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <title>新个税计算器</title>
     <style type="text/css">
         *{margin:0;padding:0}
@@ -9,9 +10,22 @@
         .input{border:1px solid #ccc;font-size:18px;color:#f00;font-weight:bold;height:24px;width:200px;vertical-align:top;}
         .from-item{line-height:26px;padding-bottom:10px;overflow:hidden;zoom:1}
 		.from-item label,.from-item .input{float:left}
-		.from-item label{width:100px;text-align:right}
-        .button{padding:4px 7px;margin-left:100px}
+		.from-item label{width:76px;text-align:right}
+        .button{padding:4px 7px;margin-left:76px}
 		h2{font-size:14px;padding-left:100px;margin-bottom:15px}
+        
+		.layout{width:1000px;margin:0 auto;overflow:hidden}
+		.layout-sya{width:480px;margin:0 auto;padding:10px;float:left}
+
+		@media only screen and (min-width:240px) and (max-width:320px){
+			.layout{width:auto;margin:0 auto;overflow:hidden;text-align:center}
+			.layout-sya{width:auto;margin:0 auto;padding:10px;float:none;display:inline-block;text-align:left}
+		}
+
+		@media only screen and (max-width:800px){
+			.layout{width:auto;margin:0 auto;overflow:hidden;text-align:center}
+			.layout-sya{width:auto;margin:0 auto;padding:10px;float:none;display:inline-block;text-align:left}
+       }
     </style>
 	<script>
 	function $(id){
@@ -21,9 +35,9 @@
 </head>
 <body>
 
-<div style="width:1000px;margin:0 auto;overflow:hidden">
+<div class="layout">
 
-        <div style="width:480px;margin:0 auto;padding:10px;float:left">
+        <div class="layout-sya">
             <h2>新个税</h2>
             <div class="from-item"><label>薪水：</label><input type="text" id="xinshui" value="" class="input"></div>
             <div class="from-item"><label>公积金：</label><input type="text" id="gongjijin" value="1370" class="input"></div>
@@ -33,7 +47,7 @@
             <input id="J_Button" type="button" class="button" value="计算"/>
         </div>
 
-        <div style="width:480px;margin:0 auto;padding:10px;float:left">
+        <div class="layout-sya">
         	<h2>旧个税</h2>
             <div class="from-item"><label>薪水：</label><input type="text" id="xinshui2" value="" class="input"></div>
             <div class="from-item"><label>公积金：</label><input type="text" id="gongjijin2" value="1370" class="input"></div>
