@@ -1,0 +1,30 @@
+virtualbox导入vdi文件时出现下面的问题：
+
+ 
+
+打开hard disk D:\software\GT5.0.0.vdi 失败
+
+Cannot register the hard disk 'D:\software\GT5.0.0.vdi' withUUID {jfldk-fdjklf-sljk-fdjl-fdjsfld} because a hard disk'D:\software\GT4.3.vdi' with UUID {jfldk-fdjklf-sljk-fdjl-fdjsfld}already exists in the media registry('C:\Users\user\.VirtualBox\VirtualBox.xml')
+
+
+
+解决方法：
+
+用命令行进入VirtualBox的安装目录，使用下面的命令：
+
+
+C:\Program Files\Sun\VirtualBox>VBoxManage  internalcommands setvdiuuid D:\path\ubuntu.vdi
+
+ 注意，在virtualbox4.0.4以上该命令改为
+
+C:\Program Files\Sun\VirtualBox>VBoxManageinternalcommands sethduuid D:\path\ubuntu.vdi
+
+然后重新导入即可。
+
+这是一个重新设置UUID号的命令，VirtualBox没有集成到GUI环境中，只能在命令行中使用。
+
+
+
+
+D:\Program Files\Oracle\VirtualBox>VBoxManage internalcommands sethduuid F:\VirtualBox\xp_ie78\xp_ie78.vdi
+UUID changed to: 323bf609-da4f-4758-9315-f784da2bcf9d
