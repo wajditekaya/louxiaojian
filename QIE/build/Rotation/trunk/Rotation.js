@@ -91,16 +91,16 @@ Rotation.prototype={
         if(m){this.de = (this.de<n-1) ? this.de+1 :0;}else{this.de = (this.de!=0) ? this.de-1 :n-1;}
         this.action(this.de);
     },
-	prev:function(){
+    prev:function(){
         this.clearAuto();
         this.autoplay();
-		this.s.auto && this.s.auto[0]==1 && this.autoFun();
-	},
-	next:function(){
-		this.clearAuto();
-		this.autoplay(1);
-		this.s.auto && this.s.auto[0]==1 && this.autoFun();
-	},
+        this.s.auto && this.s.auto[0]==1 && this.autoFun();
+    },
+    next:function(){
+        this.clearAuto();
+        this.autoplay(1);
+        this.s.auto && this.s.auto[0]==1 && this.autoFun();
+    },
     autoFun:function(){this.clearAuto();this.intAuto=setInterval(this.B(this,this.autoplay,1),this.s.auto[1])},
     clearAuto:function(){if(this.intAuto){clearInterval(this.intAuto)}},
     TabLi:function(n){
@@ -134,7 +134,7 @@ Rotation.prototype={
                 if(this.lDiv&&this.lDiv!=m){this.lDiv.style.display="none"}
                 m.style.display="block";
             }
-             this.lDiv=m;
+            this.lDiv=m;
         }
     },
     slider:function(n){
