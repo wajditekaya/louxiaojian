@@ -1,0 +1,520 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>secondType_v4.01</title>
+<script type="text/javascript" src="Rotation.js"></script>
+<style type="text/css">
+*{margin:0; padding:0} 
+body{font:12px/22px Tahoma, Geneva, sans-serif}
+ul,li{list-style:none}
+h1{text-align:center;font:bold 36px/2 "微软雅黑";text-align:left;padding:5px 0}
+#wrapper{width:1000px; margin:0 auto}
+img{border:0}
+.fl{float:left}
+.fr{float:right}
+.focusPic{width:350px;font-size:12px;position:relative;z-index:20;overflow:hidden}
+.focusWrap{position:relative;height:230px;overflow:hidden;margin-bottom:5px;z-index:10}
+.focusWrap ul{position:absolute;z-index:99}
+.focusWrap li img{width:350px;height:230px;vertical-align:top}
+.focusNav{width:380px;overflow:hidden;zoom:1}
+  .focusNav li{background:#efefef;list-style:none;color:#000;text-align:center;cursor:pointer;float:left;margin-right:2px;padding:3px;border:1px solid #efefef;}
+  .focusNav li img{width:60px;height:39px;vertical-align:top}
+  .focusNav .cur{background:#ECF8FF;font-weight:bold;color:#000;border:1px solid #f60;}
+.textDesBj,.textDes{height:50px;line-height:50px;width:348px;position:absolute;left:1px;bottom:52px;}
+  .textDesBj{background:#000;opacity:0.6;-moz-opacity:0.6;filter:alpha(opacity=60);z-index:10;}
+  .textDes{font-size:12px;font-weight:bold;color:#fff;z-index:999;padding-left:20px }
+  .textDes a{font-weight:bold;color:#fff;text-decoration:none}
+  .textDes li{display:none}
+
+#contenter1{width:2100px;}
+    #contenter1 li{width:350px;float:left}
+
+.contenter-h .area{display:block}
+    .contenter-h .hide{display:none}
+
+.area{background:#ECF8FF;color:#333;padding:5px 20px;display:none;border:1px solid #C9D9EE;zoom:1}
+
+.menu ul{overflow:hidden;zoom:1;position:relative;bottom:-1px;}
+    .menu li{line-height:24px;background:#efefef;list-style:none;color:#000;text-align:center;cursor:pointer;float:left;margin-right:8px;border:1px solid #efefef;border-bottom:1px solid #C9D9EE;zoom:1}
+    .menu li a{display:block;padding:0px 15px;color:#333;text-decoration:none}
+    .menu .more{float:right;margin:0;background:#fff}
+    .menu .more a{color:#000; text-decoration:none}
+    .menu li.cur{background:#ECF8FF;font-weight:bold;color:#C9D9EE;border:1px solid #C9D9EE;border-bottom:1px solid #ECF8FF}
+    .menu li.cur a{text-decoration:none}
+    .menu a.cur{background:#ECF8FF;font-weight:bold;color:#000;}
+
+#menu2{position:relative;}
+.bn{position:absolute;top:5px;right:0px}
+.bn span{display:inline-block;cursor:pointer;margin-left:10px}
+.hide{display:none}
+#pic{width:575px;overflow:hidden;background:#f9f9f9;border:1px solid #ddd; padding:6px}
+#aPic{width:480px;position:relative;height:270px;overflow:hidden;float:left;}
+#aPic ul{width:480px;position:absolute}
+#aPic li{height:270px;text-align:center;line-height:270px;font-size:48px;font-weight:bold;color:#fff}
+#aPic li img{width:480px;height:270px;vertical-align:top}
+.a1{background:#636}
+.a2{background:#f00}
+.a3{background:#f60}
+.a4{background:#C90}
+#sNav{width:89px;float:right}
+#sNav ul{height:270px}
+#sNav li{text-align:right;cursor:pointer;padding-bottom:4px;height:50px;position:relative; z-index:10}
+#sNav li img{width:89px;height:50px;vertical-align:top;}
+#sNav .cur{z-index:999}
+#sNav .cur img{position:absolute;top:-10px;right:0;height:70px;width:125px}
+#sNav #last.cur img{bottom:0;top:auto}
+#sNav #fri.cur img{top:0}
+
+.nub{font-size:24px; font-weight:bold; font-family:Tahoma, Geneva, sans-serif; color:#f00}
+.expList{overflow:hidden;zoom:1;margin-right:-100px}
+.expList .exp_item{width:450px;float:left;height:340px;position:relative;padding-left:40px;margin-right:50px}
+.expList .exp_item .nub{position:absolute;top:0;left:0}
+</style>
+</head>
+
+<body>
+<!--wrapper-->
+<div id="wrapper">
+    <h1>secondType_v4.01</h1>
+
+    <ul class="expList">
+     <li class="exp_item">
+              <div class="nub">1.</div>
+              <!--focusPic-->
+              <div class="focusPic">
+              
+                  <div class="focusWrap">
+                     <ul id="focusMain">
+                      <li><a href="#1"><img src="../../../img/1.jpg" alt="" /></a></li>
+                      <li><a href="#2"><img src="../../img/2.jpg" alt="" /></a></li>
+                      <li><a href="#3"><img src="../../img/3.jpg" alt="" /></a></li>
+                      <li><a href="#4"><img src="../../img/4.jpg" alt="" /></a></li>
+                      <li><a href="#5"><img src="../../img/5.jpg" alt="" /></a></li>
+                     </ul>
+                  </div>
+                  
+                  <ul id="textDes" class="textDes">
+                   <li><a href="#11">《梅兰芳》首曝花絮 华丽布景演员跳艳舞11</a></li>
+                   <li><a href="#22">徐子淇捐500万助内地学生 获克林顿表扬22</a></li>
+                   <li><a href="#33">王静莹陈威陶争独子监护权 终结4年婚姻33</a></li>
+                   <li><a href="#44">李冰冰黄晓明联袂代言 发布会共唱儿时歌44</a></li>
+                   <li><a href="#55">李冰冰黄晓明联袂代言 发布会共唱儿时歌55</a></li>
+                  </ul>
+                  <div class="textDesBj"></div>
+                  
+                  <ul id="focusNav" class="focusNav">
+                   <li><a href="#111"><img src="../../img/1.jpg" alt="" /></a></li>
+                   <li><a href="#222"><img src="../../img/2.jpg" alt="" /></a></li>
+                   <li><a href="#333"><img src="../../img/3.jpg" alt="" /></a></li>
+                   <li><a href="#444"><img src="../../img/4.jpg" alt="" /></a></li>
+                   <li><a href="#555"><img src="../../img/5.jpg" alt="" /></a></li>
+                  </ul>
+              </div>
+              <div style="padding:8px 0 0 0" ><span id="left_op" style="display:inline-block; background:#f60;cursor:pointer;padding:0px 8px;color:#fff; margin-right:30px">向左</span><span id="right_op" style="display:inline-block; background:#f60;cursor:pointer;padding:0px 8px;color:#fff">向右</span></div>
+              <div id="ioioi"></div>
+              <script type="text/javascript">
+			   var lxj=function(){
+				    var nTag=document.getElementById('focusNav').getElementsByTagName('li'),
+					mTag=document.getElementById('focusMain').getElementsByTagName('li'),
+					text=document.getElementById('textDes').getElementsByTagName('li'),
+					l=new Rotation(
+						{
+							nTag:nTag,
+							mTag:mTag,
+							text:text,
+							index:3,
+							slider:{obj:document.getElementById('focusMain'),dis:230},
+							auto:["1","2000"],
+							start:function(){
+								this.lxj='louxiaojian'
+								document.getElementById('ioioi').innerHTML=this.de
+							 },
+							callBack:function(){},
+							evt:0
+						}
+					  );
+					 document.getElementById("left_op").onclick=function(){l.pre()}
+					 document.getElementById("right_op").onclick=function(){l.next()}
+			   }();
+
+              
+              </script>
+              <!--/focusPic-->
+     </li>
+     <li class="exp_item">
+            <div class="nub">2.</div>
+            <!--focusPic-->
+            <div class="focusPic">
+            
+                <div class="focusWrap">
+                   <ul id="focusMain_b_1">
+                    <li><a href="#1"><img src="../../img/1.jpg" alt="" /></a></li>
+                    <li><a href="#2"><img src="../../img/2.jpg" alt="" /></a></li>
+                    <li><a href="#3"><img src="../../img/3.jpg" alt="" /></a></li>
+                    <li><a href="#4"><img src="../../img/4.jpg" alt="" /></a></li>
+                    <li><a href="#5"><img src="../../img/5.jpg" alt="" /></a></li>
+                   </ul>
+                </div>
+                <ul id="textDes_b_1" class="textDes" style="bottom:5px">
+                 <li><a href="#11">《梅兰芳》首曝花絮 华丽布景演员跳艳舞11</a></li>
+                 <li><a href="#22">徐子淇捐500万助内地学生 获克林顿表扬22</a></li>
+                 <li><a href="#33">王静莹陈威陶争独子监护权 终结4年婚姻33</a></li>
+                 <li><a href="#44">李冰冰黄晓明联袂代言 发布会共唱儿时歌44</a></li>
+                 <li><a href="#55">李冰冰黄晓明联袂代言 发布会共唱儿时歌55</a></li>
+                </ul>
+                <div class="textDesBj" style="bottom:5px"></div>
+            </div>
+            <script type="text/javascript">
+			   var lxj_b_1=function(){
+				  var mTag=document.getElementById('focusMain_b_1').getElementsByTagName('li'),
+				  text=document.getElementById('textDes_b_1').getElementsByTagName('li');
+				  new Rotation(
+					{
+						mTag:mTag,
+						text:text,
+						index:0,
+						slider:{obj:document.getElementById('focusMain_b_1'),dis:230,
+								Tween:function(t,b,c,d,a,p){
+									  if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
+									  if (!a || a < Math.abs(c)) { a=c; var s=p/4; }
+									  else var s = p/(2*Math.PI) * Math.asin (c/a);
+									  return (a*Math.pow(2,-10*t) * Math.sin( (t*d-s)*(2*Math.PI)/p ) + c + b);
+								 }
+								},
+						start:function(){},
+						auto:["1","2000"],
+						evt:0
+					}
+				  );
+			   }();
+            </script>
+            <!--/focusPic-->
+     </li>
+     <li class="exp_item">
+            <div class="nub">3.</div>
+            <!--focusPic-->
+            <div class="focusPic">
+            
+                <div class="focusWrap">
+                   <ul id="focusMain_a">
+                    <li><a href="#1"><img src="../../img/1.jpg" alt="" /></a></li>
+                    <li><a href="#2"><img src="../../img/2.jpg" alt="" /></a></li>
+                    <li><a href="#3"><img src="../../img/3.jpg" alt="" /></a></li>
+                    <li><a href="#4"><img src="../../img/4.jpg" alt="" /></a></li>
+                    <li><a href="#5"><img src="../../img/5.jpg" alt="" /></a></li>
+                   </ul>
+                </div>
+                <ul id="focusNav_a" class="focusNav">
+                 <li><a href="#111"><img src="../../img/1.jpg" alt="" /></a></li>
+                 <li><a href="#222"><img src="../../img/2.jpg" alt="" /></a></li>
+                 <li><a href="#333"><img src="../../img/3.jpg" alt="" /></a></li>
+                 <li><a href="#444"><img src="../../img/4.jpg" alt="" /></a></li>
+                 <li><a href="#555"><img src="../../img/5.jpg" alt="" /></a></li>
+                </ul>
+            </div>
+            
+            <script type="text/javascript">
+			   var lxj_a=function(){
+                  var nTag=document.getElementById('focusNav_a').getElementsByTagName('li'),
+				       mTag=document.getElementById('focusMain_a').getElementsByTagName('li');
+			      new Rotation(
+					{
+						nTag:nTag,
+						mTag:mTag,
+						index:0,
+						slider:{obj:document.getElementById('focusMain_a'),dis:230,
+								Tween:function(t,b,c,d,a,p){
+									  if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
+									  if (!a || a < Math.abs(c)) { a=c; var s=p/4; }
+									  else var s = p/(2*Math.PI) * Math.asin (c/a);
+									  return (a*Math.pow(2,-10*t) * Math.sin( (t*d-s)*(2*Math.PI)/p ) + c + b);
+								 }
+					            },
+						auto:["1","2000"],
+						evt:0
+					}
+				  );
+			   
+			   }();
+
+            
+            </script>
+             <!--/focusPic-->
+     </li>
+     <li class="exp_item">
+            <div class="nub">4.</div>
+            <!--focusPic-->
+            <div class="focusPic">
+            
+                <div class="focusWrap">
+                   <ul id="focusMain2">
+                    <li><a href="#1"><img src="../../img/1.jpg" alt="" /></a></li>
+                    <li><a href="#2"><img src="../../img/2.jpg" alt="" /></a></li>
+                    <li><a href="#3"><img src="../../img/3.jpg" alt="" /></a></li>
+                    <li><a href="#4"><img src="../../img/4.jpg" alt="" /></a></li>
+                    <li><a href="#5"><img src="../../img/5.jpg" alt="" /></a></li>
+                   </ul>
+                </div>
+                
+            </div>
+            <script type="text/javascript">
+			   var lxj1=function(){
+				    var mTag=document.getElementById('focusMain2').getElementsByTagName('li');
+			     new Rotation(
+					{
+						mTag:mTag,
+						index:0,
+						slider:{obj:document.getElementById('focusMain2'),dis:230},
+						auto:["1","2000"],
+						evt:0
+					}
+				  ); 
+				 
+			   }();
+
+            </script>
+            <!--/focusPic-->
+     </li>
+     <li class="exp_item">
+            <div class="nub">5.</div>
+            <!--focusPic-->
+            <div class="focusPic">
+            
+                <div class="focusWrap">
+                   <ul id="focusMain3">
+                    <li><a href="#1"><img src="../../img/1.jpg" alt="" /></a></li>
+                    <li><a href="#2"><img src="../../img/2.jpg" alt="" /></a></li>
+                    <li><a href="#3"><img src="../../img/3.jpg" alt="" /></a></li>
+                    <li><a href="#4"><img src="../../img/4.jpg" alt="" /></a></li>
+                    <li><a href="#5"><img src="../../img/5.jpg" alt="" /></a></li>
+                   </ul>
+                </div>
+            <div style="padding:8px 0 0 0" ><span id="sdfdfd" style="display:inline-block; background:#f60;cursor:pointer;padding:0px 8px;color:#fff; margin-right:30px">向左</span><span id="idsfd" style="display:inline-block; background:#f60;cursor:pointer;padding:0px 8px;color:#fff">向右</span></div>
+            </div>
+            
+            <script type="text/javascript">
+			   var lxj2=function(){
+				   var mTag=document.getElementById('focusMain3').getElementsByTagName('li');
+				   var lxj2=new Rotation(
+						{
+							mTag:mTag,
+							index:0,
+							slider:{obj:document.getElementById('focusMain3'),dis:230},
+							auto:["1","2000"],
+							evt:0
+						}
+					  );
+				 document.getElementById("idsfd").onclick=function(){lxj2.pre()}
+				 document.getElementById("sdfdfd").onclick=function(){lxj2.next()}
+				   
+			   }();
+
+            </script>
+            <!--/focusPic-->
+     </li>
+     <li class="exp_item">
+            <div class="nub">6.</div>
+            <!--focusPic-->
+            <div class="focusPic">
+            
+                <div class="focusWrap">
+                   <ul id="contenter1">
+                    <li><a href="#"><img src="../../img/1.jpg" alt="" /></a></li>
+                    <li><a href="#"><img src="../../img/2.jpg" alt="" /></a></li>
+                    <li><a href="#"><img src="../../img/3.jpg" alt="" /></a></li>
+                    <li><a href="#"><img src="../../img/4.jpg" alt="" /></a></li>
+                    <li><a href="#"><img src="../../img/5.jpg" alt="" /></a></li>
+                   </ul>
+                </div>
+                
+                <ul id="textDes1" class="textDes">
+                 <li><a href="#11">《梅兰芳》首曝花絮 华丽布景演员跳艳舞11</a></li>
+                 <li><a href="#22">徐子淇捐500万助内地学生 获克林顿表扬22</a></li>
+                 <li><a href="#33">王静莹陈威陶争独子监护权 终结4年婚姻33</a></li>
+                 <li><a href="#44">李冰冰黄晓明联袂代言 发布会共唱儿时歌444</a></li>
+                 <li><a href="#55">李冰冰黄晓明联袂代言 发布会共唱儿时歌555</a></li>
+                </ul>
+                <div class="textDesBj"></div>
+                
+                <ul id="menu1" class="focusNav">
+                 <li><a href="#111"><img src="../../img/1.jpg" alt="" /></a></li>
+                 <li><a href="#222"><img src="../../img/2.jpg" alt="" /></a></li>
+                 <li><a href="#333"><img src="../../img/3.jpg" alt="" /></a></li>
+                 <li><a href="#444"><img src="../../img/4.jpg" alt="" /></a></li>
+                 <li><a href="#555"><img src="../../img/5.jpg" alt="" /></a></li>
+                </ul>
+            </div>
+            <script type="text/javascript">
+			   var lxj3=function(){
+				   
+			        var nTag=document.getElementById('menu1').getElementsByTagName('li'),
+					mTag=document.getElementById('contenter1').getElementsByTagName('li'),
+					text=document.getElementById('textDes1').getElementsByTagName('li');
+				  new Rotation(
+					{
+						nTag:nTag,
+						mTag:mTag,
+						text:text,
+						index:0,
+						slider:{dir:'left',obj:document.getElementById('contenter1'),dis:350},
+						evt:1
+					}
+				  );
+			   
+				   
+			   }();
+
+            </script>
+            <!--/focusPic-->
+     </li>
+     <li class="exp_item" style="width:100%">
+         <div class="nub">7.</div>
+          <!--pic-->
+          <div id="pic">
+            <div id="aPic">
+              <ul id="a_pic" style="top:0;">
+                <li class="a2"><img src="../../img/06.jpg" alt="" /></li>
+                <li class="a2"><img src="../../img/02.jpg" alt="" /></li>
+                <li class="a3"><img src="../../img/03.jpg" alt="" /></li>
+                <li class="a4"><img src="../../img/04.jpg" alt="" /></li>
+                <li class="a4"><img src="../../img/05.jpg" alt="" /></li>
+              </ul>
+            </div>
+            <div id="sNav">
+              <ul>
+                <li id="fri"><img src="../../img/a_06.jpg" alt="" /></li>
+                <li><img src="../../img/a_02.jpg" alt="" /></li>
+                <li><img src="../../img/a_03.jpg" alt="" /></li>
+                <li><img src="../../img/a_04.jpg" alt="" /></li>
+                <li id="last"><img src="../../img/a_05.jpg" alt="" /></li>
+              </ul>
+             </div>
+          </div>
+          <!--/pic-->
+		  <script type="text/javascript">
+		     var lxj5=function(){
+				  var nTag=document.getElementById('sNav').getElementsByTagName('li'),
+				  mTag=document.getElementById('a_pic').getElementsByTagName('li');
+				    new Rotation(
+						{
+							nTag:nTag,
+							mTag:mTag,
+							index:0,
+							slider:{obj:document.getElementById('a_pic'),dis:270},
+							auto:["1","1000"],
+							evt:1
+						}
+					  );
+			 }();
+
+          </script>
+          
+     </li>
+     <li class="exp_item">
+        <div class="nub">8.</div>
+        <!--menu-->
+        <div class="menu">
+          <ul>
+           <li url="http://www.dianying.com" id="u123"><a href="#a111">样式一</a></li>
+           <li url="http://www.tv.com" id="u456"><a href="#a222">样式二</a></li>
+           <li url="http://www.tiyu.com" id="u789"><a href="#a333">样式三</a></li>
+           <li url="http://www.donghuapian.com" lang="s" style="background:#fff">&nbsp;&nbsp;&nbsp;跳过&nbsp;&nbsp;&nbsp;</li>
+          </ul>
+        </div>
+        <!--/menu-->
+        <div class="area" id="m123">11111</div>
+        <div class="area" id="m456">22222</div>
+        <div class="area" id="m789">33333</div>
+        <script type="text/javascript">
+        function $(o){return document.getElementById(o)}
+        var wy163=new Rotation(
+                        {
+                          nTag:[$('u123'),$('u456'),$('u789')],
+                          mTag:[$('m123'),$('m456'),$('m789')],
+                          auto:[1,1000],
+						  index:2
+                        }
+                );
+        </script>
+     </li>
+     <li class="exp_item">
+        <div class="nub">9.</div>
+        <!--menu-->
+        <div id="menu" class="menu">
+          <ul>
+           <li url="http://www.dianying.com"><a href="#a111">样式一</a></li>
+           <li class="ui" url="http://www.tv.com"><a href="#a222">样式二</a></li>
+           <li url="http://www.tiyu.com"><a href="#a333">样式三</a></li>
+           <li url="http://www.donghuapian.com" lang="s" style="background:#fff">&nbsp;&nbsp;&nbsp;跳过&nbsp;&nbsp;&nbsp;</li>
+          </ul>
+        </div>
+        <!--/menu-->
+        <!--contenter-->
+        <div id="contenter" class="contenter contenter-h">
+            <div class="area"><div>111111111111111</div></div>
+            <div class="area hide"><div></div>222222222222222222</div>
+            <div class="area hide">3333333333333333</div>
+        </div>
+        <!--/contenter-->
+        <script type="text/javascript">
+		var lxja=function(){
+				var nav=document.getElementById('menu').getElementsByTagName('li'),triggers=[],div=document.getElementById('contenter').getElementsByTagName('div'),panels=[]
+				 for(var j=0;j<nav.length;j++){if(!nav[j].getAttribute("lang")){triggers.push(nav[j]);}}
+				 for(var i=0;i<div.length;i++){
+					if(div[i].parentNode==document.getElementById('contenter') && !div[i].getAttribute("lang")){panels.push(div[i]);}
+				 }
+			   new Rotation({nTag:triggers,mTag:panels,index:0,evt:0,panelClass:'hide'});
+		}();
+
+        </script>
+     </li>
+     <li class="exp_item">
+        <div class="nub">10.</div>
+        <!--menu-->
+        <div id="menu_hover" class="menu">
+          <ul>
+           <li url="http://www.dianying.com"><a href="#a111">例子10</a></li>
+           <li class="ui" url="http://www.tv.com"><a href="#a222">例子10</a></li>
+           <li url="http://www.tiyu.com"><a href="#a333">例子10</a></li>
+           <li url="http://www.donghuapian.com" lang="s" style="background:#fff">&nbsp;&nbsp;&nbsp;跳过&nbsp;&nbsp;&nbsp;</li>
+          </ul>
+        </div>
+        <!--/menu-->
+        <script type="text/javascript">
+		var lxjabb=function(){
+				var nav=document.getElementById('menu_hover').getElementsByTagName('li'),triggers=[]
+				for(var j=0;j<nav.length;j++){if(!nav[j].getAttribute("lang")){triggers.push(nav[j]);}}
+                new Rotation({nTag:triggers,index:0,intTabTime:0,evt:1,auto:[1,1000]});
+		}();
+        </script>
+     </li>
+
+	      <li class="exp_item">
+          <div class="nub">11.</div>
+        <!--menu-->
+        <div id="menu_hover2" class="menu">
+          <ul>
+           <li url="http://www.dianying.com"><a href="#a111">例子10</a></li>
+           <li class="ui" url="http://www.tv.com"><a href="#a222">例子10</a></li>
+           <li url="http://www.tiyu.com"><a href="#a333">例子10</a></li>
+           <li url="http://www.donghuapian.com" lang="s" style="background:#fff">&nbsp;&nbsp;&nbsp;跳过&nbsp;&nbsp;&nbsp;</li>
+          </ul>
+        </div>
+        <!--/menu-->
+        <script type="text/javascript">
+		var lxjabb=function(){
+				var nav=document.getElementById('menu_hover2').getElementsByTagName('li'),triggers=[]
+				for(var j=0;j<nav.length;j++){if(!nav[j].getAttribute("lang")){triggers.push(nav[j]);}}
+                new Rotation({nTag:triggers,index:0,intTabTime:0,evt:1});
+		}();
+        </script>
+     </li>
+
+    </ul>
+
+    
+</div>
+<!--/wrapper-->
+</body>
+</html>
