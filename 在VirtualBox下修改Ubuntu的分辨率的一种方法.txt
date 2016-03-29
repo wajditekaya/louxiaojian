@@ -1,0 +1,8 @@
+在VirtualBox下修改Ubuntu的分辨率的一种方法
+
+http://exsbn.com/post/224
+
+打开终端输入 df -h 看到最下面的一行就是你刚才载入的CD,我的是/media/VBOXADDITIONS_3.2.6_63113（这里千万不要copy使用，各人不同，以自己的为准，看看上面提到的那些转帖都复制cdrom0后，你照打后能找到才怪）
+
+然后 cd /media/VBOXADDITIONS_3.2.6_63113  进到目录中了，用ls命令查看目录中的文件，可以看到有两个.run的文件，不同就是一个是amd64，一个是x86。我的是X86的电脑，输入命令  sudo sh VBoxAdditions-x86.run,接下来输入密码，好了，耐心等1,2分钟后，看到安装成功，要求重启的提示[You may need to restart the hal service and the Window System (or just restart
+the guest system) to enable the Guest Additions]就OK了。
